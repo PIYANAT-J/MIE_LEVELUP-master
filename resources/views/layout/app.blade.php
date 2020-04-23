@@ -36,7 +36,7 @@
                         <div class="col-12 col-md-10 d-none d-xl-block">
                             <nav class="site-navigation position-relative text-right" role="navigation">
                                 <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                                    <li><a href="{{ url('/') }}" class="nav-link">หน้าหลัก</a></li>
+                                    <li><a href="{{ url('/') }}" class="nav-link">หน้าหลัก22</a></li>
                                     <!-- <li class="has-children">
                                         <a href="#about-section" class="nav-link">About Us</a>
                                         <ul class="dropdown">
