@@ -37,72 +37,43 @@
                             <nav class="site-navigation position-relative text-right" role="navigation">
                                 <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                                     <li><a href="{{ url('/') }}" class="nav-link">หน้าหลัก</a></li>
-                                    <!-- <li class="has-children">
-                                        <a href="#about-section" class="nav-link">About Us</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#team-section" class="nav-link">Team</a></li>
-                                            <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
-                                            <li><a href="#faq-section" class="nav-link">FAQ</a></li>
-                                            <li class="has-children">
-                                                <a href="#">More Links</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="#">Menu One</a></li>
-                                                    <li><a href="#">Menu Two</a></li>
-                                                    <li><a href="#">Menu Three</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li> -->
                                     <li><a href="#portfolio-section" class="nav-link">เกม</a></li>
                                     <li><a href="#services-section" class="nav-link">เติมเงิน</a></li>
                                     <li><a href="#testimonials-section" class="nav-link">ดาวน์โหลด</a></li>
                                     <li><a href="#blog-section" class="nav-link">ข่าว</a></li>
                                     <li><a href="#contact-section" class="nav-link">ช่วยเหลือ</a></li>
+                                    <!-- Authentication Links -->
+                                    @guest
                                     <li class="has-children">
                                         <a href="#about-section" class="nav-link">เข้าสู่ระบบ</a>
                                         <ul class="dropdown">
-                                            <!-- Authentication Links -->
-                                            @guest
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
+                                            </li>
+                                            @if (Route::has('register'))
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
+                                                    <a class="nav-link" href="{{ route('register') }}">{{ __('สมัครสมาชิก') }}</a>
                                                 </li>
-                                                @if (Route::has('register'))
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="{{ route('register') }}">{{ __('สมัครสมาชิก') }}</a>
-                                                    </li>
-                                                @endif
-                                            @else
-                                                <li class="nav-item dropdown">
-                                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                        {{ Auth::user()->name }} <span class="caret"></span>
-                                                    </a>
-
-                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                                        onclick="event.preventDefault();
-                                                                        document.getElementById('logout-form').submit();">
-                                                            {{ __('Logout') }}
-                                                        </a>
-
-                                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                            @csrf
-                                                        </form>
-                                                    </div>
-                                                </li>
-                                            @endguest
-                                            <!-- <li><a href="/////" class="nav-link">เข้าสู่ระบบ</a></li>
-                                            <li><a href="#pricing-section" class="nav-link">สมัครสมาชิก</a></li> -->
-                                            <!-- <li><a href="#faq-section" class="nav-link">FAQ</a></li>
-                                            <li class="has-children">
-                                                <a href="#">More Links</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="#">Menu One</a></li>
-                                                    <li><a href="#">Menu Two</a></li>
-                                                    <li><a href="#">Menu Three</a></li>
-                                                </ul>
-                                            </li> -->
+                                            @endif
+                                        </ul>
+                                    @else
+                                    <li class="has-children">
+                                        <a href="#about-section" class="nav-link">{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
+                                        <ul class="dropdown">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">{{ __('โปรไฟล์') }}</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                    {{ __('ออกจากระบบ') }}
+                                                </a>
+                                            </li>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
                                         </ul>
                                     </li>
+                                    @endguest
                                 </ul>
                             </nav>
                         </div>

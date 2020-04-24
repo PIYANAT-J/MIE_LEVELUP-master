@@ -1,7 +1,8 @@
 @extends('layout.app')
 
 @section('section')
-<!-- <div class="container">
+<br><br><br><br><br><br><br><br><br><br>
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,9 +70,9 @@
             </div>
         </div>
     </div>
-</div> -->
-<br><br><br><br><br><br><br><br><br><br>
-<div class="container">
+</div>
+
+<!-- <div class="container">
     <div class="row py-5 mt-4 align-items-center">
         <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
             <img src="{{asset('home/logo/levelup.png')}}" alt="" class="img-fluid mb-3 d-none d-md-block">
@@ -83,7 +84,7 @@
                     <div class="input-group col-lg-12 mb-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-envelope text-muted"></i>
+                                <i class="fa fa-envelope text-muted" ></i>
                             </span>
                         </div>
                         <input id="email" type="email" name="email" placeholder="Email Address" class="form-control @error('email') is-invalid @enderror" required autocomplete="email" autofocus>   
@@ -106,11 +107,6 @@
                             </span>
                         @enderror
                     </div>
-                    <!-- <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span id="msg1"></span>
-                        </div>
-                    </div> -->
                     <div class="form-group col-lg-12 mx-auto mb-2">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -133,34 +129,11 @@
                             </a>
                         @endif
                     </div>
-                    
-
-                    <!-- <div class="form-group row">
-                        <div class="col-md-6 offset-md-4">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                <label class="form-check-label" for="remember">
-                                    {{ __('Remember Me') }}
-                                </label>
-                            </div>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="form-group row mb-0">
-                        <div class="col-md-8 offset-md-4">
-                            @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            @endif
-                        </div>
-                    </div> -->
                 </div>
             </form>
         </div>
     </div>
-</div>
+</div> -->
 
 <style>
 #error_notif {
@@ -168,4 +141,8 @@ display:none;
 }
 </style>
 <br><br><br><br><br><br><br>
+@endsection
+
+@section('script')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection
