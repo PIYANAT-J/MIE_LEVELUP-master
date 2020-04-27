@@ -26,6 +26,9 @@ Route::get('/', function () {
 // Route::view('/login', 'login');
 Auth::routes();
 
-// Route::resource('register', 'MembersController');
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/user_profile', function () {
+    return view('user_profile');
+});
+
