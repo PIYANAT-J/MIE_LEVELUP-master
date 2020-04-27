@@ -103,23 +103,41 @@
 @extends('layout.app')
 
 @section('background')
-<div class="site-blocks-cover overlay" style="background-image: url(home/images/slide_2.jpg);" data-aos="fade" id="home-section">
-    <div class="container">
-        <div class="row align-items-center justify-content-center">
-            <div class="col-md-8 mt-lg-5 text-center">
-                <h1 class="text-uppercase mb-5" data-aos="fade-up">I'm Creative One Page Template by Colorlib</h1>
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <a href="#contact-section" class="btn smoothscroll btn-primary mr-2 mb-2">Get In Touch</a>
-                </div>
+<div class="slide-one-item home-slider owl-carousel">
+    <div class="site-blocks-cover overlay" style="background-image: url(home/images/slide_2.jpg);" data-aos="fade" id="home-section">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-8 mt-lg-5 text-center">
+                    <h1 class="text-uppercase mb-5" data-aos="fade-up">I'm Creative One Page Template by Colorlib</h1>
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <a href="#contact-section" class="btn smoothscroll btn-primary mr-2 mb-2">Get In Touch</a>
+                    </div>
+                </div>  
             </div>
-            
         </div>
+        <a href="#about-section" class="mouse smoothscroll">
+            <span class="mouse-icon">
+                <span class="mouse-wheel"></span>
+            </span>
+        </a>
     </div>
-    <a href="#about-section" class="mouse smoothscroll">
-        <span class="mouse-icon">
-            <span class="mouse-wheel"></span>
-        </span>
-    </a>
+    <div class="site-blocks-cover overlay" style="background-image: url('home/images/slide_1.jpeg');" data-aos="fade" id="home-section">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-8 mt-lg-5 text-center">
+                    <h1 class="text-uppercase mb-5" data-aos="fade-up">I'm Creative One Page Template by Colorlib</h1>
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <a href="#contact-section" class="btn smoothscroll btn-primary mr-2 mb-2">Get In Touch</a>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <a href="#about-section" class="mouse smoothscroll">
+            <span class="mouse-icon">
+                <span class="mouse-wheel"></span>
+            </span>
+        </a>
+    </div>
 </div>
 @endsection
 
@@ -181,69 +199,103 @@
             </div>
         </div> 
         <div id="posts" class="row no-gutter">
-            <div class="item hot col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="">
+            <div class="item news col col-lg-3 mb-4 mb-lg-2" data-aos="fade-up" data-aos-delay="">
                 <div class="h-entry">
                     <a href="single.html">
                         <img src="dist/images/post_1.jpg" alt="Image" class="img-fluid">
                     </a>
                     <h2 class="font-size-regular"><a href="#">Repudiandae Quisquam Eaque Dolore</a></h2>
-                    <div class="meta mb-4">Ham Brook <span class="mx-2">&bullet;</span> Jan 18, 2019<span class="mx-2">&bullet;</span> <a href="#">News</a></div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi nobis ea maiores sapiente veritatis reprehenderit suscipit quaerat rerum voluptatibus a eius.</p>
+                    <div class="meta mb-2">Ham Brook <span class="mx-2">&bullet;</span> Jan 18, 2019<span class="mx-2">&bullet;</span> <a href="#">News</a></div>
+                    <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
                     <p><a href="#">Continue Reading...</a></p>
                 </div> 
             </div>
-            <div class="item hot col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="item news col col-lg-3 mb-4 mb-lg-2" data-aos="fade-up" data-aos-delay="100">
                 <div class="h-entry">
                     <a href="single.html">
                         <img src="dist/images/post_2.jpg" alt="Image" class="img-fluid">
                     </a>
                     <h2 class="font-size-regular"><a href="#">Repudiandae Quisquam Eaque Dolore</a></h2>
-                    <div class="meta mb-4">James Phelps <span class="mx-2">&bullet;</span> Jan 18, 2019<span class="mx-2">&bullet;</span> <a href="#">News</a></div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi nobis ea maiores sapiente veritatis reprehenderit suscipit quaerat rerum voluptatibus a eius.</p>
+                    <div class="meta mb-2">James Phelps <span class="mx-2">&bullet;</span> Jan 18, 2019<span class="mx-2">&bullet;</span> <a href="#">News</a></div>
+                    <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
                     <p><a href="#">Continue Reading...</a></p>
                 </div>
             </div>
-            <div class="item hot col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="item news col col-lg-3 mb-4 mb-lg-2" data-aos="fade-up" data-aos-delay="200">
                 <div class="h-entry">
                     <a href="single.html">
                         <img src="dist/images/post_3.jpg" alt="Image" class="img-fluid">
                     </a>
                     <h2 class="font-size-regular"><a href="#">Repudiandae Quisquam Eaque Dolore</a></h2>
-                    <div class="meta mb-4">James Phelps <span class="mx-2">&bullet;</span> Jan 18, 2019<span class="mx-2">&bullet;</span> <a href="#">News</a></div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi nobis ea maiores sapiente veritatis reprehenderit suscipit quaerat rerum voluptatibus a eius.</p>
+                    <div class="meta mb-2">James Phelps <span class="mx-2">&bullet;</span> Jan 18, 2019<span class="mx-2">&bullet;</span> <a href="#">News</a></div>
+                    <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
                     <p><a href="#">Continue Reading...</a></p>
                 </div> 
             </div>
-            <div class="item news col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
+            <div class="item hot col col-lg-3 mb-4 mb-lg-2" data-aos="fade-up" data-aos-delay="200">
+                <div class="h-entry">
+                    <a href="single.html">
+                        <img src="{{asset('section/picture_game/csgo.jpg')}}" alt="Image" class="img-fluid">
+                    </a>
+                    <h2 class="font-size-regular"><a href="#">Repudiandae Quisquam Eaque Dolore</a></h2>
+                    <div class="meta mb-2">Ham Brook <span class="mx-2">&bullet;</span> Jan 18, 2019<span class="mx-2">&bullet;</span> <a href="#">HOT</a></div>
+                    <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
+                    <p><a href="#">Continue Reading...</a></p>
+                </div> 
+            </div>
+            <div class="item hot col col-lg-3 mb-4 mb-lg-2">
+                <div class="h-entry">
+                    <a href="single.html">
+                        <img src="{{asset('section/picture_game/fifa.jpg')}}" alt="Image" class="img-fluid">
+                    </a>
+                    <h2 class="font-size-regular"><a href="#">Repudiandae Quisquam Eaque Dolore</a></h2>
+                    <div class="meta mb-2">James Phelps <span class="mx-2">&bullet;</span> Jan 18, 2019<span class="mx-2">&bullet;</span> <a href="#">HOT</a></div>
+                    <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
+                    <p><a href="#">Continue Reading...</a></p>
+                </div>
+            </div>
+            <div class="item hot col col-lg-3 mb-4 mb-lg-2">
+                <div class="h-entry">
+                    <a href="single.html">
+                        <img src="{{asset('section/picture_game/pubg.jpeg')}}" alt="Image" class="img-fluid">
+                    </a>
+                    <h2 class="font-size-regular"><a href="#">Repudiandae Quisquam Eaque Dolore</a></h2>
+                    <div class="meta mb-2">James Phelps <span class="mx-2">&bullet;</span> Jan 18, 2019<span class="mx-2">&bullet;</span> <a href="#">HOT</a></div>
+                    <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
+                    <p><a href="#">Continue Reading...</a></p>
+                </div> 
+            </div>
+
+            <!-- <div class="item news col-sm-6 col-lg-4 col-xl-3 mb-4">
                 <a href="section/picture_game/csgo.jpg" class="item-wrap fancybox" data-fancybox="gallery2">
                     <span class="icon-search2"></span>
                     <img class="img-fluid" src="section/picture_game/csgo.jpg">
                 </a>
             </div>
-            <div class="item news col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
+            <div class="item news col-sm-6 col-lg-4 col-xl-3 mb-4">
                 <a href="section/picture_game/fifa.jpg" class="item-wrap fancybox" data-fancybox="gallery2">
                     <span class="icon-search2"></span>
                     <img class="img-fluid" src="section/picture_game/fifa.jpg">
                 </a>
             </div>
-            <div class="item news col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
+            <div class="item news col-sm-6 col-lg-4 col-xl-3 mb-4">
                 <a href="section/picture_game/pes.jpg" class="item-wrap fancybox" data-fancybox="gallery2">
                     <span class="icon-search2"></span>
                     <img class="img-fluid" src="section/picture_game/pes.jpg">
                 </a>
             </div>
-            <div class="item news col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
+            <div class="item news col-sm-6 col-lg-4 col-xl-3 mb-4">
                 <a href="section/picture_game/pubg_lite.jpeg" class="item-wrap fancybox" data-fancybox="gallery2">
                     <span class="icon-search2"></span>
                     <img class="img-fluid" src="section/picture_game/pubg_lite.jpeg">
                 </a>
             </div>
-            <div class="item news col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
+            <div class="item news col-sm-6 col-lg-4 col-xl-3 mb-4">
                 <a href="section/picture_game/pubg.jpeg" class="item-wrap fancybox" data-fancybox="gallery2">
                     <span class="icon-search2"></span>
                     <img class="img-fluid" src="section/picture_game/pubg.jpeg">
                 </a>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>

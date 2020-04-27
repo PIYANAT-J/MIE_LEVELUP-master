@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
     </head>
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-        <div id="app" class="site-wrap">
+        <div id="app" class="site-wrap active">
             <div class="site-mobile-menu site-navbar-target">
                 <div class="site-mobile-menu-header">
                     <div class="site-mobile-menu-close mt-3">
@@ -36,8 +36,8 @@
                         <div class="col-12 col-md-10 d-none d-xl-block">
                             <nav class="site-navigation position-relative text-right" role="navigation">
                                 <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                                    <li><a href="{{ url('/') }}" class="nav-link">หน้าหลัก</a></li>
-                                    <li><a href="#portfolio-section" class="nav-link">เกม</a></li>
+                                    <li><a href="{{ url('/') }}" class="nav-link active">หน้าหลัก</a></li>
+                                    <li><a href="#game-section" class="nav-link">เกม</a></li>
                                     <li><a href="#services-section" class="nav-link">เติมเงิน</a></li>
                                     <li><a href="#testimonials-section" class="nav-link">ดาวน์โหลด</a></li>
                                     <li><a href="#blog-section" class="nav-link">ข่าว</a></li>

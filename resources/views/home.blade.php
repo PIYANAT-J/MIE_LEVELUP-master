@@ -24,7 +24,7 @@
 
 @extends('layout.app')
 
-@section('background')
+<!-- @section('background')
 <div class="site-blocks-cover overlay" style="background-image: url(home/images/slide_2.jpg);" data-aos="fade" id="home-section">
     <div class="container">
         <div class="row align-items-center justify-content-center">
@@ -229,4 +229,4 @@
 @endsection
 
 @section('script')
-@endsection
+@endsection -->
