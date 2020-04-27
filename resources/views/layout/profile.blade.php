@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="{{ asset('dist/fonts/icomoon/style.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/aos.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/level_up.css') }}">
+        <link rel="stylesheet" href="{{ asset('dist/css/level-up.css') }}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
@@ -106,7 +106,7 @@
                                 <!-- รูป profile -->
                                 <div class="row mt-3">
                                     <div class="col" align="center">
-                                        <img class="img-1" src="/img/pic3.jpg"/>
+                                        <img class="img-1" src="home/imgProfile/pic3.jpg"/>
                                     </div>
                                 </div>
 
