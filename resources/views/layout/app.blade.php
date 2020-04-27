@@ -64,11 +64,11 @@
                                             <!-- Authentication Links -->
                                             @guest
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
+                                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                                 </li>
                                                 @if (Route::has('register'))
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="{{ route('register') }}">{{ __('สมัครสมาชิก') }}</a>
+                                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                                     </li>
                                                 @endif
                                             @else
@@ -110,10 +110,6 @@
                     </div>
                 </div>
             </header>
-
-            <!-- <main class="py-4">
-                @yield('content')
-            </main> -->
 
             @yield('background')
 
