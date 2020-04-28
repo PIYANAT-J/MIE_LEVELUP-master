@@ -54,40 +54,38 @@
                                     <li><a href="#testimonials-section" class="nav-link">ดาวน์โหลด</a></li>
                                     <li><a href="#blog-section" class="nav-link">ข่าว</a></li>
                                     <li><a href="#contact-section" class="nav-link">ช่วยเหลือ</a></li>
+                                    <!-- Authentication Links -->
+                                    @guest
                                     <li class="has-children">
                                         <a href="#about-section" class="nav-link">ยินดีต้อนรับคุณ</a>
                                         <ul class="dropdown">
-                                            @guest
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
+                                            </li>
+                                            @if (Route::has('register'))
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                                    <a class="nav-link" href="{{ route('register') }}">{{ __('สมัครสมาชิก') }}</a>
                                                 </li>
-                                                @if (Route::has('register'))
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                                    </li>
-                                                @endif
-
-                                            @else
-                                                <li class="nav-item dropdown">
-                                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                        {{ Auth::user()->name }} <span class="caret"></span>
-                                                    </a>
-
-                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                                        onclick="event.preventDefault();
-                                                                        document.getElementById('logout-form').submit();">
-                                                            {{ __('Logout') }}
-                                                        </a>
-
-                                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                            @csrf
-                                                        </form>
-                                                    </div>
-                                                </li>
-                                            @endguest
+                                            @endif
+                                        </ul>
+                                    @else
+                                    <li class="has-children">
+                                        <a href="#about-section" class="nav-link">{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
+                                        <ul class="dropdown">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="/user_profile">{{ __('โปรไฟล์') }}</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                    {{ __('ออกจากระบบ') }}
+                                                </a>
+                                            </li>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
                                         </ul>
                                     </li>
+                                    @endguest
                                 </ul>
                             </nav>
                         </div>
@@ -114,7 +112,7 @@
                                 <div class="row mt-3">
                                     <div class="col">
                                         <div class="font-1">
-                                            <b>Waraphorn Srijiw</b>
+                                            <b>{{ Auth::user()->name }}.{{ Auth::user()->surname }}</b>
                                         </div>
                                     </div>
                                 </div>

@@ -96,7 +96,7 @@
                     </div>
                     <div class="form-group col-lg-12 mx-auto">
                         <a href="#" class="btn btn-primary btn-block py-2 btn-facebook">
-                            <i class="fa fa-facebook-f mr-2"></i>
+                            <i class="icon-facebook mr-2"></i>
                             <span class="font-weight-bold">Continue with Facebook</span>
                         </a>
                     </div>

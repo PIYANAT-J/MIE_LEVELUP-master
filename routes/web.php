@@ -19,9 +19,9 @@ Route::get('/', function () {
 
 // Route::get('/home', 'home') -> name('Home');
 
-Route::get('/section_game', function () {
-    return view('section_game');
-});
+// Route::get('/section_game', function () {
+//     return view('section_game');
+// });
 
 // Route::view('/login', 'login');
 Auth::routes();
