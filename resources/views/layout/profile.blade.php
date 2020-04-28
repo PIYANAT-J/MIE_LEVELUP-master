@@ -17,14 +17,14 @@
         <link rel="stylesheet" href="{{ asset('dist/fonts/icomoon/style.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/aos.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/level_up.css') }}">
+        <link rel="stylesheet" href="{{ asset('dist/css/level-up.css') }}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    
+
     <!-- เรียกใช้ Theme -->
 
     </head>
-    
+
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
 
@@ -199,24 +199,50 @@
                                                     <i class="material-icons">mail_outline</i>
                                                 </div>
 
-                                                <div class="col" align="right">
+                                                <div class="col font2" align="right">
                                                     <font size ="2"><a>waraphorn.s@maltiino.com</a></font>
                                                 </div>
                                             </div>
                                         </li>
-                                            
+
                                         <!-- password-->
-                                        <li class="list-group-item mb-3">
+                                        <button class="btn1 list-group-item" >
                                             <div class="row">
-                                                <div class="col-1 font" align="left">
-                                                    <i class="material-icons">lock_open</i>
+                                                <div class="col-1 " align="left">
+                                                <i class="material-icons">lock_open</i>
                                                 </div>
 
                                                 <div class="col" align="right">
-                                                    <a>Change Password</a>
+                                                    <a>Change Passworde</a>
                                                 </div>
                                             </div>
-                                        </li>
+                                        </button>
+
+                                        <!-- Update-->
+                                        <button class="btn1 list-group-item " >
+                                            <div class="row">
+                                                <div class="col-1 " align="left">
+                                                <i class="material-icons">edit</i>
+                                                </div>
+
+                                                <div class="col" align="right">
+                                                    <a>Update Profile</a>
+                                                </div>
+                                            </div>
+                                        </button> 
+
+                                        <!-- KYC-->
+                                        <button class="btn1 list-group-item mb-3" >
+                                            <div class="row">
+                                                <div class="col-1 " align="left">
+                                                <i class="material-icons">how_to_reg</i>
+                                                </div>
+
+                                                <div class="col" align="right">
+                                                    <a>ยืนยันตัวตน</a>
+                                                </div>
+                                            </div>
+                                        </button>
                                     </div>
                                 </div>                  
                             </div>    
@@ -244,7 +270,7 @@
         <script src="{{ asset('dist/js/jquery.sticky.js') }}"></script>
         <script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
         <script src="{{ asset('dist/js/main.js') }}"></script>
-        
+
         @yield('script')
 
     </body>
