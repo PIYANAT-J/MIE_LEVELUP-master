@@ -5,6 +5,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700,900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
         <link rel="stylesheet" href="{{ asset('dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/jquery-ui.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/owl.carousel.min.css') }}">
@@ -40,12 +43,12 @@
                                     <li><a href="#game-section" class="nav-link">เกม</a></li>
                                     <li><a href="#services-section" class="nav-link">เติมเงิน</a></li>
                                     <li><a href="#testimonials-section" class="nav-link">ดาวน์โหลด</a></li>
-                                    <li><a href="#blog-section" class="nav-link">ข่าว</a></li>
+                                    <li><a href="#news-section" class="nav-link">ข่าว</a></li>
                                     <li><a href="#contact-section" class="nav-link">ช่วยเหลือ</a></li>
                                     <!-- Authentication Links -->
                                     @guest
                                     <li class="has-children">
-                                        <a href="#about-section" class="nav-link">เข้าสู่ระบบ</a>
+                                        <a href="#about-section" class="nav-link">ยินดีต้อนรับคุณ</a>
                                         <ul class="dropdown">
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
@@ -84,7 +87,7 @@
                                         <a href="#about-section" class="nav-link">{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
                                         <ul class="dropdown">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">{{ __('โปรไฟล์') }}</a>
+                                                <a class="nav-link" href="/user_profile">{{ __('โปรไฟล์') }}</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -163,6 +166,7 @@
             </footer>
         </div>
 
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="{{ asset('dist/js/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('dist/js/jquery-ui.js') }}"></script>
         <script src="{{ asset('dist/js/popper.min.js') }}"></script>
