@@ -1,5 +1,5 @@
 .img-1 {
-    border: 3px solid #007bff;
+    border: 3px solid #ce0005;
     border-radius: 50%;
     width: 100px;
     height: 100px;
@@ -8,7 +8,7 @@
 
 .font-1{
     text-align: center;
-    color: #007bff;
+    color: #ce0005;
 }
 
 .img-coin{
@@ -16,7 +16,7 @@
 }
 
 .img-inbox{
-    color:#ff4a6c;
+    color:#007bff;
 }
 
 .img-history{
@@ -24,18 +24,39 @@
 }
 
 .font{
-    color: #007bff;
+    color: #ce0005;
+}
+.font2{
+    color: #474948;
 }
 
 .navbar {
     position: fixed;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
-.navbarcolor {
+.nevbar-color{
     background-color: #ffff;
-
 }
+
+.btn1:hover{ /* change password/ update profile/ KYC */
+     color: #ffff;
+     background-color : #ce0005;
+     border-radius: 0%; 
+ }
+
+.btn1{
+    width: 100%;
+    background-color: #ffff; 
+    color: #ce0005;
+ }
+ .nev1{
+     color:#ce0005;
+ }
+.nev:hover{
+    color: #474948;
+}
+
 
 
 

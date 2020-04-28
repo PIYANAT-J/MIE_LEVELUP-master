@@ -61,7 +61,7 @@
                                         <a href="#about-section" class="nav-link">{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
                                         <ul class="dropdown">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">{{ __('โปรไฟล์') }}</a>
+                                                <a class="nav-link" href="/user_profile">{{ __('โปรไฟล์') }}</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

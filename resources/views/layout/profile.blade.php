@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="{{ asset('dist/fonts/icomoon/style.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/aos.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/level_up.css') }}">
+        <link rel="stylesheet" href="{{ asset('dist/css/level-up.css') }}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     
@@ -27,9 +27,8 @@
     
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
-
     <!-- เมนูบาร์ -->
-        <div id="profile" class="site-wrap navbarcolor">
+        <div id="profile" class="site-wrap">
             <div class="site-mobile-menu site-navbar-target ">
                 <div class="site-mobile-menu-header ">
                     <div class="site-mobile-menu-close mt-3">
@@ -39,13 +38,16 @@
                 <div class="site-mobile-menu-body"></div>
             </div>
 
-            <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <!--js-sticky-header site-navbar py-4 " role="banner" site-navbar-target-->
+            <header class="site-navbar" role="banner">
                 <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-6 col-xl-2">
+                    <div class="container-fluid nevbar-color">
+                <!-- align-items-center -->
+                    <div class="row">
+                        <div class="col-6 col-xl-2 navbar">
                             <h1 class="mb-0 site-logo"><a href="{{ url('/') }}" class="mb-0">LEVEL Up</a></h1>
                         </div>
-                        <div class="col-12 col-md-10 d-none d-xl-block">
+                        <div class="col-12 col-md-10 d-none d-xl-block navbar">
                             <nav class="site-navigation position-relative text-right" role="navigation">
                                 <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                                     <li><a href="{{ url('/') }}" class="nav-link">หน้าหลัก</a></li>
@@ -93,6 +95,7 @@
                         </div>
                         <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a></div>
                     </div>
+                    </div>
                 </div>
             </header>
         <!-- เมนูบาร์ -->
@@ -127,7 +130,7 @@
                                                 <div class="col-1 img-coin" align="left">
                                                     <i class="material-icons">copyright</i>
                                                 </div>
-                                                <div class="col" align="right">
+                                                <div class="col font2" align="right">
                                                     <a>150</a>
                                                 </div>
                                             </div>
@@ -140,7 +143,7 @@
                                                     <i class="material-icons">all_inbox</i>
                                                 </div>
 
-                                                <div class="col" align="right">
+                                                <div class="col font2" align="right">
                                                         <a>59</a>
                                                 </div>
                                             </div>
@@ -153,7 +156,7 @@
                                                     <i class="material-icons">history</i>
                                                 </div>
 
-                                                <div class="col" align="right">
+                                                <div class="col font2" align="right">
                                                         <a>จำนวนวันที่เป็นสมาชิก</a>
                                                 </div>
                                             </div>
@@ -175,7 +178,7 @@
                                                     <i class="material-icons">recent_actors</i>
                                                 </div>
 
-                                                <div class="col" align="right">
+                                                <div class="col font2" align="right">
                                                     <a>1234567890000</a>
                                                 </div>
                                             </div>
@@ -188,7 +191,7 @@
                                                     <i class="material-icons">local_phone</i>
                                                 </div>
 
-                                                <div class="col" align="right">
+                                                <div class="col font2" align="right">
                                                     <a>0823552062</a>
                                                 </div>
                                             </div>
@@ -201,24 +204,53 @@
                                                     <i class="material-icons">mail_outline</i>
                                                 </div>
 
-                                                <div class="col" align="right">
+                                                <div class="col font2" align="right">
                                                     <font size ="2"><a>waraphorn.s@maltiino.com</a></font>
                                                 </div>
                                             </div>
                                         </li>
-                                            
+
                                         <!-- password-->
-                                        <li class="list-group-item mb-3">
+                                        <button class="btn1 list-group-item" >
                                             <div class="row">
-                                                <div class="col-1 font" align="left">
-                                                    <i class="material-icons">lock_open</i>
+                                                <div class="col-1 " align="left">
+                                                <i class="material-icons">lock_open</i>
                                                 </div>
 
                                                 <div class="col" align="right">
-                                                    <a>Change Password</a>
+                                                    <a>Change Passworde</a>
                                                 </div>
                                             </div>
-                                        </li>
+                                        </button>  
+
+                                        <!-- Update-->
+                                        <button class="btn1 list-group-item " >
+                                            <div class="row">
+                                                <div class="col-1 " align="left">
+                                                <i class="material-icons">edit</i>
+                                                </div>
+
+                                                <div class="col" align="right">
+                                                    <a>Update Profile</a>
+                                                </div>
+                                            </div>
+                                        </button> 
+                                        
+                                        <!-- KYC-->
+                                        <button class="btn1 list-group-item mb-3" >
+                                            <div class="row">
+                                                <div class="col-1 " align="left">
+                                                <i class="material-icons">how_to_reg</i>
+                                                </div>
+
+                                                <div class="col" align="right">
+                                                    <a>ยืนยันตัวตน</a>
+                                                </div>
+                                            </div>
+                                        </button> 
+                                        
+
+                                        
                                     </div>
                                 </div>                  
                             </div>    
