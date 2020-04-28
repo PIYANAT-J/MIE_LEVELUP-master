@@ -11,6 +11,7 @@
         
     </div>
 </div> 
+<h2>Test</h2>
 
 @endsection
 @section('section2')
