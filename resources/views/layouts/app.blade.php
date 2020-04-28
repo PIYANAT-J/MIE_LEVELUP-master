@@ -17,9 +17,9 @@
         <link rel="stylesheet" href="{{ asset('dist/css/aos.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
     </head>
-    <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-        <div class="site-wrap" id="app">
-            <div class="site-mobile-menu site-navbar-target">
+    <body>
+        <div id="app">
+            <!-- <div class="site-mobile-menu site-navbar-target">
                 <div class="site-mobile-menu-header">
                     <div class="site-mobile-menu-close mt-3">
                         <span class="icon-close2 js-menu-toggle"></span>
@@ -45,7 +45,7 @@
                                     <li class="has-children">
                                         <a href="#about-section" class="nav-link">เข้าสู่ระบบ</a>
                                         <ul class="dropdown">
-                                            <!-- Authentication Links -->
+                                            Authentication Links
                                             @guest
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -82,8 +82,8 @@
                         <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a></div>
                     </div>
                 </div>
-            </header>
-            <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            </header> -->
+            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
@@ -132,13 +132,13 @@
                         </ul>
                     </div>
                 </div>
-            </nav> -->
+            </nav>
 
             <main class="py-4">
                 @yield('content')
             </main>
 
-            @yield('background')
+            <!-- @yield('background')
 
             @yield('section')
 
@@ -185,9 +185,9 @@
                         <div class="col-md-12">
                             <div class="border-top pt-5">
                                 <p>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
                                 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | LevelUp Multi innovation Engineering <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
                                 </p>
                             </div>
                         </div>
@@ -209,6 +209,6 @@
         <script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
         <script src="{{ asset('dist/js/main.js') }}"></script>
         
-        @yield('script')
+        @yield('script') -->
     </body>
 </html>
