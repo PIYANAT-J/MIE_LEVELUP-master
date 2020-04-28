@@ -1,99 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-    <!-- เรียกใช้ Theme -->
-        <title>LEVEL Up &mdash; Website by Multi innovation Engineering</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans:400,700,900&display=swap" >
-        <link rel="stylesheet" href="{{ asset('dist/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/jquery-ui.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/owl.carousel.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/owl.theme.default.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/owl.theme.default.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/jquery.fancybox.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/bootstrap-datepicker.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/fonts/flaticon/font/flaticon.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/fonts/icomoon/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/aos.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/level-up.css') }}">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-
-    <!-- เรียกใช้ Theme -->
-
-    </head>
-
-    <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-
-
-    <!-- เมนูบาร์ -->
-        <div id="profile" class="site-wrap navbarcolor">
-            <div class="site-mobile-menu site-navbar-target ">
-                <div class="site-mobile-menu-header ">
-                    <div class="site-mobile-menu-close mt-3">
-                        <span class="icon-close2 js-menu-toggle"></span>
-                    </div>
-                </div>
-                <div class="site-mobile-menu-body"></div>
-            </div>
-
-            <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-6 col-xl-2">
-                            <h1 class="mb-0 site-logo"><a href="{{ url('/') }}" class="mb-0">LEVEL Up</a></h1>
-                        </div>
-                        <div class="col-12 col-md-10 d-none d-xl-block">
-                            <nav class="site-navigation position-relative text-right" role="navigation">
-                                <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                                    <li><a href="{{ url('/') }}" class="nav-link">หน้าหลัก</a></li>
-                                    <li><a href="#portfolio-section" class="nav-link">เกม</a></li>
-                                    <li><a href="#services-section" class="nav-link">เติมเงิน</a></li>
-                                    <li><a href="#testimonials-section" class="nav-link">ดาวน์โหลด</a></li>
-                                    <li><a href="#blog-section" class="nav-link">ข่าว</a></li>
-                                    <li><a href="#contact-section" class="nav-link">ช่วยเหลือ</a></li>
-                                    <!-- Authentication Links -->
-                                    @guest
-                                    <li class="has-children">
-                                        <a href="#about-section" class="nav-link">ยินดีต้อนรับคุณ</a>
-                                        <ul class="dropdown">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
-                                            </li>
-                                            @if (Route::has('register'))
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{{ route('register') }}">{{ __('สมัครสมาชิก') }}</a>
-                                                </li>
-                                            @endif
-                                        </ul>
-                                    @else
-                                    <li class="has-children">
-                                        <a href="#about-section" class="nav-link">{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
-                                        <ul class="dropdown">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="/user_profile">{{ __('โปรไฟล์') }}</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                    {{ __('ออกจากระบบ') }}
-                                                </a>
-                                            </li>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                @csrf
-                                            </form>
-                                        </ul>
-                                    </li>
-                                    @endguest
-                                </ul>
-                            </nav>
-                        </div>
-                        <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a></div>
-                    </div>
-                </div>
-            </header>
-        <!-- เมนูบาร์ -->
+@extends('layout.navbar')
+@section('navbar')
 
             <div class="container-fluid">
                 <div class="row mt-4 mb-5"></div>
@@ -104,7 +10,7 @@
                                 <!-- รูป profile -->
                                 <div class="row mt-3">
                                     <div class="col" align="center">
-                                        <img class="img-1" src="home/imgProfile/pic3.jpg"/>
+                                        <img class="img-1" src="home/images/pic3.jpg"/>
                                     </div>
                                 </div>
 
@@ -125,7 +31,7 @@
                                                 <div class="col-1 img-coin" align="left">
                                                     <i class="material-icons">copyright</i>
                                                 </div>
-                                                <div class="col" align="right">
+                                                <div class="col font2" align="right">
                                                     <a>150</a>
                                                 </div>
                                             </div>
@@ -138,7 +44,7 @@
                                                     <i class="material-icons">all_inbox</i>
                                                 </div>
 
-                                                <div class="col" align="right">
+                                                <div class="col font2" align="right">
                                                         <a>59</a>
                                                 </div>
                                             </div>
@@ -151,7 +57,7 @@
                                                     <i class="material-icons">history</i>
                                                 </div>
 
-                                                <div class="col" align="right">
+                                                <div class="col font2" align="right">
                                                         <a>จำนวนวันที่เป็นสมาชิก</a>
                                                 </div>
                                             </div>
@@ -173,7 +79,7 @@
                                                     <i class="material-icons">recent_actors</i>
                                                 </div>
 
-                                                <div class="col" align="right">
+                                                <div class="col font2" align="right">
                                                     <a>1234567890000</a>
                                                 </div>
                                             </div>
@@ -186,7 +92,7 @@
                                                     <i class="material-icons">local_phone</i>
                                                 </div>
 
-                                                <div class="col" align="right">
+                                                <div class="col font2" align="right">
                                                     <a>0823552062</a>
                                                 </div>
                                             </div>
@@ -204,21 +110,21 @@
                                                 </div>
                                             </div>
                                         </li>
-
-                                        <!-- password-->
+                                        
+                                        <!-- KYC-->
                                         <button class="btn1 list-group-item" >
                                             <div class="row">
                                                 <div class="col-1 " align="left">
-                                                <i class="material-icons">lock_open</i>
+                                                <i class="material-icons">how_to_reg</i>
                                                 </div>
 
                                                 <div class="col" align="right">
-                                                    <a>Change Passworde</a>
+                                                    <a>ยืนยันตัวตน</a>
                                                 </div>
                                             </div>
                                         </button>
 
-                                        <!-- Update-->
+                                    <!-- Update-->
                                         <button class="btn1 list-group-item " >
                                             <div class="row">
                                                 <div class="col-1 " align="left">
@@ -231,47 +137,28 @@
                                             </div>
                                         </button> 
 
-                                        <!-- KYC-->
+                                    <!-- password-->
                                         <button class="btn1 list-group-item mb-3" >
                                             <div class="row">
                                                 <div class="col-1 " align="left">
-                                                <i class="material-icons">how_to_reg</i>
+                                                <i class="material-icons">lock_open</i>
                                                 </div>
 
                                                 <div class="col" align="right">
-                                                    <a>ยืนยันตัวตน</a>
+                                                    <a>Change Password</a>
                                                 </div>
                                             </div>
-                                        </button>
+                                        </button>  
+
+                                        
                                     </div>
                                 </div>                  
                             </div>    
                         </div>  
                         <div class="col">
-                            @yield('section')
+                            @yield('profile')
                         <div>
                     </div>
                 </div>
             </div>
-
-            @yield('section2')
-
-        </div>
-
-        <script src="{{ asset('dist/js/jquery-3.3.1.min.js') }}"></script>
-        <script src="{{ asset('dist/js/jquery-ui.js') }}"></script>
-        <script src="{{ asset('dist/js/popper.min.js') }}"></script>
-        <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
-        <script src="{{ asset('dist/js/jquery.countdown.min.js') }}"></script>
-        <script src="{{ asset('dist/js/jquery.easing.1.3.js') }}"></script>
-        <script src="{{ asset('dist/js/aos.js') }}"></script>
-        <script src="{{ asset('dist/js/jquery.fancybox.min.js') }}"></script>
-        <script src="{{ asset('dist/js/jquery.sticky.js') }}"></script>
-        <script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
-        <script src="{{ asset('dist/js/main.js') }}"></script>
-
-        @yield('script')
-
-    </body>
-</html>
+@endsection
