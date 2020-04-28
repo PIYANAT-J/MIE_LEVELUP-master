@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
     </head>
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-        <div id="app" class="site-wrap">
+        <div id="app" class="site-wrap active">
             <div class="site-mobile-menu site-navbar-target">
                 <div class="site-mobile-menu-header">
                     <div class="site-mobile-menu-close mt-3">
@@ -36,33 +36,21 @@
                         <div class="col-12 col-md-10 d-none d-xl-block">
                             <nav class="site-navigation position-relative text-right" role="navigation">
                                 <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                                    <li><a href="{{ url('/') }}" class="nav-link">หน้าหลัก</a></li>
-                                    <!-- <li class="has-children">
-                                        <a href="#about-section" class="nav-link">About Us</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#team-section" class="nav-link">Team</a></li>
-                                            <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
-                                            <li><a href="#faq-section" class="nav-link">FAQ</a></li>
-                                            <li class="has-children">
-                                                <a href="#">More Links</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="#">Menu One</a></li>
-                                                    <li><a href="#">Menu Two</a></li>
-                                                    <li><a href="#">Menu Three</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li> -->
-                                    <li><a href="#portfolio-section" class="nav-link">เกม</a></li>
+                                    <li><a href="{{ url('/') }}" class="nav-link active">หน้าหลัก</a></li>
+                                    <li><a href="#game-section" class="nav-link">เกม</a></li>
                                     <li><a href="#services-section" class="nav-link">เติมเงิน</a></li>
                                     <li><a href="#testimonials-section" class="nav-link">ดาวน์โหลด</a></li>
                                     <li><a href="#blog-section" class="nav-link">ข่าว</a></li>
                                     <li><a href="#contact-section" class="nav-link">ช่วยเหลือ</a></li>
+                                    <!-- Authentication Links -->
+                                    @guest
                                     <li class="has-children">
                                         <a href="#about-section" class="nav-link">เข้าสู่ระบบ</a>
                                         <ul class="dropdown">
-                                            <!-- Authentication Links -->
-                                            @guest
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
+                                            </li>
+                                            @if (Route::has('register'))
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                                 </li>
@@ -89,20 +77,26 @@
                                                         </form>
                                                     </div>
                                                 </li>
-                                            @endguest
-                                            <!-- <li><a href="/////" class="nav-link">เข้าสู่ระบบ</a></li>
-                                            <li><a href="#pricing-section" class="nav-link">สมัครสมาชิก</a></li> -->
-                                            <!-- <li><a href="#faq-section" class="nav-link">FAQ</a></li>
-                                            <li class="has-children">
-                                                <a href="#">More Links</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="#">Menu One</a></li>
-                                                    <li><a href="#">Menu Two</a></li>
-                                                    <li><a href="#">Menu Three</a></li>
-                                                </ul>
-                                            </li> -->
+                                            @endif
+                                        </ul>
+                                    @else
+                                    <li class="has-children">
+                                        <a href="#about-section" class="nav-link">{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
+                                        <ul class="dropdown">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">{{ __('โปรไฟล์') }}</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                    {{ __('ออกจากระบบ') }}
+                                                </a>
+                                            </li>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
                                         </ul>
                                     </li>
+                                    @endguest
                                 </ul>
                             </nav>
                         </div>

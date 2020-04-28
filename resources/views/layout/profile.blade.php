@@ -106,7 +106,7 @@
                                 <!-- รูป profile -->
                                 <div class="row mt-3">
                                     <div class="col" align="center">
-                                        <img class="img-1" src="/img/pic3.jpg"/>
+                                        <img class="img-1" src="home/imgProfile/pic3.jpg"/>
                                     </div>
                                 </div>
 

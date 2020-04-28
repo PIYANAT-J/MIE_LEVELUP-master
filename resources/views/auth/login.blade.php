@@ -83,7 +83,7 @@
                     <div class="input-group col-lg-12 mb-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-envelope text-muted"></i>
+                                <i class="fa fa-envelope text-muted" ></i>
                             </span>
                         </div>
                         <input id="email" type="email" name="email" placeholder="Email Address" class="form-control @error('email') is-invalid @enderror" required autocomplete="email" autofocus>   
@@ -106,11 +106,6 @@
                             </span>
                         @enderror
                     </div>
-                    <!-- <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span id="msg1"></span>
-                        </div>
-                    </div> -->
                     <div class="form-group col-lg-12 mx-auto mb-2">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -128,34 +123,11 @@
                     </div>
                     <div class="text-center w-100">
                         @if (Route::has('password.request'))
-                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                            <a class="text-primary ml-2" href="{{ route('password.request') }}">
                                 {{ __('Forgot Your Password?') }}
                             </a>
                         @endif
                     </div>
-                    
-
-                    <!-- <div class="form-group row">
-                        <div class="col-md-6 offset-md-4">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                <label class="form-check-label" for="remember">
-                                    {{ __('Remember Me') }}
-                                </label>
-                            </div>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="form-group row mb-0">
-                        <div class="col-md-8 offset-md-4">
-                            @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            @endif
-                        </div>
-                    </div> -->
                 </div>
             </form>
         </div>
@@ -167,4 +139,8 @@
 display:none;
 }
 </style>
+@endsection
+
+@section('script')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection
