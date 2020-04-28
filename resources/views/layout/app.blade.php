@@ -61,10 +61,16 @@
                                         </ul>
                                     @else
                                     <li class="has-children">
-                                        <a href="#about-section" class="nav-link">{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
+                                        <a href="#about-section" class="nav-link">{{ Auth::user()->name }}.{{ Auth::user()->surname }}.{{Auth::user()->users_type}}</a>
                                         <ul class="dropdown">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="/user_profile">{{ __('โปรไฟล์') }}</a>
+                                                @if(Auth::user()->users_type == '2')
+                                                    <a class="nav-link" href="/user_profile">{{ __('โปรไฟล์_DEV') }}</a>
+                                                @elseif(Auth::user()->users_type == '3')
+                                                    <a class="nav-link" href="/user_profile">{{ __('โปรไฟล์_SPON') }}</a>
+                                                @else
+                                                    <a class="nav-link" href="/user_profile">{{ __('โปรไฟล์_USER') }}</a>
+                                                @endif
                                             </li>
                                             <li class="nav-item">
                                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

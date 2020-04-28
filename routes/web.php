@@ -33,3 +33,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user_profile', function () {
     return view('user_profile');
 });
+
+Route::view('/game_shelf', 'game_shelf') ->name('GAMESHELF');
