@@ -61,7 +61,7 @@
                                         </ul>
                                     @else
                                     <li class="has-children">
-                                        <a href="#about-section" class="nav-link">{{ Auth::user()->name }}.{{ Auth::user()->surname }}.{{Auth::user()->users_type}}</a>
+                                        <a href="#about-section" class="nav-link">{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
                                         <ul class="dropdown">
                                             <li class="nav-item">
                                                 @if(Auth::user()->users_type == '2')

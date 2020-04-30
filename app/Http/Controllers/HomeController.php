@@ -25,4 +25,10 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    // public function checkdate(){
+
+    //     $name = "Tese !!";
+    //     return View::make('layout.profile') -> with('name', $name);
+    // }
 }

@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/home', 'home') -> name('Home');
+// Route::view('/home', 'home') ->name('Home');
 
 // Route::get('/section_game', function () {
 //     return view('section_game');
@@ -30,8 +30,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('/user_profile', 'UploadImageProfile@index');
+// Route::view('/user_profile', 'user_profile');
+
 Route::get('/user_profile', function () {
     return view('user_profile');
 });
 
 Route::view('/game_shelf', 'game_shelf') ->name('GAMESHELF');
+
+// Route::view('/profile', 'layout/profile') ->name('PROFILE');

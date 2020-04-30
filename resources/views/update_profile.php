@@ -1,16 +1,19 @@
-@extends('layout.profile')
-@section('section')
+@extends('layout\profile')
 
-<div class="container-fluid">
-    <div class="row">
-        <a align="center"> Update Profile</a>
+@section('profile')
+
+    <div class="container-fluid">
+        <div class="row">
+            <a> Update Profile</a>
+        </div>
     </div>
-</div
 
-@endsection
-
-@section('section2')
-
-<!-- <h4>88888888888888</h4> -->
+    <form action="update_profile" method="POST" enctype="multipart/form-data">
+    <input type="file" name="user_img"/>
+    @csrf
+    <br>
+    <br>
+    <button type="submit">Up</button>
+    </form>
 
 @endsection

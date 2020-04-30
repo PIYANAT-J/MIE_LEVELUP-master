@@ -106,7 +106,7 @@
                                                 </div>
 
                                                 <div class="col font2" align="right">
-                                                    <font size ="2"><a>waraphorn.s@maltiino.com</a></font>
+                                                    <font size ="2"><a>{{ Auth::user()->email }}</a></font>
                                                 </div>
                                             </div>
                                         </li>

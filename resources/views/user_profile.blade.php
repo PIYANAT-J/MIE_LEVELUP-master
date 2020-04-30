@@ -15,6 +15,9 @@
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#point-history">Point History</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#upload-history">Upload History</a>
+      </li>
     </ul>
 
     <!-- Tab panes -->
@@ -24,15 +27,10 @@
         <h3>Games Shelf</h3>
       </div>
 
-
-
       <div id="download-history" class="container tab-pane fade"><br>
         <h3>Download</h3>
         <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       </div>
-
-
-
 
       <div id="point-history" class="container tab-pane fade"><br>
         <div class="table">
@@ -47,6 +45,17 @@
                 <div class="td">TD</div>
           </div>
         </div>
+      </div>
+
+      <div id="upload-history" class="container tab-pane fade"><br>
+        <h3>Upload file</h3>
+        <form action="user_profile" method="POST" enctype="multipart/form-data">
+          <input type="file" name="user_img">
+          @csrf
+          <br>
+          <br>
+          <button type="submit">Upload</button>
+        </form>
       </div>
 
     </div>

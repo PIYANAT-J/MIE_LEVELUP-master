@@ -75,4 +75,5 @@ class RegisterController extends Controller
             'users_type' => $data['users_type'],
         ]);
     }
+
 }
