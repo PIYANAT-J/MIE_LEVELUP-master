@@ -103,7 +103,7 @@
             <div class="item news col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="">
                 <div class="h-entry">
                     <a href="single.html">
-                        <img src="dist/images/post_1.jpg" alt="Image" class="img-fluid" width="250" height="250">
+                        <img src="home/imgProfile/pic3.jpg" alt="Image" class="img-fluid" width="250" height="250">
                     </a>
                     <h2 class="font-size-regular"><a href="#">Repudiandae Quisquam Eaque Dolore</a></h2>
                     <div class="meta mb-2">Ham Brook <span class="mx-2">&bullet;</span> Jan 18, 2019<span class="mx-2">&bullet;</span> <a href="#">News</a></div>
@@ -235,7 +235,7 @@
         </div>
         <div class="row">
             <div class="col-12 text-right" data-aos="fade">
-                <p><a href="/game_shelf">Game Shelf All...<i class="icon-shopping-cart mr-2"></i></a></p>
+                <p><a href="{{ route('GAMESHELF') }}">Game Shelf All...<i class="icon-shopping-cart mr-2"></i></a></p>
             </div>
         </div>
     </div>
