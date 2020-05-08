@@ -38,12 +38,16 @@
                         @enderror
                     </div>
                     <div class="form-group col-lg-12 mx-auto mb-2">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                        <!-- <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember" value="{{ old('remember') ? 'checked' : '' }}">
 
                             <label class="form-check-label" for="remember">
                                 {{ __('Remember Me') }}
                             </label>
+                        </div> -->
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input type="checkbox" class="custom-control-input" name="remember" id="remember" value="{{ old('remember') ? 'checked' : '' }}">
+                            <label class="custom-control-label" for="remember">Remember Me</label>
                         </div>
                     </div>
                     <div class="form-group col-lg-12 mx-auto mb-2">

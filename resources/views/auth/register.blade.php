@@ -94,9 +94,15 @@
                                     <span id="MESSAGE"></span>
                                 </div>
                             </div>
-                            <div class="form-group col-lg-12 mx-auto d-flex align-items-left mb-2">
-                                <input type="checkbox" name="accept" id="accept">&nbsp; <font style="font-size: 14px;">ยอมรับเงื่อนไข</font>
+                            <div class="form-group col-lg-12 d-flex align-items-left">
+                                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                    <input type="checkbox" class="custom-control-input" name="accept" id="customControlInline">
+                                    <label class="custom-control-label" for="customControlInline">ยอมรับเงื่อนไข</label>
+                                </div>
                             </div>
+                            <!-- <div class="form-group col-lg-12 mx-auto d-flex align-items-left mb-2">
+                                <input type="checkbox" name="accept" id="accept">&nbsp; <font style="font-size: 14px;">ยอมรับเงื่อนไข</font>
+                            </div> -->
                             <div class="form-group col-lg-12 mx-auto mb-2">
                                 <input type="submit" name="submit" id="submit" value="Create your account" class="btn btn-danger btn-block py-2">
                                 <input type="hidden" name="users_type" value="1">
@@ -190,9 +196,15 @@
                                     <span id="MESSAGE-DEV"></span>
                                 </div>
                             </div>
-                            <div class="form-group col-lg-12 mx-auto d-flex align-items-left mb-2">
-                                <input type="checkbox" name="accept" id="accept">&nbsp; <font style="font-size: 14px;">ยอมรับเงื่อนไข</font>
+                            <div class="form-group col-lg-12 d-flex align-items-left">
+                                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                    <input type="checkbox" class="custom-control-input" name="accept" id="customControlInline">
+                                    <label class="custom-control-label" for="customControlInline">ยอมรับเงื่อนไข</label>
+                                </div>
                             </div>
+                            <!-- <div class="form-group col-lg-12 mx-auto d-flex align-items-left mb-2">
+                                <input type="checkbox" name="accept" id="accept">&nbsp; <font style="font-size: 14px;">ยอมรับเงื่อนไข</font>
+                            </div> -->
                             <div class="form-group col-lg-12 mx-auto mb-2">
                                 <input type="submit" name="submit" id="submit" value="Create your account" class="btn btn-danger btn-block py-2">
                                 <input type="hidden" name="users_type" value="2">
@@ -286,9 +298,15 @@
                                     <span id="MESSAGE-SPON"></span>
                                 </div>
                             </div>
-                            <div class="form-group col-lg-12 mx-auto d-flex align-items-left mb-2">
-                                <input type="checkbox" name="accept" id="accept">&nbsp; <font style="font-size: 14px;">ยอมรับเงื่อนไข</font>
+                            <div class="form-group col-lg-12 d-flex align-items-left">
+                                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                    <input type="checkbox" class="custom-control-input" name="accept" id="customControlInline">
+                                    <label class="custom-control-label" for="customControlInline">ยอมรับเงื่อนไข</label>
+                                </div>
                             </div>
+                            <!-- <div class="form-group col-lg-12 mx-auto d-flex align-items-left mb-2">
+                                <input type="checkbox" name="accept" id="accept">&nbsp; <font style="font-size: 14px;">ยอมรับเงื่อนไข</font>
+                            </div> -->
                             <div class="form-group col-lg-12 mx-auto mb-2">
                                 <input type="submit" name="submit" id="submit" value="Create your account" class="btn btn-danger btn-block py-2">
                                 <input type="hidden" name="users_type" value="3">
