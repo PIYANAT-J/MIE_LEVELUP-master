@@ -23,7 +23,8 @@ class CreateGuestUsersTable extends Migration
             $table->set('GUEST_USERS_GENDER', ['Men', 'Women'])->collation('utf8_unicode_ci')->nullable();
             $table->text('GUEST_USERS_ADDRESS')->collation('utf8_unicode_ci')->nullable();
             $table->string('ZIPCODE_ID')->collation('utf8_unicode_ci')->nullable();
-            $table->integer('USERS_ID')->unique();
+            $table->integer('USER_ID')->unique();
+            $table->string('USER_EMAIL')->unique()->collation('utf8_unicode_ci');
             $table->timestamps();
         });
     }

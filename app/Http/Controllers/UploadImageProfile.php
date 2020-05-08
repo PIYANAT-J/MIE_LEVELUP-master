@@ -3,18 +3,320 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+use App\Developer;
+use App\Guest_user;
+
+use DB;
+use Session;
 
 class UploadImageProfile extends Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index(Request $req)
-    {
-        // print_r($req->file());
-        //echo $req->file('user_img')->store('public/home/imgProfile');
-        $req->file('user_img')->store('public/home/imgProfile');
+    // public function index($DEV_ID = 0){
+
+    //     // Fetch all records
+    //     $userData['data'] = Developer::getuserData();
+    
+    //     $userData['edit'] = $DEV_ID;
+    
+    //     // Fetch edit record
+    //     if($DEV_ID > 0){
+    //         $userData['editData'] = Developer::getuserData($DEV_ID);
+    //     }
+    
+    //     // Pass to view
+    //     return view('user_profile')->with("userData",$userData);
+    // }
+
+    public function index(){
+        $developer = DB::select('select * from developers');
+        return view('dev_profile', ['developer'=> $developer]);
+    }
+    public function update(){
+        $developer = DB::select('select * from developers');
+        return view('update_profile', ['developer'=> $developer]);
+    }
+
+    public function indexGuest_user(){
+        $guest_user = DB::select('select * from guest_users');
+        return view('user_profile', ['guest_user'=> $guest_user]);
+    }
+    public function updateGuest_user(){
+        $guest_user = DB::select('select * from guest_users');
+        return view('update_profile', ['guest_user'=> $guest_user]);
+    }
+
+    public function indexSpon(){
+        $guest_user = DB::select('select * from guest_users');
+        return view('user_profile', ['guest_user'=> $guest_user]);
+    }
+    public function updateSpon(){
+        $guest_user = DB::select('select * from guest_users');
+        return view('update_profile', ['guest_user'=> $guest_user]);
+    }
+    
+    // public function save(Request $request){
+    
+    //     if ($request->input('submit') != null ){
+    
+    //         // Update record
+    //         if($request->input('editid') != null ){
+    //             // $DEV_TEL = $request->input('DEV_TEL');
+    //             // $DEV_ID_CARD = $request->input('DEV_ID_CARD');
+    //             // $DEV_IMG = $request->input('DEV_IMG');
+    //             // $DEV_BIRTHDAY = $request->input('DEV_BIRTHDAY');
+    //             // $DEV_AGE = $request->input('DEV_AGE');
+    //             // $DEV_GENDER = $request->input('DEV_GENDER');
+    //             // $DEV_ADDRESS = $request->input('DEV_ADDRESS');
+    //             // $ZIPCODE_ID = $request->input('ZIPCODE_ID');
+    //             // $USER_ID = $request->input('USER_ID');
+    //             // $USER_EMAIL = $request->input('USER_EMAIL');
+    //             // $editid = $request->input('editid');
+
+    //             if($request->has('DEV_IMG')){
+    //                 $upload = $request->file('DEV_IMG');
+    //                 $img_name = 'DEV_'.time().'.'.$upload->getClientOriginalExtension();
+    //                 $path = public_path('home/imgProfile');
+    //                 $upload->move($path, $img_name);
+
+    //                 $DEV_TEL = $request->input('DEV_TEL');
+    //                 $DEV_ID_CARD = $request->input('DEV_ID_CARD');
+    //                 $DEV_IMG = $img_name;
+    //                 $DEV_BIRTHDAY = $request->input('DEV_BIRTHDAY');
+    //                 $DEV_AGE = $request->input('DEV_AGE');
+    //                 $DEV_GENDER = $request->input('DEV_GENDER');
+    //                 $DEV_ADDRESS = $request->input('DEV_ADDRESS');
+    //                 $ZIPCODE_ID = $request->input('ZIPCODE_ID');
+    //                 $USER_ID = $request->input('USER_ID');
+    //                 $USER_EMAIL = $request->input('USER_EMAIL');
+    //                 $editid = $request->input('editid');
+                
+        
+    //                 if($USER_EMAIL != '' || $DEV_TEL != '' || $DEV_ID_CARD != '' || $DEV_IMG != '' || $DEV_BIRTHDAY != '' || $DEV_AGE != '' || $DEV_GENDER != '' || $DEV_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != ''){
+    //                     $data = array("DEV_TEL"=>$DEV_TEL, "DEV_ID_CARD"=>$DEV_ID_CARD, "DEV_IMG"=>$DEV_IMG, "DEV_BIRTHDAY"=>$DEV_BIRTHDAY,
+    //                                 "DEV_AGE"=>$DEV_AGE, "DEV_GENDER"=>$DEV_GENDER, "DEV_ADDRESS"=>$DEV_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
+    //                                 "USER_EMAIL" => $USER_EMAIL);
+
+    //                 // if($USER_EMAIL != '' && $USER_ID != ''){
+    //                 //     $data = array("USER_EMAIL" => $USER_EMAIL, "USER_ID" => $USER_ID);
+                
+    //                     // Update
+    //                     Developer::updateData($editid, $data);
+                
+    //                     Session::flash('message','Update successfully.');
+            
+    //                 }
+    //             // }else{
+    //             //     print_r($request->input());
+    //             }
+        
+    //         }else{ // Insert record
+    //             if($request->has('DEV_IMG')){
+    //                 $upload = $request->file('DEV_IMG');
+    //                 $img_name = 'DEV_'.time().'.'.$upload->getClientOriginalExtension();
+    //                 $path = public_path('home/imgProfile');
+    //                 $upload->move($path, $img_name);
+
+    //                 $DEV_TEL = $request->input('DEV_TEL');
+    //                 $DEV_ID_CARD = $request->input('DEV_ID_CARD');
+    //                 $DEV_IMG = $img_name;
+    //                 $DEV_BIRTHDAY = $request->input('DEV_BIRTHDAY');
+    //                 $DEV_AGE = $request->input('DEV_AGE');
+    //                 $DEV_GENDER = $request->input('DEV_GENDER');
+    //                 $DEV_ADDRESS = $request->input('DEV_ADDRESS');
+    //                 $ZIPCODE_ID = $request->input('ZIPCODE_ID');
+    //                 $USER_ID = $request->input('USER_ID');
+    //                 $USER_EMAIL = $request->input('USER_EMAIL');
+        
+    //                 // if($USER_EMAIL != '' && $USER_ID != ''){
+    //                 //     $data = array("USER_EMAIL" => $USER_EMAIL, "USER_ID" => $USER_ID);
+
+    //                 if($USER_EMAIL != '' || $DEV_TEL != '' || $DEV_ID_CARD != '' || $DEV_IMG != '' || $DEV_BIRTHDAY != '' || $DEV_AGE != '' || $DEV_GENDER != '' || $DEV_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != ''){
+    //                     $data = array("DEV_TEL"=>$DEV_TEL, "DEV_ID_CARD"=>$DEV_ID_CARD, "DEV_IMG"=>$DEV_IMG, "DEV_BIRTHDAY"=>$DEV_BIRTHDAY,
+    //                                 "DEV_AGE"=>$DEV_AGE, "DEV_GENDER"=>$DEV_GENDER, "DEV_ADDRESS"=>$DEV_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
+    //                                 "USER_EMAIL" => $USER_EMAIL);
+            
+    //                     // Insert
+    //                     // $value = Developer::insertData($data);
+    //                     $value = Developer::updateData($USER_EMAIL, $data);
+    //                     if($value){
+    //                         Session::flash('message','Insert successfully.');
+    //                     }else{
+    //                         Session::flash('message','Username already exists.');
+    //                     }
+            
+    //                 }
+    //             }
+    //         }
+    
+    //     }
+    //     return view('user_profile');
+    //     // return redirect()->action('UploadImageProfile@index',['DEV_ID'=>0]);
+    // }
+    
+    // public function deleteUser($id=0){
+    
+    //     if($id != 0){
+    //         // Delete
+    //         Page::deleteData($id);
+        
+    //         Session::flash('message','Delete successfully.');
+        
+    //     }
+    //     return redirect()->action('PagesController@index',['id'=>0]);
+    // }
+
+    public function saveProfileDev(Request $request){
+    
+        if ($request->input('submit') != null ){
+    
+            // Insert && Update
+            if($request->has('DEV_IMG')){
+                $upload = $request->file('DEV_IMG');
+                $img_name = 'DEV_'.time().'.'.$upload->getClientOriginalExtension();
+                $path = public_path('home/imgProfile');
+                $upload->move($path, $img_name);
+
+                $DEV_TEL = $request->input('DEV_TEL');
+                $DEV_ID_CARD = $request->input('DEV_ID_CARD');
+                $DEV_IMG = $img_name;
+                $DEV_BIRTHDAY = $request->input('DEV_BIRTHDAY');
+                $DEV_AGE = $request->input('DEV_AGE');
+                $DEV_GENDER = $request->input('DEV_GENDER');
+                $DEV_ADDRESS = $request->input('DEV_ADDRESS');
+                $ZIPCODE_ID = $request->input('ZIPCODE_ID');
+                $USER_ID = $request->input('USER_ID');
+                $USER_EMAIL = $request->input('USER_EMAIL');
+
+                if($USER_EMAIL != '' || $DEV_TEL != '' || $DEV_ID_CARD != '' || $DEV_IMG != '' || $DEV_BIRTHDAY != '' || $DEV_AGE != '' || $DEV_GENDER != '' || $DEV_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != ''){
+                    $data = array("DEV_TEL"=>$DEV_TEL, "DEV_ID_CARD"=>$DEV_ID_CARD, "DEV_IMG"=>$DEV_IMG, "DEV_BIRTHDAY"=>$DEV_BIRTHDAY,
+                                "DEV_AGE"=>$DEV_AGE, "DEV_GENDER"=>$DEV_GENDER, "DEV_ADDRESS"=>$DEV_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
+                                "USER_EMAIL" => $USER_EMAIL);
+        
+                    // Insert && Update
+                    $value = Developer::InsertAndUpdateData($data);
+                    if($value){
+                        Session::flash('message','Insert successfully.');
+                    }else{
+                        Session::flash('message','Username already exists.');
+                    }
+                }
+            }else{
+
+                $DEV_TEL = $request->input('DEV_TEL');
+                $DEV_ID_CARD = $request->input('DEV_ID_CARD');
+                // $DEV_IMG = $img_name;
+                $DEV_BIRTHDAY = $request->input('DEV_BIRTHDAY');
+                $DEV_AGE = $request->input('DEV_AGE');
+                $DEV_GENDER = $request->input('DEV_GENDER');
+                $DEV_ADDRESS = $request->input('DEV_ADDRESS');
+                $ZIPCODE_ID = $request->input('ZIPCODE_ID');
+                $USER_ID = $request->input('USER_ID');
+                $USER_EMAIL = $request->input('USER_EMAIL');
+
+                if($USER_EMAIL != '' || $DEV_TEL != '' || $DEV_ID_CARD != '' || $DEV_BIRTHDAY != '' || $DEV_AGE != '' || $DEV_GENDER != '' || $DEV_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != ''){
+                    $data = array("DEV_TEL"=>$DEV_TEL, "DEV_ID_CARD"=>$DEV_ID_CARD, "DEV_BIRTHDAY"=>$DEV_BIRTHDAY,
+                                "DEV_AGE"=>$DEV_AGE, "DEV_GENDER"=>$DEV_GENDER, "DEV_ADDRESS"=>$DEV_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
+                                "USER_EMAIL" => $USER_EMAIL);
+        
+                    // Insert && Update
+                    $value = Developer::InsertAndUpdateData($data);
+                    if($value){
+                        Session::flash('message','Insert successfully.');
+                    }else{
+                        Session::flash('message','Username already exists.');
+                    }
+        
+                }
+            }
+        }
+        // return view('user_profile');
+        return redirect()->action('UploadImageProfile@index');
+        // return redirect()->action('UploadImageProfile@index',['type'=>0]);
+    }
+
+    public function saveProfileUser(Request $request){
+    
+        if ($request->input('submit') != null ){
+    
+            // Insert && Update
+            if($request->has('GUEST_USERS_IMG')){
+                $upload = $request->file('GUEST_USERS_IMG');
+                $img_name = 'USER_'.time().'.'.$upload->getClientOriginalExtension();
+                $path = public_path('home/imgProfile');
+                $upload->move($path, $img_name);
+
+                $GUEST_USERS_TEL = $request->input('GUEST_USERS_TEL');
+                $GUEST_USERS_ID_CARD = $request->input('GUEST_USERS_ID_CARD');
+                $GUEST_USERS_IMG = $img_name;
+                $GUEST_USERS_BIRTHDAY = $request->input('GUEST_USERS_BIRTHDAY');
+                $GUEST_USERS_AGE = $request->input('GUEST_USERS_AGE');
+                $GUEST_USERS_GENDER = $request->input('GUEST_USERS_GENDER');
+                $GUEST_USERS_ADDRESS = $request->input('GUEST_USERS_ADDRESS');
+                $ZIPCODE_ID = $request->input('ZIPCODE_ID');
+                $USER_ID = $request->input('USER_ID');
+                $USER_EMAIL = $request->input('USER_EMAIL');
+
+                if($USER_EMAIL != '' || $GUEST_USERS_TEL != '' || $GUEST_USERS_ID_CARD != '' || $GUEST_USERS_IMG != '' || $GUEST_USERS_BIRTHDAY != '' || $GUEST_USERS_AGE != '' || $GUEST_USERS_GENDER != '' || $GUEST_USERS_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != ''){
+                    $data = array("GUEST_USERS_TEL"=>$GUEST_USERS_TEL, "GUEST_USERS_ID_CARD"=>$GUEST_USERS_ID_CARD, "GUEST_USERS_IMG"=>$GUEST_USERS_IMG, "GUEST_USERS_BIRTHDAY"=>$GUEST_USERS_BIRTHDAY,
+                                "GUEST_USERS_AGE"=>$GUEST_USERS_AGE, "GUEST_USERS_GENDER"=>$GUEST_USERS_GENDER, "GUEST_USERS_ADDRESS"=>$GUEST_USERS_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
+                                "USER_EMAIL" => $USER_EMAIL);
+        
+                    // Insert && Update
+                    $value = Guest_user::InsertAndUpdateData($USER_EMAIL, $data);
+                    if($value){
+                        Session::flash('message','Insert successfully.');
+                    }else{
+                        Session::flash('message','Username already exists.');
+                    }
+        
+                }
+            }
+        }
+        // return view('user_profile');
+        return redirect()->action('UploadImageProfile@indexGuest_user');
+    }
+
+    public function saveProfileSpon(Request $request){
+    
+        if ($request->input('submit') != null ){
+    
+            // Insert && Update
+            if($request->has('GUEST_USERS_IMG')){
+                $upload = $request->file('GUEST_USERS_IMG');
+                $img_name = 'USER_'.time().'.'.$upload->getClientOriginalExtension();
+                $path = public_path('home/imgProfile');
+                $upload->move($path, $img_name);
+
+                $GUEST_USERS_TEL = $request->input('GUEST_USERS_TEL');
+                $GUEST_USERS_ID_CARD = $request->input('GUEST_USERS_ID_CARD');
+                $GUEST_USERS_IMG = $img_name;
+                $GUEST_USERS_BIRTHDAY = $request->input('GUEST_USERS_BIRTHDAY');
+                $GUEST_USERS_AGE = $request->input('GUEST_USERS_AGE');
+                $GUEST_USERS_GENDER = $request->input('GUEST_USERS_GENDER');
+                $GUEST_USERS_ADDRESS = $request->input('GUEST_USERS_ADDRESS');
+                $ZIPCODE_ID = $request->input('ZIPCODE_ID');
+                $USER_ID = $request->input('USER_ID');
+                $USER_EMAIL = $request->input('USER_EMAIL');
+
+                if($USER_EMAIL != '' || $GUEST_USERS_TEL != '' || $GUEST_USERS_ID_CARD != '' || $GUEST_USERS_IMG != '' || $GUEST_USERS_BIRTHDAY != '' || $GUEST_USERS_AGE != '' || $GUEST_USERS_GENDER != '' || $GUEST_USERS_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != ''){
+                    $data = array("GUEST_USERS_TEL"=>$GUEST_USERS_TEL, "GUEST_USERS_ID_CARD"=>$GUEST_USERS_ID_CARD, "GUEST_USERS_IMG"=>$GUEST_USERS_IMG, "GUEST_USERS_BIRTHDAY"=>$GUEST_USERS_BIRTHDAY,
+                                "GUEST_USERS_AGE"=>$GUEST_USERS_AGE, "GUEST_USERS_GENDER"=>$GUEST_USERS_GENDER, "GUEST_USERS_ADDRESS"=>$GUEST_USERS_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
+                                "USER_EMAIL" => $USER_EMAIL);
+        
+                    // Insert && Update
+                    $value = Guest_user::InsertAndUpdateData($USER_EMAIL, $data);
+                    if($value){
+                        Session::flash('message','Insert successfully.');
+                    }else{
+                        Session::flash('message','Username already exists.');
+                    }
+        
+                }
+            }
+        }
+        // return view('user_profile');
+        return redirect()->action('UploadImageProfile@indexSpon');
     }
 }

@@ -30,11 +30,26 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/user_profile', 'UploadImageProfile@index');
-// Route::view('/user_profile', 'user_profile');
+Route::get('/user_profile', 'UploadImageProfile@indexGuest_user')->name('homeProfile');
+Route::get('/update_profile/user', 'UploadImageProfile@updateGuest_user')->name('EditProfile');
+Route::post('/update_profile/user/edit', 'UploadImageProfile@saveProfileUser')->name('UserEditProfile');
 
-Route::get('/user_profile', function () {
-    return view('user_profile');
+Route::get('/dev_profile', 'UploadImageProfile@index')->name('devProfile');
+Route::get('/update_profile/dev', 'UploadImageProfile@update')->name('UpDate');
+Route::post('/update_profile/dev/edit', 'UploadImageProfile@saveProfileDev')->name('DevEditProfile');
+
+Route::get('/spon_profile', 'UploadImageProfile@indexSpon')->name('sponProfile');
+Route::get('/update_profile/dev', 'UploadImageProfile@updateSpon')->name('UpDate');
+Route::post('/update_profile/dev/edit', 'UploadImageProfile@saveProfileSpon')->name('SponEditProfile');
+
+// Route::get('/dev_profile', function () {
+//     return view('dev_profile');
+// });
+// Route::get('/update_profile', function () {
+//     return view('update_profile');
+// });
+Route::get('/change_password', function () {
+    return view('change_password');
 });
 
 Route::view('/game_shelf', 'game_shelf') ->name('GAMESHELF');
