@@ -1,18 +1,27 @@
 @extends('layout.profile')
-
-@section('update_profile')
-
-  <a href="/update_profile" class="btn bgroup">
-      <div class="row">
-          <div>
-              <i class="material-icons pl-1">edit</i>
-          </div>
-          <div class="col pr-1" align="right ">Update Profile</div>
-      </div>        
-  </a>
+@section('update_button')
+    @if(Auth::user()->updateData == 'true')
+        <a href="{{route('SponUpDate')}}" class="btn bgroup">
+            <div class="row">
+                <div>
+                    <i class="material-icons pl-1">edit</i>
+                </div>
+                <div class="col pr-1" align="right ">Update Profile</div>
+            </div>        
+        </a>
+    @else
+        <a href="{{route('SponUpDate')}}" class="btn bgroup">
+            <div class="row">
+                <div>
+                    <i class="material-icons pl-1">edit</i>
+                </div>
+                <div class="col pr-1" align="right ">Update Profile</div>
+            </div>        
+        </a>
+    @endif
 @endsection
 
-@section('user_profile')
+@section('spon_profile')
 
 <div class="container mt-0">
 
@@ -28,15 +37,24 @@
         <a class="nav-link" data-toggle="tab" href="#point-history">Point History</a>
       </li>
     </ul>
+
     <!-- Tab panes -->
     <div class="tab-content">
+
       <div id="games-shelf" class="container tab-pane active"><br>
         <h3>Games Shelf</h3>
       </div>
+
+
+
       <div id="download-history" class="container tab-pane fade"><br>
         <h3>Download</h3>
         <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       </div>
+
+
+
+
       <div id="point-history" class="container tab-pane fade"><br>
         <div class="table">
           <div class="tr">
@@ -51,12 +69,8 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
-  
-@endsection
-<!-- @section('section2')
-<h2>////////////////////////////////////////////////////</h2>
-@endsection -->
-@section('script')
+
 @endsection

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Developer;
 use App\Guest_user;
+use App\Sponsors;
 
 use DB;
 use Session;
@@ -28,33 +29,6 @@ class UploadImageProfile extends Controller
     //     // Pass to view
     //     return view('user_profile')->with("userData",$userData);
     // }
-
-    public function index(){
-        $developer = DB::select('select * from developers');
-        return view('dev_profile', ['developer'=> $developer]);
-    }
-    public function update(){
-        $developer = DB::select('select * from developers');
-        return view('update_profile', ['developer'=> $developer]);
-    }
-
-    public function indexGuest_user(){
-        $guest_user = DB::select('select * from guest_users');
-        return view('user_profile', ['guest_user'=> $guest_user]);
-    }
-    public function updateGuest_user(){
-        $guest_user = DB::select('select * from guest_users');
-        return view('update_profile', ['guest_user'=> $guest_user]);
-    }
-
-    public function indexSpon(){
-        $guest_user = DB::select('select * from guest_users');
-        return view('user_profile', ['guest_user'=> $guest_user]);
-    }
-    public function updateSpon(){
-        $guest_user = DB::select('select * from guest_users');
-        return view('update_profile', ['guest_user'=> $guest_user]);
-    }
     
     // public function save(Request $request){
     
@@ -167,6 +141,33 @@ class UploadImageProfile extends Controller
     //     return redirect()->action('PagesController@index',['id'=>0]);
     // }
 
+    public function index(){
+        $developer = DB::select('select * from developers');
+        return view('dev_profile', ['developer'=> $developer]);
+    }
+    public function update(){
+        $developer = DB::select('select * from developers');
+        return view('update_profile', ['developer'=> $developer]);
+    }
+
+    public function indexGuest_user(){
+        $guest_user = DB::select('select * from guest_users');
+        return view('user_profile', ['guest_user'=> $guest_user]);
+    }
+    public function updateGuest_user(){
+        $guest_user = DB::select('select * from guest_users');
+        return view('update_profile', ['guest_user'=> $guest_user]);
+    }
+
+    public function indexSpon(){
+        $sponsor = DB::select('select * from sponsors');
+        return view('spon_profile', ['sponsor'=> $sponsor]);
+    }
+    public function updateSpon(){
+        $sponsor = DB::select('select * from sponsors');
+        return view('update_profile', ['sponsor'=> $sponsor]);
+    }
+
     public function saveProfileDev(Request $request){
     
         if ($request->input('submit') != null ){
@@ -227,7 +228,6 @@ class UploadImageProfile extends Controller
                     }else{
                         Session::flash('message','Username already exists.');
                     }
-        
                 }
             }
         }
@@ -270,7 +270,30 @@ class UploadImageProfile extends Controller
                     }else{
                         Session::flash('message','Username already exists.');
                     }
+                }
+            }else{
+                $GUEST_USERS_TEL = $request->input('GUEST_USERS_TEL');
+                $GUEST_USERS_ID_CARD = $request->input('GUEST_USERS_ID_CARD');
+                $GUEST_USERS_BIRTHDAY = $request->input('GUEST_USERS_BIRTHDAY');
+                $GUEST_USERS_AGE = $request->input('GUEST_USERS_AGE');
+                $GUEST_USERS_GENDER = $request->input('GUEST_USERS_GENDER');
+                $GUEST_USERS_ADDRESS = $request->input('GUEST_USERS_ADDRESS');
+                $ZIPCODE_ID = $request->input('ZIPCODE_ID');
+                $USER_ID = $request->input('USER_ID');
+                $USER_EMAIL = $request->input('USER_EMAIL');
+
+                if($USER_EMAIL != '' || $GUEST_USERS_TEL != '' || $GUEST_USERS_ID_CARD != '' || $GUEST_USERS_BIRTHDAY != '' || $GUEST_USERS_AGE != '' || $GUEST_USERS_GENDER != '' || $GUEST_USERS_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != ''){
+                    $data = array("GUEST_USERS_TEL"=>$GUEST_USERS_TEL, "GUEST_USERS_ID_CARD"=>$GUEST_USERS_ID_CARD, "GUEST_USERS_BIRTHDAY"=>$GUEST_USERS_BIRTHDAY,
+                                "GUEST_USERS_AGE"=>$GUEST_USERS_AGE, "GUEST_USERS_GENDER"=>$GUEST_USERS_GENDER, "GUEST_USERS_ADDRESS"=>$GUEST_USERS_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
+                                "USER_EMAIL" => $USER_EMAIL);
         
+                    // Insert && Update
+                    $value = Guest_user::InsertAndUpdateData($USER_EMAIL, $data);
+                    if($value){
+                        Session::flash('message','Insert successfully.');
+                    }else{
+                        Session::flash('message','Username already exists.');
+                    }
                 }
             }
         }
@@ -283,36 +306,59 @@ class UploadImageProfile extends Controller
         if ($request->input('submit') != null ){
     
             // Insert && Update
-            if($request->has('GUEST_USERS_IMG')){
-                $upload = $request->file('GUEST_USERS_IMG');
-                $img_name = 'USER_'.time().'.'.$upload->getClientOriginalExtension();
+            if($request->has('SPON_IMG')){
+                $upload = $request->file('SPON_IMG');
+                $img_name = 'SPON_'.time().'.'.$upload->getClientOriginalExtension();
                 $path = public_path('home/imgProfile');
                 $upload->move($path, $img_name);
 
-                $GUEST_USERS_TEL = $request->input('GUEST_USERS_TEL');
-                $GUEST_USERS_ID_CARD = $request->input('GUEST_USERS_ID_CARD');
-                $GUEST_USERS_IMG = $img_name;
-                $GUEST_USERS_BIRTHDAY = $request->input('GUEST_USERS_BIRTHDAY');
-                $GUEST_USERS_AGE = $request->input('GUEST_USERS_AGE');
-                $GUEST_USERS_GENDER = $request->input('GUEST_USERS_GENDER');
-                $GUEST_USERS_ADDRESS = $request->input('GUEST_USERS_ADDRESS');
+                $SPON_TEL = $request->input('SPON_TEL');
+                $SPON_ID_CARD = $request->input('SPON_ID_CARD');
+                $SPON_IMG = $img_name;
+                $SPON_BIRTHDAY = $request->input('SPON_BIRTHDAY');
+                $SPON_AGE = $request->input('SPON_AGE');
+                $SPON_GENDER = $request->input('SPON_GENDER');
+                $SPON_ADDRESS = $request->input('SPON_ADDRESS');
                 $ZIPCODE_ID = $request->input('ZIPCODE_ID');
                 $USER_ID = $request->input('USER_ID');
                 $USER_EMAIL = $request->input('USER_EMAIL');
 
-                if($USER_EMAIL != '' || $GUEST_USERS_TEL != '' || $GUEST_USERS_ID_CARD != '' || $GUEST_USERS_IMG != '' || $GUEST_USERS_BIRTHDAY != '' || $GUEST_USERS_AGE != '' || $GUEST_USERS_GENDER != '' || $GUEST_USERS_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != ''){
-                    $data = array("GUEST_USERS_TEL"=>$GUEST_USERS_TEL, "GUEST_USERS_ID_CARD"=>$GUEST_USERS_ID_CARD, "GUEST_USERS_IMG"=>$GUEST_USERS_IMG, "GUEST_USERS_BIRTHDAY"=>$GUEST_USERS_BIRTHDAY,
-                                "GUEST_USERS_AGE"=>$GUEST_USERS_AGE, "GUEST_USERS_GENDER"=>$GUEST_USERS_GENDER, "GUEST_USERS_ADDRESS"=>$GUEST_USERS_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
+                if($USER_EMAIL != '' || $SPON_TEL != '' || $SPON_ID_CARD != '' || $SPON_IMG != '' || $SPON_BIRTHDAY != '' || $SPON_AGE != '' || $SPON_GENDER != '' || $SPON_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != ''){
+                    $data = array("SPON_TEL"=>$SPON_TEL, "SPON_ID_CARD"=>$SPON_ID_CARD, "SPON_IMG"=>$SPON_IMG, "SPON_BIRTHDAY"=>$SPON_BIRTHDAY,
+                                "SPON_AGE"=>$SPON_AGE, "SPON_GENDER"=>$SPON_GENDER, "SPON_ADDRESS"=>$SPON_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
                                 "USER_EMAIL" => $USER_EMAIL);
         
                     // Insert && Update
-                    $value = Guest_user::InsertAndUpdateData($USER_EMAIL, $data);
+                    $value = Sponsors::InsertAndUpdateData($USER_EMAIL, $data);
                     if($value){
                         Session::flash('message','Insert successfully.');
                     }else{
                         Session::flash('message','Username already exists.');
                     }
+                }
+            }else{
+                $SPON_TEL = $request->input('SPON_TEL');
+                $SPON_ID_CARD = $request->input('SPON_ID_CARD');
+                $SPON_BIRTHDAY = $request->input('SPON_BIRTHDAY');
+                $SPON_AGE = $request->input('SPON_AGE');
+                $SPON_GENDER = $request->input('SPON_GENDER');
+                $SPON_ADDRESS = $request->input('SPON_ADDRESS');
+                $ZIPCODE_ID = $request->input('ZIPCODE_ID');
+                $USER_ID = $request->input('USER_ID');
+                $USER_EMAIL = $request->input('USER_EMAIL');
+
+                if($USER_EMAIL != '' || $SPON_TEL != '' || $SPON_ID_CARD != '' || $SPON_BIRTHDAY != '' || $SPON_AGE != '' || $SPON_GENDER != '' || $SPON_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != ''){
+                    $data = array("SPON_TEL"=>$SPON_TEL, "SPON_ID_CARD"=>$SPON_ID_CARD, "SPON_BIRTHDAY"=>$SPON_BIRTHDAY,
+                                "SPON_AGE"=>$SPON_AGE, "SPON_GENDER"=>$SPON_GENDER, "SPON_ADDRESS"=>$SPON_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
+                                "USER_EMAIL" => $USER_EMAIL);
         
+                    // Insert && Update
+                    $value = Sponsors::InsertAndUpdateData($USER_EMAIL, $data);
+                    if($value){
+                        Session::flash('message','Insert successfully.');
+                    }else{
+                        Session::flash('message','Username already exists.');
+                    }
                 }
             }
         }

@@ -1,48 +1,73 @@
-.img-1 {
+.img-1 { /* รูปโปรไฟล์ */
   border: 3px solid #ce0005;
   border-radius: 50%;
   width: 100px;
   height: 100px;
   overflow: hidden;
 }
+.img-coin{ /*ไอคอน coin*/
+  color:#ffdf4a;
+}
 
-.font-1{
+.img-inbox{ /*ไอคอนจำนวนเกมทั้งหมด*/
+  color:#007bff;
+}
+
+.img-history{ /* ไอคอนวันที่ลงทะเบียน*/
+  color:#55d275;
+}
+
+.font{ /* ไอคอนเลขบัตรปชช. เบอร์โทร อีเมล */
+  color: #ce0005;
+  text-align: center;
+}
+.font1{  /*ชื่อ-นามสกุล ข้อมูลส่วนตัวหน้าโปรไฟล์ */
   text-align: center;
   color: #ce0005;
   /* font-weight:bold; */
 }
-
-.img-coin{
-  color:#ffdf4a;
-}
-
-.img-inbox{
-  color:#007bff;
-}
-
-.img-history{
-  color:#55d275;
-}
-
-.font{
-  color: #ce0005;
-  text-align: center;
-}
-.font2{
+.font2{ /* ข้อมูลเลขบัตรปชช. เบอร์โทร อีเมล */
   color: #474948;
 }
+.font3{ /* link ทั้งหมด */
+color: #ce0005;
+}
+.font3:hover{ /* link game shelf */
+color: #ce0005;
+font-weight:bold;
+}
 
-.navbar {
+
+.font4{ /* link game shelf */
+color: #474948;
+}
+
+.font4:hover{ /* link game shelf */
+color: #ce0005;
+}
+
+.font5{
+color: #ce0005;
+font-weight:bold;
+}
+
+.font5:hover{
+color: #000;
+font-weight:bold;
+}
+
+.navbar { 
   position: fixed;
   margin-top: 10px;
 }
-.btn1{
+
+.btn1{/* change password/ update profile/ KYC */
   width: 100%;
   background-color: #ffff; 
   color: #ce0005;
 }
 
-.btn1:hover{ /* change password/ update profile/ KYC */
+.btn1:hover{ 
    color: #ffff;
    background-color : #ce0005;
    border-radius:none!important; 
@@ -89,12 +114,12 @@ border-bottom: 1px solid #ce0005; }
 
     .site-navbar2 .site-navigation .site-menu > li > a {
       padding: 5px 20px;
-      color: #ce0005;
+      color: #000;
       display: inline-block;
       text-decoration: none !important; }
 
       .site-navbar2 .site-navigation .site-menu > li > a:hover {
-        color: #040404; }
+        color: #ce0005; }
 
   .site-navbar2 .site-navigation .site-menu .has-children {
     position: relative; }
@@ -186,7 +211,7 @@ border-bottom: 1px solid #ce0005; }
         opacity: 1; }
   /* Navbar */
 
-.topnav {
+.topnav { /* แท็บหน้าโปรไฟล์ */
   overflow: hidden;
   background-color: #ffff;
 }
@@ -208,7 +233,7 @@ border-bottom: 1px solid #ce0005; }
 
 .topnav a.active {
   border-bottom: 1px solid #ce0005;
-}
+} /* แท็บหน้าโปรไฟล์ */
 
 .table {
   display: table;
@@ -259,7 +284,7 @@ border-bottom: 1px solid #ce0005; }
   vertical-align: middle;
 }
 
-.textbox1 {
+.textbox1 { /* ฟิลด์หน้าแก้ไขข้อมูลส่วนตัว */
   border: 1px solid #dddddd;
   border-radius: 5px;
   padding-left: 10px;
@@ -267,22 +292,27 @@ border-bottom: 1px solid #ce0005; }
   padding-bottom: 5px;
   width: 100%;
   /* height: 35px; */
-  
 }
 
-.btn2 {
-  color: #fff;
-  background-color: #ce0005; 
-  height: 40px;
-  border: 1px solid #ce0005;
+.textbox2 { /* ฟิลด์หน้าแก้ไขข้อมูลส่วนตัว วันเกิด*/
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+  height: 50px;  
 }
 
-.sidenav1{
+/* .sidenav1{
   background-color: #dddddd;;
-}
+} */
 
 .b1{
-  background-color:#ffffff;;
+  background-color:#55d275;;
+}
+.b2{
+  background-color:#b6f3c5;;
 }
 
 /* บันทึก */
@@ -312,11 +342,11 @@ border-bottom: 1px solid #ce0005; }
 }
 
 
-.font3{
+/* .font3{
   text-align: center;
-}
+} */
 
-.bgroup{
+.bgroup{ /* kyc  change_password  update_profile */
 width: 100%;
 color: #ce0005;
 border: 1px solid #dddddd;
@@ -333,11 +363,78 @@ color: #ffff;
 background-color: #ce0005;
 }
 
-.box1{
+/* .box1{
 border-top-left-radius: 4px;
 border-top-right-radius: 4px;
+} */
+
+.button3{ /* ปุ่มหน้าแรก */
+background-color: #ce0005;
+color: #fff;
+}
+.button3:hover{
+color: #ce0005;
+background-color: #fff;
+}
+.button3.active{
+color: #ffff;
+background-color: #ce0005
 }
 
-textbox2{
-height: 50px;
+.button4{ /* ปุ่มหน้าแรก */
+background-color: #ce0005;
+color: #fff;
+}
+
+.button5{ /* ปุ่มหน้าแรก ทั้งหมด/ยอดนิยม/มาใหม่ */
+background-color: #f5f5f5;
+color: #000;
+font-size: 13px;
+width: 100px;
+height: 40px;
+border: 1px solid #f5f5f5;
+border-top-left-radius: 50px;
+border-top-right-radius: 50px;
+border-bottom-right-radius: 50px;
+border-bottom-left-radius: 50px;
+}
+.button5:hover{
+color: #ffff;
+background-color: #ce0005;
+border: 1px solid #ce0005;
+}
+.button5.active{
+color: #ffff;
+background-color: #ce0005;
+border: 1px solid #ce0005;
+}
+.button6{ /* send email */
+background-color: #000;
+color: #fff;
+font-size: 15px;
+width: 100px;
+height: 43px;
+border: 1px solid #000;
+border-top-left-radius: 0px;
+border-bottom-left-radius: 0px;
+border-top-right-radius: 50px;
+border-bottom-right-radius: 50px;
+}
+.button6:hover{
+color: #000;
+background-color: #e5e2e2;
+border: 1px solid #000;
+}
+
+.img2 { /* ข่าว */
+width: 125px;
+height: auto!important;
+overflow: hidden;
+}
+
+.img3 { /* sponsor */
+width: 200px;
+height: 80px;
+border: #e5e2e2 solid 2px;
+overflow: hidden;
 }

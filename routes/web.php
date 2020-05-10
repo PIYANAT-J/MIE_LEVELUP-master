@@ -39,8 +39,8 @@ Route::get('/update_profile/dev', 'UploadImageProfile@update')->name('UpDate');
 Route::post('/update_profile/dev/edit', 'UploadImageProfile@saveProfileDev')->name('DevEditProfile');
 
 Route::get('/spon_profile', 'UploadImageProfile@indexSpon')->name('sponProfile');
-Route::get('/update_profile/dev', 'UploadImageProfile@updateSpon')->name('UpDate');
-Route::post('/update_profile/dev/edit', 'UploadImageProfile@saveProfileSpon')->name('SponEditProfile');
+Route::get('/update_profile/spon', 'UploadImageProfile@updateSpon')->name('SponUpDate');
+Route::post('/update_profile/spon/edit', 'UploadImageProfile@saveProfileSpon')->name('SponEditProfile');
 
 // Route::get('/dev_profile', function () {
 //     return view('dev_profile');

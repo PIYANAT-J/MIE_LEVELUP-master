@@ -21,7 +21,7 @@
 @endif
 @endsection
 
-@section('user_user_profile')
+@section('user_profile')
 
 <div class="container mt-0">
 

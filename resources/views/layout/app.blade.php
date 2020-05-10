@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="{{ asset('dist/fonts/icomoon/style.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/aos.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('dist/css/level-up.css') }}">
     </head>
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
         <div id="app" class="site-wrap active">
@@ -105,7 +106,7 @@
                         <div class="col-md-9">
                             <div class="row">
                                 <div class="col-md-5">
-                                    <h2 class="footer-heading mb-4">About Us</h2>
+                                    <h2 class="footer-heading mb-1"><b>About Us</b></h2>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam voluptatum autem. Amet aliquid nesciunt veritatis aliquam.</p>
                                 </div>
                                 <div class="col-md-3 ml-auto">
@@ -130,9 +131,9 @@
                             <h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
                             <form action="#" method="post" class="footer-subscribe">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control border-secondary text-white bg-transparent" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
+                                    <input type="text" class="form-control border-dark text-white bg-white" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary text-black" type="button" id="button-addon2">Send</button>
+                                        <button class="button6" type="button" id="button-addon2">Send</button>
                                     </div>
                                 </div>
                             </form>
@@ -143,7 +144,7 @@
                             <div class="border-top pt-5">
                                 <p>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | LevelUp Multi innovation Engineering <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | LevelUp by Multi innovation Engineering <!--<i class="icon-heart text-light" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>-->
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 </p>
                             </div>

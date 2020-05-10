@@ -14,6 +14,7 @@
 @endsection
 
 @section('change_password')
+
 <!-- change password -->
 <div class="row">   
     <div id="change-password">
@@ -26,7 +27,7 @@
                     <div class="w-100"></div>
 
                     <div class="col"></div>
-                    <div class="col-sm-5 font3 b1">
+                    <div class="col-sm-5 ml-3 mr-3">
                         <div class="mt-4">  <!-- input-group -->
                                 <!-- <div class="input-group-prepend ">
                                     <span class="input-group-text btn2"> <i class="material-icons">recent_actors</i></span>
@@ -39,7 +40,7 @@
                     <div class="w-100"></div>
 
                     <div class="col"></div>
-                    <div class="col-sm-5 font3 b1">
+                    <div class="col-sm-5 ml-3 mr-3">
                         <div class="mt-3">
                                 <!-- <div class="input-group-prepend ">
                                     <span class="input-group-text btn2"> <i class="material-icons">local_phone</i></span>
@@ -53,7 +54,7 @@
 
 
                     <div class="col"></div>
-                    <div class="col-sm-5 font3 b1">
+                    <div class="col-sm-5 ml-3 mr-3">
                         <div class="mt-3">
                                 <!-- <div class="input-group-prepend ">
                                     <span class="input-group-text btn2"> <i class="material-icons">date_range</i></span>
@@ -66,7 +67,7 @@
                     <div class="w-100"></div>
 
                     <div class="col"></div>
-                    <div class="col-sm-5 b1">
+                    <div class="col-sm-5 mb-5">
                         <div class="mt-4" align="center">
                             <button type="submit" class="bnt button1">บันทึก</button>
                             <button type="submit" class="bnt button2">ยกเลิก</button>
@@ -80,4 +81,5 @@
         </div>
     </div>
 </div>
+
 @endsection

@@ -1,5 +1,4 @@
 @extends('layout.profile')
-
 @section('update_button')
     @if(Auth::user()->updateData == 'true')
         @if(Auth::user()->users_type == 2)
@@ -12,7 +11,14 @@
                 </div>        
             </a>
         @elseif(Auth::user()->users_type == 3)
-            <!-- //////////////////////////////////SPONSORE//////////////////////////////////////////////// -->
+            <a href="{{route('SponUpDate')}}" class="btn bgroup">
+                <div class="row">
+                    <div>
+                        <i class="material-icons pl-1">edit</i>
+                    </div>
+                    <div class="col pr-1" align="right ">Update Profile</div>
+                </div>        
+            </a>
         @else
             <a href="{{route('EditProfile')}}" class="btn bgroup">
                 <div class="row">
@@ -34,7 +40,14 @@
                 </div>        
             </a>
         @elseif(Auth::user()->users_type == 3)
-            <!-- //////////////////////////////////SPONSORE//////////////////////////////////////////////// -->
+            <a href="{{route('SponUpDate')}}" class="btn bgroup">
+                <div class="row">
+                    <div>
+                        <i class="material-icons pl-1">edit</i>
+                    </div>
+                    <div class="col pr-1" align="right ">Update Profile</div>
+                </div>        
+            </a>
         @else
             <a href="{{route('EditProfile')}}" class="btn bgroup">
                 <div class="row">
@@ -80,7 +93,7 @@
                                             <div class="w-100"></div>
 
                                             <div class="col"></div>
-                                            <div class="col-sm-5 font3 b1">
+                                            <div class="col-sm-5 ml-3 mr-3">
                                                 <div class="mt-4">  <!-- input-group -->
                                                         <!-- <div class="input-group-prepend ">
                                                             <span class="input-group-text btn2"> <i class="material-icons">recent_actors</i></span>
@@ -94,7 +107,7 @@
                                             <div class="w-100"></div>
 
                                             <div class="col"></div>
-                                            <div class="col-sm-5 font3 b1">
+                                            <div class="col-sm-5 ml-3 mr-3">
                                                 <div class="mt-3">
                                                         <!-- <div class="input-group-prepend ">
                                                             <span class="input-group-text btn2"> <i class="material-icons">local_phone</i></span>
@@ -109,8 +122,8 @@
 
 
                                             <div class="col "></div>
-                                            <div class="col-sm-5 font3 b1">
-                                                <div class="mt-3 bootstrap-iso">
+                                            <div class="col-sm-5 ml-3 mr-3">
+                                                <div class="mt-3">
                                                         <!-- <div class="input-group-prepend ">
                                                             <span class="input-group-text btn2"> <i class="material-icons">date_range</i></span>
                                                         </div> -->
@@ -123,7 +136,7 @@
                                             <div class="w-100"></div>
 
                                             <div class="col"></div>
-                                            <div class="col-sm-5 font3 b1">
+                                            <div class="col-sm-5 ml-3 mr-3">
                                                 <div class="mt-3">
                                                         <!-- <div class="input-group-prepend ">
                                                             <span class="input-group-text btn2"> <i class="material-icons">date_range</i></span>
@@ -136,7 +149,7 @@
                                             <div class="w-100"></div>
 
                                             <div class="col"></div>
-                                            <div class="col-sm-5 font3 b1">
+                                            <div class="col-sm-5 ml-3 mr-3">
                                                 <div class="mt-3">
                                                         <!-- <div class="input-group-prepend ">
                                                             <span class="input-group-text btn2"> <i class="material-icons">date_range</i></span>
@@ -154,7 +167,7 @@
 
 
                                             <div class="col"></div>
-                                            <div class="col-sm-5 font3 b1">
+                                            <div class="col-sm-5 ml-3 mr-3">
                                                 <div class="mt-3">
                                                     <div class="input-group mb-3">
                                                         <!-- <div class="input-group-prepend">
@@ -199,7 +212,107 @@
                 @endif
             @endforeach
         @elseif(Auth::user()->users_type == 3)
-            <!-- //////////////////////////////////SPONSORE//////////////////////////////////////////////// -->
+            @foreach($sponsor as $SPON)
+                @if($SPON->USER_ID == Auth::user()->id)
+                    <form action="{{ route('SponEditProfile') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div id="update-profile">
+                                <div class="row">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col"></div>
+                                            <div class="col-sm-5 font mt-3">แก้ไขข้อมูลส่วนตัว</div>
+                                            <div class="col "></div>
+                                            <div class="w-100"></div>
+
+                                            <div class="col"></div>
+                                            <div class="col-sm-5 ml-3 mr-3">
+                                                <div class="mt-4">
+                                                    <input name="SPON_ID_CARD" type="text" class="form-control textbox1" placeholder="เลขบัตรประชาชน" value="{{ $SPON->SPON_ID_CARD }}" pattern="[0-9]{13}" title="กรอกตัวเลขเท่านั้น" required>
+                                                </div>
+                                            </div>
+                                            <div class="col "></div>
+                                            <div class="w-100"></div>
+
+                                            <div class="col"></div>
+                                            <div class="col-sm-5 ml-3 mr-3">
+                                                <div class="mt-3">
+                                                    <input name="SPON_TEL" type="text" class="form-control textbox1 " placeholder="เบอร์โทรศัพท์" value="{{ $SPON->SPON_TEL }}" pattern="[0-9]{10}" title="กรอกตัวเลขเท่านั้น" required>
+                                                </div>
+                                            </div>
+                                            <div class="col "></div>
+                                            <div class="w-100"></div>
+
+
+                                            <div class="col "></div>
+                                            <div class="col-sm-5 ml-3 mr-3">
+                                                <div class="mt-3">
+                                                    <input id="SPON_BIRTHDAY" name="SPON_BIRTHDAY" type="text" class="form-control textbox1 " placeholder="วัน เดือน ปีเกิด" value="{{ $SPON->SPON_BIRTHDAY }}" title="">
+                                                </div>
+                                            </div>
+                                            <div class="col "></div>
+                                            <div class="w-100"></div>
+
+                                            <div class="col"></div>
+                                            <div class="col-sm-5 ml-3 mr-3">
+                                                <div class="mt-3">
+                                                    <input name="SPON_AGE" type="text" class="form-control textbox1 " placeholder="อายุ" value="{{ $SPON->SPON_AGE }}">
+                                                </div>
+                                            </div>
+                                            <div class="col "></div>
+                                            <div class="w-100"></div>
+
+                                            <div class="col"></div>
+                                            <div class="col-sm-5 ml-3 mr-3">
+                                                <div class="mt-3">
+                                                    <select class="custom-select textbox1" id="inputGroupSelect01" name="SPON_GENDER" value="{{ $SPON->SPON_GENDER }}">
+                                                        <option name="SPON_GENDER" value="{{ $SPON->SPON_GENDER }}" selected>เลือก</option>
+                                                        <option name="SPON_GENDER" value="Men">ชาย</option>
+                                                        <option name="SPON_GENDER" value="Women">หญิง</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col"></div>
+                                            <div class="w-100"></div>
+
+
+                                            <div class="col"></div>
+                                            <div class="col-sm-5 ml-3 mr-3">
+                                                <div class="mt-3">
+                                                    <div class="input-group mb-3">
+                                                        <div class="row form-group">
+                                                            <div class="col">
+                                                                <img id="preview" class="img-thumbnail" src="{{asset('home/imgProfile/'.$SPON->SPON_IMG) }}" alt="{{ $SPON->SPON_IMG }}" width="150" height="150">
+                                                                <input onchange="readURL(this)" type="file" class="form-control-file @error('SPON_IMG') is-invalid @enderror" id="SPON_IMG" name="SPON_IMG">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col"></div>
+                                            <div class="w-100"></div>
+
+                                            <div class="col"></div>
+                                            <div class="col-sm-5 b1">
+                                                <div class="mt-4" align="center">
+                                                    <input name="submit" id="submit" type="submit" class="bnt button1" value="บันทึก">
+                                                    <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                                    <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
+
+                                                    <button type="submit" class="bnt button2">ยกเลิก</button>
+                                                </div>    
+                                            </div>
+                                            <div class="col"></div>
+                                            <div class="w-100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                @endif
+            @endforeach
         @else
             @foreach($guest_user as $USER)
                 @if($USER->USER_ID == Auth::user()->id)
@@ -216,7 +329,7 @@
                                             <div class="w-100"></div>
 
                                             <div class="col"></div>
-                                            <div class="col-sm-5 font3 b1">
+                                            <div class="col-sm-5 ml-3 mr-3">
                                                 <div class="mt-4"> 
                                                     <input name="GUEST_USERS_ID_CARD" type="text" class="form-control textbox1" placeholder="เลขบัตรประชาชน" value="{{ $USER->GUEST_USERS_ID_CARD }}" pattern="[0-9]{13}" title="กรอกตัวเลขเท่านั้น" required>
                                                 </div>
@@ -225,7 +338,7 @@
                                             <div class="w-100"></div>
 
                                             <div class="col"></div>
-                                            <div class="col-sm-5 font3 b1">
+                                            <div class="col-sm-5 ml-3 mr-3">
                                                 <div class="mt-3">
                                                     <input name="GUEST_USERS_TEL" type="text" class="form-control textbox1 " placeholder="เบอร์โทรศัพท์" value="{{ $USER->GUEST_USERS_TEL }}" pattern="[0-9]{10}" title="กรอกตัวเลขเท่านั้น" required>
                                                 </div>
@@ -235,8 +348,8 @@
 
 
                                             <div class="col "></div>
-                                            <div class="col-sm-5 font3 b1">
-                                                <div class="mt-3 bootstrap-iso">
+                                            <div class="col-sm-5 ml-3 mr-3">
+                                                <div class="mt-3">
                                                     <input id="GUEST_USERS_BIRTHDAY" name="GUEST_USERS_BIRTHDAY" type="text" class="form-control textbox1 " placeholder="วัน เดือน ปีเกิด" value="{{ $USER->GUEST_USERS_BIRTHDAY }}" title="">
                                                 </div>
                                             </div>
@@ -244,7 +357,7 @@
                                             <div class="w-100"></div>
 
                                             <div class="col"></div>
-                                            <div class="col-sm-5 font3 b1">
+                                            <div class="col-sm-5 ml-3 mr-3">
                                                 <div class="mt-3">
                                                     <input name="GUEST_USERS_AGE" type="text" class="form-control textbox1 " placeholder="อายุ" value="{{ $USER->GUEST_USERS_AGE }}">
                                                 </div>
@@ -253,7 +366,7 @@
                                             <div class="w-100"></div>
 
                                             <div class="col"></div>
-                                            <div class="col-sm-5 font3 b1">
+                                            <div class="col-sm-5 ml-3 mr-3">
                                                 <div class="mt-3">
                                                     <select class="custom-select textbox1" id="inputGroupSelect01" name="GUEST_USERS_GENDER" value="{{ $USER->GUEST_USERS_GENDER }}">
                                                         <option name="GUEST_USERS_GENDER" selected>เลือก</option>
@@ -267,7 +380,7 @@
 
 
                                             <div class="col"></div>
-                                            <div class="col-sm-5 font3 b1">
+                                            <div class="col-sm-5 ml-3 mr-3">
                                                 <div class="mt-3">
                                                     <div class="input-group mb-3">
                                                         <div class="row form-group">
@@ -318,7 +431,7 @@
                                     <div class="w-100"></div>
 
                                     <div class="col"></div>
-                                    <div class="col-sm-5 font3 b1">
+                                    <div class="col-sm-5 ml-3 mr-3">
                                         <div class="mt-4"><input name="DEV_ID_CARD" type="text" class="form-control textbox1" placeholder="เลขบัตรประชาชน" value="{{ old('DEV_ID_CARD') }}" pattern="[0-9]{13}" title="กรอกตัวเลขเท่านั้น" required>
                                         </div>
                                     </div>
@@ -326,7 +439,7 @@
                                     <div class="w-100"></div>
 
                                     <div class="col"></div>
-                                    <div class="col-sm-5 font3 b1">
+                                    <div class="col-sm-5 ml-3 mr-3">
                                         <div class="mt-3">
                                             <input name="DEV_TEL" type="text" class="form-control textbox1 " placeholder="เบอร์โทรศัพท์" value="{{ old('DEV_TEL') }}" pattern="[0-9]{10}" title="กรอกตัวเลขเท่านั้น" required>
                                         </div>
@@ -336,8 +449,8 @@
 
 
                                     <div class="col "></div>
-                                    <div class="col-sm-5 font3 b1">
-                                        <div class="mt-3 bootstrap-iso">
+                                    <div class="col-sm-5 ml-3 mr-3">
+                                        <div class="mt-3">
                                             <input id="DEV_BIRTHDAY" name="DEV_BIRTHDAY" type="text" class="form-control textbox1 " placeholder="วัน เดือน ปีเกิด" value="{{ old('DEV_BIRTHDAY') }}" title="">
                                         </div>
                                     </div>
@@ -345,7 +458,7 @@
                                     <div class="w-100"></div>
 
                                     <div class="col"></div>
-                                    <div class="col-sm-5 font3 b1">
+                                    <div class="col-sm-5 ml-3 mr-3">
                                         <div class="mt-3">
                                             <input name="DEV_AGE" type="text" class="form-control textbox1 " placeholder="อายุ" value="{{ old('DEV_AGE') }}">
                                         </div>
@@ -354,9 +467,9 @@
                                     <div class="w-100"></div>
 
                                     <div class="col"></div>
-                                    <div class="col-sm-5 font3 b1">
+                                    <div class="col-sm-5 ml-3 mr-3">
                                         <div class="mt-3">
-                                            <select class="custom-select textbox1" id="inputGroupSelect01" name="DEV_GENDER" value="{{ old('DEV_GENDER') }}">
+                                            <select class="custom-select textbox1" id="inputGroupSelect01" name="DEV_GENDER" value="{{ old('DEV_GENDER') }}" required>
                                                 <option name="DEV_GENDER" selected>เลือก</option>
                                                 <option name="DEV_GENDER" value="Men">ชาย</option>
                                                 <option name="DEV_GENDER" value="Women">หญิง</option>
@@ -368,7 +481,7 @@
 
 
                                     <div class="col"></div>
-                                    <div class="col-sm-5 font3 b1">
+                                    <div class="col-sm-5 ml-3 mr-3">
                                         <div class="mt-3">
                                             <div class="input-group mb-3">
                                                 <div class="row form-group">
@@ -402,7 +515,103 @@
                 </div>
             </form>
         @elseif(Auth::user()->users_type == 3)
-            <!-- //////////////////////////////////SPONSORE//////////////////////////////////////////////// -->
+            <form action="{{ route('SponEditProfile') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="row">
+                    <div id="update-profile">
+                        <div class="row">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col"></div>
+                                    <div class="col-sm-5 font mt-3">แก้ไขข้อมูลส่วนตัว</div>
+                                    <div class="col "></div>
+                                    <div class="w-100"></div>
+
+                                    <div class="col"></div>
+                                    <div class="col-sm-5 ml-3 mr-3">
+                                        <div class="mt-4">
+                                            <input name="SPON_ID_CARD" type="text" class="form-control textbox1" placeholder="เลขบัตรประชาชน" value="{{ old('SPON_ID_CARD') }}" pattern="[0-9]{13}" title="กรอกตัวเลขเท่านั้น" required>
+                                        </div>
+                                    </div>
+                                    <div class="col "></div>
+                                    <div class="w-100"></div>
+
+                                    <div class="col"></div>
+                                    <div class="col-sm-5 ml-3 mr-3">
+                                        <div class="mt-3">
+                                            <input name="SPON_TEL" type="text" class="form-control textbox1 " placeholder="เบอร์โทรศัพท์" value="{{ old('SPON_TEL') }}" pattern="[0-9]{10}" title="กรอกตัวเลขเท่านั้น" required>
+                                        </div>
+                                    </div>
+                                    <div class="col "></div>
+                                    <div class="w-100"></div>
+
+
+                                    <div class="col "></div>
+                                    <div class="col-sm-5 ml-3 mr-3">
+                                        <div class="mt-3">
+                                            <input id="SPON_BIRTHDAY" name="SPON_BIRTHDAY" type="text" class="form-control textbox1 " placeholder="วัน เดือน ปีเกิด" value="{{ old('SPON_BIRTHDAY') }}" title="">
+                                        </div>
+                                    </div>
+                                    <div class="col "></div>
+                                    <div class="w-100"></div>
+
+                                    <div class="col"></div>
+                                    <div class="col-sm-5 ml-3 mr-3">
+                                        <div class="mt-3">
+                                            <input name="SPON_AGE" type="text" class="form-control textbox1 " placeholder="อายุ" value="{{ old('SPON_AGE') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col "></div>
+                                    <div class="w-100"></div>
+
+                                    <div class="col"></div>
+                                    <div class="col-sm-5 ml-3 mr-3">
+                                        <div class="mt-3">
+                                            <select class="custom-select textbox1" id="inputGroupSelect01" name="SPON_GENDER" value="{{ old('SPON_GENDER') }}" required>
+                                                <option name="SPON_GENDER" selected>เลือก</option>
+                                                <option name="SPON_GENDER" value="Men">ชาย</option>
+                                                <option name="SPON_GENDER" value="Women">หญิง</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col"></div>
+                                    <div class="w-100"></div>
+
+
+                                    <div class="col"></div>
+                                    <div class="col-sm-5 ml-3 mr-3">
+                                        <div class="mt-3">
+                                            <div class="input-group mb-3">
+                                                <div class="row form-group">
+                                                    <div class="col">
+                                                        <img id="preview" class="img-thumbnail" src="{{asset('home/imgProfile/No_Img.jpg') }}" alt="{{ old('SPON_IMG') }}" width="150" height="150">
+                                                        <input onchange="readURL(this)" type="file" class="form-control-file @error('SPON_IMG') is-invalid @enderror" id="SPON_IMG" name="SPON_IMG">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col"></div>
+                                    <div class="w-100"></div>
+
+                                    <div class="col"></div>
+                                    <div class="col-sm-5 b1">
+                                        <div class="mt-4" align="center">
+                                            <input name="submit" id="submit" type="submit" class="bnt button1" value="บันทึก">
+                                            <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                            <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
+
+                                            <button type="submit" class="bnt button2">ยกเลิก</button>
+                                        </div>    
+                                    </div>
+                                    <div class="col"></div>
+                                    <div class="w-100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         @else
             <form action="{{ route('UserEditProfile') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -417,7 +626,7 @@
                                     <div class="w-100"></div>
 
                                     <div class="col"></div>
-                                    <div class="col-sm-5 font3 b1">
+                                    <div class="col-sm-5 ml-3 mr-3">
                                         <div class="mt-4">
                                             <input name="GUEST_USERS_ID_CARD" type="text" class="form-control textbox1" placeholder="เลขบัตรประชาชน" value="{{ old('GUEST_USERS_ID_CARD') }}" pattern="[0-9]{13}" title="กรอกตัวเลขเท่านั้น" required>
                                         </div>
@@ -426,7 +635,7 @@
                                     <div class="w-100"></div>
 
                                     <div class="col"></div>
-                                    <div class="col-sm-5 font3 b1">
+                                    <div class="col-sm-5 ml-3 mr-3">
                                         <div class="mt-3">
                                             <input name="GUEST_USERS_TEL" type="text" class="form-control textbox1 " placeholder="เบอร์โทรศัพท์" value="{{ old('GUEST_USERS_TEL') }}" pattern="[0-9]{10}" title="กรอกตัวเลขเท่านั้น" required>
                                         </div>
@@ -436,8 +645,8 @@
 
 
                                     <div class="col "></div>
-                                    <div class="col-sm-5 font3 b1">
-                                        <div class="mt-3 bootstrap-iso">
+                                    <div class="col-sm-5 ml-3 mr-3">
+                                        <div class="mt-3">
                                             <input id="GUEST_USERS_BIRTHDAY" name="GUEST_USERS_BIRTHDAY" type="text" class="form-control textbox1 " placeholder="วัน เดือน ปีเกิด" value="{{ old('GUEST_USERS_BIRTHDAY') }}" title="">
                                         </div>
                                     </div>
@@ -445,7 +654,7 @@
                                     <div class="w-100"></div>
 
                                     <div class="col"></div>
-                                    <div class="col-sm-5 font3 b1">
+                                    <div class="col-sm-5 ml-3 mr-3">
                                         <div class="mt-3">
                                             <input name="GUEST_USERS_AGE" type="text" class="form-control textbox1 " placeholder="อายุ" value="{{ old('GUEST_USERS_AGE') }}">
                                         </div>
@@ -454,9 +663,9 @@
                                     <div class="w-100"></div>
 
                                     <div class="col"></div>
-                                    <div class="col-sm-5 font3 b1">
+                                    <div class="col-sm-5 ml-3 mr-3">
                                         <div class="mt-3">
-                                            <select class="custom-select textbox1" id="inputGroupSelect01" name="GUEST_USERS_GENDER" value="{{ old('GUEST_USERS_GENDER') }}">
+                                            <select class="custom-select textbox1" id="inputGroupSelect01" name="GUEST_USERS_GENDER" value="{{ old('GUEST_USERS_GENDER') }}" required>
                                                 <option name="GUEST_USERS_GENDER" selected>เลือก</option>
                                                 <option name="GUEST_USERS_GENDER" value="Men">ชาย</option>
                                                 <option name="GUEST_USERS_GENDER" value="Women">หญิง</option>
@@ -468,7 +677,7 @@
 
 
                                     <div class="col"></div>
-                                    <div class="col-sm-5 font3 b1">
+                                    <div class="col-sm-5 ml-3 mr-3">
                                         <div class="mt-3">
                                             <div class="input-group mb-3">
                                                 <div class="row form-group">
