@@ -374,7 +374,7 @@
                             <li><a href="#"><span class="icon-facebook"></span></a></li>
                             <li><a href="#"><span class="icon-instagram"></span></a></li>
                         </ul>
-                        <<img src="section/picture_sponsors/grab.png" alt="Image" class="img-fluid" style="width: 200px; height: 80px;">
+                        <img src="section/picture_sponsors/grab.png" alt="Image" class="img-fluid" style="width: 200px; height: 80px;">
                     </figure>
                 </div>
             </div>

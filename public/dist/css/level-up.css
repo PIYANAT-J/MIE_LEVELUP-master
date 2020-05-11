@@ -233,6 +233,7 @@ border-bottom: 1px solid #ce0005; }
 
 .topnav a.active {
   border-bottom: 1px solid #ce0005;
+  font-weight: bold;
 } /* แท็บหน้าโปรไฟล์ */
 
 .table {
@@ -240,15 +241,18 @@ border-bottom: 1px solid #ce0005; }
 }
 .tr {
   display: table-row;
+
 }
+
 .th1 {
   float: left;
   display: table-cell;
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
-  width: 30px;
-  background-color: #55d275;
+  width: 3%;
+  /* background-color: #8ef3a8; */
+  border-botton: #ce0005 1px solid;
 }
 .th2 {
   float: left;
@@ -256,8 +260,8 @@ border-bottom: 1px solid #ce0005; }
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
-  width: 600px;
-  background-color: #ce0005;
+  width: 67%;
+  /* background-color: #f79c9d; */
 }
 .th3 {
   float: left;
@@ -265,7 +269,8 @@ border-bottom: 1px solid #ce0005; }
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
-  border-left:#007bff 80px solid;
+  width: 20%;
+  /* background-color:#87c0fd; */
 }
 
 .th4 {
@@ -274,7 +279,8 @@ border-bottom: 1px solid #ce0005; }
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
-  border-left: #55d275 10px solid;
+  width: 10%;
+  /* background-color: #f395fc; */
 }
 
 
@@ -304,16 +310,13 @@ border-bottom: 1px solid #ce0005; }
   height: 50px;  
 }
 
-/* .sidenav1{
-  background-color: #dddddd;;
-} */
 
-.b1{
+/* .b1{
   background-color:#55d275;;
 }
 .b2{
   background-color:#b6f3c5;;
-}
+} */
 
 /* บันทึก */
 .button1{
@@ -362,11 +365,6 @@ border-bottom-left-radius: 4px;
 color: #ffff;
 background-color: #ce0005;
 }
-
-/* .box1{
-border-top-left-radius: 4px;
-border-top-right-radius: 4px;
-} */
 
 .button3{ /* ปุ่มหน้าแรก */
 background-color: #ce0005;
@@ -424,6 +422,73 @@ border-bottom-right-radius: 50px;
 color: #000;
 background-color: #e5e2e2;
 border: 1px solid #000;
+}
+
+.button7{ /* send email */
+background-color: #fff;
+color: rgb(124, 124, 124);
+font-size: 15px;
+width: 150px;
+height: 43px;
+border: 1px solid #000;
+border-top-left-radius: 50px;
+border-bottom-left-radius: 50px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+padding-left: 10px;
+}
+
+.login{  /* ฟิลด์ */
+background-color: transparent;
+color: rgb(124, 124, 124);
+font-size: 15px;
+width: 150px;
+height: 40px;
+border: 1px solid #dddddd;
+border-top-left-radius: 0px;
+border-bottom-left-radius: 0px;
+border-top-right-radius: 50px;
+border-bottom-right-radius: 50px;
+padding-left: 10px;
+}
+
+.login2{  /* ไอคอน */
+background-color: transparent;
+color:#ce0005;
+font-size: 15px;
+width: 60px;
+height: 40px;
+text-align: center;
+border: 1px solid #dddddd;
+border-top-left-radius: 50px;
+border-bottom-left-radius: 50px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+padding-left: 10px;
+}
+.regis{ /* ฟิลด์ */
+background-color: transparent;
+color: rgb(124, 124, 124);
+font-size: 15px;
+width: 100%;
+height: 40px;
+border: 1px solid #dddddd;
+border-top-left-radius: 50px;
+border-bottom-left-radius: 50px;
+border-top-right-radius: 50px;
+border-bottom-right-radius: 50px;
+padding-left: 20px;
+}
+
+.button8{ /*ปุ่ม login ปุ่ม create account*/
+color: #fff;
+background-color: #ce0005;
+font-weight: bold;
+height: 40px;
+}
+.button8:hover{ /*login button*/
+color: #fff;
+background-color: #000;
 }
 
 .img2 { /* ข่าว */

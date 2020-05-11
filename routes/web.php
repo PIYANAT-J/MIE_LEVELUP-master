@@ -42,14 +42,12 @@ Route::get('/spon_profile', 'UploadImageProfile@indexSpon')->name('sponProfile')
 Route::get('/update_profile/spon', 'UploadImageProfile@updateSpon')->name('SponUpDate');
 Route::post('/update_profile/spon/edit', 'UploadImageProfile@saveProfileSpon')->name('SponEditProfile');
 
-// Route::get('/dev_profile', function () {
-//     return view('dev_profile');
-// });
-// Route::get('/update_profile', function () {
-//     return view('update_profile');
-// });
 Route::get('/change_password', function () {
     return view('change_password');
+});
+
+Route::get('/kyc', function () {
+    return view('kyc');
 });
 
 Route::view('/game_shelf', 'game_shelf') ->name('GAMESHELF');
