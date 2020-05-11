@@ -147,7 +147,7 @@ class UploadImageProfile extends Controller
     }
     public function update(){
         $developer = DB::select('select * from developers');
-        return view('update_profile', ['developer'=> $developer]);
+        return view('devUpdate_profile', ['developer'=> $developer]);
     }
 
     public function indexGuest_user(){
@@ -156,7 +156,7 @@ class UploadImageProfile extends Controller
     }
     public function updateGuest_user(){
         $guest_user = DB::select('select * from guest_users');
-        return view('update_profile', ['guest_user'=> $guest_user]);
+        return view('userUpdate_profile', ['guest_user'=> $guest_user]);
     }
 
     public function indexSpon(){
@@ -165,7 +165,7 @@ class UploadImageProfile extends Controller
     }
     public function updateSpon(){
         $sponsor = DB::select('select * from sponsors');
-        return view('update_profile', ['sponsor'=> $sponsor]);
+        return view('sponUpdate_profile', ['sponsor'=> $sponsor]);
     }
 
     public function saveProfileDev(Request $request){

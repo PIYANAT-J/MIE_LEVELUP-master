@@ -1,24 +1,24 @@
 @extends('layout.profile')
 @section('update_button')
-@if(Auth::user()->updateData == 'true')
-    <a href="{{route('EditProfile')}}" class="btn bgroup">
-        <div class="row">
-            <div>
-                <i class="material-icons pl-1">edit</i>
-            </div>
-            <div class="col pr-1" align="right ">Update Profile</div>
-        </div>        
-    </a>
-@else
-    <a href="{{route('EditProfile')}}" class="btn bgroup">
-        <div class="row">
-            <div>
-                <i class="material-icons pl-1">edit</i>
-            </div>
-            <div class="col pr-1" align="right ">Update Profile</div>
-        </div>        
-    </a>
-@endif
+  @if(Auth::user()->updateData == 'true')
+      <a href="{{route('EditProfile')}}" class="btn bgroup">
+          <div class="row">
+              <div>
+                  <i class="material-icons pl-1">edit</i>
+              </div>
+              <div class="col pr-1" align="right ">Update Profile</div>
+          </div>        
+      </a>
+  @else
+      <a href="{{route('EditProfile')}}" class="btn bgroup">
+          <div class="row">
+              <div>
+                  <i class="material-icons pl-1">edit</i>
+              </div>
+              <div class="col pr-1" align="right ">Update Profile</div>
+          </div>        
+      </a>
+  @endif
 @endsection
 
 @section('user_profile')
@@ -29,9 +29,6 @@
     <ul class="nav topnav">
       <li>
         <a class="nav-link " data-toggle="tab" href="#games-shelf">Games Shelf</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#download-history">Download History</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#point-history">Point History</a>
@@ -45,31 +42,162 @@
         <h3>Games Shelf</h3>
       </div>
 
-
-
-      <div id="download-history" class="container tab-pane fade"><br>
-        <h3>Download</h3>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      </div>
-
-
-
-
       <div id="point-history" class="container tab-pane fade"><br>
-        <div class="table">
-          <div class="tr">
-            <div class="th1">#</div>
-            <div class="th2">ชื่อกิจกรรม</div>
-            <div class="th3">จำนวนคะแนน</div>
-            <div class="th4">วันเวลา</div>
-          </div>
-          <div class="tr">
-                <div class="td">TD</div>
-                <div class="td">TD</div>
+        <div class="over">
+          <div class="table"  >
+            <div class="tr">
+              <div class="number">#</div>
+              <div class="activity-name">Activity</div>
+              <div class="point">Point</div>
+              <div class="time">Date Time</div></tr>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
+            <div class="tr">
+              <div class="td-number">1</div>
+              <div class="td-activity-name">Update Profile</div>
+              <div class="td-point">+ 10</div>
+              <div class="td-time">63-05-11 16:52</div>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 

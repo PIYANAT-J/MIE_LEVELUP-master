@@ -141,8 +141,8 @@
                                                         <!-- <div class="input-group-prepend ">
                                                             <span class="input-group-text btn2"> <i class="material-icons">date_range</i></span>
                                                         </div> -->
-                                                    <input name="DEV_AGE" type="text" class="form-control textbox1 " placeholder="อายุ" value="{{ $DEV->DEV_AGE }}">
-                                                    <!-- <input type="text" class="form-control textbox1 " placeholder="อายุ"/> -->
+                                                    <input name="DEV_AGE" type="text" class="form-control textbox1 placeholder="อายุ" value="{{ $DEV->DEV_AGE }}">
+                                                    <!-- <input type="text" class="form-control textbox1 align="center" placeholder="อายุ"/> -->
                                                 </div>
                                             </div>
                                             <div class="col "></div>
@@ -182,7 +182,7 @@
                                                         <div class="row form-group">
                                                             <div class="col">
                                                                 <img id="preview" class="img-thumbnail" src="{{asset('home/imgProfile/'.$DEV->DEV_IMG) }}" alt="{{ $DEV->DEV_IMG }}" width="150" height="150">
-                                                                <input onchange="readURL(this)" type="file" class="form-control-file @error('DEV_IMG') is-invalid @enderror" id="DEV_IMG" name="DEV_IMG">
+                                                                <input onchange="readURL(this)" type="file" class="bnt bnt-primary form-control-file @error('DEV_IMG') is-invalid @enderror" id="DEV_IMG" name="DEV_IMG">
                                                             </div>
                                                         </div>
                                                     </div>
