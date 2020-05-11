@@ -1,24 +1,24 @@
 @extends('layout.profile')
 @section('update_button')
-@if(Auth::user()->updateData == 'true')
-    <a href="{{route('EditProfile')}}" class="btn bgroup">
-        <div class="row">
-            <div>
-                <i class="material-icons pl-1">edit</i>
-            </div>
-            <div class="col pr-1" align="right ">Update Profile</div>
-        </div>        
-    </a>
-@else
-    <a href="{{route('EditProfile')}}" class="btn bgroup">
-        <div class="row">
-            <div>
-                <i class="material-icons pl-1">edit</i>
-            </div>
-            <div class="col pr-1" align="right ">Update Profile</div>
-        </div>        
-    </a>
-@endif
+  @if(Auth::user()->updateData == 'true')
+      <a href="{{route('EditProfile')}}" class="btn bgroup">
+          <div class="row">
+              <div>
+                  <i class="material-icons pl-1">edit</i>
+              </div>
+              <div class="col pr-1" align="right ">Update Profile</div>
+          </div>        
+      </a>
+  @else
+      <a href="{{route('EditProfile')}}" class="btn bgroup">
+          <div class="row">
+              <div>
+                  <i class="material-icons pl-1">edit</i>
+              </div>
+              <div class="col pr-1" align="right ">Update Profile</div>
+          </div>        
+      </a>
+  @endif
 @endsection
 
 @section('user_profile')

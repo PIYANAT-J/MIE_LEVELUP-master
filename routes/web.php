@@ -31,16 +31,16 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/user_profile', 'UploadImageProfile@indexGuest_user')->name('homeProfile');
-Route::get('/update_profile/user', 'UploadImageProfile@updateGuest_user')->name('EditProfile');
-Route::post('/update_profile/user/edit', 'UploadImageProfile@saveProfileUser')->name('UserEditProfile');
+Route::get('/userUpdate_profile', 'UploadImageProfile@updateGuest_user')->name('EditProfile');
+Route::post('/userUpdate_profile/edit', 'UploadImageProfile@saveProfileUser')->name('UserEditProfile');
 
 Route::get('/dev_profile', 'UploadImageProfile@index')->name('devProfile');
-Route::get('/update_profile/dev', 'UploadImageProfile@update')->name('UpDate');
-Route::post('/update_profile/dev/edit', 'UploadImageProfile@saveProfileDev')->name('DevEditProfile');
+Route::get('/devUpdate_profile', 'UploadImageProfile@update')->name('UpDate');
+Route::post('/devUpdate_profile/edit', 'UploadImageProfile@saveProfileDev')->name('DevEditProfile');
 
 Route::get('/spon_profile', 'UploadImageProfile@indexSpon')->name('sponProfile');
-Route::get('/update_profile/spon', 'UploadImageProfile@updateSpon')->name('SponUpDate');
-Route::post('/update_profile/spon/edit', 'UploadImageProfile@saveProfileSpon')->name('SponEditProfile');
+Route::get('/sponUpdate_profile', 'UploadImageProfile@updateSpon')->name('SponUpDate');
+Route::post('/sponUpdate_profile/edit', 'UploadImageProfile@saveProfileSpon')->name('SponEditProfile');
 
 Route::get('/change_password', function () {
     return view('change_password');
