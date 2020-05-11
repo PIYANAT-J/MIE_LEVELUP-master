@@ -247,10 +247,10 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <script>
     $(document).ready(function(){
-        var date_input=$('input[name="DEV_BIRTHDAY"]'); //our date input has the name "date"
+        var date_input=$('input[name="SPON_BIRTHDAY1"]'); //our date input has the name "date"
         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
         date_input.datepicker({
-            format: 'mm/dd/yyyy',
+            format: 'yyyy-mm-dd',
             container: container,
             todayHighlight: true,
             autoclose: true,
