@@ -46,9 +46,15 @@ Route::get('/change_password', function () {
     return view('change_password');
 });
 
-Route::get('/kyc', function () {
-    return view('kyc');
-});
+// Route::get('/kyc', 'KycController@indexGuest_user')->name('KYC');
+// Route::get('/kyc/{type}', 'KycController@index');
+Route::get('/kyc', 'KycController@indexSpon');
+
+Route::post('/kyc/create', 'KycController@createKyc')->name('CreateKyc');
+
+// Route::get('/kyc', function () {
+//     return view('kyc');
+// });
 
 Route::view('/game_shelf', 'game_shelf') ->name('GAMESHELF');
 

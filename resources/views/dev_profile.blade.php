@@ -1,4 +1,14 @@
 @extends('layout.profile')
+<!-- @section('kyc_button')
+    <a href="/kyc" class="btn bgroup">
+        <div class="row">
+            <div>
+                <i class="material-icons pl-1">how_to_reg</i>
+            </div>
+            <div class="col pr-1" align="right ">ยืนยันตัวตน</div>
+        </div>        
+    </a>
+@endsection -->
 @section('update_button')
     @if(Auth::user()->updateData == 'true')
         <a href="{{route('UpDate')}}" class="btn bgroup">

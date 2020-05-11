@@ -121,7 +121,7 @@
 
                                     <div class="btn-group-vertical ml-3 mr-3">
                                         <!-- KYC-->
-                                        <a href="/kyc" class="btn bgroup">
+                                        <a href="/kyc/{{Auth::user()->users_type }}" class="btn bgroup">
                                             <div class="row">
                                                 <div>
                                                     <i class="material-icons pl-1">how_to_reg</i>
@@ -129,6 +129,7 @@
                                                 <div class="col pr-1" align="right ">ยืนยันตัวตน</div>
                                             </div>        
                                         </a>
+                                        <!-- @yield('kyc_button') -->
 
                                         <!-- Update Profile -->
                                         <!-- <a href="/update_profile" class="btn bgroup">
@@ -155,7 +156,8 @@
                                 </div>
                             </div>
                         
-                            <div class="col"> <!--คอลัมน์2 -->
+                            <!--คอลัมน์2 -->
+                            <div class="col">
                                 @yield('dev_profile')
 
                                 @yield('update_profile')
@@ -447,7 +449,7 @@
 
                                     <div class="btn-group-vertical ml-3 mr-3">
                                         <!-- KYC-->
-                                        <a href="/kyc" class="btn bgroup">
+                                        <a href="/kyc/{{Auth::user()->users_type }}" class="btn bgroup">
                                             <div class="row">
                                                 <div>
                                                     <i class="material-icons pl-1">how_to_reg</i>
@@ -575,7 +577,7 @@
                                     </div>
 
                                     <div class="col font2" align="right">
-                                        <a>เลขปัตรประชาชน</a>
+                                        <a>เลขบัตรประชาชน</a>
                                     </div>
                                 </div>
                             </li>
@@ -610,7 +612,7 @@
 
                             <div class="btn-group-vertical ml-3 mr-3">
                                 <!-- KYC-->
-                                <a href="/kyc" class="btn bgroup">
+                                <a href="/kyc/{{Auth::user()->users_type }}" class="btn bgroup">
                                     <div class="row">
                                         <div>
                                             <i class="material-icons pl-1">how_to_reg</i>
@@ -735,7 +737,7 @@
                                     </div>
 
                                     <div class="col font2" align="right">
-                                        <a>เลขปัตรประชาชน</a>
+                                        <a>เลขบัตรประชาชน</a>
                                     </div>
                                 </div>
                             </li>
@@ -770,7 +772,7 @@
 
                             <div class="btn-group-vertical ml-3 mr-3">
                                 <!-- KYC-->
-                                <a href="/kyc" class="btn bgroup">
+                                <a href="/kyc/{{Auth::user()->users_type }}" class="btn bgroup">
                                     <div class="row">
                                         <div>
                                             <i class="material-icons pl-1">how_to_reg</i>
@@ -895,7 +897,7 @@
                                     </div>
 
                                     <div class="col font2" align="right">
-                                        <a>เลขปัตรประชาชน</a>
+                                        <a>เลขบัตรประชาชน</a>
                                     </div>
                                 </div>
                             </li>
@@ -930,7 +932,7 @@
 
                             <div class="btn-group-vertical ml-3 mr-3">
                                 <!-- KYC-->
-                                <a href="/kyc" class="btn bgroup">
+                                <a href="/kyc/{{Auth::user()->users_type }}" class="btn bgroup">
                                     <div class="row">
                                         <div>
                                             <i class="material-icons pl-1">how_to_reg</i>

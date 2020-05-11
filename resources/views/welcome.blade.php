@@ -94,7 +94,7 @@
         </div>
         <div class="row justify-content-center mb-5" data-aos="fade-up">
             <div id="filters" class="filters text-center button-group col-md-7 ">
-                <button class="button5" data-filter="*">ทั้งหมด</button>
+                <button class="button5 active" data-filter="*">ทั้งหมด</button>
                 <button class="button5" data-filter=".news">มาใหม่</button>
                 <button class="button5" data-filter=".hot">ยอดนิยม</button>
             </div>
