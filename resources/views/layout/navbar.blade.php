@@ -22,9 +22,11 @@
         <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/level-up.css') }}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+        
+        @yield('head')
     <!-- เรียกใช้ Theme -->
-
+        
     </head>
     
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -77,7 +79,13 @@
                                         <a href="#about-section" class="nav-link">{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
                                         <ul class="dropdown">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="/user_profile">{{ __('โปรไฟล์') }}</a>
+                                                @if(Auth::user()->users_type == '2')
+                                                    <a class="nav-link" href="{{ route('devProfile') }}">{{ __('โปรไฟล์_DEV') }}</a>
+                                                @elseif(Auth::user()->users_type == '3')
+                                                    <a class="nav-link" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์_SPON') }}</a>
+                                                @else
+                                                    <a class="nav-link" href="{{ route('homeProfile') }}">{{ __('โปรไฟล์_USER') }}</a>
+                                                @endif
                                             </li>
                                             <li class="nav-item">
                                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -116,6 +124,8 @@
         <script src="{{ asset('dist/js/jquery.sticky.js') }}"></script>
         <script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
         <script src="{{ asset('dist/js/main.js') }}"></script>
+        <script type="javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+        <script type="javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
         
         @yield('script')
 

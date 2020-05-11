@@ -1,6 +1,27 @@
 @extends('layout.profile')
+@section('update_button')
+@if(Auth::user()->updateData == 'true')
+    <a href="{{route('EditProfile')}}" class="btn bgroup">
+        <div class="row">
+            <div>
+                <i class="material-icons pl-1">edit</i>
+            </div>
+            <div class="col pr-1" align="right ">Update Profile</div>
+        </div>        
+    </a>
+@else
+    <a href="{{route('EditProfile')}}" class="btn bgroup">
+        <div class="row">
+            <div>
+                <i class="material-icons pl-1">edit</i>
+            </div>
+            <div class="col pr-1" align="right ">Update Profile</div>
+        </div>        
+    </a>
+@endif
+@endsection
 
-@section('profile')
+@section('user_profile')
 
 <div class="container mt-0">
 
@@ -51,11 +72,5 @@
 
     </div>
   </div>
-
-
-@endsection
-
-
-@section('script')
 
 @endsection
