@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 use App\User;
+use App\Kyc;
 
 class Guest_user extends Model
 {
@@ -39,7 +40,7 @@ class Guest_user extends Model
         
     }
 
-    public static function InsertAndUpdateData($USER_EMAIL,$data){
+    public static function InsertAndUpdateData($data){
         $value = DB::table('guest_users')->where('USER_EMAIL', $data['USER_EMAIL'])->get();
         if($value->count() == 0){
             DB::table('guest_users')->insert($data);
@@ -47,10 +48,13 @@ class Guest_user extends Model
             DB::table('users')
                 ->where('email', $data['USER_EMAIL'])
                 ->update(['updateData'=> true]);
+            
+            $kyc = array('USER_ID' => $data['USER_ID'], 'USER_EMAIL' => $data['USER_EMAIL']);
+            DB::table('kycs')->insert($kyc);
             return 1;
         }else{
             DB::table('guest_users')
-                ->where('USER_EMAIL', $USER_EMAIL)
+                ->where('USER_EMAIL', $data['USER_EMAIL'])
                 ->update($data);
             return 0;
         }

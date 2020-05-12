@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 use App\User;
+use App\Kyc;
 
 class Developer extends Model
 {
@@ -68,6 +69,9 @@ class Developer extends Model
             DB::table('users')
                 ->where('email', $data['USER_EMAIL'])
                 ->update(['updateData'=> true]);
+
+            $kyc = array('USER_ID' => $data['USER_ID'], 'USER_EMAIL' => $data['USER_EMAIL']);
+            DB::table('kycs')->insert($kyc);
             return 1;
         }else{
             DB::table('developers')

@@ -171,6 +171,10 @@ class UploadImageProfile extends Controller
     public function saveProfileDev(Request $request){
     
         if ($request->input('submit') != null ){
+
+            // $this->validate($request, [
+            //     'DEV_IMG' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+            // ]);
     
             // Insert && Update
             if($request->has('DEV_IMG')){
@@ -207,7 +211,6 @@ class UploadImageProfile extends Controller
 
                 $DEV_TEL = $request->input('DEV_TEL');
                 $DEV_ID_CARD = $request->input('DEV_ID_CARD');
-                // $DEV_IMG = $img_name;
                 $DEV_BIRTHDAY = $request->input('DEV_BIRTHDAY');
                 $DEV_AGE = $request->input('DEV_AGE');
                 $DEV_GENDER = $request->input('DEV_GENDER');
@@ -231,14 +234,16 @@ class UploadImageProfile extends Controller
                 }
             }
         }
-        // return view('user_profile');
         return redirect()->action('UploadImageProfile@index');
-        // return redirect()->action('UploadImageProfile@index',['type'=>0]);
     }
 
     public function saveProfileUser(Request $request){
     
         if ($request->input('submit') != null ){
+
+            // $this->validate($request, [
+            //     'GUEST_USERS_IMG' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+            // ]);
     
             // Insert && Update
             if($request->has('GUEST_USERS_IMG')){
@@ -264,7 +269,7 @@ class UploadImageProfile extends Controller
                                 "USER_EMAIL" => $USER_EMAIL);
         
                     // Insert && Update
-                    $value = Guest_user::InsertAndUpdateData($USER_EMAIL, $data);
+                    $value = Guest_user::InsertAndUpdateData($data);
                     if($value){
                         Session::flash('message','Insert successfully.');
                     }else{
@@ -288,7 +293,7 @@ class UploadImageProfile extends Controller
                                 "USER_EMAIL" => $USER_EMAIL);
         
                     // Insert && Update
-                    $value = Guest_user::InsertAndUpdateData($USER_EMAIL, $data);
+                    $value = Guest_user::InsertAndUpdateData($data);
                     if($value){
                         Session::flash('message','Insert successfully.');
                     }else{
@@ -297,13 +302,16 @@ class UploadImageProfile extends Controller
                 }
             }
         }
-        // return view('user_profile');
         return redirect()->action('UploadImageProfile@indexGuest_user');
     }
 
     public function saveProfileSpon(Request $request){
     
         if ($request->input('submit') != null ){
+
+            // $this->validate($request, [
+            //     'SPON_IMG' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+            // ]);
     
             // Insert && Update
             if($request->has('SPON_IMG')){
@@ -329,7 +337,7 @@ class UploadImageProfile extends Controller
                                 "USER_EMAIL" => $USER_EMAIL);
         
                     // Insert && Update
-                    $value = Sponsors::InsertAndUpdateData($USER_EMAIL, $data);
+                    $value = Sponsors::InsertAndUpdateData($data);
                     if($value){
                         Session::flash('message','Insert successfully.');
                     }else{
@@ -353,7 +361,7 @@ class UploadImageProfile extends Controller
                                 "USER_EMAIL" => $USER_EMAIL);
         
                     // Insert && Update
-                    $value = Sponsors::InsertAndUpdateData($USER_EMAIL, $data);
+                    $value = Sponsors::InsertAndUpdateData($data);
                     if($value){
                         Session::flash('message','Insert successfully.');
                     }else{
@@ -362,7 +370,6 @@ class UploadImageProfile extends Controller
                 }
             }
         }
-        // return view('user_profile');
         return redirect()->action('UploadImageProfile@indexSpon');
     }
 }

@@ -141,7 +141,7 @@
                                                     <div class="row form-group">
                                                         <!-- <div class="col"> -->
                                                             <input onchange="readURL(this)" type="file" class="form-control-file @error('DEV_IMG') is-invalid @enderror" id="DEV_IMG" name="DEV_IMG">
-                                                            <img id="preview" class="img-thumbnail ml-4" src="{{asset('home/imgProfile/'.$DEV->DEV_IMG) }}" alt="{{ $DEV->DEV_IMG }}" width="150" height="150">
+                                                            <div class="col" align="center"><img id="preview" class="img-thumbnail" src="{{asset('home/imgProfile/'.$DEV->DEV_IMG) }}" alt="{{ $DEV->DEV_IMG }}" width="150" height="150"></div>
                                                         <!-- </div> -->
                                                     </div>
                                                 </div>
@@ -240,7 +240,7 @@
                                             <div class="row form-group">
                                                 <!-- <div class="col"> -->
                                                     <input onchange="readURL(this)" type="file" class="form-control-file @error('DEV_IMG') is-invalid @enderror" id="DEV_IMG" name="DEV_IMG">
-                                                    <img id="preview" class="img-thumbnail ml-4" src="{{asset('home/imgProfile/No_Img.jpg') }}" alt="{{ old('DEV_IMG') }}" width="150" height="150">
+                                                    <div class="col" align="center"><img id="preview" class="img-thumbnail" src="{{asset('home/imgProfile/No_Img.jpg') }}" alt="{{ old('DEV_IMG') }}" width="150" height="150"></div>
                                                 <!-- </div> -->
                                             </div>
                                         </div>

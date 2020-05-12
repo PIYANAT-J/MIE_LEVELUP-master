@@ -17,7 +17,7 @@ class CreateSponsorsTable extends Migration
             $table->bigIncrements('SPON_ID');
             $table->string('SPON_TEL')->collation('utf8_unicode_ci')->nullable();
             $table->string('SPON_ID_CARD')->collation('utf8_unicode_ci')->nullable();
-            $table->string('SPON_IMG')->collation('utf8_unicode_ci')->nullable();
+            $table->string('SPON_IMG')->collation('utf8_unicode_ci')->default('No_Img.jpg');
             $table->date('SPON_BIRTHDAY')->nullable();
             $table->integer('SPON_AGE')->nullable();
             $table->set('SPON_GENDER', ['Select','Men', 'Women'])->collation('utf8_unicode_ci')->default('Select');

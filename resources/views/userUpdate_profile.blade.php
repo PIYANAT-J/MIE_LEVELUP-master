@@ -109,7 +109,7 @@
                                                     <div class="row form-group">
                                                         <!-- <div class="col"> -->
                                                             <input onchange="readURL(this)" type="file" class="form-control-file @error('GUEST_USERS_IMG') is-invalid @enderror" id="GUEST_USERS_IMG" name="GUEST_USERS_IMG">
-                                                            <img id="preview" class="img-thumbnail ml-4"  src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" alt="{{ $USER->GUEST_USERS_IMG }}" width="150" height="150">
+                                                            <div class="col" align="center"><img id="preview" class="img-thumbnail"  src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" alt="{{ $USER->GUEST_USERS_IMG }}" width="150" height="150"></div>
                                                         <!-- </div> -->
                                                     </div>
                                                 </div>
@@ -209,7 +209,7 @@
                                             <div class="row form-group">
                                                 <!-- <div class="col"> -->
                                                     <input onchange="readURL(this)" type="file" class="form-control-file @error('GUEST_USERS_IMG') is-invalid @enderror" id="GUEST_USERS_IMG" name="GUEST_USERS_IMG">
-                                                    <img id="preview" class="img-thumbnail ml-4" src="{{asset('home/imgProfile/No_Img.jpg') }}" alt="{{ old('GUEST_USERS_IMG') }}" width="150" height="150">
+                                                    <div class="col" align="center"><img id="preview" class="img-thumbnail" src="{{asset('home/imgProfile/No_Img.jpg') }}" alt="{{ old('GUEST_USERS_IMG') }}" width="150" height="150"></div>
                                                    
                                                 <!-- </div> -->
                                             </div>

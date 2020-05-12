@@ -1,7 +1,7 @@
 @extends('layout.navbar')
 
 @section('navbar')
-<br><br>
+<br><br><br><br><br><br><br>
 <div class="container mt-3">
     <div class="row py-5  align-items-center">
         <div class="col-md-5 pr-lg-5 mb-5 ">
@@ -441,7 +441,7 @@
         </div>
     </div>
 </div> -->
-<br><br><br><br><br>
+<br><br><br><br><br><br><br>
 
 <footer class="site-footer">
     <div class="container">

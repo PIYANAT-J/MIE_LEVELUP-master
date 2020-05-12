@@ -5,6 +5,7 @@
   height: 100px;
   overflow: hidden;
 }
+
 .img-coin{ /*ไอคอน coin*/
   color:#ffdf4a;
 }
@@ -21,14 +22,17 @@
   color: #ce0005;
   text-align: center;
 }
+
 .font1{  /*ชื่อ-นามสกุล ข้อมูลส่วนตัวหน้าโปรไฟล์ */
   text-align: center;
   color: #ce0005;
   /* font-weight:bold; */
 }
+
 .font2{ /* ข้อมูลเลขบัตรปชช. เบอร์โทร อีเมล */
   color: #474948;
 }
+
 .font3{ /* link ทั้งหมด */
 color: #ce0005;
 }
@@ -36,7 +40,6 @@ color: #ce0005;
 color: #ce0005;
 font-weight:bold;
 }
-
 
 .font4{ /* link game shelf */
 color: #474948;
@@ -50,7 +53,6 @@ color: #ce0005;
 color: #ce0005;
 font-weight:bold;
 }
-
 .font5:hover{
 color: #000;
 font-weight:bold;
@@ -62,7 +64,6 @@ font-weight:bold;
   text-align: center;
   }
 
-
 .navbar { 
   position: fixed;
   margin-top: 10px;
@@ -73,7 +74,6 @@ font-weight:bold;
   background-color: #ffff; 
   color: #ce0005;
 }
-
 .btn1:hover{ 
    color: #ffff;
    background-color : #ce0005;
@@ -222,7 +222,6 @@ border-bottom: 1px solid #ce0005; }
   overflow: hidden;
   background-color: #ffff;
 }
-
 .topnav a {
   float: left;
   display: block;
@@ -233,11 +232,9 @@ border-bottom: 1px solid #ce0005; }
   font-size: 15px;
   border-bottom: 1px solid transparent;
 }
-
 .topnav a:hover {
   border-bottom: 1px solid #ce0005;
 }
-
 .topnav a.active {
   border-bottom: 1px solid #ce0005;
   font-weight: bold;
@@ -246,6 +243,7 @@ border-bottom: 1px solid #ce0005; }
 .table {
   display: table;
 }
+
 .tr {
   display: table-row;
 }
@@ -256,7 +254,7 @@ border-bottom: 1px solid #ce0005; }
   overflow-y: scroll;
 }
 
-.number {
+.th-number {
   display: table-cell;
   font-weight: bold;
   text-align: center;
@@ -265,7 +263,7 @@ border-bottom: 1px solid #ce0005; }
   border-bottom: #ce0005 solid 2px;
   /* background-color: #8ef3a8; */
 }
-.activity-name {
+.th-activity-name {
   display: table-cell;
   font-weight: bold;
   text-align: left;
@@ -275,7 +273,8 @@ border-bottom: 1px solid #ce0005; }
   border-bottom: #ce0005 solid 2px;
   /* background-color: #f79c9d; */
 }
-.point {
+
+.th-point {
   display: table-cell;
   font-weight: bold;
   text-align: center;
@@ -285,7 +284,7 @@ border-bottom: 1px solid #ce0005; }
   /* background-color:#87c0fd; */
 }
 
-.time {
+.th-time {
   display: table-cell;
   font-weight: bold;
   text-align: center;
@@ -303,6 +302,7 @@ border-bottom: 1px solid #ce0005; }
   border-bottom: #dddddd solid 1px;
   /* background-color: #8ef3a8; */
 }
+
 .td-activity-name {
   display: table-cell;
   text-align: left;
@@ -312,6 +312,7 @@ border-bottom: 1px solid #ce0005; }
   border-bottom: #dddddd solid 1px;
   /* background-color: #f79c9d; */
 }
+
 .td-point {
   display: table-cell;
   text-align: center;
@@ -327,6 +328,7 @@ border-bottom: 1px solid #ce0005; }
   vertical-align: middle;
   width: 13%;
   border-bottom: #dddddd solid 1px;
+  font-size: 13px;
   /* background-color: #f395fc; */
 }
 
@@ -355,14 +357,6 @@ border-bottom: 1px solid #ce0005; }
   width: 100%;
   height: 40px;  
 }
-
-
-/* .b1{
-  background-color:#55d275;;
-}
-.b2{
-  background-color:#b6f3c5;;
-} */
 
 /* บันทึก */
 .button1{
@@ -394,7 +388,6 @@ border-bottom: 1px solid #ce0005; }
   border-bottom-right-radius: 50px;
   border-bottom-left-radius: 50px;
 }
-
 .button2:hover{
   background-color: #000;
   border: 2px solid #000;
@@ -416,7 +409,6 @@ border-top-right-radius: 0px;
 border-bottom-right-radius: 4px;
 border-bottom-left-radius: 4px;
 }
-
 .bgroup:hover{
 color: #ffff;
 background-color: #ce0005;
@@ -462,6 +454,7 @@ color: #ffff;
 background-color: #ce0005;
 border: 1px solid #ce0005;
 }
+
 .button6{ /* send email */
 background-color: #000;
 color: #fff;
@@ -514,6 +507,7 @@ border-top-left-radius: 50px;
 border-bottom-left-radius: 50px;
 padding-left: 10px;
 }
+
 .regis{ /* ฟิลด์ */
 background-color: transparent;
 color: #7c7c7c;
@@ -561,7 +555,6 @@ overflow: hidden;
   margin-right: 20px;
   margin-bottom: 15px;
 }
-
 .form-control-file::-webkit-file-upload-button {
   color: #fff;
   border: 1px solid #ce0005;
@@ -585,7 +578,107 @@ overflow: hidden;
   border: none;
 }
 
+.wait-approve{
+  text-align: center;
+  color: #fff;
+  background-color: #FFCC33;
+  border: #FFCC33 1px solid;
+  border-radius: 100px;
+  width: 300px;
+}
 
+.approve{
+  text-align: center;
+  color: #fff;
+  background-color: #20B2AA;
+  border: #20B2AA 1px solid;
+  border-radius: 100px;
+  width: 300px;
+}
 
+.non-approve{
+  text-align: center;
+  color: #fff;
+  background-color: #ce0005;
+  border: #ce0005 1px solid;
+  border-radius: 100px;
+  width: 300px;
+}
 
+.th-game-pic{
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  border-bottom: #ce0005 solid 2px;
+  width: 10%;
+}
 
+.td-game-img{
+  display: table-cell;
+  border-bottom: #dddddd solid 1px;
+  
+}
+.game-img{
+  width: 80px;
+  height: auto;
+  border: #fff solid 2px;
+}
+
+.th-game-name{
+  text-align: left;
+  vertical-align: middle;
+  display: table-cell;
+  border-bottom: #ce0005 solid 2px;
+  /* padding-left: 10px; */
+  font-weight: bold;
+}
+.td-game-name{
+  display: table-cell;
+  border-bottom: #dddddd solid 1px;
+}
+
+.th-game-hours{
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  border-bottom: #ce0005 solid 2px;
+  width: 9%;
+  font-weight: bold;
+}
+.td-game-hours{
+  display: table-cell;
+  border-bottom: #dddddd solid 1px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.th-game-date{
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  border-bottom: #ce0005 solid 2px;
+  width: 12%;
+  font-weight: bold;
+}
+.td-game-date{
+  display: table-cell;
+  border-bottom: #dddddd solid 1px;
+  text-align: center;
+}
+.button9{
+  color: #fff;
+  background-color: #ce0005;
+  width: 50px;
+  height: 50px;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 100%;
+  padding-top: 8px;
+  margin-left: 5%;
+}
+
+.row1{
+  background-color: #fff;
+  border-bottom: #ce0005 solid 1px;
+}

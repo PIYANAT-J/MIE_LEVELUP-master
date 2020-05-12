@@ -121,7 +121,7 @@
 
                                     <div class="btn-group-vertical ml-3 mr-3">
                                         <!-- KYC-->
-                                        <a href="/kyc/{{Auth::user()->users_type }}" class="btn bgroup">
+                                        <a href="{{route('devKyc')}}" class="btn bgroup">
                                             <div class="row">
                                                 <div>
                                                     <i class="material-icons pl-1">how_to_reg</i>
@@ -286,7 +286,7 @@
 
                                     <div class="btn-group-vertical ml-3 mr-3">
                                         <!-- KYC-->
-                                        <a href="/kyc" class="btn bgroup">
+                                        <a href="{{route('sponKyc')}}" class="btn bgroup">
                                             <div class="row">
                                                 <div>
                                                     <i class="material-icons pl-1">how_to_reg</i>
@@ -449,7 +449,7 @@
 
                                     <div class="btn-group-vertical ml-3 mr-3">
                                         <!-- KYC-->
-                                        <a href="/kyc/{{Auth::user()->users_type }}" class="btn bgroup">
+                                        <a href="{{route('userKyc')}}" class="btn bgroup">
                                             <div class="row">
                                                 <div>
                                                     <i class="material-icons pl-1">how_to_reg</i>
@@ -612,7 +612,7 @@
 
                             <div class="btn-group-vertical ml-3 mr-3">
                                 <!-- KYC-->
-                                <a href="/kyc" class="btn bgroup">
+                                <a href="{{route('devKyc')}}" class="btn bgroup">
                                     <div class="row">
                                         <div>
                                             <i class="material-icons pl-1">how_to_reg</i>
@@ -772,7 +772,7 @@
 
                             <div class="btn-group-vertical ml-3 mr-3">
                                 <!-- KYC-->
-                                <a href="/kyc" class="btn bgroup">
+                                <a href="{{route('sponKyc')}}" class="btn bgroup">
                                     <div class="row">
                                         <div>
                                             <i class="material-icons pl-1">how_to_reg</i>
@@ -932,7 +932,7 @@
 
                             <div class="btn-group-vertical ml-3 mr-3">
                                 <!-- KYC-->
-                                <a href="/kyc" class="btn bgroup">
+                                <a href="{{route('userKyc')}}" class="btn bgroup">
                                     <div class="row">
                                         <div>
                                             <i class="material-icons pl-1">how_to_reg</i>

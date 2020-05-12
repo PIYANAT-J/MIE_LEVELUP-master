@@ -109,7 +109,7 @@
                                                     <div class="row form-group">
                                                         <!-- <div class="col"> -->
                                                             <input onchange="readURL(this)" type="file" class="form-control-file @error('SPON_IMG') is-invalid @enderror" id="SPON_IMG" name="SPON_IMG">
-                                                            <img id="preview" class="img-thumbnail ml-4" src="{{asset('home/imgProfile/'.$SPON->SPON_IMG) }}" alt="{{ $SPON->SPON_IMG }}" width="150" height="150">
+                                                            <div class="col" align="center"><img id="preview" class="img-thumbnail" src="{{asset('home/imgProfile/'.$SPON->SPON_IMG) }}" alt="{{ $SPON->SPON_IMG }}" width="150" height="150"></div>
                                                         <!-- </div> -->
                                                     </div>
                                                 </div>
@@ -209,7 +209,7 @@
                                             <div class="row form-group">
                                                 <!-- <div class="col"> -->
                                                     <input onchange="readURL(this)" type="file" class="form-control-file @error('SPON_IMG') is-invalid @enderror" id="SPON_IMG" name="SPON_IMG">
-                                                    <img id="preview" class="img-thumbnail ml-4" src="{{asset('home/imgProfile/No_Img.jpg') }}" alt="{{ old('SPON_IMG') }}" width="150" height="150">
+                                                    <div class="col" align="center"><img id="preview" class="img-thumbnail ml-4" src="{{asset('home/imgProfile/No_Img.jpg') }}" alt="{{ old('SPON_IMG') }}" width="150" height="150"></div>
                                                 <!-- </div> -->
                                             </div>
                                         </div>

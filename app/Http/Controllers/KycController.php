@@ -30,9 +30,30 @@ class KycController extends Controller
     //     // $developer = DB::select('select * from developers');
     //     // return view('kyc', ['developer'=> $developer]);
     // }
-    public function indexSpon(){
-        $sponsor = DB::select('select * from sponsors');
-        return view('kyc', ['sponsor'=> $sponsor]);
+
+    // public function indexSpon(){
+    //     $sponsor = DB::select('select * from sponsors');
+    //     return view('kyc', ['sponsor'=> $sponsor]);
+    // }
+    public function indexUserKyc(){
+        $guest_user = DB::table('guest_users')
+                        ->join('kycs', 'guest_users.USER_ID', '=', 'kycs.USER_ID')
+                        ->get();
+        return view('kyc.userKyc', ['guest_user'=> $guest_user]);
+    }
+
+    public function indexDevKyc(){
+        $developer = DB::table('developers')
+                        ->join('kycs', 'developers.USER_ID', '=', 'kycs.USER_ID')
+                        ->get();
+        return view('kyc.devKyc', ['developer'=> $developer]);
+    }
+
+    public function indexSponKyc(){
+        $sponsor = DB::table('sponsors')
+                        ->join('kycs', 'sponsors.USER_ID', '=', 'kycs.USER_ID')
+                        ->get();
+        return view('kyc.sponKyc', ['sponsor'=> $sponsor]);
     }
 
     public function createKyc(Request $request){
@@ -45,31 +66,51 @@ class KycController extends Controller
     
             // Insert && Update
             if($request->has('KYC_IMG')){
+                // $allowedfileExtension=['jpeg','png','jpg','gif','svg'];
                 $upload = $request->file('KYC_IMG');
                 $img_name = 'KYC_'.time().'.'.$upload->getClientOriginalExtension();
                 $path = public_path('home/Kyc');
                 $upload->move($path, $img_name);
 
-                $KYC_IMG = $img_name;
-                $KYC_CREATE_DATE = $request->input('KYC_CREATE_DATE');
-                $USER_ID = $request->input('USER_ID');
-                $USER_EMAIL = $request->input('USER_EMAIL');
+                // $checkImg = in_array($img_name, $allowedfileExtension);
 
-                if($KYC_IMG != '' || $KYC_CREATE_DATE != '' || $USER_ID != '' || $USER_EMAIL != ''){
-                    $data = array("KYC_IMG"=>$KYC_IMG, "KYC_CREATE_DATE"=>$KYC_CREATE_DATE, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
-        
-                    // Insert && Update
-                    $value = Kyc::InsertAndUpdateData($USER_EMAIL, $data);
-                    if($value){
-                        Session::flash('message','Insert successfully.');
-                    }else{
-                        Session::flash('message','Username already exists.');
+                // if($checkImg){
+                    $KYC_IMG = $img_name;
+                    $KYC_STATUS = $request->input('KYC_STATUS');
+                    $KYC_CREATE_DATE = $request->input('KYC_CREATE_DATE');
+                    $USER_ID = $request->input('USER_ID');
+                    $USER_EMAIL = $request->input('USER_EMAIL');
+
+                    if($KYC_IMG != '' || $KYC_CREATE_DATE != '' || $USER_ID != '' || $USER_EMAIL != '' || $KYC_STATUS != ''){
+                        $data = array("KYC_IMG"=>$KYC_IMG, "KYC_CREATE_DATE"=>$KYC_CREATE_DATE, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL, "KYC_STATUS"=>$KYC_STATUS);
+            
+                        // Insert && Update
+                        $value = Kyc::InsertAndUpdateData($data);
+                        if($value){
+                            Session::flash('message','Insert successfully.');
+                        }else{
+                            Session::flash('message','Username already exists.');
+                        }
                     }
-                }
+                    // echo '<div class="alert alert-warning">successfully</div>';
+                    // Session::flash('message','Insert successfully.');
+                    
+                // }else{
+                //     // echo '<div class="alert alert-warning"><strong>Warning!</strong> Sorry Only Upload png , jpg , doc</div>';
+                //     // Session::flash('message','<strong>Warning!</strong> Sorry Only Upload png , jpg , doc');
+                // }
+            }
+
+            $Type = $request->input('users_type');
+
+            if($Type == '2'){
+                return redirect()->action('KycController@indexDevKyc');
+            }elseif($Type == '3'){
+                return redirect()->action('KycController@indexSponKyc');
+            }else{
+                return redirect()->action('KycController@indexUserKyc');
             }
         }
-        // return view('user_profile');
-        return redirect()->action('KycController@indexSpon');
-        // return redirect()->action('UploadImageProfile@index',['type'=>0]);
+        // return redirect()->action('KycController@indexSponKyc');
     }
 }
