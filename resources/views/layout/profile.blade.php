@@ -932,14 +932,14 @@
 
                             <div class="btn-group-vertical ml-3 mr-3">
                                 <!-- KYC-->
-                                <a href="{{route('userKyc')}}" class="btn bgroup">
+                                <!-- <a href="{{route('userKyc')}}" class="btn bgroup">
                                     <div class="row">
                                         <div>
                                             <i class="material-icons pl-1">how_to_reg</i>
                                         </div>
                                         <div class="col pr-1" align="right ">ยืนยันตัวตน</div>
                                     </div>        
-                                </a>
+                                </a> -->
 
                                 <!-- Update Profile -->
                                 <!-- <a href="/update_profile" class="btn bgroup">

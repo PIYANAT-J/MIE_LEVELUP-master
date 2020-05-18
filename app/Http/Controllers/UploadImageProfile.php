@@ -143,29 +143,29 @@ class UploadImageProfile extends Controller
 
     public function index(){
         $developer = DB::select('select * from developers');
-        return view('dev_profile', ['developer'=> $developer]);
+        return view('profile.dev_profile', ['developer'=> $developer]);
     }
     public function update(){
         $developer = DB::select('select * from developers');
-        return view('devUpdate_profile', ['developer'=> $developer]);
+        return view('profile.updateProfile.devUpdate_profile', ['developer'=> $developer]);
     }
 
     public function indexGuest_user(){
         $guest_user = DB::select('select * from guest_users');
-        return view('user_profile', ['guest_user'=> $guest_user]);
+        return view('profile.user_profile', ['guest_user'=> $guest_user]);
     }
     public function updateGuest_user(){
         $guest_user = DB::select('select * from guest_users');
-        return view('userUpdate_profile', ['guest_user'=> $guest_user]);
+        return view('profile.updateProfile.userUpdate_profile', ['guest_user'=> $guest_user]);
     }
 
     public function indexSpon(){
         $sponsor = DB::select('select * from sponsors');
-        return view('spon_profile', ['sponsor'=> $sponsor]);
+        return view('profile.spon_profile', ['sponsor'=> $sponsor]);
     }
     public function updateSpon(){
         $sponsor = DB::select('select * from sponsors');
-        return view('sponUpdate_profile', ['sponsor'=> $sponsor]);
+        return view('profile.updateProfile.sponUpdate_profile', ['sponsor'=> $sponsor]);
     }
 
     public function saveProfileDev(Request $request){

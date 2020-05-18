@@ -46,9 +46,9 @@ Route::get('/change_password', function () {
     return view('change_password');
 });
 
-Route::get('/kyc/userKyc', 'KycController@indexUserKyc')->name('userKyc');
-Route::get('/kyc/devKyc', 'KycController@indexDevKyc')->name('devKyc');
-Route::get('/kyc/sponKyc', 'KycController@indexSponKyc')->name('sponKyc');
+Route::get('/userKyc', 'KycController@indexUserKyc')->name('userKyc');
+Route::get('/devKyc', 'KycController@indexDevKyc')->name('devKyc');
+Route::get('/sponKyc', 'KycController@indexSponKyc')->name('sponKyc');
 
 Route::post('/kyc/create', 'KycController@createKyc')->name('CreateKyc');
 
