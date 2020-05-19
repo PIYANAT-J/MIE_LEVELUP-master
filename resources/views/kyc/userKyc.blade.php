@@ -82,7 +82,15 @@
                                         <div class="col-sm-7 ml-3 mr-3" >
                                             - รูปต้องไม่มีอะไรบัง เห็นได้ชัดเจน </br>
                                             - หรือบัตรประชาชน หรือหนังสือเดินทาง ให้เห็นข้อมูลได้อย่างชัดเจนไม่บดบังรายละเอียดบนบัตร </br>
-                                            - กระดาษที่เขียนต้องอ่านออกได้ชัดเจน </br>
+                                            - กระดาษที่เขียนต้องอ่านออกได้ชัดเจน </br></br>
+                                            <img src="{{asset('home/Kyc/kyc.png') }}" >
+                                        </div>
+                                        <div class="col "></div>
+                                        <div class="w-100"></div>
+
+                                        <div class="col"></div>
+                                        <div class="col-sm-7 ml-3 mr-3" >
+                                            <img src="home/images/kyc.png">
                                         </div>
                                         <div class="col "></div>
                                         <div class="w-100"></div>
@@ -138,7 +146,15 @@
                                         <div class="col-sm-7 ml-3 mr-3" >
                                             - รูปต้องไม่มีอะไรบัง เห็นได้ชัดเจน </br>
                                             - หรือบัตรประชาชน หรือหนังสือเดินทาง ให้เห็นข้อมูลได้อย่างชัดเจนไม่บดบังรายละเอียดบนบัตร </br>
-                                            - กระดาษที่เขียนต้องอ่านออกได้ชัดเจน </br>
+                                            - กระดาษที่เขียนต้องอ่านออกได้ชัดเจน </br></br>
+                                            <img src="{{asset('home/Kyc/kyc.png') }}" >
+                                        </div>
+                                        <div class="col "></div>
+                                        <div class="w-100"></div>
+
+                                        <div class="col"></div>
+                                        <div class="col-sm-7 ml-3 mr-3" >
+                                            <img src="home/images/kyc.png">
                                         </div>
                                         <div class="col "></div>
                                         <div class="w-100"></div>
@@ -199,7 +215,15 @@
                                         <div class="col-sm-7 ml-3 mr-3" >
                                             - รูปต้องไม่มีอะไรบัง เห็นได้ชัดเจน </br>
                                             - หรือบัตรประชาชน หรือหนังสือเดินทาง ให้เห็นข้อมูลได้อย่างชัดเจนไม่บดบังรายละเอียดบนบัตร </br>
-                                            - กระดาษที่เขียนต้องอ่านออกได้ชัดเจน </br>
+                                            - กระดาษที่เขียนต้องอ่านออกได้ชัดเจน </br></br>
+                                            <img src="{{asset('home/Kyc/kyc.png') }}" >
+                                        </div>
+                                        <div class="col "></div>
+                                        <div class="w-100"></div>
+
+                                        <div class="col"></div>
+                                        <div class="col-sm-7 ml-3 mr-3" >
+                                            <img src="home/images/kyc.png">
                                         </div>
                                         <div class="col "></div>
                                         <div class="w-100"></div>
@@ -278,7 +302,8 @@
                                         <div class="col-sm-7 ml-3 mr-3" >
                                             - รูปต้องไม่มีอะไรบัง เห็นได้ชัดเจน </br>
                                             - หรือบัตรประชาชน หรือหนังสือเดินทาง ให้เห็นข้อมูลได้อย่างชัดเจนไม่บดบังรายละเอียดบนบัตร </br>
-                                            - กระดาษที่เขียนต้องอ่านออกได้ชัดเจน </br>
+                                            - กระดาษที่เขียนต้องอ่านออกได้ชัดเจน </br></br>
+                                            <img src="{{asset('home/Kyc/kyc.png') }}" >
                                         </div>
                                         <div class="col "></div>
                                         <div class="w-100"></div>

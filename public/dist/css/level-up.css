@@ -591,7 +591,7 @@ overflow: hidden;
   text-align: center;
   color: #fff;
   background-color: #20B2AA;
-  border: #20B2AA 1px solid;
+  border: #66CCCC  1px solid;
   border-radius: 100px;
   width: 300px;
 }
@@ -617,10 +617,12 @@ overflow: hidden;
   display: table-cell;
   border-bottom: #dddddd solid 1px;
   
+  
 }
 .game-img{
   width: 80px;
-  height: auto;
+  height: 50px;
+  overflow: hidden;
   border: #fff solid 2px;
 }
 
@@ -637,6 +639,20 @@ overflow: hidden;
   border-bottom: #dddddd solid 1px;
 }
 
+.th-game-status{
+  vertical-align: middle;
+  display: table-cell;
+  border-bottom: #ce0005 solid 2px;
+  width: 11%;
+  font-weight: bold;
+}
+
+.td-game-status{
+  display: table-cell;
+  border-bottom: #dddddd solid 1px;
+  padding-right: 10px;
+}
+
 .th-game-hours{
   text-align: center;
   vertical-align: middle;
@@ -645,6 +661,7 @@ overflow: hidden;
   width: 9%;
   font-weight: bold;
 }
+
 .td-game-hours{
   display: table-cell;
   border-bottom: #dddddd solid 1px;
@@ -681,4 +698,56 @@ overflow: hidden;
 .row1{
   background-color: #fff;
   border-bottom: #ce0005 solid 1px;
+}
+
+.btn-wait-approve{
+  font-size: 13px;
+  background-color: #FFCC33;
+  text-align: right;
+  border-radius: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.btn-approve{
+  font-size: 13px;
+  background-color: #66CCCC;
+  text-align: right;
+  border-radius: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.textarea-description{
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.btn-choose_file{
+  width: 130px;
+  height: 40px;
+  background-color: #ce0005;
+  color: #fff;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  padding-left: 10px;
+  vertical-align: middle;
+}
+
+.img{
+  width: 200px;
+  height: 200px!important;
+  overflow: hidden;
+}
+
+.bg{
+  background-color: #FFCC33;
 }

@@ -58,13 +58,18 @@
             <div class="tr">
               <div class="th-game-pic"></div>
               <div class="th-game-name"></div>
+              <div class="th-game-status">Status</div>
               <div class="th-game-hours pr-3">Download</div>
-              <div class="th-game-date ">Release date</div></tr>
+              <div class="th-game-date ">Release Date</div></tr>
             </div>
 
             <div class="tr">
               <div class="td-game-img"><img src="section/picture_game/game_profile.png" alt="Image"class="game-img" ></div>
               <div class="td-game-name">Example</div>
+              <div class="td-game-status">
+                <a class="btn-wait-approve">รออนุมัติ</a>
+                <a class="btn-approve">อนุมัติแล้ว</a>
+              </div>
               <div class="td-game-hours pr-3">111 ครั้ง</div>
               <div class="td-game-date">12-05-20</div>
             </div>
@@ -72,6 +77,10 @@
             <div class="tr">
               <div class="td-game-img"><img src="section/picture_game/game_pic.jpg" alt="Image"class="game-img" ></div>
               <div class="td-game-name">Example</div>
+              <div class="td-game-status">
+                <a class="btn-wait-approve">รออนุมัติ</a>
+                <a class="btn-approve">อนุมัติแล้ว</a>
+              </div>
               <div class="td-game-hours pr-3">95 ครั้ง</div>
               <div class="td-game-date">12-05-20</div>
             </div>
@@ -79,35 +88,11 @@
             <div class="tr">
               <div class="td-game-img"><img src="section/picture_game/csgo.jpg" alt="Image"class="game-img" ></div>
               <div class="td-game-name">Example</div>
+              <div class="td-game-status">
+                <a class="btn-wait-approve">รออนุมัติ</a>
+                <a class="btn-approve">อนุมัติแล้ว</a>
+              </div>
               <div class="td-game-hours pr-3">72 ครั้ง</div>
-              <div class="td-game-date">12-05-20</div>
-            </div>
-
-            <div class="tr">
-              <div class="td-game-img"><img src="section/picture_game/fifa.jpg" alt="Image"class="game-img" ></div>
-              <div class="td-game-name">Example</div>
-              <div class="td-game-hours pr-3">45 ครั้ง</div>
-              <div class="td-game-date">12-05-20</div>
-            </div>
-
-            <div class="tr">
-              <div class="td-game-img"><img src="section/picture_game/pes.jpg" alt="Image"class="game-img" ></div>
-              <div class="td-game-name">Example</div>
-              <div class="td-game-hours pr-3">32 ครั้ง</div>
-              <div class="td-game-date">12-05-20</div>
-            </div>
-
-            <div class="tr">
-              <div class="td-game-img"><img src="section/picture_game/pubg.jpeg" alt="Image"class="game-img" ></div>
-              <div class="td-game-name">Example</div>
-              <div class="td-game-hours pr-3">10 ครั้ง</div>
-              <div class="td-game-date">12-05-20</div>
-            </div>
-
-            <div class="tr">
-              <div class="td-game-img"><img src="section/picture_game/pubg_lite.jpeg" alt="Image"class="game-img" ></div>
-              <div class="td-game-name">Example</div>
-              <div class="td-game-hours pr-3">1 ครั้ง</div>
               <div class="td-game-date">12-05-20</div>
             </div>
           </div>
@@ -303,9 +288,153 @@
       </div>
 
       <div id="upload-game" class="container tab-pane"><br>
-        <h2>Upload Game</h2>
+
+        <div class="col">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">  
+                <lable class="control-label">Picture : </lable>  
+                <input id="file_upload" style="display:none" name="file_upload[]" type="file" multiple="true">  
+              <div id="upload" class="btn btn-info">
+                Upload File
+              </div>
+              <div id="thumbnail" width="150" height="150"></div>
+            </div>
+            <div class="col-sm-4">ทสอบ</div>
+            <div class="col-sm-4">ทดสอบ</div>
+          </div>
+        </div>
+            <!-- <div class="col-lg-7">
+              <div><input type="text" class="form-control textbox1 my-2" placeholder="ชื่อเกม" require></div>
+              
+              <div class="w-100">
+              <textarea class="form-control textarea-description my-1"  rows="3" placeholder="ทำอธิบาย"></textarea>
+              
+              <div class="w-100">
+              <select class="custom-select textbox1 my-1" >
+                <option name="" value="" selected>ประเภทเกม</option>
+                <option name="" value="">ข้อมูลจากตาราง game_type </option>
+                <option name="" value="">ข้อมูลจากตาราง game_type</option>
+                <option name="" value="">ข้อมูลจากตาราง game_type </option>
+                <option name="" value="">ข้อมูลจากตาราง game_type</option>
+                <option name="" value="">ข้อมูลจากตาราง game_type</option>
+              </select>
+              <div class="w-100">
+              <select class="custom-select textbox1 my-1 bg" >
+              <select class="custom-select textbox1 my-1 " >
+                <option name="" value="" selected>เรทเกม</option>
+                <option name="" value="">ข้อมูลจากตาราง rate</option>
+                <option name="" value="">ข้อมูลจากตาราง rate </option>
+                <option name="" value="">ข้อมูลจากตาราง rate</option>
+                <option name="" value="">ข้อมูลจากตาราง rate</option>
+              </select>
+              <div class="input-group input-file">
+                <button class="btn btn-choose_file" type="button">เลือกรูปภาพ</button>
+                <input type="text" class="form-control" placeholder='เลือกรูปภาพ...' />
+              </div>
+              <div class="w-100">
+              <div>
+              <input type="file" name="filepicture" id="filepicture" class="custom-file-input">
+              <label class="custom-file-label" for="filepicture">Choose file</label>
+              </div>
+            </div> -->
+
+
+        <!-- </div> -->
       </div>
     </div>
   </div>
+
+@endsection
+
+@section('script')
+<script>
+function bs_input_file() {
+	$(".input-file").before(
+		function() {
+			if ( ! $(this).prev().hasClass('input-ghost') ) {
+				var element = $("<input type='file' class='input-ghost' style='visibility:hidden;  width=150; height=150'>");
+				element.attr("name",$(this).attr("name"));
+				element.change(function(){
+					element.next(element).find('input').val((element.val()).split('\\').pop());
+				});
+				$(this).find("button.btn-choose_file").click(function(){
+					element.click();
+				});
+				$(this).find("button.btn-reset").click(function(){
+					element.val(null);
+					$(this).parents(".input-file").find('input').val('');
+				});
+				$(this).find('input').css("cursor","pointer");
+				$(this).find('input').mousedown(function() {
+					$(this).parents('.input-file').prev().click();
+					return false;
+				});
+				return element;
+			}
+		}
+	);
+}
+$(function() {
+	bs_input_file();
+});
+</script>
+
+<!-- <script type="text/javascript">
+$(function(){
+ 
+    $("#filepicture").on("change",function(){
+        var _fileName = $(this).val();
+        $(this).next("label").text(_fileName);
+    });
+ 
+});
+</script> -->
+
+<script>
+$(function () {
+ 
+ 
+ $("#upload").on("click",function(e){
+     $("#file_upload").show().click().hide();
+     e.preventDefault();
+ });
+ $("#file_upload").on("change",function(e){
+     var files = this.files
+     showThumbnail(files)        
+ });
+ function showThumbnail(files){
+     $("#thumbnail").html("");
+     for(var i=0;i<files.length;i++){
+         var file = files[i]
+         var imageType = /image.*/
+         if(!file.type.match(imageType)){
+             //     console.log("Not an Image");
+             continue;
+         }
+         var image = document.createElement("img");
+         var thumbnail = document.getElementById("thumbnail");
+         image.file = file;
+         thumbnail.appendChild(image)
+         var reader = new FileReader()
+         reader.onload = (function(aImg){
+             return function(e){
+                 aImg.src = e.target.result;
+             };
+         }(image))
+         var ret = reader.readAsDataURL(file);
+         var canvas = document.createElement("canvas");
+         ctx = canvas.getContext("2d");
+         image.onload= function(){
+             ctx.drawImage(image,100,100)
+         }
+     } // end for loop
+ } // end showThumbnail
+  
+  
+});
+</script>
+
+
 
 @endsection
