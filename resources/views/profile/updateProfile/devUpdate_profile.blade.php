@@ -288,4 +288,45 @@
         })
     })
 </script>
+
+<script>
+    $(function () {
+        $("#upload").on("click",function(e){
+            $("#file_upload").show().click().hide();
+            e.preventDefault();
+        });
+        $("#file_upload").on("change",function(e){
+            var files = this.files
+            showThumbnail(files)        
+        });
+        function showThumbnail(files){
+            $("#thumbnail").html("");
+            for(var i=0;i<files.length;i++){
+                var file = files[i]
+                var imageType = /image.*/
+                if(!file.type.match(imageType)){
+                    //     console.log("Not an Image");
+                    continue;
+                }
+                var image = document.createElement("img");
+                var thumbnail = document.getElementById("thumbnail");
+                image.file = file;
+                thumbnail.appendChild(image)
+                var reader = new FileReader()
+                reader.onload = (function(aImg){
+                    return function(e){
+                        aImg.src = e.target.result;
+                    };
+                }(image))
+                var ret = reader.readAsDataURL(file);
+                var canvas = document.createElement("canvas");
+                ctx = canvas.getContext("2d");
+                image.onload= function(){
+                    ctx.drawImage(image,100,100)
+                }
+            } // end for loop
+        } // end showThumbnail
+    });
+</script>
+
 @endsection

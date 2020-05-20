@@ -31,6 +31,7 @@
     @endif
 @endsection
 
+
 @section('dev_profile')
 
   <div class="container mt-0">
@@ -60,7 +61,8 @@
               <div class="th-game-name"></div>
               <div class="th-game-status">Status</div>
               <div class="th-game-hours pr-3">Download</div>
-              <div class="th-game-date ">Release Date</div></tr>
+              <div class="th-game-date ">Date</div></tr>
+              <div class="th-game-edit ">Edit</div></tr>
             </div>
 
             <div class="tr">
@@ -72,6 +74,7 @@
               </div>
               <div class="td-game-hours pr-3">111 ครั้ง</div>
               <div class="td-game-date">12-05-20</div>
+              <div class="td-game-edit"><a href="{{ route('EditGame') }}" class="edit"><i class="material-icons">edit</i></a></div>
             </div>
 
             <div class="tr">
@@ -83,6 +86,7 @@
               </div>
               <div class="td-game-hours pr-3">95 ครั้ง</div>
               <div class="td-game-date">12-05-20</div>
+              <div class="td-game-edit"><a href="{{ route('EditGame') }}" class="edit"><i class="material-icons">edit</i></a></div>
             </div>
 
             <div class="tr">
@@ -94,6 +98,7 @@
               </div>
               <div class="td-game-hours pr-3">72 ครั้ง</div>
               <div class="td-game-date">12-05-20</div>
+              <div class="td-game-edit"><a href="{{ route('EditGame') }}" class="edit"><i class="material-icons">edit</i></a></div>
             </div>
           </div>
         </div>
@@ -288,29 +293,22 @@
       </div>
 
       <div id="upload-game" class="container tab-pane"><br>
-
+      
         <div class="col">
-          <div class="row">
-            <div class="col-sm-4">
-              <div class="form-group">  
-                <lable class="control-label">Picture : </lable>  
-                <input id="file_upload" style="display:none" name="file_upload[]" type="file" multiple="true">  
-              <div id="upload" class="btn btn-info">
-                Upload File
+          <div class="row"> <!--แถวที่ 1 -->
+            <div class="col-sm-3">
+              <div class="form-group mt-2" align="center">
+                <div id="thumb"><img src="section/picture_game/game_profile1.png"></div>    
+                <input id="file_upload" style="display:none" name="file_upload[]" type="file" multiple="true" accept="image/* ">
+                <div id="upload" class="btn btn-danger">เลือกรูปโปรไฟล์</div>
+                <div class="w-100"></div>
               </div>
-              <div id="thumbnail" width="150" height="150"></div>
             </div>
-            <div class="col-sm-4">ทสอบ</div>
-            <div class="col-sm-4">ทดสอบ</div>
-          </div>
-        </div>
-            <!-- <div class="col-lg-7">
-              <div><input type="text" class="form-control textbox1 my-2" placeholder="ชื่อเกม" require></div>
-              
-              <div class="w-100">
+            <div class="col-sm-8" >
+              <input type="text" class="form-control textbox1 my-2" placeholder="ชื่อเกม" require/>
+              <div class="w-100"></div>
               <textarea class="form-control textarea-description my-1"  rows="3" placeholder="ทำอธิบาย"></textarea>
-              
-              <div class="w-100">
+              <div class="w-100"></div>
               <select class="custom-select textbox1 my-1" >
                 <option name="" value="" selected>ประเภทเกม</option>
                 <option name="" value="">ข้อมูลจากตาราง game_type </option>
@@ -319,8 +317,7 @@
                 <option name="" value="">ข้อมูลจากตาราง game_type</option>
                 <option name="" value="">ข้อมูลจากตาราง game_type</option>
               </select>
-              <div class="w-100">
-              <select class="custom-select textbox1 my-1 bg" >
+              <div class="w-100"></div>
               <select class="custom-select textbox1 my-1 " >
                 <option name="" value="" selected>เรทเกม</option>
                 <option name="" value="">ข้อมูลจากตาราง rate</option>
@@ -328,19 +325,36 @@
                 <option name="" value="">ข้อมูลจากตาราง rate</option>
                 <option name="" value="">ข้อมูลจากตาราง rate</option>
               </select>
-              <div class="input-group input-file">
-                <button class="btn btn-choose_file" type="button">เลือกรูปภาพ</button>
-                <input type="text" class="form-control" placeholder='เลือกรูปภาพ...' />
-              </div>
-              <div class="w-100">
-              <div>
-              <input type="file" name="filepicture" id="filepicture" class="custom-file-input">
-              <label class="custom-file-label" for="filepicture">Choose file</label>
-              </div>
+              <input type="text" class="form-control textbox1 my-2" placeholder="ลิงค์วีดีโอ"/>
+              <div class="w-100"></div>
+              <div class="my-1"><input type="file" class="file" accept=".zip">
+              <label class="label1 pl-3">เฉพาะไฟล์นามสกุล .zip เท่านั้น</label> </div>
+              
+            </div>
+            <div class="col-sm-1"></div>   
+          </div>
+          <div class="row"> <!--แถวที่ 2 -->
+
+            <!-- <div id="drop-area"> 
+              <form class="my-form">
+                <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+                <label class="button" for="fileElem">เลือกรูปภาพ</label>
+                <progress id="progress-bar" max=100 value=0 style="display:none"></progress>
+              </form>
+              <div id="gallery" /></div>
             </div> -->
+            
+            <form action="upload.php" class="dropzone" id="dropzonewidget"></form> 
+            
 
-
-        <!-- </div> -->
+          </div>
+          <div class="row"> <!--แถวที่ 3 -->
+            <div class="col mt-4" align="center">
+                <input name="submit" id="submit" type="submit" class="bnt button1" value="บันทึก">
+                <button type="submit" class="bnt button2">ยกเลิก</button>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -348,50 +362,8 @@
 @endsection
 
 @section('script')
-<script>
-function bs_input_file() {
-	$(".input-file").before(
-		function() {
-			if ( ! $(this).prev().hasClass('input-ghost') ) {
-				var element = $("<input type='file' class='input-ghost' style='visibility:hidden;  width=150; height=150'>");
-				element.attr("name",$(this).attr("name"));
-				element.change(function(){
-					element.next(element).find('input').val((element.val()).split('\\').pop());
-				});
-				$(this).find("button.btn-choose_file").click(function(){
-					element.click();
-				});
-				$(this).find("button.btn-reset").click(function(){
-					element.val(null);
-					$(this).parents(".input-file").find('input').val('');
-				});
-				$(this).find('input').css("cursor","pointer");
-				$(this).find('input').mousedown(function() {
-					$(this).parents('.input-file').prev().click();
-					return false;
-				});
-				return element;
-			}
-		}
-	);
-}
-$(function() {
-	bs_input_file();
-});
-</script>
 
-<!-- <script type="text/javascript">
-$(function(){
- 
-    $("#filepicture").on("change",function(){
-        var _fileName = $(this).val();
-        $(this).next("label").text(_fileName);
-    });
- 
-});
-</script> -->
-
-<script>
+<script> /* รูปโปรไฟล์เกม */
 $(function () {
  
  
@@ -404,16 +376,16 @@ $(function () {
      showThumbnail(files)        
  });
  function showThumbnail(files){
-     $("#thumbnail").html("");
+     $("#thumb").html("");
      for(var i=0;i<files.length;i++){
          var file = files[i]
          var imageType = /image.*/
          if(!file.type.match(imageType)){
-             //     console.log("Not an Image");
+                //  console.log("Not an Image");
              continue;
          }
          var image = document.createElement("img");
-         var thumbnail = document.getElementById("thumbnail");
+         var thumbnail = document.getElementById("thumb");
          image.file = file;
          thumbnail.appendChild(image)
          var reader = new FileReader()
@@ -429,12 +401,118 @@ $(function () {
              ctx.drawImage(image,100,100)
          }
      } // end for loop
+     console.log(file);
  } // end showThumbnail
-  
-  
 });
 </script>
 
 
+<!-- <script> /* รูปภาพเกม*/
+// ************************ Drag and drop ***************** //
+let dropArea = document.getElementById("drop-area")
+// Prevent default drag behaviors
+;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+  dropArea.addEventListener(eventName, preventDefaults, false)   
+  document.body.addEventListener(eventName, preventDefaults, false)
+})
+// Highlight drop area when item is dragged over it
+;['dragenter', 'dragover'].forEach(eventName => {
+  dropArea.addEventListener(eventName, highlight, false)
+})
+;['dragleave', 'drop'].forEach(eventName => {
+  dropArea.addEventListener(eventName, unhighlight, false)
+})
+// Handle dropped files
+dropArea.addEventListener('drop', handleDrop, false)
+function preventDefaults (e) {
+  e.preventDefault()
+  e.stopPropagation()
+}
+function highlight(e) {
+  dropArea.classList.add('highlight')
+}
+function unhighlight(e) {
+  dropArea.classList.remove('active')
+}
+function handleDrop(e) {
+  var dt = e.dataTransfer
+  var files = dt.files
+  handleFiles(files)
+}
+let uploadProgress = []
+let progressBar = document.getElementById('progress-bar')
+function initializeProgress(numFiles) {
+  progressBar.value = 0
+  uploadProgress = []
+  for(let i = numFiles; i > 0; i--) {
+    uploadProgress.push(0)
+  }
+}
+function updateProgress(fileNumber, percent) {
+  uploadProgress[fileNumber] = percent
+  let total = uploadProgress.reduce((tot, curr) => tot + curr, 0) / uploadProgress.length
+  console.debug('update', fileNumber, percent, total)
+  progressBar.value = total
+}
+function handleFiles(files) {
+  files = [...files]
+  initializeProgress(files.length)
+  files.forEach(uploadFile)
+  files.forEach(previewFile)
+}
+function previewFile(file) {
+  let reader = new FileReader()
+  reader.readAsDataURL(file)
+  reader.onloadend = function() {
+    let img = document.createElement('img')
+    img.src = reader.result
+    document.getElementById('gallery').appendChild(img)
+  }
+}
+function uploadFile(file, i) {
+  var url = 'https://api.cloudinary.com/v1_1/joezimim007/image/upload'
+  var xhr = new XMLHttpRequest()
+  var formData = new FormData()
+  xhr.open('POST', url, true)
+  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+  // Update progress (can be used to show progress indicator)
+  xhr.upload.addEventListener("progress", function(e) {
+    updateProgress(i, (e.loaded * 100.0 / e.total) || 100)
+  })
+  xhr.addEventListener('readystatechange', function(e) {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      updateProgress(i, 100) // <- Add this
+    }
+    else if (xhr.readyState == 4 && xhr.status != 200) {
+      // Error. Inform the user
+    }
+  })
+  formData.append('upload_preset', 'ujpu6gyk')
+  formData.append('file', file)
+  xhr.send(formData)
+}
+</script> -->
 
+
+<script>
+Dropzone.autoDiscover = false;
+$(".dropzone").dropzone({
+ addRemoveLinks: true,
+ removedfile: function(file) {
+   var name = file.name; 
+   
+   $.ajax({
+     type: 'POST',
+     url: '#',
+     data: {name: name,request: 2},
+     sucess: function(data){
+        console.log('success: ' + data);
+     }
+   });
+   var _ref;
+    return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+ }
+});
+</script>
+                
 @endsection

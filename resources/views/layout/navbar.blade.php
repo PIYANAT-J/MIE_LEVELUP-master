@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="{{ asset('dist/css/level-up.css') }}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+        <link rel="stylesheet" href="{{ asset('dist/css/dropzone/dropzone.css') }}">
         
         @yield('head')
     <!-- เรียกใช้ Theme -->
@@ -126,6 +127,8 @@
         <script src="{{ asset('dist/js/main.js') }}"></script>
         <script type="javascript" src="js/bootstrap-datetimepicker.min.js"></script>
         <script type="javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="{{ asset('dist/css/dropzone/dropzone.js') }}"></script>
         
         @yield('script')
 

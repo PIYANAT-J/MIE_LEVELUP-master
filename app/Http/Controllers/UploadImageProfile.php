@@ -11,6 +11,7 @@ use App\Sponsors;
 
 use DB;
 use Session;
+use Image;
 
 class UploadImageProfile extends Controller
 {
@@ -150,6 +151,11 @@ class UploadImageProfile extends Controller
         return view('profile.updateProfile.devUpdate_profile', ['developer'=> $developer]);
     }
 
+    public function edit_game(){
+        $developer = DB::select('select * from developers');
+        return view('game.edit_upload_game', ['developer'=> $developer]);
+    }
+
     public function indexGuest_user(){
         $guest_user = DB::select('select * from guest_users');
         return view('profile.user_profile', ['guest_user'=> $guest_user]);
@@ -173,7 +179,16 @@ class UploadImageProfile extends Controller
         if ($request->input('submit') != null ){
 
             // $this->validate($request, [
+            //     'DEV_TEL' => 'required|',
+            //     'DEV_ID_CARD' => 'required|',
             //     'DEV_IMG' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+            //     'DEV_BIRTHDAY' => 'required|',
+            //     'DEV_AGE' => 'required|',
+            //     'DEV_GENDER' => 'required|',
+            //     'DEV_ADDRESS' => 'required|',
+            //     'ZIPCODE_ID' => 'required|',
+            //     'USER_ID' => 'required|',
+            //     'USER_EMAIL' => 'required|',
             // ]);
     
             // Insert && Update
@@ -181,6 +196,10 @@ class UploadImageProfile extends Controller
                 $upload = $request->file('DEV_IMG');
                 $img_name = 'DEV_'.time().'.'.$upload->getClientOriginalExtension();
                 $path = public_path('home/imgProfile');
+                $resize_image = Image::make($upload->getRealPath());
+                $resize_image->resize(300, 300, function($constraint){
+                    $constraint->aspectRatio();
+                   })->save($path . '/' . $img_name);
                 $upload->move($path, $img_name);
 
                 $DEV_TEL = $request->input('DEV_TEL');
@@ -250,6 +269,10 @@ class UploadImageProfile extends Controller
                 $upload = $request->file('GUEST_USERS_IMG');
                 $img_name = 'USER_'.time().'.'.$upload->getClientOriginalExtension();
                 $path = public_path('home/imgProfile');
+                $resize_image = Image::make($upload->getRealPath());
+                $resize_image->resize(300, 300, function($constraint){
+                    $constraint->aspectRatio();
+                   })->save($path . '/' . $img_name);
                 $upload->move($path, $img_name);
 
                 $GUEST_USERS_TEL = $request->input('GUEST_USERS_TEL');
@@ -318,6 +341,10 @@ class UploadImageProfile extends Controller
                 $upload = $request->file('SPON_IMG');
                 $img_name = 'SPON_'.time().'.'.$upload->getClientOriginalExtension();
                 $path = public_path('home/imgProfile');
+                $resize_image = Image::make($upload->getRealPath());
+                $resize_image->resize(300, 300, function($constraint){
+                    $constraint->aspectRatio();
+                   })->save($path . '/' . $img_name);
                 $upload->move($path, $img_name);
 
                 $SPON_TEL = $request->input('SPON_TEL');

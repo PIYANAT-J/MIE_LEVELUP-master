@@ -38,6 +38,10 @@ Route::get('/dev_profile', 'UploadImageProfile@index')->name('devProfile');
 Route::get('/devUpdate_profile', 'UploadImageProfile@update')->name('UpDate');
 Route::post('/devUpdate_profile/edit', 'UploadImageProfile@saveProfileDev')->name('DevEditProfile');
 
+// Route::controller('/dev_profile', 'GameController')->name('GameImg');
+// Route::get('/dev_profile', 'GameController@getIndex');
+Route::post('/dev_profile/GameImg', 'GameController@saveGameProfile')->name('GameImg');
+
 Route::get('/spon_profile', 'UploadImageProfile@indexSpon')->name('sponProfile');
 Route::get('/sponUpdate_profile', 'UploadImageProfile@updateSpon')->name('SponUpDate');
 Route::post('/sponUpdate_profile/edit', 'UploadImageProfile@saveProfileSpon')->name('SponEditProfile');
@@ -57,5 +61,7 @@ Route::post('/kyc/create', 'KycController@createKyc')->name('CreateKyc');
 // });
 
 Route::view('/game_shelf', 'game_shelf') ->name('GAMESHELF');
+
+Route::get('/edit_upload_game', 'UploadImageProfile@edit_game')->name('EditGame');
 
 // Route::view('/profile', 'layout/profile') ->name('PROFILE');

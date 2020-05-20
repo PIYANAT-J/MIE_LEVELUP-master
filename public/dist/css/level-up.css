@@ -370,6 +370,7 @@ border-bottom: 1px solid #ce0005; }
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;  
+    margin-bottom: 20px;
 }
 .button1:hover{
     background-color: #000;
@@ -387,6 +388,7 @@ border-bottom: 1px solid #ce0005; }
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
   border-bottom-left-radius: 50px;
+  margin-bottom: 20px;
 }
 .button2:hover{
   background-color: #000;
@@ -574,10 +576,6 @@ overflow: hidden;
   border-radius: 100px;
 }
 
-.img-thumbnail {
-  border: none;
-}
-
 .wait-approve{
   text-align: center;
   color: #fff;
@@ -621,7 +619,7 @@ overflow: hidden;
 }
 .game-img{
   width: 80px;
-  height: 50px;
+  height: 80px;
   overflow: hidden;
   border: #fff solid 2px;
 }
@@ -633,6 +631,7 @@ overflow: hidden;
   border-bottom: #ce0005 solid 2px;
   /* padding-left: 10px; */
   font-weight: bold;
+  width: 53%;
 }
 .td-game-name{
   display: table-cell;
@@ -643,14 +642,14 @@ overflow: hidden;
   vertical-align: middle;
   display: table-cell;
   border-bottom: #ce0005 solid 2px;
-  width: 11%;
+  width: 8%;
   font-weight: bold;
 }
 
 .td-game-status{
   display: table-cell;
   border-bottom: #dddddd solid 1px;
-  padding-right: 10px;
+  /* padding-right: 10px; */
 }
 
 .th-game-hours{
@@ -658,7 +657,7 @@ overflow: hidden;
   vertical-align: middle;
   display: table-cell;
   border-bottom: #ce0005 solid 2px;
-  width: 9%;
+  width: 5%;
   font-weight: bold;
 }
 
@@ -666,7 +665,7 @@ overflow: hidden;
   display: table-cell;
   border-bottom: #dddddd solid 1px;
   text-align: right;
-  padding-right: 10px;
+  /* padding-right: 10px; */
 }
 
 .th-game-date{
@@ -674,10 +673,24 @@ overflow: hidden;
   vertical-align: middle;
   display: table-cell;
   border-bottom: #ce0005 solid 2px;
-  width: 12%;
+  width: 8%;
   font-weight: bold;
 }
 .td-game-date{
+  display: table-cell;
+  border-bottom: #dddddd solid 1px;
+  text-align: center;
+}
+
+.th-game-edit{
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  border-bottom: #ce0005 solid 2px;
+  width: 3%;
+  font-weight: bold;
+}
+.td-game-edit{
   display: table-cell;
   border-bottom: #dddddd solid 1px;
   text-align: center;
@@ -701,25 +714,25 @@ overflow: hidden;
 }
 
 .btn-wait-approve{
-  font-size: 13px;
+  font-size: 14px;
   background-color: #FFCC33;
   text-align: right;
   border-radius: 100px;
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 .btn-approve{
-  font-size: 13px;
+  font-size: 14px;
   background-color: #66CCCC;
   text-align: right;
   border-radius: 100px;
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 .textarea-description{
@@ -730,8 +743,8 @@ overflow: hidden;
 }
 
 .btn-choose_file{
-  width: 130px;
-  height: 40px;
+  width: 100px;
+  height: 35px;
   background-color: #ce0005;
   color: #fff;
   border-top-left-radius: 20px;
@@ -739,7 +752,14 @@ overflow: hidden;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
   padding-left: 10px;
+  padding-right: 3px;
+  padding-top: 6px;
   vertical-align: middle;
+  border: #dddddd 1px solid;
+}
+
+.textbox3{
+  height: 35px;
 }
 
 .img{
@@ -748,6 +768,198 @@ overflow: hidden;
   overflow: hidden;
 }
 
+.bg1{
+  background-color: rgb(245, 209, 250);
+}
+
+.bg2{
+  background-color: rgb(218, 227, 255);
+}
+.bg3{
+  background-color: rgb(205, 210, 252);
+}
+.bg4{
+  background-color: rgb(171, 161, 255);
+}
 .bg{
-  background-color: #FFCC33;
+  background-color: rgb(248, 218, 224);
+}
+#thumb {width:200px; height:200px; overflow: hidden; border: #ce0005 solid 2px;}
+#thumb img {height:100%; width:100%; margin:0 auto;}
+
+
+#upload{
+  background-color: #ce0005;
+  width:200px;
+  height: 40px;
+  /* font-size: 15px; */
+  vertical-align: middle;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 7px;
+  padding-bottom: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+#upload:hover{
+  background-color: #000;
+  border: #000;
+  padding-top: 8px;
+}
+
+.file{
+  border: #dddddd solid 1px;
+  background-color: #fff;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  width: 100%;
+}
+.file::-webkit-file-upload-button {
+  color: #fff;
+  border: 1px solid #ce0005;
+  background: #ce0005;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  width: 100px;
+  height: 38px;
+  cursor: pointer;
+}
+.file::-webkit-file-upload-button:hover{
+  border: 1px solid #000;
+  background: #000;
+}
+
+.edit{
+  color: #ce0005;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.edit:hover{
+  color: #000;
+}
+
+body { /* drag and drop */
+  font-family: sans-serif;
+}
+a {
+  color: #369;
+}
+.note {
+  width: 500px;
+  margin: 50px auto;
+  font-size: 1.1em;
+  color: #333;
+  text-align: justify;
+}
+#drop-area {
+  border: 2px dashed #ccc;
+  border-radius: 20px;
+  width: 100%;
+  margin: 10px auto;
+  padding: 20px;
+}
+#drop-area.highlight {
+  border-color: #ce0005;
+}
+p {
+  margin-top: 0;
+}
+.my-form {
+  margin-bottom: 10px;
+}
+
+#gallery {
+  margin-top: 10px;
+}
+#gallery img {
+  width: 150px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.button {
+  display: inline-block;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #ce0005;
+  cursor: pointer;
+  border-radius: 50px;
+  border: 1px solid #ce0005;
+  color: #fff;
+  height: 40px;
+}
+.button:hover {
+  background: #000;
+  border: 1px solid #000;
+}
+#fileElem {
+  display: none;
+}
+
+body { /* drag and drop */
+  font-family: sans-serif;
+}
+a {
+  color: #369;
+}
+.note2 {
+  width: 500px;
+  margin: 50px auto;
+  font-size: 1.1em;
+  color: #333;
+  text-align: justify;
+}
+#drop-area2 {
+  border: 2px dashed #ccc;
+  border-radius: 20px;
+  width: 100%;
+  margin: 10px auto;
+  padding: 20px;
+}
+#drop-area.highlight2 {
+  border-color: #ce0005;
+}
+p {
+  margin-top: 0;
+}
+.my-form2 {
+  margin-bottom: 10px;
+}
+
+#gallery2 {
+  margin-top: 10px;
+}
+#gallery2 img {
+  width: 150px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.button2 {
+  display: inline-block;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #ce0005;
+  cursor: pointer;
+  border-radius: 50px;
+  border: 1px solid #ce0005;
+  color: #fff;
+  height: 40px;
+  width: 87px;
+}
+.button2:hover {
+  background: #000;
+  border: 1px solid #000;
+}
+#fileElem2 {
+  display: none;
+}
+
+.label1{
+  color: #d60609b9;
+  font-size: 12px;
 }
