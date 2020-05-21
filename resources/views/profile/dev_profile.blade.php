@@ -293,68 +293,77 @@
       </div>
 
       <div id="upload-game" class="container tab-pane"><br>
-      
-        <div class="col">
-          <div class="row"> <!--แถวที่ 1 -->
-            <div class="col-sm-3">
-              <div class="form-group mt-2" align="center">
-                <div id="thumb"><img src="section/picture_game/game_profile1.png"></div>    
-                <input id="file_upload" style="display:none" name="file_upload[]" type="file" multiple="true" accept="image/* ">
-                <div id="upload" class="btn btn-danger">เลือกรูปโปรไฟล์</div>
+        <form action="{{ route('GameImg') }}" method="POST" enctype="multipart/form-data">
+          {{csrf_field()}}
+          <div class="col">
+            <div class="row"> <!--แถวที่ 1 -->
+              <div class="col-sm-3">
+                <div class="form-group mt-2" align="center">
+                  <div id="thumb"><img src="section/picture_game/game_profile1.png"></div>    
+                  <input id="file_upload" style="display:none" name="file_upload[]" type="file" multiple="true" accept="image/* ">
+                  <div id="upload" class="btn btn-danger">เลือกรูปโปรไฟล์</div>
+                  <div class="w-100"></div>
+                </div>
+              </div>
+              <div class="col-sm-8" >
+                <input type="text" class="form-control textbox1 my-2" name="GAME_NAME" value="{{ old('GAME_NAME') }}" placeholder="ชื่อเกม" require/>
                 <div class="w-100"></div>
+                <textarea class="form-control textarea-description my-1"  rows="3" name="GAME_DESCRIPTION" value="{{ old('GAME_DESCRIPTION') }}" placeholder="ทำอธิบาย"></textarea>
+                <div class="w-100"></div>
+                <select class="custom-select textbox1 my-1" >
+                  <option name="GAME_TYPE_ID" value="" selected>ประเภทเกม</option>
+                  <option name="GAME_TYPE_ID" value="">ข้อมูลจากตาราง game_type </option>
+                  <option name="GAME_TYPE_ID" value="">ข้อมูลจากตาราง game_type</option>
+                  <option name="GAME_TYPE_ID" value="">ข้อมูลจากตาราง game_type </option>
+                  <option name="GAME_TYPE_ID" value="">ข้อมูลจากตาราง game_type</option>
+                  <option name="GAME_TYPE_ID" value="">ข้อมูลจากตาราง game_type</option>
+                </select>
+                <div class="w-100"></div>
+                <select class="custom-select textbox1 my-1 " >
+                  <option name="RATE_ID" value="" selected>เรทเกม</option>
+                  <option name="RATE_ID" value="">ข้อมูลจากตาราง rate</option>
+                  <option name="RATE_ID" value="">ข้อมูลจากตาราง rate </option>
+                  <option name="RATE_ID" value="">ข้อมูลจากตาราง rate</option>
+                  <option name="RATE_ID" value="">ข้อมูลจากตาราง rate</option>
+                </select>
+                <input type="text" class="form-control textbox1 my-2" name="GAME_VDO_LINK" value="{{ old('GAME_VDO_LINK') }}" placeholder="ลิงค์วีดีโอ"/>
+                <div class="w-100"></div>
+                <div class="my-1"><input type="file" class="file" name="GAME_FILE" accept=".zip" require>
+                <label class="label1 pl-3">เฉพาะไฟล์นามสกุล .zip เท่านั้น</label> </div>
+                
               </div>
+              <div class="col-sm-1"></div>   
             </div>
-            <div class="col-sm-8" >
-              <input type="text" class="form-control textbox1 my-2" placeholder="ชื่อเกม" require/>
-              <div class="w-100"></div>
-              <textarea class="form-control textarea-description my-1"  rows="3" placeholder="ทำอธิบาย"></textarea>
-              <div class="w-100"></div>
-              <select class="custom-select textbox1 my-1" >
-                <option name="" value="" selected>ประเภทเกม</option>
-                <option name="" value="">ข้อมูลจากตาราง game_type </option>
-                <option name="" value="">ข้อมูลจากตาราง game_type</option>
-                <option name="" value="">ข้อมูลจากตาราง game_type </option>
-                <option name="" value="">ข้อมูลจากตาราง game_type</option>
-                <option name="" value="">ข้อมูลจากตาราง game_type</option>
-              </select>
-              <div class="w-100"></div>
-              <select class="custom-select textbox1 my-1 " >
-                <option name="" value="" selected>เรทเกม</option>
-                <option name="" value="">ข้อมูลจากตาราง rate</option>
-                <option name="" value="">ข้อมูลจากตาราง rate </option>
-                <option name="" value="">ข้อมูลจากตาราง rate</option>
-                <option name="" value="">ข้อมูลจากตาราง rate</option>
-              </select>
-              <input type="text" class="form-control textbox1 my-2" placeholder="ลิงค์วีดีโอ"/>
-              <div class="w-100"></div>
-              <div class="my-1"><input type="file" class="file" accept=".zip">
-              <label class="label1 pl-3">เฉพาะไฟล์นามสกุล .zip เท่านั้น</label> </div>
+            <div class="row"> <!--แถวที่ 2 -->
+
+              <div id="drop-area"> 
+                <form class="my-form">
+                  <input type="file" id="fileElem" multiple accept="image/*" name="GAME_IMG_NAME[]" onchange="handleFiles(this.files)">
+                  <label class="button" for="fileElem">เลือกรูปภาพ</label>
+                  <progress id="progress-bar" max=100 value=0 style="display:none"></progress>
+                </form>
+                <div id="gallery" ></div>
+              </div>
               
+              <!-- <div action="{{ route('GameImg') }}" class="dropzone">
+                <input type="file" name="GAME_IMG_NAME[]">
+              </div> -->
+              <!-- <form action="upload.php" class="dropzone" id="myAwesomeDropzone"></form> -->
+              <!-- <input type="file" multiple="true" class="dropzone" id="file_upload" name="GAME_IMG_NAME[]"> -->
+              
+
             </div>
-            <div class="col-sm-1"></div>   
+            <div class="row"> <!--แถวที่ 3 -->
+              <div class="col mt-4" align="center">
+                  <input name="submit" id="submit" type="submit" class="bnt button1" value="บันทึก">
+                  <input type="hidden" name="GAME_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                  <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                  <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
+                  <button type="submit" class="bnt button2">ยกเลิก</button>
+                </div>
+            </div>
           </div>
-          <div class="row"> <!--แถวที่ 2 -->
-
-            <!-- <div id="drop-area"> 
-              <form class="my-form">
-                <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
-                <label class="button" for="fileElem">เลือกรูปภาพ</label>
-                <progress id="progress-bar" max=100 value=0 style="display:none"></progress>
-              </form>
-              <div id="gallery" /></div>
-            </div> -->
-            
-            <form action="upload.php" class="dropzone" id="dropzonewidget"></form> 
-            
-
-          </div>
-          <div class="row"> <!--แถวที่ 3 -->
-            <div class="col mt-4" align="center">
-                <input name="submit" id="submit" type="submit" class="bnt button1" value="บันทึก">
-                <button type="submit" class="bnt button2">ยกเลิก</button>
-              </div>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -407,7 +416,7 @@ $(function () {
 </script>
 
 
-<!-- <script> /* รูปภาพเกม*/
+<script> /* รูปภาพเกม*/
 // ************************ Drag and drop ***************** //
 let dropArea = document.getElementById("drop-area")
 // Prevent default drag behaviors
@@ -491,7 +500,7 @@ function uploadFile(file, i) {
   formData.append('file', file)
   xhr.send(formData)
 }
-</script> -->
+</script>
 
 
 <script>

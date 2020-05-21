@@ -21,7 +21,8 @@ class CreateGamesTable extends Migration
             $table->timestamp('GAME_DATE');
             $table->timestamp('GAME_APPROVE_DATE')->nullable();
             $table->string('GAME_FILE')->collation('utf8_unicode_ci');
-            $table->string('GAME_SIZE')->collation('utf8_unicode_ci');
+            $table->string('GAME_SIZE')->collation('utf8_unicode_ci')->nullable();
+            $table->string('GAME_VDO_LINK')->collation('utf8_unicode_ci')->nullable();
             $table->integer('GAME_TYPE_ID')->nullable();
             $table->integer('RATE_ID')->nullable();
             $table->integer('USER_ID');
