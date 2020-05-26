@@ -65,7 +65,32 @@
               <div class="th-game-edit ">Edit</div></tr>
             </div>
 
-            <div class="tr">
+            @if(isset($game))
+              @foreach($game as $Game)
+                @if($Game->USER_ID == Auth::user()->id)
+                  @if(isset($Game->GAME_IMG_PROFILE))
+                    <div class="tr">
+                      <div class="td-game-img"><img src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" alt="Image"class="game-img" ></div>
+                      <div class="td-game-name">Example</div>
+                      <div class="td-game-status">
+                        @if($Game->GAME_STATUS == 'รออนุมัติ')
+                          <a class="btn-wait-approve">รออนุมัติ</a>
+                        @elseif($Game->GAME_STATUS == 'อนุมัติ')
+                          <a class="btn-approve">อนุมัติแล้ว</a>
+                        @else
+                          <a class="btn-approve">ไม่อนุมัติ</a>
+                        @endif
+                      </div>
+                      <div class="td-game-hours pr-3">95 ครั้ง</div>
+                      <div class="td-game-date">{{$Game->GAME_DATE}}</div>
+                      <div class="td-game-edit"><a href="{{ route('EditGame') }}" class="edit"><i class="material-icons">edit</i></a></div>
+                    </div>
+                  @endif
+                @endif
+              @endforeach
+            @endif
+
+            <!-- <div class="tr">
               <div class="td-game-img"><img src="section/picture_game/game_profile.png" alt="Image"class="game-img" ></div>
               <div class="td-game-name">Example</div>
               <div class="td-game-status">
@@ -99,7 +124,7 @@
               <div class="td-game-hours pr-3">72 ครั้ง</div>
               <div class="td-game-date">12-05-20</div>
               <div class="td-game-edit"><a href="{{ route('EditGame') }}" class="edit"><i class="material-icons">edit</i></a></div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -300,7 +325,7 @@
               <div class="col-sm-3">
                 <div class="form-group mt-2" align="center">
                   <div id="thumb"><img src="section/picture_game/game_profile1.png"></div>    
-                  <input id="file_upload" style="display:none" name="file_upload[]" type="file" multiple="true" accept="image/* ">
+                  <input id="file_upload" style="display:none" name="GAME_IMG_PROFILE" type="file" multiple="true" accept="image/* ">
                   <div id="upload" class="btn btn-danger">เลือกรูปโปรไฟล์</div>
                   <div class="w-100"></div>
                 </div>

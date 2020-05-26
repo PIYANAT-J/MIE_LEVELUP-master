@@ -13,20 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'GameController@indexGame')->name('LEVELup');
 
 // Route::view('/home', 'home') ->name('Home');
 
-// Route::get('/section_game', function () {
-//     return view('section_game');
-// });
-
-// Route::view('/login', 'login');
 Auth::routes();
-
-// Route::resource('register', 'MembersController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -38,8 +33,6 @@ Route::get('/dev_profile', 'UploadImageProfile@index')->name('devProfile');
 Route::get('/devUpdate_profile', 'UploadImageProfile@update')->name('UpDate');
 Route::post('/devUpdate_profile/edit', 'UploadImageProfile@saveProfileDev')->name('DevEditProfile');
 
-// Route::controller('/dev_profile', 'GameController')->name('GameImg');
-// Route::get('/dev_profile', 'GameController@getIndex');
 Route::post('/dev_profile/GameImg', 'GameController@saveGameProfile')->name('GameImg');
 
 Route::get('/spon_profile', 'UploadImageProfile@indexSpon')->name('sponProfile');
@@ -56,12 +49,6 @@ Route::get('/sponKyc', 'KycController@indexSponKyc')->name('sponKyc');
 
 Route::post('/kyc/create', 'KycController@createKyc')->name('CreateKyc');
 
-// Route::get('/kyc', function () {
-//     return view('kyc');
-// });
-
 Route::view('/game_shelf', 'game_shelf') ->name('GAMESHELF');
 
 Route::get('/edit_upload_game', 'UploadImageProfile@edit_game')->name('EditGame');
-
-// Route::view('/profile', 'layout/profile') ->name('PROFILE');

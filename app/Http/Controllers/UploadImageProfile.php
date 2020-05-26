@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+// use Illuminate\Support\Facades\DB;
 
 use App\Developer;
 use App\Guest_user;
 use App\Sponsors;
+use App\Game;
 
-use DB;
 use Session;
 use Image;
+use Auth;
+use DB;
 
 class UploadImageProfile extends Controller
 {
@@ -141,10 +144,33 @@ class UploadImageProfile extends Controller
     //     }
     //     return redirect()->action('PagesController@index',['id'=>0]);
     // }
+    // public function game(){
+    //     $game = DB::select('select * from games');
+    //     return view('profile.dev_profile', ['game'=>$game]);
+    // }
 
     public function index(){
-        $developer = DB::select('select * from developers');
-        return view('profile.dev_profile', ['developer'=> $developer]);
+        $game_img = DB::table('games')->where('USER_ID', Auth::user()->id)->get();
+        if($game_img->count() == 0){
+            $developer = DB::table('developers')->where('USER_ID', Auth::user()->id)->get();
+            return view('profile.dev_profile', compact('developer'));
+        }else{
+            // $developer = DB::table('developers')
+            //                 ->join('games', 'games.USER_ID', '=', 'developers.USER_ID')
+            //                 // ->select('developers.*', 'games.GAME_IMG_PROFILE', 'games.GAME_STATUS', 'games.GAME_DATE')
+            //                 ->select('developers.*', 'games.*')
+            //                 ->get();
+            
+            // $game = Game::findOrFail(Auth::user()->id);
+            // $GAME_IMG_PROFILE = $game->GAME_IMG_PROFILE;
+            // $GAME_STATUS = $game->GAME_STATUS;
+            // $GAME_DATE = $game->GAME_DATE;
+
+            $developer = DB::table('developers')->where('USER_ID', Auth::user()->id)->get();
+            $game = DB::table('games')->where('USER_ID', Auth::user()->id)->get();
+            
+            return view('profile.dev_profile', compact('developer','game'));
+        }
     }
     public function update(){
         $developer = DB::select('select * from developers');

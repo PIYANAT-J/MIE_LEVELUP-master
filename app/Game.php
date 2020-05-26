@@ -19,17 +19,15 @@ class Game extends Model
         
     // }
 
-    public static function InsertAndUpdateData($data){
-        $value = DB::table('games')->where('USER_EMAIL', $data['USER_EMAIL'])->get();
-        if($value->count() == 0){
-            DB::table('games')->insert($data);
-            return 1;
-        }else{
-            DB::table('games')
-                ->where('USER_EMAIL', $data['USER_EMAIL'])
-                ->update($data);
-            return 0;
-        }
+    public static function InsertGame($data){
+        DB::table('games')->insert($data);
      
+    }
+
+    public static function UpdateGame($data){
+        DB::table('games')
+            ->where('USER_EMAIL', $data['USER_EMAIL'])
+            ->update($data);
+        
     }
 }

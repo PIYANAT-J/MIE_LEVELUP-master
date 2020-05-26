@@ -5,8 +5,10 @@
         <div class="row">
             @if(Auth::user()->updateData == 'true')
                 @if(Auth::user()->users_type == 2)
+                
                     @foreach($developer as $DEV)
                         @if($DEV->USER_ID == Auth::user()->id)
+                            
                             <div class="col-md-3 mb-3"> <!--คอลัมน์ 1 -->
                                 <div class="card ">
 
@@ -166,7 +168,7 @@
 
                                 @yield('kyc')
 
-                            </div> 
+                            </div>
                         @endif
                     @endforeach
                 @elseif(Auth::user()->users_type == 3)
@@ -494,6 +496,7 @@
 
                             </div>
                         @endif
+                        @break
                     @endforeach
                 @endif
             @else

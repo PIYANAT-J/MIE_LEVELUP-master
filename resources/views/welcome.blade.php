@@ -98,20 +98,25 @@
                 <button class="button5" data-filter=".news">มาใหม่</button>
                 <button class="button5" data-filter=".hot">ยอดนิยม</button>
             </div>
-        </div> 
+        </div>
+        
         <div id="posts" class="row no-gutter">
-            <div class="item hot col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="">
-                <div class="h-entry">
-                    <a href="single.html">
-                        <img src="section/picture_game/game_pic.jpg" alt="Image" class="img-fluid" width="250" height="250">
-                    </a>
-                    <h2 class="font2"><a>Game name</a></h2>
-                    <div class="meta mb-2">ชื่อผู้พัฒนา <span class="mx-2">&bullet;</span> วันที่เผยแพร่<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></div>
-                    <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
-                    <p><a href="#" class="font3">Continue Reading...</a></p>
-                </div> 
-            </div>
-            <div class="item hot col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+        @foreach($Game as $allGame)
+            @if($allGame->GAME_STATUS == 'อนุมัติ')
+                <div class="item news col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="">
+                    <div class="h-entry">
+                        <a href="single.html">
+                            <img src="section/File_game/Profile_game/{{ $allGame->GAME_IMG_PROFILE }}" alt="Image" class="img-fluid" width="250" height="250">
+                        </a>
+                        <h2 class="font2"><a>{{ $allGame->GAME_NAME}}</a></h2>
+                        <div class="meta mb-2">{{ $allGame->name }}.{{ $allGame->surname }} <span class="mx-2">&bullet;</span> {{ $allGame->GAME_DATE }}<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></div>
+                        <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
+                        <p><a href="#" class="font3">Continue Reading...</a></p>
+                    </div> 
+                </div>
+            @endif
+        @endforeach
+            <!-- <div class="item hot col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="h-entry">
                     <a href="single.html">
                         <img src="section/picture_game/game_pic.jpg" alt="Image" class="img-fluid" width="250" height="250">
@@ -188,7 +193,7 @@
                     <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
                     <p><a href="#" class="font3">Continue Reading...</a></p>
                 </div> 
-            </div>
+            </div> -->
         </div>    
             <div class="row">
                 <div class="col-12 text-right" data-aos="fade">

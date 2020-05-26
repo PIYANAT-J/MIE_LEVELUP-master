@@ -16,6 +16,7 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->bigIncrements('GAME_ID');
             $table->string('GAME_NAME')->collation('utf8_unicode_ci');
+            $table->string('GAME_IMG_PROFILE')->collation('utf8_unicode_ci');
             $table->text('GAME_DESCRIPTION')->collation('utf8_unicode_ci')->nullable();
             $table->set('GAME_STATUS', ['อนุมัติ', 'ไม่อนุมัติ', 'รออนุมัติ'])->collation('utf8_unicode_ci')->default('รออนุมัติ');
             $table->timestamp('GAME_DATE');
@@ -26,7 +27,7 @@ class CreateGamesTable extends Migration
             $table->integer('GAME_TYPE_ID')->nullable();
             $table->integer('RATE_ID')->nullable();
             $table->integer('USER_ID');
-            $table->string('USER_EMAIL')->unique()->collation('utf8_unicode_ci');
+            $table->string('USER_EMAIL')->collation('utf8_unicode_ci');
         });
     }
 

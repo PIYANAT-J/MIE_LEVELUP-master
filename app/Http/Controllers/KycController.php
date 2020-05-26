@@ -66,39 +66,28 @@ class KycController extends Controller
     
             // Insert && Update
             if($request->has('KYC_IMG')){
-                // $allowedfileExtension=['jpeg','png','jpg','gif','svg'];
                 $upload = $request->file('KYC_IMG');
                 $img_name = 'KYC_'.time().'.'.$upload->getClientOriginalExtension();
                 $path = public_path('home/Kyc');
                 $upload->move($path, $img_name);
 
-                // $checkImg = in_array($img_name, $allowedfileExtension);
+                $KYC_IMG = $img_name;
+                $KYC_STATUS = $request->input('KYC_STATUS');
+                $KYC_CREATE_DATE = $request->input('KYC_CREATE_DATE');
+                $USER_ID = $request->input('USER_ID');
+                $USER_EMAIL = $request->input('USER_EMAIL');
 
-                // if($checkImg){
-                    $KYC_IMG = $img_name;
-                    $KYC_STATUS = $request->input('KYC_STATUS');
-                    $KYC_CREATE_DATE = $request->input('KYC_CREATE_DATE');
-                    $USER_ID = $request->input('USER_ID');
-                    $USER_EMAIL = $request->input('USER_EMAIL');
-
-                    if($KYC_IMG != '' || $KYC_CREATE_DATE != '' || $USER_ID != '' || $USER_EMAIL != '' || $KYC_STATUS != ''){
-                        $data = array("KYC_IMG"=>$KYC_IMG, "KYC_CREATE_DATE"=>$KYC_CREATE_DATE, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL, "KYC_STATUS"=>$KYC_STATUS);
-            
-                        // Insert && Update
-                        $value = Kyc::InsertAndUpdateData($data);
-                        if($value){
-                            Session::flash('message','Insert successfully.');
-                        }else{
-                            Session::flash('message','Username already exists.');
-                        }
+                if($KYC_IMG != '' || $KYC_CREATE_DATE != '' || $USER_ID != '' || $USER_EMAIL != '' || $KYC_STATUS != ''){
+                    $data = array("KYC_IMG"=>$KYC_IMG, "KYC_CREATE_DATE"=>$KYC_CREATE_DATE, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL, "KYC_STATUS"=>$KYC_STATUS);
+        
+                    // Insert && Update
+                    $value = Kyc::InsertAndUpdateData($data);
+                    if($value){
+                        Session::flash('message','Insert successfully.');
+                    }else{
+                        Session::flash('message','Username already exists.');
                     }
-                    // echo '<div class="alert alert-warning">successfully</div>';
-                    // Session::flash('message','Insert successfully.');
-                    
-                // }else{
-                //     // echo '<div class="alert alert-warning"><strong>Warning!</strong> Sorry Only Upload png , jpg , doc</div>';
-                //     // Session::flash('message','<strong>Warning!</strong> Sorry Only Upload png , jpg , doc');
-                // }
+                }
             }
 
             $Type = $request->input('users_type');
@@ -111,6 +100,5 @@ class KycController extends Controller
                 return redirect()->action('KycController@indexUserKyc');
             }
         }
-        // return redirect()->action('KycController@indexSponKyc');
     }
 }

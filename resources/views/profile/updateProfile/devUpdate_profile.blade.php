@@ -126,9 +126,9 @@
 
 
                                         <div class="col"></div>
-                                        <div class="col-sm-5 ml-3 mr-3">
-                                            <div class="mt-3">
-                                                <div class="input-group mb-3">
+                                        <div class="col-sm-5 ml-3 mr-3" align="center">
+                                            <!-- <div class="mt-3"> -->
+                                                <!-- <div class="input-group mb-3"> -->
                                                     <!-- <div class="input-group-prepend">
                                                         <span class="input-group-text">Upload</span>
                                                     </div> -->
@@ -138,14 +138,21 @@
                                                         <label class="custom-file-label" align="left" for="inputGroupFile01">เลือกรูปภาพ</label>
                                                     </div> -->
 
-                                                    <div class="row form-group">
+                                                    <!-- <div class="row form-group"> -->
                                                         <!-- <div class="col"> -->
-                                                            <input onchange="readURL(this)" type="file" class="form-control-file @error('DEV_IMG') is-invalid @enderror" id="DEV_IMG" name="DEV_IMG">
-                                                            <div class="col" align="center"><img id="preview" class="img-thumbnail" src="{{asset('home/imgProfile/'.$DEV->DEV_IMG) }}" alt="{{ $DEV->DEV_IMG }}" width="150" height="150"></div>
+                                                            <!-- <input onchange="readURL(this)" type="file" class="form-control-file @error('DEV_IMG') is-invalid @enderror" id="DEV_IMG" name="DEV_IMG">
+                                                            <div class="col" align="center"><img id="preview" class="img-thumbnail" src="{{asset('home/imgProfile/'.$DEV->DEV_IMG) }}" alt="{{ $DEV->DEV_IMG }}" width="150" height="150"></div> -->
                                                         <!-- </div> -->
+                                                    <!-- </div> -->
+                                                <!-- </div> -->
+                                                <div class="col-sm-5">
+                                                    <div class="row form-group mt-4">
+                                                        <div id="thumb"><img src="{{ asset('home/imgProfile/'.$DEV->DEV_IMG) }}" alt="{{ old('DEV_IMG') }}"></div>    
+                                                        <input id="file_upload" class="form-control-file @error('DEV_IMG') is-invalid @enderror" style="display:none" name="DEV_IMG" type="file" accept="image/* ">
+                                                        <div id="upload" class="btn btn-danger">เลือกรูปโปรไฟล์</div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            <!-- </div> -->
                                         </div>
                                         <div class="col"></div>
                                         <div class="w-100"></div>
@@ -234,15 +241,12 @@
 
 
                                 <div class="col"></div>
-                                <div class="col-sm-5 ml-3 mr-3">
-                                    <div class="mt-3">
-                                        <div class="input-group mb-3">
-                                            <div class="row form-group">
-                                                <!-- <div class="col"> -->
-                                                    <input onchange="readURL(this)" type="file" class="form-control-file @error('DEV_IMG') is-invalid @enderror" id="DEV_IMG" name="DEV_IMG">
-                                                    <div class="col" align="center"><img id="preview" class="img-thumbnail" src="{{asset('home/imgProfile/No_Img.jpg') }}" alt="{{ old('DEV_IMG') }}" width="150" height="150"></div>
-                                                <!-- </div> -->
-                                            </div>
+                                <div class="col-sm-5 ml-3 mr-3" align="center">
+                                    <div class="col-sm-5">
+                                        <div class="row form-group mt-4">
+                                            <div id="thumb"><img src="{{ asset('home/imgProfile/No_Img.jpg') }}" alt="{{ old('DEV_IMG') }}"></div>    
+                                            <input id="file_upload" class="form-control-file @error('DEV_IMG') is-invalid @enderror" style="display:none" name="DEV_IMG" type="file" accept="image/* ">
+                                            <div id="upload" class="btn btn-danger">เลือกรูปโปรไฟล์</div>
                                         </div>
                                     </div>
                                 </div>
@@ -289,44 +293,45 @@
     })
 </script>
 
-<script>
+<script> /* รูปโปรไฟล์เกม */
     $(function () {
-        $("#upload").on("click",function(e){
-            $("#file_upload").show().click().hide();
-            e.preventDefault();
-        });
-        $("#file_upload").on("change",function(e){
-            var files = this.files
-            showThumbnail(files)        
-        });
-        function showThumbnail(files){
-            $("#thumbnail").html("");
-            for(var i=0;i<files.length;i++){
-                var file = files[i]
-                var imageType = /image.*/
-                if(!file.type.match(imageType)){
-                    //     console.log("Not an Image");
-                    continue;
-                }
-                var image = document.createElement("img");
-                var thumbnail = document.getElementById("thumbnail");
-                image.file = file;
-                thumbnail.appendChild(image)
-                var reader = new FileReader()
-                reader.onload = (function(aImg){
-                    return function(e){
-                        aImg.src = e.target.result;
-                    };
-                }(image))
-                var ret = reader.readAsDataURL(file);
-                var canvas = document.createElement("canvas");
-                ctx = canvas.getContext("2d");
-                image.onload= function(){
-                    ctx.drawImage(image,100,100)
-                }
-            } // end for loop
-        } // end showThumbnail
+    $("#upload").on("click",function(e){
+        $("#file_upload").show().click().hide();
+        e.preventDefault();
     });
+    $("#file_upload").on("change",function(e){
+        var files = this.files
+        showThumbnail(files)        
+    });
+    function showThumbnail(files){
+        $("#thumb").html("");
+        for(var i=0;i<files.length;i++){
+            var file = files[i]
+            var imageType = /image.*/
+            if(!file.type.match(imageType)){
+                    //  console.log("Not an Image");
+                continue;
+            }
+            var image = document.createElement("img");
+            var thumbnail = document.getElementById("thumb");
+            image.file = file;
+            thumbnail.appendChild(image)
+            var reader = new FileReader()
+            reader.onload = (function(aImg){
+                return function(e){
+                    aImg.src = e.target.result;
+                };
+            }(image))
+            var ret = reader.readAsDataURL(file);
+            var canvas = document.createElement("canvas");
+            ctx = canvas.getContext("2d");
+            image.onload= function(){
+                ctx.drawImage(image,100,100)
+            }
+        } // end for loop
+        console.log(file);
+    } // end showThumbnail
+});
 </script>
 
 @endsection

@@ -66,11 +66,11 @@
                                         <ul class="dropdown">
                                             <li class="nav-item">
                                                 @if(Auth::user()->users_type == '2')
-                                                    <a class="nav-link" href="{{ route('devProfile') }}">{{ __('โปรไฟล์_DEV') }}</a>
+                                                    <a class="nav-link" href="{{ route('devProfile') }}">{{ __('โปรไฟล์') }}</a>
                                                 @elseif(Auth::user()->users_type == '3')
-                                                    <a class="nav-link" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์_SPON') }}</a>
+                                                    <a class="nav-link" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์') }}</a>
                                                 @else
-                                                    <a class="nav-link" href="{{ route('homeProfile') }}">{{ __('โปรไฟล์_USER') }}</a>
+                                                    <a class="nav-link" href="{{ route('homeProfile') }}">{{ __('โปรไฟล์') }}</a>
                                                 @endif
                                             </li>
                                             <li class="nav-item">
