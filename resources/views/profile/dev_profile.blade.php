@@ -71,7 +71,7 @@
                   @if(isset($Game->GAME_IMG_PROFILE))
                     <div class="tr">
                       <div class="td-game-img"><img src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" alt="Image"class="game-img" ></div>
-                      <div class="td-game-name">Example</div>
+                      <div class="td-game-name">{{ $Game->GAME_NAME }}</div>
                       <div class="td-game-status">
                         @if($Game->GAME_STATUS == 'รออนุมัติ')
                           <a class="btn-wait-approve">รออนุมัติ</a>
@@ -380,12 +380,12 @@
             </div>
             <div class="row"> <!--แถวที่ 3 -->
               <div class="col mt-4" align="center">
-                  <input name="submit" id="submit" type="submit" class="bnt button1" value="บันทึก">
-                  <input type="hidden" name="GAME_DATE" value="{{ date('Y-m-d H:i:s') }}">
-                  <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                  <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-                  <button type="submit" class="bnt button2">ยกเลิก</button>
-                </div>
+                <input name="submit" id="submit" type="submit" class="bnt button1" value="บันทึก">
+                <input type="hidden" name="GAME_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
+                <button type="submit" class="bnt button2">ยกเลิก</button>
+              </div>
             </div>
           </div>
         </form>

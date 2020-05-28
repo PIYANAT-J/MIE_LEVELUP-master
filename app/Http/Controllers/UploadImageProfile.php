@@ -183,8 +183,28 @@ class UploadImageProfile extends Controller
     }
 
     public function indexGuest_user(){
-        $guest_user = DB::select('select * from guest_users');
-        return view('profile.user_profile', ['guest_user'=> $guest_user]);
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_ID', Auth::user()->id)->get();
+            return view('profile.user_profile', compact('guest_user'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_ID', Auth::user()->id)->get();
+            // $gameDownload = DB::table('downloads')->where('USER_ID', Auth::user()->id)->value('GAME_ID');
+            // $gDownload = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+            // if($gameDownload->count() == 0){
+            //     $game = DB::table('games')->where('GAME_ID', $gameDownload)->get();
+            // }else{
+            //     $game = DB::table('games')->where('GAME_ID', $gameDownload)->get();
+            // }
+            $game = DB::table('downloads')
+                        ->join('games', 'games.GAME_ID', '=', 'downloads.GAME_ID')
+                        ->select('downloads.*', 'games.GAME_IMG_PROFILE','GAME_NAME','GAME_DATE')
+                        ->get();
+            // $game = DB::table('games')->where('GAME_ID', $gameDownload)->get();
+            return view('profile.user_profile', compact('guest_user', 'game'));
+        }
+        // $guest_user = DB::select('select * from guest_users');
+        // return view('profile.user_profile', ['guest_user'=> $guest_user]);
     }
     public function updateGuest_user(){
         $guest_user = DB::select('select * from guest_users');

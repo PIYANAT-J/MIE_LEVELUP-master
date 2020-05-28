@@ -3,13 +3,14 @@
 @section('background')
 
 <div class="slide-one-item home-slider owl-carousel">
-    <div class="site-blocks-cover overlay" style="background-image: url(home/images/slide_2.jpg);" data-aos="fade" id="home-section">
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-md-8 mt-lg-5 text-center">
-                    <h1 class="text-uppercase mb-5" data-aos="fade-up">I'm Creative One Page Template by Colorlib</h1>
+    <div class="site-blocks-cover overlay" style="background-image: url(home/images/pic.png);" data-aos="fade" id="home-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class=" col-md-8 mt-lg-5text-left">
+                    <img class="text-uppercase  img_logo2" src="{{asset('home/images/logo.png') }}" data-aos="fade-up">
+                    <h1 class="text-uppercase mb-1 text2" style="font-family:myfont; color:white; font-size: 30px;" data-aos="fade-up">RO ตัวใหม่ล่าสุดที่คราวนี้มาในรูปแบบ 3D MMORPG แถมยังได้ลิขสิทธิ์แท้จาก Gravity มาอีกด้วย</h1>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <a href="#contact-section" class="btn smoothscroll button3 mr-2 mb-2">Get In Touch</a>
+                        <a class="btn smoothscroll button3 "><img src="{{asset('/icon/download.svg') }}">Download</a>
                     </div>
                 </div>  
             </div>
@@ -20,7 +21,7 @@
             </span>
         </a>
     </div>
-    <div class="site-blocks-cover overlay" style="background-image: url('home/images/slide_1.jpeg');" data-aos="fade" id="home-section">
+    <div class="site-blocks-cover overlay" style="background-image: url('home/images/slide_2.jpg');" data-aos="fade" id="home-section">
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-8 mt-lg-5 text-center">
@@ -109,7 +110,7 @@
                             <img src="section/File_game/Profile_game/{{ $allGame->GAME_IMG_PROFILE }}" alt="Image" class="img-fluid" width="250" height="250">
                         </a>
                         <h2 class="font2"><a>{{ $allGame->GAME_NAME}}</a></h2>
-                        <div class="meta mb-2">{{ $allGame->name }}.{{ $allGame->surname }} <span class="mx-2">&bullet;</span> {{ $allGame->GAME_DATE }}<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></div>
+                        <div class="meta mb-2">{{ $allGame->name }}.{{ $allGame->surname }}<br> {{ $allGame->GAME_DATE }}<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></div>
                         <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
                         <p><a href="#" class="font3">Continue Reading...</a></p>
                     </div> 

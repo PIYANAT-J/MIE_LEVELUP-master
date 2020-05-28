@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', 'GameController@indexGame')->name('LEVELup');
+// Route::post('/downloadGame', 'DownloadController@downloadGame')->name('downloadGame');
 
 // Route::view('/home', 'home') ->name('Home');
 
@@ -49,6 +50,11 @@ Route::get('/sponKyc', 'KycController@indexSponKyc')->name('sponKyc');
 
 Route::post('/kyc/create', 'KycController@createKyc')->name('CreateKyc');
 
-Route::view('/game_shelf', 'game_shelf') ->name('GAMESHELF');
+Route::get('/game_shelf', 'DownloadController@indexGame')->name('GAMESHELF');
+Route::post('/game_shelf/download', 'DownloadController@downloadGame')->name('downloadGame');
 
 Route::get('/edit_upload_game', 'UploadImageProfile@edit_game')->name('EditGame');
+
+Route::view('/user_mamagement', 'admin_lvp.user_management');
+
+Route::view('/navbar2', 'layout.navbar2');

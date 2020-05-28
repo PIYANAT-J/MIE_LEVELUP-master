@@ -88,12 +88,12 @@
                                         <div class="col "></div>
                                         <div class="w-100"></div>
 
-                                        <div class="col"></div>
+                                        <!-- <div class="col"></div>
                                         <div class="col-sm-7 ml-3 mr-3" >
                                             <img src="home/images/kyc.png">
                                         </div>
                                         <div class="col "></div>
-                                        <div class="w-100"></div>
+                                        <div class="w-100"></div> -->
 
                                     </div>
                                 </div>
@@ -152,12 +152,12 @@
                                         <div class="col "></div>
                                         <div class="w-100"></div>
 
-                                        <div class="col"></div>
+                                        <!-- <div class="col"></div>
                                         <div class="col-sm-7 ml-3 mr-3" >
                                             <img src="home/images/kyc.png">
                                         </div>
                                         <div class="col "></div>
-                                        <div class="w-100"></div>
+                                        <div class="w-100"></div> -->
 
                                     </div>
                                 </div>

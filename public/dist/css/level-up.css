@@ -416,9 +416,13 @@ color: #ffff;
 background-color: #ce0005;
 }
 
-.button3{ /* ปุ่มหน้าแรก */
-background-color: #ce0005;
-color: #fff;
+.button3{ /* ปุ่มdownload หหน้าแรก */
+    width: 145px;
+    height: 43px;
+    object-fit: contain;
+    opacity: 1;
+    border-radius: 6px;
+    background-color: #fff;
 }
 .button3:hover{
 color: #ce0005;
@@ -428,6 +432,12 @@ background-color: #fff;
 color: #ffff;
 background-color: #ce0005
 }
+
+.download{
+  width: 20%;
+}
+
+
 
 .button4{ /* ปุ่มหน้าแรก */
 background-color: #ce0005;
@@ -962,4 +972,86 @@ p {
 .label1{
   color: #d60609b9;
   font-size: 12px;
+}
+
+/*input style*/
+input[type='text']:focus{
+  border: #ce0005 solid 1px;
+  border-radius:3px;
+  outline: none;
+  box-shadow: #ffd3d4 0px 0px 0px 2px;
+}
+
+input[type='email']:focus{
+  border: #ce0005 solid 1px;
+  border-radius:25px;
+  outline: none;
+  box-shadow: #ffd3d4 0px 0px 0px 2px;
+}
+
+input[type='password']:focus{
+  border: #ce0005 solid 1px;
+  border-radius:25px;
+  outline: none;
+  box-shadow: #ffd3d4 0px 0px 0px 2px;
+}
+input[type='file']:focus{
+  border: #ce0005 solid 1px;
+  border-radius:25px;
+  outline: none;
+  box-shadow: #ffd3d4 0px 0px 0px 2px;
+}
+
+.textarea-description:focus {
+  border: #ce0005 solid 1px;
+  border-radius:25px;
+  outline: none;
+  box-shadow: #ffd3d4 0px 0px 0px 2px;
+}
+
+select {
+  width: 100%;
+  height: 40px;
+  -webkit-appearance: none;
+  appearance: none; /*ปุ่มลูกศร*/
+  color: #7c7c7c;
+  border: 1px solid #dddddd;
+  outline: 0;
+  padding: 0px 0px 0px 10px; /* top-right-bottom-left */
+  border-radius:25px;
+}
+
+select:focus{
+  border: #ce0005 solid 1px;
+  border-radius:25px;
+  outline: none;
+  box-shadow: #ffd3d4 0px 0px 0px 1px;
+}
+
+
+/* scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ce0005; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ce0005; 
+}
+
+.game_rate{
+  width: 10%;
+  height: auto;
 }

@@ -20,6 +20,25 @@
         <link rel="stylesheet" href="{{ asset('dist/css/aos.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/level-up.css') }}">
+        <link rel="stylesheet" href="{{ asset('home/font/font.css') }}">
+
+        <style>
+            @font-face {
+            font-family:myfont;
+            src: url('home/font/dbheaventmedv3.2-webfont.woff2') format('woff2'),
+                    url('home/font/dbheaventmedv3.2-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            }
+            @font-face {
+            font-family:myfont1;
+            src: url('home/font/dbheaventliv3.2-webfont.woff2') format('woff2'),
+                    url('home/font/dbheaventliv3.2-webfont.woff2') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            }
+            
+            </style>
     </head>
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
         <div id="app" class="site-wrap active">
@@ -31,35 +50,34 @@
                 </div>
                 <div class="site-mobile-menu-body"></div>
             </div>
-            <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <header class="site-navbar site-navbar-target" role="banner">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-6 col-xl-2">
-                            <h1 class="mb-0 site-logo"><a href="{{ url('/') }}" class="mb-0">LEVEL Up</a></h1>
+                            <h1 class="mb-0 site-logo"><a href="{{ url('/') }}" class="mb-0"><img class="img_logo" src="{{asset('home/logo/logo_lvp.svg') }}" ></a></h1>
                         </div>
-                        <div class="col-12 col-md-10 d-none d-xl-block">
-                            <nav class="site-navigation position-relative text-right" role="navigation">
+                        <div class="font_navbar home">
+                            <nav class="site-navigation position-fixed text-right" role="navigation">
                                 <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                                    <li><a href="{{ url('/') }}" class="nav-link active">หน้าหลัก</a></li>
-                                    <li><a href="#game-section" class="nav-link">เกม</a></li>
-                                    <li><a href="#services-section" class="nav-link">เติมเงิน</a></li>
-                                    <li><a href="#testimonials-section" class="nav-link">ดาวน์โหลด</a></li>
-                                    <li><a href="#news-section" class="nav-link">ข่าว</a></li>
-                                    <li><a href="#contact-section" class="nav-link">ช่วยเหลือ</a></li>
+                                    <li><a href="{{ url('/') }}" class="nav-link active" style="font-family:myfont;">หน้าแรก</a></li>
+                                    <li><a href="#game-section" class="nav-link" style="font-family:myfont;">หมวดหมู่</a></li>
+                                    <li><a href="#services-section" class="nav-link" style="font-family:myfont;">การติดตามของฉัน</a></li>
+                                    <li style="width:400px">
+                                        <input style="font-family:myfont1;" class="search_btn " type="text" placeholder="Search"aria-label="Search">
+                                    </li>
                                     <!-- Authentication Links -->
                                     @guest
-                                    <li class="has-children">
-                                        <a href="#about-section" class="nav-link">ยินดีต้อนรับคุณ</a>
-                                        <ul class="dropdown">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
-                                            </li>
-                                            @if (Route::has('register'))
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{{ route('register') }}">{{ __('สมัครสมาชิก') }}</a>
-                                                </li>
-                                            @endif
-                                        </ul>
+                                    <img style="padding:0px 0px 0px 20px;" src="{{asset('/icon/sign_in.svg') }}">
+                                    <label class="sign_in" style="font-family:myfont;">
+                                        <a href="{{ route('login') }}">{{ __('Sign in') }}</a>
+                                    </label>
+                                    <label style="font-family:myfont;"><a class="text2">/</a></label>
+                                    @if (Route::has('register'))
+                                        <label style="font-family:myfont;">
+                                            <a class="sign_up" href="{{ route('register') }}">{{ __('Sign up') }}</a>
+                                        </label>
+                                    @endif
+                                </ul>
                                     @else
                                     <li class="has-children">
                                         <a href="#about-section" class="nav-link">{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
@@ -87,7 +105,7 @@
                                 </ul>
                             </nav>
                         </div>
-                        <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a></div>
+                        <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3 menu1"></span></a></div>
                     </div>
                 </div>
             </header>

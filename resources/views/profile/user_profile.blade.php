@@ -41,7 +41,8 @@
       <div id="game-shelf" class="container tab-pane active"><br>
         <!-- <h3>Games Shelf</h3> -->
         <div class="over">
-          <div class="table"  >
+          <div class="table">
+            
             <div class="tr">
               <div class="th-game-pic"></div>
               <div class="th-game-name"></div>
@@ -49,7 +50,27 @@
               <div class="th-game-date">วันที่เล่น</div></tr>
             </div>
 
-            <div class="tr">
+            
+            @if(isset($game))
+              @foreach($game as $Game)
+                @if($Game->USER_ID == Auth::user()->id)
+                    @if(isset($Game->GAME_ID))
+                      <div class="tr">
+                        <div class="td-game-img"><img src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" alt="Image"class="game-img" ></div>
+                        <div class="td-game-name">{{ $Game->GAME_NAME }}</div>
+                        <div class="td-game-hours">5 ชั่วโมง</div>
+                        <div class="td-game-date">{{$Game->GAME_DATE}}</div>
+                      </div>
+                    @endif
+                @endif
+              @endforeach
+            @endif
+
+            
+                
+            
+            
+            <!-- <div class="tr">
               <div class="td-game-img"><img src="section/picture_game/game_profile.png" alt="Image"class="game-img" ></div>
               <div class="td-game-name">Example</div>
               <div class="td-game-hours">5 ชั่วโมง</div>
@@ -96,7 +117,7 @@
               <div class="td-game-name">Example</div>
               <div class="td-game-hours">5 ชั่วโมง</div>
               <div class="td-game-date">12-05-20</div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

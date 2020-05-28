@@ -1,51 +1,14 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-    <!-- เรียกใช้ Theme -->
-        <title>LEVEL Up &mdash; Website by Multi innovation Engineering</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700,900&display=swap" rel="stylesheet">
+<html>
+<head>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ asset('dist/css/level-up2.css') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="{{ asset('dist/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/jquery-ui.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/owl.carousel.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/owl.theme.default.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/owl.theme.default.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/jquery.fancybox.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/bootstrap-datepicker.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/fonts/flaticon/font/flaticon.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/fonts/icomoon/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/aos.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/level-up.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/level-up2.css') }}">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-        <link rel="stylesheet" href="{{ asset('dist/css/dropzone/dropzone.css') }}">
-        <style>
-            @font-face {
-            font-family:myfont;
-            src: url('home/font/dbheaventmedv3.2-webfont.woff2') format('woff2'),
-                    url('home/font/dbheaventmedv3.2-webfont.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            }
-            div
-            {font-family:myfont;}
-        </style>
-        
-        @yield('head')
-    <!-- เรียกใช้ Theme -->
-        
-    </head>
-    
-    <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+</head>
+<body>
 
-        <!-- เมนูบาร์ -->
-        <div id="profile" class="site-wrap">
+<div id="profile" class="site-wrap">
             <div class="site-mobile-menu site-navbar-target ">
                 <div class="site-mobile-menu-header ">
                     <div class="site-mobile-menu-close mt-3">
@@ -124,26 +87,8 @@
             @yield('navbar')
             @yield('admin_lvp')
 
+
         </div>
 
-        <script src="{{ asset('dist/js/jquery-3.3.1.min.js') }}"></script>
-        <script src="{{ asset('dist/js/jquery-ui.js') }}"></script>
-        <script src="{{ asset('dist/js/popper.min.js') }}"></script>
-        <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
-        <script src="{{ asset('dist/js/jquery.countdown.min.js') }}"></script>
-        <script src="{{ asset('dist/js/jquery.easing.1.3.js') }}"></script>
-        <script src="{{ asset('dist/js/aos.js') }}"></script>
-        <script src="{{ asset('dist/js/jquery.fancybox.min.js') }}"></script>
-        <script src="{{ asset('dist/js/jquery.sticky.js') }}"></script>
-        <script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
-        <script src="{{ asset('dist/js/main.js') }}"></script>
-        <script type="javascript" src="js/bootstrap-datetimepicker.min.js"></script>
-        <script type="javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="{{ asset('dist/css/dropzone/dropzone.js') }}"></script>
-        
-        @yield('script')
-
-    </body>
+</body>
 </html>
