@@ -55,6 +55,8 @@ Route::post('/game_shelf/download', 'DownloadController@downloadGame')->name('do
 
 Route::get('/edit_upload_game', 'UploadImageProfile@edit_game')->name('EditGame');
 
-Route::view('/user_mamagement', 'admin_lvp.user_management');
+Route::get('/user_mamagement', 'AdminController@indexAdmin')->name('Admin');
+Route::post('/user_mamagement/Kyc', 'AdminController@approveKyc')->name('AppKyc');
+Route::post('/user_mamagement/Game', 'AdminController@approveGame')->name('AppGame');
 
 Route::view('/navbar2', 'layout.navbar2');

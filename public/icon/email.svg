@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="61" height="61" viewBox="0 0 61 61">
+    <g id="prefix__Group_119" data-name="Group 119" transform="translate(0 .242)">
+        <g id="prefix__Mail" transform="translate(0 -.242)">
+            <circle id="prefix__Oval" cx="30.5" cy="30.5" r="30.5" style="fill:#383838"/>
+            <path id="prefix__Shape" d="M25.808 23.431H2.345A2.347 2.347 0 0 1 0 21.088L.019 7.029c.008 0 2.97 1.58 6.171 3.132 5.337 2.588 7.234 3.132 7.887 3.132 2.48 0 13.943-6.2 14.059-6.264l.019 14.059a2.347 2.347 0 0 1-2.347 2.343zM14.076 10.072C11.815 10.072.118 3.454 0 3.387V2.343A2.347 2.347 0 0 1 2.345 0h23.463a2.347 2.347 0 0 1 2.346 2.343l-.019 1.172-.014.009c-1.199.669-11.776 6.548-14.045 6.548z" transform="translate(16.621 18.619)" style="fill:#fff"/>
+        </g>
+    </g>
+</svg>

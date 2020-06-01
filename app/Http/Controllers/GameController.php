@@ -6,12 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 use DB;
-// use Illuminate\Support\Facades\DB;
+use Auth;
+use Session;
 
 use App\Game_imgae;
 use App\Game;
-
-use Session;
 
 class GameController extends Controller
 {
@@ -23,8 +22,12 @@ class GameController extends Controller
     // }
 
     public function indexGame(){
-        $Game = DB::select('SELECT * FROM developers LEFT JOIN games ON developers.USER_ID = games.USER_ID LEFT JOIN users ON developers.USER_ID = users.id');
-        return view('welcome', ['Game'=> $Game]);
+        // if(Auth::user()->users_type == 0){
+        //     return view('admin_lvp.user_management');
+        // }else{
+            $Game = DB::select('SELECT * FROM developers LEFT JOIN games ON developers.USER_ID = games.USER_ID LEFT JOIN users ON developers.USER_ID = users.id');
+            return view('welcome', ['Game'=> $Game]);
+        // }
     }
 
     // public function getIndex(){

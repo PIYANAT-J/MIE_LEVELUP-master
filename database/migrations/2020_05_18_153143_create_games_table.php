@@ -28,6 +28,7 @@ class CreateGamesTable extends Migration
             $table->integer('RATE_ID')->nullable();
             $table->integer('USER_ID');
             $table->string('USER_EMAIL')->collation('utf8_unicode_ci');
+            $table->string('ADMIN_NAME')->collation('utf8_unicode_ci')->nullable();
         });
     }
 

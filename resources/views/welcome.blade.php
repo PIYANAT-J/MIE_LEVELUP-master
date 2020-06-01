@@ -1,428 +1,778 @@
 @extends('layout.app')
 
 @section('background')
-
-<div class="slide-one-item home-slider owl-carousel">
-    <div class="site-blocks-cover overlay" style="background-image: url(home/images/pic.png);" data-aos="fade" id="home-section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class=" col-md-8 mt-lg-5text-left">
-                    <img class="text-uppercase  img_logo2" src="{{asset('home/images/logo.png') }}" data-aos="fade-up">
-                    <h1 class="text-uppercase mb-1 text2" style="font-family:myfont; color:white; font-size: 30px;" data-aos="fade-up">RO ตัวใหม่ล่าสุดที่คราวนี้มาในรูปแบบ 3D MMORPG แถมยังได้ลิขสิทธิ์แท้จาก Gravity มาอีกด้วย</h1>
-                    <div data-aos="fade-up" data-aos-delay="100">
-                        <a class="btn smoothscroll button3 "><img src="{{asset('/icon/download.svg') }}">Download</a>
-                    </div>
-                </div>  
+    <div class="slide-one-item home-slider owl-carousel">
+        <div class="site-blocks-cover overlay" style="background-image: url(home/images/pic.png);" data-aos="fade" id="home-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class=" col-md-8 mt-lg-5text-left">
+                        <img class="text-uppercase  img_logo2" src="{{asset('home/images/logo.png') }}" data-aos="fade-up">
+                        <h1 class="text-uppercase mb-1 text2" style="font-family:myfont; color:white; font-size: 30px;" data-aos="fade-up">RO ตัวใหม่ล่าสุดที่คราวนี้มาในรูปแบบ 3D MMORPG แถมยังได้ลิขสิทธิ์แท้จาก Gravity มาอีกด้วย</h1>
+                        <div data-aos="fade-up" data-aos-delay="100">
+                            <!-- <a class="btn smoothscroll button3 "><img src="{{asset('/icon/download.svg') }}">Download</a> -->
+                        </div>
+                    </div>  
+                </div>
             </div>
+            <a href="#about-section" class="mouse smoothscroll">
+                <span class="mouse-icon button4">
+                    <span class="mouse-wheel"></span>
+                </span>
+            </a>
         </div>
-        <a href="#about-section" class="mouse smoothscroll">
-            <span class="mouse-icon button4">
-                <span class="mouse-wheel"></span>
-            </span>
-        </a>
-    </div>
-    <div class="site-blocks-cover overlay" style="background-image: url('home/images/slide_2.jpg');" data-aos="fade" id="home-section">
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-md-8 mt-lg-5 text-center">
-                    <h1 class="text-uppercase mb-5" data-aos="fade-up">I'm Creative One Page Template by Colorlib</h1>
-                    <div data-aos="fade-up" data-aos-delay="100">
-                        <a href="#contact-section" class="btn smoothscroll button3 mr-2 mb-2">Get In Touch</a>
-                    </div>
-                </div> 
+        <div class="site-blocks-cover overlay" style="background-image: url('home/images/slide_2.jpg');" data-aos="fade" id="home-section">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-8 mt-lg-5 text-center">
+                        <h1 class="text-uppercase mb-5" data-aos="fade-up">I'm Creative One Page Template by Colorlib</h1>
+                        <div data-aos="fade-up" data-aos-delay="100">
+                            <!-- <a href="#contact-section" class="btn smoothscroll button3 mr-2 mb-2">Get In Touch</a> -->
+                        </div>
+                    </div> 
+                </div>
             </div>
+            <a href="#about-section" class="mouse smoothscroll">
+                <span class="mouse-icon button4">
+                    <span class="mouse-wheel"></span>
+                </span>
+            </a>
         </div>
-        <a href="#about-section" class="mouse smoothscroll">
-            <span class="mouse-icon button4">
-                <span class="mouse-wheel"></span>
-            </span>
-        </a>
     </div>
-</div>
 @endsection
 
 @section('section')
-<!-- Section_Services -->
-<section class="site-section border-bottom bg-light" id="services-section">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-12 text-center" data-aos="fade">
-                <h2 class="section-title mb-3 font">Our Services</h2>
+<!-- เกมส์ยอดนิยม -->
+<section class="site-section" id="game-popular">
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col-5 text-left" data-aos="fade">
+                <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">เกมส์ยอดนิยม</h2>
+            </div>
+            <div class="col-7 text-right" data-aos="fade">
+                <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('GAMESHELF') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
             </div>
         </div>
-        <div class="row align-items-stretch">
-            <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">
-                <div class="unit-4">
-                    <div class="unit-4-icon mr-4"><span class="text-danger flaticon-startup"></span></div>
-                    <div>
-                        <h3>Business Consulting</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        <p><a href="#" class="font3">Learn More</a></p>
-                    </div>
-                </div>
+        <div class="owl-carousel " id="owl-demo1">
+            <div class="item imgteaser2">
+                <a>
+                    <img class="game_1" src="{{asset('section/picture_game/game.png') }}" />
+                        <!-- <div class="btn following2"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc2">
+                        <!-- <button class="btn_follow4 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow3"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name2">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down2"><img  src="{{asset('icon/down1.svg') }}" /></div>
+
+                </a>
             </div>
-            <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="unit-4">
-                    <div class="unit-4-icon mr-4"><span class="text-danger flaticon-graphic-design"></span></div>
-                    <div>
-                        <h3>Market Analysis</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        <p><a href="#" class="font3">Learn More</a></p>
-                    </div>
-                </div>
+
+            <div class="item imgteaser2">
+                <a>
+                    <img class="game_1" src="{{asset('section/picture_game/game2.png') }}" />
+                        <div class="btn following2"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
+                    <span class="desc2">
+                        <button class="btn_follow4 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
+                        <!-- <button class="btn_follow3"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button > -->
+                        <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name2">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down2"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
             </div>
-            <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="unit-4">
-                    <div class="unit-4-icon mr-4"><span class="text-danger flaticon-settings"></span></div>
-                    <div>
-                        <h3>User Monitoring</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        <p><div ><a href="#" class="font3" >Learn More</a></div></p>
-                    </div>
-                </div>
+            <div class="item imgteaser2">
+                <a>
+                    <img class="game_1" src="{{asset('section/picture_game/game3.png') }}" />
+                        <!-- <div class="btn following2"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc2">
+                        <!-- <button class="btn_follow4 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow3"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name2">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down2"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
+            <div class="item imgteaser2">
+                <a>
+                    <img class="game_1" src="{{asset('section/picture_game/game4.png') }}" />
+                        <!-- <div class="btn following2"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc2">
+                        <!-- <button class="btn_follow4 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow3"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name2">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down2"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
+            <div class="item imgteaser2">
+                <a>
+                    <img class="game_1" src="{{asset('section/picture_game/game.png') }}" />
+                        <!-- <div class="btn following2"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc2">
+                        <!-- <button class="btn_follow4 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow3"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name2">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down2 collapsible"><img  src="{{asset('icon/down1.svg') }}" />
+                        </div>
+                    </span>
+                </a>
             </div>
         </div>
+
+
+</section>
+
+<!-- การติดตามของฉัน -->
+<section class="site-section" id="myfollow">
+    <div class="container-fluid">
+        <div class="row mt-4 ">
+            <div class="col-5 text-left" data-aos="fade">
+                <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">การติดตามของฉัน</h2>
+            </div>
+            <div class="col-7 text-right" data-aos="fade">
+                <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('GAMESHELF') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
+            </div>
+        </div>
+        <div class="owl-carousel" id="owl-demo2">
+        <div class="item imgteaser2">
+                <a>
+                    <img class="game_1" src="{{asset('section/picture_game/game5.png') }}" />
+                        <!-- <div class="btn following2"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc2">
+                        <!-- <button class="btn_follow4 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow3"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name2">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down2"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
+
+            <div class="item imgteaser2">
+                <a>
+                    <img class="game_1" src="{{asset('section/picture_game/game4.png') }}" />
+                        <div class="btn following2"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
+                    <span class="desc2">
+                        <button class="btn_follow4 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
+                        <!-- <button class="btn_follow3"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button > -->
+                        <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name2">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down2"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
+            <div class="item imgteaser2">
+                <a>
+                    <img class="game_1" src="{{asset('section/picture_game/game2.png') }}" />
+                        <!-- <div class="btn following2"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc2">
+                        <!-- <button class="btn_follow4 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow3"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name2">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down2"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
+            <div class="item imgteaser2">
+                <a>
+                    <img class="game_1" src="{{asset('section/picture_game/game3.png') }}" />
+                        <!-- <div class="btn following2"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc2">
+                        <!-- <button class="btn_follow4 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow3"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name2">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down2"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
+            <div class="item imgteaser2">
+                <a>
+                    <img class="game_1" src="{{asset('section/picture_game/game5.png') }}" />
+                        <!-- <div class="btn following2"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc2">
+                        <!-- <button class="btn_follow4 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow3"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name2">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down2"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
+        </div>      
+
     </div>
 </section>
 
-<!-- Section_Game -->
-<section class="site-section" id="game-section">
-    <div class="container">
-        <div class="row mb-3">
-            <div class="col-12 text-center" data-aos="fade">
-                <h2 class="section-title mb-3 font">GAME PLATFORM</h2>
+<!-- เกมส์ยอดนิยม-->
+<section class="site-section">
+    <div class="container-fluid">
+        <div class="row mt-4 ">
+            <div class="col-5 text-left" data-aos="fade">
+                <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">เกมส์ยอดนิยม</h2>
+            </div>
+            <div class="col-7 text-right" data-aos="fade">
+                <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('GAMESHELF') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
             </div>
         </div>
-        <div class="row justify-content-center mb-5" data-aos="fade-up">
-            <div id="filters" class="filters text-center button-group col-md-7 ">
-                <button class="button5 active" data-filter="*">ทั้งหมด</button>
-                <button class="button5" data-filter=".news">มาใหม่</button>
-                <button class="button5" data-filter=".hot">ยอดนิยม</button>
-            </div>
-        </div>
-        
-        <div id="posts" class="row no-gutter">
-        @foreach($Game as $allGame)
-            @if($allGame->GAME_STATUS == 'อนุมัติ')
-                <div class="item news col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="">
-                    <div class="h-entry">
-                        <a href="single.html">
-                            <img src="section/File_game/Profile_game/{{ $allGame->GAME_IMG_PROFILE }}" alt="Image" class="img-fluid" width="250" height="250">
-                        </a>
-                        <h2 class="font2"><a>{{ $allGame->GAME_NAME}}</a></h2>
-                        <div class="meta mb-2">{{ $allGame->name }}.{{ $allGame->surname }}<br> {{ $allGame->GAME_DATE }}<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></div>
-                        <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
-                        <p><a href="#" class="font3">Continue Reading...</a></p>
-                    </div> 
-                </div>
-            @endif
-        @endforeach
-            <!-- <div class="item hot col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="h-entry">
-                    <a href="single.html">
-                        <img src="section/picture_game/game_pic.jpg" alt="Image" class="img-fluid" width="250" height="250">
-                    </a>
-                    <h2 class="font2"><a>Game name</a></h2>
-                    <div class="meta mb-2">ชื่อผู้พัฒนา <span class="mx-2">&bullet;</span> วันที่เผยแพร่<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></div>
-                    <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
-                    <p><a href="#" class="font3">Continue Reading...</a></p>
-                </div> 
-            </div>
-            <div class="item hot col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="h-entry">
-                    <a href="single.html">
-                        <img src="section/picture_game/game_pic.jpg" alt="Image" class="img-fluid" width="250" height="250">
-                    </a>
-                    <h2 class="font2"><a>Game name</a></h2>
-                    <div class="meta mb-2">ชื่อผู้พัฒนา <span class="mx-2">&bullet;</span> วันที่เผยแพร่<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></div>
-                    <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
-                    <p><a href="#" class="font3">Continue Reading...</a></p>
-                </div>
-            </div>
-            <div class="item hot col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="h-entry">
-                    <a href="single.html">
-                        <img src="section/picture_game/game_pic.jpg" alt="Image" class="img-fluid" width="250" height="250">
-                    </a>
-                    <h2 class="font2"><a>Game name</a></h2>
-                    <div class="meta mb-2">ชื่อผู้พัฒนา <span class="mx-2">&bullet;</span> วันที่เผยแพร่<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></div>
-                    <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
-                    <p><a href="#" class="font3">Continue Reading...</a></p>
-                </div> 
+        <div class="owl-carousel " id="owl-demo3">
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game6.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
             </div>
 
-            <div class="item news col-md-6 col-lg-3 mb-4">
-                <div class="h-entry">
-                    <a href="single.html">
-                        <img src="section/picture_game/game_pic.jpg" alt="Image" class="img-fluid" width="250" height="250">
-                    </a>
-                    <h2 class="font2"><a>Game name</a></h2>
-                    <div class="meta mb-2">ชื่อผู้พัฒนา <span class="mx-2">&bullet;</span> วันที่เผยแพร่<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></div>
-                    <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
-                    <p><a href="#" class="font3">Continue Reading...</a></p>
-                </div> 
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game7.png') }}" />
+                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
+                    <span class="desc">
+                        <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
+                        <!-- <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button > -->
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
             </div>
-            <div class="item news col-md-6 col-lg-3 mb-4">
-                <div class="h-entry">
-                    <a href="single.html">
-                        <img src="section/picture_game/game_pic.jpg" alt="Image" class="img-fluid" width="250" height="250">
-                    </a>
-                    <h2 class="font2"><a>Game name</a></h2>
-                    <div class="meta mb-2">ชื่อผู้พัฒนา <span class="mx-2">&bullet;</span> วันที่เผยแพร่<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></div>
-                    <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
-                    <p><a href="#" class="font3">Continue Reading...</a></p>
-                </div> 
+
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game8.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
             </div>
-            <div class="item news col-md-6 col-lg-3 mb-4">
-                <div class="h-entry">
-                    <a href="single.html">
-                        <img src="section/picture_game/game_pic.jpg" alt="Image" class="img-fluid" width="250" height="250">
-                    </a>
-                    <h2 class="font2"><a>Game name</a></h2>
-                    <div class="meta mb-2">ชื่อผู้พัฒนา <span class="mx-2">&bullet;</span> วันที่เผยแพร่<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></div>
-                    <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
-                    <p><a href="#" class="font3">Continue Reading...</a></p>
-                </div>
+
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game9.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
             </div>
-            <div class="item news col-md-6 col-lg-3 mb-4">
-                <div class="h-entry">
-                    <a href="single.html">
-                        <img src="section/picture_game/game_pic.jpg" alt="Image" class="img-fluid" width="250" height="250">
-                    </a>
-                    <h2 class="font2"><a>Game name</a></h2>
-                    <div class="meta mb-2">ชื่อผู้พัฒนา <span class="mx-2">&bullet;</span> วันที่เผยแพร่<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></div>
-                    <div class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</div>
-                    <p><a href="#" class="font3">Continue Reading...</a></p>
-                </div> 
-            </div> -->
-        </div>    
-            <div class="row">
-                <div class="col-12 text-right" data-aos="fade">
-                    <p><a class="font5" href="{{ route('GAMESHELF') }}">Game Shelf All &nbsp;<i class="icon-forward mr-2"></i></a></p>
-                </div>
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game10.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
             </div>
-    </div>
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game11.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game12.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game6.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
+        </div>
 </section>
 
-<!-- Section_News -->
-<section class="site-section bg-light" id="news-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center" data-aos="fade-up">
-                <h2 class="section-title mb-3 font3">NEWS</h2>
+<!-- เกมส์ออกใหม่-->
+<section class="site-section">
+    <div class="container-fluid">
+        <div class="row mt-4 ">
+            <div class="col-5 text-left" data-aos="fade">
+                <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">เกมส์ออกใหม่</h2>
+            </div>
+            <div class="col-7 text-right" data-aos="fade">
+                <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('GAMESHELF') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="100">
-                        <a href="#"> <!-- ไปหน้าแสดงรายละเอียดข่าว -->
-                            <img src="section/picture_game/csgo.jpg" alt="Image" class="img-fluid" width="250" height="250">
-                        </a>
-                    </div>
-                    <div class="col-lg-9 " data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="text-black h5 mb-2">News</h3>
-                        <p>รายะเอียด : Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda eum blanditiis perferendis.</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="100">
-                        <a href="#"> <!-- ไปหน้าแสดงรายละเอียดข่าว -->
-                            <img src="{{asset('section/picture_game/fifa.jpg')}}" alt="Image" class="img-fluid" width="250" height="250">
-                        </a>
-                    </div>
-                    <div class="col-lg-9 " data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="text-black h5 mb-2">News</h3>
-                        <p>รายะเอียด : Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda eum blanditiis perferendis.</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="100">
-                        <a href="#"> <!-- ไปหน้าแสดงรายละเอียดข่าว -->
-                            <img src="section/picture_game/csgo.jpg" alt="Image" class="img-fluid" width="250" height="250">
-                        </a>
-                    </div>
-                    <div class="col-lg-9 " data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="text-black h5 mb-2">News</h3>
-                        <p>รายะเอียด : Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda eum blanditiis perferendis.</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="100">
-                        <a href="#"> <!-- ไปหน้าแสดงรายละเอียดข่าว -->
-                            <img src="{{asset('section/picture_game/pubg.jpeg')}}" alt="Image" class="img-fluid" width="250" height="250">
-                        </a>
-                    </div>
-                    <div class="col-lg-9 " data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="text-black h5 mb-2">News</h3>
-                        <p>รายะเอียด : Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda eum blanditiis perferendis.</p>
-                    </div>
-                </div>
-
+        <div class="owl-carousel " id="owl-demo4">
+        <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game12.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
             </div>
 
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="100">
-                        <a href="#"> <!-- ไปหน้าแสดงรายละเอียดข่าว -->
-                            <img src="dist/images/post_1.jpg" alt="Image" class="img-fluid" width="250" height="250">
-                        </a>
-                    </div>
-                    <div class="col-lg-9 " data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="text-black h5 mb-2">News</h3>
-                        <p>รายะเอียด : Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda eum blanditiis perferendis.</p>
-                    </div>
-                </div>
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game13.png') }}" />
+                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
+                    <span class="desc">
+                        <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
+                        <!-- <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button > -->
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
 
-                <div class="row">
-                    <div class="col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="100">
-                        <a href="#"> <!-- ไปหน้าแสดงรายละเอียดข่าว -->
-                            <img src="dist/images/post_2.jpg" alt="Image" class="img-fluid" width="250" height="250">
-                        </a>
-                    </div>
-                    <div class="col-lg-9 " data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="text-black h5 mb-2">News</h3>
-                        <p>รายะเอียด : Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda eum blanditiis perferendis.</p>
-                    </div>
-                </div>
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game14.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
 
-                <div class="row">
-                    <div class="col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="100">
-                        <a href="#"> <!-- ไปหน้าแสดงรายละเอียดข่าว -->
-                            <img src="dist/images/post_3.jpg" alt="Image" class="img-fluid" width="250" height="250">
-                        </a>
-                    </div>
-                    <div class="col-lg-9 " data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="text-black h5 mb-2">News</h3>
-                        <p>รายะเอียด : Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda eum blanditiis perferendis.</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="100">
-                        <a href="#"> <!-- ไปหน้าแสดงรายละเอียดข่าว -->
-                            <img src="dist/images/post_1.jpg" alt="Image" class="img-fluid" width="250" height="250">
-                        </a>
-                    </div>
-                    <div class="col-lg-9 " data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="text-black h5 mb-2">News</h3>
-                        <p>รายะเอียด : Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda eum blanditiis perferendis.</p>
-                    </div>
-                </div>
-
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game15.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game16.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game17.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game12.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
             </div>
         </div>
-    </div>
 </section>
 
-<!-- Section_Sponsors -->
-<section class="site-section border-bottom bg-light" id="team-section">
-    <div class="container">
-        <div class="row mb-5 justify-content-center">
-            <div class="col-md-8 text-center">
-                <h2 class="section-title mb-3 font" data-aos="fade-up" data-aos-delay="">SPONSORS</h2>
+<!--พบกันเร็วๆนี้-->
+<section class="site-section">
+    <div class="container-fluid">
+        <div class="row mt-4 ">
+            <div class="col-5 text-left" data-aos="fade">
+                <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">พบกันเร็วๆนี้</h2>
+            </div>
+            <div class="col-7 text-right" data-aos="fade">
+                <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('GAMESHELF') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6 col-lg-3 mb-5" data-aos="fade-up">
-                <div class="team-member">
-                    <figure>
-                        <ul class="social">
-                            <li><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li><a href="#"><span class="icon-instagram"></span></a></li>
-                        </ul>
-                        <img src="section/picture_sponsors/grab.png" alt="Image" class="img-fluid" style="width: 200px; height: 80px;">
-                    </figure>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-5" data-aos="fade-up" data-aos-delay="100">
-                <div class="team-member">
-                    <figure>
-                        <ul class="social">
-                            <li><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li><a href="#"><span class="icon-twitter"></span></a></li>
-                        </ul>
-                        <img src="section/picture_sponsors/ford.png" alt="Image" class="img-fluid" style="width: 200px; height: 80px;">
-                    </figure>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-5" data-aos="fade-up" data-aos-delay="200">
-                <div class="team-member">
-                    <figure>
-                        <ul class="social">
-                            <li><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li><a href="#"><span class="icon-twitter"></span></a></li>
-                        </ul>
-                        <img src="section/picture_sponsors/sega.png" alt="Image" class="img-fluid" style="width: 200px; height: 80px;">
-                    </figure>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-5" data-aos="fade-up" data-aos-delay="300">
-                <div class="team-member">
-                    <figure>
-                        <ul class="social">
-                            <li><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li><a href="#"><span class="icon-instagram"></span></a></li>
-                        </ul>
-                        <img src="section/picture_sponsors/grab.png" alt="Image" class="img-fluid" style="width: 200px; height: 80px;">
-                    </figure>
-                </div>
+        <div class="owl-carousel" id="owl-demo5">
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game18.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
             </div>
 
-            <div class="col-md-6 col-lg-3 mb-5" data-aos="fade-up">
-                <div class="team-member">
-                    <figure>
-                        <ul class="social">
-                            <li><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li><a href="#"><span class="icon-instagram"></span></a></li>
-                        </ul>
-                        <img src="section/picture_sponsors/grab.png" alt="Image" class="img-fluid" style="width: 200px; height: 80px;">
-                    </figure>
-                </div>
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game19.png') }}" />
+                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
+                    <span class="desc">
+                        <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
+                        <!-- <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button > -->
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
             </div>
-            <div class="col-md-6 col-lg-3 mb-5" data-aos="fade-up" data-aos-delay="100">
-                <div class="team-member">
-                    <figure>
-                        <ul class="social">
-                            <li><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li><a href="#"><span class="icon-twitter"></span></a></li>
-                        </ul>
-                        <img src="section/picture_sponsors/sega.png" alt="Image" class="img-fluid" style="width: 200px; height: 80px;">
-                    </figure>
-                </div>
+
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game20.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
             </div>
-            <div class="col-md-6 col-lg-3 mb-5" data-aos="fade-up" data-aos-delay="200">
-                <div class="team-member">
-                    <figure>
-                        <ul class="social">
-                            <li><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li><a href="#"><span class="icon-twitter"></span></a></li>
-                        </ul>
-                        <img src="section/picture_sponsors/grab.png" alt="Image" class="img-fluid" style="width: 200px; height: 80px;">
-                    </figure>
-                </div>
+
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game21.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
             </div>
-            <div class="col-md-6 col-lg-3 mb-5" data-aos="fade-up" data-aos-delay="300">
-                <div class="team-member">
-                    <figure>
-                        <ul class="social">
-                            <li><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li><a href="#"><span class="icon-instagram"></span></a></li>
-                        </ul>
-                        <img src="section/picture_sponsors/ford.png" alt="Image" class="img-fluid" style="width: 200px; height: 80px;">
-                    </figure>
-                </div>
-            </div> 
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game22.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game18.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
+            <div class="item imgteaser">
+                <a>
+                    <img class="game_2" src="{{asset('section/picture_game/game18.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <b style="font-size: 30px;color: #fff;">Maneater</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                        </div>
+                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
+                    </span>
+                </a>
+            </div>
         </div>
-    </div>
 </section>
-
 @endsection
 
 @section('script')
+    <script>
+        $(document).ready(function() {
+            $("#owl-demo1").owlCarousel({
+                loop:true,
+                margin:10,
+                navigation : true,
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:1,
+                        nav:false
+                    },
+                    600:{
+                        items:2,
+                        nav:true
+                    },
+                    1000:{
+                        items:4,
+                        nav:true,
+                        loop:false
+                    }
+                }
+            })
+        });
+    </script>
 
+    <script>
+        $(document).ready(function() {
+            $("#owl-demo2").owlCarousel({
+                loop:true,
+                margin:10,
+                navigation : true,
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:1,
+                        nav:false
+                    },
+                    600:{
+                        items:2,
+                        nav:true
+                    },
+                    1000:{
+                        items:4,
+                        nav:true,
+                        loop:false
+                    }
+                }
+            })
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#owl-demo3").owlCarousel({
+                loop:true,
+                margin:10,
+                navigation : true,
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:2,
+                        nav:false
+                    },
+                    600:{
+                        items:2,
+                        nav:true
+                    },
+                    1000:{
+                        items:6,
+                        nav:true,
+                        loop:false
+                    }
+                }
+            })
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#owl-demo4").owlCarousel({
+                loop:true,
+                margin:10,
+                navigation : true,
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:2,
+                        nav:false
+                    },
+                    600:{
+                        items:2,
+                        nav:true
+                    },
+                    1000:{
+                        items:6,
+                        nav:true,
+                        loop:false
+                    }
+                }
+            })
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#owl-demo5").owlCarousel({
+                loop:true,
+                margin:10,
+                navigation : true,
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:2,
+                        nav:false
+                    },
+                    600:{
+                        items:2,
+                        nav:true
+                    },
+                    1000:{
+                        items:6,
+                        nav:true,
+                        loop:false
+                    }
+                }
+            })
+        });
+    </script>
 @endsection

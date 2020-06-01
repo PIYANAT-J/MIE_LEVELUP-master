@@ -59,7 +59,7 @@
     <div class="row mt-3"></div>
     <div class="row mt-5">
         <div class="col-lg-3"></div>
-        <div class="col-lg-9"> @yield('user_managemant')col2</div>
+        <div class="col-lg-9"> @yield('user_managemant')</div>
     </div>
 </div>
 

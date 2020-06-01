@@ -13,33 +13,44 @@ use DB;
 
 class DownloadController extends Controller
 {
-    public function indexDonwload($GAME_ID){
+    // public function indexDonwload($GAME_ID){
 
-        $downloadToFile = public_path('section/File_game');
-        $gameFileName = DB::table('games')->where('GAME_ID', $GAME_ID)->value('GAME_FILE');
-        $headers = ['Content-Type: application/zip'];
+    //     $downloadToFile = public_path('section/File_game');
+    //     $gameFileName = DB::table('games')->where('GAME_ID', $GAME_ID)->value('GAME_FILE');
+    //     $headers = ['Content-Type: application/zip'];
 
-        return response()->download($downloadToFile, $gameFileName, $headers);
+    //     return response()->download($downloadToFile, $gameFileName, $headers);
 
-    }
+    // }
 
     public function indexGame(){
         // $Game = DB::select('SELECT * FROM developers LEFT JOIN games ON developers.USER_ID = games.USER_ID LEFT JOIN users ON developers.USER_ID = users.id');
-        $Download = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
-        if($Download->count() == 0){
+        
+        if(isset(Auth::user()->id)){
+            $Download = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+            if($Download->count() == 0){
+                $Game = DB::table('games')
+                            ->join('users', 'users.id', '=', 'games.USER_ID')
+                            // ->join('downloads', 'downloads.GAME_ID', '=', 'games.GAME_ID')
+                            ->select('games.*', 'users.*')
+                            ->get();
+                return view('game_shelf', compact('Game'));
+            }else{
+                $Game = DB::table('games')
+                            ->join('users', 'users.id', '=', 'games.USER_ID')
+                            ->select('games.*', 'users.*')
+                            ->get();
+                return view('game_shelf', compact('Game', 'Download'));
+            }
+        }else{
             $Game = DB::table('games')
                         ->join('users', 'users.id', '=', 'games.USER_ID')
                         // ->join('downloads', 'downloads.GAME_ID', '=', 'games.GAME_ID')
                         ->select('games.*', 'users.*')
                         ->get();
             return view('game_shelf', compact('Game'));
-        }else{
-            $Game = DB::table('games')
-                        ->join('users', 'users.id', '=', 'games.USER_ID')
-                        ->select('games.*', 'users.*')
-                        ->get();
-            return view('game_shelf', compact('Game', 'Download'));
         }
+        
         
     }
 

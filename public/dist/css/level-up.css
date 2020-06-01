@@ -19,8 +19,7 @@
 }
 
 .font{ /* ไอคอนเลขบัตรปชช. เบอร์โทร อีเมล */
-  color: #ce0005;
-  text-align: center;
+  color: #000;
 }
 
 .font1{  /*ชื่อ-นามสกุล ข้อมูลส่วนตัวหน้าโปรไฟล์ */
@@ -423,21 +422,59 @@ background-color: #ce0005;
     opacity: 1;
     border-radius: 6px;
     background-color: #fff;
+    margin-left: 10%;
+    padding-top: 3px;
+    padding-left: 15px;
+    margin-right: 10px;
+    font-size: 20px;
+    cursor: pointer;
 }
+
 .button3:hover{
-color: #ce0005;
-background-color: #fff;
-}
-.button3.active{
-color: #ffff;
-background-color: #ce0005
+  box-shadow: 0 0 2px 1px #ce0005!important;
 }
 
-.download{
-  width: 20%;
+.download {
+  width: 77px;
+  height: 29px;
+  object-fit: contain;
+  font-size: 24px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+  color: #383838;
+  margin-left: 15px;
+  padding-bottom: 10px;
 }
 
+.button10 {
+  width: 145px;
+  height: 43px;
+  object-fit: contain;
+  opacity: 0.93;
+  border-radius: 6px;
+  background-color: #383838;
+  padding-top: 8px;
+}
+.button10:hover{
+  box-shadow: 0 0 2px 1px #ce0005 !important;
+}
 
+.details {
+  width: 53px;
+  height: 29px;
+  object-fit: contain;
+  font-family: myfont;
+  font-size: 24px;
+  /* font-weight: bold; */
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+}
 
 .button4{ /* ปุ่มหน้าแรก */
 background-color: #ce0005;
@@ -624,8 +661,8 @@ overflow: hidden;
 .td-game-img{
   display: table-cell;
   border-bottom: #dddddd solid 1px;
-  
-  
+
+
 }
 .game-img{
   width: 80px;
@@ -1015,7 +1052,7 @@ select {
   -webkit-appearance: none;
   appearance: none; /*ปุ่มลูกศร*/
   color: #7c7c7c;
-  border: 1px solid #dddddd;
+  border: 1px solid #dddddd;/
   outline: 0;
   padding: 0px 0px 0px 10px; /* top-right-bottom-left */
   border-radius:25px;
@@ -1040,7 +1077,7 @@ select:focus{
 ::-webkit-scrollbar-track {
   background: #f1f1f1; 
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #ce0005; 
@@ -1054,4 +1091,474 @@ select:focus{
 .game_rate{
   width: 10%;
   height: auto;
+}
+
+.game_1 {
+  border-radius: 8px;
+  border: solid 1px rgba(255, 255, 255, 0.096);
+  background-color:#fff;
+  width: 310px;
+  height: 220px;
+  overflow: hidden;
+}
+.owl-next{
+  background: #000;
+  text-align: right;
+  padding: 10px 10px 10px 10px;
+  width: 50px;
+  height:50px ;
+  z-index: 5;
+  position: absolute;
+  top: 40%;
+  left: 95%;
+  border-radius: 50px;
+  opacity: 50%;
+}
+
+.owl-next:hover{
+  opacity: 100%;
+}
+
+.owl-prev{
+  background: #000;
+  text-align: right;
+  padding: 10px 10px 10px 10px;
+  width: 50px;
+  height:50px ;
+  z-index: 5;
+  position: absolute;
+  top: 40%;
+  right: 95%;
+  border-radius: 50px;
+  opacity: 50%;
+}
+
+.owl-prev:hover{
+  opacity: 100%;
+}
+
+.game_2 {
+  border-radius: 8px;
+  border: solid 1px rgba(255, 255, 255, 0.096);
+  background-color:#fff;
+  width: 220px;
+  height: 310px;
+  overflow: hidden;
+}
+
+
+
+
+.footer1{
+  background-color: #fff;
+  border-top: solid 1px #dddddd;
+  width: 98%;
+  /* height: 522px; */
+  z-index: 1;
+  margin-top: 80px;
+  margin-left: 1%;
+}
+
+.email_footer{
+  width: 10%;
+  margin-left: 10%;
+}
+
+.email_footer:hover{
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 2px 1px #ce0005!important;
+}
+
+.google_footer{
+  width: 10%;
+}
+
+.google_footer:hover{
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 2px 1px #ce0005!important;
+}
+
+.fb_footer{
+  width: 10%;
+}
+
+.fb_footer:hover{
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 2px 1px #ce0005!important;
+}
+
+.contact_us{
+  width: 100px;
+  object-fit: contain;
+  font-family: myfont;
+  font-size: 23px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.74;
+  letter-spacing: normal;
+  text-align: left;
+  color: #383838;
+  margin-top: 30px;
+  margin-left: 10%;  
+}
+
+.address{
+  width: 350px;
+  object-fit: contain;
+  font-family: myfont1;
+  font-size: 22px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.45;
+  letter-spacing: normal;
+  text-align: left;
+  color: #383838;
+  margin-left: 10%;
+}
+
+.address2{
+  object-fit: contain;
+  font-family: myfont;
+  font-size: 22px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+}
+
+.footer2{
+  object-fit: contain;
+  font-family: myfont;
+  font-size: 22px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  color: #383838;
+  margin-top: 42%;
+}
+
+.help{
+    width: 40px;
+    height: 27px;
+    object-fit: contain;
+    font-family: myfont;
+    font-size: 23px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.74;
+    letter-spacing: normal;
+    text-align: left;
+    color: #383838;
+    position: absolute;
+    left: 30%;
+
+}
+
+.footer3{
+  width: 100%;
+  font-family: myfont;
+  font-size: 23px;
+  padding-left: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+} 
+
+.bg_footer{
+  background-color: #ce0005;
+}
+
+.lvp_footer{
+  width: 50%;
+}
+
+.sega{
+  width: 50%;
+}
+
+.game_cat{
+  color: #ce0005;
+}
+
+.game_cat:hover{
+  color: #ce0005;
+}
+
+.btn_follow{ 
+  border-radius: 6px;
+  background-color:#fff;
+  padding: 0% 5% 4% 5%;
+  z-index:5;
+  position: absolute;
+  top: 3%;
+  right: 5%;
+  opacity: 95%;
+  cursor: pointer;
+  width: 160px;
+  height: 42px;
+  border: none!important;
+}
+.btn_follow2{ 
+  border-radius: 6px;
+  background-color:#ce0005;
+  padding: 0.5% 5% 4% 5%;
+  z-index:5;
+  position: absolute;
+  top: 3%;
+  right: 5%;
+  opacity: 95%;
+  cursor: pointer;
+  width: 160px;
+  height: 42px;
+  border: none!important;
+}
+
+.font_follow{
+  font-family: myfont;
+  font-size: 24px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  color: #fff;
+  padding:0px 5px 0px 15px;
+}
+
+.font_follow2{
+  font-family: myfont;
+  font-size: 24px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  color: #ce0005;
+  padding:0px 5px 0px 15px;
+}
+
+
+.following{
+  border-radius: 6px;
+  background-color:#ce0005;
+  padding: 3% 5% 4% 5%;
+  z-index:5;
+  position: absolute;
+  top: 3%;
+  right: 5%;
+  opacity: 95%;
+  cursor: pointer;
+  width: 160px;
+  height: 42px;
+}
+
+.following2{
+  border-radius: 6px;
+  background-color:#ce0005;
+  padding: 2% 4% 3% 4%;
+  z-index: 5;
+  position: absolute;
+  top: 4%;
+  right: 3%;
+  opacity: 95%;
+  width: 185px;
+  height: 42px;
+}
+
+
+.imgteaser {
+  margin: 0;
+  overflow: hidden;
+  float: left;
+  position: relative;
+}
+.imgteaser a {
+  text-decoration: none;
+  float: left;
+
+}
+/* ถ้าไม่ใส่ cursor: pointer ไป ตอนแสดงใน ie6 caption จะหน่วงนิดนึง*/
+.imgteaser a:hover {
+  cursor: pointer;
+}
+
+/* เมื่อเอาเมาส์ไปชี้ที่รูปภาพ ให้แสดงตัว caption ขึ้นมา โดยกำหนดความโปร่งแสงไว้ที่ 75%*/
+ /* ตรงนี้แหละที่เป็นจุดสำคัญ  CSS ตรงนี้จะทำงานก็ต่อเมื่อเอาเมาส์ไปชี้ที่ภาพเท่านั้น  โอ้วเหมือน javascript เลย*/
+ .imgteaser a:hover .desc {
+  display: block;
+  padding: 10px 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /*--IE 8 Transparency--*/
+  z-index: 7;
+  position: absolute;
+  top: 0%;
+  right: 0%
+  padding: 10px;
+  margin: 0;
+  border-radius: 8px;
+  width: 100%;
+  height: 310px;
+  overflow: hidden;
+  object-fit: contain;
+  background: #000;
+  opacity: 80%;
+}
+
+/* ตัว strong ใน caption กำหนดให้ใหญ่กว่าปกติหน่อย เพื่อความสวยงาม*/
+.imgteaser a:hover .desc strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size:1.5em;
+}
+
+.imgteaser a .desc {	display: none; }
+
+.rate_pic{
+  position: absolute;
+  z-index: 5;
+  top: 45%;
+  right: 75%;
+}
+
+.game_name{
+  position: absolute;
+  z-index: 5;
+  top: 70%;
+  left: 5%;
+  font-family: myfont;
+  width: 93%;
+  overflow: hidden;
+  line-height: 90%;
+  word-wrap: break-word;
+}
+
+.rate_name{
+  position: absolute;
+  z-index: 5;
+  top: 75%;
+  left: 5%;
+  font-family: myfont;
+  line-height: 90%;
+  word-wrap: break-word;
+}
+.down{ 
+  position: absolute;
+  z-index: 5;
+  top: 88%;
+  left: 40%;
+}
+
+.imgteaser2 {
+  margin: 0;
+  overflow: hidden;
+  float: left;
+  position: relative;
+}
+.imgteaser2 a {
+  text-decoration: none;
+  float: left;
+
+}
+/* ถ้าไม่ใส่ cursor: pointer ไป ตอนแสดงใน ie6 caption จะหน่วงนิดนึง*/
+.imgteaser2 a:hover {
+  cursor: pointer;
+}
+
+/* เมื่อเอาเมาส์ไปชี้ที่รูปภาพ ให้แสดงตัว caption ขึ้นมา โดยกำหนดความโปร่งแสงไว้ที่ 75%*/
+ /* ตรงนี้แหละที่เป็นจุดสำคัญ  CSS ตรงนี้จะทำงานก็ต่อเมื่อเอาเมาส์ไปชี้ที่ภาพเท่านั้น  โอ้วเหมือน javascript เลย*/
+ .imgteaser2 a:hover .desc2 {
+  display: block;
+  padding: 10px 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /*--IE 8 Transparency--*/
+  z-index: 7;
+  position: absolute;
+  top: 0%;
+  right: 0%
+  padding: 10px;
+  margin: 0;
+  border-radius: 8px;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  object-fit: contain;
+  background: #000;
+  opacity: 80%;
+}
+
+/* ตัว strong ใน caption กำหนดให้ใหญ่กว่าปกติหน่อย เพื่อความสวยงาม*/
+.imgteaser2 a:hover .desc2 strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size:1.5em;
+}
+
+.imgteaser2 a .desc2 {	display: none; }
+
+.btn_follow3{ 
+  border-radius: 6px;
+  background-color:#fff;
+  padding: 0px 5% 4% 5%;
+  z-index:5;
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  opacity: 95%;
+  cursor: pointer;
+  width: 160px;
+  height: 41.5px;
+  border: none!important;
+}
+
+.btn_follow4{ 
+  border-radius: 6px;
+  background-color:#ce0005;
+  padding: 0% 5% 4% 7.1%;
+  z-index:5;
+  position: absolute;
+  top: 4%;
+  right: 3%;
+  opacity: 95%;
+  cursor: pointer;
+  width: 185px;
+  height: 42px;
+  border: none!important;
+}
+
+.font_follow4{
+  font-family: myfont;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  color: #fff;
+  padding:0px 5px 0px 15px;
+}
+
+.rate_pic2{
+  position: absolute;
+  z-index: 10;
+  top: 30%;
+  left: 5%;
+}
+
+.game_name2{
+  position: absolute;
+  z-index: 5;
+  top: 65%;
+  left: 5%;
+  font-family: myfont;
+  width: 93%;
+  overflow: hidden;
+  line-height: 90%;
+  word-wrap: break-word;
+}
+
+.down2{ 
+  position: absolute;
+  z-index: 5;
+  top: 85%;
+  left: 45%;
+}
+
+input[type='image']:focus{
+  outline: #000;
 }

@@ -311,6 +311,7 @@
                                                 <input type="hidden" name="KYC_CREATE_DATE" value="{{ date('Y-m-d H:i:s') }}">
                                                 <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
                                                 <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
+                                                <input type="hidden" name="users_type" value="{{ Auth::user()->users_type }}">
                                                 <button class="bnt button2">ยกเลิก</button>
                                             </div>    
                                         </div>
