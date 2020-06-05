@@ -89,7 +89,7 @@ position: fixed;
 top: 0;
 width: 100%;
 background-color: #ffff;
-border-bottom: 1px solid #ce0005; }
+border-bottom: none }
 
 .site-navbar2 .site-logo {
   position: relative;
@@ -428,10 +428,11 @@ background-color: #ce0005;
     margin-right: 10px;
     font-size: 20px;
     cursor: pointer;
+    border: #000 1px solid;
 }
 
 .button3:hover{
-  box-shadow: 0 0 2px 1px #ce0005!important;
+  box-shadow: 0 0 5px 1px #000!important;
 }
 
 .download {
@@ -661,8 +662,8 @@ overflow: hidden;
 .td-game-img{
   display: table-cell;
   border-bottom: #dddddd solid 1px;
-
-
+  
+  
 }
 .game-img{
   width: 80px;
@@ -1019,6 +1020,16 @@ input[type='text']:focus{
   box-shadow: #ffd3d4 0px 0px 0px 2px;
 }
 
+.inputWithIcon{
+  position: relative;
+}
+.inputWithIcon i{
+  position: absolute;
+  top: 8px;
+  left: 2px;
+  padding: 9px 8px;
+}
+
 input[type='email']:focus{
   border: #ce0005 solid 1px;
   border-radius:25px;
@@ -1052,7 +1063,7 @@ select {
   -webkit-appearance: none;
   appearance: none; /*ปุ่มลูกศร*/
   color: #7c7c7c;
-  border: 1px solid #dddddd;/
+  border: 1px solid #dddddd;
   outline: 0;
   padding: 0px 0px 0px 10px; /* top-right-bottom-left */
   border-radius:25px;
@@ -1077,7 +1088,7 @@ select:focus{
 ::-webkit-scrollbar-track {
   background: #f1f1f1; 
 }
-
+ 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #ce0005; 
@@ -1103,8 +1114,8 @@ select:focus{
 }
 .owl-next{
   background: #000;
-  text-align: right;
-  padding: 10px 10px 10px 10px;
+  text-align: center;
+  padding: 13px 10px 10px 13px;
   width: 50px;
   height:50px ;
   z-index: 5;
@@ -1113,6 +1124,9 @@ select:focus{
   left: 95%;
   border-radius: 50px;
   opacity: 50%;
+  font-weight: bold;
+  font-size: 15px;
+  color: #fff;
 }
 
 .owl-next:hover{
@@ -1121,8 +1135,8 @@ select:focus{
 
 .owl-prev{
   background: #000;
-  text-align: right;
-  padding: 10px 10px 10px 10px;
+  text-align: center;
+  padding: 13px 13px 10px 10px;
   width: 50px;
   height:50px ;
   z-index: 5;
@@ -1131,6 +1145,9 @@ select:focus{
   right: 95%;
   border-radius: 50px;
   opacity: 50%;
+  font-weight: bold;
+  font-size: 15px;
+  color: #fff;
 }
 
 .owl-prev:hover{
@@ -1308,8 +1325,8 @@ select:focus{
   padding: 0.5% 5% 4% 5%;
   z-index:5;
   position: absolute;
-  top: 3%;
-  right: 5%;
+  top: 2%;
+  right: 3.5%;
   opacity: 95%;
   cursor: pointer;
   width: 160px;
@@ -1375,7 +1392,7 @@ select:focus{
 .imgteaser a {
   text-decoration: none;
   float: left;
-
+  
 }
 /* ถ้าไม่ใส่ cursor: pointer ไป ตอนแสดงใน ie6 caption จะหน่วงนิดนึง*/
 .imgteaser a:hover {
@@ -1391,7 +1408,7 @@ select:focus{
   z-index: 7;
   position: absolute;
   top: 0%;
-  right: 0%
+  right: 0%;
   padding: 10px;
   margin: 0;
   border-radius: 8px;
@@ -1401,8 +1418,9 @@ select:focus{
   object-fit: contain;
   background: #000;
   opacity: 80%;
+  border: #ce0005 3px solid;
 }
-
+ 
 /* ตัว strong ใน caption กำหนดให้ใหญ่กว่าปกติหน่อย เพื่อความสวยงาม*/
 .imgteaser a:hover .desc strong {
   display: block;
@@ -1447,6 +1465,7 @@ select:focus{
   left: 40%;
 }
 
+
 .imgteaser2 {
   margin: 0;
   overflow: hidden;
@@ -1456,7 +1475,7 @@ select:focus{
 .imgteaser2 a {
   text-decoration: none;
   float: left;
-
+  
 }
 /* ถ้าไม่ใส่ cursor: pointer ไป ตอนแสดงใน ie6 caption จะหน่วงนิดนึง*/
 .imgteaser2 a:hover {
@@ -1472,7 +1491,7 @@ select:focus{
   z-index: 7;
   position: absolute;
   top: 0%;
-  right: 0%
+  right: 0%;
   padding: 10px;
   margin: 0;
   border-radius: 8px;
@@ -1482,13 +1501,15 @@ select:focus{
   object-fit: contain;
   background: #000;
   opacity: 80%;
+  border: #ce0005 3px solid;
 }
-
+ 
 /* ตัว strong ใน caption กำหนดให้ใหญ่กว่าปกติหน่อย เพื่อความสวยงาม*/
 .imgteaser2 a:hover .desc2 strong {
   display: block;
   margin-bottom: 5px;
   font-size:1.5em;
+
 }
 
 .imgteaser2 a .desc2 {	display: none; }
@@ -1500,7 +1521,7 @@ select:focus{
   z-index:5;
   position: absolute;
   top: 3%;
-  right: 3%;
+  right: 2%;
   opacity: 95%;
   cursor: pointer;
   width: 160px;
@@ -1511,11 +1532,11 @@ select:focus{
 .btn_follow4{ 
   border-radius: 6px;
   background-color:#ce0005;
-  padding: 0% 5% 4% 7.1%;
+  padding: 0% 5% 4% 7.2%;
   z-index:5;
   position: absolute;
-  top: 4%;
-  right: 3%;
+  top: 3%;
+  right: 2%;
   opacity: 95%;
   cursor: pointer;
   width: 185px;
@@ -1550,15 +1571,343 @@ select:focus{
   overflow: hidden;
   line-height: 90%;
   word-wrap: break-word;
+  background-color: transparent!important;
 }
 
 .down2{ 
   position: absolute;
   z-index: 5;
-  top: 85%;
+  top: 83%;
   left: 45%;
+  width: 30px;
+  height: 30px;
+  padding: 3px 0px 0px 0px;
+  
+}
+.down3{ 
+  position: absolute;
+  z-index: 5;
+  top: 88%;
+  left: 45%;
+  width: 30px;
+  height: 30px;
+  padding: 3px 0px 0px 0px;
+  
 }
 
 input[type='image']:focus{
   outline: #000;
+}
+
+.form{
+  background-color: #000;
+  font-family: myfont;
+  color: #fff;
+  margin-top: 7px;
+  border: #dddddd solid 1px;
+  border: #ce0005 3px solid;
+  border-radius: 6px;
+}
+
+.pic1{
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+
+.rate_pic3{
+  height: 70px;
+  text-align: right;
+}
+
+.font_rate1{
+  padding-top: 23px;
+  padding-bottom: 0px;
+  font-family: myfont1;
+  font-size: 24px;
+  color: #fff;
+  line-height: 100%;
+}
+
+.font_rate2{
+  font-family: myfont1;
+  font-size: 24px;
+  color: #fff;
+  line-height: 100%;
+}
+
+.font_detail{
+  font-family: myfont1;
+  font-size: 24px;
+  color: #fff;
+  line-height: 100%;
+}
+
+.btn_follow5{ 
+  border-radius: 6px;
+  background-color:#fff;
+  padding: 0px 5% 4% 3%;
+  cursor: pointer;
+  width: 160px;
+  height: 41.5px;
+  border: none!important;
+}
+
+.btn_follow6{ 
+  border-radius: 6px;
+  background-color:#ce0005;
+  padding: 0% 1% 4% 1%;
+  cursor: pointer;
+  width: 160px;
+  height: 41.5px;
+  border: none!important;
+}
+
+.btn_follow7{ 
+  border-radius: 6px;
+  background-color:#000;
+  margin-left: 10px;
+  cursor: pointer;
+  width: 160px;
+  border: #fff solid 1px;
+  font-family: myfont1;
+}
+
+.pic2{
+  /* width: 250px; */
+  height: 350px;
+  overflow: hidden;
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+
+body {
+  margin: 0;
+}
+.responsive-video {
+  position: relative;
+}
+.responsive-video .transparent-img {
+  display: block;
+  width: 100%;
+}
+.responsive-video .video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.font_detail2{
+  font-family: myfont1;
+  font-size: 15px;
+  color: #fff;
+  line-height: 100%;
+  padding: 0px 5px 0px 5px;
+  border-radius: 6px;
+  background-color:#000;
+  cursor: pointer;
+  border: #fff solid 1px;
+  margin-left: 1px;
+
+}
+
+.btn_close{
+  width: 25px;
+  position: absolute;
+  z-index: 5;
+  top: -5%;
+  right:1%;
+}
+.font_name{
+  font-family:myfont;
+  margin-right: 30px;
+}
+.font_profile{
+  font-family:myfont;
+  font-size: 20px;
+  padding: 50px;
+}
+
+.font_back{
+  font-family: myfont;
+  font-size: 30px;
+  color: #fff;
+}
+
+.tooltip .tooltip-inner {
+  background-color: #000; 
+  color: #FFFFFF;  
+  padding: 0px 20px 0px 20px;
+  font-size: 23px;
+  font-family: myfont;
+}
+
+.video_detail{
+  width: 100%;
+  height:400px;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+
+.dark{
+  background-color: #000;
+  width: 100%;
+}
+
+.font_detail4{
+  width: 32px;
+  height: 33px;
+  object-fit: contain;
+  font-family: myfont;
+  font-size: 25px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.11;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+
+.font_detail3{
+  object-fit: contain;
+  font-family: myfont1;
+  font-size: 25px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.11;
+  letter-spacing: normal;
+  text-align: left;
+  color: #b1b7bc;
+}
+
+.follow-after{
+  width: 135px;
+  height: 38px;
+  object-fit: contain;
+  opacity: 0.91;
+  border-radius: 6px;
+  background-color: #ce0005;
+  border:none;
+}
+.follow-before{
+  width: 135px;
+  height: 38px;
+  object-fit: contain;
+  opacity: 0.91;
+  border-radius: 6px;
+  background-color: #fff;
+  border:#000 1px solid;
+}
+.font_follow-after{
+  width: 80px;
+  height: 25px;
+  object-fit: contain;
+  font-family: myfont1;
+  font-size: 21px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
+.font_follow-before{
+  width: 80px;
+  height: 25px;
+  object-fit: contain;
+  font-family: myfont1;
+  font-size: 21px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000;
+}
+
+.font_game_name {
+  width: 361px;
+  height: 42px;
+  object-fit: contain;
+  font-family: myfont;
+  font-size: 35px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+
+.rate_detail {
+  width: 127px;
+  height: 36px;
+  object-fit: contain;
+  font-family: myfont1;
+  font-size: 30px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+
+.des_detail{
+    width: 100%;
+    object-fit: contain;
+    font-family: myfont;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.28;
+    letter-spacing: normal;
+    text-align: left;
+    color: #1a1818;
 }

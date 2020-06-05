@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 use App\Admin;
 
@@ -42,6 +43,32 @@ class AdminController extends Controller
                 $data = array("GAME_ID"=>$GAME_ID, "GAME_STATUS"=>$GAME_STATUS, "GAME_APPROVE_DATE"=>$GAME_APPROVE_DATE, "ADMIN_NAME"=>$ADMIN_NAME);
 
                 $value = Admin::ApproveGame($data);
+            }
+        }
+        return redirect()->action('AdminController@indexAdmin');
+    }
+
+    public function createAdmin(Request $request){
+        if ($request->input('submit') != null ){
+
+            $this->validate($request, [
+                'name' => 'required', 'string', 'max:255',
+                'surname' => 'required', 'string', 'max:255',
+                'email' => 'required', 'string', 'email', 'max:255', 'unique:users',
+                'password' => 'required', 'string','mimes:$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'min:8', 'confirmed',
+                'users_type' => 'required', 'integer', 'max:3',
+            ]);
+
+            $name =$request->input('name');
+            $surname =$request->input('surname');
+            $email =$request->input('email');
+            $password =$request->input('password');
+            $users_type =$request->input('users_type');
+
+            if($name != '' && $surname != '' && $email != '' && $password != '' && $users_type != ''){
+                $data = array("name"=>$name, "surname"=>$surname, "email"=>$email, "password"=>Hash::make($password) ,"users_type"=>$users_type);
+
+                $value = Admin::createAdmin($data);
             }
         }
         return redirect()->action('AdminController@indexAdmin');

@@ -1,4 +1,4 @@
-/* Base */
+* Base */
 html {
   overflow-x: hidden; }
 
@@ -276,7 +276,7 @@ body:after {
 /* Navbar */
 .site-navbar {
   position: fixed;
-  z-index: 100;
+  z-index: 1999;
   width:100%;
   object-fit: contain;
   border-bottom-color:#fff!important;
@@ -1034,7 +1034,7 @@ body:after {
   font-size: 25px; }
   @media (min-width: 768px) {
     .slide-one-item.home-slider .owl-prev, .slide-one-item.home-slider .owl-next {
-      font-size: 25px; } }
+      font-size: 15px;} }
   .slide-one-item.home-slider .owl-prev > span, .slide-one-item.home-slider .owl-next > span {
     position: absolute;
     line-height: 0;

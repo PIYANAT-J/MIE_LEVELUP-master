@@ -25,8 +25,32 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-update_version:before {
+  content: "\e904";
+  color: #ce0005;
+}
+.icon-download_after:before {
+  content: "\e903";
+  color: #fff;
+}
+.icon-next:before {
+  content: "\e906";
+  color: #fff;
+}
+.icon-prev:before {
+  content: "\e907";
+  color: #fff;
+}
+.icon-search:before {
+  content: "\e905";
+  color: #fafafa;
+}
 .icon-icon_download:before {
   content: "\e900";
+  color: #ce0005;
+}
+.icon-support:before {
+  content: "\e908";
   color: #ce0005;
 }
 .icon-follow_red:before {
@@ -36,7 +60,4 @@
 .icon-follow_wh:before {
   content: "\e902";
   color: #fff;
-}
-.icon-down1:before {
-  content: "\e903";
 }

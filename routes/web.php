@@ -24,7 +24,7 @@ Route::get('/', 'GameController@indexGame')->name('LEVELup');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/user_profile', 'UploadImageProfile@indexGuest_user')->name('homeProfile');
 Route::get('/userUpdate_profile', 'UploadImageProfile@updateGuest_user')->name('EditProfile');
@@ -55,8 +55,9 @@ Route::post('/game_shelf/download', 'DownloadController@downloadGame')->name('do
 
 Route::get('/edit_upload_game', 'UploadImageProfile@edit_game')->name('EditGame');
 
-Route::get('/user_mamagement', 'AdminController@indexAdmin')->name('Admin');
+Route::get('/user_mamagement', 'AdminController@indexAdmin')->name('Admin')->middleware('Admin');
 Route::post('/user_mamagement/Kyc', 'AdminController@approveKyc')->name('AppKyc');
 Route::post('/user_mamagement/Game', 'AdminController@approveGame')->name('AppGame');
+Route::post('/user_mamagement/AddAdmin', 'AdminController@createAdmin')->name('AddAdmin');
 
-Route::view('/navbar2', 'layout.navbar2');
+Route::view('/detail', 'game.game_detail')->name('gameDetail');

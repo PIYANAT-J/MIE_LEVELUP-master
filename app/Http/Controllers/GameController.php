@@ -25,9 +25,12 @@ class GameController extends Controller
         // if(Auth::user()->users_type == 0){
         //     return view('admin_lvp.user_management');
         // }else{
-            $Game = DB::select('SELECT * FROM developers LEFT JOIN games ON developers.USER_ID = games.USER_ID LEFT JOIN users ON developers.USER_ID = users.id');
-            return view('welcome', ['Game'=> $Game]);
+            // $Game = DB::select('SELECT * FROM developers LEFT JOIN games ON developers.USER_ID = games.USER_ID LEFT JOIN users ON developers.USER_ID = users.id');
+            // return view('welcome', ['Game'=> $Game]);
         // }
+
+        $Games = DB::table('games')->get();
+        return view('welcome', compact('Games'));
     }
 
     // public function getIndex(){
