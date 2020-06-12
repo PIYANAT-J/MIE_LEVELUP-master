@@ -26,7 +26,7 @@ class AdminController extends Controller
             $ADMIN_NAME = $request->input('ADMIN_NAME');
             if($KYC_ID != '' && $KYC_STATUS != '' && $KYC_APPROVE_DATE != '' && $ADMIN_NAME != ''){
                 $data = array("KYC_ID"=>$KYC_ID, "KYC_STATUS"=>$KYC_STATUS, "KYC_APPROVE_DATE"=>$KYC_APPROVE_DATE, "ADMIN_NAME"=>$ADMIN_NAME);
-
+                // die('<pre>'. print_r($data, 1));
                 $value = Admin::ApproveKyc($data);
             }
         }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 
 use DB;
 use Auth;
+use File;
 use Session;
 
 use App\Game_imgae;
@@ -28,9 +29,53 @@ class GameController extends Controller
             // $Game = DB::select('SELECT * FROM developers LEFT JOIN games ON developers.USER_ID = games.USER_ID LEFT JOIN users ON developers.USER_ID = users.id');
             // return view('welcome', ['Game'=> $Game]);
         // }
+        if(isset(Auth::user()->id)){
+            $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+            $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
+            $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
+            // die('<pre>'. print_r($Follows, 1));
+            return view('welcome', compact('Games', 'Follows', 'GamesNew'));
 
-        $Games = DB::table('games')->get();
-        return view('welcome', compact('Games'));
+        }else{
+            $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+            $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
+            // $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
+            return view('welcome', compact('Games', 'GamesNew'));
+
+        }
+    }
+
+    public function gameDetail($gameId){
+        if(isset(Auth::user()->id)){
+            $Detail = DB::table('games')->where('GAME_ID', '=', $gameId)
+                        ->join('users', 'users.id', '=', 'games.USER_ID')
+                        ->select('games.*', 'users.name','surname')
+                        ->get();
+            $FollowDetail = DB::table('follows')->where([['GAME_ID', '=', $gameId],['USER_ID', '=', Auth::user()->id]])
+                            // ->join('users', 'users.id', '=', 'follows.USER_ID')
+                            // ->select('follows.*', 'users.users_type')
+                            ->first();
+            $Download = DB::table('downloads')->where([['GAME_ID', '=', $gameId],['USER_ID', '=', Auth::user()->id]])->first();
+            return view('game.game_detail', compact('Detail', 'FollowDetail', 'Download'));
+
+        }else{
+            $Detail = DB::table('games')->where('GAME_ID', '=', $gameId)
+                        ->join('users', 'users.id', '=', 'games.USER_ID')
+                        ->select('games.*', 'users.name','surname')
+                        ->get();
+            return view('game.game_detail', compact('Detail'));
+        }
+
+        // $Detail = DB::table('games')->where('GAME_ID', '=', $gameId)
+        //                 ->join('users', 'users.id', '=', 'games.USER_ID')
+        //                 ->select('games.*', 'users.name','surname')
+        //                 ->get();
+        // $FollowDetail = DB::table('follows')->where([['GAME_ID', '=', $gameId],['USER_ID', '=', Auth::user()->id]])
+        //                 // ->join('users', 'users.id', '=', 'follows.USER_ID')
+        //                 // ->select('follows.*', 'users.users_type')
+        //                 ->first();
+        // $Download = DB::table('downloads')->where([['GAME_ID', '=', $gameId],['USER_ID', '=', Auth::user()->id]])->first();
+        // return view('game.game_detail', compact('Detail', 'FollowDetail', 'Download'));
     }
 
     // public function getIndex(){
@@ -57,8 +102,24 @@ class GameController extends Controller
             if($request->has('GAME_FILE')){
                 $uploadFile = $request->file('GAME_FILE');
                 $file_name = 'GAME_FILE_'.time().'.'.$uploadFile->getClientOriginalExtension();
+                // $file_size = File::size($file_name);
                 $pathFile = public_path('section/File_game');
                 $uploadFile->move($pathFile, $file_name);
+
+                $file_size = File::size(public_path('section/File_game/'.$file_name));
+
+                $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
+                $base = log($file_size, 1024);
+                // $file_size = max($file_size, 0); 
+                // $pow = floor(($file_size ? log($file_size) : 0) / log(1024)); 
+                // $pow = min($pow, count($units) - 1); 
+
+                // Uncomment one of the following alternatives
+                // $bytes /= pow(1024, $pow);
+                // $bytes /= (1 << (10 * $pow)); 
+
+                // $size = round($file_size, ) . ' ' . $units[$pow]; 
+                $size = round(pow(1024, $base - floor($base)), $precision = 2) .' '. $units[floor($base)];
                 
                 if($request->has('GAME_IMG_PROFILE')){
 
@@ -73,7 +134,7 @@ class GameController extends Controller
                     // $GAME_STATUS = $request->input('GAME_STATUS');
                     $GAME_DATE = $request->input('GAME_DATE');
                     $GAME_FILE = $file_name;
-                    $GAME_SIZE = $request->input('GAME_SIZE');
+                    $GAME_SIZE = $size;
                     $GAME_VDO_LINK = $request->input('GAME_VDO_LINK');
                     $GAME_TYPE_ID = $request->input('GAME_TYPE_ID');
                     $RATE_ID = $request->input('RATE_ID');

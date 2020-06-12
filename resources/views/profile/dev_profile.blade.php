@@ -353,8 +353,10 @@
                 </select>
                 <input type="text" class="form-control textbox1 my-2" name="GAME_VDO_LINK" value="{{ old('GAME_VDO_LINK') }}" placeholder="ลิงค์วีดีโอ"/>
                 <div class="w-100"></div>
-                <div class="my-1"><input type="file" class="file" name="GAME_FILE" accept=".zip" require>
-                <label class="label1 pl-3">เฉพาะไฟล์นามสกุล .zip เท่านั้น</label> </div>
+                <div class="my-1">
+                  <input type="file" class="file" name="GAME_FILE" accept=".zip" require>
+                  <label class="label1 pl-3">เฉพาะไฟล์นามสกุล .zip เท่านั้น</label>
+                </div>
                 
               </div>
               <div class="col-sm-1"></div>   

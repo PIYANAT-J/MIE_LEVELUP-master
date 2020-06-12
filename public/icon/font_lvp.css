@@ -29,6 +29,9 @@
   content: "\e904";
   color: #ce0005;
 }
+.icon-close_modal:before {
+  content: "\e90a";
+}
 .icon-download_after:before {
   content: "\e903";
   color: #fff;
@@ -44,6 +47,10 @@
 .icon-search:before {
   content: "\e905";
   color: #fafafa;
+}
+.icon-support_after:before {
+  content: "\e909";
+  color: #fff;
 }
 .icon-icon_download:before {
   content: "\e900";

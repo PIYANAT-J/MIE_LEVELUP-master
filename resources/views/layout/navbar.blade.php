@@ -79,7 +79,7 @@
                                         <a href="#about-section" class="nav-link">ยินดีต้อนรับคุณ</a>
                                         <ul class="dropdown">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
+                                                <a class="nav-link" href="{{ route('login-levelUp') }}">{{ __('เข้าสู่ระบบ') }}</a>
                                             </li>
                                             @if (Route::has('register'))
                                                 <li class="nav-item">

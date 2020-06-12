@@ -18,11 +18,10 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', 'GameController@indexGame')->name('LEVELup');
-// Route::post('/downloadGame', 'DownloadController@downloadGame')->name('downloadGame');
-
-// Route::view('/home', 'home') ->name('Home');
+Route::post('/Follow', 'FollowController@followGame')->name('Follow');
 
 Auth::routes();
+Route::view('/loginlvp', 'auth.login_lvp')->name('login-levelUp');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
@@ -51,7 +50,7 @@ Route::get('/sponKyc', 'KycController@indexSponKyc')->name('sponKyc');
 Route::post('/kyc/create', 'KycController@createKyc')->name('CreateKyc');
 
 Route::get('/game_shelf', 'DownloadController@indexGame')->name('GAMESHELF');
-Route::post('/game_shelf/download', 'DownloadController@downloadGame')->name('downloadGame');
+// Route::post('/game_shelf/download', 'DownloadController@downloadGame')->name('downloadGame');
 
 Route::get('/edit_upload_game', 'UploadImageProfile@edit_game')->name('EditGame');
 
@@ -60,4 +59,6 @@ Route::post('/user_mamagement/Kyc', 'AdminController@approveKyc')->name('AppKyc'
 Route::post('/user_mamagement/Game', 'AdminController@approveGame')->name('AppGame');
 Route::post('/user_mamagement/AddAdmin', 'AdminController@createAdmin')->name('AddAdmin');
 
-Route::view('/detail', 'game.game_detail')->name('gameDetail');
+Route::get('/detail-{id}', 'GameController@gameDetail')->name('GameDetail');
+Route::post('/detail/download', 'DownloadController@downloadGame')->name('downloadGame');
+Route::view('/category', 'game.game_category')->name('gameCategory');

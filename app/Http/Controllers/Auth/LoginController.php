@@ -33,33 +33,6 @@ class LoginController extends Controller
     // protected $redirectTo = RouteServiceProvider::HOME;
     protected $redirectTo = '/';
 
-    // public function redirectTo()
-    // {
-    //     switch(Auth::user()->users_type){
-    //         case 0:
-    //             $this->redirectTo = '/user_mamagement';
-    //             return $this->redirectTo;
-    //             break;
-    //         case 1:
-    //             $this->redirectTo = '/';
-    //             return $this->redirectTo;
-    //             break;
-    //         case 2:
-    //             $this->redirectTo = '/';
-    //             return $this->redirectTo;
-    //             break;
-    //         case 3:
-    //             $this->redirectTo = '/';
-    //             return $this->redirectTo;
-    //             break;
-    //         default:
-    //             $this->redirectTo = '/login';
-    //             return $this->redirectTo;
-    //     }
-         
-    //     // return $next($request);
-    // }
-
     /**
      * Create a new controller instance.
      *
@@ -78,15 +51,14 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
    
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
-        {
+        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))){
             if (auth()->user()->users_type == 0) {
                 return redirect()->route('Admin');
             }else{
                 return redirect()->route('LEVELup');
             }
         }else{
-            return redirect()->route('login');
+            return redirect()->route('login-levelUp');
         }
           
     }
