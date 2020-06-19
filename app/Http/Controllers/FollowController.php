@@ -13,10 +13,11 @@ use DB;
 
 class FollowController extends Controller
 {
-    // public function IndexFollow(){
-    //     $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
-    //     return view();
-    // }
+    public function FollowMe(){
+        $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
+        $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+        return view('game.game_follow', compact('Follows', 'Games'));
+    }
 
     public function followGame(Request $request){
         if($request->input('submit') != null){

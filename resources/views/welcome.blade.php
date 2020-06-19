@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('background')
-    <div class="slide-one-item home-slider owl-carousel">
+    <!-- <div class="slide-one-item home-slider owl-carousel">
         <div class="site-blocks-cover overlay" style="background-image: url(home/images/pic.png);" data-aos="fade" id="home-section">
             <div class="container-fluid">
                 <div class="row">
@@ -39,7 +39,47 @@
                 </span>
             </a>
         </div>
+    </div> -->
+    <div class="slide-one-item home-slider owl-carousel">
+    <div class="site-blocks-cover overlay" style="background-image: url(home/images/pic.png);" data-aos="fade" id="home-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class=" col-md-8 mt-lg-5text-left">
+                    <img class="text-uppercase  img_logo2 mb-3" src="{{asset('home/images/logo.png') }}" data-aos="fade">
+                    <h1 class="text-uppercase mb-1 text2 mb-4" style="font-family:myfont; color:white; font-size: 30px;" data-aos="fade-up">RO ตัวใหม่ล่าสุดที่คราวนี้มาในรูปแบบ 3D MMORPG แถมยังได้ลิขสิทธิ์แท้จาก Gravity มาอีกด้วย</h1>
+                    <div data-aos="fade-up" data-aos-delay="100">    
+                    <a href="#" class="btn smoothscroll button3"><span class="icon-icon_download"></span><b style="font-family:myfont;" class="download">ดาวน์โหลด</b></a>
+                    <a href="#" class="btn smoothscroll button10" style=" color: #fff;"><b style="font-family:myfont;" class="details">รายละเอียด</b></a>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <a href="#about-section" class="mouse smoothscroll d-none">
+            <span class="mouse-icon button4">
+                <span class="mouse-wheel"></span>
+            </span>
+        </a>
     </div>
+    <div class="site-blocks-cover overlay" style="background-image: url(home/images/pic.png);" data-aos="fade" id="home-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class=" col-md-8 mt-lg-5 text-left">
+                    <img class="text-uppercase  img_logo2 mb-3" src="{{asset('home/images/logo.png') }}" data-aos="fade-up">
+                    <h1 class="text-uppercase mb-1 text2 mb-4" style="font-family:myfont; color:white; font-size: 30px;" data-aos="fade-up">RO ตัวใหม่ล่าสุดที่คราวนี้มาในรูปแบบ 3D MMORPG แถมยังได้ลิขสิทธิ์แท้จาก Gravity มาอีกด้วย</h1>
+                    <div data-aos="fade-up" data-aos-delay="100">    
+                    <a href="#" class="btn smoothscroll button3"><span class="icon-icon_download"></span><b style="font-family:myfont;" class="download">ดาวน์โหลด</b></a>
+                    <a href="#" class="btn smoothscroll button10" style="color: #fff;"><b style="font-family:myfont;" class="details">รายละเอียด</b></a>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <a href="#about-section" class="mouse smoothscroll d-none">
+            <span class="mouse-icon button4">
+                <span class="mouse-wheel"></span>
+            </span>
+        </a>
+    </div>
+</div>
 @endsection
 
 @section('section')
@@ -118,10 +158,10 @@
                                     </button>
                                 </form> -->
                             @endguest
-                            <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                            <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/'.$game->RATED_ESRB) }}" />
                             <div class="game_name2">
                                 <b style="font-size: 25px;color: #fff;">{{ $game->GAME_NAME }}</b>
-                                <div class="mt-1" style="font-size: 22px;color: #fff;">Discrimination • Online <button class="font_detail2" style="color: #fff;" >รายละเอียด</button></div>
+                                <div class="mt-1" style="font-size: 22px;color: #fff;">{{ $game->RATED_B_L }} • Online <button class="font_detail2" style="color: #fff;" >รายละเอียด</button></div>
                             </div>
                             <button id="down" class="down2 btn btn-dark panel-heading" data-toggle="collapse" data-target="#{{ $game->GAME_NAME }}" aria-expanded="false" aria-controls="collapseExample"><img id="downImg" src="{{asset('icon/down1.svg')}}"></button>
                             <!-- <button id="down" class="down2 btn btn-dark" data-toggle="collapse"data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><img id="downImg" src="{{asset('icon/down1.svg')}}"></button> -->
@@ -137,73 +177,95 @@
         </div>
         
         @foreach($Games as $gameId)
-        <div class="collapse panel-collapse" id="{{ $gameId->GAME_NAME }}">
-            <div class="form">
-                <!-- <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
-                    @csrf -->
-                    <div class="row">
-                        <div class="col-lg-5">
-                        <!-- <img class="pic1 show_bg_2 text-right " src="{{asset('section/picture_game/game.png') }}" /> -->
-                            <div class="responsive-video">
-                                <img class="transparent-img" src="http://res.cloudinary.com/mhasan/image/upload/v1499355448/transparent_p4vrmt.png" alt="Transparent-img">
-                                <iframe class="video" src="{{$gameId->GAME_VDO_LINK}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div> 
-                        </div>
-                        <div class="col mt-4 ml-1 mr-3" >
-                            <div class="row ">
-                                <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/rate.svg') }}" /></div>
-                                <div class="col-lg-10 mt-1 row_rate">
-                                    <p class="font_rate1">
-                                        <b style="color:#f6c12c; font-size:30px;">4.5/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
-                                        <b>124</b> &nbsp;คอมเมนท์</br>
-                                        <b>15k </b>ดาวน์โหลด &nbsp; &nbsp;| &nbsp; &nbsp;
-                                        <b>104.5</b> &nbsp;ชั่วโมง
-                                    </p>
-                                </div>
+            <div class="collapse panel-collapse" id="{{ $gameId->GAME_NAME }}">
+                <div class="form">
+                    <!-- <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
+                        @csrf -->
+                        <div class="row">
+                            <div class="col-lg-5">
+                            <!-- <img class="pic1 show_bg_2 text-right " src="{{asset('section/picture_game/game.png') }}" /> -->
+                                <div class="responsive-video">
+                                    <img class="transparent-img" src="http://res.cloudinary.com/mhasan/image/upload/v1499355448/transparent_p4vrmt.png" alt="Transparent-img">
+                                    <iframe class="video" src="{{$gameId->GAME_VDO_LINK}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div> 
                             </div>
-                            <p class="font_rate2 "><b>{{ $gameId->GAME_NAME }}</b></br>Online • Other</p>
-                            <p class="font_detail ">{{ $gameId->GAME_DESCRIPTION }}</p>
-                            @guest
-                                <!-- <a href="{{ route('login') }}"><button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม11</b></button></a> -->
-                            @else
-                                @if($Follows->count() > 0)
-                                    @foreach($Follows as $followId)
-                                        @if($gameId->GAME_ID == $followId->GAME_ID)
-                                                <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                                                <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b>
-                                                    <input type="hidden" name="submit" value="submit">
-                                                    <input type="hidden" name="FOLLOW_ID" value="{{ $followId->FOLLOW_ID }}">
-                                                </button> -->
-                                                @break
-                                        @else
-                                                <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" ><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b>
-                                                    <input type="hidden" name="submit" value="submit">
-                                                    <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
-                                                    <input type="hidden" name="GAME_ID" value="{{ $gameId->GAME_ID }}">
-                                                    <input type="hidden" name="GAME_NAME" value="{{ $gameId->GAME_NAME }}">
-                                                    <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                                                </button> -->
+                            <div class="col mt-4 ml-1 mr-3" >
+                                <div class="row ">
+                                    <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/'.$gameId->RATED_ESRB) }}" /></div>
+                                    <div class="col-lg-10 mt-1 row_rate">
+                                        <p class="font_rate1">
+                                        @if(isset($CommentAll))
+                                            <?php $i = 0; $countID = 0;?>
+                                            @foreach($CommentAll as $CAC)
+                                                @if($CAC->GAME_ID == $gameId->GAME_ID)
+                                                    <?php $i = $i+$CAC->RATING; $countID = $countID+1;?>
+                                                @endif
+                                            @endforeach
+                                            <?php $count = $i/$countID;?>
                                         @endif
-                                    @endforeach
+                                        @foreach($Com_count as $com_count)
+                                            @if($com_count->GAME_ID == $gameId->GAME_ID)
+                                                @foreach($CDownload as $countDown)
+                                                    @if($countDown->GAME_ID == $gameId->GAME_ID)
+                                                        <b style="color:#f6c12c; font-size:30px;">{{round($count, 1)}}/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
+                                                        <b>{{ $com_count->com_count }}</b> &nbsp;คอมเมนท์</br>
+                                                        <b>{{ $countDown->downloads_count }} </b>ดาวน์โหลด &nbsp; &nbsp;
+                                                        <!-- <b>104.5</b> &nbsp;ชั่วโมง -->
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+                                        
+                                            <!-- <b style="color:#f6c12c; font-size:30px;">4.5/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
+                                            <b>124</b> &nbsp;คอมเมนท์</br> -->
+                                            <!-- <b>15k </b>ดาวน์โหลด &nbsp; &nbsp;| &nbsp; &nbsp; -->
+                                            <!-- <b>104.5</b> &nbsp;ชั่วโมง -->
+                                        </p>
+                                    </div>
+                                </div>
+                                <p class="font_rate2 "><b>{{ $gameId->GAME_NAME }}</b></br>{{ $gameId->RATED_B_L }} • Other</p>
+                                <p class="font_detail ">{{ $gameId->GAME_DESCRIPTION }}</p>
+                                @guest
+                                    <!-- <a href="{{ route('login') }}"><button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม11</b></button></a> -->
                                 @else
-                                        <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" ><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b>
-                                            <input type="hidden" name="submit" value="submit">
-                                            <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
-                                            <input type="hidden" name="GAME_ID" value="{{ $gameId->GAME_ID }}">
-                                            <input type="hidden" name="GAME_NAME" value="{{ $gameId->GAME_NAME }}">
-                                            <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                                        </button> -->
-                                @endif
-                            @endguest
-                            <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">< span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button> -->
-                            <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                            <a href="{{ route('GameDetail', ['id'=>$gameId->GAME_ID]) }}"><button class="btn_follow7"><b class="font_follow2" style="color: #fff;">รายละเอียด</b></button></a>
+                                    @if($Follows->count() > 0)
+                                        @foreach($Follows as $followId)
+                                            @if($gameId->GAME_ID == $followId->GAME_ID)
+                                                    <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                                                    <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b>
+                                                        <input type="hidden" name="submit" value="submit">
+                                                        <input type="hidden" name="FOLLOW_ID" value="{{ $followId->FOLLOW_ID }}">
+                                                    </button> -->
+                                                    @break
+                                            @else
+                                                    <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" ><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b>
+                                                        <input type="hidden" name="submit" value="submit">
+                                                        <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                                                        <input type="hidden" name="GAME_ID" value="{{ $gameId->GAME_ID }}">
+                                                        <input type="hidden" name="GAME_NAME" value="{{ $gameId->GAME_NAME }}">
+                                                        <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                                    </button> -->
+                                            @endif
+                                        @endforeach
+                                    @else
+                                            <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" ><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b>
+                                                <input type="hidden" name="submit" value="submit">
+                                                <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                                                <input type="hidden" name="GAME_ID" value="{{ $gameId->GAME_ID }}">
+                                                <input type="hidden" name="GAME_NAME" value="{{ $gameId->GAME_NAME }}">
+                                                <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                            </button> -->
+                                    @endif
+                                @endguest
+                                <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">< span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button> -->
+                                <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                                <a href="{{ route('GameDetail', ['id'=>$gameId->GAME_ID]) }}"><button class="btn_follow7"><b class="font_follow2" style="color: #fff;">รายละเอียด</b></button></a>
+                            </div>
                         </div>
-                    </div>
-                <!-- </form> -->
-                
+                    <!-- </form> -->
+                    
+                </div>
             </div>
-        </div>
         @endforeach
         
     </div>
@@ -240,13 +302,13 @@
                                                     @csrf
                                                     <button class="btn_follow4 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b>
                                                         <input type="hidden" name="submit" value="submit">
-                                                        <input type="hidden" name="FOLLOW_ID" value="{{ $follow->FOLLOW_ID }}">
+                                                        <input type="hidden" name="FOLLOW_ID" value="{{ $followMe->FOLLOW_ID }}">
                                                     </button>
                                                 </form>
-                                                <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                                                <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/'.$gameMe->RATED_ESRB) }}" />
                                                 <div class="game_name2">
                                                     <b style="font-size: 25px;color: #fff;">{{$gameMe->GAME_NAME}}</b>
-                                                    <div class="mt-1" style="font-size: 22px;color: #fff;">Discrimination • Online <button class="font_detail2" style="color: #fff;" >รายละเอียด</button></div>
+                                                    <div class="mt-1" style="font-size: 22px;color: #fff;">{{ $gameMe->RATED_B_L }} • Online <button class="font_detail2" style="color: #fff;" >รายละเอียด</button></div>
                                                 </div>
                                                 <!-- <div class="down2"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
                                                 <button id="down" class="down2 btn btn-dark" data-toggle="collapse" data-target="#{{ $gameMe->GAME_NAME }}2" aria-expanded="false" aria-controls="collapseExample"><img id="downImg2" src="{{asset('icon/down1.svg')}}"></button>
@@ -272,17 +334,38 @@
                                 </div>
                                 <div class="col my-4 ml-1 mr-3" >
                                     <div class="row ">
-                                        <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/rate.svg') }}" /></div>
+                                        <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/'.$gameMeId->RATED_ESRB) }}" /></div>
                                         <div class="col-lg-10 mt-1 row_rate">
                                             <p class="font_rate1">
-                                                <b style="color:#f6c12c; font-size:30px;">4.5/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
+                                            @if(isset($CommentAll))
+                                                <?php $i = 0; $countID = 0;?>
+                                                @foreach($CommentAll as $CAC)
+                                                    @if($CAC->GAME_ID == $gameMeId->GAME_ID)
+                                                        <?php $i = $i+$CAC->RATING; $countID = $countID+1;?>
+                                                    @endif
+                                                @endforeach
+                                                <?php $count = $i/$countID;?>
+                                            @endif
+                                            @foreach($Com_count as $com_count)
+                                                @if($com_count->GAME_ID == $gameMeId->GAME_ID)
+                                                    @foreach($CDownload as $countDown)
+                                                        @if($countDown->GAME_ID == $gameMeId->GAME_ID)
+                                                            <b style="color:#f6c12c; font-size:30px;">{{round($count, 1)}}/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
+                                                            <b>{{ $com_count->com_count }}</b> &nbsp;คอมเมนท์</br>
+                                                            <b>{{ $countDown->downloads_count }} </b>ดาวน์โหลด &nbsp; &nbsp;
+                                                            <!-- <b>104.5</b> &nbsp;ชั่วโมง -->
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                                <!-- <b style="color:#f6c12c; font-size:30px;">4.5/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
                                                 <b>124</b> &nbsp;Comments</br>
                                                 <b>15k </b>Downloads &nbsp; &nbsp;| &nbsp; &nbsp;
-                                                <b>104.5</b> &nbsp;hours
+                                                <b>104.5</b> &nbsp;hours -->
                                             </p>
                                         </div>
                                     </div>
-                                    <p class="font_rate2 "><b>{{ $gameMeId->GAME_NAME }}</b></br>Online • Other</p>
+                                    <p class="font_rate2 "><b>{{ $gameMeId->GAME_NAME }}</b></br>{{ $gameMeId->RATED_B_L }} • Other</p>
                                     <p class="font_detail ">{{ $gameMeId->GAME_DESCRIPTION }}</p>
                                     <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button > -->
                                     <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
@@ -302,7 +385,8 @@
     <div class="container-fluid">
         <div class="row mt-4 ">
             <div class="col-5 text-left" data-aos="fade">
-                <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">เกมที่เล่นล่าสุด</h2>
+                <!-- <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">เกมที่เล่นล่าสุด</h2> -->
+                <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">เกมแนะนำ</h2>
             </div>
             <div class="col-7 text-right" data-aos="fade">
                 <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('GAMESHELF') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
@@ -614,19 +698,73 @@
                                 </form>
                             @endif
                         @endguest
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/'.$gameNew->RATED_ESRB) }}" />
                         <div class="game_name">
-                            <b style="font-size: 30px;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
+                            <b style="font-size: 30px;color: #fff;">{{ $gameNew->GAME_NAME }}</b>
+                            <div class="mt-1" style="font-size: 25px;color: #fff;">{{ $gameNew->RATED_B_L }} • Online</div>
                         </div>
                         <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
-                        <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#collapseExample6  " aria-expanded="false" aria-controls="collapseExample"><img id="downImg6" src="{{asset('icon/down1.svg')}}"></button>
+                        <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#{{ $gameNew->GAME_NAME }}6  " aria-expanded="false" aria-controls="collapseExample"><img id="downImg6" src="{{asset('icon/down1.svg')}}"></button>
                     </span>
                 </a>
             </div>
             @endforeach
         </div>
-
+        
+        @foreach($GamesNew as $gameNewId)
+            <div class="collapse" id="{{ $gameNewId->GAME_NAME }}6">
+                <div class="form">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <!-- <img class="pic1 show_bg_2 text-right " src="{{asset('section/picture_game/game6.png') }}" /> -->
+                            <div class="responsive-video">
+                                <img class="transparent-img" src="http://res.cloudinary.com/mhasan/image/upload/v1499355448/transparent_p4vrmt.png" alt="Transparent-img">
+                                <iframe class="video" src="{{ $gameNewId->GAME_VDO_LINK }}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="col my-4 ml-1 mr-3" >
+                            <div class="row ">
+                                <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/'.$gameNewId->RATED_ESRB) }}" /></div>
+                                <div class="col-lg-10 mt-1 row_rate">
+                                    <p class="font_rate1">
+                                        @if(isset($CommentAll))
+                                            <?php $i = 0; $countID = 0;?>
+                                            @foreach($CommentAll as $CAC)
+                                                @if($CAC->GAME_ID == $gameNewId->GAME_ID)
+                                                    <?php $i = $i+$CAC->RATING; $countID = $countID+1;?>
+                                                @endif
+                                            @endforeach
+                                            <?php $count = $i/$countID;?>
+                                        @endif
+                                        @foreach($Com_count as $com_count)
+                                            @if($com_count->GAME_ID == $gameNewId->GAME_ID)
+                                                @foreach($CDownload as $countDown)
+                                                    @if($countDown->GAME_ID == $gameNewId->GAME_ID)
+                                                        <b style="color:#f6c12c; font-size:30px;">{{round($count, 1)}}/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
+                                                        <b>{{ $com_count->com_count }}</b> &nbsp;คอมเมนท์</br>
+                                                        <b>{{ $countDown->downloads_count }} </b>ดาวน์โหลด &nbsp; &nbsp;
+                                                        <!-- <b>104.5</b> &nbsp;ชั่วโมง -->
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+                                        <!-- <b style="color:#f6c12c; font-size:30px;">4.5/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
+                                        <b>124</b> &nbsp;Comments</br>
+                                        <b>15k </b>Downloads &nbsp; &nbsp;| &nbsp; &nbsp;
+                                        <b>104.5</b> &nbsp;hours -->
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="font_rate2 "><b>{{ $gameNewId->GAME_NAME }}</b></br>{{ $gameNewId->RATED_B_L }} • Other</p>
+                            <p class="font_detail ">Ragnarok Online is a massive multiplayer online role-playing game created by Gravity based on the manhwa Ragnarok by Lee Myung-jin</p>
+                            <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                            <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                            <button class="btn_follow7"><b class="font_follow2" style="color: #fff;">รายละเอียด</b></button>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
         <div class="collapse" id="collapseExample6">
             <div class="form">
                 <div class="row">

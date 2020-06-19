@@ -15,8 +15,8 @@ class CreateDownloadsTable extends Migration
     {
         Schema::create('downloads', function (Blueprint $table) {
             $table->bigIncrements('DOWNLOAD_ID');
-            $table->integer('GAME_ID')->unique()->collation('utf8_unicode_ci');
-            $table->integer('USER_ID')->unique()->collation('utf8_unicode_ci');
+            $table->integer('GAME_ID')->collation('utf8_unicode_ci');
+            $table->integer('USER_ID')->collation('utf8_unicode_ci');
             $table->timestamp('DOWNLOAD_DATE')->collation('utf8_unicode_ci');
         });
     }

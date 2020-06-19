@@ -25,6 +25,41 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-top-up1:before {
+  content: "\e915";
+  color: #fff;
+}
+.icon-ranking:before {
+  content: "\e916";
+}
+.icon-change-pass:before {
+  content: "\e90f";
+  color: #fff;
+}
+.icon-history:before {
+  content: "\e911";
+  color: #fff;
+}
+.icon-game-shelf:before {
+  content: "\e912";
+  color: #fff;
+}
+.icon-profile:before {
+  content: "\e913";
+  color: #fff;
+}
+.icon-Icon_Coin:before {
+  content: "\e90c";
+  color: #ffd629;
+}
+.icon-Icon_Point:before {
+  content: "\e90d";
+  color: #05ce79;
+}
+.icon-FBLogo:before {
+  content: "\e90b";
+  color: #fff;
+}
 .icon-update_version:before {
   content: "\e904";
   color: #ce0005;
@@ -44,9 +79,19 @@
   content: "\e907";
   color: #fff;
 }
+.icon-top-up:before {
+  content: "\e914";
+  color: #fff;
+}
 .icon-search:before {
-  content: "\e905";
+  content: "\e910";
   color: #fafafa;
+}
+.icon-up:before {
+  content: "\e905";
+}
+.icon-down1:before {
+  content: "\e90e";
 }
 .icon-support_after:before {
   content: "\e909";
@@ -66,5 +111,13 @@
 }
 .icon-follow_wh:before {
   content: "\e902";
+  color: #fff;
+}
+.icon-upload-game:before {
+  content: "\e905";
+  color: #fff;
+}
+.icon-withdraw:before {
+  content: "\e90e";
   color: #fff;
 }

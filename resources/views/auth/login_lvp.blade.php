@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="text-center block" >
-            <div><img class="logo_login" src="{{asset('home/logo/logo_lvp_wh.svg') }}" /></div>
+            <div><img class="logo_login" src="{{asset('home/logo/logo_lvp.svg') }}" /></div>
             <div class="my-3"><img class="img_login" src="{{asset('home/images/img_login.svg') }}" /></div>
             <div class="font_login text-center">ยินดีต้อนรับ , Level Up</div>
         </div>
@@ -17,7 +17,7 @@
                     </botton>
                 </div>
                 <div class="col-6 text-right">
-                    <a href="{{ route('register') }}"><span class="btn-login-reg ">สมัครสมาชิก</span></a>
+                    <a href="{{ route('register-levelUp') }}"><span class="btn-login-reg ">สมัครสมาชิก</span></a>
                 </div>
             </div>
             <div class="row row2 text-center ">
@@ -59,6 +59,11 @@
         </div>
     </div>
 </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 bg_login"><div>
+    </div>
+<div>
 @endsection
 
 @section('script')

@@ -37,29 +37,15 @@
             font-weight: normal;
             font-style: normal;
             }
-            body, html {
-                height: 100%;
-                }
-                .bg_login {
-                /* The image used */
-                background-color: #17202c;
-                /* Full height */
-                height: 100%;
-                /* Center and scale the image nicely */
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                }
         </style>
 
         
     </head>
 
     <body>
-        <div class="bg_login">
+     
         @yield('content')
-        </div>
-    </body>
+        
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="{{ asset('dist/js/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('dist/js/jquery-ui.js') }}"></script>
@@ -76,4 +62,5 @@
         <script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
         <script src="{{ asset('dist/moment/dist/moment.js') }}"></script>
         @yield('script')
+    </body>
 </html>

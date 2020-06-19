@@ -258,11 +258,14 @@ class UploadImageProfile extends Controller
                 $ZIPCODE_ID = $request->input('ZIPCODE_ID');
                 $USER_ID = $request->input('USER_ID');
                 $USER_EMAIL = $request->input('USER_EMAIL');
+                $CREATE = $request->input('DATE_CREATE');
+                $MODIFY = $request->input('DATE_MODIFY');
 
-                if($USER_EMAIL != '' || $DEV_TEL != '' || $DEV_ID_CARD != '' || $DEV_IMG != '' || $DEV_BIRTHDAY != '' || $DEV_AGE != '' || $DEV_GENDER != '' || $DEV_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != ''){
+                if($USER_EMAIL != '' || $DEV_TEL != '' || $DEV_ID_CARD != '' || $DEV_IMG != '' || $DEV_BIRTHDAY != '' || $DEV_AGE != '' || $DEV_GENDER != '' || $DEV_ADDRESS != '' 
+                    || $ZIPCODE_ID != '' || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
                     $data = array("DEV_TEL"=>$DEV_TEL, "DEV_ID_CARD"=>$DEV_ID_CARD, "DEV_IMG"=>$DEV_IMG, "DEV_BIRTHDAY"=>$DEV_BIRTHDAY,
                                 "DEV_AGE"=>$DEV_AGE, "DEV_GENDER"=>$DEV_GENDER, "DEV_ADDRESS"=>$DEV_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
-                                "USER_EMAIL" => $USER_EMAIL);
+                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY);
         
                     // Insert && Update
                     $value = Developer::InsertAndUpdateData($data);
@@ -283,11 +286,14 @@ class UploadImageProfile extends Controller
                 $ZIPCODE_ID = $request->input('ZIPCODE_ID');
                 $USER_ID = $request->input('USER_ID');
                 $USER_EMAIL = $request->input('USER_EMAIL');
+                $CREATE = $request->input('DATE_CREATE');
+                $MODIFY = $request->input('DATE_MODIFY');
 
-                if($USER_EMAIL != '' || $DEV_TEL != '' || $DEV_ID_CARD != '' || $DEV_BIRTHDAY != '' || $DEV_AGE != '' || $DEV_GENDER != '' || $DEV_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != ''){
+                if($USER_EMAIL != '' || $DEV_TEL != '' || $DEV_ID_CARD != '' || $DEV_BIRTHDAY != '' || $DEV_AGE != '' || $DEV_GENDER != '' || $DEV_ADDRESS != '' || $ZIPCODE_ID != '' 
+                    || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
                     $data = array("DEV_TEL"=>$DEV_TEL, "DEV_ID_CARD"=>$DEV_ID_CARD, "DEV_BIRTHDAY"=>$DEV_BIRTHDAY,
                                 "DEV_AGE"=>$DEV_AGE, "DEV_GENDER"=>$DEV_GENDER, "DEV_ADDRESS"=>$DEV_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
-                                "USER_EMAIL" => $USER_EMAIL);
+                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY);
         
                     // Insert && Update
                     $value = Developer::InsertAndUpdateData($data);
@@ -331,11 +337,14 @@ class UploadImageProfile extends Controller
                 $ZIPCODE_ID = $request->input('ZIPCODE_ID');
                 $USER_ID = $request->input('USER_ID');
                 $USER_EMAIL = $request->input('USER_EMAIL');
+                $CREATE = $request->input('DATE_CREATE');
+                $MODIFY = $request->input('DATE_MODIFY');
 
-                if($USER_EMAIL != '' || $GUEST_USERS_TEL != '' || $GUEST_USERS_ID_CARD != '' || $GUEST_USERS_IMG != '' || $GUEST_USERS_BIRTHDAY != '' || $GUEST_USERS_AGE != '' || $GUEST_USERS_GENDER != '' || $GUEST_USERS_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != ''){
+                if($USER_EMAIL != '' || $GUEST_USERS_TEL != '' || $GUEST_USERS_ID_CARD != '' || $GUEST_USERS_IMG != '' || $GUEST_USERS_BIRTHDAY != '' || $GUEST_USERS_AGE != '' 
+                    || $GUEST_USERS_GENDER != '' || $GUEST_USERS_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
                     $data = array("GUEST_USERS_TEL"=>$GUEST_USERS_TEL, "GUEST_USERS_ID_CARD"=>$GUEST_USERS_ID_CARD, "GUEST_USERS_IMG"=>$GUEST_USERS_IMG, "GUEST_USERS_BIRTHDAY"=>$GUEST_USERS_BIRTHDAY,
                                 "GUEST_USERS_AGE"=>$GUEST_USERS_AGE, "GUEST_USERS_GENDER"=>$GUEST_USERS_GENDER, "GUEST_USERS_ADDRESS"=>$GUEST_USERS_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
-                                "USER_EMAIL" => $USER_EMAIL);
+                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY);
         
                     // Insert && Update
                     $value = Guest_user::InsertAndUpdateData($data);
@@ -355,11 +364,14 @@ class UploadImageProfile extends Controller
                 $ZIPCODE_ID = $request->input('ZIPCODE_ID');
                 $USER_ID = $request->input('USER_ID');
                 $USER_EMAIL = $request->input('USER_EMAIL');
+                $CREATE = $request->input('DATE_CREATE');
+                $MODIFY = $request->input('DATE_MODIFY');
 
-                if($USER_EMAIL != '' || $GUEST_USERS_TEL != '' || $GUEST_USERS_ID_CARD != '' || $GUEST_USERS_BIRTHDAY != '' || $GUEST_USERS_AGE != '' || $GUEST_USERS_GENDER != '' || $GUEST_USERS_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != ''){
+                if($USER_EMAIL != '' || $GUEST_USERS_TEL != '' || $GUEST_USERS_ID_CARD != '' || $GUEST_USERS_BIRTHDAY != '' || $GUEST_USERS_AGE != '' || $GUEST_USERS_GENDER != '' 
+                    || $GUEST_USERS_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
                     $data = array("GUEST_USERS_TEL"=>$GUEST_USERS_TEL, "GUEST_USERS_ID_CARD"=>$GUEST_USERS_ID_CARD, "GUEST_USERS_BIRTHDAY"=>$GUEST_USERS_BIRTHDAY,
                                 "GUEST_USERS_AGE"=>$GUEST_USERS_AGE, "GUEST_USERS_GENDER"=>$GUEST_USERS_GENDER, "GUEST_USERS_ADDRESS"=>$GUEST_USERS_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
-                                "USER_EMAIL" => $USER_EMAIL);
+                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY);
         
                     // Insert && Update
                     $value = Guest_user::InsertAndUpdateData($data);
@@ -403,11 +415,14 @@ class UploadImageProfile extends Controller
                 $ZIPCODE_ID = $request->input('ZIPCODE_ID');
                 $USER_ID = $request->input('USER_ID');
                 $USER_EMAIL = $request->input('USER_EMAIL');
+                $CREATE = $request->input('DATE_CREATE');
+                $MODIFY = $request->input('DATE_MODIFY');
 
-                if($USER_EMAIL != '' || $SPON_TEL != '' || $SPON_ID_CARD != '' || $SPON_IMG != '' || $SPON_BIRTHDAY != '' || $SPON_AGE != '' || $SPON_GENDER != '' || $SPON_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != ''){
+                if($USER_EMAIL != '' || $SPON_TEL != '' || $SPON_ID_CARD != '' || $SPON_IMG != '' || $SPON_BIRTHDAY != '' || $SPON_AGE != '' || $SPON_GENDER != '' || $SPON_ADDRESS != '' 
+                    || $ZIPCODE_ID != '' || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
                     $data = array("SPON_TEL"=>$SPON_TEL, "SPON_ID_CARD"=>$SPON_ID_CARD, "SPON_IMG"=>$SPON_IMG, "SPON_BIRTHDAY"=>$SPON_BIRTHDAY,
                                 "SPON_AGE"=>$SPON_AGE, "SPON_GENDER"=>$SPON_GENDER, "SPON_ADDRESS"=>$SPON_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
-                                "USER_EMAIL" => $USER_EMAIL);
+                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY);
         
                     // Insert && Update
                     $value = Sponsors::InsertAndUpdateData($data);
@@ -427,11 +442,14 @@ class UploadImageProfile extends Controller
                 $ZIPCODE_ID = $request->input('ZIPCODE_ID');
                 $USER_ID = $request->input('USER_ID');
                 $USER_EMAIL = $request->input('USER_EMAIL');
+                $CREATE = $request->input('DATE_CREATE');
+                $MODIFY = $request->input('DATE_MODIFY');
 
-                if($USER_EMAIL != '' || $SPON_TEL != '' || $SPON_ID_CARD != '' || $SPON_BIRTHDAY != '' || $SPON_AGE != '' || $SPON_GENDER != '' || $SPON_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != ''){
+                if($USER_EMAIL != '' || $SPON_TEL != '' || $SPON_ID_CARD != '' || $SPON_BIRTHDAY != '' || $SPON_AGE != '' || $SPON_GENDER != '' || $SPON_ADDRESS != '' 
+                    || $ZIPCODE_ID != '' || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
                     $data = array("SPON_TEL"=>$SPON_TEL, "SPON_ID_CARD"=>$SPON_ID_CARD, "SPON_BIRTHDAY"=>$SPON_BIRTHDAY,
                                 "SPON_AGE"=>$SPON_AGE, "SPON_GENDER"=>$SPON_GENDER, "SPON_ADDRESS"=>$SPON_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
-                                "USER_EMAIL" => $USER_EMAIL);
+                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY);
         
                     // Insert && Update
                     $value = Sponsors::InsertAndUpdateData($data);

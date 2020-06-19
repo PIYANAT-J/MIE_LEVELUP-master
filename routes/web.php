@@ -22,6 +22,7 @@ Route::post('/Follow', 'FollowController@followGame')->name('Follow');
 
 Auth::routes();
 Route::view('/loginlvp', 'auth.login_lvp')->name('login-levelUp');
+Route::view('/registerlvp', 'auth.register_lvp')->name('register-levelUp');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
@@ -61,4 +62,32 @@ Route::post('/user_mamagement/AddAdmin', 'AdminController@createAdmin')->name('A
 
 Route::get('/detail-{id}', 'GameController@gameDetail')->name('GameDetail');
 Route::post('/detail/download', 'DownloadController@downloadGame')->name('downloadGame');
+Route::post('/detail/comment', 'CommentController@createComment')->name('Comment');
+
 Route::view('/category', 'game.game_category')->name('gameCategory');
+
+Route::get('/followMe', 'FollowController@FollowMe')->name('FollowMe');
+
+// Route::view('/userlvp_profile','userlvp_profile');
+
+// Route::get('/userlvp_shelf', function () {
+//     return view('userlvp_shelf');
+// });
+
+// users
+Route::view('/user_lvp', 'profile.userlvp_profile')->name('UserProfile');
+Route::view('/user_kyc', 'kyc.userlvp_kyc');
+Route::view('/user_shelf', 'profile.game.userlvp_shelf');
+Route::view('/user_history', 'profile.point.userlvp_history');
+Route::view('/user_rank', 'profile.userlvp_rank');
+Route::view('/user_topup', 'profile.topup.userlvp_topup');
+Route::view('/user_change_password', 'profile.password.userlvp_change_password');
+
+// developer
+Route::view('/develper_profile', 'profile.devlvp_profile');
+Route::view('/develper_kyc', 'kyc.devlvp_kyc');
+Route::view('/develper_shelf', 'profile.game.devlvp_shelf');
+Route::view('/develper_history', 'profile.point.devlvp_history');
+Route::view('/develper_rank', 'profile.devlvp_rank');
+Route::view('/develper_topup', 'profile.topup.devlvp_topup');
+Route::view('/develper_change_password', 'profile.password.devlvp_change_password');

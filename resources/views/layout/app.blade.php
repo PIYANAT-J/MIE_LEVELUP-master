@@ -64,7 +64,11 @@
                             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block text-right" style="margin-top:50px;"> 
                                 <li><a href="{{ url('/') }}" class="nav-link active" style="font-family:myfont; padding:0px; margin-right:20px; ">หน้าแรก</a></li>
                                 <li><a href="/category" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;">หมวดหมู่</a></li>
-                                <li><a href="#myfollow" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px">การติดตามของฉัน</a></li>
+                                @guest
+                                    <li><a href="{{ route('login-levelUp') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px">การติดตามของฉัน</a></li>
+                                @else
+                                    <li><a href="{{ route('FollowMe') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px">การติดตามของฉัน</a></li>
+                                @endguest
                                 <li class="inputWithIcon">
                                     <input style="font-family:myfont1;" class="search_btn" type="text" placeholder="ค้นหา" aria-label="Search">
                                     <i class="icon-search" aria-hidden="true" style="font-size:18px"></i>
@@ -78,12 +82,13 @@
 
                                         @if (Route::has('register'))
                                             <label style="font-family:myfont;">
-                                                <a class="sign_up mr-3" href="{{ route('register') }}">{{ __('ลงทะเบียน') }}</a>
+                                                <a class="sign_up mr-3" href="{{ route('register-levelUp') }}">{{ __('ลงทะเบียน') }}</a>
                                             </label>
                                         @endif
                             </ul>
                                 @else
                                 <li class="has-children">
+                                    <img style="padding:0px 0px 0px 20px;" src="{{asset('/icon/sign_in.svg') }}">
                                     <a href="#about-section" class="nav-link font_name" >{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
                                     <ul class="dropdown">
                                         <li class="nav-item">
@@ -113,9 +118,9 @@
                 </div>
             </header>    
 
-        <!-- <main class="py-4">
-            @yield('content')
-        </main> -->
+            <!-- <main class="py-4">
+                @yield('content')
+            </main> -->
 
             @yield('background')
 
