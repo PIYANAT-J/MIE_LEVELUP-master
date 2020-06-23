@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 use App\User;
+use App\Kyc;
 
 class Developer extends Model
 {
@@ -27,17 +28,17 @@ class Developer extends Model
         'USER_EMAIL',
     ];
 
-    public static function getuserData($DEV_ID = 0){
+    // public static function getuserData($DEV_ID = 0){
 
-        if($DEV_ID == 0){
-            $value = DB::table('developers')->orderBy('DEV_ID', 'asc')->get(); 
-        }else{
-            $value = DB::table('developers')->where('DEV_ID', $DEV_ID)->first();
-        }
+    //     if($DEV_ID == 0){
+    //         $value = DB::table('developers')->orderBy('DEV_ID', 'asc')->get(); 
+    //     }else{
+    //         $value = DB::table('developers')->where('DEV_ID', $DEV_ID)->first();
+    //     }
 
-        return $value;
+    //     return $value;
         
-    }
+    // }
     
     // public static function insertData($data){
     //     $value = DB::table('developers')->where('USER_EMAIL', $data['USER_EMAIL'])->get();
@@ -65,14 +66,21 @@ class Developer extends Model
         if($value->count() == 0){
             DB::table('developers')->insert($data);
 
-            DB::table('users')
-                ->where('email', $data['USER_EMAIL'])
-                ->update(['updateData'=> true]);
+            // DB::table('users')
+            //     ->where('email', $data['USER_EMAIL'])
+            //     ->update(['updateData'=> true]);
+
+            // $kyc = array('USER_ID' => $data['USER_ID'], 'USER_EMAIL' => $data['USER_EMAIL']);
+            DB::table('kycs')->insert($data);
             return 1;
         }else{
             DB::table('developers')
                 ->where('USER_EMAIL', $data['USER_EMAIL'])
                 ->update($data);
+
+            DB::table('users')
+                ->where('email', $data['USER_EMAIL'])
+                ->update(['updateData'=> true]);
             return 0;
         }
      

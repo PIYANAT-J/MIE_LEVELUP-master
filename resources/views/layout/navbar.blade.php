@@ -21,8 +21,21 @@
         <link rel="stylesheet" href="{{ asset('dist/css/aos.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/level-up.css') }}">
+        <link rel="stylesheet" href="{{ asset('dist/css/level-up2.css') }}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+        <link rel="stylesheet" href="{{ asset('dist/css/dropzone/dropzone.css') }}">
+        <style>
+            @font-face {
+            font-family:myfont;
+            src: url('home/font/dbheaventmedv3.2-webfont.woff2') format('woff2'),
+                    url('home/font/dbheaventmedv3.2-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            }
+            div
+            {font-family:myfont;}
+        </style>
         
         @yield('head')
     <!-- เรียกใช้ Theme -->
@@ -66,7 +79,7 @@
                                         <a href="#about-section" class="nav-link">ยินดีต้อนรับคุณ</a>
                                         <ul class="dropdown">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
+                                                <a class="nav-link" href="{{ route('login-levelUp') }}">{{ __('เข้าสู่ระบบ') }}</a>
                                             </li>
                                             @if (Route::has('register'))
                                                 <li class="nav-item">
@@ -80,11 +93,11 @@
                                         <ul class="dropdown">
                                             <li class="nav-item">
                                                 @if(Auth::user()->users_type == '2')
-                                                    <a class="nav-link" href="{{ route('devProfile') }}">{{ __('โปรไฟล์_DEV') }}</a>
+                                                    <a class="nav-link" href="{{ route('devProfile') }}">{{ __('โปรไฟล์') }}</a>
                                                 @elseif(Auth::user()->users_type == '3')
-                                                    <a class="nav-link" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์_SPON') }}</a>
+                                                    <a class="nav-link" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์') }}</a>
                                                 @else
-                                                    <a class="nav-link" href="{{ route('homeProfile') }}">{{ __('โปรไฟล์_USER') }}</a>
+                                                    <a class="nav-link" href="{{ route('homeProfile') }}">{{ __('โปรไฟล์') }}</a>
                                                 @endif
                                             </li>
                                             <li class="nav-item">
@@ -109,6 +122,7 @@
             <!-- เมนูบาร์ -->
 
             @yield('navbar')
+            @yield('admin_lvp')
 
         </div>
 
@@ -126,6 +140,8 @@
         <script src="{{ asset('dist/js/main.js') }}"></script>
         <script type="javascript" src="js/bootstrap-datetimepicker.min.js"></script>
         <script type="javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="{{ asset('dist/css/dropzone/dropzone.js') }}"></script>
         
         @yield('script')
 

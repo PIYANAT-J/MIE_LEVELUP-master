@@ -60,7 +60,7 @@
                                         <i class="fa fa-envelope text-muted"></i>
                                     </span> -->
                                 </div>
-                                <input id="email" type="email" name="email" placeholder="Email" class="regis @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email"> 
+                                <input id="email" type="email" name="email" placeholder="Email-Address" class="regis @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email"> 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -201,8 +201,8 @@
                             </div>
                             <div class="form-group col-lg-12 d-flex align-items-left">
                                 <div class="custom-control custom-checkbox mr-sm-2">
-                                    <input type="checkbox" class="custom-control-input" name="accept" id="customControlInline">
-                                    <label class="custom-control-label" for="customControlInline">ยอมรับเงื่อนไข</label>
+                                    <input type="checkbox" class="custom-control-input" name="accept_dev" id="customControlInline_dev">
+                                    <label class="custom-control-label" for="customControlInline_dev">ยอมรับเงื่อนไข</label>
                                 </div>
                             </div>
                             <!-- <div class="form-group col-lg-12 mx-auto d-flex align-items-left mb-2">
@@ -303,8 +303,8 @@
                             </div>
                             <div class="form-group col-lg-12 d-flex align-items-left">
                                 <div class="custom-control custom-checkbox mr-sm-2">
-                                    <input type="checkbox" class="custom-control-input" name="accept" id="customControlInline">
-                                    <label class="custom-control-label" for="customControlInline">ยอมรับเงื่อนไข</label>
+                                    <input type="checkbox" class="custom-control-input" name="accept_spon" id="customControlInline_spon">
+                                    <label class="custom-control-label" for="customControlInline_spon">ยอมรับเงื่อนไข</label>
                                 </div>
                             </div>
                             <!-- <div class="form-group col-lg-12 mx-auto d-flex align-items-left mb-2">

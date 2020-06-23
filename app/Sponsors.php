@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 use App\User;
+use App\Kyc;
 
 class Sponsors extends Model
 {
@@ -27,19 +28,26 @@ class Sponsors extends Model
         'USER_EMAIL',
     ];
 
-    public static function InsertAndUpdateData($USER_EMAIL,$data){
+    public static function InsertAndUpdateData($data){
         $value = DB::table('sponsors')->where('USER_EMAIL', $data['USER_EMAIL'])->get();
         if($value->count() == 0){
             DB::table('sponsors')->insert($data);
 
-            DB::table('users')
-                ->where('email', $data['USER_EMAIL'])
-                ->update(['updateData'=> true]);
+            // DB::table('users')
+            //     ->where('email', $data['USER_EMAIL'])
+            //     ->update(['updateData'=> true]);
+
+            // $kyc = array('USER_ID' => $data['USER_ID'], 'USER_EMAIL' => $data['USER_EMAIL']);
+            DB::table('kycs')->insert($data);
             return 1;
         }else{
             DB::table('sponsors')
-                ->where('USER_EMAIL', $USER_EMAIL)
+                ->where('USER_EMAIL', $data['USER_EMAIL'])
                 ->update($data);
+
+            DB::table('users')
+                ->where('email', $data['USER_EMAIL'])
+                ->update(['updateData'=> true]);
             return 0;
         }
      

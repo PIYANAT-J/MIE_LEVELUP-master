@@ -75,18 +75,170 @@
     <div class="container">
         <div class="row justify-content-center mb-4" data-aos="fade-up">
             <div id="filters" class="filters text-center button-group col-md-7">
-                <button class="btn btn-primary active" data-filter="*">ทั้งหมด</button>
-                <button class="btn btn-primary" data-filter=".news">มาใหม่</button>
-                <button class="btn btn-primary" data-filter=".hot">ยอดนิยม</button>
+                <button class="button5 active" data-filter="*">ทั้งหมด</button>
+                <button class="button5" data-filter=".news">มาใหม่</button>
+                <button class="button5" data-filter=".hot">ยอดนิยม</button>
             </div>
         </div>
         <div id="posts" class="row">
+            
+                    <div class="item news row">
+                        @foreach($Game as $allGame)
+                            @if($allGame->GAME_STATUS == 'อนุมัติ')
+                                <div class="col-lg-3 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="">
+                                    <img src="section/File_game/Profile_game/{{ $allGame->GAME_IMG_PROFILE }}" alt="Image" class="img-fluid rounded" width="300" height="200">
+                                </div>
+                                <div class="col-lg-5 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="100">
+                                    <h3>{{ $allGame->GAME_NAME }}</h3>
+                                    <p class="meta mb-2">{{ $allGame->name }}.{{ $allGame->surname }}&bullet; {{ $allGame->GAME_DATE }}<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></p>
+                                    <p class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</p>
+                                    <p><a href="#" class="font3">Continue Reading...</a></p>
+                                </div>
+                                <div class="col-lg-4 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="200">
+                                    @if(isset($Download))
+                                        @foreach($Download as $Load)
+                                            @if($Download->count() > 1)
+                                                @if($Load->GAME_ID == $allGame->GAME_ID)
+                                                
+                                                    <div class="col mt-4" align="center">
+                                                        <h5 class="font3">Download แล้ว {{$Load->GAME_ID}}:{{$allGame->GAME_ID}}</h5>
+                                                    </div>
+                                                    @break
+                                                
+                                                @endif
+                                            @elseif($Download->count() == 1)
+                                                @if($Load->GAME_ID == $allGame->GAME_ID)
+                                                    <div class="col mt-4" align="center">
+                                                        <h5 class="font3">Download แล้ว {{$Load->GAME_ID}}:{{$allGame->GAME_ID}}</h5>
+                                                    </div>
+                                                    @break
+                                                @else
+                                                    <form action="{{ route('downloadGame') }}" method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                        <div class="col mt-4" align="center">
+                                                            <input name="submit" id="submit" type="submit" class="bnt button1" value="Download">
+                                                            <input type="hidden" name="DOWNLOAD_DATE" value="{{ date('Y-m-d H:i:s') }}">  
+                                                            <input type="hidden" name="GAME_ID" value="{{ $allGame->GAME_ID }}">
+                                                        </div>
+                                                    </form>
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        <form action="{{ route('downloadGame') }}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="col mt-4" align="center">
+                                                <input name="submit" id="submit" type="submit" class="bnt button1" value="Download">
+                                                <input type="hidden" name="DOWNLOAD_DATE" value="{{ date('Y-m-d H:i:s') }}">  
+                                                <input type="hidden" name="GAME_ID" value="{{ $allGame->GAME_ID }}">
+                                            </div>
+                                        </form>
+                                    @endif
+                                </div> 
+                            @endif
+                        @endforeach
+                    </div>
+
+                    <div class="item news row">
+                        @if(isset($Download))
+                            @foreach($Download as $load)
+                                @foreach($Game as $game)
+                                    @if($game->GAME_STATUS == 'อนุมัติ')
+                                        @if($Download->count() > 1)
+                                            @if($game->GAME_ID == $load->GAME_ID)
+                                                <div class="col-lg-3 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="">
+                                                    <img src="section/File_game/Profile_game/{{ $game->GAME_IMG_PROFILE }}" alt="Image" class="img-fluid rounded" width="300" height="200">
+                                                </div>
+                                                <div class="col-lg-5 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="100">
+                                                    <h3>{{ $game->GAME_NAME }}</h3><H3>{{$load->GAME_ID}}</H3>
+                                                    <p class="meta mb-2">{{ $game->name }}.{{ $game->surname }}&bullet; {{ $game->GAME_DATE }}<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></p>
+                                                    <p class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</p>
+                                                    <p><a href="#" class="font3">Continue Reading...</a></p>
+                                                </div>
+                                                <div class="col-lg-4 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="200">
+                                                    <div class="col mt-4" align="center">
+                                                        <h5 class="font3">Download แล้ว {{$load->GAME_ID}}:{{$game->GAME_ID}}</h5>
+                                                    </div>      
+                                                </div>
+                                                @break
+                                            
+                                            @endif
+                                        @elseif($Download->count() == 1)
+                                            @if($game->GAME_ID == $load->GAME_ID)
+                                                <div class="col-lg-3 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="">
+                                                    <img src="section/File_game/Profile_game/{{ $game->GAME_IMG_PROFILE }}" alt="Image" class="img-fluid rounded" width="300" height="200">
+                                                </div>
+                                                <div class="col-lg-5 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="100">
+                                                    <h3>{{ $game->GAME_NAME }}</h3><H3>{{$load->GAME_ID}}</H3>
+                                                    <p class="meta mb-2">{{ $game->name }}.{{ $game->surname }}&bullet; {{ $game->GAME_DATE }}<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></p>
+                                                    <p class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</p>
+                                                    <p><a href="#" class="font3">Continue Reading...</a></p>
+                                                </div>
+                                                <div class="col-lg-4 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="200">
+                                                    <div class="col mt-4" align="center">
+                                                        <h5 class="font3">Download แล้ว {{$load->GAME_ID}}:{{$game->GAME_ID}}</h5>
+                                                    </div>      
+                                                </div>
+                                            @else
+                                                <div class="col-lg-3 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="">
+                                                    <img src="section/File_game/Profile_game/{{ $game->GAME_IMG_PROFILE }}" alt="Image" class="img-fluid rounded" width="300" height="200">
+                                                </div>
+                                                <div class="col-lg-5 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="100">
+                                                    <h3>{{ $game->GAME_NAME }}</h3>
+                                                    <p class="meta mb-2">{{ $game->name }}.{{ $game->surname }}&bullet; {{ $game->GAME_DATE }}<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></p>
+                                                    <p class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</p>
+                                                    <p><a href="#" class="font3">Continue Reading...</a></p>
+                                                </div>
+                                                <div class="col-lg-4 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="200">
+                                                    <form action="{{ route('downloadGame') }}" method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                        <div class="col mt-4" align="center">
+                                                            <input name="submit" id="submit" type="submit" class="bnt button1" value="Download">
+                                                            <input type="hidden" name="DOWNLOAD_DATE" value="{{ date('Y-m-d H:i:s') }}">  
+                                                            <input type="hidden" name="GAME_ID" value="{{ $game->GAME_ID }}">
+                                                        </div>
+                                                    </form>     
+                                                </div>
+                                            @endif
+                                        @endif
+                                    @endif
+                                @endforeach
+                            @endforeach
+                        @else
+                            @foreach($Game as $game)
+                                @if($game->GAME_STATUS == 'อนุมัติ')
+                                    <div class="col-lg-3 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="">
+                                        <img src="section/File_game/Profile_game/{{ $game->GAME_IMG_PROFILE }}" alt="Image" class="img-fluid rounded" width="300" height="200">
+                                    </div>
+                                    <div class="col-lg-5 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="100">
+                                        <h3>{{ $game->GAME_NAME }}</h3>
+                                        <p class="meta mb-2">{{ $game->name }}.{{ $game->surname }}&bullet; {{ $game->GAME_DATE }}<span class="mx-2">&bullet;</span> <a href="#" class="font3">News</a></p>
+                                        <p class="meta mb-2">Download <span class="mx-2">&#8282;</span> 1,000</p>
+                                        <p><a href="#" class="font3">Continue Reading...</a></p>
+                                    </div>
+                                    <div class="col-lg-4 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="200">
+                                        <form action="{{ route('downloadGame') }}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="col mt-4" align="center">
+                                                <input name="submit" id="submit" type="submit" class="bnt button1" value="Download">
+                                                <input type="hidden" name="DOWNLOAD_DATE" value="{{ date('Y-m-d H:i:s') }}">  
+                                                <input type="hidden" name="GAME_ID" value="{{ $game->GAME_ID }}">
+                                            </div>
+                                        </form>     
+                                    </div>
+                                @endif
+                            @endforeach
+                        @endif
+                    </div>
+                        
+                    
+                
             <div class="item news row">
                 <div class="col-lg-4 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="">
                     <img src="section/picture_game/csgo.jpg" alt="Image" class="img-fluid rounded" width="300" height="200">
                 </div>
                 <div class="col-lg-6 mb-2" data-aos="fade" data-aos="fade-up" data-aos-delay="100">
-                    <h3>Web &amp; Mobile Specialties</h3>
+                    <h3>Web &amp;</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis consect.</p>
                     <p class="mb-0"><a href="#">Learn More</a></p>
                 </div>
