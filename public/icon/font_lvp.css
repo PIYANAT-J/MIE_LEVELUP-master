@@ -121,3 +121,11 @@
   content: "\e90e";
   color: #fff;
 }
+
+.icon-product:before {
+  content: "\e914";
+  color: #fff;
+}
+.icon-search-back:before {
+  content: "\e916";
+}

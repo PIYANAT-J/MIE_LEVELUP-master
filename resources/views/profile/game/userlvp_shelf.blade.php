@@ -140,7 +140,7 @@
                                                     <div>
                                                         <span style="font-family:myfont;color:#000;">Time Lie</span></br>
                                                         Online • Other</br>
-                                                        เวอร์ชั่น 1.03
+                                                        เวอร์ชั่น 1.03</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -177,12 +177,12 @@
 @endsection
 
 @section('script')
-<script>
+<!-- <script>
 $('button').on('click', function(){
     $('button').removeClass('active');
     $(this).addClass('active');
 });
-</script>
+</script> -->
 
 <script>
 $(document).ready(function(){
