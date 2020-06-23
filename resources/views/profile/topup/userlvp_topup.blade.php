@@ -54,7 +54,11 @@
                     <div class="row">
                         <div class="col-lg-6 line1">
                             <div style="font-family:myfont;font-size:1.3em;color:#000;">เติมเงิน</div>
-                            <label class="btn-topup">ยอดเงินในวอลเล็ท<span style="font-family:myfont;font-size:1.5em;padding-left:40%">฿ 450.67</span></label>
+                            <div class="row bg-topup ml-0 mb-2">
+                                <div class="col-lg-6 lext-center">ยอดเงินในวอลเล็ท
+                                </div>
+                                <div class="col-lg-6 lext-center">฿ 4,522.67</div>
+                            </div>
                             <div style="font-family:myfont;font-size:1.3em;color:#000;">จำนวนเงินที่ต้องการเติม (ขั้นต่ำ  ฿100 )</div>
                             <div class="input-group mb-3 input-topup">
                                 <div class="input-group-prepend"><span class="input-group-text money_icon">฿</span></div>
@@ -83,7 +87,7 @@
                                         <div class="atmlist">
                                             <div for="atmdlabel" style="font-family: myfont1;font-size:1.3em;color:#000;">เลือกธนาคารที่ต้องการชำระ</div>
                                             <div name="atmdiv" form="banking">
-                                                <button class="btn-bualuang" data-toggle="modal" data-target="#myModal5"><img src="{{asset('home/logo/bualuang.svg') }}" /></button>
+                                                <button class="btn-bangkok" data-toggle="modal" data-target="#myModal5"><img src="{{asset('home/logo/bangkok.svg') }}" /></button>
                                                 <button class="btn-ktc" data-toggle="modal" data-target="#myModal6"><img src="{{asset('home/logo/ktc.svg') }}" /></button>
                                                 <button class="btn-kbank" data-toggle="modal" data-target="#myModal7"><img src="{{asset('home/logo/kbank.svg') }}" /></button>
                                                 <button class="btn-scb" data-toggle="modal" data-target="#myModal8"><img src="{{asset('home/logo/scb.svg') }}" /></button>
@@ -93,7 +97,7 @@
                                         <div class="ibanklist ">
                                             <div for="ibanklable"style="font-family: myfont1;font-size:1.3em;color:#000;">เลือกธนาคารที่ต้องการชำระ</div>
                                             <div name="ibankdiv" form="banking">
-                                                <button class="btn-bualuang" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/bualuang.svg') }}" /></button>
+                                                <button class="btn-bangkok" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/bangkok.svg') }}" /></button>
                                                 <button class="btn-ktc" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/ktc.svg') }}" /></button>
                                                 <button class="btn-kbank" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/kbank.svg') }}" /></button>
                                                 <button class="btn-scb" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/scb.svg') }}" /></button>
@@ -354,8 +358,8 @@
                     <label id="upload" style="cursor:pointer;" class="font-kyc-upload">
                         <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />อัพโหลดรูปภาพ
                     </label>
-                <div id="thumb" class="thumb-topup"><img src="home/topup/pic-topup.png"/></div>    
-                <input id="file_upload" style="display:none" name="file_upload[]" type="file" accept="image/* " require/>
+                    <div id="thumb" class="thumb-topup"><img src="home/topup/pic-topup.png"/></div>    
+                    <input id="file_upload" style="display:none" name="file_upload[]" type="file" accept="image/* " require/>
                 </div>
             </div>
 
@@ -486,7 +490,7 @@
                     <div class="col-lg-12">
                         <div class="row mx-2">
                             <div class="col-12 text-center">
-                                <img class="mr-2" style="weight:100px;" src="{{asset('home/logo/bualuang.svg') }}"/>
+                                <img class="mr-2" style="weight:100px;" src="{{asset('home/logo/bangkok.svg') }}"/>
                                 <span style="color:#000;font-weight:bold;">ธนาคารกรุงเทพ</span> </br>
                                 <span style="color:#000;font-weight:bold;font-size:1.5em;">000-0000-0000</span></br>
                                 <div style="color:#000;">จำนวนเงินที่ต้องชำระ
@@ -678,12 +682,12 @@
 @endsection
 
 @section('script')
-<script>
+<!-- <script>
 $('button').on('click', function(){
     $('button').removeClass('active');
     $(this).addClass('active');
 });
-</script>
+</script> -->
 
 <script>
 $(document).ready(function(){

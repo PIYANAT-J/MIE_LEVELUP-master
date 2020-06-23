@@ -12,10 +12,10 @@
                 <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
                     <div class="row mb-2">
                         <div class="col-5 text-right pr-2">
-                            <img class="sidebar-pic" src="{{asset('dist/images/person_1.jpg') }}" />
+                            <img class="sidebar-pic" src="{{asset('dist/images/img_13.jpg') }}" />
                         </div>
                         <div class="col-7 sidebar_name pt-2">
-                            <span><b style="font-family: myfont;font-size: 1.1em;">ชื่อ-นามสกุล</b></br>ผู้ใช้ทั่วไป</br>เป็นสมาชิก:25/05/63</span>
+                            <span><b style="font-family: myfont;font-size: 1.1em;">ชื่อ-นามสกุล</b></br>ผู้พัฒนาระบบ</br>เป็นสมาชิก:25/05/63</span>
                         </div>
                     </div>
                     <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
@@ -35,91 +35,42 @@
                     </div>
                 </div>
                 <div class="col-lg-1"></div>
-                <a href="/user_lvp" style="width: 100%;"><button class="btn-sidebar "><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ข้อมูลส่วนตัว</button></a>
-                <a href="/user_kyc" style="width: 100%;"><button class="btn-sidebar"><span style="font-family: myfont1;font-size: 20px;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน<span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span><span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span><span class="status-kyc2 ml-2 px-2">ยืนยันตัวต้นแล้ว</span></button></a>
-                <a href="/user_shelf" style="width: 100%;"><button class="btn-sidebar"><i class="icon-game-shelf" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ตู้เกม (เกมเชล)</button></a>
-                <a href="/user_history" style="width: 100%;"><button class="btn-sidebar active"><i class="icon-history" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ประวัติพอยท์</button></a>
-                <a href="/user_rank" style="width: 100%;"><button class="btn-sidebar"><img class="pic4" src="{{asset('icon/rank1.svg') }}" />อันดับผู้ใช้</button></a>
-                <a href="/user_topup" style="width: 100%;"><button class="btn-sidebar"><i class="icon-top-up1" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เติมเงิน</button></a>
-                <a href="/user_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เปลี่ยนรหัสผ่าน</button></a>
+                <a href="/develper_profile" style="width: 100%;"><button class="btn-sidebar "><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ข้อมูลส่วนตัว</button></a>
+                <a href="/develper_kyc" style="width: 100%;"><button class="btn-sidebar "><span style="font-family: myfont1;font-size: 20px;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน<span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span><span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span><span class="status-kyc2 ml-2 px-2">ยืนยันตัวต้นแล้ว</span></button></a>
+                <a href="/develper_shelf" style="width: 100%;"><button class="btn-sidebar "><i class="icon-game-shelf" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ตู้เกม (เกมเชล)</button></a>
+                <a href="/develper_history" style="width: 100%;"><button class="btn-sidebar "><i class="icon-history" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ประวัติพอยท์</button></a>
+                <a href="/develper_upload_game" style="width: 100%;"><button class="btn-sidebar "><i class="icon-upload-game" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>อัพโหลดเกม</button></a>
+                <a href="/develper_withdraw" style="width: 100%;"><button class="btn-sidebar "><i class="icon-withdraw" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ถอนเงิน</button></a>
+                <a href="/develper_change_password" style="width: 100%;"><button class="btn-sidebar active"><i class="icon-change-pass" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เปลี่ยนรหัสผ่าน</button></a>
                 <button class="btn-sidebar"><img class="pic4" src="{{asset('icon/logout.svg') }}" />ออกจากระบบ</button>
             </div>
         </div>
         <!-- sidebar -->
 
-        <div class="col-lg-9" style="background-color: #f5f5f5;">
+        <div class="col-lg-9" style="background-color:#f5f5f5;">
             <div class="row mt-4" >
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
                     <div class="row">
-                        <div class="col-6 pb-2">
-                            <span class="font-profile1">ประวัติพอยท์</span>
-                        </div>
-                        <div class="col-6 text-right">
-                            <SELECT class="select2" size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT>
-                            <SELECT class="select2" size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT>
-                                <!-- <div class="col-4 mt-2 d-none" style="padding:0;"><SELECT  size="1" id ="day" name = "dd" ></SELECT></div> -->
+                        <div class="col-lg-12 pt-2 pb-3" style="border-bottom: 1px solid #f2f2f2;"> 
+                            <span class="font-profile1">เปลี่ยนรหัสผ่าน</span>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="row mt-2 ">
-                                <div class="col-lg-12" >
-                                    <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1.3em;color:#000;">
-                                        <div class="col-8">ประวัติ</div>
-                                        <div class="col-2 text-center">พอยท์</div>
-                                        <div class="col-2 text-center">วัน-เวลา</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mt-2 row4">
-                                <div class="col-lg-12" >
-                                    <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                        <div class="col-8">
-                                        <span class="font-game-shelf" style="color:#000;font-family:myfont;">อัพเดตโปรไฟล์</span>
-                                        </div>
-                                        <div class="col-2 text-center">
-                                            <span class="font-game-shelf" style="color:#23c197;font-family:myfont;">+20</span>
-                                            <span class="font-game-shelf" style="color:#ce0005;font-family:myfont;">-50</span>
-                                        </div>
-                                        <div class="col-2 text-center"><span class="font-game-shelf">09:10 17/05/63</span></div>
-                                    </div>
-
-                                    <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                        <div class="col-8">
-                                        <span class="font-game-shelf" style="color:#000;font-family:myfont;">อัพเดตโปรไฟล์</span>
-                                        </div>
-                                        <div class="col-2 text-center">
-                                            <span class="font-game-shelf" style="color:#23c197;font-family:myfont;">+20</span>
-                                            <span class="font-game-shelf" style="color:#ce0005;font-family:myfont;">-50</span>
-                                        </div>
-                                        <div class="col-2 text-center"><span class="font-game-shelf">09:10 17/05/63</span></div>
-                                    </div>
-
-                                    <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                        <div class="col-8">
-                                        <span class="font-game-shelf" style="color:#000;font-family:myfont;">อัพเดตโปรไฟล์</span>
-                                        </div>
-                                        <div class="col-2 text-center">
-                                            <span class="font-game-shelf" style="color:#23c197;font-family:myfont;">+20</span>
-                                            <span class="font-game-shelf" style="color:#ce0005;font-family:myfont;">-50</span>
-                                        </div>
-                                        <div class="col-2 text-center"><span class="font-game-shelf">09:10 17/05/63</span></div>
-                                    </div>
-
-                                    <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                        <div class="col-8">
-                                        <span class="font-game-shelf" style="color:#000;font-family:myfont;">อัพเดตโปรไฟล์</span>
-                                        </div>
-                                        <div class="col-2 text-center">
-                                            <span class="font-game-shelf" style="color:#23c197;font-family:myfont;">+20</span>
-                                            <span class="font-game-shelf" style="color:#ce0005;font-family:myfont;">-50</span>
-                                        </div>
-                                        <div class="col-2 text-center"><span class="font-game-shelf">09:10 17/05/63</span></div>
-                                    </div> 
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12  mt-2" >
+                                <form>
+                                    <input type="password" class="input-update"  placeholder="รหัสผ่านเก่า" require></input>
+                                    <input type="password" class="input-update"  placeholder="รหัสผ่านใหม่" require></input>
+                                    <input type="password" class="input-update"  placeholder="ยืนยันสหัสผ่านใหม่" require></input>
+                                    <button type="submit" class="btn-submit mt-2">ยืนยัน</button>
+                                    <button type="reset" class="btn-cancal mt-2">รีเซ็ต</button>
+                                </form>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-6"></div>
                     </div>
                 </div>
                 <div class="col-lg-1"></div>
@@ -270,5 +221,47 @@ function change_month(select) {
     }
     $(day).val(val);
 }
+</script>
+
+
+<script> /* รูปโปรไฟล์เกม */
+$(function () {
+ $("#upload").on("click",function(e){
+     $("#file_upload").show().click().hide();
+     e.preventDefault();
+ });
+ $("#file_upload").on("change",function(e){
+     var files = this.files
+     showThumbnail(files)        
+ });
+ function showThumbnail(files){
+     $("#thumb").html("");
+     for(var i=0;i<files.length;i++){
+         var file = files[i]
+         var imageType = /image.*/
+         if(!file.type.match(imageType)){
+                //  console.log("Not an Image");
+             continue;
+         }
+         var image = document.createElement("img");
+         var thumbnail = document.getElementById("thumb");
+         image.file = file;
+         thumbnail.appendChild(image)
+         var reader = new FileReader()
+         reader.onload = (function(aImg){
+             return function(e){
+                 aImg.src = e.target.result;
+             };
+         }(image))
+         var ret = reader.readAsDataURL(file);
+         var canvas = document.createElement("canvas");
+         ctx = canvas.getContext("2d");
+         image.onload= function(){
+             ctx.drawImage(image,100,100)
+         }
+     } // end for loop
+     console.log(file);
+ } // end showThumbnail
+});
 </script>
 @endsection

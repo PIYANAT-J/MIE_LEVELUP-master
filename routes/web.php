@@ -88,6 +88,9 @@ Route::view('/develper_profile', 'profile.devlvp_profile');
 Route::view('/develper_kyc', 'kyc.devlvp_kyc');
 Route::view('/develper_shelf', 'profile.game.devlvp_shelf');
 Route::view('/develper_history', 'profile.point.devlvp_history');
-Route::view('/develper_rank', 'profile.devlvp_rank');
-Route::view('/develper_topup', 'profile.topup.devlvp_topup');
+Route::view('/develper_upload_game', 'profile.devlvp_upload');
+Route::view('/develper_withdraw', 'profile.topup.devlvp_withdraw');
 Route::view('/develper_change_password', 'profile.password.devlvp_change_password');
+
+//admin
+Route::view('/admin_management', 'admin_management')->name('AdminManagement');

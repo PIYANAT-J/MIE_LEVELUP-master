@@ -442,12 +442,12 @@
 @endsection
 
 @section('script')
-<script>
+<!-- <script>
 $('button').on('click', function(){
     $('button').removeClass('active');
     $(this).addClass('active');
 });
-</script>
+</script> -->
 
 <script>
 $(document).ready(function(){

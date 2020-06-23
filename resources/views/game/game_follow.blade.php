@@ -255,14 +255,14 @@
 
                     <select class="selectpicker" id="mySelect" data-live-search="true">
                         <option class="option-select-rate">เรทเนื้อหาเกม</option>
-                        <option class="option-select-rate">Discrimination</option>
-                        <option class="option-select-rate">Drugs</option>
-                        <option class="option-select-rate">Fear</option>
-                        <option class="option-select-rate">Gambling</option>
-                        <option class="option-select-rate">Sex</option>
-                        <option class="option-select-rate">Violence</option>
-                        <option class="option-select-rate">Online</option>
-                        <option class="option-select-rate">Other</option>
+                        <option class="option-select-rate">Discrimination : มีการแบ่งแยก แบ่งแยกฝ่ายอย่างชัดเจน</option>
+                        <option class="option-select-rate">Drugs : มีการใช้สารเสพติดในเกม</option>
+                        <option class="option-select-rate">Fear : มีการใช้ความกลัวเข้ามาอยู่ในเกม</option>
+                        <option class="option-select-rate">Gambling : มีเรื่องของการพนันอยู่ในเกม</option>
+                        <option class="option-select-rate">Sex : มีเรื่องเพศเกี่ยวข้องอยู่ในเกม</option>
+                        <option class="option-select-rate">Violence : มีการใช้ความรุนแรงภายในเกม</option>
+                        <option class="option-select-rate">Online : เป็นเกมที่ต้องเล่นออนไลน์เท่านั้น เป็นเรทที่พิเศษแยกออกมา</option>
+                        <option class="option-select-rate">Other:อื่น</option>
                     </select>
     
                     <select class="selectpicker" id="mySelect">
