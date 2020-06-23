@@ -158,7 +158,7 @@
                                     </button>
                                 </form> -->
                             @endguest
-                            <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/'.$game->RATED_ESRB) }}" />
+                            <img class="rate_pic2" style="width: 13%;" src="{{ asset('section/game_rate/'.$game->RATED_ESRB) }}" />
                             <div class="game_name2">
                                 <b style="font-size: 25px;color: #fff;">{{ $game->GAME_NAME }}</b>
                                 <div class="mt-1" style="font-size: 22px;color: #fff;">{{ $game->RATED_B_L }} • Online <button class="font_detail2" style="color: #fff;" >รายละเอียด</button></div>
@@ -201,20 +201,27 @@
                                                     <?php $i = $i+$CAC->RATING; $countID = $countID+1;?>
                                                 @endif
                                             @endforeach
-                                            <?php $count = $i/$countID;?>
+                                            <?php 
+                                                if($countID == 0 || $i == 0){
+                                                    $count = 0;
+                                                }else{
+                                                    $count = $i/$countID;
+                                                }
+                                                
+                                            ?>
                                         @endif
-                                        @foreach($Com_count as $com_count)
-                                            @if($com_count->GAME_ID == $gameId->GAME_ID)
-                                                @foreach($CDownload as $countDown)
-                                                    @if($countDown->GAME_ID == $gameId->GAME_ID)
+                                        @foreach($CDownload as $countDown)
+                                            @if($countDown->GAME_ID == $gameId->GAME_ID)
+                                                @foreach($Com_count as $com_count)
+                                                    @if($com_count->GAME_ID == $gameId->GAME_ID)
                                                         <b style="color:#f6c12c; font-size:30px;">{{round($count, 1)}}/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
                                                         <b>{{ $com_count->com_count }}</b> &nbsp;คอมเมนท์</br>
                                                         <b>{{ $countDown->downloads_count }} </b>ดาวน์โหลด &nbsp; &nbsp;
-                                                        <!-- <b>104.5</b> &nbsp;ชั่วโมง -->
                                                     @endif
                                                 @endforeach
                                             @endif
                                         @endforeach
+                                        
                                         
                                             <!-- <b style="color:#f6c12c; font-size:30px;">4.5/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
                                             <b>124</b> &nbsp;คอมเมนท์</br> -->
@@ -344,7 +351,14 @@
                                                         <?php $i = $i+$CAC->RATING; $countID = $countID+1;?>
                                                     @endif
                                                 @endforeach
-                                                <?php $count = $i/$countID;?>
+                                                <?php 
+                                                if($countID == 0 || $i == 0){
+                                                    $count = 0;
+                                                }else{
+                                                    $count = $i/$countID;
+                                                }
+                                                
+                                            ?>
                                             @endif
                                             @foreach($Com_count as $com_count)
                                                 @if($com_count->GAME_ID == $gameMeId->GAME_ID)
@@ -734,7 +748,14 @@
                                                     <?php $i = $i+$CAC->RATING; $countID = $countID+1;?>
                                                 @endif
                                             @endforeach
-                                            <?php $count = $i/$countID;?>
+                                            <?php 
+                                                if($countID == 0 || $i == 0){
+                                                    $count = 0;
+                                                }else{
+                                                    $count = $i/$countID;
+                                                }
+                                                
+                                            ?>
                                         @endif
                                         @foreach($Com_count as $com_count)
                                             @if($com_count->GAME_ID == $gameNewId->GAME_ID)

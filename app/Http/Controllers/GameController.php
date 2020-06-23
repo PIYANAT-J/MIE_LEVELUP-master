@@ -23,13 +23,6 @@ class GameController extends Controller
     // }
 
     public function indexGame(){
-        // if(Auth::user()->users_type == 0){
-        //     return view('admin_lvp.user_management');
-        // }else{
-            // $Game = DB::select('SELECT * FROM developers LEFT JOIN games ON developers.USER_ID = games.USER_ID LEFT JOIN users ON developers.USER_ID = users.id');
-            // return view('welcome', ['Game'=> $Game]);
-            // $Com_count = DB::select('SELECT *,count(GAME_ID) as com_count FROM comments GROUP BY GAME_ID');
-        // }
         if(isset(Auth::user()->id)){
             $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
             $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
@@ -54,7 +47,30 @@ class GameController extends Controller
                             ->groupBy('GAME_ID')
                             ->get();
             $CommentAll = DB::table('comments')->get();
+            // die('<pre>'. print_r($CommentAll, 1));
             return view('welcome', compact('Games', 'GamesNew', 'CDownload', 'Com_count', 'CommentAll'));
+
+        }
+    }
+
+    public function categoryGame(){
+        if(isset(Auth::user()->id)){
+            $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+            $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
+            $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
+            $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
+                            ->groupBy('GAME_ID')
+                            ->get();
+            // die('<pre>'. print_r($CommentAll, 1));
+            return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'CDownload'));
+
+        }else{
+            $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+            $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
+            $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
+                            ->groupBy('GAME_ID')
+                            ->get();
+            return view('game.game_category', compact('Games', 'GamesNew', 'CDownload'));
 
         }
     }
@@ -131,35 +147,7 @@ class GameController extends Controller
             $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', $gameId)->get();
             return view('game.game_detail', compact('Detail', 'CommentAll', 'DownloadAll'));
         }
-
-        // $Detail = DB::table('games')->where('GAME_ID', '=', $gameId)
-        //                 ->join('users', 'users.id', '=', 'games.USER_ID')
-        //                 ->select('games.*', 'users.name','surname')
-        //                 ->get();
-        // $FollowDetail = DB::table('follows')->where([['GAME_ID', '=', $gameId],['USER_ID', '=', Auth::user()->id]])
-        //                 // ->join('users', 'users.id', '=', 'follows.USER_ID')
-        //                 // ->select('follows.*', 'users.users_type')
-        //                 ->first();
-        // $Download = DB::table('downloads')->where([['GAME_ID', '=', $gameId],['USER_ID', '=', Auth::user()->id]])->first();
-        // return view('game.game_detail', compact('Detail', 'FollowDetail', 'Download'));
     }
-
-    // public function getIndex(){
-    //     // $images = Images::orderBy('id','desc')->get();
-    //     // $gameimg = DB::select('select * from game_imgaes');
-    //     return view('profile.dev_profile');
-    // }
-
-    // public function GameDev(){
-    //     // $game_shelf = DB::tabel('games')
-    //     //             ->join('game_imgaes', 'games.GAME_ID', '=', 'game_imgaes.GAME_ID')
-    //     //             ->get();
-    //     // return view('profile.dev_profile');
-
-    //     $game_shelf = DB::select('select * from games');
-    //     return view('profile.dev_profile', ['game_shelf' => $game_shelf]);
-
-    // }
 
     public function saveGameProfile(Request $request){
         if ($request->input('submit') != null ){

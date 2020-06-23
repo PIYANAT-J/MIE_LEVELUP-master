@@ -43,6 +43,7 @@
                 width: 100%;
                 }
         </style>
+        @yield('style')
     </head>
 
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -66,8 +67,12 @@
                         <nav class="site-navigation position-relative" role="navigation">
                             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block text-right" style="margin-top:30px;"> 
                                 <li><a href="{{ url('/') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px; ">หน้าแรก</a></li>
-                                <li><a href="{{ url('/category' )}}" class="nav-link active" style="font-family:myfont; padding:0px; margin-right:20px;">หมวดหมู่</a></li>
-                                <li><a href="/follow" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px">การติดตามของฉัน</a></li>
+                                <li><a href="{{ route('gameCategory') }}" class="nav-link active" style="font-family:myfont; padding:0px; margin-right:20px;">หมวดหมู่</a></li>
+                                @guest
+                                    <li><a href="{{ route('login-levelUp') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px">การติดตามของฉัน</a></li>
+                                @else
+                                    <li><a href="{{ route('FollowMe') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px">การติดตามของฉัน</a></li>
+                                @endguest
                                 <li class="inputWithIcon">
                                     <input style="font-family:myfont1;" class="search_btn" type="text" placeholder="ค้นหา" aria-label="Search">
                                     <i class="icon-search" aria-hidden="true" style="font-size:18px"></i>
