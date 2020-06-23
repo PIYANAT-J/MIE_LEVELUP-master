@@ -67,7 +67,7 @@
                             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block text-right" style="margin-top:30px;"> 
                                 <li><a href="{{ url('/') }}" class="nav-link active" style="font-family:myfont; padding:0px; margin-right:20px; ">หน้าแรก</a></li>
                                 <li><a href="{{ url('/category' )}}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;">หมวดหมู่</a></li>
-                                <li><a href="/follow" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px">การติดตามของฉัน</a></li>
+                                <li><a href="{{ route('FollowMe') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px">การติดตามของฉัน</a></li>
                                 <li class="inputWithIcon">
                                     <input style="font-family:myfont1;" class="search_btn" type="text" placeholder="ค้นหา" aria-label="Search">
                                     <i class="icon-search" aria-hidden="true" style="font-size:18px"></i>
@@ -95,7 +95,7 @@
                                             @elseif(Auth::user()->users_type == '3')
                                                 <a class="nav-link font_profile" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์_SPON') }}</a>
                                             @else
-                                                <a class="nav-link font_profile" href="{{ route('homeProfile') }}">{{ __('โปรไฟล์_USER') }}</a>
+                                                <a class="nav-link font_profile" href="{{ route('UserProfile') }}">{{ __('โปรไฟล์_USER') }}</a>
                                             @endif
                                         </li>
                                         <li class="nav-item font_profile">

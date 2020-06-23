@@ -65,7 +65,13 @@
                                 @foreach($CommentAll as $CAC)
                                     <?php $i = $i+$CAC->RATING; ?>
                                 @endforeach
-                                <?php $count = $i/$CommentAll->count();?>
+                                <?php 
+                                    if($CommentAll->count() == 0 || $i == 0){
+                                        $count = 0;
+                                    }else{
+                                        $count = $i/$CommentAll->count();
+                                    }
+                                ?>
                             @endif
                             <b style="font-family:myfont;color:#f6c12c; font-size:28px;">{{round($count, 1)}}/5</b>&nbsp;&nbsp;&nbsp;| &nbsp;<b class="font_detail4" >{{$CommentAll->count()}} </b>ความคิดเห็น</br>
                             <b class="font_detail4">{{ $DownloadAll->count() }} </b>ดาวน์โหลด &nbsp; &nbsp;
@@ -241,7 +247,13 @@
                     @foreach($CommentAll as $CAC)
                         <?php $i = $i+$CAC->RATING; ?>
                     @endforeach
-                    <?php $count = $i/$CommentAll->count();?>
+                    <?php 
+                        if($CommentAll->count() == 0 || $i == 0){
+                            $count = 0;
+                        }else{
+                            $count = $i/$CommentAll->count();
+                        }
+                    ?>
                 @endif
                 <div class="col-6 pb-4 text-right  ">
                     <span class="rate" >{{round($count, 1)}}/5</span>

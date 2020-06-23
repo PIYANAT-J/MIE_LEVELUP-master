@@ -291,7 +291,7 @@
                         @foreach($Follows as $followMe)
                             @if($gameMe->GAME_ID == $followMe->GAME_ID)
                                 <div class="col-md-2 ">
-                                    <img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$gameMe->GAME_IMG_PROFILE) }}" />
+                                    <a href="{{ route('GameDetail', ['id'=>$gameMe->GAME_ID]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$gameMe->GAME_IMG_PROFILE) }}" /></a>
                                     <span class="desc">
                                         <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
                                             @csrf

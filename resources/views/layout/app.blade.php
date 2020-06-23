@@ -63,7 +63,7 @@
                         <nav class="site-navigation position-relative" role="navigation">
                             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block text-right" style="margin-top:50px;"> 
                                 <li><a href="{{ url('/') }}" class="nav-link active" style="font-family:myfont; padding:0px; margin-right:20px; ">หน้าแรก</a></li>
-                                <li><a href="/category" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;">หมวดหมู่</a></li>
+                                <li><a href="{{ route('gameCategory') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;">หมวดหมู่</a></li>
                                 @guest
                                     <li><a href="{{ route('login-levelUp') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px">การติดตามของฉัน</a></li>
                                 @else
@@ -97,7 +97,7 @@
                                             @elseif(Auth::user()->users_type == '3')
                                                 <a class="nav-link font_profile" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์_SPON') }}</a>
                                             @else
-                                                <a class="nav-link font_profile" href="{{ route('homeProfile') }}">{{ __('โปรไฟล์_USER') }}</a>
+                                                <a class="nav-link font_profile" href="{{ route('UserProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @endif
                                         </li>
                                         <li class="nav-item font_profile">

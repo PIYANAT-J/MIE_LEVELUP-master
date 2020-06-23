@@ -26,14 +26,7 @@
 
 @section('kyc')
     <form action="{{ route('CreateKyc') }}" method="POST" enctype="multipart/form-data">
-
-        <!-- Message -->
-        <!-- @if(Session::has('message'))
-        <p >{{ Session::get('message') }}</p>
-        @endif -->
-
         @csrf
-
         @foreach($guest_user as $kyc)
             @if(Auth::user()->id == $kyc->USER_ID)
                 @if($kyc->KYC_STATUS == 'รออนุมัติ')
@@ -347,7 +340,6 @@
                 @endif
             @endif
         @endforeach
-        
     </form>
 
 @endsection

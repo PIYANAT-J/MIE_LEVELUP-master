@@ -26,9 +26,9 @@ Route::view('/registerlvp', 'auth.register_lvp')->name('register-levelUp');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/user_profile', 'UploadImageProfile@indexGuest_user')->name('homeProfile');
-Route::get('/userUpdate_profile', 'UploadImageProfile@updateGuest_user')->name('EditProfile');
-Route::post('/userUpdate_profile/edit', 'UploadImageProfile@saveProfileUser')->name('UserEditProfile');
+// Route::get('/user_profile', 'UploadImageProfile@indexGuest_user')->name('homeProfile');
+// Route::get('/userUpdate_profile', 'UploadImageProfile@updateGuest_user')->name('EditProfile');
+// Route::post('/userUpdate_profile/edit', 'UploadImageProfile@saveProfileUser')->name('UserEditProfile');
 
 Route::get('/dev_profile', 'UploadImageProfile@index')->name('devProfile');
 Route::get('/devUpdate_profile', 'UploadImageProfile@update')->name('UpDate');
@@ -44,11 +44,11 @@ Route::get('/change_password', function () {
     return view('change_password');
 });
 
-Route::get('/userKyc', 'KycController@indexUserKyc')->name('userKyc');
+// Route::get('/userKyc', 'KycController@indexUserKyc')->name('userKyc');
 Route::get('/devKyc', 'KycController@indexDevKyc')->name('devKyc');
 Route::get('/sponKyc', 'KycController@indexSponKyc')->name('sponKyc');
 
-Route::post('/kyc/create', 'KycController@createKyc')->name('CreateKyc');
+// Route::post('/kyc/create', 'KycController@createKyc')->name('CreateKyc');
 
 Route::get('/game_shelf', 'DownloadController@indexGame')->name('GAMESHELF');
 // Route::post('/game_shelf/download', 'DownloadController@downloadGame')->name('downloadGame');
@@ -64,7 +64,7 @@ Route::get('/detail-{id}', 'GameController@gameDetail')->name('GameDetail');
 Route::post('/detail/download', 'DownloadController@downloadGame')->name('downloadGame');
 Route::post('/detail/comment', 'CommentController@createComment')->name('Comment');
 
-Route::view('/category', 'game.game_category')->name('gameCategory');
+Route::get('/category', 'GameController@categoryGame')->name('gameCategory');
 
 Route::get('/followMe', 'FollowController@FollowMe')->name('FollowMe');
 
@@ -75,12 +75,17 @@ Route::get('/followMe', 'FollowController@FollowMe')->name('FollowMe');
 // });
 
 // users
-Route::view('/user_lvp', 'profile.userlvp_profile')->name('UserProfile');
-Route::view('/user_kyc', 'kyc.userlvp_kyc');
-Route::view('/user_shelf', 'profile.game.userlvp_shelf');
-Route::view('/user_history', 'profile.point.userlvp_history');
-Route::view('/user_rank', 'profile.userlvp_rank');
-Route::view('/user_topup', 'profile.topup.userlvp_topup');
+Route::get('/user_lvp', 'UploadImageProfile@Guest_user')->name('UserProfile');
+Route::post('/user_lvp/edit', 'UploadImageProfile@saveProfileUser')->name('EditProfile');
+
+Route::get('/user_kyc', 'KycController@indexUserKyc')->name('UserKyc');
+Route::post('/user_kyc/create', 'KycController@createKyc')->name('CreateKyc');
+
+Route::get('/user_shelf', 'UploadImageProfile@user_shelf')->name('UserShelf');
+
+Route::view('/user_history', 'profile.point.userlvp_history')->name('UserHistory');
+Route::view('/user_rank', 'profile.userlvp_rank')->name('UserRank');
+Route::view('/user_topup', 'profile.topup.userlvp_topup')->name('UserTopup');
 Route::view('/user_change_password', 'profile.password.userlvp_change_password');
 
 // developer
