@@ -23,9 +23,10 @@ class CreateDevelopersTable extends Migration
             $table->set('DEV_GENDER', ['Select','Men', 'Women'])->collation('utf8_unicode_ci')->default('Select');
             $table->text('DEV_ADDRESS')->collation('utf8_unicode_ci')->nullable();
             $table->string('ZIPCODE_ID')->collation('utf8_unicode_ci')->nullable();
-            $table->integer('USER_ID');
+            $table->integer('USER_ID')->nullable();
             $table->string('USER_EMAIL')->unique()->collation('utf8_unicode_ci');
-            $table->timestamps();
+            $table->timestamp('DATE_CREATE');
+            $table->timestamp('DATE_MODIFY')->nullable();
         });
     }
 

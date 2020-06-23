@@ -163,7 +163,7 @@
                                                 <input name="submit" id="submit" type="submit" class="bnt button1" value="บันทึก">
                                                 <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
                                                 <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-
+                                                <input type="hidden" name="DATE_MODIFY" value="{{ date('Y-m-d H:i:s') }}">
                                                 <button type="submit" class="bnt button2">ยกเลิก</button>
                                             </div>    
                                         </div>
@@ -259,7 +259,7 @@
                                         <input name="submit" id="submit" type="submit" class="bnt button1" value="บันทึก">
                                         <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
                                         <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-
+                                        <input type="hidden" name="DATE_CREATE" value="{{ date('Y-m-d H:i:s') }}">
                                         <button type="submit" class="bnt button2">ยกเลิก</button>
                                     </div>    
                                 </div>
@@ -282,7 +282,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <script>
     $(document).ready(function(){
-        var date_input=$('input[name="DEV_BIRTHDAY1"]'); //our date input has the name "date"
+        var date_input=$('input[name="DEV_BIRTHDAY"]'); //our date input has the name "date"
         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
         date_input.datepicker({
             format: 'yyyy-mm-dd',

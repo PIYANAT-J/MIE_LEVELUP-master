@@ -26,14 +26,7 @@
 
 @section('kyc')
     <form action="{{ route('CreateKyc') }}" method="POST" enctype="multipart/form-data">
-
-        <!-- Message -->
-        <!-- @if(Session::has('message'))
-        <p >{{ Session::get('message') }}</p>
-        @endif -->
-
         @csrf
-
         @foreach($guest_user as $kyc)
             @if(Auth::user()->id == $kyc->USER_ID)
                 @if($kyc->KYC_STATUS == 'รออนุมัติ')
@@ -88,12 +81,12 @@
                                         <div class="col "></div>
                                         <div class="w-100"></div>
 
-                                        <div class="col"></div>
+                                        <!-- <div class="col"></div>
                                         <div class="col-sm-7 ml-3 mr-3" >
                                             <img src="home/images/kyc.png">
                                         </div>
                                         <div class="col "></div>
-                                        <div class="w-100"></div>
+                                        <div class="w-100"></div> -->
 
                                     </div>
                                 </div>
@@ -152,12 +145,12 @@
                                         <div class="col "></div>
                                         <div class="w-100"></div>
 
-                                        <div class="col"></div>
+                                        <!-- <div class="col"></div>
                                         <div class="col-sm-7 ml-3 mr-3" >
                                             <img src="home/images/kyc.png">
                                         </div>
                                         <div class="col "></div>
-                                        <div class="w-100"></div>
+                                        <div class="w-100"></div> -->
 
                                     </div>
                                 </div>
@@ -332,6 +325,7 @@
                                                 <input type="hidden" name="KYC_CREATE_DATE" value="{{ date('Y-m-d H:i:s') }}">
                                                 <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
                                                 <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
+                                                <input type="hidden" name="users_type" value="{{ Auth::user()->users_type }}">
                                                 <button class="bnt button2">ยกเลิก</button>
                                             </div>    
                                         </div>
@@ -346,7 +340,6 @@
                 @endif
             @endif
         @endforeach
-        
     </form>
 
 @endsection

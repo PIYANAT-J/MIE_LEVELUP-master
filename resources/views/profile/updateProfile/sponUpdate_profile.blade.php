@@ -124,7 +124,7 @@
                                                 <input name="submit" id="submit" type="submit" class="bnt button1" value="บันทึก">
                                                 <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
                                                 <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-
+                                                <input type="hidden" name="DATE_MODIFY" value="{{ date('Y-m-d H:i:s') }}">
                                                 <button type="submit" class="bnt button2">ยกเลิก</button>
                                             </div>    
                                         </div>
@@ -224,7 +224,7 @@
                                         <input name="submit" id="submit" type="submit" class="bnt button1" value="บันทึก">
                                         <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
                                         <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-
+                                        <input type="hidden" name="DATE_CREATE" value="{{ date('Y-m-d H:i:s') }}">
                                         <button type="submit" class="bnt button2">ยกเลิก</button>
                                     </div>    
                                 </div>

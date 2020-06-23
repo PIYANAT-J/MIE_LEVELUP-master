@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="prefix__Google-_" width="58.578" height="58.578" data-name="Google-+" viewBox="0 0 58.578 58.578">
+    <defs>
+        <style>
+            .prefix__cls-2{fill:#fff}
+        </style>
+    </defs>
+    <g id="prefix__Group_120" data-name="Group 120">
+        <path id="prefix__back" d="M0 29.289a29.289 29.289 0 1 1 29.289 29.289A29.289 29.289 0 0 1 0 29.289z" style="fill:#ce0005"/>
+        <path id="prefix__Combined-Shape-path" d="M10.91 9.379h10.3a10.093 10.093 0 0 1 .171 1.813c0 6.252-4.177 10.692-10.474 10.692A10.942 10.942 0 0 1 10.91 0a10.442 10.442 0 0 1 7.31 2.86l-2.961 2.86a6.131 6.131 0 0 0-4.349-1.687 6.846 6.846 0 0 0-6.764 6.909 6.846 6.846 0 0 0 6.764 6.909 5.9 5.9 0 0 0 6.19-4.721h-6.19z" class="prefix__cls-2" transform="translate(11.311 18.836)"/>
+        <path id="prefix__Combined-Shape-path-2" d="M9.352 3.126v3.126H6.234v3.127H3.117V6.252H0V3.126h3.117V0h3.117v3.126z" class="prefix__cls-2" data-name="Combined-Shape-path" transform="translate(36.249 25.088)"/>
+    </g>
+</svg>

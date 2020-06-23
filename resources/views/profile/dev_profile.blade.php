@@ -71,7 +71,7 @@
                   @if(isset($Game->GAME_IMG_PROFILE))
                     <div class="tr">
                       <div class="td-game-img"><img src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" alt="Image"class="game-img" ></div>
-                      <div class="td-game-name">Example</div>
+                      <div class="td-game-name">{{ $Game->GAME_NAME }}</div>
                       <div class="td-game-status">
                         @if($Game->GAME_STATUS == 'รออนุมัติ')
                           <a class="btn-wait-approve">รออนุมัติ</a>
@@ -335,26 +335,44 @@
                 <div class="w-100"></div>
                 <textarea class="form-control textarea-description my-1"  rows="3" name="GAME_DESCRIPTION" value="{{ old('GAME_DESCRIPTION') }}" placeholder="ทำอธิบาย"></textarea>
                 <div class="w-100"></div>
-                <select class="custom-select textbox1 my-1" >
-                  <option name="GAME_TYPE_ID" value="" selected>ประเภทเกม</option>
-                  <option name="GAME_TYPE_ID" value="">ข้อมูลจากตาราง game_type </option>
-                  <option name="GAME_TYPE_ID" value="">ข้อมูลจากตาราง game_type</option>
-                  <option name="GAME_TYPE_ID" value="">ข้อมูลจากตาราง game_type </option>
-                  <option name="GAME_TYPE_ID" value="">ข้อมูลจากตาราง game_type</option>
-                  <option name="GAME_TYPE_ID" value="">ข้อมูลจากตาราง game_type</option>
+                <select class="custom-select textbox1 my-1" name="GAME_TYPE" value="{{ old('GAME_TYPE') }}" required>
+                  <option name="GAME_TYPE" value="" selected>ประเภทเกม</option>
+                  <option name="GAME_TYPE" value="FPS">FPS</option>
+                  <option name="GAME_TYPE" value="TPS">TPS</option>
+                  <option name="GAME_TYPE" value="Puzzle">Puzzle</option>
+                  <option name="GAME_TYPE" value="BoardGame">BoardGame</option>
+                  <option name="GAME_TYPE" value="Adventure">Adventure</option>
+                  <option name="GAME_TYPE" value="Side Scrolling Game">Side Scrolling Game</option>
+                  <option name="GAME_TYPE" value="Mobile">Mobile</option>
                 </select>
                 <div class="w-100"></div>
-                <select class="custom-select textbox1 my-1 " >
-                  <option name="RATE_ID" value="" selected>เรทเกม</option>
-                  <option name="RATE_ID" value="">ข้อมูลจากตาราง rate</option>
-                  <option name="RATE_ID" value="">ข้อมูลจากตาราง rate </option>
-                  <option name="RATE_ID" value="">ข้อมูลจากตาราง rate</option>
-                  <option name="RATE_ID" value="">ข้อมูลจากตาราง rate</option>
+                <select class="custom-select textbox1 my-1 " name="RATED_ESRB" value="{{ old('RATED_ESRB') }}" required>
+                  <option selected>เรทอายุ</option>
+                  <option name="RATED_ESRB" value="EC–EarlyChildhood">EC – Early Childhood</option>
+                  <option name="RATED_ESRB" value="E – Everyone">E – Everyone</option>
+                  <option name="RATED_ESRB" value="E10+ – Everyone 10+">E10+ – Everyone 10+</option>
+                  <option name="RATED_ESRB" value="rate.svg">T – Teen</option>
+                  <option name="RATED_ESRB" value="M : Mature">M : Mature</option>
+                  <option name="RATED_ESRB" value="AO : Adults Only">AO : Adults Only</option>
+                  <option name="RATED_ESRB" value="RP : Rating Pending">RP : Rating Pending</option>
+                </select>
+                <div class="w-100"></div>
+                <select class="custom-select textbox1 my-1" name="RATED_B_L" value="{{ old('RATED_B_L') }}" required>
+                  <option name="RATED_B_L" value="" selected>มีการใช้ภาษาและความรุนแรง</option>
+                  <option name="RATED_B_L" value="Discrimination">Discrimination</option>
+                  <option name="RATED_B_L" value="Drugs">Drugs</option>
+                  <option name="RATED_B_L" value="Fear">Fear</option>
+                  <option name="RATED_B_L" value="Gambling">Gambling</option>
+                  <option name="RATED_B_L" value="Sex">Sex</option>
+                  <option name="RATED_B_L" value="Violence">Violence</option>
+                  <option name="RATED_B_L" value="Other">Other</option>
                 </select>
                 <input type="text" class="form-control textbox1 my-2" name="GAME_VDO_LINK" value="{{ old('GAME_VDO_LINK') }}" placeholder="ลิงค์วีดีโอ"/>
                 <div class="w-100"></div>
-                <div class="my-1"><input type="file" class="file" name="GAME_FILE" accept=".zip" require>
-                <label class="label1 pl-3">เฉพาะไฟล์นามสกุล .zip เท่านั้น</label> </div>
+                <div class="my-1">
+                  <input type="file" class="file" name="GAME_FILE" accept=".zip" require>
+                  <label class="label1 pl-3">เฉพาะไฟล์นามสกุล .zip เท่านั้น</label>
+                </div>
                 
               </div>
               <div class="col-sm-1"></div>   
@@ -380,12 +398,12 @@
             </div>
             <div class="row"> <!--แถวที่ 3 -->
               <div class="col mt-4" align="center">
-                  <input name="submit" id="submit" type="submit" class="bnt button1" value="บันทึก">
-                  <input type="hidden" name="GAME_DATE" value="{{ date('Y-m-d H:i:s') }}">
-                  <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                  <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-                  <button type="submit" class="bnt button2">ยกเลิก</button>
-                </div>
+                <input name="submit" id="submit" type="submit" class="bnt button1" value="บันทึก">
+                <input type="hidden" name="GAME_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
+                <button type="submit" class="bnt button2">ยกเลิก</button>
+              </div>
             </div>
           </div>
         </form>

@@ -21,9 +21,21 @@
         <link rel="stylesheet" href="{{ asset('dist/css/aos.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/level-up.css') }}">
+        <link rel="stylesheet" href="{{ asset('dist/css/level-up2.css') }}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
         <link rel="stylesheet" href="{{ asset('dist/css/dropzone/dropzone.css') }}">
+        <style>
+            @font-face {
+            font-family:myfont;
+            src: url('home/font/dbheaventmedv3.2-webfont.woff2') format('woff2'),
+                    url('home/font/dbheaventmedv3.2-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            }
+            div
+            {font-family:myfont;}
+        </style>
         
         @yield('head')
     <!-- เรียกใช้ Theme -->
@@ -67,7 +79,7 @@
                                         <a href="#about-section" class="nav-link">ยินดีต้อนรับคุณ</a>
                                         <ul class="dropdown">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
+                                                <a class="nav-link" href="{{ route('login-levelUp') }}">{{ __('เข้าสู่ระบบ') }}</a>
                                             </li>
                                             @if (Route::has('register'))
                                                 <li class="nav-item">
@@ -110,6 +122,7 @@
             <!-- เมนูบาร์ -->
 
             @yield('navbar')
+            @yield('admin_lvp')
 
         </div>
 

@@ -38,13 +38,6 @@
                         @enderror
                     </div>
                     <div class="form-group col-lg-12 mx-auto mb-2">
-                        <!-- <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember" value="{{ old('remember') ? 'checked' : '' }}">
-
-                            <label class="form-check-label" for="remember">
-                                {{ __('Remember Me') }}
-                            </label>
-                        </div> -->
                         <div class="custom-control custom-checkbox my-1 mr-sm-2">
                             <input type="checkbox" class="custom-control-input text-dark" name="remember" id="remember" value="{{ old('remember') ? 'checked' : '' }}">
                             <label class="custom-control-label" for="remember">{{__('Remember Me')}}</label>
@@ -70,55 +63,45 @@
 </div>
 <br><br><br><br><br><br><br><br><br><br>
 
-<footer class="site-footer">
-    <div class="container">
+<footer class="site-footer footer1">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5">
+                <img class="email_footer" src="{{asset('icon/email.svg') }}" >
+                <img class="google_footer" src="{{asset('icon/google_p.svg') }}" >
+                <img class="fb_footer" src="{{asset('icon/fb.svg') }}" >
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-9">
                 <div class="row">
                     <div class="col-md-5">
-                        <h2 class="footer-heading mb-1"><b>About Us</b></h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam voluptatum autem. Amet aliquid nesciunt veritatis aliquam.</p>
-                    </div>
-                    <div class="col-md-3 ml-auto">
-                        <h2 class="footer-heading mb-4">Quick Links</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="#about-section" class="smoothscroll">About Us</a></li>
-                            <li><a href="#services-section" class="smoothscroll">Services</a></li>
-                            <li><a href="#testimonials-section" class="smoothscroll">Testimonials</a></li>
-                            <li><a href="#contact-section" class="smoothscroll">Contact Us</a></li>
-                        </ul>
+                        <div class="contact_us">CONTACT US</div>
+                        <div class="address mt-3"><a class="address2">Address:</a> 8/1 Borommaratchachonnani Road,</br>Salathammasop, Thawiwatthana,</br>Bangkok 10170</div>
+                        <div class="address"><a class="address2">Phone: </a> +66 2105 8699</div>
+                        <div class="address"><a class="address2">Website: </a> https://www.shopteenii.com</div>
+                        <div class="address"><a class="address2">Email: </a> info@mip.co.th</div>
                     </div>
                     <div class="col-md-3">
-                        <h2 class="footer-heading mb-4">Follow Us</h2>
-                        <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                        <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                        <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                        <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                        <div class="contact_us">HELP</div>
+                        <div class="address mt-3">Home</div>
+                        <div class="address">Categories</div>
+                        <div class="address">My Follow</div>
+                        <div class="address">Sign in</div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
-                <form action="#" method="post" class="footer-subscribe">
-                    <div class="input-group mb-3">
-                        <input type="text" class="button7" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
-                        <div class="input-group-append">
-                            <button class="button6" type="button" id="button-addon2">Send</button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
-        <div class="row pt-5 mt-5 text-center">
-            <div class="col-md-12">
-                <div class="border-top pt-5">
-                    <p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | LevelUp Multi innovation Engineering <i class="icon-heart text-light" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
-                </div>
-            </div>
+    </div>  
+</footer>
+<footer class="container-fluid mt-4 bg_footer">
+    <div class="row">
+        <div class="col-md-9 text-left">
+            <div class="footer3" style="padding-top:40px; color: #fff;"><script>document.write(new Date().getFullYear());</script> &copy; All Rights Reserved @ Level Up| Terms& Condition | Privacy Policy</div>
+        </div>
+        <div class="col-md-3 text-center bg_footer footer3">
+            <img style="margin-right:10px;" src="{{asset('home/logo/logo_wh.svg') }}">
+            <img  src="{{asset('home/logo/sega.svg') }}" >
         </div>
     </div>
 </footer>

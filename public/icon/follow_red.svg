@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="37.485" height="19.502" viewBox="0 0 37.485 19.502">
+    <defs>
+        <style>
+            .prefix__cls-1{fill:#ce0005}
+        </style>
+    </defs>
+    <g id="prefix__Group_2861" data-name="Group 2861" transform="translate(-432.715 -722.165)">
+        <g id="prefix__Group_2856" data-name="Group 2856" transform="translate(432.715 722.165)">
+            <path id="prefix__Path_3618" d="M377.755 464.945a9.749 9.749 0 0 1-4.959-1.353 8.892 8.892 0 0 1-1.807-1.363h-4.446a8.206 8.206 0 0 1-1.741 1.319 9.751 9.751 0 1 1-5.03-18.105h17.983a9.751 9.751 0 1 1 0 19.5zm-12.32-5.192h6.64l.369.414a6.172 6.172 0 0 0 1.613 1.294 7.276 7.276 0 1 0 3.7-13.542h-17.985a7.275 7.275 0 1 0 3.751 13.509 5.52 5.52 0 0 0 1.543-1.249z" class="prefix__cls-1" data-name="Path 3618" transform="translate(-350.021 -445.443)"/>
+        </g>
+        <g id="prefix__Group_2857" data-name="Group 2857" transform="translate(459.337 727.822)">
+            <circle id="prefix__Ellipse_105" cx="1.272" cy="1.272" r="1.272" class="prefix__cls-1" data-name="Ellipse 105"/>
+        </g>
+        <g id="prefix__Group_2858" data-name="Group 2858" transform="translate(462.226 730.814)">
+            <circle id="prefix__Ellipse_106" cx="1.272" cy="1.272" r="1.272" class="prefix__cls-1" data-name="Ellipse 106"/>
+        </g>
+        <g id="prefix__Group_2859" data-name="Group 2859" transform="translate(456.371 730.814)">
+            <circle id="prefix__Ellipse_107" cx="1.272" cy="1.272" r="1.272" class="prefix__cls-1" data-name="Ellipse 107"/>
+        </g>
+        <g id="prefix__Group_2860" data-name="Group 2860" transform="translate(459.337 733.728)">
+            <circle id="prefix__Ellipse_108" cx="1.272" cy="1.272" r="1.272" class="prefix__cls-1" data-name="Ellipse 108"/>
+        </g>
+        <path id="prefix__Path_3635" d="M447.171 539.7H444.7v-2.472a.413.413 0 0 0-.413-.413h-2.038a.413.413 0 0 0-.413.413v2.472h-2.472a.413.413 0 0 0-.413.413v2.038a.413.413 0 0 0 .413.413h2.472v2.472a.413.413 0 0 0 .413.413h2.038a.413.413 0 0 0 .413-.413v-2.472h2.472a.413.413 0 0 0 .413-.413v-2.038a.413.413 0 0 0-.414-.413z" class="prefix__cls-1" data-name="Path 3635" transform="translate(-.794 190.943)"/>
+    </g>
+</svg>

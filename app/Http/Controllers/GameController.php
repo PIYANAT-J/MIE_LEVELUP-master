@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 use DB;
-// use Illuminate\Support\Facades\DB;
+use Auth;
+use File;
+use Session;
 
 use App\Game_imgae;
 use App\Game;
-
-use Session;
 
 class GameController extends Controller
 {
@@ -23,26 +23,131 @@ class GameController extends Controller
     // }
 
     public function indexGame(){
-        $Game = DB::select('SELECT * FROM developers LEFT JOIN games ON developers.USER_ID = games.USER_ID LEFT JOIN users ON developers.USER_ID = users.id');
-        return view('welcome', ['Game'=> $Game]);
+        if(isset(Auth::user()->id)){
+            $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+            $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
+            $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
+            $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
+                            ->groupBy('GAME_ID')
+                            ->get();
+            $Com_count = DB::table('comments')->select(DB::raw('count(*) as com_count, GAME_ID'))
+                            ->groupBy('GAME_ID')
+                            ->get();
+            $CommentAll = DB::table('comments')->get();
+            // die('<pre>'. print_r($CommentAll, 1));
+            return view('welcome', compact('Games', 'Follows', 'GamesNew', 'CDownload', 'Com_count', 'CommentAll'));
+
+        }else{
+            $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+            $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
+            $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
+                            ->groupBy('GAME_ID')
+                            ->get();
+            $Com_count = DB::table('comments')->select(DB::raw('count(*) as com_count, GAME_ID'))
+                            ->groupBy('GAME_ID')
+                            ->get();
+            $CommentAll = DB::table('comments')->get();
+            // die('<pre>'. print_r($CommentAll, 1));
+            return view('welcome', compact('Games', 'GamesNew', 'CDownload', 'Com_count', 'CommentAll'));
+
+        }
     }
 
-    // public function getIndex(){
-    //     // $images = Images::orderBy('id','desc')->get();
-    //     // $gameimg = DB::select('select * from game_imgaes');
-    //     return view('profile.dev_profile');
-    // }
+    public function categoryGame(){
+        if(isset(Auth::user()->id)){
+            $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+            $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
+            $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
+            $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
+                            ->groupBy('GAME_ID')
+                            ->get();
+            // die('<pre>'. print_r($CommentAll, 1));
+            return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'CDownload'));
 
-    // public function GameDev(){
-    //     // $game_shelf = DB::tabel('games')
-    //     //             ->join('game_imgaes', 'games.GAME_ID', '=', 'game_imgaes.GAME_ID')
-    //     //             ->get();
-    //     // return view('profile.dev_profile');
+        }else{
+            $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+            $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
+            $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
+                            ->groupBy('GAME_ID')
+                            ->get();
+            return view('game.game_category', compact('Games', 'GamesNew', 'CDownload'));
 
-    //     $game_shelf = DB::select('select * from games');
-    //     return view('profile.dev_profile', ['game_shelf' => $game_shelf]);
+        }
+    }
 
-    // }
+    public function gameDetail($gameId){
+        if(isset(Auth::user()->id)){
+            if(Auth::user()->users_type == 1){
+                $Detail = DB::table('games')->where('GAME_ID', '=', $gameId)
+                            ->join('users', 'users.id', '=', 'games.USER_ID')
+                            ->select('games.*', 'users.name','surname')
+                            ->get();
+                $FollowDetail = DB::table('follows')->where([['GAME_ID', '=', $gameId],['USER_ID', '=', Auth::user()->id]])->first();
+                $Download = DB::table('downloads')->where([['GAME_ID', '=', $gameId],['USER_ID', '=', Auth::user()->id]])->first();
+                // die('<pre>'. print_r($Detail, 1));
+                $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', $gameId)->get();
+                $Comment = DB::table('comments')->where([['comments.GAME_ID', '=', $gameId],['comments.USER_ID', '=', Auth::user()->id]])
+                            ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'comments.USER_EMAIL')
+                            ->select('comments.*', 'guest_users.GUEST_USERS_IMG')
+                            ->first();
+                $CommentAll = DB::table('comments')->where('comments.GAME_ID', '=', $gameId)
+                            ->join('users', 'users.id', '=', 'comments.USER_ID')
+                            ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'users.email')
+                            ->select('comments.*', 'guest_users.GUEST_USERS_IMG', 'users.name','surname')
+                            ->get();
+                return view('game.game_detail', compact('Detail', 'FollowDetail', 'Download', 'DownloadAll', 'Comment', 'CommentAll'));
+            }elseif(Auth::user()->users_type == 2){
+                $Detail = DB::table('games')->where('GAME_ID', '=', $gameId)
+                            ->join('users', 'users.id', '=', 'games.USER_ID')
+                            ->select('games.*', 'users.name','surname')
+                            ->get();
+                $FollowDetail = DB::table('follows')->where([['GAME_ID', '=', $gameId],['USER_ID', '=', Auth::user()->id]])->first();
+                $Download = DB::table('downloads')->where([['GAME_ID', '=', $gameId],['USER_ID', '=', Auth::user()->id]])->first();
+                $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', $gameId)->get();
+                // $Comment = DB::table('comments')->where([['comments.GAME_ID', '=', $gameId],['comments.USER_ID', '=', Auth::user()->id]])
+                //             ->join('developers', 'developers.USER_EMAIL', '=', 'comments.USER_EMAIL')
+                //             ->select('comments.*', 'developers.DEV_IMG')
+                //             ->first();
+                $CommentAll = DB::table('comments')->where('comments.GAME_ID', '=', $gameId)
+                            ->join('users', 'users.id', '=', 'comments.USER_ID')
+                            ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'users.email')
+                            ->select('comments.*', 'guest_users.GUEST_USERS_IMG', 'users.name','surname')
+                            ->get();
+                return view('game.game_detail', compact('Detail', 'FollowDetail', 'Download', 'DownloadAll', 'CommentAll'));
+            }else{
+                $Detail = DB::table('games')->where('GAME_ID', '=', $gameId)
+                            ->join('users', 'users.id', '=', 'games.USER_ID')
+                            ->select('games.*', 'users.name','surname')
+                            ->get();
+                $FollowDetail = DB::table('follows')->where([['GAME_ID', '=', $gameId],['USER_ID', '=', Auth::user()->id]])->first();
+                $Download = DB::table('downloads')->where([['GAME_ID', '=', $gameId],['USER_ID', '=', Auth::user()->id]])->first();
+                $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', $gameId)->get();
+                // $Comment = DB::table('comments')->where([['comments.GAME_ID', '=', $gameId],['comments.USER_ID', '=', Auth::user()->id]])
+                //             ->join('sponsors', 'sponsors.USER_EMAIL', '=', 'comments.USER_EMAIL')
+                //             ->select('comments.*', 'sponsors.SPON_IMG')
+                //             ->first();
+                $CommentAll = DB::table('comments')->where('comments.GAME_ID', '=', $gameId)
+                            ->join('users', 'users.id', '=', 'comments.USER_ID')
+                            ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'users.email')
+                            ->select('comments.*', 'guest_users.GUEST_USERS_IMG', 'users.name','surname')
+                            ->get();
+                return view('game.game_detail', compact('Detail', 'FollowDetail', 'Download', 'DownloadAll', 'CommentAll'));
+            }
+        }else{
+            $Detail = DB::table('games')->where('GAME_ID', '=', $gameId)
+                        ->join('users', 'users.id', '=', 'games.USER_ID')
+                        ->select('games.*', 'users.name','surname')
+                        ->get();
+            $CommentAll = DB::table('comments')->where('comments.GAME_ID', '=', $gameId)
+                            ->join('users', 'users.id', '=', 'comments.USER_ID')
+                            ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'users.email')
+                            ->select('comments.*', 'users.name','surname', 'guest_users.GUEST_USERS_IMG')
+                            ->get();
+                            // die('<pre>'. print_r($CommentAll, 1));
+            $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', $gameId)->get();
+            return view('game.game_detail', compact('Detail', 'CommentAll', 'DownloadAll'));
+        }
+    }
 
     public function saveGameProfile(Request $request){
         if ($request->input('submit') != null ){
@@ -51,8 +156,24 @@ class GameController extends Controller
             if($request->has('GAME_FILE')){
                 $uploadFile = $request->file('GAME_FILE');
                 $file_name = 'GAME_FILE_'.time().'.'.$uploadFile->getClientOriginalExtension();
+                // $file_size = File::size($file_name);
                 $pathFile = public_path('section/File_game');
                 $uploadFile->move($pathFile, $file_name);
+
+                $file_size = File::size(public_path('section/File_game/'.$file_name));
+
+                $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
+                $base = log($file_size, 1024);
+                // $file_size = max($file_size, 0); 
+                // $pow = floor(($file_size ? log($file_size) : 0) / log(1024)); 
+                // $pow = min($pow, count($units) - 1); 
+
+                // Uncomment one of the following alternatives
+                // $bytes /= pow(1024, $pow);
+                // $bytes /= (1 << (10 * $pow)); 
+
+                // $size = round($file_size, ) . ' ' . $units[$pow]; 
+                $size = round(pow(1024, $base - floor($base)), $precision = 2) .' '. $units[floor($base)];
                 
                 if($request->has('GAME_IMG_PROFILE')){
 
@@ -67,17 +188,18 @@ class GameController extends Controller
                     // $GAME_STATUS = $request->input('GAME_STATUS');
                     $GAME_DATE = $request->input('GAME_DATE');
                     $GAME_FILE = $file_name;
-                    $GAME_SIZE = $request->input('GAME_SIZE');
+                    $GAME_SIZE = $size;
                     $GAME_VDO_LINK = $request->input('GAME_VDO_LINK');
-                    $GAME_TYPE_ID = $request->input('GAME_TYPE_ID');
-                    $RATE_ID = $request->input('RATE_ID');
+                    $GAME_TYPE = $request->input('GAME_TYPE');
+                    $RATED_ESRB = $request->input('RATED_ESRB');
+                    $RATED_B_L = $request->input('RATED_B_L');
                     $USER_ID = $request->input('USER_ID');
                     $USER_EMAIL = $request->input('USER_EMAIL');
 
                     if($GAME_NAME != '' || $GAME_IMG_PROFILE != '' || $GAME_DESCRIPTION != '' || $GAME_DATE != '' || $GAME_FILE != '' || $GAME_SIZE != '' || $GAME_VDO_LINK != ''
-                        || $GAME_TYPE_ID != '' || $RATE_ID != '' || $USER_ID != '' || $USER_EMAIL != ''){
+                        || $GAME_TYPE != '' || $RATED_ESRB != '' || $USER_ID != '' || $RATED_B_L != '' || $USER_EMAIL != ''){
                         $data = array("GAME_NAME"=>$GAME_NAME, "GAME_IMG_PROFILE"=>$GAME_IMG_PROFILE, "GAME_DESCRIPTION"=>$GAME_DESCRIPTION, "GAME_DATE"=>$GAME_DATE, "GAME_FILE"=>$GAME_FILE, 
-                                        "GAME_SIZE"=>$GAME_SIZE, "GAME_VDO_LINK"=>$GAME_VDO_LINK, "GAME_TYPE_ID"=>$GAME_TYPE_ID, "RATE_ID"=>$RATE_ID, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
+                                        "GAME_SIZE"=>$GAME_SIZE, "GAME_VDO_LINK"=>$GAME_VDO_LINK, "GAME_TYPE"=>$GAME_TYPE, "RATED_ESRB"=>$RATED_ESRB, "RATED_B_L"=>$RATED_B_L, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
             
                         // Insert && Update
                         $value = Game::InsertGame($data);

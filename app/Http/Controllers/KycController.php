@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Kyc;
 
 use DB;
+use Auth;
 use Session;
 
 class KycController extends Controller
@@ -36,10 +37,9 @@ class KycController extends Controller
     //     return view('kyc', ['sponsor'=> $sponsor]);
     // }
     public function indexUserKyc(){
-        $guest_user = DB::table('guest_users')
-                        ->join('kycs', 'guest_users.USER_ID', '=', 'kycs.USER_ID')
-                        ->get();
-        return view('kyc.userKyc', ['guest_user'=> $guest_user]);
+        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('kyc.userlvp_kyc', compact('guest_user', 'userKyc'));
     }
 
     public function indexDevKyc(){
@@ -79,7 +79,7 @@ class KycController extends Controller
 
                 if($KYC_IMG != '' || $KYC_CREATE_DATE != '' || $USER_ID != '' || $USER_EMAIL != '' || $KYC_STATUS != ''){
                     $data = array("KYC_IMG"=>$KYC_IMG, "KYC_CREATE_DATE"=>$KYC_CREATE_DATE, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL, "KYC_STATUS"=>$KYC_STATUS);
-        
+                    // die('<pre>'. print_r($data, 1));
                     // Insert && Update
                     $value = Kyc::InsertAndUpdateData($data);
                     if($value){

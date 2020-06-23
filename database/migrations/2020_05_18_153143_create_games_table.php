@@ -20,14 +20,17 @@ class CreateGamesTable extends Migration
             $table->text('GAME_DESCRIPTION')->collation('utf8_unicode_ci')->nullable();
             $table->set('GAME_STATUS', ['อนุมัติ', 'ไม่อนุมัติ', 'รออนุมัติ'])->collation('utf8_unicode_ci')->default('รออนุมัติ');
             $table->timestamp('GAME_DATE');
+            $table->timestamp('GAME_EDIT_DATE')->nullable();
             $table->timestamp('GAME_APPROVE_DATE')->nullable();
             $table->string('GAME_FILE')->collation('utf8_unicode_ci');
             $table->string('GAME_SIZE')->collation('utf8_unicode_ci')->nullable();
             $table->string('GAME_VDO_LINK')->collation('utf8_unicode_ci')->nullable();
-            $table->integer('GAME_TYPE_ID')->nullable();
-            $table->integer('RATE_ID')->nullable();
+            $table->string('GAME_TYPE')->nullable();
+            $table->string('RATED_ESRB')->nullable();
+            $table->string('RATED_B_L')->nullable();
             $table->integer('USER_ID');
             $table->string('USER_EMAIL')->collation('utf8_unicode_ci');
+            $table->string('ADMIN_NAME')->collation('utf8_unicode_ci')->nullable();
         });
     }
 

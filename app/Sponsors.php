@@ -33,17 +33,21 @@ class Sponsors extends Model
         if($value->count() == 0){
             DB::table('sponsors')->insert($data);
 
-            DB::table('users')
-                ->where('email', $data['USER_EMAIL'])
-                ->update(['updateData'=> true]);
+            // DB::table('users')
+            //     ->where('email', $data['USER_EMAIL'])
+            //     ->update(['updateData'=> true]);
 
-            $kyc = array('USER_ID' => $data['USER_ID'], 'USER_EMAIL' => $data['USER_EMAIL']);
-            DB::table('kycs')->insert($kyc);
+            // $kyc = array('USER_ID' => $data['USER_ID'], 'USER_EMAIL' => $data['USER_EMAIL']);
+            DB::table('kycs')->insert($data);
             return 1;
         }else{
             DB::table('sponsors')
                 ->where('USER_EMAIL', $data['USER_EMAIL'])
                 ->update($data);
+
+            DB::table('users')
+                ->where('email', $data['USER_EMAIL'])
+                ->update(['updateData'=> true]);
             return 0;
         }
      
