@@ -20,8 +20,20 @@ class Game extends Model
     // }
 
     public static function InsertGame($data){
-        DB::table('games')->insert($data);
-     
+        $value = DB::table('games')->where('GAME_NAME', $data['GAME_NAME'])->get();
+        if($value->count() == 0){
+            DB::table('games')->insert($data);
+            return 1;
+        }else{
+            DB::table('games')
+                ->where('GAME_NAME', $data['GAME_NAME'])
+                ->update($data);
+            return 0;
+        }
+    }
+
+    public static function deleteGame($data){
+        DB::table('games')->where('GAME_ID', '=', $data['GAME_ID'])->delete();
     }
 
     public static function UpdateGame($data){
