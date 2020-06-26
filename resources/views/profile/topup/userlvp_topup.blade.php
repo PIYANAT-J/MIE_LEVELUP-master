@@ -342,6 +342,16 @@
                             <span class="pl-1" style="font-family1:myfont;font-size:1em;color:#000;">1234567890123456</span>
                         </div>
                     </div>
+                    <div class="col-lg-12">
+                        <div class="bg-bank px-2 pt-2 pb-1 mb-2">
+                            <select class="select-bank" require>
+                                <option>เลือกธนาคาร</option>
+                                <option>ธนาคารกสิกร</option>
+                                <option>ธนาคารกรุงเทพ</option>
+                                <option>ธนาคารไทยพาณิชย์</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="col-lg-12 mb-2">
                         <input type="text" class="form-control input-bank" placeholder="ยอดที่ชำระ" require></input>
                     </div>

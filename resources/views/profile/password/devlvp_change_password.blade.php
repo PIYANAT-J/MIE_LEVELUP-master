@@ -63,7 +63,7 @@
                                 <form>
                                     <input type="password" class="input-update"  placeholder="รหัสผ่านเก่า" require></input>
                                     <input type="password" class="input-update"  placeholder="รหัสผ่านใหม่" require></input>
-                                    <input type="password" class="input-update"  placeholder="ยืนยันสหัสผ่านใหม่" require></input>
+                                    <input type="password" class="input-update"  placeholder="ยืนยันรหัสผ่านใหม่" require></input>
                                     <button type="submit" class="btn-submit mt-2">ยืนยัน</button>
                                     <button type="reset" class="btn-cancal mt-2">รีเซ็ต</button>
                                 </form>
