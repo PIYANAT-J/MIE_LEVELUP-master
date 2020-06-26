@@ -79,7 +79,7 @@ class DownloadController extends Controller
             }
             
         }
-        return response()->download($downloadFile)->back()->with('success', 'Data Your files has been successfully added');
+        return response()->download($downloadFile);
         // return redirect()->action('DownloadController@indexGame');
         // return back()->with('success', 'Data Your files has been successfully added');
     }

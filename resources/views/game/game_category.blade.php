@@ -1,13 +1,38 @@
 @extends('layout.category_navbar')
+
+@section('style')
+<style>
+    .filterDiv {
+    /* float: left; */
+    /* background-color: #2196F3; */
+    /* color: #ffffff; */
+    /* width: 100%;
+    line-height: 100px; */
+    /* text-align: center; */
+    /* margin: 2px; */
+    display: none;
+    }
+
+    .show {
+        display: block;
+    }
+
+    /* .container {
+    margin-top: 20px;
+    overflow: hidden;
+    } */
+</style>
+@endsection
+
 @section('content')
 <div class="container-fluid">
     <div class="row my-5 "></div>
     <div class="row my-2 "></div>
     <div class="row bg-wh pt-4">
         <div class="col-lg-1"></div>
-        <div class="col-lg-11 pt-3 pb-2">
+        <div class="col-lg-11 pt-3 pb-2" id="filters">
             <span class="font-category mr-3">ประเภทเกม</span>
-            <button class="btn-total-category" >ทั้งหมด</button>
+            <button class="btn-total-category active" onclick="filterSelection('all')">ทั้งหมด</button>
             <button class="btn-total-category" data-toggle="collapse" data-target="#demo">อื่นๆ</button>
         </div>
 
@@ -238,12 +263,14 @@
         </div>
         
         <div class="col-lg-1"></div>
-        <div class="col-lg-11 mb-3">
-            <button class="btn-game-category"><span class="font-game-category">เกมยอดนิยม</span><br><span class="font-game-category2">200 เกม<span></button>
-            <button class="btn-game-category mt-3"><span class="font-game-category">กำลังติดตาม</span><br><span class="font-game-category2">15 เกม<span></button>
-            <button class="btn-game-category mt-3"><span class="font-game-category">เกมใหม่</span><br><span class="font-game-category2">5 เกม<span></button>
-            <button class="btn-game-category mt-3"><span class="font-game-category">เกมที่เล่นล่าสุด</span><br><span class="font-game-category2">10 เกม<span></button>
-            <button class="btn-game-category mt-3"><span class="font-game-category">เร็วๆนี้</span><br><span class="font-game-category2">20 เกม<span></button>
+        <div class="col-lg-11 mb-3" id="filters">
+            <button class="btn-game-category" onclick="filterSelection('hot')"><span class="font-game-category">เกมยอดนิยม</span><br><span class="font-game-category2">{{ $Games->count() }} เกม<span></button>
+            @auth
+                <button class="btn-game-category mt-3" onclick="filterSelection('follow')"><span class="font-game-category">กำลังติดตาม</span><br><span class="font-game-category2">{{ $Follows->count() }} เกม<span></button>
+            @endauth
+            <button class="btn-game-category mt-3" onclick="filterSelection('news')"><span class="font-game-category">เกมใหม่</span><br><span class="font-game-category2">{{ $Games->count() }} เกม<span></button>
+            <!-- <button class="btn-game-category mt-3"><span class="font-game-category">เกมที่เล่นล่าสุด</span><br><span class="font-game-category2">10 เกม<span></button>
+            <button class="btn-game-category mt-3"><span class="font-game-category">เร็วๆนี้</span><br><span class="font-game-category2">20 เกม<span></button> -->
         </div>
     </div>
     
@@ -295,133 +322,71 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-10 row4 ">
             <div class="row py-3">
-
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game6.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game7.png') }}" />
-                    <span class="desc">
-                        <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button >
-                        <!-- <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button > -->
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game8.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game9.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game10.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game11.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game12.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game13.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game14.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game15.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game16.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game17.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game18.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game19.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game20.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game21.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game22.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
-                <div class="col-md-2 ">
-                    <img class="game_3" src="{{asset('section/picture_game/game16.png') }}" />
-                    <span class="desc">
-                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button >
-                    </span>
-                </div>
+                @foreach($Games as $game)
+                    @if($game->GAME_STATUS == 'อนุมัติ')
+                        @guest
+                            <div class="col-md-2 ">
+                                <a href="{{ route('login-levelUp') }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
+                                <span class="desc">
+                                    <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
+                                    <a href="{{route('login-levelUp')}}"><button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button ></a>
+                                </span>
+                            </div>
+                        @else
+                            @if($Follows->count() > 0)
+                                @foreach($Follows as $follow)
+                                    @if($game->GAME_ID == $follow->GAME_ID)
+                                        <div class="filterDiv follow hot col-md-2">
+                                            <a href="{{ route('GameDetail', ['id'=>$game->GAME_ID]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
+                                            <span class="desc">
+                                                <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b>
+                                                        <input type="hidden" name="submit" value="submit">
+                                                        <input type="hidden" name="FOLLOW_ID" value="{{ $follow->FOLLOW_ID }}">
+                                                    </button>
+                                                </form>
+                                            </span>
+                                        </div>
+                                        @break
+                                    @else
+                                        <div class="filterDiv hot col-md-2 ">
+                                            <a href="{{ route('GameDetail', ['id'=>$game->GAME_ID]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
+                                            <span class="desc">
+                                                <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b>
+                                                        <input type="hidden" name="submit" value="submit">
+                                                        <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                                                        <input type="hidden" name="GAME_ID" value="{{ $game->GAME_ID }}">
+                                                        <input type="hidden" name="GAME_NAME" value="{{ $game->GAME_NAME }}">
+                                                        <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                                    </button>
+                                                </form>
+                                            </span>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            @else
+                                <div class="filterDiv hot col-md-2 ">
+                                    <a href="{{ route('GameDetail', ['id'=>$game->GAME_ID]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
+                                    <span class="desc">
+                                        <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b>
+                                                <input type="hidden" name="submit" value="submit">
+                                                <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                                                <input type="hidden" name="GAME_ID" value="{{ $game->GAME_ID }}">
+                                                <input type="hidden" name="GAME_NAME" value="{{ $game->GAME_NAME }}">
+                                                <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                            </button>
+                                        </form>
+                                    </span>
+                                </div>
+                            @endif
+                        @endguest
+                    @endif
+                @endforeach
             </div>
         </div>
         <div class="col-lg-1 "></div>
@@ -445,6 +410,51 @@ $('.mySelect').selectpicker();
     $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
     });
+</script>
+
+<script>
+    filterSelection("all")
+    function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("filterDiv");
+        if (c == "all") c = "";
+        for (i = 0; i < x.length; i++) {
+            w3RemoveClass(x[i], "show");
+            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+        }
+    }
+
+    function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+        }
+    }
+
+    function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);     
+            }
+        }
+    element.className = arr1.join(" ");
+    }
+
+// Add active class to the current button (highlight it)
+    var btnContainer = document.getElementById("filters");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function(){
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+    });
+    }
 </script>
 
 @endsection
