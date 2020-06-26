@@ -109,3 +109,17 @@ Route::view('/develper_change_password', 'profile.password.devlvp_change_passwor
 
 //admin
 Route::view('/admin_management', 'admin_management')->name('AdminManagement');
+//admin kyc approve 
+Route::view('/user_management', 'user_management')->name('UserManagement');
+Route::view('/develop_management', 'dev_management')->name('DevelopManagement');
+Route::view('/sponsor_management', 'spon_management')->name('SponsorManagement');
+//admin game approve
+Route::view('/game_management', 'game_management')->name('GameManagement');
+Route::view('/rate_management', 'rate_management')->name('RateManagement');
+
+Route::view('/topup_management', 'topup_management')->name('TopupManagement');
+Route::view('/withdraw_management', 'withdraw_management')->name('WithdrawManagement');
+
+Route::view('/product', 'product')->name('Product');
+
+Route::view('/admin_change_password', 'profile.password.adminlvp_change_password');
