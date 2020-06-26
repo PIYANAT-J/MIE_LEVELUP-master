@@ -17,7 +17,7 @@
                                     <img class="sidebar-pic" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
                                 </div>
                                 <div class="col-7 sidebar_name pt-2">
-                                    <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้ใช้ทั่วไป</br>{{ Auth::user()->created_at }}</span>
+                                    <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้ใช้ทั่วไป</br>เป็นสมาชิก : {{ Auth::user()->created_at }}</span>
                                 </div>
                             </div>
                             <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
@@ -44,7 +44,7 @@
                                 <img class="sidebar-pic" src="{{asset('home/imgProfile/No_Img.jpg') }}" />
                             </div>
                             <div class="col-7 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้ใช้ทั่วไป</br>{{ Auth::user()->created_at }}</span>
+                                <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้ใช้ทั่วไป</br>เป็นสมาชิก : {{ Auth::user()->created_at }}</span>
                             </div>
                         </div>
                         <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
@@ -239,7 +239,7 @@
                                                     <div>
                                                         <label id="upload" style="cursor:pointer;" class="font-kyc-upload"><img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />อัพโหลดรูปภาพ</label>
                                                         <div id="thumb" class="thumb-kyc"><img src="home/Kyc/pic-kyc.png"></div>    
-                                                        <input id="file_upload" style="display:none" name="file_upload[]" type="file" accept="image/* "/>
+                                                        <input id="file_upload" style="display:none" name="KYC_IMG" type="file" accept="image/* "/>
                                                     </div>
                                                     <div class="col-lg-12 mt-2"><button type="submit" class="btn-submit">ยืนยัน</button></div>
                                                 </div>
@@ -267,7 +267,7 @@
                                                             2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
                                                             3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
                                                             4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
-                                                            หมายเหตุ ** อัพเดทข้อมูลส่วนตัว
+                                                            หมายเหตุ ** 
                                                         </div>
                                                         <div class="col-lg-6 text-center"><img src="{{asset('home/Kyc/kyc.png') }}" /></div>
                                                     </div>

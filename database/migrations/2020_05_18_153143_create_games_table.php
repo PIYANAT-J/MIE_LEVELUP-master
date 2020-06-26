@@ -18,6 +18,7 @@ class CreateGamesTable extends Migration
             $table->string('GAME_NAME')->collation('utf8_unicode_ci');
             $table->string('GAME_IMG_PROFILE')->collation('utf8_unicode_ci');
             $table->text('GAME_DESCRIPTION')->collation('utf8_unicode_ci')->nullable();
+            $table->text('GAME_DESCRIPTION_FULL')->collation('utf8_unicode_ci')->nullable();
             $table->set('GAME_STATUS', ['อนุมัติ', 'ไม่อนุมัติ', 'รออนุมัติ'])->collation('utf8_unicode_ci')->default('รออนุมัติ');
             $table->timestamp('GAME_DATE');
             $table->timestamp('GAME_EDIT_DATE')->nullable();

@@ -18,27 +18,46 @@ use DB;
 
 class UploadImageProfile extends Controller
 {
-    public function index(){
+    public function Developer(){
         $game_img = DB::table('games')->where('USER_ID', Auth::user()->id)->get();
         if($game_img->count() == 0){
-            $developer = DB::table('developers')->where('USER_ID', Auth::user()->id)->get();
-            return view('profile.dev_profile', compact('developer'));
+            $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('profile.devlvp_profile', compact('developer', 'userKyc'));
         }else{
-            $developer = DB::table('developers')->where('USER_ID', Auth::user()->id)->get();
-            $game = DB::table('games')->where('USER_ID', Auth::user()->id)->get();
-            
-            return view('profile.dev_profile', compact('developer','game'));
+            $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('profile.devlvp_profile', compact('developer', 'userKyc'));
         }
     }
-    public function update(){
-        $developer = DB::select('select * from developers');
-        return view('profile.updateProfile.devUpdate_profile', ['developer'=> $developer]);
+
+    public function developer_shelf(){
+        $game_shelf = DB::table('games')->where('USER_ID', Auth::user()->id)->get();
+        if($game_shelf->count() == 0){
+            $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('profile.game.devlvp_shelf', compact('developer', 'userKyc'));
+        }else{
+            $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            $game = DB::table('games')->where('games.USER_ID', Auth::user()->id)->get();
+            $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
+                            ->groupBy('GAME_ID')
+                            ->get();
+            // die('<pre>'. print_r($game, 1));
+            return view('profile.game.devlvp_shelf', compact('developer', 'userKyc', 'game', 'CDownload'));
+        }
+    }
+    public function viewUpload(){
+        $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('profile.devlvp_upload', compact('developer', 'userKyc'));
     }
 
-    public function edit_game(){
-        $developer = DB::select('select * from developers');
-        return view('game.edit_upload_game', ['developer'=> $developer]);
-    }
+    // public function edit_game(){
+    //     $developer = DB::select('select * from developers');
+    //     return view('game.edit_upload_game', ['developer'=> $developer]);
+    // }
 
     public function Guest_user(){
         $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
@@ -116,7 +135,6 @@ class UploadImageProfile extends Controller
                 $DEV_TEL = $request->input('DEV_TEL');
                 $DEV_ID_CARD = $request->input('DEV_ID_CARD');
                 $DEV_IMG = $img_name;
-                $DEV_BIRTHDAY = $request->input('DEV_BIRTHDAY');
                 $DEV_AGE = $request->input('DEV_AGE');
                 $DEV_GENDER = $request->input('DEV_GENDER');
                 $DEV_ADDRESS = $request->input('DEV_ADDRESS');
@@ -126,12 +144,21 @@ class UploadImageProfile extends Controller
                 $CREATE = $request->input('DATE_CREATE');
                 $MODIFY = $request->input('DATE_MODIFY');
 
+                $name = $request->input('name');
+                $surname = $request->input('surname');
+
+                $yyyy = $request->input('yyyy');
+                $mm = $request->input('mm');
+                $dd = $request->input('dd');
+
+                $DEV_BIRTHDAY = $yyyy.'-'.$mm .'-'.$dd;
+
                 if($USER_EMAIL != '' || $DEV_TEL != '' || $DEV_ID_CARD != '' || $DEV_IMG != '' || $DEV_BIRTHDAY != '' || $DEV_AGE != '' || $DEV_GENDER != '' || $DEV_ADDRESS != '' 
                     || $ZIPCODE_ID != '' || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
                     $data = array("DEV_TEL"=>$DEV_TEL, "DEV_ID_CARD"=>$DEV_ID_CARD, "DEV_IMG"=>$DEV_IMG, "DEV_BIRTHDAY"=>$DEV_BIRTHDAY,
                                 "DEV_AGE"=>$DEV_AGE, "DEV_GENDER"=>$DEV_GENDER, "DEV_ADDRESS"=>$DEV_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
-                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY);
-        
+                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY, "name"=>$name, "surname"=>$surname);
+                                // die('<pre>'. print_r($data, 1));
                     // Insert && Update
                     $value = Developer::InsertAndUpdateData($data);
                     if($value){
@@ -144,7 +171,6 @@ class UploadImageProfile extends Controller
 
                 $DEV_TEL = $request->input('DEV_TEL');
                 $DEV_ID_CARD = $request->input('DEV_ID_CARD');
-                $DEV_BIRTHDAY = $request->input('DEV_BIRTHDAY');
                 $DEV_AGE = $request->input('DEV_AGE');
                 $DEV_GENDER = $request->input('DEV_GENDER');
                 $DEV_ADDRESS = $request->input('DEV_ADDRESS');
@@ -154,12 +180,21 @@ class UploadImageProfile extends Controller
                 $CREATE = $request->input('DATE_CREATE');
                 $MODIFY = $request->input('DATE_MODIFY');
 
+                $name = $request->input('name');
+                $surname = $request->input('surname');
+
+                $yyyy = $request->input('yyyy');
+                $mm = $request->input('mm');
+                $dd = $request->input('dd');
+
+                $DEV_BIRTHDAY = $yyyy.'-'.$mm .'-'.$dd;
+
                 if($USER_EMAIL != '' || $DEV_TEL != '' || $DEV_ID_CARD != '' || $DEV_BIRTHDAY != '' || $DEV_AGE != '' || $DEV_GENDER != '' || $DEV_ADDRESS != '' || $ZIPCODE_ID != '' 
                     || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
                     $data = array("DEV_TEL"=>$DEV_TEL, "DEV_ID_CARD"=>$DEV_ID_CARD, "DEV_BIRTHDAY"=>$DEV_BIRTHDAY,
                                 "DEV_AGE"=>$DEV_AGE, "DEV_GENDER"=>$DEV_GENDER, "DEV_ADDRESS"=>$DEV_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
-                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY);
-        
+                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY, "name"=>$name, "surname"=>$surname);
+                                // die('<pre>'. print_r($data, 1));
                     // Insert && Update
                     $value = Developer::InsertAndUpdateData($data);
                     if($value){
@@ -170,7 +205,7 @@ class UploadImageProfile extends Controller
                 }
             }
         }
-        return redirect()->action('UploadImageProfile@index');
+        return redirect()->action('UploadImageProfile@Developer');
     }
 
     public function saveProfileUser(Request $request){

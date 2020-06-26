@@ -164,15 +164,6 @@ class GameController extends Controller
 
                 $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
                 $base = log($file_size, 1024);
-                // $file_size = max($file_size, 0); 
-                // $pow = floor(($file_size ? log($file_size) : 0) / log(1024)); 
-                // $pow = min($pow, count($units) - 1); 
-
-                // Uncomment one of the following alternatives
-                // $bytes /= pow(1024, $pow);
-                // $bytes /= (1 << (10 * $pow)); 
-
-                // $size = round($file_size, ) . ' ' . $units[$pow]; 
                 $size = round(pow(1024, $base - floor($base)), $precision = 2) .' '. $units[floor($base)];
                 
                 if($request->has('GAME_IMG_PROFILE')){
@@ -185,6 +176,7 @@ class GameController extends Controller
                     $GAME_NAME = $request->input('GAME_NAME');
                     $GAME_IMG_PROFILE = $img_name;
                     $GAME_DESCRIPTION = $request->input('GAME_DESCRIPTION');
+                    $GAME_DESCRIPTION_FULL = $request->input('GAME_DESCRIPTION_FULL');
                     // $GAME_STATUS = $request->input('GAME_STATUS');
                     $GAME_DATE = $request->input('GAME_DATE');
                     $GAME_FILE = $file_name;
@@ -196,11 +188,12 @@ class GameController extends Controller
                     $USER_ID = $request->input('USER_ID');
                     $USER_EMAIL = $request->input('USER_EMAIL');
 
-                    if($GAME_NAME != '' || $GAME_IMG_PROFILE != '' || $GAME_DESCRIPTION != '' || $GAME_DATE != '' || $GAME_FILE != '' || $GAME_SIZE != '' || $GAME_VDO_LINK != ''
+                    if($GAME_NAME != '' || $GAME_IMG_PROFILE != '' || $GAME_DESCRIPTION != '' || $GAME_DESCRIPTION_FULL != '' || $GAME_DATE != '' || $GAME_FILE != '' || $GAME_SIZE != '' || $GAME_VDO_LINK != ''
                         || $GAME_TYPE != '' || $RATED_ESRB != '' || $USER_ID != '' || $RATED_B_L != '' || $USER_EMAIL != ''){
-                        $data = array("GAME_NAME"=>$GAME_NAME, "GAME_IMG_PROFILE"=>$GAME_IMG_PROFILE, "GAME_DESCRIPTION"=>$GAME_DESCRIPTION, "GAME_DATE"=>$GAME_DATE, "GAME_FILE"=>$GAME_FILE, 
+                        $data = array("GAME_NAME"=>$GAME_NAME, "GAME_IMG_PROFILE"=>$GAME_IMG_PROFILE, "GAME_DESCRIPTION"=>$GAME_DESCRIPTION, $GAME_DESCRIPTION_FULL=>"GAME_DESCRIPTION_FULL", "GAME_DATE"=>$GAME_DATE, "GAME_FILE"=>$GAME_FILE, 
                                         "GAME_SIZE"=>$GAME_SIZE, "GAME_VDO_LINK"=>$GAME_VDO_LINK, "GAME_TYPE"=>$GAME_TYPE, "RATED_ESRB"=>$RATED_ESRB, "RATED_B_L"=>$RATED_B_L, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
-            
+                        
+                        // die('<pre>'. print_r($data, 1));
                         // Insert && Update
                         $value = Game::InsertGame($data);
                         if($value){
@@ -209,7 +202,7 @@ class GameController extends Controller
                             Session::flash('message','Username already exists.');
                         }
 
-                        $Game_id = DB::table('games')->where('USER_ID', $USER_ID)->value('GAME_ID');
+                        $Game_id = DB::table('games')->where('GAME_NAME', $GAME_NAME)->value('GAME_ID');
                         
                         // Insert && Update (TABLE {{ games_img }})
                         if($request->has('GAME_IMG_NAME')){
@@ -224,13 +217,47 @@ class GameController extends Controller
             
                                 if($GAME_IMG_NAME != '' || $GAME_ID != ''){
                                     $data = array("GAME_IMG_NAME"=>$GAME_IMG_NAME, "GAME_ID"=>$GAME_ID);
-                        
+                                    
+                                    // die('<pre>'. print_r($data, 1));
                                     // Insert && Update
                                     $value = Game_imgae::InsertAndUpdateData($data);
                                 }
                                 $i++;
                             }
                         }
+                    }
+                }else{
+                    $GAME_NAME = $request->input('GAME_NAME');
+                    $GAME_DESCRIPTION = $request->input('GAME_DESCRIPTION');
+                    $GAME_DESCRIPTION_FULL = $request->input('GAME_DESCRIPTION_FULL');
+                    // $GAME_STATUS = $request->input('GAME_STATUS');
+                    $GAME_DATE = $request->input('GAME_DATE');
+                    $GAME_FILE = $file_name;
+                    $GAME_SIZE = $size;
+                    $GAME_VDO_LINK = $request->input('GAME_VDO_LINK');
+                    $GAME_TYPE = $request->input('GAME_TYPE');
+                    $RATED_ESRB = $request->input('RATED_ESRB');
+                    $RATED_B_L = $request->input('RATED_B_L');
+                    $USER_ID = $request->input('USER_ID');
+                    $USER_EMAIL = $request->input('USER_EMAIL');
+
+                    if($GAME_NAME != '' || $GAME_DESCRIPTION != '' || $GAME_DESCRIPTION_FULL != '' || $GAME_DATE != '' || $GAME_FILE != '' || $GAME_SIZE != '' || $GAME_VDO_LINK != ''
+                        || $GAME_TYPE != '' || $RATED_ESRB != '' || $USER_ID != '' || $RATED_B_L != '' || $USER_EMAIL != ''){
+                        $data = array("GAME_NAME"=>$GAME_NAME, "GAME_DESCRIPTION"=>$GAME_DESCRIPTION, $GAME_DESCRIPTION_FULL=>"GAME_DESCRIPTION_FULL", "GAME_DATE"=>$GAME_DATE, "GAME_FILE"=>$GAME_FILE, 
+                                        "GAME_SIZE"=>$GAME_SIZE, "GAME_VDO_LINK"=>$GAME_VDO_LINK, "GAME_TYPE"=>$GAME_TYPE, "RATED_ESRB"=>$RATED_ESRB, "RATED_B_L"=>$RATED_B_L, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
+                        
+                        // die('<pre>'. print_r($data, 1));
+                        // Insert && Update
+                        $value = Game::InsertGame($data);
+                    }
+                }
+            }else{
+                if($request->input('GAME_ID') != null){
+                    $GAME_ID = $request->input('GAME_ID');
+                    if($GAME_ID != ''){
+                        $data = array("GAME_ID"=>$GAME_ID);
+                        // die('<pre>'. print_r($data, 1));
+                        $value = Game::deleteGame($data);
                     }
                 }
             }

@@ -74,13 +74,30 @@ class Developer extends Model
             DB::table('kycs')->insert($data);
             return 1;
         }else{
-            DB::table('developers')
-                ->where('USER_EMAIL', $data['USER_EMAIL'])
-                ->update($data);
+            if(isset($data['DEV_IMG'])){
+                $developer = array('DEV_TEL'=>$data['DEV_TEL'], 'DEV_ID_CARD'=>$data['DEV_ID_CARD'], 'DEV_IMG'=>$data['DEV_IMG'], 
+                                'DEV_BIRTHDAY'=>$data['DEV_BIRTHDAY'], 'DEV_AGE'=>$data['DEV_AGE'], 'DEV_GENDER'=>$data['DEV_GENDER'], 
+                                'DEV_ADDRESS'=>$data['DEV_ADDRESS'], 'ZIPCODE_ID'=>$data['ZIPCODE_ID'], 'USER_ID'=>$data['USER_ID'], 'USER_EMAIL'=>$data['USER_EMAIL'], 
+                                'DATE_CREATE'=>$data['DATE_CREATE'], 'DATE_MODIFY'=>$data['DATE_MODIFY']);
+            }else{
+                $developer = array('DEV_TEL'=>$data['DEV_TEL'], 'DEV_ID_CARD'=>$data['DEV_ID_CARD'],
+                                'DEV_BIRTHDAY'=>$data['DEV_BIRTHDAY'], 'DEV_AGE'=>$data['DEV_AGE'], 'DEV_GENDER'=>$data['DEV_GENDER'], 
+                                'DEV_ADDRESS'=>$data['DEV_ADDRESS'], 'ZIPCODE_ID'=>$data['ZIPCODE_ID'], 'USER_ID'=>$data['USER_ID'], 'USER_EMAIL'=>$data['USER_EMAIL'], 
+                                'DATE_CREATE'=>$data['DATE_CREATE'], 'DATE_MODIFY'=>$data['DATE_MODIFY']);
+            }
 
+            DB::table('kycs')
+                ->where('USER_EMAIL', $data['USER_EMAIL'])
+                ->update(['KYC_ID_CARD'=>$data['DEV_ID_CARD']]);
+
+            DB::table('developers')
+                ->where('USER_EMAIL', $developer['USER_EMAIL'])
+                ->update($developer);
+
+            $user = array('updateData'=> true, 'name'=>$data['name'], 'surname'=>$data['surname']);
             DB::table('users')
                 ->where('email', $data['USER_EMAIL'])
-                ->update(['updateData'=> true]);
+                ->update($user);
             return 0;
         }
      
