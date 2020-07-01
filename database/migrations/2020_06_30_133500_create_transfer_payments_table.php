@@ -19,6 +19,7 @@ class CreateTransferPaymentsTable extends Migration
             $table->string('transferNote', 255)->collation('utf8_unicode_ci')->nullable();
             $table->string('transferฺBank_name', 10)->collation('utf8_unicode_ci')->nullable();
             $table->string('transferImg')->collation('utf8_unicode_ci')->nullable();
+            $table->string('transferInvoice', 255)->collation('utf8_unicode_ci');
             $table->set('transferStatus', ['ยืนยันการโอน', 'รอการอนุมัติ', 'อนุมัติแล้ว'])->collation('utf8_unicode_ci')->nullable();
             $table->dateTime('confirm_at')->nullable();
             $table->string('blockchain', 255)->collation('utf8_unicode_ci')->nullable();

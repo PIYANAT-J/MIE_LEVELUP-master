@@ -17,12 +17,21 @@ class qrPaymentController extends Controller
     public function indexPayment(){
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-
         $payment = DB::table('qr_payments')->where('user_email', Auth::user()->email)->get();
-        // die('<pre>'. print_r($qrJson, 1));
-        // dd($payment->paymentType);
+        $transfer = DB::table('transfer_payments')->where('user_email', Auth::user()->email)->orderBy('id', 'desc')->get();
 
-        return view('profile.topup.userlvp_topup', compact('guest_user', 'userKyc', 'payment'));
+        $sumPayment = DB::table('qr_payments')->where('status', 'true')->where('user_email', Auth::user()->email)->get();
+        $sumTransfer = DB::table('transfer_payments')->where('transferStatus', 'อนุมัติแล้ว')->where('user_email', Auth::user()->email)->get();
+        $wallet = 0;
+        foreach($sumTransfer as $sumtransfer){
+            $wallet = $wallet+$sumtransfer->transferAmount;
+        }
+        foreach($sumPayment as $sumpayment){
+            $wallet = $wallet+$sumpayment->amount;
+        }
+        // dd($wallet);
+
+        return view('profile.topup.userlvp_topup', compact('guest_user', 'userKyc', 'payment', 'transfer', 'wallet'));
     }
 
     public function qrcode($invoice = null){
