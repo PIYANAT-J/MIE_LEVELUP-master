@@ -87,6 +87,10 @@ Route::view('/user_history', 'profile.point.userlvp_history')->name('UserHistory
 Route::view('/user_rank', 'profile.userlvp_rank')->name('UserRank');
 
 Route::get('/user_topup', 'qrPaymentController@indexPayment')->name('UserTopup');
+Route::post('/user_topup/qrCode', 'qrPaymentController@mobilebanking')->name('QrPayment');
+Route::post('/user_topup/transfer', 'TransferController@transferPayment')->name('transferPayment');
+// Route::get('/user_topup/qrCode/{invoice}', 'qrPaymentController@qrcode')->name('qrcode');
+
 
 Route::view('/user_change_password', 'profile.password.userlvp_change_password');
 

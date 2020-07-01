@@ -302,7 +302,7 @@ class UploadImageProfile extends Controller
                 }
             }
         }
-        return redirect()->action('UploadImageProfile@indexGuest_user');
+        return redirect()->action('UploadImageProfile@Guest_user');
     }
 
     public function saveProfileSpon(Request $request){

@@ -4,8 +4,7 @@
     <div class="row my-5"></div>
     <div class="row my-2"></div>
     <div class="row  mt-3">
-
-    <?php $token = "ca6a3833956454fbfdc1f887ea9676d7";?>
+    
         <!-- sidebar -->
         <div class="col-lg-3" style="background-color: #17202c;">
             <div class="row">
@@ -88,28 +87,6 @@
         </div>
         <!-- sidebar -->
 
-                    <!-- <div class="row">
-                            <div class="form-group col">
-                              <label for="amount1">จำนวนเครดิตที่ต้องการแลกเปลี่ยน</label>
-                              <input type="number" class="form-control" id="amount1" name="amount1" placeholder="credit"  value="{{old('amount1')}}" required step=".01" >
-                            </div>
-                          </div>
-                          @if(Session::has('error'))
-                            <script>
-                                window.onload =()=>{
-                                    var toastHTML = '<span class="">{{Session::get('error')['title']}}</span>';
-                                    M.toast({html: toastHTML })
-                                }
-                            </script>
-                          <span class="helper-text" style="color:red" data-error="wrong" data-success="right">{{Session::get('error')['title']}}</span>
-                          @endif
-                          <div class="row">
-                            <div class="form-group col">
-                              <label for="money">จำนวนเงินที่จะได้รับ</label>
-                              <input type="text" class="form-control" id="money" placeholder="0.0" disabled>
-                            </div>
-                          </div> -->
-
         <div class="col-lg-9" style="background-color:#f5f5f5;">
             <div class="row mt-4" >
                 <div class="col-lg-1"></div>
@@ -120,7 +97,7 @@
                             <div class="row bg-topup ml-0 mb-2">
                                 <div class="col-lg-6 lext-center">ยอดเงินในวอลเล็ท
                                 </div>
-                                <div class="col-lg-6 lext-center">฿ 4,522.67</div>
+                                <div class="col-lg-6 lext-center">฿ 0.00</div>
                             </div>
                             <div style="font-family:myfont;font-size:1.3em;color:#000;">จำนวนเงินที่ต้องการเติม (ขั้นต่ำ  ฿100 )</div>
                             <div class="input-group mb-3 input-topup">
@@ -135,6 +112,7 @@
                                         </script>
                                     <span class="helper-text" style="color:red" data-error="wrong" data-success="right">{{Session::get('error')['title']}}</span>
                                     @endif
+                                <!-- <input type="text" id="money"> -->
                             </div>
                             <div style="font-family:myfont;font-size:1.3em;color:#000;">ช่องทางการชำระเงิน</div>
                             <div class="row">
@@ -172,17 +150,29 @@
                                                 <!-- <button class="btn-bangkok" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/bangkok.svg') }}" /></button>
                                                 <button class="btn-ktc" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/ktc.svg') }}" /></button>
                                                 <button class="btn-kbank" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/kbank.svg') }}" /></button> -->
-                                                <!-- <button class="btn-scb" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/scb.svg') }}" /> -->
-                                                <form action="https://www.t10assets.com/api/v1/ecommerce/payment/qrcode" method="POST">
-                                                    <button class="btn-scb" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/scb.svg') }}" />
-                                                        <input type="hidden" name="token" value="{{ $token }}">
-                                                        <input type="hidden" name="amount" id="money">
-                                                        <input type="hidden" name="invoice" value="INV-001">
-                                                        <input type="hidden" name="urlcallbacksuccess" value="http://amang.com:8000/success">
-                                                        <input type="hidden" name="urlcallbackfail" value="http://amang.com:8000/failed">
-                                                        <input type="hidden" name="submit" value="submit">
-                                                    </button>
-                                                </form>
+                                                <!-- <button id="myModal_SCB" class="btn-scb" data-toggle="modal" name="myModal_SCB"><img src="{{asset('home/logo/scb.svg') }}" /> -->
+                                                    <!-- <form id="qr_scb" method="post">
+                                                        @csrf
+                                                        <button id="myModal_SCB" class="btn-scb" data-toggle="modal" name="myModal_SCB"><img src="{{asset('home/logo/scb.svg') }}" />
+                                                            <input type="hidden" name="amount" id="money">
+                                                            <input type="hidden" name="note" id="note" value="no">
+                                                            <input type="hidden" id="submit" name="submit" value="submit">
+                                                        </button>
+                                                    </form> -->
+                                                    <form action="{{route('QrPayment')}}" method="POST">
+                                                        @csrf
+                                                        <button class="btn-scb"><img src="{{asset('home/logo/scb.svg') }}" />
+                                                            <input type="hidden" name="amount" id="money">
+                                                            <input type="hidden" name="bank_name" value="scb.svg">
+                                                            <input type="hidden" name="paymentType" value="QrCode">
+                                                            <input type="hidden" name="note" id="note" value="no">
+                                                            <input type="hidden" id="submit" name="submit" value="submit">
+                                                        </button>
+                                                    </form>
+                                                <!-- </button> -->
+                                                <!-- @if(isset($invoice))
+                                                    <div class="row justify-content-center">{!! DNS2D::getBarcodeHTML($invoice, "QRCODE",6,6) !!}</div>
+                                                @endif -->
                                             </div>
                                         </div>
                                     </div>
@@ -194,6 +184,76 @@
                             <div style="font-family:myfont;font-size:1.3em;color:#000;">ประวัติการเติมเงิน</div>
                             <div class="row row5">
                                 <div class="col-lg-12">
+                                @if(isset($payment))
+                                    @foreach($payment as $PaymentList)
+                                        @if($PaymentList->paymentType == "QrCode")
+                                            @if($PaymentList->status == "true")
+                                                <div class="row bg-bank ml-0 mb-2 py-2">
+                                                    <div class="col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <span class="text-right" style="font-family:myfont;font-size:1.23em;color:#000;">iBanking / Mobile Banking</span>
+                                                                <img class="mr-2" src="{{asset('home/logo/'.$PaymentList->bank_name) }}" />
+                                                                <span style="font-family:myfont;font-size:1.23em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
+                                                                </div>
+                                                            <div class="col-6  text-right" style="padding-top:35px">
+                                                                <span class="font-bank1" >+{{ $PaymentList->amount }} ฿</span></br>
+                                                            </div> 
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <span style="font-family:myfont1;font-size:1.23em;color:#000;">หมายเลขคำร้อง</span>
+                                                                </div>
+                                                            <div class="col-6 text-right">
+                                                                <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">1234567890123456</span>
+                                                            </div> 
+                                                        </div>
+                                                        <div class="row ">
+                                                            <div class="col-6">
+                                                                <span style="font-family:myfont;font-size:1.23em;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</span>
+                                                                </div>
+                                                            <div class="col-6 text-right pt-2">
+                                                                <label class="font-game-shelf">{{ $PaymentList->confirm_at}}</label>
+                                                            </div> 
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                            @else
+                                                <div class="row bg-bank ml-0 mb-2 py-2">
+                                                    <div class="col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <span class="text-right" style="font-family:myfont;font-size:1.23em;color:#000;">iBanking / Mobile Banking</span>
+                                                                <img class="mr-2" src="{{asset('home/logo/'.$PaymentList->bank_name) }}" />
+                                                                <span style="font-family:myfont;font-size:1.23em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
+                                                                </div>
+                                                            <div class="col-6  text-right" style="padding-top:35px">
+                                                                <span class="font-bank1" >+{{ $PaymentList->amount }} ฿</span></br>
+                                                            </div> 
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <span style="font-family:myfont1;font-size:1.23em;color:#000;">หมายเลขคำร้อง</span>
+                                                                </div>
+                                                            <div class="col-6 text-right">
+                                                                <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">1234567890123456</span>
+                                                            </div> 
+                                                        </div>
+                                                        <div class="row ">
+                                                            <div class="col-6">
+                                                                <span style="font-family:myfont;font-size:1.23em;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</span>
+                                                                </div>
+                                                            <div class="col-6 text-right pt-2">
+                                                                <button class="btn-submit-s" data-toggle="modal" data-target="#{{ $PaymentList->invoice }}">โอนเงิน</button>
+                                                            </div> 
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                @endif
+                                
                                     <div class="row bg-bank ml-0 mb-2 py-2">
                                         <div class="col-lg-12">
                                             <div class="row">
@@ -226,7 +286,7 @@
                                         </div> 
                                     </div>
 
-                                    <div class="row bg-bank ml-0 mb-2 py-2">
+                                    <!-- <div class="row bg-bank ml-0 mb-2 py-2">
                                         <div class="col-lg-12">
                                             <div class="row">
                                                 <div class="col-6">
@@ -255,9 +315,9 @@
                                                 </div> 
                                             </div>
                                         </div> 
-                                    </div>
+                                    </div> -->
 
-                                    <div class="row bg-bank ml-0 py-2 mb-2">
+                                    <!-- <div class="row bg-bank ml-0 py-2 mb-2">
                                         <div class="col-lg-12">
                                             <div class="row">
                                                 <div class="col-6">
@@ -391,7 +451,7 @@
                                                 </div>
                                             </div>
                                         </div> 
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -694,7 +754,7 @@
                                 <span style="color:#000;font-weight:bold;">ธนาคารไทยพาณิชย์</span> </br>
                                 <span style="color:#000;font-weight:bold;font-size:1.5em;">000-0000-0000</span></br>
                                 <div style="color:#000;">จำนวนเงินที่ต้องชำระ
-                                <span class="ml-3" style="color:#23c197;font-size-1.1em;font-weight:bold;">2,000</span>
+                                    <span class="ml-3" style="color:#23c197;font-size-1.1em;font-weight:bold;"><input type="text" id="money"></span>
                                 </div>
                                 <span> กรุณาทำการชำระเงินภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกโดยอัตโนมัติ</span></br>
                                 <span style="font-size:0.9em;color:#ce0005;">*รอการยืนยันภายใน 48 ชั่วโมง</span>
@@ -706,7 +766,17 @@
             <div class="mx-3 mb-3">
                 <div class="row">
                     <div class="col-4"></div>
-                    <div class="col-4"><button type="button" class="btn-submit-modal">บันทึก</button></div>
+                    <div class="col-4">
+                        <!-- <button type="button" class="btn-submit-modal">บันทึก</button> -->
+                        <form action="{{ route('transferPayment') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <button class="btn-submit-modal">บันทึก
+                                <input type="hidden" name="transferAmount" id="money1">
+                                <input type="hidden" name="transferฺBank_name" value="scb.svg">
+                                <input type="hidden" name="submit" value="submit">
+                            </button>
+                        </form>
+                    </div>
                     <div class="col-4"></div>
                 </div>
             </div>
@@ -714,8 +784,60 @@
     </div>
 </div>
 
-<div class="modal fade" id="myModal9" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog " role="document">
+@if(isset($payment))
+    @foreach($payment as $qrPayment)
+        <div class="modal fade" id="{{ $qrPayment->invoice }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                            <div class="col-1" style="cursor:pointer;"><img class="mr-2" src="{{asset('icon/back.svg') }}" data-dismiss="modal"/></div>
+                            <div class="col-10 text-center" style="font-family:myfont;font-wieght:bold;font-size:1.2em;color:#000;">iBanking / Mobile Banking</div> 
+                            <div class="col-1"></div>
+                    </div>
+
+                    <div class="modal-body font-rate-modal">
+                        <div class="row px-3">
+                            <div class="col-lg-12 pb-1 bg-bank text-center">
+                                <div class="my-2"><img src="{{asset('icon/waiting.svg') }}" /></div>
+                                <span style="font-family:myfont;color:#000;">
+                                    กำลังรอชำระเงิน</br>ผ่านโมบายแบงค์กิ้ง/ไอแบงค์กิ้ง
+                                </span></br>
+                                <span style="color:#000";>
+                                    กรุณาทำการชำระเงินผ่านโมบายแบงค์กิ้งหรือเอทีเอ็มภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกอัตโนมัติ
+                                </span>
+                                <div class="row justify-content-center">{!! DNS2D::getBarcodeHTML($qrPayment->rawQrCode, "QRCODE",6,6) !!}</div>
+                                <span style="font-family:myfont;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</span>
+                            </div>
+                        </div>
+
+                        <div class="row px-3 mt-3">
+                            <div class="col-lg-12 pb-1 bg-bank">
+                                <div class="row">
+                                    <div class="col-1 py-1" style="border-bottom: 1px solid #fff;"><img class="mt-3" src="{{asset('home/logo/scb.svg') }}" /></div>
+                                    <div class="col-8 mt-2 py-2" style="border-bottom: 1px solid #fff;"><span style="color:#000;">หมายเลขบัญชี <b class="ml-2"><label>1234567890</label></b></span></div>
+                                    <div class="col-3 text-center py-3"  style="font-family:myfont;color:#ff6f6f;border-bottom: 1px solid #fff;cursor:pointer;">คัดลอก</div>
+                                    <div class="col-1 py-1" style="border-bottom: 1px solid #fff;"></div>
+                                    <div class="col-8 py-3" style="border-bottom: 1px solid #fff;"><span style="color:#000;">หมายเลขคำร้อง<b class="ml-2"><label>1234567890123456</label></b></span></div>
+                                    <div class="col-3 py-2 text-center mt-2"  style="font-family:myfont;color:#ff6f6f; border-bottom: 1px solid #fff;cursor:pointer;">คัดลอก</div>
+                                    <div class="col-1 py-1" style="border-bottom: 1px solid #fff;"></div>
+                                    <div class="col-8 pt-3"><span style="color:#000;font-family:myfont;">จำนวนเงินที่ต้องการเติม</span></div>
+                                    <div class="col-3 py-2 text-center mt-2" style="font-family:myfont;color:#23c197;">{{ $qrPayment->amount }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn-submit-modal" >บันทึก</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+@endif
+
+<div class="modal fade" id="myModalSCB" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                     <div class="col-1" style="cursor:pointer;"><img class="mr-2" src="{{asset('icon/back.svg') }}" data-dismiss="modal"/></div>
@@ -734,6 +856,9 @@
                             กรุณาทำการชำระเงินผ่านโมบายแบงค์กิ้งหรือเอทีเอ็มภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกอัตโนมัติ
                         </span>
                         <!-- <div class="my-2"><img src="{{asset('home/topup/qr.png') }}" /></div> -->
+                        @if(isset($invoice))
+                            <div class="row justify-content-center" id="qrCode">{!! DNS2D::getBarcodeHTML($invoice, "QRCODE",6,6) !!}</div>
+                        @endif
                         <span style="font-family:myfont;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</span>
                     </div>
                 </div>
@@ -749,7 +874,7 @@
                             <div class="col-3 py-2 text-center mt-2"  style="font-family:myfont;color:#ff6f6f; border-bottom: 1px solid #fff;cursor:pointer;">คัดลอก</div>
                             <div class="col-1 py-1" style="border-bottom: 1px solid #fff;"></div>
                             <div class="col-8 pt-3"><span style="color:#000;font-family:myfont;">จำนวนเงินที่ต้องการเติม</span></div>
-                            <div class="col-3 py-2 text-center mt-2"  style="font-family:myfont;color:#23c197;"><input type="output" id="money"></div>
+                            <div class="col-3 py-2 text-center mt-2" style="font-family:myfont;color:#23c197;"><input type="number" name="amount" id="money"></div>
                         </div>
                     </div>
                 </div>
@@ -774,7 +899,7 @@
 @endsection
 
 @section('script')
-<!-- <script>
+<!-- <script> 
 $('button').on('click', function(){
     $('button').removeClass('active');
     $(this).addClass('active');
@@ -893,9 +1018,60 @@ function() {
     var credit = document.querySelector('input[name="amount"]').value
     // var money = credit * 30 - ((credit * 30) * 3 /100)
     var money = credit
-    document.querySelector('input#money').value = money  
+    var money1 = credit
+    document.querySelector('input#money').value = money
+    document.querySelector('input#money').value = money1  
+    console.log('Error:', money);
   })
 </script>
 
+<script>
+    $(document).ready(function(){
+
+        // $('#myModalSCB').DataTable({
+        //     processing: true,
+        //     serverSide: true,
+        //     ajax:{
+        //         url: "{{ route('UserTopup') }}",
+        //     }
+        // });
+
+        $('#myModal_SCB').click(function(){
+            $('#myModalSCB').modal('show')
+        });
+
+        $('#qr_scb').on('submit', function(event){
+            event.preventDefault();
+            if($('#submit').val() == 'submit'){
+                $.ajax({
+                    url:"{{ route('QrPayment') }}",
+                    method:"POST",
+                    data: new FormData(this),
+                    contentType: false,
+                    cache:false,
+                    processData: false,
+                    dataType:"json",
+                    success:function(data){
+                        var html = '';
+                        if(data.errors){
+                            html = '<div class="alert alert-danger">';
+                                for(var count = 0; count < data.errors.length; count++){
+                                    html += '<p>' + data.errors[count] + '</p>';
+                                }
+                            html += '</div>';
+                        }
+                        if(data.success){
+                            html = '<div class="alert alert-success">' + data.success + '</div>';
+                            // console.log('Error:', data);
+                            $('#myModalSCB')[0].reset();
+                            $('#myModalSCB').Data().ajax.reload();
+                        }
+                        $('#qrCode').html(html);
+                    }
+                })
+            }
+        });
+    });
+</script>
 
 @endsection
