@@ -45,7 +45,6 @@ class qrPaymentController extends Controller
         return view('profile.topup.userlvp_topup', compact('guest_user', 'userKyc', 'invoice'));
     }
 
-
     public function mobilebanking(Request $request){
         $qrpayment = new QrPayment();
         $qrpayment->user_id = Auth::user()->id;
@@ -54,6 +53,7 @@ class qrPaymentController extends Controller
         $qrpayment->paymentType = $request->paymentType;
         $qrpayment->amount = $request->amount;
         $qrpayment->note = $request->note;
+        $qrpayment->qr_invoice = time().Auth::user()->id;
         $qrpayment->bank_name = $request->bank_name;
         $qrpayment->blockchain = "###TOPUP-LEVELup###";
         $qrpayment->save();

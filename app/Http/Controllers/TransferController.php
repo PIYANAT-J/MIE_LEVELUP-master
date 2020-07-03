@@ -44,12 +44,12 @@ class TransferController extends Controller
                         ->groupBy('user_id')
                         ->value('i');
                 $sumi = $i+1;
-                $transferInvoice = $transferฺBank_name.$sumi;
+                $invoice = $transferฺBank_name.$sumi;
+                $transferInvoice = time().$user_id;
 
-                // dd($transferAmount);
                 if($transferAmount != "" && $transferฺBank_name != ""){
                     $data = array("transferAmount"=>$transferAmount, "transferฺBank_name"=>$transferฺBank_name, "transferStatus"=>$transferStatus, 
-                                "user_id"=>$user_id, "user_email"=>$user_email, "transferInvoice"=>$transferInvoice);
+                                "user_id"=>$user_id, "user_email"=>$user_email, "invoice"=>$invoice, "transferInvoice"=>$transferInvoice);
                     // dd($data);
                     $value = transferPayment::insertTransfer($data);
                 }

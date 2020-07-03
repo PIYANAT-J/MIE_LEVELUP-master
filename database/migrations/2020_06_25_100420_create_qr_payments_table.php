@@ -22,6 +22,7 @@ class CreateQrPaymentsTable extends Migration
             $table->string('bank_name', 10)->collation('utf8_unicode_ci')->nullable();
             $table->char('rawQrCode', 255)->collation('utf8_unicode_ci')->nullable();
             $table->char('invoice', 255)->collation('utf8_unicode_ci')->nullable();
+            $table->string('qr_invoice');
             $table->dateTime('confirm_at')->nullable();
             $table->set('status', ['true', 'false', '99'])->default('false');
             $table->char('blockchain', 255)->collation('utf8_unicode_ci')->nullable();

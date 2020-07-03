@@ -201,7 +201,7 @@
                                                                     <span style="font-family:myfont1;font-size:1.23em;color:#000;">หมายเลขคำร้อง</span>
                                                                     </div>
                                                                 <div class="col-6 text-right">
-                                                                    <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">1234567890123456</span>
+                                                                    <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">{{ $PaymentList->qr_invoice }}</span>
                                                                 </div> 
                                                             </div>
                                                             <div class="row ">
@@ -232,7 +232,7 @@
                                                                     <span style="font-family:myfont1;font-size:1.23em;color:#000;">หมายเลขคำร้อง</span>
                                                                     </div>
                                                                 <div class="col-6 text-right">
-                                                                    <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">1234567890123456</span>
+                                                                    <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">{{ $PaymentList->qr_invoice }}</span>
                                                                 </div> 
                                                             </div>
                                                             <div class="row ">
@@ -278,7 +278,7 @@
                                                                 <span style="font-family:myfont1;font-size:1.23em;color:#000;">หมายเลขคำร้อง</span>
                                                                 </div>
                                                             <div class="col-6 text-right">
-                                                                <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">1234567890123456</span>
+                                                                <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">{{ $transferLits->transferInvoice }}</span>
                                                             </div> 
                                                         </div>
                                                         <div class="row ">
@@ -286,7 +286,7 @@
                                                                 <span style="font-family:myfont;font-size:1.23em;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</span>
                                                             </div>
                                                             <div class="col-6 text-right pt-2">
-                                                                <button class="btn-submit-s" data-toggle="modal" data-target="#{{ $transferLits->transferInvoice }}">ยืนยันการโอน</button>
+                                                                <button class="btn-submit-s" data-toggle="modal" data-target="#{{ $transferLits->invoice }}">ยืนยันการโอน</button>
                                                             </div> 
                                                         </div>
                                                     </div> 
@@ -317,7 +317,7 @@
                                                                 <span style="font-family:myfont1;font-size:1.23em;color:#000;">หมายเลขคำร้อง</span>
                                                                 </div>
                                                             <div class="col-6 text-right">
-                                                                <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">1234567890123456</span>
+                                                                <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">{{ $transferLits->transferInvoice }}</span>
                                                             </div> 
                                                         </div>
                                                         <div class="row ">
@@ -356,7 +356,7 @@
                                                                 <span style="font-family:myfont1;font-size:1.23em;color:#000;">หมายเลขคำร้อง</span>
                                                                 </div>
                                                             <div class="col-6 text-right">
-                                                                <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">1234567890123456</span>
+                                                                <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">{{ $transferLits->transferInvoice }}</span>
                                                             </div> 
                                                         </div>
                                                         <div class="row ">
@@ -414,7 +414,7 @@
 
 @if(isset($transfer))
     @foreach($transfer as $transferModal)
-        <div class="modal fade" id="{{ $transferModal->transferInvoice }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="{{ $transferModal->invoice }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog " role="document">
                 <div class="modal-content">
                     <div class="modal-header">
