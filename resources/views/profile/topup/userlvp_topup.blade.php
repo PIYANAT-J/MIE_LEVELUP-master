@@ -66,6 +66,7 @@
                     </div>
                 @endif
                 <div class="col-lg-1"></div>
+                <a href="{{ route('Avatar') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ตัวละครของฉัน (Avatar)</button></a>
                 <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ข้อมูลส่วนตัว</button></a>
                 <a href="{{ route('UserKyc') }}" style="width: 100%;"><button class="btn-sidebar"><span style="font-family: myfont1;font-size: 20px;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
                     @if($userKyc->KYC_STATUS == null)
@@ -125,7 +126,7 @@
                             <div style="font-family:myfont;font-size:1.3em;color:#000;">จำนวนเงินที่ต้องการเติม (ขั้นต่ำ  ฿100 )</div>
                             <div class="input-group mb-3 input-topup">
                                 <div class="input-group-prepend"><span class="input-group-text money_icon">฿</span></div>
-                                <input type="text" class="form-control money" id="amount" name="amount" value="{{ old('amount') }}" require>
+                                <input type="text" class="form-control money" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="amount" name="amount" value="{{ old('amount') }}" require>
                                     @if(Session::has('error'))
                                         <script>
                                             window.onload =()=>{
@@ -172,8 +173,8 @@
                                                 <!-- <button class="btn-bangkok" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/bangkok.svg') }}" /></button>
                                                 <button class="btn-ktc" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/ktc.svg') }}" /></button>
                                                 <button class="btn-kbank" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/kbank.svg') }}" /></button> -->
-                                                <!-- <button class="btn-scb" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/scb.svg') }}" /> -->
-                                                <form action="https://www.t10assets.com/api/v1/ecommerce/payment/qrcode" method="POST">
+                                                <button class="btn-scb" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/scb.svg') }}" />
+                                                <!-- <form action="https://www.t10assets.com/api/v1/ecommerce/payment/qrcode" method="POST">
                                                     <button class="btn-scb" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/scb.svg') }}" />
                                                         <input type="hidden" name="token" value="{{ $token }}">
                                                         <input type="hidden" name="amount" id="money">
@@ -182,7 +183,7 @@
                                                         <input type="hidden" name="urlcallbackfail" value="http://amang.com:8000/failed">
                                                         <input type="hidden" name="submit" value="submit">
                                                     </button>
-                                                </form>
+                                                </form> -->
                                             </div>
                                         </div>
                                     </div>
@@ -749,7 +750,7 @@
                             <div class="col-3 py-2 text-center mt-2"  style="font-family:myfont;color:#ff6f6f; border-bottom: 1px solid #fff;cursor:pointer;">คัดลอก</div>
                             <div class="col-1 py-1" style="border-bottom: 1px solid #fff;"></div>
                             <div class="col-8 pt-3"><span style="color:#000;font-family:myfont;">จำนวนเงินที่ต้องการเติม</span></div>
-                            <div class="col-3 py-2 text-center mt-2"  style="font-family:myfont;color:#23c197;"><input type="output" id="money"></div>
+                            <div class="col-3 py-2 text-center mt-2"  style="font-family:myfont;color:#23c197;"><input class="amountMoney text-right pr-4" type="output" id="money" disabled></div>
                         </div>
                     </div>
                 </div>

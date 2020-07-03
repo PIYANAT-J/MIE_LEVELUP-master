@@ -55,46 +55,51 @@
                 <div class="site-mobile-menu-body"></div>
             </div>
 
-            <header class="site-navbar2 py-3  site-navbar-target" role="banner">
+            <header class="site-navbar2  js-sticky-header site-navbar-target" role="banner">
                 <div class="row align-items-center">
                     <div class="col-6 col-xl-2">
-                        <h1 class="site-logo"><a href="{{ url('/') }}" class="mb-0"><img class="img_logo mt-2" src="{{asset('home/logo/logo_lvp.svg') }}" ></a></h1>
+                        <h1 class="site-logo"><a href="{{ url('/') }}" class="mb-0"><img class="img_logo" src="{{asset('home/logo/logo_lvp.svg') }}" ></a></h1>
                     </div>
-                    
+
                     <div class="col-12 col-md-10 d-none d-xl-block font_navbar home">
                         <nav class="site-navigation position-relative" role="navigation">
-                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block text-right" style="margin-top:30px;"> 
-                                <li><a href="{{ url('/') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px; ">หน้าแรก</a></li>
-                                <li><a href="{{ url('/category' )}}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;">หมวดหมู่</a></li>
-                                <li><a href="/follow" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px">การติดตามของฉัน</a></li>
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block text-right" style="margin-top:50px;"> 
+                                <li><a href="{{ url('/') }}" class="nav-link active" style="font-family:myfont; padding:0px; margin-right:20px; ">หน้าแรก</a></li>
+                                <li><a href="{{ route('gameCategory') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;">หมวดหมู่</a></li>
+                                @guest
+                                    <li><a href="{{ route('login-levelUp') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px">การติดตามของฉัน</a></li>
+                                @else
+                                    <li><a href="{{ route('FollowMe') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px">การติดตามของฉัน</a></li>
+                                @endguest
                                 <li class="inputWithIcon">
                                     <input style="font-family:myfont1;" class="search_btn" type="text" placeholder="ค้นหา" aria-label="Search">
                                     <i class="icon-search" aria-hidden="true" style="font-size:18px"></i>
                                 </li>
                                 @guest
-                                    <img style="padding:0px 0px 0px 20px;" src="{{asset('/icon/sign_in.svg') }}"/>
+                                    <img style="padding:0px 0px 0px 20px;" src="{{asset('/icon/sign_in.svg') }}">
                                     <label class="sign_in" style="font-family:myfont; padding: 0px 0px 0px 0px;">
-                                        <a href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
+                                        <a href="{{ route('login-levelUp') }}">{{ __('เข้าสู่ระบบ') }}</a>
                                     </label>
                                     <label style="font-family:myfont;"><a class="text2">/ </a></label>
 
                                         @if (Route::has('register'))
                                             <label style="font-family:myfont;">
-                                                <a class="sign_up mr-3" href="{{ route('register') }}">{{ __('ลงทะเบียน') }}</a>
+                                                <a class="sign_up mr-3" href="{{ route('register-levelUp') }}">{{ __('ลงทะเบียน') }}</a>
                                             </label>
                                         @endif
                             </ul>
                                 @else
-                                <li class="has-children active">
+                                <li class="has-children">
+                                    <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
                                     <a href="#about-section" class="nav-link font_name" >{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
                                     <ul class="dropdown">
                                         <li class="nav-item">
                                             @if(Auth::user()->users_type == '2')
-                                                <a class="nav-link font_profile" href="{{ route('DevProfile') }}">{{ __('โปรไฟล์_DEV') }}</a>
+                                                <a class="nav-link font_profile" href="{{ route('DevProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @elseif(Auth::user()->users_type == '3')
                                                 <a class="nav-link font_profile" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์_SPON') }}</a>
                                             @else
-                                                <a class="nav-link font_profile" href="{{ route('UserProfile') }}">{{ __('โปรไฟล์_USER') }}</a>
+                                                <a class="nav-link font_profile" href="{{ route('UserProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @endif
                                         </li>
                                         <li class="nav-item font_profile">
@@ -113,7 +118,7 @@
                     </div>
                     <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3 menu1"></span></a></div>
                 </div>
-            </header>        
+            </header>       
         </div>
             @yield('content')
             

@@ -62,7 +62,7 @@
                             <div style="font-family:myfont;font-size:1.3em;color:#000;">จำนวนเงินที่ต้องการถอน (ขั้นต่ำ  ฿100 )</div>
                             <div class="input-group mb-3 input-topup">
                                 <div class="input-group-prepend"><span class="input-group-text money_icon">฿</span></div>
-                                <input type="text" class="form-control money" ></input>
+                                <input type="text" class="form-control money" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-lg-6" style="font-family:myfont;font-size:1.3em;color:#000;">ช่องทางการรับเงิน</div>

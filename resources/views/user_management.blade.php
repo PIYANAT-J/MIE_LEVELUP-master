@@ -273,7 +273,7 @@
                             </div>
                             <div>
                                 <input type="radio" name="kycApprove" value="noneApprove" id="noneApprove">
-                                <label for="noneApprove" style="color:#000;" for="nl">ไม่อนุมัติ</label>
+                                <label for="noneApprove" style="color:#000;">ไม่อนุมัติ</label>
                             </div>
                         
                         

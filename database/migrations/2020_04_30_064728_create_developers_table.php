@@ -20,7 +20,7 @@ class CreateDevelopersTable extends Migration
             $table->string('DEV_IMG')->collation('utf8_unicode_ci')->default('No_Img.jpg');
             $table->date('DEV_BIRTHDAY')->nullable();
             $table->integer('DEV_AGE')->nullable();
-            $table->set('DEV_GENDER', ['Select','Men', 'Women'])->collation('utf8_unicode_ci')->default('Select');
+            $table->set('DEV_GENDER', ['Select','Men', 'Women'])->collation('utf8_unicode_ci')->nullable();
             $table->text('DEV_ADDRESS')->collation('utf8_unicode_ci')->nullable();
             $table->string('ZIPCODE_ID')->collation('utf8_unicode_ci')->nullable();
             $table->integer('USER_ID')->nullable();

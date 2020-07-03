@@ -20,7 +20,7 @@ class CreateGuestUsersTable extends Migration
             $table->string('GUEST_USERS_IMG')->collation('utf8_unicode_ci')->default('No_Img.jpg');
             $table->date('GUEST_USERS_BIRTHDAY')->nullable();
             $table->integer('GUEST_USERS_AGE')->nullable();
-            $table->set('GUEST_USERS_GENDER', ['Select','Men', 'Women'])->collation('utf8_unicode_ci')->default('Select');
+            $table->set('GUEST_USERS_GENDER', ['Select','Men', 'Women'])->collation('utf8_unicode_ci')->nullable();
             $table->text('GUEST_USERS_ADDRESS')->collation('utf8_unicode_ci')->nullable();
             $table->string('ZIPCODE_ID')->collation('utf8_unicode_ci')->nullable();
             $table->integer('USER_ID')->nullable();
