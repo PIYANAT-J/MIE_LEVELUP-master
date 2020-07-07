@@ -179,7 +179,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    
                                     <div id="user4" class="tab-pane">
                                         <div class="row" >
                                             <div class="col-1 py-3 th1">#</div>
@@ -211,8 +211,7 @@
                                                 @endforeach
                                             </div>
                                         </div>
-                                    </div>
-                                        
+                                    </div>  
                                 </div>
                             </div>
                         </div>
@@ -280,14 +279,13 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 pb-1 text-center">
-                        <img style="width:70%;" src="{{asset('home/Kyc/'.$KycModel->KYC_IMG) }}" >
+                          <img style="width:70%;" src="{{asset('home/Kyc/'.$KycModel->KYC_IMG) }}" >
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 <div class="modal fade" id="Approve{{$KycModel->KYC_ID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -373,6 +371,7 @@
         </div>
     </div>
 </div>
+
 @endforeach
 
 <!-- พื้นหลัง -->

@@ -65,6 +65,7 @@
                     </div>
                 @endif
                 <div class="col-lg-1"></div>
+                <a href="{{ route('Avatar') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ตัวละครของฉัน (Avatar)</button></a>
                 <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ข้อมูลส่วนตัว</button></a>
                 <a href="{{ route('UserKyc') }}" style="width: 100%;"><button class="btn-sidebar active"><span style="font-family: myfont1;font-size: 20px;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
                     @if(Auth::user()->updateData == 'true')
@@ -162,7 +163,7 @@
                                                             3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
                                                             4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
                                                         </div>
-                                                        <div class="col-lg-6 text-center"><img src="{{asset('home/Kyc/kyc.png') }}" /></div>
+                                                        <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
                                                     </div>
                                                     <!-- <div class="font-kyc2 my-3 line2"><span style="font-family:myfont;">อัพโหลดรูปหลักฐานยืนยันตัวตน</span>( อัพโหลดได้ไม่เกิน 2 mb ) </div>
                                                     <div>
@@ -197,7 +198,7 @@
                                                             3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
                                                             4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
                                                         </div>
-                                                        <div class="col-lg-6 text-center"><img src="{{asset('home/Kyc/kyc.png') }}" /></div>
+                                                        <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
                                                     </div>
                                                     <!-- <div class="font-kyc2 my-3 line2"><span style="font-family:myfont;">อัพโหลดรูปหลักฐานยืนยันตัวตน</span>( อัพโหลดได้ไม่เกิน 2 mb ) </div>
                                                     <div>
@@ -231,9 +232,9 @@
                                                             2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
                                                             3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
                                                             4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
-                                                            หมายเหตุ**ไม่ผ่านการอนุมัติ
+                                                            <b style="font-family:myfont;">หมายเหตุ : รายละเอียด</b>
                                                         </div>
-                                                        <div class="col-lg-6 text-center"><img src="{{asset('home/Kyc/kyc.png') }}" /></div>
+                                                        <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
                                                     </div>
                                                         <div class="font-kyc2 my-3 line2"><span style="font-family:myfont;">อัพโหลดรูปหลักฐานยืนยันตัวตน</span>( อัพโหลดได้ไม่เกิน 2 mb ) </div>
                                                     <div>
@@ -267,9 +268,8 @@
                                                             2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
                                                             3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
                                                             4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
-                                                            หมายเหตุ ** 
                                                         </div>
-                                                        <div class="col-lg-6 text-center"><img src="{{asset('home/Kyc/kyc.png') }}" /></div>
+                                                        <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
                                                     </div>
                                                     <div class="font-kyc2 my-3 line2"><span style="font-family:myfont;">อัพโหลดรูปหลักฐานยืนยันตัวตน</span>( อัพโหลดได้ไม่เกิน 2 mb ) </div>
                                                     <div>
@@ -310,9 +310,9 @@
                                                         2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
                                                         3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
                                                         4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
-                                                        หมายเหตุ ** อัพเดทข้อมูลส่วนตัว
+                                                        <b style="font-family:myfont;">หมายเหตุ ** กรุณาอัพเดทข้อมูลส่วนตัว</b>
                                                     </div>
-                                                    <div class="col-lg-6 text-center"><img src="{{asset('home/Kyc/kyc.png') }}" /></div>
+                                                    <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
                                                 </div>
                                                 <!-- <div class="font-kyc2 my-3 line2"><span style="font-family:myfont;">อัพโหลดรูปหลักฐานยืนยันตัวตน</span>( อัพโหลดได้ไม่เกิน 2 mb ) </div>
                                                 <div>
