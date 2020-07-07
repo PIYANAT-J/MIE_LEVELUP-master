@@ -30,9 +30,9 @@ Route::view('/registerlvp', 'auth.register_lvp')->name('register-levelUp');
 // Route::get('/userUpdate_profile', 'UploadImageProfile@updateGuest_user')->name('EditProfile');
 // Route::post('/userUpdate_profile/edit', 'UploadImageProfile@saveProfileUser')->name('UserEditProfile');
 
-Route::get('/dev_profile', 'UploadImageProfile@index')->name('devProfile');
-Route::get('/devUpdate_profile', 'UploadImageProfile@update')->name('UpDate');
-Route::post('/devUpdate_profile/edit', 'UploadImageProfile@saveProfileDev')->name('DevEditProfile');
+// Route::get('/dev_profile', 'UploadImageProfile@index')->name('devProfile');
+// Route::get('/devUpdate_profile', 'UploadImageProfile@update')->name('UpDate');
+// Route::post('/devUpdate_profile/edit', 'UploadImageProfile@saveProfileDev')->name('DevEditProfile');
 
 Route::post('/dev_profile/GameImg', 'GameController@saveGameProfile')->name('GameImg');
 
@@ -45,7 +45,7 @@ Route::get('/change_password', function () {
 });
 
 // Route::get('/userKyc', 'KycController@indexUserKyc')->name('userKyc');
-Route::get('/devKyc', 'KycController@indexDevKyc')->name('devKyc');
+// Route::get('/devKyc', 'KycController@indexDevKyc')->name('devKyc');
 Route::get('/sponKyc', 'KycController@indexSponKyc')->name('sponKyc');
 
 // Route::post('/kyc/create', 'KycController@createKyc')->name('CreateKyc');
@@ -53,7 +53,7 @@ Route::get('/sponKyc', 'KycController@indexSponKyc')->name('sponKyc');
 Route::get('/game_shelf', 'DownloadController@indexGame')->name('GAMESHELF');
 // Route::post('/game_shelf/download', 'DownloadController@downloadGame')->name('downloadGame');
 
-Route::get('/edit_upload_game', 'UploadImageProfile@edit_game')->name('EditGame');
+// Route::get('/edit_upload_game', 'UploadImageProfile@edit_game')->name('EditGame');
 
 Route::get('/user_mamagement', 'AdminController@indexAdmin')->name('Admin')->middleware('Admin');
 Route::post('/user_mamagement/Kyc', 'AdminController@approveKyc')->name('AppKyc');
@@ -79,23 +79,47 @@ Route::get('/user_lvp', 'UploadImageProfile@Guest_user')->name('UserProfile');
 Route::post('/user_lvp/edit', 'UploadImageProfile@saveProfileUser')->name('EditProfile');
 
 Route::get('/user_kyc', 'KycController@indexUserKyc')->name('UserKyc');
-Route::post('/user_kyc/create', 'KycController@createKyc')->name('CreateKyc');
+Route::post('/kyc/create', 'KycController@createKyc')->name('CreateKyc');
 
 Route::get('/user_shelf', 'UploadImageProfile@user_shelf')->name('UserShelf');
 
 Route::view('/user_history', 'profile.point.userlvp_history')->name('UserHistory');
 Route::view('/user_rank', 'profile.userlvp_rank')->name('UserRank');
-Route::view('/user_topup', 'profile.topup.userlvp_topup')->name('UserTopup');
+
+Route::get('/user_topup', 'qrPaymentController@indexPayment')->name('UserTopup');
+
 Route::view('/user_change_password', 'profile.password.userlvp_change_password');
 
 // developer
-Route::view('/develper_profile', 'profile.devlvp_profile');
-Route::view('/develper_kyc', 'kyc.devlvp_kyc');
-Route::view('/develper_shelf', 'profile.game.devlvp_shelf');
-Route::view('/develper_history', 'profile.point.devlvp_history');
-Route::view('/develper_upload_game', 'profile.devlvp_upload');
-Route::view('/develper_withdraw', 'profile.topup.devlvp_withdraw');
+Route::get('/develper_profile', 'UploadImageProfile@Developer')->name('DevProfile');
+Route::post('/develper_profile/edit', 'UploadImageProfile@saveProfileDev')->name('DevEditProfile');
+
+Route::get('/develper_kyc', 'KycController@indexDevKyc')->name('DevKyc');
+
+Route::get('/develper_shelf', 'UploadImageProfile@developer_shelf')->name('DevShelf');
+Route::post('/develper_shelf/Update', 'GameController@saveGameProfile')->name('DevShelfUpdate');
+
+Route::view('/develper_history', 'profile.point.devlvp_history')->name('DevHistory');
+
+Route::get('/develper_upload_game', 'UploadImageProfile@viewUpload')->name('DevUpload');
+Route::post('/develper_upload_game/upload', 'GameController@saveGameProfile')->name('DevUploadGame');
+
+Route::view('/develper_withdraw', 'profile.topup.devlvp_withdraw')->name('DevWithdraw');
 Route::view('/develper_change_password', 'profile.password.devlvp_change_password');
 
 //admin
 Route::view('/admin_management', 'admin_management')->name('AdminManagement');
+//admin kyc approve 
+Route::view('/user_management', 'user_management')->name('UserManagement');
+Route::view('/develop_management', 'dev_management')->name('DevelopManagement');
+Route::view('/sponsor_management', 'spon_management')->name('SponsorManagement');
+//admin game approve
+Route::view('/game_management', 'game_management')->name('GameManagement');
+Route::view('/rate_management', 'rate_management')->name('RateManagement');
+
+Route::view('/topup_management', 'topup_management')->name('TopupManagement');
+Route::view('/withdraw_management', 'withdraw_management')->name('WithdrawManagement');
+
+Route::view('/product', 'product')->name('Product');
+
+Route::view('/admin_change_password', 'profile.password.adminlvp_change_password');

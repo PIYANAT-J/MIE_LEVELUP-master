@@ -43,10 +43,9 @@ class KycController extends Controller
     }
 
     public function indexDevKyc(){
-        $developer = DB::table('developers')
-                        ->join('kycs', 'developers.USER_ID', '=', 'kycs.USER_ID')
-                        ->get();
-        return view('kyc.devKyc', ['developer'=> $developer]);
+        $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('kyc.devlvp_kyc', compact('developer', 'userKyc'));
     }
 
     public function indexSponKyc(){

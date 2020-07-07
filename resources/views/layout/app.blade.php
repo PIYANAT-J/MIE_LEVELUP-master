@@ -93,7 +93,7 @@
                                     <ul class="dropdown">
                                         <li class="nav-item">
                                             @if(Auth::user()->users_type == '2')
-                                                <a class="nav-link font_profile" href="{{ route('devProfile') }}">{{ __('โปรไฟล์_DEV') }}</a>
+                                                <a class="nav-link font_profile" href="{{ route('DevProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @elseif(Auth::user()->users_type == '3')
                                                 <a class="nav-link font_profile" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์_SPON') }}</a>
                                             @else

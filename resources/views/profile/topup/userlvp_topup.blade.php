@@ -5,47 +5,110 @@
     <div class="row my-2"></div>
     <div class="row  mt-3">
 
+    <?php $token = "ca6a3833956454fbfdc1f887ea9676d7";?>
         <!-- sidebar -->
         <div class="col-lg-3" style="background-color: #17202c;">
             <div class="row">
                 <div class="col-lg-1"></div>
-                <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                    <div class="row mb-2">
-                        <div class="col-5 text-right pr-2">
-                            <img class="sidebar-pic" src="{{asset('dist/images/person_1.jpg') }}" />
-                        </div>
-                        <div class="col-7 sidebar_name pt-2">
-                            <span><b style="font-family: myfont;font-size: 1.1em;">ชื่อ-นามสกุล</b></br>ผู้ใช้ทั่วไป</br>เป็นสมาชิก:25/05/63</span>
-                        </div>
-                    </div>
-                    <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                        <div class="col-lg-12 text-center">
-                            <button class="btn-point pb-2">
-                                <span class="font-point">พอยท์</span></br>
-                                <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">52</span>
-                                <i class="icon-Icon_Point"></i>
-                            </button>
+                @if(Auth::user()->updateData == 'true')
+                    @foreach($guest_user as $USER)
+                        <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
+                            <div class="row mb-2">
+                                <div class="col-5 text-right pr-2">
+                                    <img class="sidebar-pic" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
+                                </div>
+                                <div class="col-7 sidebar_name pt-2">
+                                    <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้ใช้ทั่วไป</br>เป็นสมาชิก : {{ Auth::user()->created_at }}</span>
+                                </div>
+                            </div>
+                            <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
+                                <div class="col-lg-12 text-center">
+                                    <button class="btn-point pb-2">
+                                        <span class="font-point">พอยท์</span></br>
+                                        <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">52</span>
+                                        <i class="icon-Icon_Point"></i>
+                                    </button>
 
-                            <button class="btn-coin pb-2">
-                                <span class="font-point">เหรียญ</span></br>
-                                <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">70</span>
-                                <i class="icon-Icon_Coin"></i>
-                            </button>
+                                    <button class="btn-coin pb-2">
+                                        <span class="font-point">เหรียญ</span></br>
+                                        <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">70</span>
+                                        <i class="icon-Icon_Coin"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
+                        <div class="row mb-2">
+                            <div class="col-5 text-right pr-2">
+                                <img class="sidebar-pic" src="{{asset('home/imgProfile/No_Img.jpg') }}" />
+                            </div>
+                            <div class="col-7 sidebar_name pt-2">
+                                <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้ใช้ทั่วไป</br>เป็นสมาชิก : {{ Auth::user()->created_at }}</span>
+                            </div>
+                        </div>
+                        <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
+                            <div class="col-lg-12 text-center">
+                                <button class="btn-point pb-2">
+                                    <span class="font-point">พอยท์</span></br>
+                                    <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">52</span>
+                                    <i class="icon-Icon_Point"></i>
+                                </button>
+
+                                <button class="btn-coin pb-2">
+                                    <span class="font-point">เหรียญ</span></br>
+                                    <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">70</span>
+                                    <i class="icon-Icon_Coin"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
                 <div class="col-lg-1"></div>
-                <a href="/user_lvp" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ข้อมูลส่วนตัว</button></a>
-                <a href="/user_kyc" style="width: 100%;"><button class="btn-sidebar"><span style="font-family: myfont1;font-size: 20px;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน<span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span><span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span><span class="status-kyc2 ml-2 px-2">ยืนยันตัวต้นแล้ว</span></button></a>
-                <a href="/user_shelf" style="width: 100%;"><button class="btn-sidebar"><i class="icon-game-shelf" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ตู้เกม (เกมเชล)</button></a>
-                <a href="/user_history" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ประวัติพอยท์</button></a>
-                <a href="/user_rank" style="width: 100%;"><button class="btn-sidebar"><img class="pic4" src="{{asset('icon/rank1.svg') }}" />อันดับผู้ใช้</button></a>
-                <a href="/user_topup" style="width: 100%;"><button class="btn-sidebar active"><i class="icon-top-up1" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เติมเงิน</button></a>
+                <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ข้อมูลส่วนตัว</button></a>
+                <a href="{{ route('UserKyc') }}" style="width: 100%;"><button class="btn-sidebar"><span style="font-family: myfont1;font-size: 20px;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
+                    @if($userKyc->KYC_STATUS == null)
+                        <span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span>
+                    @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
+                        <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
+                    @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
+                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวต้นแล้ว</span>
+                    @else
+                        <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
+                    @endif
+                </button></a>
+                <a href="{{ route('UserShelf') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-game-shelf" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ตู้เกม (เกมเชล)</button></a>
+                <a href="{{ route('UserHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ประวัติพอยท์</button></a>
+                <a href="{{ route('UserRank') }}" style="width: 100%;"><button class="btn-sidebar"><img class="pic4" src="{{asset('icon/rank1.svg') }}" />อันดับผู้ใช้</button></a>
+                <a href="{{ route('UserTopup') }}" style="width: 100%;"><button class="btn-sidebar  active"><i class="icon-top-up1" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เติมเงิน</button></a>
                 <a href="/user_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เปลี่ยนรหัสผ่าน</button></a>
-                <button class="btn-sidebar"><img class="pic4" src="{{asset('icon/logout.svg') }}" />ออกจากระบบ</button>
+                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><img class="pic4" src="{{asset('icon/logout.svg') }}" />ออกจากระบบ</button></a> 
             </div>
         </div>
         <!-- sidebar -->
+
+                    <!-- <div class="row">
+                            <div class="form-group col">
+                              <label for="amount1">จำนวนเครดิตที่ต้องการแลกเปลี่ยน</label>
+                              <input type="number" class="form-control" id="amount1" name="amount1" placeholder="credit"  value="{{old('amount1')}}" required step=".01" >
+                            </div>
+                          </div>
+                          @if(Session::has('error'))
+                            <script>
+                                window.onload =()=>{
+                                    var toastHTML = '<span class="">{{Session::get('error')['title']}}</span>';
+                                    M.toast({html: toastHTML })
+                                }
+                            </script>
+                          <span class="helper-text" style="color:red" data-error="wrong" data-success="right">{{Session::get('error')['title']}}</span>
+                          @endif
+                          <div class="row">
+                            <div class="form-group col">
+                              <label for="money">จำนวนเงินที่จะได้รับ</label>
+                              <input type="text" class="form-control" id="money" placeholder="0.0" disabled>
+                            </div>
+                          </div> -->
 
         <div class="col-lg-9" style="background-color:#f5f5f5;">
             <div class="row mt-4" >
@@ -62,7 +125,16 @@
                             <div style="font-family:myfont;font-size:1.3em;color:#000;">จำนวนเงินที่ต้องการเติม (ขั้นต่ำ  ฿100 )</div>
                             <div class="input-group mb-3 input-topup">
                                 <div class="input-group-prepend"><span class="input-group-text money_icon">฿</span></div>
-                                <input type="text" class="form-control money" ></input>
+                                <input type="text" class="form-control money" id="amount" name="amount" value="{{ old('amount') }}" require>
+                                    @if(Session::has('error'))
+                                        <script>
+                                            window.onload =()=>{
+                                                var toastHTML = '<span class="">{{Session::get('error')['title']}}</span>';
+                                                M.toast({html: toastHTML })
+                                            }
+                                        </script>
+                                    <span class="helper-text" style="color:red" data-error="wrong" data-success="right">{{Session::get('error')['title']}}</span>
+                                    @endif
                             </div>
                             <div style="font-family:myfont;font-size:1.3em;color:#000;">ช่องทางการชำระเงิน</div>
                             <div class="row">
@@ -97,16 +169,26 @@
                                         <div class="ibanklist ">
                                             <div for="ibanklable"style="font-family: myfont1;font-size:1.3em;color:#000;">เลือกธนาคารที่ต้องการชำระ</div>
                                             <div name="ibankdiv" form="banking">
-                                                <button class="btn-bangkok" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/bangkok.svg') }}" /></button>
+                                                <!-- <button class="btn-bangkok" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/bangkok.svg') }}" /></button>
                                                 <button class="btn-ktc" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/ktc.svg') }}" /></button>
-                                                <button class="btn-kbank" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/kbank.svg') }}" /></button>
-                                                <button class="btn-scb" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/scb.svg') }}" /></button>
+                                                <button class="btn-kbank" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/kbank.svg') }}" /></button> -->
+                                                <!-- <button class="btn-scb" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/scb.svg') }}" /> -->
+                                                <form action="https://www.t10assets.com/api/v1/ecommerce/payment/qrcode" method="POST">
+                                                    <button class="btn-scb" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/scb.svg') }}" />
+                                                        <input type="hidden" name="token" value="{{ $token }}">
+                                                        <input type="hidden" name="amount" id="money">
+                                                        <input type="hidden" name="invoice" value="INV-001">
+                                                        <input type="hidden" name="urlcallbacksuccess" value="http://amang.com:8000/success">
+                                                        <input type="hidden" name="urlcallbackfail" value="http://amang.com:8000/failed">
+                                                        <input type="hidden" name="submit" value="submit">
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 mt-5"><button type="submit" class="btn-submit">เติมเงิน</button></div>
+                            <!-- <div class="col-lg-12 mt-5"><button type="submit" class="btn-submit">เติมเงิน</button></div> -->
                         </div>
                         <div class="col-lg-6">
                             <div style="font-family:myfont;font-size:1.3em;color:#000;">ประวัติการเติมเงิน</div>
@@ -340,6 +422,16 @@
                     <div class="col-lg-12">
                         <div class="bg-bank px-2 pt-2 pb-1 mb-2">
                             <span class="pl-1" style="font-family1:myfont;font-size:1em;color:#000;">1234567890123456</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="bg-bank px-2 pt-2 pb-1 mb-2">
+                            <select class="select-bank" require>
+                                <option>เลือกธนาคาร</option>
+                                <option>ธนาคารกสิกร</option>
+                                <option>ธนาคารกรุงเทพ</option>
+                                <option>ธนาคารไทยพาณิชย์</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-lg-12 mb-2">
@@ -641,7 +733,7 @@
                         <span style="color:#000";>
                             กรุณาทำการชำระเงินผ่านโมบายแบงค์กิ้งหรือเอทีเอ็มภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกอัตโนมัติ
                         </span>
-                        <div class="my-2"><img src="{{asset('home/topup/qr.png') }}" /></div>
+                        <!-- <div class="my-2"><img src="{{asset('home/topup/qr.png') }}" /></div> -->
                         <span style="font-family:myfont;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</span>
                     </div>
                 </div>
@@ -657,7 +749,7 @@
                             <div class="col-3 py-2 text-center mt-2"  style="font-family:myfont;color:#ff6f6f; border-bottom: 1px solid #fff;cursor:pointer;">คัดลอก</div>
                             <div class="col-1 py-1" style="border-bottom: 1px solid #fff;"></div>
                             <div class="col-8 pt-3"><span style="color:#000;font-family:myfont;">จำนวนเงินที่ต้องการเติม</span></div>
-                            <div class="col-3 py-2 text-center mt-2"  style="font-family:myfont;color:#23c197;">2,000</div>
+                            <div class="col-3 py-2 text-center mt-2"  style="font-family:myfont;color:#23c197;"><input type="output" id="money"></div>
                         </div>
                     </div>
                 </div>
@@ -793,7 +885,17 @@ function() {
           }
         }
       }
-    </script>
+</script>
+
+<script>
+  document.querySelector('input[name="amount"]').addEventListener('keyup', (event)=>{
+    
+    var credit = document.querySelector('input[name="amount"]').value
+    // var money = credit * 30 - ((credit * 30) * 3 /100)
+    var money = credit
+    document.querySelector('input#money').value = money  
+  })
+</script>
 
 
 @endsection
