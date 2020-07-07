@@ -55,10 +55,10 @@ Route::get('/game_shelf', 'DownloadController@indexGame')->name('GAMESHELF');
 
 // Route::get('/edit_upload_game', 'UploadImageProfile@edit_game')->name('EditGame');
 
-Route::get('/user_mamagement', 'AdminController@indexAdmin')->name('Admin')->middleware('Admin');
-Route::post('/user_mamagement/Kyc', 'AdminController@approveKyc')->name('AppKyc');
-Route::post('/user_mamagement/Game', 'AdminController@approveGame')->name('AppGame');
-Route::post('/user_mamagement/AddAdmin', 'AdminController@createAdmin')->name('AddAdmin');
+// Route::get('/user_mamagement', 'AdminController@indexAdmin')->name('Admin')->middleware('Admin');
+// Route::post('/user_mamagement/Kyc', 'AdminController@approveKyc')->name('AppKyc');
+// Route::post('/user_mamagement/Game', 'AdminController@approveGame')->name('AppGame');
+// Route::post('/user_mamagement/AddAdmin', 'AdminController@createAdmin')->name('AddAdmin');
 
 Route::get('/detail-{id}', 'GameController@gameDetail')->name('GameDetail');
 Route::post('/detail/download', 'DownloadController@downloadGame')->name('downloadGame');
@@ -67,12 +67,6 @@ Route::post('/detail/comment', 'CommentController@createComment')->name('Comment
 Route::get('/category', 'GameController@categoryGame')->name('gameCategory');
 
 Route::get('/followMe', 'FollowController@FollowMe')->name('FollowMe');
-
-// Route::view('/userlvp_profile','userlvp_profile');
-
-// Route::get('/userlvp_shelf', function () {
-//     return view('userlvp_shelf');
-// });
 
 // users
 Route::get('/user_lvp', 'UploadImageProfile@Guest_user')->name('UserProfile');
@@ -87,6 +81,10 @@ Route::view('/user_history', 'profile.point.userlvp_history')->name('UserHistory
 Route::view('/user_rank', 'profile.userlvp_rank')->name('UserRank');
 
 Route::get('/user_topup', 'qrPaymentController@indexPayment')->name('UserTopup');
+Route::post('/user_topup/qrCode', 'qrPaymentController@mobilebanking')->name('QrPayment');
+Route::post('/user_topup/transfer', 'TransferController@transferPayment')->name('transferPayment');
+// Route::get('/user_topup/qrCode/{invoice}', 'qrPaymentController@qrcode')->name('qrcode');
+
 
 Route::view('/user_change_password', 'profile.password.userlvp_change_password');
 
@@ -104,21 +102,29 @@ Route::view('/develper_history', 'profile.point.devlvp_history')->name('DevHisto
 Route::get('/develper_upload_game', 'UploadImageProfile@viewUpload')->name('DevUpload');
 Route::post('/develper_upload_game/upload', 'GameController@saveGameProfile')->name('DevUploadGame');
 
-Route::view('/develper_withdraw', 'profile.topup.devlvp_withdraw')->name('DevWithdraw');
+Route::get('/develper_withdraw', 'WithdrawController@withdraw')->name('DevWithdraw');
+Route::post('/develper_withdraw/addWithdraw', 'WithdrawController@stor')->name('AddWithdraw');
+Route::post('/develper_withdraw/addBank', 'mybankController@addBank')->name('AddBank');
+
+
 Route::view('/develper_change_password', 'profile.password.devlvp_change_password');
 
 //admin
-Route::view('/admin_management', 'admin_management')->name('AdminManagement');
-//admin kyc approve 
-Route::view('/user_management', 'user_management')->name('UserManagement');
-Route::view('/develop_management', 'dev_management')->name('DevelopManagement');
-Route::view('/sponsor_management', 'spon_management')->name('SponsorManagement');
-//admin game approve
-Route::view('/game_management', 'game_management')->name('GameManagement');
-Route::view('/rate_management', 'rate_management')->name('RateManagement');
+Route::get('/admin_management', 'AdminController@addAdmin')->name('AdminManagement')->middleware('Admin');
+Route::post('/admin_management/AddAdmin', 'AdminController@createAdmin')->name('AddAdmin');
 
-Route::view('/topup_management', 'topup_management')->name('TopupManagement');
-Route::view('/withdraw_management', 'withdraw_management')->name('WithdrawManagement');
+//admin kyc approve 
+Route::get('/user_management', 'AdminController@kycUsers')->name('UserManagement');
+Route::get('/develop_management', 'AdminController@kycDev')->name('DevelopManagement');
+Route::get('/sponsor_management', 'AdminController@kycSpon')->name('SponsorManagement');
+Route::post('/user_management/approve', 'AdminController@approveKyc')->name('AppKyc');
+
+//admin game approve
+Route::view('/game_management', 'admin_lvp.admin_game.game_management')->name('GameManagement');
+Route::view('/rate_management', 'admin_lvp.admin_game.rate_management')->name('RateManagement');
+
+Route::view('/topup_management', 'admin_lvp.admin_topup.topup_management')->name('TopupManagement');
+Route::view('/withdraw_management', 'admin_lvp.admin_topup.withdraw_management')->name('WithdrawManagement');
 
 Route::view('/product', 'product')->name('Product');
 

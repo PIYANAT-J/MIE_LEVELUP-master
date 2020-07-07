@@ -13,7 +13,7 @@
                                 <img class="sidebar-pic" src="{{asset('dist/images/person_5.jpg') }}" />
                             </div>
                             <div class="col-7 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1.1em;">ชื่อ-นามสกุล</b></br>Admin</br>เป็นสมาชิก:25/05/63</span>
+                                <span><b style="font-family: myfont;font-size: 1.1em;">{{Auth::user()->name}}-{{Auth::user()->surname}}</b></br>Admin</br>เป็นสมาชิก:{{Auth::user()->created_at}}</span>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,10 @@
                     <a href="/product" style="width: 100%;"><button class="btn-sidebar"><i class="icon-product" style="font-size:0.85em;padding:0px 15px 0px 5px;"></i>จัดการสินค้า</button></a>
                     <a href="/package" style="width: 100%;"><button class="btn-sidebar"><img class="pic6" src="{{asset('icon/package.png') }}" />จัดการแพ็คเกจ</button></a>
                     <a href="/admin_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เปลี่ยนรหัสผ่าน</button></a>
-                    <button class="btn-sidebar"><img class="pic4" src="{{asset('icon/logout.svg') }}" />ออกจากระบบ</button>
+                    <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><img class="pic4" src="{{asset('icon/logout.svg') }}" />ออกจากระบบ</button></a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </div>
             </div>
         <!-- sidebar -->
@@ -71,45 +74,37 @@
                     <div class="row mx-0" >
                         <div class="col-lg-12">
                             <div class="tab-content">
-                                
-                                    <div id="admin1" class="tab-pane active">
-                                        <div class="row">
-                                            <div class="col-1 py-3 th1">#</div>
-                                            <div class="col-3 py-3 th1">ชื่อ</div>
-                                            <div class="col-3 py-3 th1">อีเมล</div>
-                                            <div class="col-2 py-3 th1">ใช้งานล่าสุด</div>
-                                            <div class="col-2 py-3 th1">Create By</div>
-                                            <div class="col-1 py-3 th1"></div>
-                                        </div>
-                                        <div class="row row4"> 
-                                           <div class="col-lg-12">
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1">1</div>
-                                                    <div class="col-3 py-1 td1 ">admin01</div>
-                                                    <div class="col-3 py-1 td1">admin01@email.com</div>
-                                                    <div class="col-2 py-1 td1">09:53 23/06/63</div>
-                                                    <div class="col-2 py-1 td1"></div>
-                                                    <div class="col-1 py-1 td1 text-center"><i class="fa fa-trash-o" aria-hidden="true" style="font-size:0.8em;cursor:pointer;"></i></div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1">2</div>
-                                                    <div class="col-3 py-1 td1">admin02</div>
-                                                    <div class="col-3 py-1 td1">admin02@email.com</div>
-                                                    <div class="col-2 py-1 td1">09:02 22/06/63</div>
-                                                    <div class="col-2 py-1 td1">admin01</div>
-                                                    <div class="col-1 py-1 td1 text-center"><i class="fa fa-trash-o" aria-hidden="true" style="font-size:0.8em;cursor:pointer;"></i></div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1">3</div>
-                                                    <div class="col-3 py-1 td1">admin03</div>
-                                                    <div class="col-3 py-1 td1">admin03@email.com</div>
-                                                    <div class="col-2 py-1 td1">16.53 20/06/63</div>
-                                                    <div class="col-2 py-1 td1">admin01</div>
-                                                    <div class="col-1 py-1 td1 text-center"><i class="fa fa-trash-o" aria-hidden="true" style="font-size:0.8em;cursor:pointer;"></i></div>
-                                                </div>
-                                            </div>
+                                <div id="admin1" class="tab-pane active">
+                                    <div class="row">
+                                        <div class="col-1 py-3 th1">#</div>
+                                        <div class="col-3 py-3 th1">ชื่อ</div>
+                                        <div class="col-3 py-3 th1">อีเมล</div>
+                                        <div class="col-2 py-3 th1">ใช้งานล่าสุด</div>
+                                        <div class="col-2 py-3 th1">เพิ่มโดย</div>
+                                        <div class="col-1 py-3 th1"></div>
+                                    </div>
+                                    <div class="row row4"> 
+                                        <div class="col-lg-12">
+                                        <?php $i = 1; ?>
+                                            @foreach($admin as $adminList)
+                                                
+                                                    <div class="row">
+                                                        <div class="col-1 py-1 td1">{{ $i }}</div>
+                                                        <div class="col-3 py-1 td1 ">{{ $adminList->name }}</div>
+                                                        <div class="col-3 py-1 td1">{{ $adminList->email }}</div>
+                                                        <div class="col-2 py-1 td1">{{ $adminList->created_at }}</div>
+                                                        <div class="col-2 py-1 td1">เพิ่มโดย</div>
+                                                        @if($adminList->id != Auth::user()->id)
+                                                            <div class="col-1 py-1 td1 text-center"><i class="fa fa-trash-o" aria-hidden="true" style="font-size:0.8em;cursor:pointer;"></i></div>
+                                                        @else
+                                                            <div class="col-1 py-1 td1 text-center"></div>
+                                                        @endif
+                                                    </div>
+                                                <?php $i = $i+1; ?>
+                                            @endforeach
                                         </div>
                                     </div>
+                                </div>
                                 
                                 <div id="admin2" class="tab-pane"><br>
                                     <div class="row">
@@ -124,25 +119,54 @@
                                                 <div class="col-lg-6 line1">
                                                     <div class="row">
                                                         <div class="col-lg-12  mt-2" >
-                                                        <form>
-                                                            <input type="text" class="input-update"  placeholder="ชื่อ" require></input>
-                                                            <input type="email" class="input-update"  placeholder="อีเมล" data-toggle="tooltip" data-placement="bottom" title="example@email.com" require></input>
-                                                            <input type="password" class="input-update"  placeholder="รหัสผ่าน" require></input>
-                                                            <input type="password" class="input-update"  placeholder="ยืนยันรหัสผ่าน" require></input>
-                                                            <button type="submit" class="btn-submit mt-2">ยืนยัน</button>
-                                                            <button type="reset" class="btn-cancal mt-2">คืนค่า</button>
-                                                        </form>
+                                                            <form action="{{ route('AddAdmin') }}" method="POST" enctype="multipart/form-data">
+                                                                @csrf
+                                                                <!-- <input type="text" class="input-update"  placeholder="ชื่อ" require></input> -->
+                                                                <input id="name" type="text" name="name" placeholder="ชื่อ" class="input-update @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                                                    @error('name')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                                    @enderror
+                                                                <input id="surname" type="text" name="surname" placeholder="นามสกุน" class="input-update @error('surname') is-invalid @enderror" value="{{ old('surname') }}" required>
+                                                                    @error('surname')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                                    @enderror
+                                                                <input id="email" type="email" name="email" placeholder="อีเมล" data-toggle="tooltip" data-placement="bottom" title="example@email.com" class="input-update @error('email') is-invalid @enderror" value="{{ old('email') }}" required> 
+                                                                    @error('email')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                                    @enderror
+                                                                <input id="password" type="password" name="password" placeholder="รหัสผ่าน" class="input-update @error('password') is-invalid @enderror" required>
+                                                                    @error('password')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                                    @enderror
+                                                                <input id="password-confirm" type="password" name="password_confirmation" placeholder="ยืนยันรหัสผ่าน" class="input-update" required>
+                                                                <div class="input-group col-lg-6 mb-1">
+                                                                    <div class="input-group-prepend">
+                                                                        <span id="MESSAGE"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <button id="submit" name="submit" class="btn-submit mt-2" value="submit">ยืนยัน</button>
+                                                                <input type="hidden" name="users_type" value="0">
+                                                                <button type="reset" class="btn-cancal mt-2">คืนค่า</button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6">
+                                                <!-- <div class="col-lg-6">
                                                     <div class="form-group mt-5" align="center">
                                                         <div id="thumb" class="thumb-profile "><img src="home/imgProfile/pic-profile.png"></div>    
                                                         <input id="file_upload" style="display:none" name="file_upload[]" type="file" multiple="true" accept="image/* "/>
                                                         <button id="upload" class="btn-upload-pic mt-2">เลือกรูป</button>
                                                         <div class="des-profile-pic mt-2">ขนาดไฟล์: สูงสุด 1 MB</div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                         <div class="col-lg-1"></div>
@@ -151,8 +175,6 @@
                             </div>
                         </div>
                     </div>
-
-                    
                 </div>
             </div>
         </div>
@@ -220,4 +242,14 @@ $(function () {
  } // end showThumbnail
 });
 </script>
+
+<script>
+    $('#password, #password-confirm').on('keyup', function () {
+        if ($('#password').val() == $('#password-confirm').val()) {
+            $('#MESSAGE').html('รหัสผ่านตรงกัน !').css('color', 'green');
+        } else 
+            $('#MESSAGE').html('รหัสผ่านไม่ตรงกัน !').css('color', 'red');
+    });
+</script>
+
 @endsection
