@@ -44,7 +44,7 @@
             </div>
         <!-- sidebar -->
 
-            <div class="col-lg-9" style="background-color: #f5f5f5;">
+        <div class="col-lg-9" style="background-color: #f5f5f5;">
                 <div class="row py-3" style="background-color: #fff;">
                     <div class="col-lg-12">
                         <div class="inputWithIcon2">
@@ -212,7 +212,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                        
                                 </div>
                             </div>
                         </div>
@@ -287,7 +286,6 @@
         </div>
     </div>
 </div>
-
 
 <div class="modal fade" id="Approve{{$KycModel->KYC_ID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -373,6 +371,7 @@
         </div>
     </div>
 </div>
+
 @endforeach
 
 <!-- พื้นหลัง -->

@@ -113,42 +113,6 @@
                                                         <?php $i = $i+1; ?>
                                                     @endif
                                                 @endforeach
-                                                <!-- <div class="row">
-                                                    <div class="col-1 py-1 td1">1</div>
-                                                    <div class="col-3 py-1 td1 text-left">ชื่อ-นามสกุล</div>
-                                                    <div class="col-3 py-1 td1 text-left">user1@email.com</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label>
-                                                        <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label> -->
-                                                        <!-- <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1">ไม่ผ่านการอนุมัติ</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1"></div>
-                                                    <div class="col-2 py-1 td1">23/06/63</div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1">2</div>
-                                                    <div class="col-3 py-1 td1 text-left">ชื่อ-นามสกุล</div>
-                                                    <div class="col-3 py-1 td1 text-left">user2@email.com</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label>
-                                                        <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label>
-                                                        <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1">ไม่ผ่านการอนุมัติ</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1">admin02</div>
-                                                    <div class="col-2 py-1 td1">20/06/63</div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1">3</div>
-                                                    <div class="col-3 py-1 td1 text-left">ชื่อ-นามสกุล</div>
-                                                    <div class="col-3 py-1 td1 text-left">user3@email.com</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label>
-                                                        <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label>
-                                                        <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1">ไม่ผ่านการอนุมัติ</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1">admin01</div>
-                                                    <div class="col-2 py-1 td1">20/06/63</div>
-                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
@@ -291,7 +255,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                        
                                 </div>
                             </div>
                         </div>
@@ -366,7 +329,6 @@
         </div>
     </div>
 </div>
-
 
 <div class="modal fade" id="Approve{{$KycModel->KYC_ID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -452,6 +414,7 @@
         </div>
     </div>
 </div>
+
 @endforeach
 
 <!-- พื้นหลัง -->

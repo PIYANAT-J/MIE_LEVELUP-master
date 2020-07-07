@@ -42,12 +42,46 @@
     </div> -->
     <div class="slide-one-item home-slider owl-carousel">
     <div class="site-blocks-cover overlay" style="background-image: url(home/images/pic.png);" data-aos="fade" id="home-section">
-        <div class="container-fluid">
+        <div class="container-fluid block4">
             <div class="row">
-                <div class=" col-md-8 mt-lg-5text-left">
-                    <img class="text-uppercase  img_logo2 mb-3" src="{{asset('home/images/logo.png') }}" data-aos="fade">
-                    <h1 class="text-uppercase mb-1 text2 mb-4" style="font-family:myfont; color:white; font-size: 30px;" data-aos="fade-up">RO ตัวใหม่ล่าสุดที่คราวนี้มาในรูปแบบ 3D MMORPG แถมยังได้ลิขสิทธิ์แท้จาก Gravity มาอีกด้วย</h1>
-                    <div data-aos="fade-up" data-aos-delay="100">    
+                <div class="col-lg-12">
+                    <img class="img_logo2" src="{{asset('home/images/logo.png') }}">
+                    <h1 class="text-uppercase text2 " style="font-family:myfont; color:#000; font-size: 2em;padding-top:50%;">RO ตัวใหม่ล่าสุดที่คราวนี้มาในรูปแบบ 3D MMORPG แถมยังได้ลิขสิทธิ์แท้จาก Gravity มาอีกด้วย</h1>   
+                    <!-- <a href="#" class="btn smoothscroll button3"><span class="icon-icon_download"></span><b style="font-family:myfont;" class="download">ดาวน์โหลด</b></a> -->
+                    <!-- <a href="#" class="btn smoothscroll button10" style=" color: #fff;"><b style="font-family:myfont;" class="details">รายละเอียด</b></a> -->
+                </div>  
+            </div>
+        </div>
+        <a href="#about-section" class="mouse smoothscroll d-none">
+            <span class="mouse-icon button4">
+                <span class="mouse-wheel"></span>
+            </span>
+        </a>
+    </div>
+    <div class="site-blocks-cover overlay" style="background-image: url(home/images/mario_bg.jpg);" data-aos="fade" id="home-section">
+        <div class="container-fluid block4">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img_logo2" src="{{asset('home/images/mario_logo.svg') }}">
+                    <h1 class="text-uppercase text2 " style="font-family:myfont; color:#000; font-size: 2em;padding-top:50%;">RO ตัวใหม่ล่าสุดที่คราวนี้มาในรูปแบบ 3D MMORPG แถมยังได้ลิขสิทธิ์แท้จาก Gravity มาอีกด้วย</h1>   
+                    <!-- <a href="#" class="btn smoothscroll button3"><span class="icon-icon_download"></span><b style="font-family:myfont;" class="download">ดาวน์โหลด</b></a> -->
+                    <!-- <a href="#" class="btn smoothscroll button10" style=" color: #fff;"><b style="font-family:myfont;" class="details">รายละเอียด</b></a> -->
+                </div>  
+            </div>
+        </div>
+        <a href="#about-section" class="mouse smoothscroll d-none">
+            <span class="mouse-icon button4">
+                <span class="mouse-wheel"></span>
+            </span>
+        </a>
+    </div>
+    <!-- <div class="site-blocks-cover overlay" style="background-image: url(home/images/mario_bg.jpg);" data-aos="fade" id="home-section">
+        <div class="container-fluid block4">
+            <div class="row">
+                <div class=" col-lg-6">
+                    <img class="img_logo2" src="{{asset('home/images/mario_logo.svg') }}">
+                    <h1 class="text2 " style="font-family:myfont; color:#000;font-size:2em">Mario + Rabbids Kingdom Battle เกมที่จะทำให้คุณติดจนไม่เป็นอันทำอะไร</h1>
+                    <div data-aos-delay="100">    
                     <a href="#" class="btn smoothscroll button3"><span class="icon-icon_download"></span><b style="font-family:myfont;" class="download">ดาวน์โหลด</b></a>
                     <a href="#" class="btn smoothscroll button10" style=" color: #fff;"><b style="font-family:myfont;" class="details">รายละเอียด</b></a>
                     </div>
@@ -59,26 +93,8 @@
                 <span class="mouse-wheel"></span>
             </span>
         </a>
-    </div>
-    <div class="site-blocks-cover overlay" style="background-image: url(home/images/pic.png);" data-aos="fade" id="home-section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class=" col-md-8 mt-lg-5 text-left">
-                    <img class="text-uppercase  img_logo2 mb-3" src="{{asset('home/images/logo.png') }}" data-aos="fade-up">
-                    <h1 class="text-uppercase mb-1 text2 mb-4" style="font-family:myfont; color:white; font-size: 30px;" data-aos="fade-up">RO ตัวใหม่ล่าสุดที่คราวนี้มาในรูปแบบ 3D MMORPG แถมยังได้ลิขสิทธิ์แท้จาก Gravity มาอีกด้วย</h1>
-                    <div data-aos="fade-up" data-aos-delay="100">    
-                    <a href="#" class="btn smoothscroll button3"><span class="icon-icon_download"></span><b style="font-family:myfont;" class="download">ดาวน์โหลด</b></a>
-                    <a href="#" class="btn smoothscroll button10" style="color: #fff;"><b style="font-family:myfont;" class="details">รายละเอียด</b></a>
-                    </div>
-                </div>  
-            </div>
-        </div>
-        <a href="#about-section" class="mouse smoothscroll d-none">
-            <span class="mouse-icon button4">
-                <span class="mouse-wheel"></span>
-            </span>
-        </a>
-    </div>
+    </div> -->
+    
 </div>
 @endsection
 
@@ -107,7 +123,7 @@
                             <!-- <button class="btn_follow4 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
                             @guest
                                 <form action="{{route('login-levelUp')}}">
-                                    <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" ><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button>
+                                    <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" ><span class="icon-follow_red" style="font-size:1em;"></span><b class="font_follow2">ติดตาม</b></button>
                                 </form>
                             @else
                                 @if($Follows->count() > 0)
@@ -1249,7 +1265,7 @@ $(document).ready(function() {
                 loop:false
             },
             1680 :{
-                items:7.3,
+                items:7.6,
                 nav:true,
                 loop:false
             },
@@ -1305,7 +1321,7 @@ $(document).ready(function() {
                 loop:false
             },
             1680 :{
-                items:7.3,
+                items:7.6,
                 nav:true,
                 loop:false
             },

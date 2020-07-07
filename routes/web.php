@@ -129,3 +129,5 @@ Route::view('/withdraw_management', 'admin_lvp.admin_topup.withdraw_management')
 Route::view('/product', 'product')->name('Product');
 
 Route::view('/admin_change_password', 'profile.password.adminlvp_change_password');
+
+Route::get('/avatar', 'UploadImageProfile@Avatar')->name('Avatar');

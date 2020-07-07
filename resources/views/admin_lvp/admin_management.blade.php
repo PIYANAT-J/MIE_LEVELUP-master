@@ -74,7 +74,6 @@
                     <div class="row mx-0" >
                         <div class="col-lg-12">
                             <div class="tab-content">
-                                
                                 <div id="admin1" class="tab-pane active">
                                     <div class="row">
                                         <div class="col-1 py-3 th1">#</div>
@@ -176,8 +175,6 @@
                             </div>
                         </div>
                     </div>
-
-                    
                 </div>
             </div>
         </div>
@@ -245,6 +242,7 @@ $(function () {
  } // end showThumbnail
 });
 </script>
+
 <script>
     $('#password, #password-confirm').on('keyup', function () {
         if ($('#password').val() == $('#password-confirm').val()) {
@@ -253,4 +251,5 @@ $(function () {
             $('#MESSAGE').html('รหัสผ่านไม่ตรงกัน !').css('color', 'red');
     });
 </script>
+
 @endsection
