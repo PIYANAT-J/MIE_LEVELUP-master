@@ -649,6 +649,12 @@
                                 </div>
                                 <div class="col-lg-1"></div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="owl-carousel" id="owl-demo1"></div>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 @endif
