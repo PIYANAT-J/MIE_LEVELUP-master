@@ -310,7 +310,7 @@
                     @else
                         <div class="col-lg-11 pt-3 pb-2">
                             <span>
-                                <label>ไม่มีเกม</label>
+                                <label style="font-family:myfont;font-size:2em;">ไม่มีเกมที่กำลังติดตาม</label>
                             </span>
                         </div>
                         @break

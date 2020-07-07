@@ -122,7 +122,7 @@
                                             <option class="option-select-rate" name="RATED_ESRB" value="EC">EC : Early Childhood</option>
                                             <option class="option-select-rate" name="RATED_ESRB" value="E">E : Everyone</option>
                                             <option class="option-select-rate" name="RATED_ESRB" value="E10+">E10+ : Everyone 10+</option>
-                                            <option class="option-select-rate" name="RATED_ESRB" value="T">T : Teen</option>
+                                            <option class="option-select-rate" name="RATED_ESRB" value="rate1.png">T : Teen</option>
                                             <option class="option-select-rate" name="RATED_ESRB" value="M">M : Mature</option>
                                             <option class="option-select-rate" name="RATED_ESRB" value="AO">AO : Adults Only</option>
                                             <option class="option-select-rate" name="RATED_ESRB" value="RP">RP : Rating Pending</option>

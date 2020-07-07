@@ -53,7 +53,7 @@ class LoginController extends Controller
    
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))){
             if (auth()->user()->users_type == 0) {
-                return redirect()->route('Admin');
+                return redirect()->route('AdminManagement');
             }else{
                 return redirect()->route('LEVELup');
             }

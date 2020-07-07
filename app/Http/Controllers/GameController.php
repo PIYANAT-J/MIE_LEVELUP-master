@@ -190,7 +190,7 @@ class GameController extends Controller
 
                     if($GAME_NAME != '' || $GAME_IMG_PROFILE != '' || $GAME_DESCRIPTION != '' || $GAME_DESCRIPTION_FULL != '' || $GAME_DATE != '' || $GAME_FILE != '' || $GAME_SIZE != '' || $GAME_VDO_LINK != ''
                         || $GAME_TYPE != '' || $RATED_ESRB != '' || $USER_ID != '' || $RATED_B_L != '' || $USER_EMAIL != ''){
-                        $data = array("GAME_NAME"=>$GAME_NAME, "GAME_IMG_PROFILE"=>$GAME_IMG_PROFILE, "GAME_DESCRIPTION"=>$GAME_DESCRIPTION, $GAME_DESCRIPTION_FULL=>"GAME_DESCRIPTION_FULL", "GAME_DATE"=>$GAME_DATE, "GAME_FILE"=>$GAME_FILE, 
+                        $data = array("GAME_NAME"=>$GAME_NAME, "GAME_IMG_PROFILE"=>$GAME_IMG_PROFILE, "GAME_DESCRIPTION"=>$GAME_DESCRIPTION, "GAME_DESCRIPTION_FULL"=>$GAME_DESCRIPTION_FULL, "GAME_DATE"=>$GAME_DATE, "GAME_FILE"=>$GAME_FILE, 
                                         "GAME_SIZE"=>$GAME_SIZE, "GAME_VDO_LINK"=>$GAME_VDO_LINK, "GAME_TYPE"=>$GAME_TYPE, "RATED_ESRB"=>$RATED_ESRB, "RATED_B_L"=>$RATED_B_L, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
                         
                         // die('<pre>'. print_r($data, 1));
@@ -243,7 +243,7 @@ class GameController extends Controller
 
                     if($GAME_NAME != '' || $GAME_DESCRIPTION != '' || $GAME_DESCRIPTION_FULL != '' || $GAME_DATE != '' || $GAME_FILE != '' || $GAME_SIZE != '' || $GAME_VDO_LINK != ''
                         || $GAME_TYPE != '' || $RATED_ESRB != '' || $USER_ID != '' || $RATED_B_L != '' || $USER_EMAIL != ''){
-                        $data = array("GAME_NAME"=>$GAME_NAME, "GAME_DESCRIPTION"=>$GAME_DESCRIPTION, $GAME_DESCRIPTION_FULL=>"GAME_DESCRIPTION_FULL", "GAME_DATE"=>$GAME_DATE, "GAME_FILE"=>$GAME_FILE, 
+                        $data = array("GAME_NAME"=>$GAME_NAME, "GAME_DESCRIPTION"=>$GAME_DESCRIPTION, "GAME_DESCRIPTION_FULL"=>$GAME_DESCRIPTION_FULL, "GAME_DATE"=>$GAME_DATE, "GAME_FILE"=>$GAME_FILE, 
                                         "GAME_SIZE"=>$GAME_SIZE, "GAME_VDO_LINK"=>$GAME_VDO_LINK, "GAME_TYPE"=>$GAME_TYPE, "RATED_ESRB"=>$RATED_ESRB, "RATED_B_L"=>$RATED_B_L, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
                         
                         // die('<pre>'. print_r($data, 1));
