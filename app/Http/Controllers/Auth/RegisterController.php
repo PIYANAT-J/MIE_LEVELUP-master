@@ -85,39 +85,50 @@ class RegisterController extends Controller
     // }
 
     public function create(array $dataR){
-        // die('<per>'.print_r($data,1));
+        // die('<per>'.print_r($dataR,1));
         if($dataR['users_type'] == 1){
-            $data = array("USER_EMAIL"=>$dataR['email']);
-            $value = Guest_user::InsertAndUpdateData($data);
-            return User::create([
-                'name' => $dataR['name'],
-                'surname' => $dataR['surname'],
-                'email' => $dataR['email'],
-                'password' => Hash::make($dataR['password']),
-                'users_type' => $dataR['users_type'],
-            ]);
+            if(isset($dataR['accept'])){
+                $data = array("USER_EMAIL"=>$dataR['email']);
+                $value = Guest_user::InsertAndUpdateData($data);
+                return User::create([
+                    'name' => $dataR['name'],
+                    'surname' => $dataR['surname'],
+                    'email' => $dataR['email'],
+                    'password' => Hash::make($dataR['password']),
+                    'users_type' => $dataR['users_type'],
+                ]);
+            }else{
+                echo '<h>11111</h>';
+            }
+            
             
         }elseif($dataR['users_type'] == 2){
-            $data = array("USER_EMAIL"=>$dataR['email']);
-            $value = Developer::InsertAndUpdateData($data);
-            return User::create([
-                'name' => $dataR['name'],
-                'surname' => $dataR['surname'],
-                'email' => $dataR['email'],
-                'password' => Hash::make($dataR['password']),
-                'users_type' => $dataR['users_type'],
-            ]);
+            if($dataR['accept_dev'] == "on"){
+                $data = array("USER_EMAIL"=>$dataR['email']);
+                $value = Developer::InsertAndUpdateData($data);
+                return User::create([
+                    'name' => $dataR['name'],
+                    'surname' => $dataR['surname'],
+                    'email' => $dataR['email'],
+                    'password' => Hash::make($dataR['password']),
+                    'users_type' => $dataR['users_type'],
+                ]);
+            }
+            
         }elseif($dataR['users_type'] == 3){
-            $data = array("USER_EMAIL"=>$dataR['email']);
-            $value = Sponsors::InsertAndUpdateData($data);
-            return User::create([
-                'name' => $dataR['name'],
-                'surname' => $dataR['surname'],
-                'email' => $dataR['email'],
-                'password' => Hash::make($dataR['password']),
-                'users_type' => $dataR['users_type'],
-            ]);
-        }else{
+            if($dataR['accept_spon'] == "on"){
+                $data = array("USER_EMAIL"=>$dataR['email']);
+                $value = Sponsors::InsertAndUpdateData($data);
+                return User::create([
+                    'name' => $dataR['name'],
+                    'surname' => $dataR['surname'],
+                    'email' => $dataR['email'],
+                    'password' => Hash::make($dataR['password']),
+                    'users_type' => $dataR['users_type'],
+                ]);
+            }
+            
+        }elseif($dataR['users_type'] == 0){
             return User::create([
                 'name' => $dataR['name'],
                 'surname' => $dataR['surname'],

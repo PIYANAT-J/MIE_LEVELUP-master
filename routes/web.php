@@ -120,11 +120,15 @@ Route::get('/sponsor_management', 'AdminController@kycSpon')->name('SponsorManag
 Route::post('/user_management/approve', 'AdminController@approveKyc')->name('AppKyc');
 
 //admin game approve
-Route::view('/game_management', 'admin_lvp.admin_game.game_management')->name('GameManagement');
+Route::get('/game_management', 'AdminController@gameDev')->name('GameManagement');
+Route::post('/game_management/approve', 'AdminController@approveGame')->name('ApproveGame');
 Route::view('/rate_management', 'admin_lvp.admin_game.rate_management')->name('RateManagement');
 
-Route::view('/topup_management', 'admin_lvp.admin_topup.topup_management')->name('TopupManagement');
-Route::view('/withdraw_management', 'admin_lvp.admin_topup.withdraw_management')->name('WithdrawManagement');
+Route::get('/topup_management', 'AdminController@transfer')->name('TopupManagement');
+Route::post('/topup_management/Transfer', 'AdminController@approveTransfer')->name('ApproveTransfer');
+
+Route::get('/withdraw_management', 'AdminController@withDraw')->name('WithdrawManagement');
+Route::post('/withdraw_management/approve', 'AdminController@approveWithdraw')->name('AppWithDraw');
 
 Route::view('/product', 'product')->name('Product');
 

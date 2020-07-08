@@ -96,8 +96,10 @@
                                                 <a class="nav-link font_profile" href="{{ route('DevProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @elseif(Auth::user()->users_type == '3')
                                                 <a class="nav-link font_profile" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์_SPON') }}</a>
-                                            @else
+                                            @elseif(Auth::user()->users_type == '1')
                                                 <a class="nav-link font_profile" href="{{ route('UserProfile') }}">{{ __('โปรไฟล์') }}</a>
+                                            @elseif(Auth::user()->users_type == '0')
+                                                <a class="nav-link font_profile" href="{{ route('AdminManagement') }}">{{ __('จัดการผู้ใช้') }}</a>
                                             @endif
                                         </li>
                                         <li class="nav-item font_profile">
