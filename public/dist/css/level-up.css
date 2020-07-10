@@ -2363,11 +2363,13 @@ body {
 .mymodal{
   position: fixed;
   z-index: 1999;
+  /* top: 50%; */
 }
 #modal-body{
   z-index: 2999;
   position: relative;
   width: 50%;
+  /* top: 50%; */
 }
 
 .btn-closeModal{

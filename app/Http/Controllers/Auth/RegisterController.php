@@ -14,6 +14,8 @@ use App\Developer;
 use App\Guest_user;
 use App\Sponsors;
 
+use Redirect;
+
 class RegisterController extends Controller
 {
     /*
@@ -56,10 +58,32 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         // die('<per>'.print_r($data,1));
+
+        // $validator = Validator::make($data, [
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'surname' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
+        //     'users_type' => ['required', 'integer', 'max:3'],
+        // ]);
+
+        // if($validator->fails()){
+        //     return redirect()->back()->with(['email','55555']);
+        // }
+        
+        // $validator->setAttributeNames([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'surname' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
+        //     'users_type' => ['required', 'integer', 'max:3'],
+        // ]);
+        // dd($validator);
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => 'required|^[\\w!#$%&*+/=?{}~^-]+(?:\\.[\\w!#$%&*+/=?{}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$',
+            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'users_type' => ['required', 'integer', 'max:3'],
         ]);
@@ -87,7 +111,7 @@ class RegisterController extends Controller
     public function create(array $dataR){
         // die('<per>'.print_r($dataR,1));
         if($dataR['users_type'] == 1){
-            if(isset($dataR['accept'])){
+            // if(isset($dataR['accept'])){
                 $data = array("USER_EMAIL"=>$dataR['email']);
                 $value = Guest_user::InsertAndUpdateData($data);
                 return User::create([
@@ -97,10 +121,7 @@ class RegisterController extends Controller
                     'password' => Hash::make($dataR['password']),
                     'users_type' => $dataR['users_type'],
                 ]);
-            }else{
-                echo '<h>11111</h>';
-            }
-            
+            // }
             
         }elseif($dataR['users_type'] == 2){
             if($dataR['accept_dev'] == "on"){
@@ -138,5 +159,4 @@ class RegisterController extends Controller
             ]);
         }
     }
-
 }

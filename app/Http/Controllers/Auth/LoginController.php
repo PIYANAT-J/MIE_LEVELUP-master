@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use Redirect;
+use Illuminate\Support\MessageBag;
+// use Illuminate\Support\Facades\Input;
+
 use Auth;
 
 use Illuminate\Http\Request;
@@ -50,16 +54,25 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-   
+
+        $errors = new MessageBag;
+
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))){
             if (auth()->user()->users_type == 0) {
                 return redirect()->route('AdminManagement');
             }else{
                 return redirect()->route('LEVELup');
             }
-        }else{
-            return redirect()->route('login-levelUp');
         }
+        // dd($request);
+        // else{
+        //     // $errors = new MessageBag(['password' => ['Email and/or password invalid.']]);
+        //     // return Redirect::back()->withErrors($errors)->withInput(Input::except('password'));
+        //     // return redirect()->route('login-levelUp');
+        // }
+        return Redirect::to('/loginlvp')->with("email", "อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+        // $show_modal = "อีเมล์หรือรหัสผ่านไม่ถูกต้อง";
+        // return redirect('/loginlvp')->with(['show_modal'=>$show_modal]);
           
     }
 }
