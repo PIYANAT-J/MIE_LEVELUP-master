@@ -267,7 +267,7 @@ class UploadImageProfile extends Controller
                     $data = array("GUEST_USERS_TEL"=>$GUEST_USERS_TEL, "GUEST_USERS_ID_CARD"=>$GUEST_USERS_ID_CARD, "GUEST_USERS_IMG"=>$GUEST_USERS_IMG, "GUEST_USERS_BIRTHDAY"=>$GUEST_USERS_BIRTHDAY,
                                 "GUEST_USERS_AGE"=>$GUEST_USERS_AGE, "GUEST_USERS_GENDER"=>$GUEST_USERS_GENDER, "GUEST_USERS_ADDRESS"=>$GUEST_USERS_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
                                 "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY, "name"=>$name, "surname"=>$surname);
-                    // die('<pre>'. print_r($data, 1));
+                    // dd($data);
                     // Insert && Update
                     $value = Guest_user::InsertAndUpdateData($data);
                     if($value){
@@ -304,8 +304,8 @@ class UploadImageProfile extends Controller
                                 "GUEST_USERS_AGE"=>$GUEST_USERS_AGE, "GUEST_USERS_GENDER"=>$GUEST_USERS_GENDER, "GUEST_USERS_ADDRESS"=>$GUEST_USERS_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
                                 "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY, "name"=>$name, "surname"=>$surname);
                     // $user = array("name"=>$name, "surname"=>$surname);
-                    // Insert && Update
-                    // die('<pre>'. print_r($data, 1));
+                    
+                    // dd($data);
                     $value = Guest_user::InsertAndUpdateData($data);
                     if($value){
                         Session::flash('message','Insert successfully.');
