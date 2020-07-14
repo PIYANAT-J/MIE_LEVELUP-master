@@ -119,13 +119,13 @@
                                         <textarea name="GAME_DESCRIPTION" id="data" class="input-update" style="padding-top:22px;line-height:120%;" placeholder="คำอธิบายไม่เกิน 150 ตัวอักษร" row="3" value="{{ old('GAME_DESCRIPTION') }}" require></textarea><span class="label2" id="now_length"></span>
                                         <select class=" input-update mb-3" id="mySelect" data-live-search="true" style="border-radius: 0px;" name="RATED_ESRB" value="{{ old('RATED_ESRB') }}">
                                             <option class="option-select-rate">เรทเกม</option>
-                                            <option class="option-select-rate" name="RATED_ESRB" value="EC">EC : Early Childhood</option>
-                                            <option class="option-select-rate" name="RATED_ESRB" value="E">E : Everyone</option>
-                                            <option class="option-select-rate" name="RATED_ESRB" value="E10+">E10+ : Everyone 10+</option>
-                                            <option class="option-select-rate" name="RATED_ESRB" value="rate1.png">T : Teen</option>
-                                            <option class="option-select-rate" name="RATED_ESRB" value="M">M : Mature</option>
-                                            <option class="option-select-rate" name="RATED_ESRB" value="AO">AO : Adults Only</option>
-                                            <option class="option-select-rate" name="RATED_ESRB" value="RP">RP : Rating Pending</option>
+                                            <option class="option-select-rate" name="RATED_ESRB" value="EarlyChildhood">EC : Early Childhood</option>
+                                            <option class="option-select-rate" name="RATED_ESRB" value="Everyone">E : Everyone</option>
+                                            <option class="option-select-rate" name="RATED_ESRB" value="Everyone10">E10+ : Everyone 10+</option>
+                                            <option class="option-select-rate" name="RATED_ESRB" value="Teen">T : Teen</option>
+                                            <option class="option-select-rate" name="RATED_ESRB" value="Mature">M : Mature</option>
+                                            <option class="option-select-rate" name="RATED_ESRB" value="AdultsOnly">AO : Adults Only</option>
+                                            <option class="option-select-rate" name="RATED_ESRB" value="RatingPending">RP : Rating Pending</option>
                                         </select>
                                         <select class=" input-update mb-3" id="mySelect" data-live-search="true" style="border-radius: 0px;" name="RATED_B_L" value="{{ old('RATED_B_L') }}">
                                             <option class="option-select-rate">เรทเนื้อหาเกม</option>
@@ -138,7 +138,7 @@
                                             <option class="option-select-rate" name="RATED_B_L" value="Online">Online : เป็นเกมที่ต้องเล่นออนไลน์เท่านั้น เป็นเรทที่พิเศษแยกออกมา</option>
                                             <option class="option-select-rate" name="RATED_B_L" value="Other">Other : อื่นๆ</option>
                                         </select>
-                                        <select class=" input-update mb-3" id="mySelect" data-live-search="true" style="border-radius: 0px;" name="RATED_B_L" value="{{ old('GAME_TYPE') }}">
+                                        <select class=" input-update mb-3" id="mySelect" data-live-search="true" style="border-radius: 0px;" name="GAME_TYPE" value="{{ old('GAME_TYPE') }}">
                                             <option class="option-select-rate">ประเภทเกม</option>
                                             <option class="option-select-rate" name="GAME_TYPE" value="Action">Action</option>
                                             <option class="option-select-rate" name="GAME_TYPE" value="Adventure">Adventure</option>

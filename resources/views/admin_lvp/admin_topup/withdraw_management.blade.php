@@ -13,7 +13,7 @@
                                 <img class="sidebar-pic" src="{{asset('dist/images/person_5.jpg') }}" />
                             </div>
                             <div class="col-7 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1.1em;">ชื่อ-นามสกุล</b></br>Admin</br>เป็นสมาชิก:25/05/63</span>
+                                <span><b style="font-family: myfont;font-size: 1.1em;">{{Auth::user()->name}}-{{Auth::user()->surname}}</b></br>Admin</br>เป็นสมาชิก:{{Auth::user()->created_at}}</span>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,10 @@
                         <a href="/product" style="width: 100%;"><button class="btn-sidebar"><i class="icon-product" style="font-size:0.85em;padding:0px 15px 0px 5px;"></i>จัดการสินค้า</button></a>
                     <a href="/package" style="width: 100%;"><button class="btn-sidebar"><img class="pic6" src="{{asset('icon/package.png') }}" />จัดการแพ็คเกจ</button></a>
                     <a href="/admin_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เปลี่ยนรหัสผ่าน</button></a>
-                    <button class="btn-sidebar"><img class="pic4" src="{{asset('icon/logout.svg') }}" />ออกจากระบบ</button>
+                    <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><img class="pic4" src="{{asset('icon/logout.svg') }}" />ออกจากระบบ</button></a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </div>
             </div>
         <!-- sidebar -->
@@ -90,45 +93,39 @@
                                             <div class="col-2 py-3 th1">อัพเดตล่าสุด</div>
                                         </div>
                                         <div class="row row4"> 
-                                           <div class="col-lg-12">
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1">1</div>
-                                                    <div class="col-4 py-1 td1 text-left">ชื่อ-นามสกุล</div>
-                                                    <div class="col-2 py-1 td1 text-right">1,000</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label>
-                                                        <!-- <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label> -->
-                                                    </div>
-                                                    <div class="col-1 py-1 td1"></div>
-                                                    <div class="col-2 py-1 td1">23/06/63</div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1">2</div>
-                                                    <div class="col-4 py-1 td1 text-left">ชื่อ-นามสกุล</div>
-                                                    <div class="col-2 py-1 td1 text-right">20,000</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <!-- <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label> -->
-                                                        <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1">admin02</div>
-                                                    <div class="col-2 py-1 td1">20/06/63</div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1">3</div>
-                                                    <div class="col-4 py-1 td1 text-left">ชื่อ-นามสกุล</div>
-                                                    <div class="col-2 py-1 td1 text-right">200</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <!-- <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label> -->
-                                                        <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1">admin01</div>
-                                                    <div class="col-2 py-1 td1">20/06/63</div>
-                                                </div>
+                                            <div class="col-lg-12">
+                                                <?php $i = 1; ?>
+                                                @foreach($withdraw as $withdrawList)
+                                                    @if($withdrawList->withdrawStatus == "รอการอนุมัติ")
+                                                        <div class="row">
+                                                            <div class="col-1 py-1 td1">{{$i}}</div>
+                                                            <div class="col-4 py-1 td1 text-left">{{$withdrawList->name}} {{$withdrawList->surname}}</div>
+                                                            <div class="col-2 py-1 td1 text-right">{{$withdrawList->withdrawAmount}}</div>
+                                                            <div class="col-2 py-1 td1">
+                                                                <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$withdrawList->id}}">รอการตรวจสอบ</label>
+                                                            </div>
+                                                            <div class="col-1 py-1 td1"></div>
+                                                            <div class="col-2 py-1 td1">{{explode(' ',$withdrawList->createAccount)[0]}}</div>
+                                                        </div>
+                                                    @elseif($withdrawList->withdrawStatus == "อนุมัติแล้ว")
+                                                        <div class="row">
+                                                            <div class="col-1 py-1 td1">{{$i}}</div>
+                                                            <div class="col-4 py-1 td1 text-left">{{$withdrawList->name}} {{$withdrawList->surname}}</div>
+                                                            <div class="col-2 py-1 td1 text-right">{{$withdrawList->withdrawAmount}}</div>
+                                                            <div class="col-2 py-1 td1">
+                                                                <label class="status-approve" data-toggle="modal" data-target="#Approve{{$withdrawList->id}}">อนุมัติแล้ว</label>
+                                                            </div>
+                                                            <div class="col-1 py-1 td1">admin02</div>
+                                                            <div class="col-2 py-1 td1">{{explode(' ',$withdrawList->confirm_at)[0]}}</div>
+                                                        </div>
+                                                    @endif
+                                                    <?php $i = $i+1; ?>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div id="withdraw2" class="tab-pane active">
+                                    <div id="withdraw2" class="tab-pane">
                                         <div class="row" >
                                             <div class="col-1 py-3 th1">#</div>
                                             <div class="col-4 py-3 th1 text-left">ชื่อ-นามสกุล</div>
@@ -138,22 +135,28 @@
                                             <div class="col-2 py-3 th1">อัพเดตล่าสุด</div>
                                         </div>
                                         <div class="row row4"> 
-                                           <div class="col-lg-12">
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1">1</div>
-                                                    <div class="col-4 py-1 td1 text-left">ชื่อ-นามสกุล</div>
-                                                    <div class="col-2 py-1 td1 text-right">1,000</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1"></div>
-                                                    <div class="col-2 py-1 td1">23/06/63</div>
-                                                </div>
+                                            <div class="col-lg-12">
+                                                <?php $i = 1; ?>
+                                                @foreach($withdraw as $withdrawList)
+                                                    @if($withdrawList->withdrawStatus == "รอการอนุมัติ")
+                                                        <div class="row">
+                                                            <div class="col-1 py-1 td1">{{$i}}</div>
+                                                            <div class="col-4 py-1 td1 text-left">{{$withdrawList->name}} {{$withdrawList->surname}}</div>
+                                                            <div class="col-2 py-1 td1 text-right">{{$withdrawList->withdrawAmount}}</div>
+                                                            <div class="col-2 py-1 td1">
+                                                                <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$withdrawList->id}}">รอการตรวจสอบ</label>
+                                                            </div>
+                                                            <div class="col-1 py-1 td1"></div>
+                                                            <div class="col-2 py-1 td1">{{explode(' ',$withdrawList->createAccount)[0]}}</div>
+                                                        </div>
+                                                    @endif
+                                                    <?php $i = $i+1; ?>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div id="withdraw3" class="tab-pane active">
+                                    <div id="withdraw3" class="tab-pane">
                                         <div class="row" >
                                             <div class="col-1 py-3 th1">#</div>
                                             <div class="col-4 py-3 th1 text-left">ชื่อ-นามสกุล</div>
@@ -163,27 +166,23 @@
                                             <div class="col-2 py-3 th1">อัพเดตล่าสุด</div>
                                         </div>
                                         <div class="row row4"> 
-                                           <div class="col-lg-12">
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1">1</div>
-                                                    <div class="col-4 py-1 td1 text-left">ชื่อ-นามสกุล</div>
-                                                    <div class="col-2 py-1 td1 text-right">20,000</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1">admin02</div>
-                                                    <div class="col-2 py-1 td1">20/06/63</div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1">2</div>
-                                                    <div class="col-4 py-1 td1 text-left">ชื่อ-นามสกุล</div>
-                                                    <div class="col-2 py-1 td1 text-right">200</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1">admin01</div>
-                                                    <div class="col-2 py-1 td1">20/06/63</div>
-                                                </div>
+                                            <div class="col-lg-12">
+                                                <?php $i = 1; ?>
+                                                @foreach($withdraw as $withdrawList)
+                                                    @if($withdrawList->withdrawStatus == "อนุมัติแล้ว")
+                                                        <div class="row">
+                                                            <div class="col-1 py-1 td1">{{$i}}</div>
+                                                            <div class="col-4 py-1 td1 text-left">{{$withdrawList->name}} {{$withdrawList->surname}}</div>
+                                                            <div class="col-2 py-1 td1 text-right">{{$withdrawList->withdrawAmount}}</div>
+                                                            <div class="col-2 py-1 td1">
+                                                                <label class="status-approve" data-toggle="modal" data-target="#Approve{{$withdrawList->id}}">อนุมัติแล้ว</label>
+                                                            </div>
+                                                            <div class="col-1 py-1 td1">admin02</div>
+                                                            <div class="col-2 py-1 td1">{{explode(' ',$withdrawList->confirm_at)[0]}}</div>
+                                                        </div>
+                                                    @endif
+                                                    <?php $i = $i+1; ?>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -197,7 +196,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="pendingApprove" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach($withdraw as $withdrawModal)
+<div class="modal fade" id="pendingApprove{{$withdrawModal->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -208,40 +208,52 @@
             </div>
 
             <div class="modal-body font-rate-modal">
-                <div class="row px-3">
-                    <div class="col-lg-12 pb-1">
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-3"><input type="text" class="input-disable" placeholder="ธนาคารที่ต้องการรับเงิน" disabled></input></div>
-                            <div class="col-9 text-right">
-                                <img class="mr-2" src="{{asset('home/logo/kbank.svg') }}" />
-                                <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกสิกรไทย</span>
+                <form action="{{route('AppWithDraw')}}" method="post">
+                    @csrf
+                    <div class="row px-3">
+                        <div class="col-lg-12 pb-1">
+                            <div class="row bg-disabled mb-2 py-2">
+                                <div class="col-3"><input type="text" class="input-disable" placeholder="ธนาคารที่ต้องการรับเงิน" disabled></input></div>
+                                <div class="col-9 text-right">
+                                    <img class="mr-2" src="{{asset('home/logo/'.$withdrawModal->withdrawฺBank_name.'.svg') }}" />
+                                    @if($withdrawModal->withdrawฺBank_name == "bangkok")
+                                        <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงเทพ</span>
+                                    @elseif($withdrawModal->withdrawฺBank_name == "ktc")
+                                        <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงไทย</span>
+                                    @elseif($withdrawModal->withdrawฺBank_name == "kbank")
+                                        <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกสิกรไทย</span>
+                                    @elseif($withdrawModal->withdrawฺBank_name == "scb")
+                                        <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row bg-disabled mb-2 py-2">
+                                <div class="col-3"><input type="text" class="input-disable" placeholder="ชื่อบัญชี" disabled></input></div>
+                                <div class="col-9 text-right"><span style="font-family:myfont;font-size:1em;color:#000;">{{$withdrawModal->accountName}}</span></div>
+                            </div>
+                            <div class="row bg-disabled mb-2 py-2">
+                                <div class="col-3"><input type="text" class="input-disable" placeholder="เลขบัญชี" disabled></input></div>
+                                <div class="col-9 text-right"><span style="font-family:myfont;font-size:1em;color:#000;">{{substr($withdrawModal->accountNumber, 0,3)}}-{{substr($withdrawModal->accountNumber, 3,1)}}-{{substr($withdrawModal->accountNumber, 4,5)}}-{{substr($withdrawModal->accountNumber, 9,1)}}</span></div>
+                            </div>
+                            <div class="row bg-disabled mb-2 py-2">
+                                <div class="col-6"><input type="text" class="input-disable" placeholder="จำนวนที่ต้องถอนเงิน" disabled></input></div>
+                                <div class="col-6 text-right"><span style="font-family:myfont;font-size:1em;color:#000;">{{$withdrawModal->withdrawAmount}} บาท</span></div>
+                            </div>
+                            <div class="checkbox">
+                                <input type="checkbox" id="checkbox_01" name="accept_01">
+                                <label for="checkbox_01" style="color:#000;font-weight:bold;padding-top:2px;padding-left:10px;" >โอนเงินแล้ว</label>
                             </div>
                         </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-3"><input type="text" class="input-disable" placeholder="ชื่อบัญชี" disabled></input></div>
-                            <div class="col-9 text-right"><span style="font-family:myfont;font-size:1em;color:#000;">ชื่อ-นามสกุล</span></div>
-                        </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-3"><input type="text" class="input-disable" placeholder="เลขบัญชี" disabled></input></div>
-                            <div class="col-9 text-right"><span style="font-family:myfont;font-size:1em;color:#000;">012-3-45678-9</span></div>
-                        </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-6"><input type="text" class="input-disable" placeholder="จำนวนที่ต้องถอนเงิน" disabled></input></div>
-                            <div class="col-6 text-right"><span style="font-family:myfont;font-size:1em;color:#000;">1,000 บาท</span></div>
-                        </div>
-                        <div class="checkbox">
-                            <input type="checkbox" id="checkbox_01" name="accept_01">
-                            <label for="checkbox_01" style="color:#000;font-weight:bold;padding-top:2px;padding-left:10px;" >โอนเงินแล้ว</label>
-                        </div>
                     </div>
-                </div>
-                <button type="button" class="btn-submit-modal-red">ยืนยัน</button>
+                    <button name="submit" value="submit" class="btn-submit-modal-red">ยืนยัน</button>
+                    <input type="hidden" name="id" value="{{$withdrawModal->id}}">
+                </form>
             </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="Approve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Approve{{$withdrawModal->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -258,21 +270,29 @@
                         <div class="row bg-disabled mb-2 py-2">
                             <div class="col-3"><input type="text" class="input-disable" placeholder="ธนาคารที่ต้องการรับเงิน" disabled></input></div>
                             <div class="col-9 text-right">
-                                <img class="mr-2" src="{{asset('home/logo/kbank.svg') }}" />
-                                <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกสิกรไทย</span>
+                                <img class="mr-2" src="{{asset('home/logo/'.$withdrawModal->withdrawฺBank_name.'.svg') }}" />
+                                @if($withdrawModal->withdrawฺBank_name == "bangkok")
+                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงเทพ</span>
+                                @elseif($withdrawModal->withdrawฺBank_name == "ktc")
+                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงไทย</span>
+                                @elseif($withdrawModal->withdrawฺBank_name == "kbank")
+                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกสิกรไทย</span>
+                                @elseif($withdrawModal->withdrawฺBank_name == "scb")
+                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</span>
+                                @endif
                             </div>
                         </div>
                         <div class="row bg-disabled mb-2 py-2">
                             <div class="col-3"><input type="text" class="input-disable" placeholder="ชื่อบัญชี" disabled></input></div>
-                            <div class="col-9 text-right"><span style="font-family:myfont;font-size:1em;color:#000;">ชื่อ-นามสกุล</span></div>
+                            <div class="col-9 text-right"><span style="font-family:myfont;font-size:1em;color:#000;">{{$withdrawModal->accountName}}</span></div>
                         </div>
                         <div class="row bg-disabled mb-2 py-2">
                             <div class="col-3"><input type="text" class="input-disable" placeholder="เลขบัญชี" disabled></input></div>
-                            <div class="col-9 text-right"><span style="font-family:myfont;font-size:1em;color:#000;">012-3-45678-9</span></div>
+                            <div class="col-9 text-right"><span style="font-family:myfont;font-size:1em;color:#000;">{{substr($withdrawModal->accountNumber, 0,3)}}-{{substr($withdrawModal->accountNumber, 3,1)}}-{{substr($withdrawModal->accountNumber, 4,5)}}-{{substr($withdrawModal->accountNumber, 9,1)}}</span></div>
                         </div>
                         <div class="row bg-disabled mb-2 py-2">
                             <div class="col-6"><input type="text" class="input-disable" placeholder="จำนวนที่ต้องถอนเงิน" disabled></input></div>
-                            <div class="col-6 text-right"><span style="font-family:myfont;font-size:1em;color:#000;">20,000 บาท</span></div>
+                            <div class="col-6 text-right"><span style="font-family:myfont;font-size:1em;color:#000;">{{$withdrawModal->withdrawAmount}} บาท</span></div>
                         </div>
                         <div class="checkbox d-none">
                             <input type="checkbox" id="checkbox_01" name="accept_01">
@@ -285,7 +305,7 @@
         </div>
     </div>
 </div>
-
+@endforeach
 
 
 <!-- พื้นหลัง -->

@@ -117,13 +117,14 @@
                                                                     <!-- <input id="GUEST_USERS_BIRTHDAY" name="GUEST_USERS_BIRTHDAY" type="text" class="form-control textbox1 " placeholder="YYYY-MM-DD" value="{{ old('GUEST_USERS_BIRTHDAY') }}" title=""> -->
                                                                 <!-- <input type="number" name="RATING" id="rating-input" min="1" max="5"> -->
                                                                     <?php
-                                                                        // $yyyy = substr($USER->GUEST_USERS_BIRTHDAY,0,4);
-                                                                        // $mm = substr($USER->GUEST_USERS_BIRTHDAY,5,8);
-                                                                        // $dd = substr($USER->GUEST_USERS_BIRTHDAY,8,10);
+                                                                        $year = substr($USER->GUEST_USERS_BIRTHDAY,0,4);
+                                                                        $month = substr($USER->GUEST_USERS_BIRTHDAY,5,2);
+                                                                        $day = substr($USER->GUEST_USERS_BIRTHDAY,8,2);
                                                                     ?>
+                                                                    <!-- <p>{{$year}} {{$month}} {{$day}}</p> -->
                                                                     <div class="col-4 mt-2" style="padding:0;"><SELECT  size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></div>
                                                                     <div class="col-4 mt-2" style="padding:0;"><SELECT  size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></div>
-                                                                    <div class="col-4 mt-2" style="padding:0;"><SELECT  size="1" id ="day" name = "dd" ></SELECT></div>
+                                                                    <div class="col-4 mt-2" style="padding:0;"><SELECT  size="1" id ="day" name = "dd"></SELECT></div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-12 mt-2">
@@ -242,7 +243,7 @@ $(document).ready(function(){
 </script>
 
 <!-- วัน เดือน ปีเกิด -->
-<script> 
+<script>
     var Days = [31,28,31,30,31,30,31,31,30,31,30,31];// index => month [0-11]
     $(document).ready(function(){
         

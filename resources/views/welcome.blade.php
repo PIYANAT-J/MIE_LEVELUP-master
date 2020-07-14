@@ -174,7 +174,7 @@
                                     </button>
                                 </form> -->
                             @endguest
-                            <img class="rate_pic2" style="width: 13%;" src="{{ asset('section/game_rate/'.$game->RATED_ESRB) }}" />
+                            <img class="rate_pic2" style="width: 13%;" src="{{ asset('section/game_rate/'.$game->RATED_ESRB.'.svg') }}" />
                             <div class="game_name2">
                                 <b style="font-size: 25px;color: #fff;">{{ $game->GAME_NAME }}</b>
                                 <div class="mt-1" style="font-size: 22px;color: #fff;">{{ $game->RATED_B_L }} • Online <button class="font_detail2" style="color: #fff;" >รายละเอียด</button></div>
@@ -207,7 +207,7 @@
                             </div>
                             <div class="col mt-4 ml-1 mr-3" >
                                 <div class="row ">
-                                    <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/'.$gameId->RATED_ESRB) }}" /></div>
+                                    <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/'.$gameId->RATED_ESRB.'.svg') }}" /></div>
                                     <div class="col-lg-10 mt-1 row_rate">
                                         <p class="font_rate1">
                                         @if(isset($CommentAll))
@@ -328,7 +328,7 @@
                                                         <input type="hidden" name="FOLLOW_ID" value="{{ $followMe->FOLLOW_ID }}">
                                                     </button>
                                                 </form>
-                                                <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/'.$gameMe->RATED_ESRB) }}" />
+                                                <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/'.$gameMe->RATED_ESRB.'.svg') }}" />
                                                 <div class="game_name2">
                                                     <b style="font-size: 25px;color: #fff;">{{$gameMe->GAME_NAME}}</b>
                                                     <div class="mt-1" style="font-size: 22px;color: #fff;">{{ $gameMe->RATED_B_L }} • Online <button class="font_detail2" style="color: #fff;" >รายละเอียด</button></div>
@@ -357,7 +357,7 @@
                                 </div>
                                 <div class="col my-4 ml-1 mr-3" >
                                     <div class="row ">
-                                        <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/'.$gameMeId->RATED_ESRB) }}" /></div>
+                                        <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/'.$gameMeId->RATED_ESRB.'.svg') }}" /></div>
                                         <div class="col-lg-10 mt-1 row_rate">
                                             <p class="font_rate1">
                                             @if(isset($CommentAll))
@@ -728,7 +728,7 @@
                                 </form>
                             @endif
                         @endguest
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/'.$gameNew->RATED_ESRB) }}" />
+                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/'.$gameNew->RATED_ESRB.'.svg') }}" />
                         <div class="game_name">
                             <b style="font-size: 30px;color: #fff;">{{ $gameNew->GAME_NAME }}</b>
                             <div class="mt-1" style="font-size: 25px;color: #fff;">{{ $gameNew->RATED_B_L }} • Online</div>
@@ -754,7 +754,7 @@
                         </div>
                         <div class="col my-4 ml-1 mr-3" >
                             <div class="row ">
-                                <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/'.$gameNewId->RATED_ESRB) }}" /></div>
+                                <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/'.$gameNewId->RATED_ESRB.'.svg') }}" /></div>
                                 <div class="col-lg-10 mt-1 row_rate">
                                     <p class="font_rate1">
                                         @if(isset($CommentAll))
