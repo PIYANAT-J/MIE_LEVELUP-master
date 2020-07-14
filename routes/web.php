@@ -131,3 +131,9 @@ Route::view('/product', 'product')->name('Product');
 Route::view('/admin_change_password', 'profile.password.adminlvp_change_password');
 
 Route::get('/avatar', 'UploadImageProfile@Avatar')->name('Avatar');
+
+Route::get('/shop', 'UploadImageProfile@Shop')->name('Shop');
+Route::get('/sale', 'UploadImageProfile@Sale')->name('Sale');
+Route::get('/add_sale_item', 'UploadImageProfile@AddSaleItem')->name('AddSaleItem');
+Route::get('/shopping_cart', 'UploadImageProfile@ShoppingCart')->name('ShoppingCart');
+Route::get('/payment', 'UploadImageProfile@Payment')->name('Payment');
