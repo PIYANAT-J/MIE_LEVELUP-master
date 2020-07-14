@@ -13,7 +13,7 @@
                                 <img class="sidebar-pic" src="{{asset('dist/images/person_5.jpg') }}" />
                             </div>
                             <div class="col-7 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1.1em;">ชื่อ-นามสกุล</b></br>Admin</br>เป็นสมาชิก:25/05/63</span>
+                                <span><b style="font-family: myfont;font-size: 1.1em;">{{Auth::user()->name}}-{{Auth::user()->surname}}</b></br>Admin</br>เป็นสมาชิก:{{Auth::user()->created_at}}</span>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,10 @@
                         <a href="/product" style="width: 100%;"><button class="btn-sidebar"><i class="icon-product" style="font-size:0.85em;padding:0px 15px 0px 5px;"></i>จัดการสินค้า</button></a>
                     <a href="/package" style="width: 100%;"><button class="btn-sidebar"><img class="pic6" src="{{asset('icon/package.png') }}" />จัดการแพ็คเกจ</button></a>
                     <a href="/admin_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เปลี่ยนรหัสผ่าน</button></a>
-                    <button class="btn-sidebar"><img class="pic4" src="{{asset('icon/logout.svg') }}" />ออกจากระบบ</button>
+                    <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><img class="pic4" src="{{asset('icon/logout.svg') }}" />ออกจากระบบ</button></a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </div>
             </div>
         <!-- sidebar -->
@@ -133,7 +136,7 @@
                                                 <div class="row">
                                                     <div class="col-1 py-1 td1">1</div>
                                                     <div class="col-2 py-1 td1 text-left">EC : Early Childhood</div>
-                                                    <div class="col-1 py-1 td1 "><img style="width:25px;" src="{{asset('section/game_rate/01.svg') }}" ></div>
+                                                    <div class="col-1 py-1 td1 "><img style="width:25px;" src="{{asset('section/game_rate/EarlyChildhood.svg') }}" ></div>
                                                     <div class="col-7 py-1 td1 text-left">เหมาะกับเด็กอายุ 3 – 6 ปี เนื้อหาไม่มีความรุนแรง</div>
                                                     <div class="col-1 py-1 td1 text-center">
                                                         <i class="fa fa-trash-o mr-3" aria-hidden="true" style="font-size:0.8em;cursor:pointer;"></i>
@@ -143,7 +146,7 @@
                                                 <div class="row">
                                                     <div class="col-1 py-1 td1">2</div>
                                                     <div class="col-2 py-1 td1 text-left">E : Everyone</div>
-                                                    <div class="col-1 py-1 td1"><img style="width:25px;" src="{{asset('section/game_rate/02.svg') }}" ></div>
+                                                    <div class="col-1 py-1 td1"><img style="width:25px;" src="{{asset('section/game_rate/Everyone.svg') }}" ></div>
                                                     <div class="col-7 py-1 td1 text-left">เหมาะสำหรับเด็กอายุ 6 ปีขึ้นไป เนื้อหามีความรุนแรงเพิ่มขึ้นเล็กน้อย เช่น เกมกีฬาที่ไม่ใช่การต่อสู้ ภาษาที่ใช้เป็นภาษาสุภาพ</div>
                                                     <div class="col-1 py-1 td1 text-center">
                                                         <i class="fa fa-trash-o mr-3" aria-hidden="true" style="font-size:0.8em;cursor:pointer;"></i>
@@ -153,7 +156,7 @@
                                                 <div class="row">
                                                     <div class="col-1 py-1 td1">3</div>
                                                     <div class="col-2 py-1 td1 text-left">E10+ : Everyone 10+</div>
-                                                    <div class="col-1 py-1 td1 "><img style="width:25px;" src="{{asset('section/game_rate/03.svg') }}" ></div>
+                                                    <div class="col-1 py-1 td1 "><img style="width:25px;" src="{{asset('section/game_rate/Everyone10.svg') }}" ></div>
                                                     <div class="col-7 py-1 td1 text-left">เหมาะสำหรับเด็กอายุ 10 ปีขึ้นไป เนื้อหามีความรุนแรงมากขึ้น เช่น มีการต่อสู้เล็กน้อยภายในเกม ภาษามีความซับซ้อนขึ้น มีการเล่นมุกตลกเสียดสีบ้าง</div>
                                                     <div class="col-1 py-1 td1 text-center">
                                                         <i class="fa fa-trash-o mr-3" aria-hidden="true" style="font-size:0.8em;cursor:pointer;"></i>
@@ -163,7 +166,7 @@
                                                 <div class="row">
                                                     <div class="col-1 py-1 td1">4</div>
                                                     <div class="col-2 py-1 td1 text-left">T : Teen</div>
-                                                    <div class="col-1 py-1 td1 "><img style="width:25px%;" src="{{asset('section/game_rate/04.svg') }}" ></div>
+                                                    <div class="col-1 py-1 td1 "><img style="width:25px%;" src="{{asset('section/game_rate/Teen.svg') }}" ></div>
                                                     <div class="col-7 py-1 td1 text-left">เหมาะสำหรับเด็กอายุ 13 ปีขึ้นไป เนื้อหามีความรุนแรงแต่ไม่มาก มีเลือดและยาเสพติดประเภทเหล้าและบุหรี่ ภาษามีความรุนแรงมากขึ้น มีภาพสรีระร่างกายเชิงเพศชัดขึ้นแต่ไม่โป๊เปลือย เนื้อหาส่งผลต่อจิตวิทยาในด้านลบมากขึ้น</div>
                                                     <div class="col-1 py-1 td1 text-center">
                                                         <i class="fa fa-trash-o mr-3" aria-hidden="true" style="font-size:0.8em;cursor:pointer;"></i>
@@ -173,7 +176,7 @@
                                                 <div class="row">
                                                     <div class="col-1 py-1 td1">5</div>
                                                     <div class="col-2 py-1 td1 text-left">M : Mature</div>
-                                                    <div class="col-1 py-1 td1 "><img style="width:25px;" src="{{asset('section/game_rate/05.svg') }}" ></div>
+                                                    <div class="col-1 py-1 td1 "><img style="width:25px;" src="{{asset('section/game_rate/Mature.svg') }}" ></div>
                                                     <div class="col-7 py-1 td1 text-left">เหมาะสำหรับเด็กอายุ 17 ปีขึ้นไป เนื้อหามีความรุนแรง มีฉากต่อสู้ มียาเสพติด มีฉากเปลือยกาย ภาษามีศัพท์แสลง มีคำหยาบคาย มีเนื้อหากระตุ้นให้ทำความผิด</div>
                                                     <div class="col-1 py-1 td1 text-center">
                                                         <i class="fa fa-trash-o mr-3" aria-hidden="true" style="font-size:0.8em;cursor:pointer;"></i>
@@ -183,7 +186,7 @@
                                                 <div class="row">
                                                     <div class="col-1 py-1 td1" >6</div>
                                                     <div class="col-2 py-1 td1 text-left">AO : Adults Only</div>
-                                                    <div class="col-1 py-1 td1 "><img style="width:25px;" src="{{asset('section/game_rate/06.svg') }}" ></div>
+                                                    <div class="col-1 py-1 td1 "><img style="width:25px;" src="{{asset('section/game_rate/AdultsOnly.svg') }}" ></div>
                                                     <div class="col-7 py-1 td1 text-left">เหมาะสำหรับผู้ใหญ่เท่านั้น ในสหรัฐอเมริกาหมายถึงผู้ที่มีอายุ 18 ปีขึ้นไป เนื้อหามีความรุนแรงสูง มีฉากนองเลือกและฉากเกี่ยวกับเพศรุนแรง และการกระตุ้นให้ทำผิดศีลธรรม</div>
                                                     <div class="col-1 py-1 td1 text-center">
                                                         <i class="fa fa-trash-o mr-3" aria-hidden="true" style="font-size:0.8em;cursor:pointer;"></i>
@@ -193,7 +196,7 @@
                                                 <div class="row">
                                                     <div class="col-1 py-1 td1">7</div>
                                                     <div class="col-2 py-1 td1 text-left">RP : Rating Pending</div>
-                                                    <div class="col-1 py-1 td1 "><img style="width:25px;" src="{{asset('section/game_rate/07.svg') }}" ></div>
+                                                    <div class="col-1 py-1 td1 "><img style="width:25px;" src="{{asset('section/game_rate/RatingPending.svg') }}" ></div>
                                                     <div class="col-7 py-1 td1 text-left">เรทนี้หมายถึงเกมยังไม่ได้รับการพิจารณาเรทอย่างเป็นทางการ มักเป็นเกมที่อยู่ระหว่างการพัฒนาแต่โฆษณาเกมก่อนจำหน่าย</div>
                                                     <div class="col-1 py-1 td1 text-center">
                                                         <i class="fa fa-trash-o mr-3" aria-hidden="true" style="font-size:0.8em;cursor:pointer;"></i>

@@ -25,10 +25,11 @@ class TransferController extends Controller
                 $user_id = Auth::user()->id;
                 $user_email = Auth::user()->email;
                 $id = $req->input('id');
+                $update_at = date('Y-m-d H:i:s');
 
                 if($transferImg != "" && $transferStatus != "" && $id != ""){
                     $data = array("transferNote"=>$transferNote, "transferStatus"=>$transferStatus, "transferImg"=>$transferImg, "user_id"=>$user_id, 
-                                "user_email"=>$user_email, "id"=>$id);
+                                "user_email"=>$user_email, "id"=>$id, "update_at"=>$update_at);
                     
                     $value = transferPayment::updateTransfer($data);
                 }
@@ -46,10 +47,11 @@ class TransferController extends Controller
                 $sumi = $i+1;
                 $invoice = $transferฺBank_name.$sumi;
                 $transferInvoice = time().$user_id;
+                $create_at = date('Y-m-d H:i:s');
 
                 if($transferAmount != "" && $transferฺBank_name != ""){
                     $data = array("transferAmount"=>$transferAmount, "transferฺBank_name"=>$transferฺBank_name, "transferStatus"=>$transferStatus, 
-                                "user_id"=>$user_id, "user_email"=>$user_email, "invoice"=>$invoice, "transferInvoice"=>$transferInvoice);
+                                "user_id"=>$user_id, "user_email"=>$user_email, "invoice"=>$invoice, "transferInvoice"=>$transferInvoice, "create_at"=>$create_at);
                     // dd($data);
                     $value = transferPayment::insertTransfer($data);
                 }

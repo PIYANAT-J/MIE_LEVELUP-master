@@ -27,4 +27,18 @@ class Admin extends Model
     public static function createAdmin($data){
         DB::table('users')->insert($data);
     }
+
+    public static function appTransfer($data){
+        DB::table('transfer_payments')
+            ->where('id', $data['id'])
+            ->update($data);
+        return 0;
+    }
+
+    public static function approveWith($data){
+        DB::table('withdraws')
+            ->where('id', $data['id'])
+            ->update($data);
+        return 0;
+    }
 }
