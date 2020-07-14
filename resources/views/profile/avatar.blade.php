@@ -92,24 +92,26 @@
             @foreach($guest_user as $USER)
                 @if($USER->USER_ID == Auth::user()->id)
                         <div class="col-lg-9" style="background-color:#141621; ">
-                            <div class="row mt-4" >
-                                <div class="col-lg-9 px-5" style="font-family:myfont;color:#fff;font-size:2em;">Avatar</div>
+                            <div class="row mt-4 px-4" >
+                                <div class="col-lg-9 " style="font-family:myfont;color:#fff;font-size:2em;">Avatar</div>
                                 <div class="col-lg-3 text-right">
-                                    <label class="px-2" style="font-family:myfont; color:#fff; font-size:1.5em;border: 1px solid #fff;border-radius: 6px;cursor:pointer;">ซื้อขายตลาด</label>
+                                    <a href="shop"><label class="labelshop bg-shop">
+                                        <div style="font-family:myfont;font-size:20px;color:#fff;"><img style="width:1.2em;margin-right:10px;" src="{{asset('icon/shop.png') }}"/>ซื้อขายตลาด</div> 
+                                    </label></a>
                                 </div>
                             </div>
 
                             <!-- เลือกเพศ -->
                             <div class="row">
-                                <div id="userKYC" class="col-lg-4 custom01 px-5" style="font-family:myfont1;">
+                                <div id="gender" class="col-lg-4 custom01 px-5" style="font-family:myfont1;">
                                     <div class="row">
                                         <div class="col-3">
-                                            <input type="radio" name="kycApprove" value="noneApprove" id="noneApprove">
-                                            <label for="noneApprove" style="color:#fff;font-size:1.3em;">ชาย</label>
+                                            <input type="radio" name="gender2" value="man" id="man">
+                                            <label for="man" style="color:#fff;font-size:1.3em;">ชาย</label>
                                         </div>
                                         <div class="col-3">
-                                            <input type="radio" name="kycApprove" value="approve" id="approve">
-                                            <label for="approve" style="color:#fff;font-size:1.3em;" for="nl">หญิง</label>
+                                            <input type="radio" name="gender2" value="woman" id="woman">
+                                            <label for="woman" style="color:#fff;font-size:1.3em;" for="nl">หญิง</label>
                                         </div>
                                         <div class="col-6"></div>
                                     </div>
@@ -118,7 +120,7 @@
                             </div>
 
                             <!-- ตัวละครชาย -->
-                            <div class="row mx-4 noneApprovelist">
+                            <div class="row mx-4 manlist">
                                 <div class="col-lg-4">
                                     <div class="row" style="background-color:#202433;border-radius: 6px;">
                                         <div class="col-1"></div>
@@ -140,8 +142,8 @@
 
                                 <!-- ไอเทม -->
                                 <div class="col-lg-8">
-                                    <!-- <div class="noneApprovelist"> -->
-                                        <div form="userKYC">
+                                    <!-- <div class="manlist"> -->
+                                        <div form="gender">
                                             <div class="row ml-2">
                                                 <div class="col-lg-12">
                                                     <ul class="nav">
@@ -223,14 +225,14 @@
                                                                     </label>
                                                                 </div>    
                                                             </div>
-                                                            <div class="row">
+                                                            <!-- <div class="row">
                                                                 <span class="fontItem ml-4">ปาก</span>
                                                                 <div class="col-lg-12">
                                                                     <label class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/man/mouth/m.png') }}" />
                                                                     </label>
                                                                 </div>    
-                                                            </div>
+                                                            </div> -->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -327,7 +329,7 @@
                                                     <div class="row ml-0 mt-4 row6" style="background-color:#202433;border-radius: 6px;">
                                                         <div class="col-lg-12"> 
                                                             <div class="row">
-                                                                <span class="fontItem ml-4">มงกุฏ</span>
+                                                                <span class="fontItem ml-4">มงกุฏ/หมวก</span>
                                                                 <div class="col-lg-12">
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/man/other/crown/c01.png') }}" />
@@ -338,14 +340,14 @@
                                                                 </div>    
                                                             </div>
 
-                                                            <div class="row">
+                                                            <!-- <div class="row">
                                                                 <span class="fontItem ml-4">หมวก</span>
                                                                 <div class="col-lg-12">
                                                                     <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/man/other/hat/h.png') }}" />
                                                                     </label>
                                                                 </div>    
-                                                            </div>
+                                                            </div> -->
 
                                                             <div class="row">
                                                                 <span class="fontItem ml-4">ถุงมือ</span>
@@ -385,7 +387,7 @@
                             </div>
 
                             <!-- ตัวละครหญิง -->
-                            <div class="row mx-4 approvelist">
+                            <div class="row mx-4 womanlist">
                                 <div class="col-lg-4">
                                     <div class="row" style="background-color:#202433;border-radius: 6px;">
                                         <div class="col-1"></div>
@@ -407,7 +409,7 @@
 
                                 <!-- ไอเทม -->
                                 <div class="col-lg-8">
-                                        <div form="userKYC">
+                                        <div form="gender">
                                             <div class="row ml-2">
                                                 <div class="col-lg-12">
                                                     <ul class="nav">
@@ -483,14 +485,14 @@
                                                                     </label>
                                                                 </div>    
                                                             </div>
-                                                            <div class="row">
+                                                            <!-- <div class="row">
                                                                 <span class="fontItem ml-4">ปาก</span>
                                                                 <div class="col-lg-12">
                                                                     <label class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/mouth/m.png') }}" />
                                                                     </label>
                                                                 </div>    
-                                                            </div>
+                                                            </div> -->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -587,7 +589,7 @@
                                                     <div class="row ml-0 mt-4 row6" style="background-color:#202433;border-radius: 6px;">
                                                         <div class="col-lg-12"> 
                                                             <div class="row">
-                                                                <span class="fontItem ml-4">มงกุฏ</span>
+                                                                <span class="fontItem ml-4">มงกุฏ/หมวก</span>
                                                                 <div class="col-lg-12">
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/other/crown/c01.png') }}" />
@@ -598,14 +600,14 @@
                                                                 </div>    
                                                             </div>
 
-                                                            <div class="row">
+                                                            <!-- <div class="row">
                                                                 <span class="fontItem ml-4">หมวก</span>
                                                                 <div class="col-lg-12">
                                                                     <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/other/hat/h.png') }}" />
                                                                     </label>
                                                                 </div>    
-                                                            </div>
+                                                            </div> -->
 
                                                             <div class="row">
                                                                 <span class="fontItem ml-4">ถุงมือ</span>
@@ -637,13 +639,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                 </div>
                             </div>
 
-                            <div class="row my-3">
+                            <div class="row my-4">
                                 <div class="col-lg-11 text-right">
                                     <button type="submit" class="btn-avatar">บันทึก</button>
                                 </div>
@@ -651,8 +652,44 @@
                             </div>
 
                             <div class="row">
+                                <div class="col-lg-12" style="font-family:myfont;color:#fff;font-size:2em;">มินิเกม</div>
                                 <div class="col-lg-12">
-                                    <div class="owl-carousel" id="owl-demo1"></div>
+                                    <div class="owl-carousel" id="owl-demo1">
+                                        <div class="item">
+                                            <img class="minigame-img" src="{{asset('section/picture_game/game.png') }}" alt="">
+                                        </div>
+                                        <div class="item">
+                                            <img class="minigame-img" src="{{asset('section/picture_game/game2.png') }}" alt="">
+                                        </div>
+                                        <div class="item">
+                                            <img class="minigame-img" src="{{asset('section/picture_game/game3.png') }}" alt="">
+                                        </div>
+                                        <div class="item">
+                                            <img class="minigame-img" src="{{asset('section/picture_game/game4.png') }}" alt="">
+                                        </div>
+                                        <div class="item">
+                                            <img class="minigame-img" src="{{asset('section/picture_game/game5.png') }}" alt="">
+                                        </div>
+                                        <div class="item">
+                                            <img class="minigame-img" src="{{asset('section/picture_game/game6.png') }}" alt="">
+                                        </div>
+                                        <div class="item">
+                                            <img class="minigame-img" src="{{asset('section/picture_game/game7.png') }}" alt="">
+                                        </div>
+                                        <div class="item">
+                                            <img class="minigame-img" src="{{asset('section/picture_game/game8.png') }}" alt="">
+                                        </div>
+                                        <div class="item">
+                                            <img class="minigame-img" src="{{asset('section/picture_game/game9.png') }}" alt="">
+                                        </div>
+                                        <div class="item">
+                                            <img class="minigame-img" src="{{asset('section/picture_game/game10.png') }}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="btns">
+                                        <div class="nav-next1"><img class="middle" style="width:0.6em" src="{{asset('icon/next.svg') }}" /></div>
+                                        <div class="nav-prev1"><img class="middle" style="width:0.6em" src="{{asset('icon/prev.svg') }}" /></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -762,36 +799,77 @@ $(document).ready(function(){
     owl.owlCarousel({
         loop:true,
         margin:10,
-        nav:false,
-        items: 1,
-        dots: false,
+        navigation : false,
+        // navText : ["<i class='icon-prev'></i>","<i class='icon-next'></i>"],
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:2,
+                nav:false
+            },
+            600:{
+                items:3,
+                nav:false
+            },
+            730:{
+                items:3.3,
+                nav:false
+            },
+            980:{
+                items:4.3,
+                nav:false
+            },
+            1000:{
+                items:5,
+                nav:false
+            },
+            1280:{
+                items:6,
+                nav:false
+            },
+            1600:{
+                items:7,
+                nav:false
+            },
+            1680 :{
+                items:7.3,
+                nav:false,
+                loop:true
+            },
+            1920:{
+                items:8.4,
+                nav:false,
+                loop:true
+            }
+        }
     });
     
     // Custom Button
-    $('.customNextBtn2').click(function() {
+    $('.nav-next1').click(function() {
         owl.trigger('next.owl.carousel');
     });
-    $('.customPreviousBtn2').click(function() {
+    $('.nav-prev1').click(function() {
         owl.trigger('prev.owl.carousel');
     });
     
     });
 </script>
 
+
 <script>
     $(document).ready(function() {
-    $('.noneApprovelist').show();
-    $('.approvelist').hide();
-    $('input:radio[name="kycApprove"]').change(
+    $('.manlist').show();
+    $('.womanlist').hide();
+    $('input:radio[name="gender2"]').change(
     function() {
-        if ($(this).is(':checked') && $(this).val() == 'noneApprove')
+        if ($(this).is(':checked') && $(this).val() == 'man')
         {
-        $('.noneApprovelist').show();
-        $('.approvelist').hide();
+        $('.manlist').show();
+        $('.womanlist').hide();
             }
     else {
-        $('.approvelist').show();
-        $('.noneApprovelist').hide();
+        $('.womanlist').show();
+        $('.manlist').hide();
     }
         }
     );

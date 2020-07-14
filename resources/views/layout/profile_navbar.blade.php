@@ -64,7 +64,7 @@
                     <div class="col-12 col-md-10 d-none d-xl-block font_navbar home">
                         <nav class="site-navigation position-relative" role="navigation">
                             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block text-right" style="margin-top:50px;"> 
-                                <li><a href="{{ url('/') }}" class="nav-link active" style="font-family:myfont; padding:0px; margin-right:20px; ">หน้าแรก</a></li>
+                                <li><a href="{{ url('/') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px; ">หน้าแรก</a></li>
                                 <li><a href="{{ route('gameCategory') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;">หมวดหมู่</a></li>
                                 @guest
                                     <li><a href="{{ route('login-levelUp') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px">การติดตามของฉัน</a></li>
