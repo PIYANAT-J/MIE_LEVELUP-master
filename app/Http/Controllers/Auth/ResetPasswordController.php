@@ -36,7 +36,7 @@ class ResetPasswordController extends Controller
     protected $redirectTo = '/';
     
     public function userPass(){
-        dd('userPass');
+        // dd('userPass');
         $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
         if($gameShalf->count() == 0){
             $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
@@ -50,7 +50,7 @@ class ResetPasswordController extends Controller
     }
 
     public function passwordUserReset(Request $req){
-        dd('passwordUserReset');
+        // dd('passwordUserReset');
         if($req->input('submit') != null){
             // dd($req);
             $validate = $req->validate([

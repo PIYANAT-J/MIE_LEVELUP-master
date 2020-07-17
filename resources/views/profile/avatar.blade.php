@@ -93,8 +93,11 @@
                 @if($USER->USER_ID == Auth::user()->id)
                         <div class="col-lg-9" style="background-color:#141621; ">
                             <div class="row mt-4 px-4" >
-                                <div class="col-lg-9 " style="font-family:myfont;color:#fff;font-size:2em;">Avatar</div>
-                                <div class="col-lg-3 text-right">
+                                <div class="col-lg-6 " style="font-family:myfont;color:#fff;font-size:2em;">Avatar</div>
+                                <div class="col-lg-6 text-right">
+                                    <a href="/simulator_trade"><label class="labelshop bg-shop">
+                                        <div style="font-family:myfont;font-size:20px;color:#fff;">Simulator Trade</div> 
+                                    </label></a>
                                     <a href="shop"><label class="labelshop bg-shop">
                                         <div style="font-family:myfont;font-size:20px;color:#fff;"><img style="width:1.2em;margin-right:10px;" src="{{asset('icon/shop.png') }}"/>ซื้อขายตลาด</div> 
                                     </label></a>
