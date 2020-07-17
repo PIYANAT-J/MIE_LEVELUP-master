@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="107.386" height="15.03" viewBox="0 0 107.386 15.03">
+    <g id="prefix__Group_2844" data-name="Group 2844">
+        <g id="prefix__Icon_security" data-name="Icon/security" transform="translate(0 1.763)">
+            <path id="prefix__Path_159" fill="#a0a0a0" d="M45.9 5.585l-5.489-2.109a.6.6 0 0 0-.429 0l-5.488 2.109a.52.52 0 0 0-.345.479v2.563a8.705 8.705 0 0 0 5.836 8.039.6.6 0 0 0 .423 0 8.705 8.705 0 0 0 5.836-8.039V6.063a.519.519 0 0 0-.344-.478zm-.775 3.042a7.644 7.644 0 0 1-4.927 7 7.647 7.647 0 0 1-4.927-7V6.409L40.2 4.516l4.927 1.894zm-5.546 1.747l2.407-2.228a.592.592 0 0 1 .792 0 .491.491 0 0 1 0 .733l-2.8 2.594a.592.592 0 0 1-.792 0l-1.565-1.448a.491.491 0 0 1 0-.733.592.592 0 0 1 .792 0z" data-name="Path 159" transform="translate(-34.149 -3.436)"/>
+        </g>
+        <g id="prefix__Group_146" data-name="Group 146" transform="translate(15.386)">
+            <text id="prefix__ธนาคารไทยพาณิชย์" fill="#a0a0a0" font-family="DBHeavent-Med, DB Heavent" font-size="11px" transform="translate(0 9)">
+                <tspan x="0" y="0">SECURITY GUARANTEED</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
