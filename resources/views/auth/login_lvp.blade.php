@@ -59,6 +59,34 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="popupmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-1"></div>
+                <div class="col-10 text-center" style="font-family:myfont;font-wieght:bold;font-size:1.2em;color:#000;">แจ้งเตือน</div>
+                    <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
+                <div class="col-1"></div>
+            </div>
+
+            <div class="modal-body font-rate-modal">
+                <div class="row px-3">
+                    <div class="col-lg-12 pb-1">
+                        <div class="row"><label class="status-none-approve" style="text-align:center;">{{ Session::get('email') }}</label></div>
+                        <!-- <div class="row bg-disabled mb-2 py-2">
+                            <div class="col-3"><input type="text" id="modal" value="modal" class="input-disable" disabled></input></div>
+                            <div class="col-9 text-right">
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <button type="button" class="btn-submit-modal-red d-none">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-6 bg_login"><div>
@@ -68,4 +96,26 @@
 
 @section('script')
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+@if( Session::has('email'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#popupmodal').modal();
+        });
+    </script>
+    <!-- <div id="popupmodal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Notification: Please read</h3>
+        </div>
+        <div class="modal-body">
+            <p>
+                {{ Session::get('email') }}
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
+    </div> -->
+@endif
 @endsection

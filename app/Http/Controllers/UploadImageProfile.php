@@ -90,6 +90,7 @@ class UploadImageProfile extends Controller
         }
     }
 
+
     public function Avatar(){
         $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
         if($gameShalf->count() == 0){
@@ -100,6 +101,111 @@ class UploadImageProfile extends Controller
             $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
             $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
             return view('profile.avatar', compact('guest_user', 'userKyc'));
+        }
+    }
+
+    public function Shop(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('shop', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('shop', compact('guest_user', 'userKyc'));
+        }
+    }
+
+    public function Sale(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('sale_item', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('sale_item', compact('guest_user', 'userKyc'));
+        }
+    }
+
+    public function AddSaleItem(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('add_sale_item', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('add_sale_item', compact('guest_user', 'userKyc'));
+        }
+    }
+
+    public function ShoppingCart(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('shopping_cart', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('shopping_cart', compact('guest_user', 'userKyc'));
+        }
+    }
+
+    public function Payment(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('payment', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('payment', compact('guest_user', 'userKyc'));
+        }
+    }
+
+    
+    public function SimulatorTrade(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('simulator_trade', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('simulator_trade', compact('guest_user', 'userKyc'));
+        }
+    }
+
+    public function MyTrade(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('my_trade', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('my_trade', compact('guest_user', 'userKyc'));
+        }
+    }
+
+    public function RankingTrade(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('ranking_trade', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('ranking_trade', compact('guest_user', 'userKyc'));
         }
     }
 
@@ -231,6 +337,7 @@ class UploadImageProfile extends Controller
     
             // Insert && Update
             if($request->has('GUEST_USERS_IMG')){
+                // dd($request->file('GUEST_USERS_IMG'));
                 $upload = $request->file('GUEST_USERS_IMG');
                 $img_name = 'USER_'.time().'.'.$upload->getClientOriginalExtension();
                 $path = public_path('home/imgProfile');
@@ -239,7 +346,17 @@ class UploadImageProfile extends Controller
                     $constraint->aspectRatio();
                    })->save($path . '/' . $img_name);
                 $upload->move($path, $img_name);
-
+                // dd($img_name);
+                $validate = $request->validate([
+                    'GUEST_USERS_TEL' => ['required', 'string', 'min:10', 'max:10', 'regex:/[08|09|06]\d{8}$/'],
+                    'GUEST_USERS_ID_CARD' => ['required', 'string', 'min:13', 'max:13', 'regex:/^\d{13}$/'],
+                    'name' => ['required', 'string', 'min:2', 'max:255', 'regex:/^[.\D]*$/'],
+                    'surname' => ['required', 'string', 'min:2', 'max:255', 'regex:/^[.\D]*$/'],
+                    // 'img_name' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+                    // '' => ['', '', '', '', ''],
+                    
+                ]);
+                
                 $GUEST_USERS_TEL = $request->input('GUEST_USERS_TEL');
                 $GUEST_USERS_ID_CARD = $request->input('GUEST_USERS_ID_CARD');
                 $GUEST_USERS_IMG = $img_name;
@@ -267,7 +384,7 @@ class UploadImageProfile extends Controller
                     $data = array("GUEST_USERS_TEL"=>$GUEST_USERS_TEL, "GUEST_USERS_ID_CARD"=>$GUEST_USERS_ID_CARD, "GUEST_USERS_IMG"=>$GUEST_USERS_IMG, "GUEST_USERS_BIRTHDAY"=>$GUEST_USERS_BIRTHDAY,
                                 "GUEST_USERS_AGE"=>$GUEST_USERS_AGE, "GUEST_USERS_GENDER"=>$GUEST_USERS_GENDER, "GUEST_USERS_ADDRESS"=>$GUEST_USERS_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
                                 "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY, "name"=>$name, "surname"=>$surname);
-                    // die('<pre>'. print_r($data, 1));
+                    // dd($data);
                     // Insert && Update
                     $value = Guest_user::InsertAndUpdateData($data);
                     if($value){
@@ -277,6 +394,23 @@ class UploadImageProfile extends Controller
                     }
                 }
             }else{
+                // $request = (array)$request;
+                // dd(getType($request));
+                $validate = $request->validate([
+                    'GUEST_USERS_TEL' => ['required', 'string', 'min:10', 'max:10', 'regex:/[08|09|06]\d{8}$/'],
+                    'GUEST_USERS_ID_CARD' => ['required', 'string', 'min:13', 'max:13', 'regex:/^\d{13}$/'],
+                    'name' => ['required', 'string', 'min:2', 'max:255', 'regex:/^[.\D]*$/'],
+                    'surname' => ['required', 'string', 'min:2', 'max:255', 'regex:/^[.\D]*$/'],
+                    // '' => ['', '', '', '', ''],
+                    // '' => ['', '', '', '', ''],
+                    
+                ]);
+                // if($validate->fails()){
+                //     return redirect('post/create')
+                //         ->withErrors($validate)
+                //         ->withInput();
+                // }
+                
                 $GUEST_USERS_TEL = $request->input('GUEST_USERS_TEL');
                 $GUEST_USERS_ID_CARD = $request->input('GUEST_USERS_ID_CARD');
                 
@@ -304,8 +438,8 @@ class UploadImageProfile extends Controller
                                 "GUEST_USERS_AGE"=>$GUEST_USERS_AGE, "GUEST_USERS_GENDER"=>$GUEST_USERS_GENDER, "GUEST_USERS_ADDRESS"=>$GUEST_USERS_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
                                 "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY, "name"=>$name, "surname"=>$surname);
                     // $user = array("name"=>$name, "surname"=>$surname);
-                    // Insert && Update
-                    // die('<pre>'. print_r($data, 1));
+                    
+                    // dd($data);
                     $value = Guest_user::InsertAndUpdateData($data);
                     if($value){
                         Session::flash('message','Insert successfully.');

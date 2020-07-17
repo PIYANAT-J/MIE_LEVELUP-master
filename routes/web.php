@@ -20,9 +20,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'GameController@indexGame')->name('LEVELup');
 Route::post('/Follow', 'FollowController@followGame')->name('Follow');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::view('/loginlvp', 'auth.login_lvp')->name('login-levelUp');
 Route::view('/registerlvp', 'auth.register_lvp')->name('register-levelUp');
+
+// Route::view('/reset', 'auth.passwords.reset');
+// Route::view('/email', 'auth.passwords.email');
+Route::view('/confirm', 'auth.passwords.confirm');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
@@ -77,8 +81,10 @@ Route::post('/kyc/create', 'KycController@createKyc')->name('CreateKyc');
 
 Route::get('/user_shelf', 'UploadImageProfile@user_shelf')->name('UserShelf');
 
-Route::view('/user_history', 'profile.point.userlvp_history')->name('UserHistory');
-Route::view('/user_rank', 'profile.userlvp_rank')->name('UserRank');
+// Route::view('/user_history', 'profile.point.userlvp_history')->name('UserHistory');
+// Route::view('/user_rank', 'profile.userlvp_rank')->name('UserRank');
+Route::get('/user_history', 'TransferController@userPoint')->name('UserHistory');
+Route::get('/user_rank', 'TransferController@userRank')->name('UserRank');
 
 Route::get('/user_topup', 'qrPaymentController@indexPayment')->name('UserTopup');
 Route::post('/user_topup/qrCode', 'qrPaymentController@mobilebanking')->name('QrPayment');
@@ -86,7 +92,9 @@ Route::post('/user_topup/transfer', 'TransferController@transferPayment')->name(
 // Route::get('/user_topup/qrCode/{invoice}', 'qrPaymentController@qrcode')->name('qrcode');
 
 
-Route::view('/user_change_password', 'profile.password.userlvp_change_password');
+// Route::view('/user_change_password', 'profile.password.userlvp_change_password');
+Route::get('/user_change_password', 'Auth\ResetPasswordController@userPass')->name('userPsss');
+Route::post('/user_change_password/Reset', 'Auth\ResetPasswordController@passwordUserReset')->name('passwordUserReset');
 
 // developer
 Route::get('/develper_profile', 'UploadImageProfile@Developer')->name('DevProfile');
@@ -120,14 +128,27 @@ Route::get('/sponsor_management', 'AdminController@kycSpon')->name('SponsorManag
 Route::post('/user_management/approve', 'AdminController@approveKyc')->name('AppKyc');
 
 //admin game approve
-Route::view('/game_management', 'admin_lvp.admin_game.game_management')->name('GameManagement');
+Route::get('/game_management', 'AdminController@gameDev')->name('GameManagement');
+Route::post('/game_management/approve', 'AdminController@approveGame')->name('ApproveGame');
 Route::view('/rate_management', 'admin_lvp.admin_game.rate_management')->name('RateManagement');
 
-Route::view('/topup_management', 'admin_lvp.admin_topup.topup_management')->name('TopupManagement');
-Route::view('/withdraw_management', 'admin_lvp.admin_topup.withdraw_management')->name('WithdrawManagement');
+Route::get('/topup_management', 'AdminController@transfer')->name('TopupManagement');
+Route::post('/topup_management/Transfer', 'AdminController@approveTransfer')->name('ApproveTransfer');
+
+Route::get('/withdraw_management', 'AdminController@withDraw')->name('WithdrawManagement');
+Route::post('/withdraw_management/approve', 'AdminController@approveWithdraw')->name('AppWithDraw');
 
 Route::view('/product', 'product')->name('Product');
 
 Route::view('/admin_change_password', 'profile.password.adminlvp_change_password');
 
 Route::get('/avatar', 'UploadImageProfile@Avatar')->name('Avatar');
+
+Route::get('/shop', 'UploadImageProfile@Shop')->name('Shop');
+Route::get('/sale', 'UploadImageProfile@Sale')->name('Sale');
+Route::get('/add_sale_item', 'UploadImageProfile@AddSaleItem')->name('AddSaleItem');
+Route::get('/shopping_cart', 'UploadImageProfile@ShoppingCart')->name('ShoppingCart');
+Route::get('/payment', 'UploadImageProfile@Payment')->name('Payment');
+Route::get('/simulator_trade', 'UploadImageProfile@SimulatorTrade')->name('SimulatorTrade');
+Route::get('/my_trade', 'UploadImageProfile@MyTrade')->name('MyTrade');
+Route::get('/ranking_trade', 'UploadImageProfile@RankingTrade')->name('RankingTrade');

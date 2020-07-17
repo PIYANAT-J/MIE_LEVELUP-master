@@ -26,7 +26,9 @@ class CreateTransferPaymentsTable extends Migration
             $table->string('blockchain', 255)->collation('utf8_unicode_ci')->nullable();
             $table->integer('user_id');
             $table->string('user_email')->collation('utf8_unicode_ci');
-            $table->timestamps();
+            $table->string('admin_name')->collation('utf8_unicode_ci')->nullable();
+            $table->dateTime('create_at')->nullable();
+            $table->dateTime('update_at')->nullable();
         });
     }
 

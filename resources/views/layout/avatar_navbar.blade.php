@@ -64,7 +64,7 @@
                     <div class="col-12 col-md-10 d-none d-xl-block font_navbar home">
                         <nav class="site-navigation position-relative" role="navigation">
                             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block text-right" style="margin-top:50px;"> 
-                                <li><a href="{{ url('/') }}" class="nav-link active" style="font-family:myfont; padding:0px; margin-right:20px;color:#fff; ">หน้าแรก</a></li>
+                                <li><a href="{{ url('/') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;color:#fff; ">หน้าแรก</a></li>
                                 <li><a href="{{ route('gameCategory') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;color:#fff;">หมวดหมู่</a></li>
                                 @guest
                                     <li><a href="{{ route('login-levelUp') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px;color:#fff;">การติดตามของฉัน</a></li>
@@ -89,8 +89,25 @@
                                         @endif
                             </ul>
                                 @else
+                                <li class="labelWithImg">
+                                    <a href="/shopping_cart">
+                                        <img style="width:1.3em" src="{{asset('icon/shopping-cart.png') }}" />
+                                        <span class="font-shop">3</span>
+                                    </a>
+                                </li>
                                 <li class="has-children">
-                                <img class="nav-pic " src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
+                                    @if(Auth::user()->users_type == '2')
+                                        @foreach($developer as $Dev)
+                                            <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" />
+                                        @endforeach
+                                    @elseif(Auth::user()->users_type == '3')
+                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
+                                    @else
+                                        @foreach($guest_user as $USER)
+                                            <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
+                                        @endforeach
+                                    @endif
+                                <!-- <img class="nav-pic " src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" /> -->
                                     <a href="#about-section" class="nav-link font_name" style="color:#fff;">{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
                                     <ul class="dropdown">
                                         <li class="nav-item">

@@ -57,7 +57,7 @@
             <div class="col-lg-3"></div>
             <div class="col-lg-6">
                 <div class="row mt-3 ml-0">
-                    <div class="col-1 pt-3"><img src="{{asset('section/game_rate/'.$detailGame->RATED_ESRB) }}" /></div>
+                    <div class="col-1 pt-3"><img src="{{asset('section/game_rate/'.$detailGame->RATED_ESRB.'.svg') }}" /></div>
                     <div class="col-7 ">
                         <p class="font_detail3 pt-4 ml-1 ">
                             @if(isset($CommentAll))

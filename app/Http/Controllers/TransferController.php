@@ -9,8 +9,47 @@ use Auth;
 
 use App\TransferPayment;
 
-class TransferController extends Controller
-{
+class TransferController extends Controller{
+
+    public function userPass(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('profile.password.userlvp_change_password', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('profile.password.userlvp_change_password', compact('guest_user', 'userKyc'));
+        }
+    }
+
+    public function userPoint(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('profile.point.userlvp_history', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('profile.point.userlvp_history', compact('guest_user', 'userKyc'));
+        }
+    }
+
+    public function userRank(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('profile.userlvp_rank', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('profile.userlvp_rank', compact('guest_user', 'userKyc'));
+        }
+    }
+
     public function transferPayment(Request $req){
         if($req->input('submit') != null){
             if($req->has('transferImg')){
@@ -25,10 +64,11 @@ class TransferController extends Controller
                 $user_id = Auth::user()->id;
                 $user_email = Auth::user()->email;
                 $id = $req->input('id');
+                $update_at = date('Y-m-d H:i:s');
 
                 if($transferImg != "" && $transferStatus != "" && $id != ""){
                     $data = array("transferNote"=>$transferNote, "transferStatus"=>$transferStatus, "transferImg"=>$transferImg, "user_id"=>$user_id, 
-                                "user_email"=>$user_email, "id"=>$id);
+                                "user_email"=>$user_email, "id"=>$id, "update_at"=>$update_at);
                     
                     $value = transferPayment::updateTransfer($data);
                 }
@@ -46,10 +86,11 @@ class TransferController extends Controller
                 $sumi = $i+1;
                 $invoice = $transferฺBank_name.$sumi;
                 $transferInvoice = time().$user_id;
+                $create_at = date('Y-m-d H:i:s');
 
                 if($transferAmount != "" && $transferฺBank_name != ""){
                     $data = array("transferAmount"=>$transferAmount, "transferฺBank_name"=>$transferฺBank_name, "transferStatus"=>$transferStatus, 
-                                "user_id"=>$user_id, "user_email"=>$user_email, "invoice"=>$invoice, "transferInvoice"=>$transferInvoice);
+                                "user_id"=>$user_id, "user_email"=>$user_email, "invoice"=>$invoice, "transferInvoice"=>$transferInvoice, "create_at"=>$create_at);
                     // dd($data);
                     $value = transferPayment::insertTransfer($data);
                 }

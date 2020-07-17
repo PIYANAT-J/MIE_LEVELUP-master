@@ -13,7 +13,7 @@
                                 <img class="sidebar-pic" src="{{asset('dist/images/person_5.jpg') }}" />
                             </div>
                             <div class="col-7 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1.1em;">ชื่อ-นามสกุล</b></br>Admin</br>เป็นสมาชิก:25/05/63</span>
+                                <span><b style="font-family: myfont;font-size: 1.1em;">{{Auth::user()->name}}-{{Auth::user()->surname}}</b></br>Admin</br>เป็นสมาชิก:{{Auth::user()->created_at}}</span>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,10 @@
                     <a href="/product" style="width: 100%;"><button class="btn-sidebar"><i class="icon-product" style="font-size:0.85em;padding:0px 15px 0px 5px;"></i>จัดการสินค้า</button></a>
                     <a href="/package" style="width: 100%;"><button class="btn-sidebar"><img class="pic6" src="{{asset('icon/package.png') }}" />จัดการแพ็คเกจ</button></a>
                     <a href="/admin_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เปลี่ยนรหัสผ่าน</button></a>
-                    <button class="btn-sidebar"><img class="pic4" src="{{asset('icon/logout.svg') }}" />ออกจากระบบ</button>
+                    <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><img class="pic4" src="{{asset('icon/logout.svg') }}" />ออกจากระบบ</button></a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </div>
             </div>
         <!-- sidebar -->
@@ -117,43 +120,36 @@
                                             <div class="col-2 py-3 th1">อัพเดตล่าสุด</div>
                                         </div>
                                         <div class="row row4"> 
-                                           <div class="col-lg-12">
-                                                <div class="row item">
-                                                    <div class="col-1 py-1 td1">1</div>
-                                                    <div class="col-2 py-1 td1">ชื่อเกม 1</div>
-                                                    <div class="col-2 py-1 td1">ชื่อผู้พัฒนา</div>
-                                                    <div class="col-2 py-1 td1">Action</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label>
-                                                        <!-- <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label> -->
-                                                    </div>
-                                                    <div class="col-1 py-1 td1"></div>
-                                                    <div class="col-2 py-1 td1">23/06/63</div>
-                                                </div>
-                                                <div class="row item">
-                                                    <div class="col-1 py-1 td1">2</div>
-                                                    <div class="col-2 py-1 td1">ชื่อเกม 2</div>
-                                                    <div class="col-2 py-1 td1">ชื่อผู้พัฒนา</div>
-                                                    <div class="col-2 py-1 td1">MMORPG</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <!-- <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label> -->
-                                                        <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1">admin02</div>
-                                                    <div class="col-2 py-1 td1">20/06/63</div>
-                                                </div>
-                                                <div class="row item">
-                                                    <div class="col-1 py-1 td1">3</div>
-                                                    <div class="col-2 py-1 td1">ชื่อเกม 3</div>
-                                                    <div class="col-2 py-1 td1">ชื่อผู้พัฒนา</div>
-                                                    <div class="col-2 py-1 td1">MOBA</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <!-- <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label> -->
-                                                        <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1">admin01</div>
-                                                    <div class="col-2 py-1 td1">20/06/63</div>
-                                                </div>
+                                            <div class="col-lg-12">
+                                                <?php $i = 1; ?>
+                                                @foreach($game as $gameList)
+                                                    @if($gameList->GAME_STATUS == "รออนุมัติ")
+                                                        <div class="row item">
+                                                            <div class="col-1 py-1 td1">{{$i}}</div>
+                                                            <div class="col-2 py-1 td1">{{$gameList->GAME_NAME}}</div>
+                                                            <div class="col-2 py-1 td1">{{$gameList->name}} {{$gameList->surname}}</div>
+                                                            <div class="col-2 py-1 td1">{{$gameList->GAME_TYPE}}</div>
+                                                            <div class="col-2 py-1 td1">
+                                                                <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$gameList->GAME_ID}}">รอการตรวจสอบ</label>
+                                                            </div>
+                                                            <div class="col-1 py-1 td1">{{$gameList->ADMIN_NAME}}</div>
+                                                            <div class="col-2 py-1 td1">{{explode(' ',$gameList->GAME_DATE)[0]}}</div>
+                                                        </div>
+                                                    @elseif($gameList->GAME_STATUS == "อนุมัติ")
+                                                        <div class="row item">
+                                                            <div class="col-1 py-1 td1">{{$i}}</div>
+                                                            <div class="col-2 py-1 td1">{{$gameList->GAME_NAME}}</div>
+                                                            <div class="col-2 py-1 td1">{{$gameList->name}} {{$gameList->surname}}</div>
+                                                            <div class="col-2 py-1 td1">{{$gameList->GAME_TYPE}}</div>
+                                                            <div class="col-2 py-1 td1">
+                                                                <label class="status-approve" data-toggle="modal" data-target="#Approve{{$gameList->GAME_ID}}">อนุมัติแล้ว</label>
+                                                            </div>
+                                                            <div class="col-1 py-1 td1">{{$gameList->ADMIN_NAME}}</div>
+                                                            <div class="col-2 py-1 td1">{{explode(' ',$gameList->GAME_DATE)[0]}}</div>
+                                                        </div>
+                                                    @endif
+                                                    <?php $i = $i+1; ?>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -169,18 +165,24 @@
                                             <div class="col-2 py-3 th1">อัพเดตล่าสุด</div>
                                         </div>
                                         <div class="row row4"> 
-                                           <div class="col-lg-12">
-                                                <div class="row item">
-                                                    <div class="col-1 py-1 td1">1</div>
-                                                    <div class="col-2 py-1 td1">ชื่อเกม 1</div>
-                                                    <div class="col-2 py-1 td1">ชื่อผู้พัฒนา</div>
-                                                    <div class="col-2 py-1 td1">Action</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1"></div>
-                                                    <div class="col-2 py-1 td1">23/06/63</div>
-                                                </div>
+                                            <div class="col-lg-12">
+                                                <?php $i = 1; ?>
+                                                @foreach($game as $gameList)
+                                                    @if($gameList->GAME_STATUS == "รออนุมัติ")
+                                                        <div class="row item">
+                                                            <div class="col-1 py-1 td1">{{$i}}</div>
+                                                            <div class="col-2 py-1 td1">{{$gameList->GAME_NAME}}</div>
+                                                            <div class="col-2 py-1 td1">{{$gameList->name}} {{$gameList->surname}}</div>
+                                                            <div class="col-2 py-1 td1">{{$gameList->GAME_TYPE}}</div>
+                                                            <div class="col-2 py-1 td1">
+                                                                <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$gameList->GAME_ID}}">รอการตรวจสอบ</label>
+                                                            </div>
+                                                            <div class="col-1 py-1 td1">{{$gameList->ADMIN_NAME}}</div>
+                                                            <div class="col-2 py-1 td1">{{explode(' ',$gameList->GAME_DATE)[0]}}</div>
+                                                        </div>
+                                                    @endif
+                                                    <?php $i = $i+1; ?>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -223,29 +225,24 @@
                                             <div class="col-2 py-3 th1">อัพเดตล่าสุด</div>
                                         </div>
                                         <div class="row row4"> 
-                                           <div class="col-lg-12">
-                                                <div class="row item">
-                                                    <div class="col-1 py-1 td1">1</div>
-                                                    <div class="col-2 py-1 td1">ชื่อเกม 2</div>
-                                                    <div class="col-2 py-1 td1">ชื่อผู้พัฒนา</div>
-                                                    <div class="col-2 py-1 td1">MMORPG</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1">admin02</div>
-                                                    <div class="col-2 py-1 td1">20/06/63</div>
-                                                </div>
-                                                <div class="row item">
-                                                    <div class="col-1 py-1 td1">2</div>
-                                                    <div class="col-2 py-1 td1">ชื่อเกม 3</div>
-                                                    <div class="col-2 py-1 td1">ชื่อผู้พัฒนา</div>
-                                                    <div class="col-2 py-1 td1">MOBA</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1">admin01</div>
-                                                    <div class="col-2 py-1 td1">20/06/63</div>
-                                                </div>
+                                            <div class="col-lg-12">
+                                                <?php $i = 1; ?>
+                                                @foreach($game as $gameList)
+                                                    @if($gameList->GAME_STATUS == "อนุมัติ")
+                                                        <div class="row item">
+                                                            <div class="col-1 py-1 td1">{{$i}}</div>
+                                                            <div class="col-2 py-1 td1">{{$gameList->GAME_NAME}}</div>
+                                                            <div class="col-2 py-1 td1">{{$gameList->name}} {{$gameList->surname}}</div>
+                                                            <div class="col-2 py-1 td1">{{$gameList->GAME_TYPE}}</div>
+                                                            <div class="col-2 py-1 td1">
+                                                                <label class="status-approve" data-toggle="modal" data-target="#Approve{{$gameList->GAME_ID}}">อนุมัติแล้ว</label>
+                                                            </div>
+                                                            <div class="col-1 py-1 td1">{{$gameList->ADMIN_NAME}}</div>
+                                                            <div class="col-2 py-1 td1">{{explode(' ',$gameList->GAME_DATE)[0]}}</div>
+                                                        </div>
+                                                    @endif
+                                                    <?php $i = $i+1; ?>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -259,7 +256,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="pendingApprove" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach($game as $gameModal)
+<div class="modal fade" id="pendingApprove{{$gameModal->GAME_ID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -268,80 +266,89 @@
                 <button type="button" class="close btn-closeModal ml-3" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
                 <div class="col-1"></div>
             </div>
-
             <div class="modal-body font-rate-modal">
-                <div class="row px-3">
-                    <div class="col-lg-6 pb-1">
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-lg-12"><input type="text" class="input-disable" placeholder="ชื่อเกม" disabled></input></div>
-                        </div>
-                        <div class="row bg-disabled mb-2 pt-3 pb-1">
-                            <div class="col-lg-12">
-                                <label for="" style="color:#757589;">คำอธิบาย</label>
+                <form action="{{route('ApproveGame')}}" method="post">
+                    @csrf
+                    <div class="row px-3">
+                        <div class="col-lg-6 pb-1">
+                            <div class="row bg-disabled mb-2 py-2">
+                                <div class="col-lg-12"><input type="text" class="input-disable" value="{{$gameModal->GAME_NAME}}" placeholder="ชื่อเกม" disabled></input></div>
+                            </div>
+                            <div class="row bg-disabled mb-2 pt-3 pb-1">
+                                <div class="col-lg-12">
+                                    <label for="" style="color:#757589;">{{$gameModal->GAME_DESCRIPTION}}</label>
+                                </div>
+                            </div>
+                            <div class="row bg-disabled mb-2 py-2">
+                                <div class="col-lg-12"><input type="text" class="input-disable" value="{{$gameModal->name}} {{$gameModal->surname}}" placeholder="ชื่อผู้พัฒนา" disabled></input></div>
+                            </div>
+                            <div class="row bg-disabled mb-2 py-2">
+                                <div class="col-lg-12"><input type="text" class="input-disable" value="{{$gameModal->GAME_TYPE}}" placeholder="ประเภทเกม" disabled></input></div>
+                            </div>
+                            <div class="row bg-disabled mb-2 py-2">
+                                <div class="col-lg-12"><input type="text" class="input-disable" value="{{$gameModal->RATED_ESRB}}" placeholder="เรทเกม" disabled></input></div>
+                            </div>
+                            <div class="row bg-disabled mb-2 py-2">
+                                <div class="col-lg-12"><input type="text" class="input-disable" value="{{$gameModal->RATED_B_L}}" placeholder="เรทเนื้อหา" disabled></input></div>
+                            </div>
+                            <div class="row bg-disabled mb-2 py-2">
+                                <div class="col-8"><input type="text" class=" input-disable" value="{{$gameModal->GAME_FILE}}" placeholder="ชื่อไฟล์เกม" disabled></input></div>
+                                <div class="col-4"><input type="text" class=" input-disable" value="{{$gameModal->GAME_SIZE}}" placeholder="ขนาดไฟล์เกม" disabled></input></div>
                             </div>
                         </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-lg-12"><input type="text" class="input-disable" placeholder="ชื่อผู้พัฒนา" disabled></input></div>
-                        </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-lg-12"><input type="text" class="input-disable" placeholder="ประเภทเกม" disabled></input></div>
-                        </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-lg-12"><input type="text" class="input-disable" placeholder="เรทเกม" disabled></input></div>
-                        </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-lg-12"><input type="text" class="input-disable" placeholder="เรทเนื้อหา" disabled></input></div>
-                        </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-8"><input type="text" class=" input-disable" placeholder="ชื่อไฟล์เกม" disabled></input></div>
-                            <div class="col-4"><input type="text" class=" input-disable" placeholder="ขนาดไฟล์เกม" disabled></input></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 pb-1">
-                        <div class="row">
-                            <div class="col-lg-12" style="color:#000;font-family:myfont;">รูปภาพหน้าปก</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <img class="game-approve-pic" src="{{asset('section/picture_game/game9.png') }}" />
+                        <div class="col-lg-6 pb-1">
+                            <div class="row">
+                                <div class="col-lg-12" style="color:#000;font-family:myfont;">รูปภาพหน้าปก</div>
                             </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <img class="game-approve-pic" src="{{asset('section/File_game/Profile_game/'.$gameModal->GAME_IMG_PROFILE) }}" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12 mt-2" style="color:#000;font-family:myfont;">รูปภาพเพิ่มเติม</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    @foreach($gameImg as $GameImg)
+                                        @if($GameImg->GAME_ID == $gameModal->GAME_ID)
+                                            <img class="game-approve-pic-etc" src="{{asset('section/picture_game/Game_Img/'.$GameImg->GAME_IMG_NAME) }}" />
+                                        @endif
+                                    @endforeach
+                                    <!-- <img class="game-approve-pic-etc" src="{{asset('section/picture_game/game9.png') }}" />
+                                    <img class="game-approve-pic-etc" src="{{asset('section/picture_game/game10.png') }}" />
+                                    <img class="game-approve-pic-etc" src="{{asset('section/picture_game/game11.png') }}" />
+                                    <img class="game-approve-pic-etc" src="{{asset('section/picture_game/game12.png') }}" />
+                                    <img class="game-approve-pic-etc" src="{{asset('section/picture_game/game13.png') }}" />
+                                    <img class="game-approve-pic-etc" src="{{asset('section/picture_game/game14.png') }}" /> -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 bg-disabled pt-3 pb-1">
+                            <label for="" style="color:#757589;">{{$gameModal->GAME_DESCRIPTION_FULL}}</label>
                         </div>
 
-                        <div class="row">
-                            <div class="col-lg-12 mt-2" style="color:#000;font-family:myfont;">รูปภาพเพิ่มเติม</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <img class="game-approve-pic-etc" src="{{asset('section/picture_game/game9.png') }}" />
-                                <img class="game-approve-pic-etc" src="{{asset('section/picture_game/game10.png') }}" />
-                                <img class="game-approve-pic-etc" src="{{asset('section/picture_game/game11.png') }}" />
-                                <img class="game-approve-pic-etc" src="{{asset('section/picture_game/game12.png') }}" />
-                                <img class="game-approve-pic-etc" src="{{asset('section/picture_game/game13.png') }}" />
-                                <img class="game-approve-pic-etc" src="{{asset('section/picture_game/game14.png') }}" />
-                            </div>
+                        <div class="checkbox ml-3 mt-2">
+                            <input type="checkbox" id="checkbox_01{{$gameModal->GAME_ID}}" name="accept_01">
+                            <label for="checkbox_01{{$gameModal->GAME_ID}}" style="color:#000;font-weight:bold;padding-top:2px;padding-left:10px;" >อนุมัติ</label>
                         </div>
                     </div>
-                    
-                    <div class="col-lg-12 bg-disabled pt-3 pb-1">
-                        <label for="" style="color:#757589;">รายละเอียด</label>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <button name="submit" value="submit" class="btn-submit-modal-red">ยืนยัน</button>
+                            <input type="hidden" name="GAME_ID" value="{{$gameModal->GAME_ID}}">
+                            <input type="hidden" name="GAME_APPROVE_DATE" value="{{ date('Y-m-d H:i:s') }}">  
+                        </div>
                     </div>
-
-                    <div class="checkbox ml-3 mt-2">
-                        <input type="checkbox" id="checkbox_01" name="accept_01">
-                        <label for="checkbox_01" style="color:#000;font-weight:bold;padding-top:2px;padding-left:10px;" >อนุมัติ</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <button type="button" class="btn-submit-modal-red">ยืนยัน</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="Approve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Approve{{$gameModal->GAME_ID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -418,7 +425,7 @@
         </div>
     </div>
 </div>
-
+@endforeach
 
 <!-- พื้นหลัง -->
 <div class="container-fluid">

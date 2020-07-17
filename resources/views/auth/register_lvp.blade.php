@@ -41,49 +41,52 @@
                                 <div style="font-family: myfont;color: #383838;font-size: 25px; margin-left:-13px">กรุณากรอกข้อมูลส่วนตัวให้ครบถ้วน</div>
                                 <div class="row ">
                                     <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
-                                        <input id="name" name="name" class="input-name-reg @error('name') is-invalid @enderror"  placeholder="ชื่อ" value="{{ old('name') }}" required autocomplete="name">
+                                        <input id="name" name="name" class="input-name-reg @error('name') is-denger @enderror"  placeholder="ชื่อ" value="{{ old('name') }}" autocomplete="name">
                                         @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <!-- <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('name') }}</strong>
+                                            </span> -->
+                                            <span class="text-danger">กรุณากรอกชื่อ...</span>
                                         @enderror
                                     </div>
                                     <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
-                                        <input id="surname" name="surname" class="input-name-reg @error('surname') is-invalid @enderror"  placeholder="นามสกุล" value="{{ old('surname') }}" required autocomplete="surname">
+                                        <input id="surname" name="surname" class="input-name-reg @error('surname') is-invalid @enderror"  placeholder="นามสกุล" value="{{ old('surname') }}" autocomplete="surname">
                                         @error('surname')
-                                            <span class="invalid-feedback" role="alert">
+                                            <!-- <span class="text-danger" role="alert">
                                                 <strong>{{ $message }}</strong>
-                                            </span>
+                                            </span> -->
+                                            <span class="text-danger">กรุณากรอกนามสกุล...</span>
                                         @enderror
                                     </div>
                                     <div class="col-lg-12" style="padding:5px 3px 0px 3px;"data-toggle="tooltip" data-placement="bottom" title="example@email.com">
-                                        <input id="email" type="email" name="email" class="input-name-reg  @error('email') is-invalid @enderror"  placeholder="อีเมล" value="{{ old('email') }}" required autocomplete="email">
+                                        <input id="email" type="email" name="email" class="input-name-reg  @error('email') is-invalid @enderror"  placeholder="อีเมล" value="{{ old('email') }}" autocomplete="email">
                                         @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <span class="text-danger">อีเมลไม่ถูกต้อง...</span>
                                         @enderror    
                                     </div>
                                     <div class="col-lg-6" style="padding:5px 3px 0px 3px;" data-toggle="tooltip" data-placement="bottom" title="อย่างน้อย 8 ตัวอักษร">
-                                        <input id="password" type="password" name="password" class="input-name-reg @error('password') is-invalid @enderror"  placeholder="รหัสผ่าน"  min="8" required autocomplete="new-password">
+                                        <input id="password" type="password" name="password" class="input-name-reg @error('password') is-invalid @enderror"  placeholder="รหัสผ่าน"  min="8" autocomplete="new-password">
                                         @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <span id="MESSAGE" class="text-danger">รหัสผ่านไม่ถูกต้อง...</span>
+                                        @else
+                                            <span id="MESSAGE"></span>
                                         @enderror
                                     </div>
                                     <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
-                                        <input id="password-confirm" type="password" name="password_confirmation" class="input-name-reg"  placeholder="ยืนยันรหัสผ่าน" required autocomplete="new-password">
+                                        <input id="password-confirm" type="password" name="password_confirmation" class="input-name-reg"  placeholder="ยืนยันรหัสผ่าน" autocomplete="new-password">
                                     </div>
-                                    <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
+                                    <!-- <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
                                         <span id="MESSAGE"></span>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="my-3" style="font-family:margin-left:-15px">
                                     <div class="checkbox">
                                         <input type="checkbox" id="checkbox_user" name="accept">
                                         <label for="checkbox_user" class="font-condition" >ยอมรับเงื่อนไข </label>
                                         <a data-toggle="modal" data-target="#myModal" class="" style="color:#ce0005;font-family: myfont;font-size: 24px;text-decoration:underline;cursor: pointer;">ข้อกำหนดและเงื่อนไข</a>
+                                        @error('accept')
+                                            <span class="text-danger"> (กรุณายอมรับเงื่อนไข)</span>
+                                        @enderror
                                     </div>
                                     <button name="submit" class="btn-submit-reg" style="margin-left:-13px">สมัครสมาชิก
                                         <input type="hidden" name="users_type" value="1">
@@ -101,46 +104,43 @@
                                     <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
                                         <input id="name" name="name" class="input-name-reg @error('name') is-invalid @enderror"  placeholder="ชื่อ" value="{{ old('name') }}" required autocomplete="name">
                                         @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <span class="text-danger">กรุณากรอกชื่อ...</span>
                                         @enderror
                                     </div>
                                     <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
                                         <input id="surname" name="surname" class="input-name-reg @error('surname') is-invalid @enderror"  placeholder="นามสกุล" value="{{ old('surname') }}" required autocomplete="surname">
                                         @error('surname')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <span class="text-danger">กรุณากรอกนามสกุล...</span>
                                         @enderror
                                     </div>
                                     <div class="col-lg-12" style="padding:5px 3px 0px 3px;"data-toggle="tooltip" data-placement="bottom" title="example@email.com">
                                         <input id="email" type="email" name="email" class="input-name-reg  @error('email') is-invalid @enderror"  placeholder="อีเมล" value="{{ old('email') }}" required autocomplete="email">
                                         @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <span class="text-danger">อีเมลไม่ถูกต้อง...</span>
                                         @enderror    
                                     </div>
                                     <div class="col-lg-6" style="padding:5px 3px 0px 3px;" data-toggle="tooltip" data-placement="bottom" title="อย่างน้อย 8 ตัวอักษร">
                                         <input id="password_dev" type="password" name="password" class="input-name-reg @error('password') is-invalid @enderror"  placeholder="รหัสผ่าน"  min="8" required autocomplete="new-password">
                                         @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <span id="MESSAGE" class="text-danger">รหัสผ่านไม่ถูกต้อง...</span>
+                                        @else
+                                            <span id="MESSAGE"></span>
                                         @enderror
                                     </div>
                                     <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
                                         <input id="password-confirm_dev" type="password" name="password_confirmation" class="input-name-reg"  placeholder="ยืนยันรหัสผ่าน" required autocomplete="new-password">
                                     </div>
-                                    <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
+                                    <!-- <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
                                         <span id="MESSAGE-DEV"></span>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="my-3" style="font-family:margin-left:-15px">
                                     <div class="checkbox">
                                         <input type="checkbox" id="checkbox_dev" name="accept_dev">
                                         <label for="checkbox_dev" class="font-condition" >ยอมรับเงื่อนไข </label>
+                                        @error('accept_dev')
+                                            <span class="text-danger"> (กรุณายอมรับเงื่อนไข)</span>
+                                        @enderror
                                         <a data-toggle="modal" data-target="#myModal" class="" style="color:#ce0005;font-family: myfont;font-size: 24px;text-decoration:underline;cursor: pointer;">ข้อกำหนดและเงื่อนไข</a>
                                     </div>
                                     <button name="submit" class="btn-submit-reg" style="margin-left:-13px">สมัครสมาชิก
@@ -190,41 +190,35 @@
                                             <div class="col-lg-6" style="margin-left:-15px; padding:5px 3px 0px 3px;">
                                                 <input id="name" name="name" class="input-name-reg @error('name') is-invalid @enderror"  placeholder="ชื่อ" value="{{ old('name') }}" required autocomplete="name">
                                                 @error('name')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
+                                                        <span class="text-danger">กรุณากรอกชื่อ...</span>
                                                 @enderror
                                             </div>
                                             <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
                                                 <input id="surname" name="surname" class="input-name-reg @error('surname') is-invalid @enderror"  placeholder="นามสกุล" value="{{ old('surname') }}" required autocomplete="surname">
                                                 @error('surname')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
+                                                    <span class="text-danger">กรุณากรอกนามสกุล...</span>
                                                 @enderror
                                             </div>
                                             <div class="col-lg-12" style="margin-left:-15px; padding:5px 3px 0px 3px;"data-toggle="tooltip" data-placement="bottom" title="example@email.com">
                                                 <input id="email" type="email" name="email" class="input-name-reg  @error('email') is-invalid @enderror"  placeholder="อีเมล" value="{{ old('email') }}" required autocomplete="email">
                                                 @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
+                                                    <span class="text-danger">อีเมลไม่ถูกต้อง...</span>
                                                 @enderror    
                                             </div>
                                             <div class="col-lg-6" style="margin-left:-15px; padding:5px 3px 0px 3px;" data-toggle="tooltip" data-placement="bottom" title="อย่างน้อย 8 ตัวอักษร">
                                                 <input id="password_spon" type="password" name="password" class="input-name-reg @error('password') is-invalid @enderror"  placeholder="รหัสผ่าน"  min="8" required autocomplete="new-password">
                                                 @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
+                                                    <span id="MESSAGE" class="text-danger">รหัสผ่านไม่ถูกต้อง...</span>
+                                                @else
+                                                    <span id="MESSAGE"></span>
                                                 @enderror
                                             </div>
                                             <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
                                                 <input id="password-confirm_spon" type="password" name="password_confirmation" class="input-name-reg"  placeholder="ยืนยันรหัสผ่าน" required autocomplete="new-password">
                                             </div>
-                                            <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
+                                            <!-- <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
                                                 <span id="MESSAGE-SPON"></span>
-                                            </div>
+                                            </div> -->
                                             <!-- <div class="col-lg-6" style="margin-left:-15px; padding:5px 3px 0px 3px;"><input class="input-name-reg"  placeholder="ชื่อ" require></input></div>
                                             <div class="col-lg-6" style=" padding:5px 3px 0px 3px;"><input class="input-name-reg"  placeholder="นามสกุล" require></input></div>
                                             <div class="col-lg-12" style="margin-left:-15px;padding:5px 3px 0px 3px;"data-toggle="tooltip" data-placement="bottom" title="example@email.com"><input type="email" class="input-name-reg"  placeholder="อีเมล"  require></input></div>
@@ -236,6 +230,9 @@
                                             <div class="checkbox">
                                                 <input type="checkbox" id="checkbox_spon" name="accept_spon">
                                                 <label for="checkbox_spon" class="font-condition" >ยอมรับเงื่อนไข </label>
+                                                @error('accept_spon')
+                                                    <span class="text-danger"> (กรุณายอมรับเงื่อนไข)</span>
+                                                @enderror
                                                 <a data-toggle="modal" data-target="#myModal3" class="" style="color:#ce0005;font-family: myfont;font-size: 24px;text-decoration:underline;cursor: pointer;">ข้อกำหนดและเงื่อนไข</a>
                                             </div>
                                             <button class="btn-submit-reg" style="margin-left:-13px">สมัครสมาชิก
@@ -253,9 +250,7 @@
                                             <div class="col-lg-12" style="margin-left:-15px; padding:5px 3px 0px 3px;">
                                                 <input id="name" name="name" class="input-name-reg @error('name') is-invalid @enderror"  placeholder="ชื่อบริษัท" value="{{ old('name') }}" required autocomplete="name">
                                                 @error('name')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
+                                                    <span class="text-danger">กรุณากรอกชื่อ...</span>
                                                 @enderror
                                             </div>
                                             <!-- <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
@@ -269,25 +264,23 @@
                                             <div class="col-lg-12" style="margin-left:-15px; padding:5px 3px 0px 3px;"data-toggle="tooltip" data-placement="bottom" title="example@email.com">
                                                 <input id="email" type="email" name="email" class="input-name-reg  @error('email') is-invalid @enderror"  placeholder="อีเมล" value="{{ old('email') }}" required autocomplete="email">
                                                 @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
+                                                    <span class="text-danger">อีเมลไม่ถูกต้อง...</span>
                                                 @enderror    
                                             </div>
                                             <div class="col-lg-6" style="margin-left:-15px; padding:5px 3px 0px 3px;" data-toggle="tooltip" data-placement="bottom" title="อย่างน้อย 8 ตัวอักษร">
                                                 <input id="password_spon2" type="password" name="password" class="input-name-reg @error('password') is-invalid @enderror"  placeholder="รหัสผ่าน"  min="8" required autocomplete="new-password">
                                                 @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
+                                                    <span id="MESSAGE" class="text-danger">รหัสผ่านไม่ถูกต้อง...</span>
+                                                @else
+                                                    <span id="MESSAGE"></span>
                                                 @enderror
                                             </div>
                                             <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
                                                 <input id="password-confirm_spon2" type="password" name="password_confirmation" class="input-name-reg"  placeholder="ยืนยันรหัสผ่าน" required autocomplete="new-password">
                                             </div>
-                                            <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
+                                            <!-- <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
                                                 <span id="MESSAGE-SPON2"></span>
-                                            </div>
+                                            </div> -->
                                             <!-- <div class="col-lg-12" style="margin-left:-15px; padding:5px 3px 0px 3px;"><input class="input-name-reg"  placeholder="ชื่อบริษัท" require></input></div> -->
                                             <!-- <div class="col-lg-6" style=" padding:5px 3px 0px 3px;"><input class="input-name-reg"  placeholder="นามสกุล" require></input></div> -->
                                             <!-- <div class="col-lg-12" style="margin-left:-15px;padding:5px 3px 0px 3px;"data-toggle="tooltip" data-placement="bottom" title="example@email.com"><input type="email" class="input-name-reg"  placeholder="อีเมล"  require></input></div>
@@ -299,6 +292,9 @@
                                             <div class="checkbox">
                                                 <input type="checkbox" id="checkbox_spon2" name="accept_spon2">
                                                 <label for="checkbox_spon2" class="font-condition" >ยอมรับเงื่อนไข </label>
+                                                @error('accept_spon2')
+                                                    <span class="text-danger"> (กรุณายอมรับเงื่อนไข)</span>
+                                                @enderror
                                                 <a data-toggle="modal" data-target="#myModal3" class="" style="color:#ce0005;font-family: myfont;font-size: 24px;text-decoration:underline;cursor: pointer;">ข้อกำหนดและเงื่อนไข</a>
                                             </div>
                                             <button class="btn-submit-reg" style="margin-left:-13px">สมัครสมาชิก
@@ -377,11 +373,6 @@
 
 @endsection
 @section('script')
-<script>
-    $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-    });
-</script>
 
 <script>
     $('button').on('click', function(){
