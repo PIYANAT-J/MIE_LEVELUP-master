@@ -88,7 +88,16 @@
                             </ul>
                                 @else
                                 <li class="has-children">
-                                    <img style="padding:0px 0px 0px 20px;" src="{{asset('/icon/sign_in.svg') }}">
+                                    @if(Auth::user()->users_type == '2')
+                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$developer->DEV_IMG) }}" />
+                                    @elseif(Auth::user()->users_type == '3')
+                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$guest_user->GUEST_USERS_IMG) }}" />
+                                    @elseif(Auth::user()->users_type == '1')
+                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$guest_user->GUEST_USERS_IMG) }}" />
+                                    @else
+                                        <img style="padding:0px 0px 0px 20px;" src="{{asset('/icon/sign_in.svg') }}">
+                                    @endif
+                                    
                                     <a href="#about-section" class="nav-link font_name" >{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
                                     <ul class="dropdown">
                                         <li class="nav-item">

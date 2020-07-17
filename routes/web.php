@@ -20,9 +20,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'GameController@indexGame')->name('LEVELup');
 Route::post('/Follow', 'FollowController@followGame')->name('Follow');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::view('/loginlvp', 'auth.login_lvp')->name('login-levelUp');
 Route::view('/registerlvp', 'auth.register_lvp')->name('register-levelUp');
+
+// Route::view('/reset', 'auth.passwords.reset');
+// Route::view('/email', 'auth.passwords.email');
+Route::view('/confirm', 'auth.passwords.confirm');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
@@ -77,8 +81,10 @@ Route::post('/kyc/create', 'KycController@createKyc')->name('CreateKyc');
 
 Route::get('/user_shelf', 'UploadImageProfile@user_shelf')->name('UserShelf');
 
-Route::view('/user_history', 'profile.point.userlvp_history')->name('UserHistory');
-Route::view('/user_rank', 'profile.userlvp_rank')->name('UserRank');
+// Route::view('/user_history', 'profile.point.userlvp_history')->name('UserHistory');
+// Route::view('/user_rank', 'profile.userlvp_rank')->name('UserRank');
+Route::get('/user_history', 'TransferController@userPoint')->name('UserHistory');
+Route::get('/user_rank', 'TransferController@userRank')->name('UserRank');
 
 Route::get('/user_topup', 'qrPaymentController@indexPayment')->name('UserTopup');
 Route::post('/user_topup/qrCode', 'qrPaymentController@mobilebanking')->name('QrPayment');
@@ -86,7 +92,9 @@ Route::post('/user_topup/transfer', 'TransferController@transferPayment')->name(
 // Route::get('/user_topup/qrCode/{invoice}', 'qrPaymentController@qrcode')->name('qrcode');
 
 
-Route::view('/user_change_password', 'profile.password.userlvp_change_password');
+// Route::view('/user_change_password', 'profile.password.userlvp_change_password');
+Route::get('/user_change_password', 'Auth\ResetPasswordController@userPass')->name('userPsss');
+Route::post('/user_change_password/Reset', 'Auth\ResetPasswordController@passwordUserReset')->name('passwordUserReset');
 
 // developer
 Route::get('/develper_profile', 'UploadImageProfile@Developer')->name('DevProfile');

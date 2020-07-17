@@ -297,6 +297,7 @@ class UploadImageProfile extends Controller
     
             // Insert && Update
             if($request->has('GUEST_USERS_IMG')){
+                // dd($request->file('GUEST_USERS_IMG'));
                 $upload = $request->file('GUEST_USERS_IMG');
                 $img_name = 'USER_'.time().'.'.$upload->getClientOriginalExtension();
                 $path = public_path('home/imgProfile');
@@ -305,7 +306,17 @@ class UploadImageProfile extends Controller
                     $constraint->aspectRatio();
                    })->save($path . '/' . $img_name);
                 $upload->move($path, $img_name);
-
+                // dd($img_name);
+                $validate = $request->validate([
+                    'GUEST_USERS_TEL' => ['required', 'string', 'min:10', 'max:10', 'regex:/[08|09|06]\d{8}$/'],
+                    'GUEST_USERS_ID_CARD' => ['required', 'string', 'min:13', 'max:13', 'regex:/^\d{13}$/'],
+                    'name' => ['required', 'string', 'min:2', 'max:255', 'regex:/^[.\D]*$/'],
+                    'surname' => ['required', 'string', 'min:2', 'max:255', 'regex:/^[.\D]*$/'],
+                    // 'img_name' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+                    // '' => ['', '', '', '', ''],
+                    
+                ]);
+                
                 $GUEST_USERS_TEL = $request->input('GUEST_USERS_TEL');
                 $GUEST_USERS_ID_CARD = $request->input('GUEST_USERS_ID_CARD');
                 $GUEST_USERS_IMG = $img_name;
@@ -343,6 +354,23 @@ class UploadImageProfile extends Controller
                     }
                 }
             }else{
+                // $request = (array)$request;
+                // dd(getType($request));
+                $validate = $request->validate([
+                    'GUEST_USERS_TEL' => ['required', 'string', 'min:10', 'max:10', 'regex:/[08|09|06]\d{8}$/'],
+                    'GUEST_USERS_ID_CARD' => ['required', 'string', 'min:13', 'max:13', 'regex:/^\d{13}$/'],
+                    'name' => ['required', 'string', 'min:2', 'max:255', 'regex:/^[.\D]*$/'],
+                    'surname' => ['required', 'string', 'min:2', 'max:255', 'regex:/^[.\D]*$/'],
+                    // '' => ['', '', '', '', ''],
+                    // '' => ['', '', '', '', ''],
+                    
+                ]);
+                // if($validate->fails()){
+                //     return redirect('post/create')
+                //         ->withErrors($validate)
+                //         ->withInput();
+                // }
+                
                 $GUEST_USERS_TEL = $request->input('GUEST_USERS_TEL');
                 $GUEST_USERS_ID_CARD = $request->input('GUEST_USERS_ID_CARD');
                 
