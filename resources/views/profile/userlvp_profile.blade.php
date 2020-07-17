@@ -106,22 +106,32 @@
                                             <div class="col-lg-6">
                                                 <div class="row">
                                                     <div class="col-lg-12 line1 mt-2" >
-                                                        <input name="name" class="input-update" value="{{ Auth::user()->name }}" placeholder="ชื่อ" require></input>
-                                                        <input name="surname" class="input-update" value="{{ Auth::user()->surname }}" placeholder="นามสกุล" require></input>
-                                                        <input name="GUEST_USERS_TEL" type="text" class="input-update"  placeholder="เบอร์โทร" data-toggle="tooltip" value="{{ $USER->GUEST_USERS_TEL }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" maxlength="10"></input>
-                                                        <input name="GUEST_USERS_ID_CARD" type="text" class="input-update"  placeholder="บัตรประจำตัวประชาชน" value="{{ $USER->GUEST_USERS_ID_CARD }}" minlength="13" maxlength="13" title="กรุณากรอกข้อมูลให้ครบถ้วน" require></input>
-                                                        
-                                                        <div class="row ">
+                                                        <input name="name" class="input-update" value="{{ Auth::user()->name }}" placeholder="ชื่อ"></input>
+                                                        @error('name')
+                                                            <span class="text-danger">กรุณากรอกชื่อ...</span>
+                                                        @enderror
+                                                        <input name="surname" class="input-update" value="{{ Auth::user()->surname }}" placeholder="นามสกุล"></input>
+                                                        @error('surname')
+                                                            <span class="text-danger">กรุณากรอกนามสกุล...</span>
+                                                        @enderror
+                                                        <input name="GUEST_USERS_TEL" type="text" class="input-update @error('GUEST_USERS_TEL') is-invalid @enderror"  placeholder="เบอร์โทร" data-toggle="tooltip" value="{{ $USER->GUEST_USERS_TEL }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222"></input>
+                                                        @error('GUEST_USERS_TEL')
+                                                            <span class="text-danger">กรุณากรอกเบอร์โทรศัพท์...</span>
+                                                        @enderror
+                                                        <input name="GUEST_USERS_ID_CARD" type="text" class="input-update"  placeholder="บัตรประจำตัวประชาชน" value="{{ $USER->GUEST_USERS_ID_CARD }}" minlength="13" maxlength="13" title="กรุณากรอกข้อมูลให้ครบถ้วน"></input>
+                                                        @error('GUEST_USERS_ID_CARD')
+                                                            <span class="text-danger">เลขบัตรประจำตัวประชาชนไม่ถูกต้อง...</span>
+                                                        @enderror
+                                                        <div class="row">
                                                             <div class="col-lg-12">
                                                                 <div class="row mx-0">
                                                                     <!-- <input id="GUEST_USERS_BIRTHDAY" name="GUEST_USERS_BIRTHDAY" type="text" class="form-control textbox1 " placeholder="YYYY-MM-DD" value="{{ old('GUEST_USERS_BIRTHDAY') }}" title=""> -->
                                                                 <!-- <input type="number" name="RATING" id="rating-input" min="1" max="5"> -->
                                                                     <?php
-                                                                        $year = substr($USER->GUEST_USERS_BIRTHDAY,0,4);
-                                                                        $month = substr($USER->GUEST_USERS_BIRTHDAY,5,2);
-                                                                        $day = substr($USER->GUEST_USERS_BIRTHDAY,8,2);
+                                                                        $yyyy = substr($USER->GUEST_USERS_BIRTHDAY,0,4);
+                                                                        $mm = substr($USER->GUEST_USERS_BIRTHDAY,5,2);
+                                                                        $dd = substr($USER->GUEST_USERS_BIRTHDAY,8,2);
                                                                     ?>
-                                                                    <!-- <p>{{$year}} {{$month}} {{$day}}</p> -->
                                                                     <div class="col-4 mt-2" style="padding:0;"><SELECT  size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></div>
                                                                     <div class="col-4 mt-2" style="padding:0;"><SELECT  size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></div>
                                                                     <div class="col-4 mt-2" style="padding:0;"><SELECT  size="1" id ="day" name = "dd"></SELECT></div>
@@ -172,10 +182,21 @@
                                     <div class="row">
                                         <div class="col-lg-12 line1 mt-2" >
                                             <input name="name" class="input-update" value="{{ Auth::user()->name }}" placeholder="ชื่อ" require></input>
+                                            @error('name')
+                                                <span class="text-danger">กรุณากรอกชื่อ...</span>
+                                            @enderror
                                             <input name="surname" class="input-update" value="{{ Auth::user()->surname }}" placeholder="นามสกุล" require></input>
+                                            @error('surname')
+                                                <span class="text-danger">กรุณากรอกนามสกุล...</span>
+                                            @enderror
                                             <input name="GUEST_USERS_TEL" type="text" class="input-update"  placeholder="เบอร์โทร" data-toggle="tooltip" value="{{ old('GUEST_USERS_TEL') }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" maxlength="10"></input>
+                                            @error('GUEST_USERS_TEL')
+                                                <span class="text-danger">กรุณากรอกเบอร์โทรศัพท์...</span>
+                                            @enderror
                                             <input name="GUEST_USERS_ID_CARD" type="text" class="input-update"  placeholder="บัตรประจำตัวประชาชน" value="{{ old('GUEST_USERS_ID_CARD') }}" minlength="13" maxlength="13" title="กรุณากรอกข้อมูลให้ครบถ้วน" require></input>
-                                            
+                                            @error('GUEST_USERS_ID_CARD')
+                                                <span class="text-danger">เลขบัตรประจำตัวประชาชนไม่ถูกต้อง...</span>
+                                            @enderror
                                             <div class="row ">
                                                 <div class="col-lg-12">
                                                     <div class="row mx-0">
@@ -201,8 +222,12 @@
                                     <div class="form-group mt-5" align="center">
                                         <div id="thumb" class="thumb-profile "><img src="home/imgProfile/pic-profile.png"></div>    
                                         <input id="file_upload" style="display:none" name="GUEST_USERS_IMG" type="file" multiple="true" accept="image/* "/>
+                                        @error('GUEST_USERS_IMG')
+                                            <span class="text-danger">นามสกุลไฟล์ไม่ถูกต้อง...</span>
+                                        @enderror
                                         <button id="upload" class="btn-upload-pic mt-2">เลือกรูป</button>
                                         <div class="des-profile-pic mt-2">ขนาดไฟล์: สูงสุด 1 MB</div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -244,6 +269,9 @@ $(document).ready(function(){
 
 <!-- วัน เดือน ปีเกิด -->
 <script>
+            // var year = $yyyy;
+            // var month = $mm;
+            // var day = $dd;
     var Days = [31,28,31,30,31,30,31,31,30,31,30,31];// index => month [0-11]
     $(document).ready(function(){
         

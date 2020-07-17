@@ -9,8 +9,47 @@ use Auth;
 
 use App\TransferPayment;
 
-class TransferController extends Controller
-{
+class TransferController extends Controller{
+
+    public function userPass(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('profile.password.userlvp_change_password', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('profile.password.userlvp_change_password', compact('guest_user', 'userKyc'));
+        }
+    }
+
+    public function userPoint(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('profile.point.userlvp_history', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('profile.point.userlvp_history', compact('guest_user', 'userKyc'));
+        }
+    }
+
+    public function userRank(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('profile.userlvp_rank', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('profile.userlvp_rank', compact('guest_user', 'userKyc'));
+        }
+    }
+
     public function transferPayment(Request $req){
         if($req->input('submit') != null){
             if($req->has('transferImg')){

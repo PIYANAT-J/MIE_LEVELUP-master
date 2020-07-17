@@ -16,7 +16,8 @@ class FollowController extends Controller
     public function FollowMe(){
         $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
         $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
-        return view('game.game_follow', compact('Follows', 'Games'));
+        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('game.game_follow', compact('Follows', 'Games', 'guest_user'));
     }
 
     public function followGame(Request $request){

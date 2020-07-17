@@ -96,7 +96,18 @@
                                     </a>
                                 </li>
                                 <li class="has-children">
-                                <img class="nav-pic " src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
+                                    @if(Auth::user()->users_type == '2')
+                                        @foreach($developer as $Dev)
+                                            <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" />
+                                        @endforeach
+                                    @elseif(Auth::user()->users_type == '3')
+                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
+                                    @else
+                                        @foreach($guest_user as $USER)
+                                            <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
+                                        @endforeach
+                                    @endif
+                                <!-- <img class="nav-pic " src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" /> -->
                                     <a href="#about-section" class="nav-link font_name" style="color:#fff;">{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
                                     <ul class="dropdown">
                                         <li class="nav-item">
