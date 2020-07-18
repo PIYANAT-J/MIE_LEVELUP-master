@@ -99,7 +99,7 @@
 
 
 @font-face {
-    font-family: 'db_heaventlight';
+    font-family: myfont1;
     src: url('dbheaventliv3.2-webfont.woff2') format('woff2'),
          url('dbheaventliv3.2-webfont.woff') format('woff');
     font-weight: normal;
@@ -123,7 +123,7 @@
 
 
 @font-face {
-    font-family: 'db_heaventmed';
+    font-family:myfont;
     src: url('dbheaventmedv3.2-webfont.woff2') format('woff2'),
          url('dbheaventmedv3.2-webfont.woff') format('woff');
     font-weight: normal;
