@@ -3,7 +3,7 @@ html {
   overflow-x: hidden; }
 
 body {
-  font-family:myfont;
+  font-family:myfont !important;
   line-height: 1.7;
   color: gray;
   font-weight: 400;
@@ -26,7 +26,7 @@ a {
 
 h1, h2, h3, h4, h5,
 .h1, .h2, .h3, .h4, .h5 {
-  font-family: db_heaventmed, Tahoma, sans-serif; }
+  font-family: db_heaventmed; }
 
 .border-2 {
   border-width: 2px; }
@@ -89,7 +89,7 @@ body:after {
 .form-control {
   height: 43px;
   border-radius: 30px;
-  font-family: db_heaventmed, Tahoma, sans-serif; }
+  font-family: db_heaventmed }
   .form-control:active, .form-control:focus {
     border-color: #007bff; }
   .form-control:hover, .form-control:active, .form-control:focus {

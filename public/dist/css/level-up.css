@@ -1096,7 +1096,7 @@ overflow: hidden;
 }
 
 body { /* drag and drop */
-  font-family: sans-serif;
+  font-family:myfont !important;
 }
 a {
   color: #369;
@@ -1159,7 +1159,7 @@ p {
 }
 
 body { /* drag and drop */
-  font-family: sans-serif;
+  font-family:myfont !important;
 }
 a {
   color: #369;
@@ -2502,6 +2502,7 @@ body {
   width: 40%;
   height: auto;
 } 
+ 
 .img_login{
   width: 80%;
   height: auto;
@@ -2518,6 +2519,7 @@ body {
   text-align: left;
   color: #ffffff;
 }
+
 .block{
   position: absolute;
   left: 15%;
