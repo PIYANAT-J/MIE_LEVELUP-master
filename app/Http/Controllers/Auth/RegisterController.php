@@ -75,7 +75,7 @@ class RegisterController extends Controller
                             'email', 
                             'max:255', 
                             'unique:users',
-                            'regex:/^[a-zA-Z0-9._-]+@[gmail|hotmail.]+\.[com|co.th]{2,6}$/'
+                            'regex:/^[a-zA-Z0-9._-]+@[a-zA-Z]+\.[com|co.th]{2,6}$/'
                         ],
                 'password' => ['required', 
                                 'string', 
@@ -103,7 +103,7 @@ class RegisterController extends Controller
                             'email', 
                             'max:255', 
                             'unique:users',
-                            'regex:/^[a-zA-Z0-9._-]+@[gmail|hotmail.]+\.[com|co.th]{2,6}$/'
+                            'regex:/^[a-zA-Z0-9._-]+@[a-zA-Z]+\.[com|co.th]{2,6}$/'
                         ],
                 'password' => ['required', 
                                 'string', 
@@ -131,7 +131,7 @@ class RegisterController extends Controller
                             'email', 
                             'max:255', 
                             'unique:users',
-                            'regex:/^[a-zA-Z0-9._-]+@[gmail|hotmail.]+\.[com|co.th]{2,6}$/'
+                            'regex:/^[a-zA-Z0-9._-]+@[a-zA-Z]+\.[com|co.th]{2,6}$/'
                         ],
                 'password' => ['required', 
                                 'string', 
@@ -159,7 +159,7 @@ class RegisterController extends Controller
                             'email', 
                             'max:255', 
                             'unique:users',
-                            'regex:/^[a-zA-Z0-9._-]+@[gmail|hotmail.]+\.[com|co.th]{2,6}$/'
+                            'regex:/^[a-zA-Z0-9._-]+@[a-zA-Z]+\.[com|co.th]{2,6}$/'
                         ],
                 'password' => ['required', 
                                 'string', 
