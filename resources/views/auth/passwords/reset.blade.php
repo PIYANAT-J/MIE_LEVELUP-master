@@ -20,27 +20,31 @@
                     <a href="{{ route('register-levelUp') }}"><span class="btn-login-reg ">สมัครสมาชิก</span></a>
                 </div>
             </div>
-            <div class="row row2 text-center ">
+            <div class="row row2 text-center">
                 <div class="col-sm-12">
                     <form action="{{ route('password.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <span class="font-condition my-3">กรุณากรอกรหัสผ่านใหม่</span></br>
-                        <div class="col-lg-12" style="padding:5px 3px 0px 3px;"data-toggle="tooltip" data-placement="bottom" title="example@email.com">
+                        <span class="font-condition my-3" >กรุณากรอกรหัสผ่านใหม่</span></br>
+                        <!-- <div style="font-family: myfont;color: #383838;font-size: 25px; margin-left:-13px">กรุณากรอกรหัสผ่านใหม่</div></br> -->
+                        <!-- <div class="col-lg-3"></div> -->
+                        <div class="col-lg-12" style="padding:5px 3px 0px 3px;" data-toggle="tooltip" data-placement="bottom" title="example@email.com">
                             <input type="email" name="email" class="input-name-reg  @error('email') is-invalid @enderror"  placeholder="อีเมล" value="{{ $email ?? old('email') }}" readonly>
                             @error('email')
                                 <span class="text-danger">อีเมลไม่ถูกต้อง...</span>
                             @enderror    
                         </div>
-                        <div class="col-lg-6" style="padding:5px 3px 0px 3px;" data-toggle="tooltip" data-placement="bottom" title="อย่างน้อย 8 ตัวอักษร">
+                        <div class="col-lg-12" style="padding:5px 3px 0px 3px;" data-toggle="tooltip" data-placement="bottom" title="อย่างน้อย 8 ตัวอักษร">
                             <input id="password" type="password" name="password" class="input-name-reg @error('password') is-invalid @enderror"  placeholder="รหัสผ่าน"  min="8" autocomplete="new-password">
                             @error('password')
-                                <span id="MESSAGE" class="text-danger">รหัสผ่านไม่ถูกต้อง...</span>
-                            @else
-                                <span id="MESSAGE"></span>
+                                <span class="text-danger">รหัสผ่านไม่ถูกต้อง...</span>
                             @enderror
                         </div>
-                        <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
+                        <div class="col-lg-12" style="padding:5px 3px 0px 3px;">
                             <input id="password-confirm" type="password" name="password_confirmation" class="input-name-reg"  placeholder="ยืนยันรหัสผ่าน" autocomplete="new-password">
+                            <!-- <span id="MESSAGE"></span> -->
+                        </div>
+                        <div class="col-lg-12" style="padding:5px 3px 0px 3px;">
+                            <span id="MESSAGE"></span>
                         </div>
                         <button class="btn-submit-reg" style="margin-left:-13px">ยืนยัน
                             <input type="hidden" name="submit" value="{{ __('Reset Password') }}">
