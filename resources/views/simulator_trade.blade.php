@@ -1,5 +1,6 @@
 @extends('layout.avatar_navbar')
 @section('content')
+
 <div class="container-fluid">
     <div class="row my-5"></div>
     <div class="row my-2"></div>
@@ -105,14 +106,151 @@
                                     <button class="btn-sim2">SET100</button>
                                     <button class="btn-sim2">sSET</button>
                                     <button class="btn-sim2">SETCLMV</button>
+                                    <br><button class="btn-sim2" id="randomizeData">Randomize Data</button>
+                                    <button class="btn-sim2" id="addDataset">Add Dataset</button>
+                                    <button class="btn-sim2" id="removeDataset">Remove Dataset</button>
+                                    <button class="btn-sim2" id="addData">Add Data</button>
                                     <div class="row mt-2">
                                         <div class="col-lg-12">
-                                            <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade1.png') }}" /></div>
+                                            <!-- <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade1.png') }}" /></div> -->
+                                            <div class="chart">
+                                                <!-- <img class="bgchart pl-2" style="width:100%;"  src="{{asset('home/simulator/Simulator_trade2.png') }}" /> -->
+                                                <div class="row mt-3 px-2">
+                                                    <div class="col-6"><label style="font-family:myfont1;font-size:1.3em;color:#fff;line-height:0;">9 Jun 2020 17:15:29</label></div>
+                                                    <div class="col-6 text-right">
+                                                    <label style="font-family:myfont1;font-size:1.3em;color:#fff;line-height:0;">SET :</label>
+                                                    <label style="font-family:myfont1;font-size:1.3em;color:#ce0005;line-height:0;">Closed</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row px-4">
+                                                    <div class="col-6 " style="border-bottom:1px solid #373a41;padding-left:0;"><label style="font-family:myfont;font-size:2em;color:#fff;line-height:0;">SET</label></div>
+                                                    <div class="col-6 text-right" style="border-bottom:1px solid #373a41;padding-right:0;"><label style="font-family:myfont;font-size:2em;color:#0ce63e;line-height:0;">+1,444.63 (+5.97%)</label></div>
+                                                </div>
+                                                <div class="row mt-3 px-2">
+                                                    <div class="col-6">
+                                                        <label style="font-family:myfont1;font-size:1.3em;color:#fff;line-height:0;">Hign :</label>
+                                                        <label style="font-family:myfont1;font-size:1.3em;color:#0ce63e;line-height:0;">1,448.13 (+9.47)</label> <br>
+                                                        <label style="font-family:myfont1;font-size:1.3em;color:#fff;line-height:0;">Low :</label>
+                                                        <label style="font-family:myfont1;font-size:1.3em;color:#ce0005;line-height:0;">1,400.13 (-37.67)</label>
+                                                    </div>
+
+                                                    <div class="col-6 text-right">
+                                                        <label style="font-family:myfont1;font-size:1.3em;color:#455160;line-height:0;">Val (M) :</label>
+                                                        <label style="font-family:myfont1;font-size:1.3em;color:#fff;line-height:0;">115,559.91</label> <br>
+                                                        <label style="font-family:myfont1;font-size:1.3em;color:#455160;line-height:0;">Vol(K) :</label>
+                                                        <label style="font-family:myfont1;font-size:1.3em;color:#fff;line-height:0;">26,699,932</label>
+                                                    </div>
+                                                </div>
+
+                                                <canvas class="pr-2" id="myChart" height="150"></canvas>
+                                            </div>
+                                            
                                         </div>
                                     </div>
-                                    <div class="row mt-2 mb-3">
+                                    <div class="row mt-4 mb-3">
                                         <div class="col-lg-12">
-                                            <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade3.png') }}" /></div>
+                                            <!-- <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade3.png') }}" /></div> -->
+                                            <div class="chart">
+                                                <div class="row mx-2 my-2">
+                                                    <div class="col-lg-3 bgdetail">
+                                                        <label class="detail-rank my-2">ตารางรวม SET</label>
+                                                    </div>
+                                                    <div class="col-lg-3 bgdetail">
+                                                        <label class="detail-rank my-2">ล่าสุด</label>
+                                                    </div>
+                                                    <div class="col-lg-3 bgdetail">
+                                                        <label class="detail-rank my-2">เปลี่ยนแปลง</label>
+                                                    </div>
+                                                    <div class="col-lg-3 bgdetail">
+                                                        <label class="detail-rank my-2">มูลค่า (ลบ.)</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mx-2 ">
+                                                    <div class="col-lg-3">
+                                                        <label class="detailTable my-2">SET</label>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label class="detailTableGreen my-2">+1,444.63</label>
+                                                        <!-- <label class="detailTableRed my-2">+1,444.63</label> -->
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label class="detailTableGreen my-2">+5.97</label>
+                                                        <!-- <label class="detailTableRed my-2">+5.97</label> -->
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label class="detail-rank my-2">52,568.36</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mx-2 ">
+                                                    <div class="col-lg-3">
+                                                        <label class="detailTable my-2">SET50</label>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label class="detailTableGreen my-2">+968.29</label>
+                                                        <!-- <label class="detailTableRed my-2">+968.29</label> -->
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label class="detailTableGreen my-2">+3.17</label>
+                                                        <!-- <label class="detailTableRed my-2">+3.17</label> -->
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label class="detail-rank my-2">31,866.95</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mx-2 ">
+                                                    <div class="col-lg-3">
+                                                        <label class="detailTable my-2">SET100</label>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label class="detailTableGreen my-2">+2,134.03</label>
+                                                        <!-- <label class="detailTableRed my-2">+2,134.03</label> -->
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label class="detailTableGreen my-2">+9.08</label>
+                                                        <!-- <label class="detailTableRed my-2">+9.08</label> -->
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label class="detail-rank my-2">40,500.04</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mx-2 ">
+                                                    <div class="col-lg-3">
+                                                        <label class="detailTable my-2">sSET</label>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <!-- <label class="detailTableGreen my-2">-629.46</label> -->
+                                                        <label class="detailTableRed my-2">-629.46</label>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <!-- <label class="detailTableGreen my-2">-2.24</label> -->
+                                                        <label class="detailTableRed my-2">-2.24</label>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label class="detail-rank my-2">2,234.72</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mx-2 ">
+                                                    <div class="col-lg-3">
+                                                        <label class="detailTable my-2">SETCLMV</label>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label class="detailTableGreen my-2">+953.12</label>
+                                                        <!-- <label class="detailTableRed my-2">+953.12</label> -->
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label class="detailTableGreen my-2">+2.09</label>
+                                                        <!-- <label class="detailTableRed my-2">+2.09</label> -->
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <label class="detail-rank my-2">15,982.05</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -252,110 +390,133 @@
 @endsection
 
 @section('script')
-<!-- <script>
-$('button').on('click', function(){
-    $('button').removeClass('active');
-    $(this).addClass('active');
-});
-</script> -->
-
-<script>
-$(document).ready(function(){
-  $('[data-toggle="popover"]').popover({
-    trigger : 'hover',
-    html : true,
-    content : '<div class="media">คำอธิบาย</div>'
-    }); 
-});
-</script>
-
 <script>
     $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
 
-<script>
-    $(document).ready(function(){
-    var owl = $('#owl-demo1');
-    owl.owlCarousel({
-        loop:true,
-        margin:10,
-        navigation : false,
-        // navText : ["<i class='icon-prev'></i>","<i class='icon-next'></i>"],
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:2,
-                nav:false
-            },
-            600:{
-                items:3,
-                nav:false
-            },
-            730:{
-                items:3.3,
-                nav:false
-            },
-            980:{
-                items:4.3,
-                nav:false
-            },
-            1000:{
-                items:5,
-                nav:false
-            },
-            1280:{
-                items:6,
-                nav:false
-            },
-            1600:{
-                items:7,
-                nav:false
-            },
-            1680 :{
-                items:7.3,
-                nav:false,
-                loop:true
-            },
-            1920:{
-                items:8.4,
-                nav:false,
-                loop:true
-            }
-        }
-    });
-    
-    // Custom Button
-    $('.nav-next1').click(function() {
-        owl.trigger('next.owl.carousel');
-    });
-    $('.nav-prev1').click(function() {
-        owl.trigger('prev.owl.carousel');
-    });
-    
-    });
-</script>
 
-
+<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/min/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming@1.8.0"></script>
+    
 <script>
-    $(document).ready(function() {
-    $('.manlist').show();
-    $('.womanlist').hide();
-    $('input:radio[name="gender2"]').change(
-    function() {
-        if ($(this).is(':checked') && $(this).val() == 'man')
-        {
-        $('.manlist').show();
-        $('.womanlist').hide();
-            }
-    else {
-        $('.womanlist').show();
-        $('.manlist').hide();
-    }
-        }
-    );
-    }
-    );
+var chartColors = {
+    red: 'rgb(206, 0, 5)',
+    white: 'rgb(255, 255, 255)',
+    yellow: 'rgb(230, 185, 38)'
+};
+
+function randomScalingFactor() {
+	return (Math.random() > 0.5 ? 1.0 : 1.0) * Math.round(Math.random() * 100);
+}
+
+function onRefresh(chart) {
+	chart.config.data.datasets.forEach(function(dataset) {
+		dataset.data.push({
+			x: Date.now(),
+			y: randomScalingFactor()
+		});
+	});
+}
+
+var color = Chart.helpers.color;
+var config = {
+	type: 'line',
+	data: {
+		datasets: [{
+			label: 'Dataset 1',
+			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
+			borderColor: chartColors.red,
+            borderWidth: 1,
+			fill: false,
+			lineTension: 0,
+			// borderDash: [8, 4],
+			data: []
+		}, {
+			label: 'Dataset 2',
+			backgroundColor: color(chartColors.white).alpha(0.5).rgbString(),
+			borderColor: chartColors.white,
+            borderWidth: 1,
+			fill: false,
+            lineTension: 0,
+			// cubicInterpolationMode: 'monotone',
+			data: []
+		}]
+	},
+	options: {
+		title: {
+			display: false,
+			text: 'Line chart (hotizontal scroll) sample'
+		},
+		scales: {
+			xAxes: [{
+				type: 'realtime',
+				realtime: {
+					duration: 20000,
+					refresh: 1000,
+					delay: 2000,
+					onRefresh: onRefresh
+				}
+			}],
+			yAxes: [{
+				scaleLabel: {
+					display: true,
+					labelString: 'value'
+				}
+			}]
+		},
+		tooltips: {
+			mode: 'nearest',
+			intersect: false
+		},
+		hover: {
+			mode: 'nearest',
+			intersect: false
+		}
+	}
+};
+
+window.onload = function() {
+	var ctx = document.getElementById('myChart').getContext('2d');
+	window.myChart = new Chart(ctx, config);
+};
+
+document.getElementById('randomizeData').addEventListener('click', function() {
+	config.data.datasets.forEach(function(dataset) {
+		dataset.data.forEach(function(dataObj) {
+			dataObj.y = randomScalingFactor();
+		});
+	});
+	window.myChart.update();
+});
+
+var colorNames = Object.keys(chartColors);
+document.getElementById('addDataset').addEventListener('click', function() {
+	var colorName = colorNames[config.data.datasets.length % colorNames.length];
+	var newColor = chartColors[colorName];
+	var newDataset = {
+		label: 'Dataset ' + (config.data.datasets.length + 1),
+		backgroundColor: color(newColor).alpha(0.5).rgbString(),
+		borderColor: newColor,
+		fill: false,
+		lineTension: 0,
+		data: []
+	};
+
+	config.data.datasets.push(newDataset);
+	window.myChart.update();
+});
+
+document.getElementById('removeDataset').addEventListener('click', function() {
+	config.data.datasets.pop();
+	window.myChart.update();
+});
+
+document.getElementById('addData').addEventListener('click', function() {
+	onRefresh(window.myChart);
+	window.myChart.update();
+});
 </script>
 @endsection

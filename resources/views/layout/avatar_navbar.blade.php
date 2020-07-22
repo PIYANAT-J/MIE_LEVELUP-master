@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="{{ asset('icon/font_lvp.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap-select/dist/css/bootstrap-select.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap-select/dist/css/bootstrap-select.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('chart.js-2.9.3/dist/Chart.css') }}">
         
         <style>
             @font-face {
@@ -199,6 +200,10 @@
         <script src="{{ asset('dist/moment/dist/moment.js') }}"></script>
         <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
         <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+        <script src="{{ asset('chart.js-2.9.3/dist/Chart.js') }}"></script>
+        <script src="{{ asset('chart.js-2.9.3/dist/Chart.min.js') }}"></script>
+        <script src="{{ asset('chartjs-plugin-streaming-1.8.0/dist/chartjs-plugin-streaming.js') }}"></script>
+        <script src="{{ asset('chartjs-plugin-streaming-1.8.0/dist/chartjs-plugin-streaming.min.js') }}"></script>
         @yield('script')
     </body>
 </html>
