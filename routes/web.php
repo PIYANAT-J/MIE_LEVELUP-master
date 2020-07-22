@@ -149,6 +149,7 @@ Route::get('/sale', 'UploadImageProfile@Sale')->name('Sale');
 Route::get('/add_sale_item', 'UploadImageProfile@AddSaleItem')->name('AddSaleItem');
 Route::get('/shopping_cart', 'UploadImageProfile@ShoppingCart')->name('ShoppingCart');
 Route::get('/payment', 'UploadImageProfile@Payment')->name('Payment');
+Route::get('/payment_confirmation', 'UploadImageProfile@PaymentConfirmation')->name('PaymentConfirmation');
 Route::get('/simulator_trade', 'UploadImageProfile@SimulatorTrade')->name('SimulatorTrade');
 Route::get('/my_trade', 'UploadImageProfile@MyTrade')->name('MyTrade');
 Route::get('/ranking_trade', 'UploadImageProfile@RankingTrade')->name('RankingTrade');
