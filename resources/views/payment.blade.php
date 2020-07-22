@@ -161,7 +161,7 @@
                                                 <div class="col-lg-12">
                                                     <div class="row mx-0">
                                                         <label style="font-family:myfont;font-size:1.5em;color:#fff;">ที่อยู่ในการออกใบเสร็จ</label>
-                                                        <label class="ml-2" style="font-family:myfont1;font-size:1.4em;color:#ce0005;cursor:pointer;border-bottom:1px solid #ce0005;height:1.2em;">เปลี่ยน</label>
+                                                        <label class="ml-2" style="font-family:myfont1;font-size:1.4em;color:#ce0005;cursor:pointer;border-bottom:1px solid #ce0005;height:1.2em;" data-toggle="modal" data-target="#address">เปลี่ยน</label>
                                                     </div>
                                                     <div class="row mx-3">
                                                         <div class="col-lg-6" >
@@ -191,70 +191,87 @@
                                                         <label style="font-family:myfont;font-size:1.5em;color:#fff;">วิธีชำระเงิน</label>
                                                     </div>
                                                     <div class="row mx-0 " >
-                                                        <label  class="bgPayment labellogo mx-2">
-                                                            <img class="center logoT10" src="{{asset('home/logo/t10.svg') }}" >
-                                                            <label class="font-payment-avatar fontLogoPosition" style="color:#0b0e17;">T10 วอลเล็ท</label>
-                                                            <label class="font-payment-avatar fontdetailPosition" style="color:#a0a0a0;font-size:1.1em;">ฟรีค่าธรรมเนียม</label>
-                                                            <!-- <div>
-                                                                <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
-                                                            </div> -->
-                                                        </label>
-                                                        <label  class="bgPayment labellogo mx-2">
-                                                            <img class="center logoT10" src="{{asset('home/logo/credit-icon.svg') }}" >
-                                                            <label class="font-payment-avatar fontLogoPosition2" style="color:#0b0e17;">บัตรเครดิต/บัตรเดบิต</label>
-                                                            <img class="fontdetailPosition2" src="{{asset('home/logo/security-grey.svg') }}" >
-                                                            <!-- <div>
-                                                                <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
-                                                            </div> -->
-                                                        </label>
-                                                        <label  class="bgPayment labellogo mx-2">
-                                                            <img class="center logoT10" src="{{asset('home/logo/mobile-icon.svg') }}" >
-                                                            <label class="font-payment-avatar fontLogoPosition" style="color:#0b0e17;">โมบายแบงค์กิ้ง</label>
-                                                            <label class="font-payment-avatar fontdetailPosition3" style="color:#a0a0a0;font-size:1.1em;">รอยืนยัน 45 นาที หลังชำระเงิน</label>
-                                                            <!-- <div>
-                                                                <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
-                                                            </div> -->
-                                                        </label>
-                                                        <label  class="bgPayment labellogo mx-2">
-                                                            <img class="center logoT10" src="{{asset('home/logo/bank-icon.svg') }}" >
-                                                            <label class="font-payment-avatar fontLogoPosition" style="color:#0b0e17;">โอนเงินธนาคาร</label>
-                                                            <label class="font-payment-avatar fontdetailPosition3" style="color:#a0a0a0;font-size:1.1em;">รอยืนยัน 45 นาที หลังชำระเงิน</label>
-                                                            <!-- <div>
-                                                                <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
-                                                            </div> -->
-                                                        </label> 
+                                                        <div>
+                                                            <label  class="bgPayment labellogo mx-1" onClick="myFunction()">
+                                                                <img class="center logoT10" src="{{asset('home/logo/t10.svg') }}" >
+                                                                <label class="font-payment-avatar fontLogoPosition" style="color:#0b0e17;">T10 วอลเล็ท</label>
+                                                                <label class="font-payment-avatar fontdetailPosition" style="color:#a0a0a0;font-size:1.1em;">ฟรีค่าธรรมเนียม</label>
+                                                                <div id="first">
+                                                                    <label class="bordergreen">
+                                                                    <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
+                                                                    </label>
+                                                                </div>
+                                                            </label>
+                                                            <label  class="bgPayment labellogo mx-1" onClick="myFunction2()">
+                                                                <img class="center logoT10" src="{{asset('home/logo/credit-icon.svg') }}" >
+                                                                <label class="font-payment-avatar fontLogoPosition2" style="color:#0b0e17;">บัตรเครดิต/บัตรเดบิต</label>
+                                                                <img class="fontdetailPosition2" src="{{asset('home/logo/security-grey.svg') }}" >
+                                                                <div id="second">
+                                                                    <label class="bordergreen">
+                                                                    <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
+                                                                    </label>
+                                                                </div>
+                                                            </label>
+
+                                                            <label  class="bgPayment labellogo mx-1" onClick="myFunction3()">
+                                                                <img class="center logoT10" src="{{asset('home/logo/mobile-icon.svg') }}" >
+                                                                <label class="font-payment-avatar fontLogoPosition" style="color:#0b0e17;">โมบายแบงค์กิ้ง</label>
+                                                                <label class="font-payment-avatar fontdetailPosition3" style="color:#a0a0a0;font-size:1.1em;">รอยืนยัน 45 นาที หลังชำระเงิน</label>
+                                                                <div id="third">
+                                                                    <label class="bordergreen">
+                                                                    <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
+                                                                    </label>
+                                                                </div>
+                                                            </label>
+
+                                                            <label  class="bgPayment labellogo mx-1" onClick="myFunction4()">
+                                                                <img class="center logoT10" src="{{asset('home/logo/bank-icon.svg') }}" >
+                                                                <label class="font-payment-avatar fontLogoPosition" style="color:#0b0e17;">โอนเงินธนาคาร</label>
+                                                                <label class="font-payment-avatar fontdetailPosition3" style="color:#a0a0a0;font-size:1.1em;">รอยืนยัน 45 นาที หลังชำระเงิน</label>
+                                                                <div id="four">
+                                                                    <label class="bordergreen">
+                                                                    <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
+                                                                    </label>
+                                                                </div>
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row my-3">
-                                                <div class="col-lg-6">
-                                                    <div class="row" style="border-right:1px solid #455160;">
-                                                        <div class="col-lg-12">
-                                                            <label style="font-family:myfont;font-size:1.5em;color:#fff;">จำนวนเงิน</label>
-                                                        </div>
-                                                        <div class="col-lg-12">
-                                                            <input class="input-payment" type="text" placeholder="จำนวนเงิน">
+                                            <div id="first1">
+                                                <div class="row my-3 fade-in">
+                                                    <div class="col-lg-12 mb-3">
+                                                        <button class="addT10wallet">+ เพิ่มบัญชี T10 วอลเล็ท</button>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="row" style="border-right:1px solid #455160;">
+                                                            <div class="col-lg-12">
+                                                                <label style="font-family:myfont;font-size:1.5em;color:#fff;">เหรียญ T10</label>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <input class="input-payment" type="text" placeholder="จำนวนเหรียญที่ต้องการใช้">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="col-lg-6">
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <label style="font-family:myfont;font-size:1.5em;color:#fff;">คูปอง / ส่วนลดของฉัน</label>
-                                                        </div>
-                                                        <div class="col-lg-12">
-                                                            <div class="input-group mb-3">
-                                                                <input class="input-payment2" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2">
-                                                                <div class="input-group-append">
-                                                                    <span class="input-group-text select-code" id="basic-addon2">เลือกโค้ดส่วนลด</span>
+                                                    <div class="col-lg-6">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <label style="font-family:myfont;font-size:1.5em;color:#fff;">คูปอง / ส่วนลดของฉัน</label>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="input-group mb-3">
+                                                                    <input class="input-payment2" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text select-code" id="basic-addon2" data-toggle="modal" data-target="#code">เลือกโค้ดส่วนลด</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row mt-3 py-2" style="background-color:#000;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
+                                            <div class="row mt-3 py-2 " style="background-color:#000;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
                                                 <div class="col-lg-12">
                                                     <div class="row mx-4" style="border-bottom:1px solid #455160">
                                                         <div class="col-lg-6"></div>
@@ -276,7 +293,7 @@
                                                     <div class="row mx-4 mt-3">
                                                         <div class="col-lg-10"></div>
                                                         <div class="col-lg-2 text-right">
-                                                            <label class="btn-submit-modal-red" style="text-align:center;line-height:2;cursor:pointer;">ชำระเงิน</label>
+                                                            <a href="payment_confirmation"><label class="btn-submit-modal-red" style="text-align:center;line-height:2;cursor:pointer;">ชำระเงิน</label></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -347,6 +364,193 @@
             </div>
         @endif
     </div>
+
+<div class="modal fade" id="address" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label style="font-size:1.4em;color:#000;">ที่อยู่</label>
+                    </div>
+                </div>
+                <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
+            </div>
+
+            <div class="modal-body font-rate-modal">
+                <div class="col-lg-12" style="padding:0;">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="custom03">
+                                        <input type="radio" name="select1" value="01" id="01">
+                                        <label for="01"></label>
+                                    </label>
+                                    <label class="font-address ml-2">
+                                        <label>ชื่อ - นามสกุล<br>ที่อยู่</label>
+                                    </label>
+                                    <label class="font-address2 ml-2">
+                                        <label>สมหญิง รักดี <label style="color:#ce0005;font-weight: 700;">(ที่อยู่หลัก)</label> <br>52/2 ซ.เจริญนคร 78 ถนน เจริญนคร บุคคโลเขตธนบุรี จังหวัดกรุงเทพมหานคร 10600</label>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="custom03">
+                                        <input type="radio" name="select1" value="02" id="02">
+                                        <label for="02"></label>
+                                    </label>
+                                    <label class="font-address ml-2">
+                                        <label>ชื่อ - นามสกุล<br>ที่อยู่</label>
+                                    </label>
+                                    <label class="font-address2 ml-2">
+                                        <label>สมหญิง รักดี  <br>26 ซอยลาดปลาเค้า แขวงอนุสาวรีย์ เขตบางเขน กทม. 10220</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <button class="addAddress"  data-dismiss="modal" data-toggle="modal" data-target="#address2">+ เพิ่มที่อยู่</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-submit-modal">ยกเลิก</button>
+                <button type="button" class="btn-submit-modal-red">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="address2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label style="font-size:1.4em;color:#000;">เพิ่มที่อยู่</label>
+                    </div>
+                </div>
+                <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
+            </div>
+
+            <div class="modal-body font-rate-modal" style="padding-bottom:0;">
+                <div class="col-lg-12" >
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label class="bgInput field-wrap">
+                                <label class="fontHeadInput px-3" style="padding:0;">ที่อยู่</label>
+                                <input class="text-box px-3" required="true" type="text" name="text1">
+                                <button class="text-clear"><img src="{{asset('icon/close-grey.svg') }}" ></button>
+                            </label>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="">
+                                <label class="bgInput field-wrap">
+                                    <label class="fontHeadInput px-3" style="padding:0;">จังหวัด</label>
+                                    <select class="selectProvince px-3" required="true" type="text" name="text4">
+                                        <option value="">ดึงจาก DB</option>
+                                        <option value="">ดึงจาก DB</option>
+                                        <option value="">ดึงจาก DB</option>
+                                        <option value="">ดึงจาก DB</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="bgInput field-wrap">
+                                <label class="fontHeadInput px-3">รหัสไปรษณีย์</label><br>
+                                    <select class="selectProvince px-3" required="true" type="text" name="text4">
+                                        <option value="">ดึงจาก DB</option>
+                                        <option value="">ดึงจาก DB</option>
+                                        <option value="">ดึงจาก DB</option>
+                                        <option value="">ดึงจาก DB</option>
+                                    </select>
+                            </label>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="">
+                                <label class="bgInput field-wrap">
+                                    <label class="fontHeadInput px-3" style="padding:0;">ตำบล</label>
+                                    <select class="selectProvince px-3" required="true" type="text" name="text4">
+                                        <option value="">ดึงจาก DB</option>
+                                        <option value="">ดึงจาก DB</option>
+                                        <option value="">ดึงจาก DB</option>
+                                        <option value="">ดึงจาก DB</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="bgInput field-wrap">
+                                <label class="fontHeadInput px-3">อำเภอ</label><br>
+                                    <select class="selectProvince px-3" required="true" type="text" name="text4">
+                                        <option value="">ดึงจาก DB</option>
+                                        <option value="">ดึงจาก DB</option>
+                                        <option value="">ดึงจาก DB</option>
+                                        <option value="">ดึงจาก DB</option>
+                                    </select>
+                            </label>
+                        </div>
+                        <div class="checkbox ml-3 mt-2">
+                            <input type="checkbox" id="checkbox_01" name="accept_01">
+                            <label for="checkbox_01" style="color:#000;font-weight:bold;padding-top:2px;padding-left:10px;" >ที่อยู่หลัก</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-submit-modal">ยกเลิก</button>
+                <button type="button" class="btn-submit-modal-red">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="code" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-lg-12" style="font-size:1.4em;">โค้ดส่วนลด</div>
+                </div>
+                <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
+            </div>
+
+            <div class="modal-body font-rate-modal">
+                <div class="col-lg-12" style="padding:0;">
+                    <div class="row mb-3">
+                        <div class="col-lg-12">
+                            <div>
+                                <label  class="bgcode labellogo" onClick="myFunction5()">
+                                    <label class="fontcode fontcodeposition">DAY100TH</label>
+                                    <div id="code1">
+                                        <label class="bordergreen2">
+                                        <img class="selectGreenPosition2" src="{{asset('icon/select_green.svg') }}" >
+                                        </label>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-submit-modal" data-dismiss="modal" data-toggle="modal" data-target="#myModal3">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
 
 <div class="container-fluid">
@@ -363,6 +567,51 @@
 @endsection
 
 @section('script')
+<script>
+const myFunction = () => {
+  document.getElementById("first").style.display ='block';
+  document.getElementById("first1").style.display ='block';
+  document.getElementById("second").style.display ='none'
+  document.getElementById("third").style.display ='none'
+  document.getElementById("four").style.display ='none'
+}
 
+const myFunction2 = () => {
+  document.getElementById("first").style.display ='none'
+  document.getElementById("first1").style.display ='none'
+  document.getElementById("second").style.display ='block'
+  document.getElementById("third").style.display ='none'
+  document.getElementById("four").style.display ='none'
+}
 
+const myFunction3 = () => {
+  document.getElementById("first").style.display ='none'
+  document.getElementById("first1").style.display ='none'
+  document.getElementById("second").style.display ='none'
+  document.getElementById("third").style.display ='block'
+  document.getElementById("four").style.display ='none'
+}
+
+const myFunction4 = () => {
+  document.getElementById("first").style.display ='none'
+  document.getElementById("first1").style.display ='none'
+  document.getElementById("second").style.display ='none'
+  document.getElementById("third").style.display ='none'
+  document.getElementById("four").style.display ='block'
+}
+
+</script>
+
+<script>
+const myFunction5 = () => {
+  document.getElementById("code1").style.display ='block';
+}
+</script>
+
+<script>
+$('.text-clear').on('click', function (e) {
+  e.preventDefault();
+  $(this).prev('.text-box').val('');
+});
+</script>
 @endsection

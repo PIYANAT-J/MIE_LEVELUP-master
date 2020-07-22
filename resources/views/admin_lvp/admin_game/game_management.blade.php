@@ -267,8 +267,6 @@
                 <div class="col-1"></div>
             </div>
             <div class="modal-body font-rate-modal">
-                <form action="{{route('ApproveGame')}}" method="post">
-                    @csrf
                     <div class="row px-3">
                         <div class="col-lg-6 pb-1">
                             <div class="row bg-disabled mb-2 py-2">
@@ -342,7 +340,7 @@
                             <input type="hidden" name="GAME_APPROVE_DATE" value="{{ date('Y-m-d H:i:s') }}">  
                         </div>
                     </div>
-                </form>
+                
             </div>
         </div>
     </div>
