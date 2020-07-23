@@ -24,13 +24,13 @@
                                 <div class="col-lg-12 text-center">
                                     <button class="btn-point pb-2">
                                         <span class="font-point">พอยท์</span></br>
-                                        <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">52</span>
+                                        <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">0</span>
                                         <i class="icon-Icon_Point"></i>
                                     </button>
 
                                     <button class="btn-coin pb-2">
                                         <span class="font-point">เหรียญ</span></br>
-                                        <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">70</span>
+                                        <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">0</span>
                                         <i class="icon-Icon_Coin"></i>
                                     </button>
                                 </div>

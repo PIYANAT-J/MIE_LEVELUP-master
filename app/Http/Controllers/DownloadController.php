@@ -23,37 +23,6 @@ class DownloadController extends Controller
 
     // }
 
-    public function indexGame(){
-        // $Game = DB::select('SELECT * FROM developers LEFT JOIN games ON developers.USER_ID = games.USER_ID LEFT JOIN users ON developers.USER_ID = users.id');
-        
-        if(isset(Auth::user()->id)){
-            $Download = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
-            if($Download->count() == 0){
-                $Game = DB::table('games')
-                            ->join('users', 'users.id', '=', 'games.USER_ID')
-                            // ->join('downloads', 'downloads.GAME_ID', '=', 'games.GAME_ID')
-                            ->select('games.*', 'users.*')
-                            ->get();
-                return view('game_shelf', compact('Game'));
-            }else{
-                $Game = DB::table('games')
-                            ->join('users', 'users.id', '=', 'games.USER_ID')
-                            ->select('games.*', 'users.*')
-                            ->get();
-                return view('game_shelf', compact('Game', 'Download'));
-            }
-        }else{
-            $Game = DB::table('games')
-                        ->join('users', 'users.id', '=', 'games.USER_ID')
-                        // ->join('downloads', 'downloads.GAME_ID', '=', 'games.GAME_ID')
-                        ->select('games.*', 'users.*')
-                        ->get();
-            return view('game_shelf', compact('Game'));
-        }
-        
-        
-    }
-
     public function downloadGame(Request $request){
         if ($request->input('submit') != null ){
     

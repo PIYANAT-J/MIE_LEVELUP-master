@@ -177,7 +177,7 @@
                             <img class="rate_pic2" style="width: 13%;" src="{{ asset('section/game_rate/'.$game->RATED_ESRB.'.svg') }}" />
                             <div class="game_name2">
                                 <b style="font-size: 25px;color: #fff;">{{ $game->GAME_NAME }}</b>
-                                <div class="mt-1" style="font-size: 22px;color: #fff;">{{ $game->RATED_B_L }} • Online <button class="font_detail2" style="color: #fff;" >รายละเอียด</button></div>
+                                <div class="mt-1" style="font-size: 22px;color: #fff;">{{ $game->RATED_B_L }} • Online</div>
                             </div>
                             <button id="down" class="down2 btn btn-dark panel-heading" data-toggle="collapse" data-target="#{{ $game->GAME_NAME }}" aria-expanded="false" aria-controls="collapseExample"><img id="downImg" src="{{asset('icon/down1.svg')}}"></button>
                             <!-- <button id="down" class="down2 btn btn-dark" data-toggle="collapse"data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><img id="downImg" src="{{asset('icon/down1.svg')}}"></button> -->
@@ -306,7 +306,7 @@
                         <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">การติดตามของฉัน</h2>
                     </div>
                     <div class="col-7 text-right" data-aos="fade">
-                        <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('gameCategory') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
+                        <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('FollowMe') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
                     </div>
                 </div>
                 <div class="owl-carousel" id="owl-demo2">
@@ -331,7 +331,7 @@
                                                 <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/'.$gameMe->RATED_ESRB.'.svg') }}" />
                                                 <div class="game_name2">
                                                     <b style="font-size: 25px;color: #fff;">{{$gameMe->GAME_NAME}}</b>
-                                                    <div class="mt-1" style="font-size: 22px;color: #fff;">{{ $gameMe->RATED_B_L }} • Online <button class="font_detail2" style="color: #fff;" >รายละเอียด</button></div>
+                                                    <div class="mt-1" style="font-size: 22px;color: #fff;">{{ $gameMe->RATED_B_L }} • Online</div>
                                                 </div>
                                                 <!-- <div class="down2"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
                                                 <button id="down" class="down2 btn btn-dark" data-toggle="collapse" data-target="#{{ $gameMe->GAME_NAME }}2" aria-expanded="false" aria-controls="collapseExample"><img id="downImg2" src="{{asset('icon/down1.svg')}}"></button>
@@ -419,251 +419,132 @@
                 <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">เกมแนะนำ</h2>
             </div>
             <div class="col-7 text-right" data-aos="fade">
-                <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('GAMESHELF') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
+                <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('gameCategory') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
             </div>
         </div>
         <div class="owl-carousel " id="owl-demo3">
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game6.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
-                    <span class="desc">
-                        <!-- <button class="btn_follow2 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 25px;color: #fff;">GRAND THRFT AUTO V</b>
-                            <div class="mt-1" style="font-size: 22px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
-                        <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#collapseExample4  " aria-expanded="false" aria-controls="collapseExample"><img id="downImg4" src="{{asset('icon/down1.svg')}}"></button>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game7.png') }}" />
-                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
-                    <span class="desc">
-                        <button class="btn_follow2 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
-                        <!-- <button class="btn_follow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button > -->
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 25px;color: #fff;">SONIC THE HEDGEHOG</b>
-                            <div class="mt-1" style="font-size: 22px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
-                        <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample"><img id="downImg5" src="{{asset('icon/down1.svg')}}"></button>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game8.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
-                    <span class="desc">
-                        <!-- <button class="btn_follow2 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 25px;color: #fff;">SPY KIDS 3D GAME OVER</b>
-                            <div class="mt-1" style="font-size: 22px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game9.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
-                    <span class="desc">
-                        <!-- <button class="btn_follow2 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 25px;color: #fff;">SONIG MANIA</b>
-                            <div class="mt-1" style="font-size: 22px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game10.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
-                    <span class="desc">
-                        <!-- <button class="btn_follow2 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 25px;color: #fff;">CRASH BANDICOOT</b>
-                            <div class="mt-1" style="font-size: 22px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game11.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
-                    <span class="desc">
-                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 25px;color: #fff;">FORZE HORIZON 4</b>
-                            <div class="mt-1" style="font-size: 22px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game6.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
-                    <span class="desc">
-                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 25px;color: #fff;">GRAND THRFT AUTO V</b>
-                            <div class="mt-1" style="font-size: 22px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game6.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
-                    <span class="desc">
-                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 25px;color: #fff;">GRAND THRFT AUTO V</b>
-                            <div class="mt-1" style="font-size: 22px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game6.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
-                    <span class="desc">
-                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 25px;color: #fff;">GRAND THRFT AUTO V</b>
-                            <div class="mt-1" style="font-size: 22px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game6.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
-                    <span class="desc">
-                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 25px;color: #fff;">GRAND THRFT AUTO V</b>
-                            <div class="mt-1" style="font-size: 22px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game6.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
-                    <span class="desc">
-                        <!-- <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 25px;color: #fff;">GRAND THRFT AUTO V</b>
-                            <div class="mt-1" style="font-size: 22px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                    </span>
-                </a>
-            </div>
+            @foreach($Gamehot as $gameHot)
+                <div class="item imgteaser">
+                    <a>
+                        <img class="game_2" src="{{ asset('section/File_game/Profile_game/'.$gameHot->GAME_IMG_PROFILE) }}" />
+                        <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                        <span class="desc">
+                            <!-- <button class="btn_follow2 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                            @guest
+                                <form action="{{route('login-levelUp')}}">
+                                    <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                                </form>
+                            @else
+                                @if($Follows->count() > 0)
+                                    @foreach($Follows as $follow)
+                                        @if($gameHot->GAME_ID == $follow->GAME_ID)
+                                            <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <button class="btn_follow4 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b>
+                                                    <input type="hidden" name="submit" value="submit">
+                                                    <input type="hidden" name="FOLLOW_ID" value="{{ $follow->FOLLOW_ID }}">
+                                                </button >
+                                            </form>
+                                            @break
+                                        @else
+                                            <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b>
+                                                    <input type="hidden" name="submit" value="submit">
+                                                    <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                                                    <input type="hidden" name="GAME_ID" value="{{ $gameHot->GAME_ID }}">
+                                                    <input type="hidden" name="GAME_NAME" value="{{ $gameHot->GAME_NAME }}">
+                                                    <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                                </button >
+                                            </form>
+                                        @endif
+                                    @endforeach
+                                @else
+                                    <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b>
+                                            <input type="hidden" name="submit" value="submit">
+                                            <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                                            <input type="hidden" name="GAME_ID" value="{{ $gameHot->GAME_ID }}">
+                                            <input type="hidden" name="GAME_NAME" value="{{ $gameHot->GAME_NAME }}">
+                                            <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                        </button >
+                                    </form>
+                                @endif
+                            @endguest
+                            <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/'.$gameHot->RATED_ESRB.'.svg') }}" />
+                            <div class="game_name">
+                                <b style="font-size: 30px;color: #fff;">{{ $gameHot->GAME_NAME }}</b>
+                                <div class="mt-1" style="font-size: 25px;color: #fff;">{{ $gameHot->RATED_B_L }} • Online</div>
+                            </div>
+                            <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
+                            <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#{{ $gameHot->GAME_NAME }}4  " aria-expanded="false" aria-controls="collapseExample"><img id="downImg6" src="{{asset('icon/down1.svg')}}"></button>
+                        </span>
+                    </a>
+                </div>
+            @endforeach
         </div>
-        <div class="collapse" id="collapseExample4">
-            <div class="form">
-                <div class="row">
-                    <div class="col-lg-5">
-                    <!-- <img class="pic1 show_bg_2 text-right " src="{{asset('section/picture_game/game6.png') }}" /> -->
-                        <div class="responsive-video">
-                            <img class="transparent-img" src="http://res.cloudinary.com/mhasan/image/upload/v1499355448/transparent_p4vrmt.png" alt="Transparent-img">
-                            <iframe class="video" src="//www.youtube.com/embed/668nUCeBHyY" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col my-4 ml-1 mr-3" >
-                        <div class="row ">
-                            <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/rate.svg') }}" /></div>
-                            <div class="col-lg-10 mt-1 row_rate">
-                                <p class="font_rate1">
-                                    <b style="color:#f6c12c; font-size:30px;">4.5/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
-                                    <b>124</b> &nbsp;Comments</br>
-                                    <b>15k </b>Downloads &nbsp; &nbsp;| &nbsp; &nbsp;
-                                    <b>104.5</b> &nbsp;hours
-                                </p>
+        @foreach($Gamehot as $gameHotID)
+            <div class="collapse" id="{{ $gameHotID->GAME_NAME }}4">
+                <div class="form">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <!-- <img class="pic1 show_bg_2 text-right " src="{{asset('section/picture_game/game6.png') }}" /> -->
+                            <div class="responsive-video">
+                                <img class="transparent-img" src="http://res.cloudinary.com/mhasan/image/upload/v1499355448/transparent_p4vrmt.png" alt="Transparent-img">
+                                <iframe class="video" src="{{ $gameHotID->GAME_VDO_LINK }}" frameborder="0" allowfullscreen></iframe>
                             </div>
                         </div>
-                        <p class="font_rate2 "><b>Ragnarok4</b></br>Online • Other</p>
-                        <p class="font_detail ">Ragnarok Online is a massive multiplayer online role-playing game created by Gravity based on the manhwa Ragnarok by Lee Myung-jin</p>
-                        <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow7"><b class="font_follow2" style="color: #fff;">รายละเอียด</b></button>  
+                        <div class="col my-4 ml-1 mr-3" >
+                            <div class="row ">
+                                <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/'.$gameHotID->RATED_ESRB.'.svg') }}" /></div>
+                                <div class="col-lg-10 mt-1 row_rate">
+                                    <p class="font_rate1">
+                                        @if(isset($CommentAll))
+                                            <?php $i = 0; $countID = 0;?>
+                                            @foreach($CommentAll as $CAC)
+                                                @if($CAC->GAME_ID == $gameHotID->GAME_ID)
+                                                    <?php $i = $i+$CAC->RATING; $countID = $countID+1;?>
+                                                @endif
+                                            @endforeach
+                                            <?php 
+                                                if($countID == 0 || $i == 0){
+                                                    $count = 0;
+                                                }else{
+                                                    $count = $i/$countID;
+                                                }
+                                                
+                                            ?>
+                                        @endif
+                                        @foreach($Com_count as $com_count)
+                                            @if($com_count->GAME_ID == $gameHotID->GAME_ID)
+                                                @foreach($CDownload as $countDown)
+                                                    @if($countDown->GAME_ID == $gameHotID->GAME_ID)
+                                                        <b style="color:#f6c12c; font-size:30px;">{{round($count, 1)}}/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
+                                                        <b>{{ $com_count->com_count }}</b> &nbsp;คอมเมนท์</br>
+                                                        <b>{{ $countDown->downloads_count }} </b>ดาวน์โหลด &nbsp; &nbsp;
+                                                        <!-- <b>104.5</b> &nbsp;ชั่วโมง -->
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+                                        <!-- <b style="color:#f6c12c; font-size:30px;">4.5/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
+                                        <b>124</b> &nbsp;Comments</br>
+                                        <b>15k </b>Downloads &nbsp; &nbsp;| &nbsp; &nbsp;
+                                        <b>104.5</b> &nbsp;hours -->
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="font_rate2 "><b>{{ $gameHotID->GAME_NAME }}</b></br>{{ $gameHotID->RATED_B_L }} • Other</p>
+                            <p class="font_detail ">{{ $gameHotID->GAME_DESCRIPTION }}</p>
+                            <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button > -->
+                            <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                            <button class="btn_follow7"><b class="font_follow2" style="color: #fff;">รายละเอียด</b></button>  
+                        </div>
                     </div>
                 </div>
             </div>
-        </div> 
-        <div class="collapse" id="collapseExample5">
-            <div class="form">
-                <div class="row">
-                    <div class="col-lg-5">
-                    <!-- <img class="pic1 show_bg_2 text-right " src="{{asset('section/picture_game/game7.png') }}" /> -->
-                        <div class="responsive-video">
-                            <img class="transparent-img" src="http://res.cloudinary.com/mhasan/image/upload/v1499355448/transparent_p4vrmt.png" alt="Transparent-img">
-                            <iframe class="video" src="//www.youtube.com/embed/668nUCeBHyY" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col my-4 ml-1 mr-3" >
-                        <div class="row ">
-                            <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/rate.svg') }}" /></div>
-                            <div class="col-lg-10 mt-1 row_rate">
-                                <p class="font_rate1">
-                                    <b style="color:#f6c12c; font-size:30px;">4.5/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
-                                    <b>124</b> &nbsp;Comments</br>
-                                    <b>15k </b>Downloads &nbsp; &nbsp;| &nbsp; &nbsp;
-                                    <b>104.5</b> &nbsp;hours
-                                </p>
-                            </div>
-                        </div>
-                        <p class="font_rate2 "><b>Ragnarok5</b></br>Online • Other</p>
-                        <p class="font_detail ">Ragnarok Online is a massive multiplayer online role-playing game created by Gravity based on the manhwa Ragnarok by Lee Myung-jin</p>
-                        <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button > -->
-                        <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
-                        <button class="btn_follow7"><b class="font_follow2" style="color: #fff;">รายละเอียด</b></button>  
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </section>
 
@@ -675,7 +556,7 @@
                 <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">เกมออกใหม่</h2>
             </div>
             <div class="col-7 text-right" data-aos="fade">
-                <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('GAMESHELF') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
+                <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('gameCategory') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
             </div>
         </div>
         <div class="owl-carousel " id="owl-demo4">
@@ -793,8 +674,8 @@
                                 </div>
                             </div>
                             <p class="font_rate2 "><b>{{ $gameNewId->GAME_NAME }}</b></br>{{ $gameNewId->RATED_B_L }} • Other</p>
-                            <p class="font_detail ">Ragnarok Online is a massive multiplayer online role-playing game created by Gravity based on the manhwa Ragnarok by Lee Myung-jin</p>
-                            <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                            <p class="font_detail ">{{ $gameNewId->GAME_DESCRIPTION }}</p>
+                            <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button > -->
                             <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
                             <button class="btn_follow7"><b class="font_follow2" style="color: #fff;">รายละเอียด</b></button>  
                         </div>
@@ -802,68 +683,6 @@
                 </div>
             </div>
         @endforeach
-        <div class="collapse" id="collapseExample6">
-            <div class="form">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <!-- <img class="pic1 show_bg_2 text-right " src="{{asset('section/picture_game/game6.png') }}" /> -->
-                        <div class="responsive-video">
-                            <img class="transparent-img" src="http://res.cloudinary.com/mhasan/image/upload/v1499355448/transparent_p4vrmt.png" alt="Transparent-img">
-                            <iframe class="video" src="//www.youtube.com/embed/668nUCeBHyY" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col my-4 ml-1 mr-3" >
-                        <div class="row ">
-                            <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/rate.svg') }}" /></div>
-                            <div class="col-lg-10 mt-1 row_rate">
-                                <p class="font_rate1">
-                                    <b style="color:#f6c12c; font-size:30px;">4.5/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
-                                    <b>124</b> &nbsp;Comments</br>
-                                    <b>15k </b>Downloads &nbsp; &nbsp;| &nbsp; &nbsp;
-                                    <b>104.5</b> &nbsp;hours
-                                </p>
-                            </div>
-                        </div>
-                        <p class="font_rate2 "><b>Ragnarok6</b></br>Online • Other</p>
-                        <p class="font_detail ">Ragnarok Online is a massive multiplayer online role-playing game created by Gravity based on the manhwa Ragnarok by Lee Myung-jin</p>
-                        <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow7"><b class="font_follow2" style="color: #fff;">รายละเอียด</b></button>  
-                    </div>
-                </div>
-            </div>
-        </div> 
-        <div class="collapse" id="collapseExample7">
-            <div class="form">
-                <div class="row">
-                    <div class="col-lg-5">
-                    <!-- <img class="pic1 show_bg_2 text-right " src="{{asset('section/picture_game/game7.png') }}" /> -->
-                        <div class="responsive-video">
-                            <img class="transparent-img" src="http://res.cloudinary.com/mhasan/image/upload/v1499355448/transparent_p4vrmt.png" alt="Transparent-img">
-                            <iframe class="video" src="//www.youtube.com/embed/668nUCeBHyY" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col my-4 ml-1 mr-3" >
-                        <div class="row ">
-                            <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/rate.svg') }}" /></div>
-                            <div class="col-lg-10 mt-1 row_rate">
-                                <p class="font_rate1">
-                                    <b style="color:#f6c12c; font-size:30px;">4.5/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
-                                    <b>124</b> &nbsp;Comments</br>
-                                    <b>15k </b>Downloads &nbsp; &nbsp;| &nbsp; &nbsp;
-                                    <b>104.5</b> &nbsp;hours
-                                </p>
-                            </div>
-                        </div>
-                        <p class="font_rate2 "><b>Ragnarok7</b></br>Online • Other</p>
-                        <p class="font_detail ">Ragnarok Online is a massive multiplayer online role-playing game created by Gravity based on the manhwa Ragnarok by Lee Myung-jin</p>
-                        <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button > -->
-                        <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
-                        <button class="btn_follow7"><b class="font_follow2" style="color: #fff;">รายละเอียด</b></button>  
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -875,7 +694,7 @@
                 <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">พบกันเร็วๆนี้</h2>
             </div>
             <div class="col-7 text-right" data-aos="fade">
-                <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('GAMESHELF') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
+                <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
             </div>
         </div>
         <div class="owl-carousel" id="owl-demo5">
@@ -893,151 +712,6 @@
                         </div>
                         <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
                         <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#collapseExample8" aria-expanded="false" aria-controls="collapseExample"><img id="downImg8" src="{{asset('icon/down1.svg')}}"></button>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game19.png') }}" />
-                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
-                    <span class="desc">
-                        <button class="btn_follow2 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
-                        <button class="btn_follow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 30px;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                        <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#collapseExample9  " aria-expanded="false" aria-controls="collapseExample"><img id="downImg9" src="{{asset('icon/down1.svg')}}"></button>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game20.png') }}" />
-                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
-                    <span class="desc">
-                        <button class="btn_follow2 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
-                        <button class="btn_follow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 30px;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game21.png') }}" />
-                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
-                    <span class="desc">
-                        <button class="btn_follow2 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
-                        <button class="btn_follow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 30px;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game22.png') }}" />
-                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
-                    <span class="desc">
-                        <button class="btn_follow2 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
-                        <button class="btn_follow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 30px;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game18.png') }}" />
-                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
-                    <span class="desc">
-                        <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 30px;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game18.png') }}" />
-                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
-                    <span class="desc">
-                        <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 30px;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game18.png') }}" />
-                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
-                    <span class="desc">
-                        <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 30px;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game18.png') }}" />
-                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
-                    <span class="desc">
-                        <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 30px;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
-                    </span>
-                </a>
-            </div>
-            <div class="item imgteaser">
-                <a>
-                    <img class="game_2" src="{{asset('section/picture_game/game18.png') }}" />
-                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
-                    <span class="desc">
-                        <button class="btn_follow2 text-left"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <b style="font-size: 30px;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 25px;color: #fff;">Discrimination • Online</div>
-                        </div>
-                        <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div>
                     </span>
                 </a>
             </div>
@@ -1065,37 +739,6 @@
                             </div>
                         </div>
                         <p class="font_rate2 "><b>Ragnarok8</b></br>Online • Other</p>
-                        <p class="font_detail ">Ragnarok Online is a massive multiplayer online role-playing game created by Gravity based on the manhwa Ragnarok by Lee Myung-jin</p>
-                        <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
-                        <button class="btn_follow7"><b class="font_follow2" style="color: #fff;">รายละเอียด</b></button>  
-                    </div>
-                </div>
-            </div>
-        </div> 
-        <div class="collapse" id="collapseExample9">
-            <div class="form">
-                <div class="row">
-                    <div class="col-lg-5">
-                    <img class="pic1 show_bg_2 text-right " src="{{asset('section/picture_game/game7.png') }}" />
-                        <div class="responsive-video">
-                            <img class="transparent-img" src="http://res.cloudinary.com/mhasan/image/upload/v1499355448/transparent_p4vrmt.png" alt="Transparent-img">
-                            <iframe class="video" src="//www.youtube.com/embed/668nUCeBHyY" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col my-4 ml-1 mr-3" >
-                        <div class="row ">
-                            <div class="col-lg-1"><img class="rate_pic3" src="{{asset('section/game_rate/rate.svg') }}" /></div>
-                            <div class="col-lg-10 mt-1 row_rate">
-                                <p class="font_rate1">
-                                    <b style="color:#f6c12c; font-size:30px;">4.5/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
-                                    <b>124</b> &nbsp;Comments</br>
-                                    <b>15k </b>Downloads &nbsp; &nbsp;| &nbsp; &nbsp;
-                                    <b>104.5</b> &nbsp;hours
-                                </p>
-                            </div>
-                        </div>
-                        <p class="font_rate2 "><b>Ragnarok9</b></br>Online • Other</p>
                         <p class="font_detail ">Ragnarok Online is a massive multiplayer online role-playing game created by Gravity based on the manhwa Ragnarok by Lee Myung-jin</p>
                         <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
                         <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >

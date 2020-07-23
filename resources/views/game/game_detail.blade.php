@@ -296,11 +296,11 @@
                 @foreach($CommentAll as $commentAll)
                     @if($commentAll->RATING == 5)
 
-                    <div class="filterDiv FI row mt-2 rate_bottom bg4">
-                        <div class="col-lg-2 text-center bg3" style="margin: 0;">
+                    <div class="filterDiv FI row mt-2 rate_bottom">
+                        <div class="col-lg-2 text-center" style="margin: 0;">
                             <img class="imgComment" src="{{ asset('home/imgProfile/'.$commentAll->GUEST_USERS_IMG) }}"/>
                         </div>
-                        <div class="col-lg-8 commenter bg2">{{ $commentAll->name }}.{{ $commentAll->surname }}</br>
+                        <div class="col-lg-8 commenter">{{ $commentAll->name }}.{{ $commentAll->surname }}</br>
                             @for($i=1;$i <= 5 ;$i++)
                                 @if($i <= $commentAll->RATING)
                                     <span style="font-size: 15px;" class="fa fa-star checked"></span>
@@ -504,7 +504,7 @@
                     <span class="font_rate3">เกมใกล้เคียง</span>
                 </div>
                 <div class="col-6 pb-4 text-right  ">
-                    <h2 style="font-family:myfont;"><a class="game_cat" href="{{ route('GAMESHELF') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
+                    <h2 style="font-family:myfont;"><a class="game_cat" href="{{ route('gameCategory') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
                 </div>
             </div>
         </div>

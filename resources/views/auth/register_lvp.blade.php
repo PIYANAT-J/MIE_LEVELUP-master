@@ -122,9 +122,9 @@
                                     <div class="col-lg-6" style="padding:5px 3px 0px 3px;" data-toggle="tooltip" data-placement="bottom" title="อย่างน้อย 8 ตัวอักษร">
                                         <input id="password_dev" type="password" name="password" class="input-name-reg @error('password') is-invalid @enderror"  placeholder="รหัสผ่าน"  min="8" required autocomplete="new-password">
                                         @error('password')
-                                            <span id="MESSAGE" class="text-danger">รหัสผ่านไม่ถูกต้อง...</span>
+                                            <span id="MESSAGE-DEV" class="text-danger">รหัสผ่านไม่ถูกต้อง...</span>
                                         @else
-                                            <span id="MESSAGE"></span>
+                                            <span id="MESSAGE-DEV"></span>
                                         @enderror
                                     </div>
                                     <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
@@ -208,9 +208,9 @@
                                             <div class="col-lg-6" style="margin-left:-15px; padding:5px 3px 0px 3px;" data-toggle="tooltip" data-placement="bottom" title="อย่างน้อย 8 ตัวอักษร">
                                                 <input id="password_spon" type="password" name="password" class="input-name-reg @error('password') is-invalid @enderror"  placeholder="รหัสผ่าน"  min="8" required autocomplete="new-password">
                                                 @error('password')
-                                                    <span id="MESSAGE" class="text-danger">รหัสผ่านไม่ถูกต้อง...</span>
+                                                    <span id="MESSAGE-SPON" class="text-danger">รหัสผ่านไม่ถูกต้อง...</span>
                                                 @else
-                                                    <span id="MESSAGE"></span>
+                                                    <span id="MESSAGE-SPON"></span>
                                                 @enderror
                                             </div>
                                             <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
@@ -270,9 +270,9 @@
                                             <div class="col-lg-6" style="margin-left:-15px; padding:5px 3px 0px 3px;" data-toggle="tooltip" data-placement="bottom" title="อย่างน้อย 8 ตัวอักษร">
                                                 <input id="password_spon2" type="password" name="password" class="input-name-reg @error('password') is-invalid @enderror"  placeholder="รหัสผ่าน"  min="8" required autocomplete="new-password">
                                                 @error('password')
-                                                    <span id="MESSAGE" class="text-danger">รหัสผ่านไม่ถูกต้อง...</span>
+                                                    <span id="MESSAGE-SPON2" class="text-danger">รหัสผ่านไม่ถูกต้อง...</span>
                                                 @else
-                                                    <span id="MESSAGE"></span>
+                                                    <span id="MESSAGE-SPON2"></span>
                                                 @enderror
                                             </div>
                                             <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
