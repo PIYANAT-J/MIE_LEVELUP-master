@@ -49,6 +49,12 @@ class ResetPasswordController extends Controller
         }
     }
 
+    public function devPass(){
+        $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('profile.password.devlvp_change_password', compact('developer', 'userKyc'));
+    }
+
     public function passwordUserReset(Request $req){
         // dd('passwordUserReset');
         if($req->input('submit') != null){

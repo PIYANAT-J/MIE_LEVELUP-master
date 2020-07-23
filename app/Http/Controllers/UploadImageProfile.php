@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 // use Illuminate\Support\Facades\DB;
 
 use App\Developer;
@@ -276,6 +277,14 @@ class UploadImageProfile extends Controller
                    })->save($path . '/' . $img_name);
                 $upload->move($path, $img_name);
 
+                $deleteImg = DB::table('developers')->where('USER_ID', Auth::user()->id)->value('DEV_IMG');
+                if($deleteImg != "No_Img.jpg"){
+                    $pathDeleteImg = 'home/imgProfile/'.$deleteImg;
+                    if(File::exists(public_path($pathDeleteImg))){
+                        File::delete(public_path($pathDeleteImg));
+                    }
+                }
+
                 $DEV_TEL = $request->input('DEV_TEL');
                 $DEV_ID_CARD = $request->input('DEV_ID_CARD');
                 $DEV_IMG = $img_name;
@@ -291,11 +300,20 @@ class UploadImageProfile extends Controller
                 $name = $request->input('name');
                 $surname = $request->input('surname');
 
-                $yyyy = $request->input('yyyy');
-                $mm = $request->input('mm');
-                $dd = $request->input('dd');
+                if($request->input('yyyy') == "year"){
+                    $BIRTHDAY = DB::table('developers')->where('USER_ID', $USER_ID)->value('DEV_BIRTHDAY');
+                    if($BIRTHDAY == null){
+                        $DEV_BIRTHDAY = date('Y-m-d');
+                    }else{
+                        $DEV_BIRTHDAY = $BIRTHDAY;
+                    }
+                }else{
+                    $yyyy = $request->input('yyyy');
+                    $mm = $request->input('mm');
+                    $dd = $request->input('dd');
 
-                $DEV_BIRTHDAY = $yyyy.'-'.$mm .'-'.$dd;
+                    $DEV_BIRTHDAY = $yyyy.'-'.$mm .'-'.$dd;
+                }
 
                 if($USER_EMAIL != '' || $DEV_TEL != '' || $DEV_ID_CARD != '' || $DEV_IMG != '' || $DEV_BIRTHDAY != '' || $DEV_AGE != '' || $DEV_GENDER != '' || $DEV_ADDRESS != '' 
                     || $ZIPCODE_ID != '' || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
@@ -327,11 +345,20 @@ class UploadImageProfile extends Controller
                 $name = $request->input('name');
                 $surname = $request->input('surname');
 
-                $yyyy = $request->input('yyyy');
-                $mm = $request->input('mm');
-                $dd = $request->input('dd');
+                if($request->input('yyyy') == "year"){
+                    $BIRTHDAY = DB::table('developers')->where('USER_ID', $USER_ID)->value('DEV_BIRTHDAY');
+                    if($BIRTHDAY == null){
+                        $DEV_BIRTHDAY = date('Y-m-d');
+                    }else{
+                        $DEV_BIRTHDAY = $BIRTHDAY;
+                    }
+                }else{
+                    $yyyy = $request->input('yyyy');
+                    $mm = $request->input('mm');
+                    $dd = $request->input('dd');
 
-                $DEV_BIRTHDAY = $yyyy.'-'.$mm .'-'.$dd;
+                    $DEV_BIRTHDAY = $yyyy.'-'.$mm .'-'.$dd;
+                }
 
                 if($USER_EMAIL != '' || $DEV_TEL != '' || $DEV_ID_CARD != '' || $DEV_BIRTHDAY != '' || $DEV_AGE != '' || $DEV_GENDER != '' || $DEV_ADDRESS != '' || $ZIPCODE_ID != '' 
                     || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
@@ -362,7 +389,6 @@ class UploadImageProfile extends Controller
     
             // Insert && Update
             if($request->has('GUEST_USERS_IMG')){
-                // dd($request->file('GUEST_USERS_IMG'));
                 $upload = $request->file('GUEST_USERS_IMG');
                 $img_name = 'USER_'.time().'.'.$upload->getClientOriginalExtension();
                 $path = public_path('home/imgProfile');
@@ -371,7 +397,15 @@ class UploadImageProfile extends Controller
                     $constraint->aspectRatio();
                    })->save($path . '/' . $img_name);
                 $upload->move($path, $img_name);
-                // dd($img_name);
+
+                $deleteImg = DB::table('guest_users')->where('USER_ID', Auth::user()->id)->value('GUEST_USERS_IMG');
+                if($deleteImg != "No_Img.jpg"){
+                    $pathDeleteImg = 'home/imgProfile/'.$deleteImg;
+                    if(File::exists(public_path($pathDeleteImg))){
+                        File::delete(public_path($pathDeleteImg));
+                    }
+                }
+
                 $validate = $request->validate([
                     'GUEST_USERS_TEL' => ['required', 'string', 'min:10', 'max:10', 'regex:/[08|09|06]\d{8}$/'],
                     'GUEST_USERS_ID_CARD' => ['required', 'string', 'min:13', 'max:13', 'regex:/^\d{13}$/'],
@@ -398,11 +432,20 @@ class UploadImageProfile extends Controller
                 $name = $request->input('name');
                 $surname = $request->input('surname');
 
-                $yyyy = $request->input('yyyy');
-                $mm = $request->input('mm');
-                $dd = $request->input('dd');
+                if($request->input('yyyy') == "year"){
+                    $BIRTHDAY = DB::table('guest_users')->where('USER_ID', $USER_ID)->value('GUEST_USERS_BIRTHDAY');
+                    if($BIRTHDAY == null){
+                        $GUEST_USERS_BIRTHDAY = date('Y-m-d');
+                    }else{
+                        $GUEST_USERS_BIRTHDAY = $BIRTHDAY;
+                    }
+                }else{
+                    $yyyy = $request->input('yyyy');
+                    $mm = $request->input('mm');
+                    $dd = $request->input('dd');
 
-                $GUEST_USERS_BIRTHDAY = $yyyy.'-'.$mm .'-'.$dd;
+                    $GUEST_USERS_BIRTHDAY = $yyyy.'-'.$mm .'-'.$dd;
+                }
 
                 if($USER_EMAIL != '' || $GUEST_USERS_TEL != '' || $GUEST_USERS_ID_CARD != '' || $GUEST_USERS_IMG != '' || $GUEST_USERS_BIRTHDAY != '' || $GUEST_USERS_AGE != '' 
                     || $GUEST_USERS_GENDER != '' || $GUEST_USERS_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
@@ -451,11 +494,22 @@ class UploadImageProfile extends Controller
                 $name = $request->input('name');
                 $surname = $request->input('surname');
 
-                $yyyy = $request->input('yyyy');
-                $mm = $request->input('mm');
-                $dd = $request->input('dd');
+                // $GUEST_USERS_BIRTHDAY = DB::table('guest_users')->where('USER_ID', $USER_ID)->value('GUEST_USERS_BIRTHDAY');
+                // dd($GUEST_USERS_BIRTHDAY);
+                if($request->input('yyyy') == "year"){
+                    $BIRTHDAY = DB::table('guest_users')->where('USER_ID', $USER_ID)->value('GUEST_USERS_BIRTHDAY');
+                    if($BIRTHDAY == null){
+                        $GUEST_USERS_BIRTHDAY = date('Y-m-d');
+                    }else{
+                        $GUEST_USERS_BIRTHDAY = $BIRTHDAY;
+                    }
+                }else{
+                    $yyyy = $request->input('yyyy');
+                    $mm = $request->input('mm');
+                    $dd = $request->input('dd');
 
-                $GUEST_USERS_BIRTHDAY = $yyyy.'-'.$mm .'-'.$dd;
+                    $GUEST_USERS_BIRTHDAY = $yyyy.'-'.$mm .'-'.$dd;
+                }
 
                 if($USER_EMAIL != '' || $GUEST_USERS_TEL != '' || $GUEST_USERS_ID_CARD != '' || $GUEST_USERS_BIRTHDAY != '' || $GUEST_USERS_AGE != '' || $GUEST_USERS_GENDER != '' 
                     || $GUEST_USERS_ADDRESS != '' || $ZIPCODE_ID != '' || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
@@ -495,6 +549,14 @@ class UploadImageProfile extends Controller
                     $constraint->aspectRatio();
                    })->save($path . '/' . $img_name);
                 $upload->move($path, $img_name);
+
+                $deleteImg = DB::table('sponsors')->where('USER_ID', Auth::user()->id)->value('SPON_IMG');
+                if($deleteImg != "No_Img.jpg"){
+                    $pathDeleteImg = 'home/imgProfile/'.$deleteImg;
+                    if(File::exists(public_path($pathDeleteImg))){
+                        File::delete(public_path($pathDeleteImg));
+                    }
+                }
 
                 $SPON_TEL = $request->input('SPON_TEL');
                 $SPON_ID_CARD = $request->input('SPON_ID_CARD');

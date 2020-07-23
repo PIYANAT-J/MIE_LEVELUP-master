@@ -14,10 +14,34 @@ use DB;
 class FollowController extends Controller
 {
     public function FollowMe(){
-        $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
-        $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
-        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('game.game_follow', compact('Follows', 'Games', 'guest_user'));
+        if(isset(Auth::user()->id)){
+            if(Auth::user()->users_type == '1'){
+                $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
+                $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+                $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+                return view('game.game_follow', compact('Follows', 'Games', 'guest_user'));
+            }elseif(Auth::user()->users_type == '2'){
+                $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
+                $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+                $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->first();
+                // dd($developer);
+                return view('game.game_follow', compact('Follows', 'Games', 'developer'));
+            }elseif(Auth::user()->users_type == '3'){
+                $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
+                $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+                $spon = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->first();
+                return view('game.game_follow', compact('Follows', 'Games', 'spon'));
+            }else{
+                $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
+                $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+                return view('game.game_follow', compact('Follows', 'Games'));
+            }
+        }else{
+            $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
+            $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+            return view('game.game_follow', compact('Follows', 'Games'));
+
+        }
     }
 
     public function followGame(Request $request){

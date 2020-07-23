@@ -93,25 +93,21 @@
                                 @else
                                 <li class="has-children">
                                     @if(Auth::user()->users_type == '2')
-                                        @foreach($developer as $Dev)
-                                            <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" />
-                                        @endforeach
+                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$developer->DEV_IMG) }}" />
                                     @elseif(Auth::user()->users_type == '3')
-                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
+                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$spon->GUEST_USERS_IMG) }}" />
                                     @else
-                                        @foreach($guest_user as $USER)
-                                            <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
-                                        @endforeach
+                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$guest_user->GUEST_USERS_IMG) }}" />
                                     @endif
                                     <a href="#about-section" class="nav-link font_name" >{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
                                     <ul class="dropdown">
                                         <li class="nav-item">
                                             @if(Auth::user()->users_type == '2')
-                                                <a class="nav-link font_profile" href="{{ route('DevProfile') }}">{{ __('โปรไฟล์_DEV') }}</a>
+                                                <a class="nav-link font_profile" href="{{ route('DevProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @elseif(Auth::user()->users_type == '3')
-                                                <a class="nav-link font_profile" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์_SPON') }}</a>
+                                                <a class="nav-link font_profile" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @else
-                                                <a class="nav-link font_profile" href="{{ route('UserProfile') }}">{{ __('โปรไฟล์_USER') }}</a>
+                                                <a class="nav-link font_profile" href="{{ route('UserProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @endif
                                         </li>
                                         <li class="nav-item font_profile">
