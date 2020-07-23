@@ -87,6 +87,7 @@
             </div>
         </div>
         <!-- sidebar -->
+
         <!-- shop -->
         @if(Auth::user()->updateData == 'true')
             @foreach($guest_user as $USER)
@@ -157,6 +158,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="row mt-3 py-2" style="background-color:#191b29;">
                                                 <div class="col-lg-12">
                                                     <div class="row mx-0">
@@ -185,6 +187,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="row mt-2">
                                                 <div class="col-lg-12">
                                                     <div class="row mx-0">
@@ -202,6 +205,7 @@
                                                                     </label>
                                                                 </div>
                                                             </label>
+
                                                             <label  class="bgPayment labellogo mx-1" onClick="myFunction2()">
                                                                 <img class="center logoT10" src="{{asset('home/logo/credit-icon.svg') }}" >
                                                                 <label class="font-payment-avatar fontLogoPosition2" style="color:#0b0e17;">บัตรเครดิต/บัตรเดบิต</label>
@@ -271,6 +275,52 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div id="second1">
+                                                <div class="row my-3 fade-in">
+                                                    <div class="col-lg-5">
+                                                        <div class="row" style="border-right:1px solid #455160;">
+                                                            <div class="col-lg-12">
+                                                                <label style="font-family:myfont;font-size:1.5em;color:#fff;">บัญชี</label>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <label class="VisaCredit">
+                                                                    <img class="pVisaCredit" style="height:25px;" src="{{asset('home/logo/visa1.svg')}}" >
+                                                                    <label class="pBankAvatar" style="font-family:myfont;font-size:1.1em;color:#414141;">ธนาคารไทยพาณิชย์</label>
+                                                                    <label class="pNBankAvatar" style="font-family:myfont1;font-size:1.1em;color:#414141;">*1234</label>
+                                                                    <label class="pDotBankAvatar" style="font-family:myfont1;font-size:1.1em;color:#414141;line-height:0;cursor:pointer;" data-toggle="modal" data-target="#VisaCredit">•••</label>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <label class="VisaCredit">
+                                                                    <img class="pVisaCredit" style="height:25px;" src="{{asset('home/logo/credit.svg')}}" >
+                                                                    <label class="pBankAvatar" style="font-family:myfont;font-size:1.1em;color:#414141;">ธนาคารไทยพาณิชย์</label>
+                                                                    <label class="pNBankAvatar" style="font-family:myfont1;font-size:1.1em;color:#414141;">*1234</label>
+                                                                    <label class="pDotBankAvatar" style="font-family:myfont1;font-size:1.1em;color:#414141;line-height:0;cursor:pointer;" data-toggle="modal" data-target="#VisaCredit">•••</label>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-7">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <label style="font-family:myfont;font-size:1.5em;color:#fff;">คูปอง / ส่วนลดของฉัน</label>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="input-group mb-3">
+                                                                    <input class="input-payment2" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text select-code" id="basic-addon2" data-toggle="modal" data-target="#code">เลือกโค้ดส่วนลด</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
                                             <div class="row mt-3 py-2 " style="background-color:#000;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
                                                 <div class="col-lg-12">
                                                     <div class="row mx-4" style="border-bottom:1px solid #455160">
@@ -391,7 +441,9 @@
                                         <label>ชื่อ - นามสกุล<br>ที่อยู่</label>
                                     </label>
                                     <label class="font-address2 ml-2">
-                                        <label>สมหญิง รักดี <label style="color:#ce0005;font-weight: 700;">(ที่อยู่หลัก)</label> <br>52/2 ซ.เจริญนคร 78 ถนน เจริญนคร บุคคโลเขตธนบุรี จังหวัดกรุงเทพมหานคร 10600</label>
+                                        <label>สมหญิง รักดี <label style="color:#ce0005;font-weight: 700;">(ที่อยู่หลัก)</label> 
+                                        <br>52/2 ซ.เจริญนคร 78 ถนน เจริญนคร บุคคโลเขตธนบุรี จังหวัดกรุงเทพมหานคร 10600</label>
+                                        <label class="pTrashAvatar"> <img style="width:20px;" src="{{asset('icon/trash.svg')}}" ></label>
                                     </label>
                                 </div>
                             </div>
@@ -408,6 +460,7 @@
                                     <label class="font-address2 ml-2">
                                         <label>สมหญิง รักดี  <br>26 ซอยลาดปลาเค้า แขวงอนุสาวรีย์ เขตบางเขน กทม. 10220</label>
                                     </label>
+                                    <label class="pTrashAvatar"> <img style="width:20px;" src="{{asset('icon/trash.svg')}}" ></label>
                                 </div>
                             </div>
                             <div class="row">
@@ -551,6 +604,70 @@
     </div>
 </div>
 
+<div class="modal fade" id="VisaCredit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label style="font-size:1.4em;color:#000;">บัตรเครดิต / บัตรเดบิต</label>
+                    </div>
+                </div>
+                <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
+            </div>
+
+            <div class="modal-body font-rate-modal">
+                <div class="col-lg-12" style="padding:0;">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="custom03">
+                                        <input type="radio" name="select1" value="01" id="01">
+                                        <label for="01"></label>
+                                    </label>
+                                    <label class="font-address ml-2">
+                                        <label>ชื่อ - นามสกุล<br>ที่อยู่</label>
+                                    </label>
+                                    <label class="font-address2 ml-2">
+                                        <label>สมหญิง รักดี <label style="color:#ce0005;font-weight: 700;">(ที่อยู่หลัก)</label> <br>52/2 ซ.เจริญนคร 78 ถนน เจริญนคร บุคคโลเขตธนบุรี จังหวัดกรุงเทพมหานคร 10600</label>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="custom03">
+                                        <input type="radio" name="select1" value="02" id="02">
+                                        <label for="02"></label>
+                                    </label>
+                                    <label class="font-address ml-2">
+                                        <label>ชื่อ - นามสกุล<br>ที่อยู่</label>
+                                    </label>
+                                    <label class="font-address2 ml-2">
+                                        <label>สมหญิง รักดี  <br>26 ซอยลาดปลาเค้า แขวงอนุสาวรีย์ เขตบางเขน กทม. 10220</label>
+                                    </label>
+                                    <label class="pTrashAvatar"> <img style="width:20px;" src="{{asset('icon/trash.svg')}}" ></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <button class="addAddress"  data-dismiss="modal" data-toggle="modal" data-target="#address2">+ เพิ่มที่อยู่</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-submit-modal">ยกเลิก</button>
+                <button type="button" class="btn-submit-modal-red">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
 
 <div class="container-fluid">
@@ -572,6 +689,7 @@ const myFunction = () => {
   document.getElementById("first").style.display ='block';
   document.getElementById("first1").style.display ='block';
   document.getElementById("second").style.display ='none'
+  document.getElementById("second1").style.display ='none'
   document.getElementById("third").style.display ='none'
   document.getElementById("four").style.display ='none'
 }
@@ -580,6 +698,7 @@ const myFunction2 = () => {
   document.getElementById("first").style.display ='none'
   document.getElementById("first1").style.display ='none'
   document.getElementById("second").style.display ='block'
+  document.getElementById("second1").style.display ='block'
   document.getElementById("third").style.display ='none'
   document.getElementById("four").style.display ='none'
 }
@@ -588,6 +707,7 @@ const myFunction3 = () => {
   document.getElementById("first").style.display ='none'
   document.getElementById("first1").style.display ='none'
   document.getElementById("second").style.display ='none'
+  document.getElementById("second1").style.display ='none'
   document.getElementById("third").style.display ='block'
   document.getElementById("four").style.display ='none'
 }
@@ -596,6 +716,7 @@ const myFunction4 = () => {
   document.getElementById("first").style.display ='none'
   document.getElementById("first1").style.display ='none'
   document.getElementById("second").style.display ='none'
+  document.getElementById("second1").style.display ='none'
   document.getElementById("third").style.display ='none'
   document.getElementById("four").style.display ='block'
 }
