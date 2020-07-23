@@ -88,15 +88,11 @@
                                 @else
                                 <li class="has-children">
                                     @if(Auth::user()->users_type == '2')
-                                        @foreach($developer as $Dev)
-                                            <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" />
-                                        @endforeach
+                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$developer->DEV_IMG) }}" />
                                     @elseif(Auth::user()->users_type == '3')
-                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
+                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$spon->GUEST_USERS_IMG) }}" />
                                     @else
-                                        @foreach($guest_user as $USER)
-                                            <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
-                                        @endforeach
+                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$guest_user->GUEST_USERS_IMG) }}" />
                                     @endif
                                     <a href="#about-section" class="nav-link font_name" >{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
                                     <ul class="dropdown">
