@@ -182,6 +182,18 @@ class UploadImageProfile extends Controller
             return view('payment_confirmation', compact('guest_user', 'userKyc'));
         }
     }
+    public function SuccessfulPayment(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('successful_payment', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('successful_payment', compact('guest_user', 'userKyc'));
+        }
+    }
 
     
     public function SimulatorTrade(){

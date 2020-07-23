@@ -6003,6 +6003,7 @@ input[type=number]
 }
 .input-payment:focus{
   background-color: #fff !important;
+  outline: none;
 }
 
 .input-payment2{
@@ -6017,6 +6018,7 @@ input[type=number]
 }
 .input-payment:focus{
   background-color: #fff !important;
+  outline: none;
 }
 
 .select-code{
@@ -6337,3 +6339,48 @@ button {
   line-height: 1;
 }
 
+.VisaCredit{
+  background-color: #f8eaf3;
+  width: 100%;
+  height: 70px;
+  font-family: myfont;
+  font-size: 1.2em;
+  color: #000;
+  border-radius: 6px;
+}
+
+.pVisaCredit{
+  position: absolute;
+  z-index: 5;
+  top: 25px;
+  left: 30px;
+}
+
+.pBankAvatar{
+  position: absolute;
+  z-index: 5;
+  top: 20px;
+  left: 100px;
+}
+
+.pNBankAvatar{
+  position: absolute;
+  z-index: 5;
+  top: 20px;
+  right: 50px;
+}
+
+.pDotBankAvatar{
+  position: absolute;
+  z-index: 5;
+  top: 15px;
+  right: 25px;
+}
+
+.pTrashAvatar{
+  position: absolute;
+  z-index: 5;
+  top: 5px;
+  right: 20px;
+  cursor: pointer;
+}

@@ -119,12 +119,14 @@
                                                     <div class="col-6"><label style="font-family:myfont1;font-size:1.3em;color:#fff;line-height:0;">9 Jun 2020 17:15:29</label></div>
                                                     <div class="col-6 text-right">
                                                     <label style="font-family:myfont1;font-size:1.3em;color:#fff;line-height:0;">SET :</label>
-                                                    <label style="font-family:myfont1;font-size:1.3em;color:#ce0005;line-height:0;">Closed</label>
+                                                    <!-- <label style="font-family:myfont1;font-size:1.3em;color:#ce0005;line-height:0;cursor:pointer">Closed</label> -->
+                                                    <label style="font-family:myfont1;font-size:1.3em;color:#0ce63e;line-height:0;cursor:pointer">Open</label>
                                                     </div>
                                                 </div>
                                                 <div class="row px-4">
                                                     <div class="col-6 " style="border-bottom:1px solid #373a41;padding-left:0;"><label style="font-family:myfont;font-size:2em;color:#fff;line-height:0;">SET</label></div>
                                                     <div class="col-6 text-right" style="border-bottom:1px solid #373a41;padding-right:0;"><label style="font-family:myfont;font-size:2em;color:#0ce63e;line-height:0;">+1,444.63 (+5.97%)</label></div>
+                                                    <!-- <div class="col-6 text-right" style="border-bottom:1px solid #373a41;padding-right:0;"><label style="font-family:myfont;font-size:2em;color:#ce0005;line-height:0;">-1,444.63 (+5.97%)</label></div> -->
                                                 </div>
                                                 <div class="row mt-3 px-2">
                                                     <div class="col-6">

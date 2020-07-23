@@ -106,26 +106,103 @@
                                 <div class="col-lg-12"> 
                                     <div class="row mx-0" style="background-color:#202433;border-radius: 6px;">
                                         <div class="col-lg-12 mt-1">
-                                            <div class="row mx-2 pb-2" style="font-family:myfont;font-size:1.5em;color:#fff;border-bottom:1px solid #fff;">ยืนยันการชำระเงิน</div>
-                                            <div class="row mx-2 py-3" style="border-bottom:1px solid #455160">
+                                            <div class="row">
+                                                <div class="col-lg-12 text-center mt-3">
+                                                    <img style="width:34px;" src="{{asset('icon/select_green.svg')}}" alt=""> <br>
+                                                    <label class="mt-4" style="font-family:myfont;font-size:1.5em;color:#fff;line-height:0;">ชำระเงินเรียบร้อยแล้ว</label> <br>
+                                                    <label class="" style="font-family:myfont1;font-size:1.2em;color:#a8a8a8;line-height:0;">หมายเลขคำสั่งซื้อ 7483246834</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mx-2 mt-3">  
+                                                <div class="col-7" style="padding:0;">
+                                                    <label class="labelItem bgItem">
+                                                        <img class="picture2" src="{{asset('home/avatar/man/other/crown/c01.png') }}" />
+                                                    </label> 
+                                                    <label class="font-sale4 bgItem2 mt-2 ml-2">
+                                                        <label style="font-weight: 700;">มงกุฏ ระดับ 1 </label></br>
+                                                        <label>สามารถเห็น Signal Rank 100-150 ได้</label></br>
+                                                        <label>เลือกลงทุนได้ 3 Signal</label>
+                                                    </label>
+                                                </div>
+
+                                                <div class="col-2 my-4 text-center" style="padding:0;">
+                                                    <label style="font-family:myfont;font-size:1.5em;color:#ffffff">1 ชิ้น</label>
+                                                </div>
+
+                                                <div class="col-3 my-3">
+                                                    <span class="font-price3" style="line-height: 0.3; display:block;text-align:right;">
+                                                        <b class="font-price">฿1,000.00</b></br>
+                                                        <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </b> (-37%)
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="row mx-2 mt-3">  
+                                                <div class="col-7" style="padding:0;">
+                                                    <label class="labelItem bgItem">
+                                                        <img class="picture2" src="{{asset('home/avatar/man/other/crown/c02.png') }}" />
+                                                    </label> 
+                                                    <label class="font-sale4 bgItem2 mt-2 ml-2">
+                                                        <label style="font-weight: 700;">มงกุฏ ระดับ 2 </label></br>
+                                                        <label>สามารถเห็น Signal Rank 50-100 ได้</label></br>
+                                                        <label>เลือกลงทุนได้ 5 Signal</label>
+                                                    </label>
+                                                </div>
+
+                                                <div class="col-2 my-4 text-center" style="padding:0;">
+                                                    <label style="font-family:myfont;font-size:1.5em;color:#ffffff">1 ชิ้น</label>
+                                                </div>
+
+                                                <div class="col-3 my-3">
+                                                    <span class="font-price3" style="line-height: 0.3; display:block;text-align:right;">
+                                                        <b class="font-price">฿5,000.00</b></br>
+                                                        <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </b> (-37%)
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mt-3 py-2" style="background-color:#191b29;">
+                                                <div class="col-lg-12">
+                                                    <div class="row mx-2">
+                                                        <label style="font-family:myfont;font-size:1.5em;color:#fff;">ที่อยู่ในการออกใบเสร็จ</label>
+                                                    </div>
+                                                    <div class="row mx-3">
+                                                        <div class="col-lg-6" >
+                                                            <label class="font-payment-avatar">
+                                                                <label>ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</label>
+                                                            </label>
+                                                            <label class="font-payment-avatar2 ml-2">
+                                                                <label>สมหญิง รักดี (5-1005-00148-76-6)<br>(+66) 081-441-9585</label>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-lg-6" >
+                                                            <label class="font-payment-avatar">
+                                                                <label>ที่อยู่</label><br>
+                                                            </label>
+                                                            <label class="font-payment-avatar3 ml-2">
+                                                                <label>52/2 ซ.เจริญนคร 78 ถนน เจริญนคร บุคคโลเขตธนบุรี จังหวัดกรุงเทพมหานคร 10600</label>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mx-2 mt-3 pb-3" style="border-bottom:1px solid #455160">
                                                 <div class="col-6 font-payment2">จำนวนเงินที่ต้องชำระ</div>
                                                 <div class="col-6 text-right font-price" style="font-size:2em;">฿ 6,000</div>
                                             </div>
 
-                                            <div class="row mx-2 py-3" style="border-bottom:1px solid #455160">
+                                            <div class="row mx-2 mt-3">
                                                 <div class="col-6 font-payment2">ช่องทางการชำระเงิน</div>
                                                 <div class="col-6 text-right font-payment2">T10 Wallet ชื่อบัญชี สมหญิง รักดี</div>
                                             </div>
                                             
                                             <div class="row mt-3 py-2 " style="background-color:#000;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
                                                 <div class="col-lg-12">
-                                                    <div class="row mt-3">
-                                                        <div class="col-lg-8"></div>
+                                                    <div class="row mx-1 mt-3">
+                                                        <div class="col-lg-10"></div>
                                                         <div class="col-lg-2 text-right">
-                                                            <a><label class="btn-submit-modal" style="text-align:center;line-height:2;cursor:pointer;">ยกเลิก</label></a>
-                                                        </div>
-                                                        <div class="col-lg-2 text-right">
-                                                            <a href="/successful_payment"><label class="btn-submit-modal-red" style="text-align:center;line-height:2;cursor:pointer;">ยืนยัน</label></a>
+                                                            <a href="avatar"><label class="btn-submit-modal" style="text-align:center;line-height:2;cursor:pointer;">ปิด</label></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -212,5 +289,38 @@
 @endsection
 
 @section('script')
+<script>
+ jQuery('').insertAfter('.quantity input');
+    jQuery('.quantity').each(function() {
+      var spinner = jQuery(this),
+        input = spinner.find('input[type="number"]'),
+        btnUp = spinner.find('.quantity-up'),
+        btnDown = spinner.find('.quantity-down'),
+        min = input.attr('min'),
+        max = input.attr('max');
 
+      btnUp.click(function() {
+        var oldValue = parseFloat(input.val());
+        if (oldValue >= max) {
+          var newVal = oldValue;
+        } else {
+          var newVal = oldValue + 1;
+        }
+        spinner.find("input").val(newVal);
+        spinner.find("input").trigger("change");
+      });
+
+      btnDown.click(function() {
+        var oldValue = parseFloat(input.val());
+        if (oldValue <= min) {
+          var newVal = oldValue;
+        } else {
+          var newVal = oldValue - 1;
+        }
+        spinner.find("input").val(newVal);
+        spinner.find("input").trigger("change");
+      });
+
+    });
+</script>
 @endsection
