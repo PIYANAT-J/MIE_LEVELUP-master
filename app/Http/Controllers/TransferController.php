@@ -50,6 +50,12 @@ class TransferController extends Controller{
         }
     }
 
+    public function devPoint(){
+        $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('profile.point.devlvp_history', compact('developer', 'userKyc'));
+    }
+
     public function transferPayment(Request $req){
         if($req->input('submit') != null){
             if($req->has('transferImg')){

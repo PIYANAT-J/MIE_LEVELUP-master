@@ -54,7 +54,7 @@ Route::get('/sponKyc', 'KycController@indexSponKyc')->name('sponKyc');
 
 // Route::post('/kyc/create', 'KycController@createKyc')->name('CreateKyc');
 
-Route::get('/game_shelf', 'DownloadController@indexGame')->name('GAMESHELF');
+// Route::get('/game_shelf', 'DownloadController@indexGame')->name('GAMESHELF');
 // Route::post('/game_shelf/download', 'DownloadController@downloadGame')->name('downloadGame');
 
 // Route::get('/edit_upload_game', 'UploadImageProfile@edit_game')->name('EditGame');
@@ -105,7 +105,7 @@ Route::get('/develper_kyc', 'KycController@indexDevKyc')->name('DevKyc');
 Route::get('/develper_shelf', 'UploadImageProfile@developer_shelf')->name('DevShelf');
 Route::post('/develper_shelf/Update', 'GameController@saveGameProfile')->name('DevShelfUpdate');
 
-Route::view('/develper_history', 'profile.point.devlvp_history')->name('DevHistory');
+Route::get('/develper_history', 'TransferController@devPoint')->name('DevHistory');
 
 Route::get('/develper_upload_game', 'UploadImageProfile@viewUpload')->name('DevUpload');
 Route::post('/develper_upload_game/upload', 'GameController@saveGameProfile')->name('DevUploadGame');
@@ -115,7 +115,7 @@ Route::post('/develper_withdraw/addWithdraw', 'WithdrawController@stor')->name('
 Route::post('/develper_withdraw/addBank', 'mybankController@addBank')->name('AddBank');
 
 
-Route::view('/develper_change_password', 'profile.password.devlvp_change_password');
+Route::get('/develper_change_password', 'Auth\ResetPasswordController@devPass')->name('devPass');
 
 //admin
 Route::get('/admin_management', 'AdminController@addAdmin')->name('AdminManagement')->middleware('Admin');
@@ -150,6 +150,7 @@ Route::get('/add_sale_item', 'UploadImageProfile@AddSaleItem')->name('AddSaleIte
 Route::get('/shopping_cart', 'UploadImageProfile@ShoppingCart')->name('ShoppingCart');
 Route::get('/payment', 'UploadImageProfile@Payment')->name('Payment');
 Route::get('/payment_confirmation', 'UploadImageProfile@PaymentConfirmation')->name('PaymentConfirmation');
+Route::get('/successful_payment', 'UploadImageProfile@SuccessfulPayment')->name('SuccessfulPayment');
 Route::get('/simulator_trade', 'UploadImageProfile@SimulatorTrade')->name('SimulatorTrade');
 Route::get('/my_trade', 'UploadImageProfile@MyTrade')->name('MyTrade');
 Route::get('/ranking_trade', 'UploadImageProfile@RankingTrade')->name('RankingTrade');
