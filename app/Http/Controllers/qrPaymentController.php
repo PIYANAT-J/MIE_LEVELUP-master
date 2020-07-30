@@ -29,7 +29,7 @@ class qrPaymentController extends Controller
         foreach($sumPayment as $sumpayment){
             $wallet = $wallet+$sumpayment->amount;
         }
-        // dd($wallet);
+        // dd($payment->status);
 
         return view('profile.topup.userlvp_topup', compact('guest_user', 'userKyc', 'payment', 'transfer', 'wallet'));
     }
