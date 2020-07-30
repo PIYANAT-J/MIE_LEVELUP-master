@@ -38,6 +38,7 @@
                         </div>
                     <a href="/product" style="width: 100%;"><button class="btn-sidebar"><i class="icon-product" style="font-size:0.85em;padding:0px 15px 0px 5px;"></i>จัดการสินค้า</button></a>
                     <a href="/package" style="width: 100%;"><button class="btn-sidebar"><img class="pic6" src="{{asset('icon/package.png') }}" />จัดการแพ็คเกจ</button></a>
+                    <a href="{{ url('/') }}" style="width: 100%;"><button class="btn-sidebar"><i class="fa fa-home" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>หน้าหลัก</button></a>
                     <a href="/admin_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เปลี่ยนรหัสผ่าน</button></a>
                     <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><img class="pic4" src="{{asset('icon/logout.svg') }}" />ออกจากระบบ</button></a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -267,6 +268,8 @@
                 <div class="col-1"></div>
             </div>
             <div class="modal-body font-rate-modal">
+                <form action="{{ route('ApproveGame') }}" method="post">
+                    @csrf
                     <div class="row px-3">
                         <div class="col-lg-6 pb-1">
                             <div class="row bg-disabled mb-2 py-2">
@@ -340,7 +343,7 @@
                             <input type="hidden" name="GAME_APPROVE_DATE" value="{{ date('Y-m-d H:i:s') }}">  
                         </div>
                     </div>
-                
+                </form>
             </div>
         </div>
     </div>

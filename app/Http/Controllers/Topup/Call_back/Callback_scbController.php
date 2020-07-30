@@ -2,31 +2,42 @@
 
 namespace App\Http\Controllers\Topup\Call_back;
 
+use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
+
+use App\QrPayment;
+use DB;
 
 class Callback_scbController extends Controller
 {
+    // public function testCallback(){
+    //     $qrpayment = QrPayment::Where('invoice', $invoice)->get()->first();
+    //     dd($qrpayment->status);
+    // }
+    
     public function callback(Request $request)
     {
-        $invoice = $request->Invoice;
-        $message = $request->Status;
+        // dd(['empty']);
+        $invoice = $request->invoice;
+        $message = $request->status;
         $qrpayment = QrPayment::Where('invoice', $invoice)->get()->first();
         if (QrPayment::Where('invoice', $invoice)->get()->count()) {
-            if ($qrpayment->status === 0) {
+            if ($qrpayment->status === 'false') {
                 switch ($message) {
-                    case 'Paid':
-                        $status = 1;
+                    case 'success':
+                        $status = 'true';
                         break;
                     case 'Expired':
                         $status = 99;
                         break;
                     default;
-                        $status = 0;
+                        $status = 'false';
                         break; 
                 }
                 
                 $qrpayment->status = $status;
-                $qrpayment->client_ip = request()->ip();
+                // $qrpayment->client_ip = request()->ip();
                 $qrpayment->confirm_at = date('Y-m-d H:i:s');
 
                 // if ($status === 1) {
@@ -73,7 +84,7 @@ class Callback_scbController extends Controller
 
                 //     }
 
-                //     $mobiletopup->save();
+                //     $qrpayment->save();
                 // }else {
                     $qrpayment->save();
                 // }
@@ -89,56 +100,56 @@ class Callback_scbController extends Controller
     }
 
 
-    public function callack($invoice)
-    {
-        $register = $this->getToken();
-        $token = $register->token;
-        $headers = [
-            'Content-Type' => 'application/json',
-            'Authorization' => $token
-        ];
+    // public function callack($invoice)
+    // {
+    //     $register = $this->getToken();
+    //     $token = $register->token;
+    //     $headers = [
+    //         'Content-Type' => 'application/json',
+    //         'Authorization' => $token
+    //     ];
 
-        $client = new \GuzzleHttp\Client();
+    //     $client = new \GuzzleHttp\Client();
 
-        $response = $client->request('POST', 'https://iot.finsense.co/device/received', [
-            'headers' => $headers,
-            'json' => [
-            "qrType" => "qr30",
-            "invoice" => $invoice
-        ]
-        ]);
+    //     $response = $client->request('POST', 'https://iot.finsense.co/device/received', [
+    //         'headers' => $headers,
+    //         'json' => [
+    //         "qrType" => "qr30",
+    //         "invoice" => $invoice
+    //     ]
+    //     ]);
 
-        $response->getStatusCode(); # 200
-        $response->getHeaderLine('content-type');
-        $response->getBody();
-        $contents = json_decode($response->getBody());
+    //     $response->getStatusCode(); # 200
+    //     $response->getHeaderLine('content-type');
+    //     $response->getBody();
+    //     $contents = json_decode($response->getBody());
 
-        return $contents;
-    }
+    //     return $contents;
+    // }
 
 
-    public function getToken()
-    {
+    // public function getToken()
+    // {
 
-      $headers = [
-        'Content-Type' => 'application/json',
-      ];
+    //   $headers = [
+    //     'Content-Type' => 'application/json',
+    //   ];
 
-      $client = new \GuzzleHttp\Client();
-      $response = $client->request('POST', 'https://iot.finsense.co/device/register', [
-          'headers' => $headers,
-          'json' => [
-            "companyName" => "SP INVESTOREST COMPANY LIMITED",
-            "branchName" => "headoffice",
-            "deviceName" => "Device-Multi"
-        ]
-      ]);
+    //   $client = new \GuzzleHttp\Client();
+    //   $response = $client->request('POST', 'https://iot.finsense.co/device/register', [
+    //       'headers' => $headers,
+    //       'json' => [
+    //         "companyName" => "SP INVESTOREST COMPANY LIMITED",
+    //         "branchName" => "headoffice",
+    //         "deviceName" => "Device-Multi"
+    //     ]
+    //   ]);
 
-      $response->getStatusCode();
-      $response->getHeaderLine('content-type');
-      $response->getBody();
-      $contents = json_decode($response->getBody());
+    //   $response->getStatusCode();
+    //   $response->getHeaderLine('content-type');
+    //   $response->getBody();
+    //   $contents = json_decode($response->getBody());
 
-      return $contents;
-    }
+    //   return $contents;
+    // }
 }
