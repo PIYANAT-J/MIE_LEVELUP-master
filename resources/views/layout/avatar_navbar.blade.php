@@ -24,25 +24,6 @@
         <link rel="stylesheet" href="{{ asset('bootstrap-select/dist/css/bootstrap-select.min.css') }}">
         <link rel="stylesheet" href="{{ asset('chart.js-2.9.3/dist/Chart.css') }}">
         
-        <style>
-            @font-face {
-            font-family:myfont;
-            src: url('home/font/dbheaventmedv3.2-webfont.woff2') format('woff2'),
-                    url('home/font/dbheaventmedv3.2-webfont.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            }
-            @font-face {
-            font-family:myfont1;
-            src: url('home/font/dbheaventliv3.2-webfont.woff2') format('woff2'),
-                    url('home/font/dbheaventliv3.2-webfont.woff2') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            }
-            html,body {
-                font-size: XXpx;
-            }
-        </style>
     </head>
 
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -55,8 +36,7 @@
                 </div>
                 <div class="site-mobile-menu-body"></div>
             </div>
-
-            <header class="site-navbar2 site-navbar-target" role="banner" style="background-color: #141621;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.42);">
+            <header class="site-navbar2 py-3 site-navbar-target" role="banner">
                 <div class="row align-items-center">
                     <div class="col-6 col-xl-2">
                         <h1 class="site-logo"><a href="{{ url('/') }}" class="mb-0"><img class="img_logo" src="{{asset('home/logo/logo_lvp.svg') }}" ></a></h1>
@@ -65,23 +45,23 @@
                     <div class="col-12 col-md-10 d-none d-xl-block font_navbar home">
                         <nav class="site-navigation position-relative" role="navigation">
                             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block text-right" style="margin-top:50px;"> 
-                                <li><a href="{{ url('/') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;color:#fff; ">หน้าแรก</a></li>
-                                <li><a href="{{ route('gameCategory') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;color:#fff;">หมวดหมู่</a></li>
+                                <li><a href="{{ url('/') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;font-size:0.7em; ">หน้าแรก</a></li>
+                                <li><a href="{{ route('gameCategory') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;font-size:0.7em;">หมวดหมู่</a></li>
                                 @guest
-                                    <li><a href="{{ route('login-levelUp') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px;color:#fff;">การติดตามของฉัน</a></li>
+                                    <li><a href="{{ route('login-levelUp') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px;font-size:0.7em;">การติดตามของฉัน</a></li>
                                 @else
-                                    <li><a href="{{ route('FollowMe') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px;color:#fff;">การติดตามของฉัน</a></li>
+                                    <li><a href="{{ route('FollowMe') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px;font-size:0.7em;">การติดตามของฉัน</a></li>
                                 @endguest
                                 <li class="inputWithIcon">
-                                    <input style="font-family:myfont1;" class="search_btn3" type="text" placeholder="ค้นหา" aria-label="Search">
+                                    <input style="font-family:myfont1;font-size:0.7em;" class="search_btn" type="text" placeholder="ค้นหา" aria-label="Search">
                                     <i class="icon-search" aria-hidden="true" style="font-size:18px"></i>
                                 </li>
                                 @guest
                                     <img style="padding:0px 0px 0px 20px;" src="{{asset('/icon/sign_in.svg') }}">
-                                    <label class="sign_in" style="font-family:myfont; padding: 0px 0px 0px 0px;">
+                                    <label class="sign_in" style="font-family:myfont; padding: 0px 0px 0px 0px;font-size:0.7em;">
                                         <a href="{{ route('login-levelUp') }}">{{ __('เข้าสู่ระบบ') }}</a>
                                     </label>
-                                    <label style="font-family:myfont;"><a class="text2">/ </a></label>
+                                    <label style="font-family:myfont;font-size:0.7em;"><a class="text2">/ </a></label>
 
                                         @if (Route::has('register'))
                                             <label style="font-family:myfont;">
@@ -96,7 +76,7 @@
                                         <span class="font-shop">3</span>
                                     </a>
                                 </li>
-                                <li class="has-children">
+                                
                                     @if(Auth::user()->users_type == '2')
                                         @foreach($developer as $Dev)
                                             <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" />
@@ -108,20 +88,20 @@
                                             <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
                                         @endforeach
                                     @endif
-                                <!-- <img class="nav-pic " src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" /> -->
-                                    <a href="#about-section" class="nav-link font_name" style="color:#fff;">{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
+                                    <li class="has-children">
+                                    <a href="#about-section" class="nav-link font_name" >{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
                                     <ul class="dropdown">
                                         <li class="nav-item">
                                             @if(Auth::user()->users_type == '2')
-                                                <a class="nav-link font_profile" style="color:#fff;background-color: #141621;" href="{{ route('DevProfile') }}">{{ __('โปรไฟล์') }}</a>
+                                                <a class="nav-link font_profile" href="{{ route('DevProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @elseif(Auth::user()->users_type == '3')
-                                                <a class="nav-link font_profile" style="color:#fff;background-color: #141621;" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์') }}</a>
+                                                <a class="nav-link font_profile" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @else
-                                                <a class="nav-link font_profile" style="color:#fff;background-color: #141621;" href="{{ route('UserProfile') }}">{{ __('โปรไฟล์') }}</a>
+                                                <a class="nav-link font_profile" href="{{ route('UserProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @endif
                                         </li>
-                                        <li class="nav-item font_profile" >
-                                            <a class="dropdown-item" href="{{ route('logout') }}" style="color:#fff;background-color: #141621;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <li class="nav-item font_profile">
+                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                                 {{ __('ออกจากระบบ') }}
                                             </a>
                                         </li>
@@ -136,7 +116,7 @@
                     </div>
                     <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3 menu1"></span></a></div>
                 </div>
-            </header>       
+            </header>  
         </div>
             @yield('content')
             

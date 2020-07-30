@@ -40,7 +40,7 @@
             </a>
         </div>
     </div> -->
-    <div class="slide-one-item home-slider owl-carousel">
+    <div class="slide-one-item home-slider owl-carousel" style="background-color: #141621;">
     <div class="site-blocks-cover overlay" style="background-image: url(home/images/pic.png);" data-aos="fade" id="home-section">
         <div class="container-fluid block4">
             <div class="row">
@@ -75,39 +75,19 @@
             </span>
         </a>
     </div>
-    <!-- <div class="site-blocks-cover overlay" style="background-image: url(home/images/mario_bg.jpg);" data-aos="fade" id="home-section">
-        <div class="container-fluid block4">
-            <div class="row">
-                <div class=" col-lg-6">
-                    <img class="img_logo2" src="{{asset('home/images/mario_logo.svg') }}">
-                    <h1 class="text2 " style="font-family:myfont; color:#000;font-size:2em">Mario + Rabbids Kingdom Battle เกมที่จะทำให้คุณติดจนไม่เป็นอันทำอะไร</h1>
-                    <div data-aos-delay="100">    
-                    <a href="#" class="btn smoothscroll button3"><span class="icon-icon_download"></span><b style="font-family:myfont;" class="download">ดาวน์โหลด</b></a>
-                    <a href="#" class="btn smoothscroll button10" style=" color: #fff;"><b style="font-family:myfont;" class="details">รายละเอียด</b></a>
-                    </div>
-                </div>  
-            </div>
-        </div>
-        <a href="#about-section" class="mouse smoothscroll d-none">
-            <span class="mouse-icon button4">
-                <span class="mouse-wheel"></span>
-            </span>
-        </a>
-    </div> -->
-    
 </div>
 @endsection
 
 @section('section')
 <!-- เกมยอดนิยม -->
-<section class="site-section" id="game-popular">
+<section class="site-section" id="game-popular" style="background-color: #141621;">
     <div class="container-fluid">
         <div class="row mt-5">
             <div class="col-5 text-left" data-aos="fade">
-                <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">เกมยอดนิยม</h2>
+                <h2 class="section-title mb-3 font text-left" style="font-family:myfont;font-size:1.7rem;color:#fff;">เกมยอดนิยม</h2>
             </div>
             <div class="col-7 text-right" data-aos="fade">
-                <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('gameCategory') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
+                <h2 class="section-title mb-3 text-right" style="font-family:myfont;font-size:1.7rem;"><a class="game_cat mr-4" href="{{ route('gameCategory') }}">ดูทั้งหมด </a><img class="pViewmore" src="{{asset('icon/next1.svg') }}" /></h2>
             </div>
         </div>
         
@@ -131,7 +111,7 @@
                                         @if($game->GAME_ID == $follow->GAME_ID)
                                             <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
-                                                <button class="btn_follow4 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b>
+                                                <button class="btn_follow4 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:1em; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b>
                                                     <input type="hidden" name="submit" value="submit">
                                                     <input type="hidden" name="FOLLOW_ID" value="{{ $follow->FOLLOW_ID }}">
                                                 </button>
@@ -140,7 +120,7 @@
                                         @else
                                             <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
                                                 @csrf
-                                                <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" ><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b>
+                                                <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" ><span class="icon-follow_red" style="font-size:1em;"></span><b class="font_follow2">ติดตาม</b>
                                                     <input type="hidden" name="submit" value="submit">
                                                     <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
                                                     <input type="hidden" name="GAME_ID" value="{{ $game->GAME_ID }}">
@@ -153,7 +133,7 @@
                                 @else
                                     <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
-                                        <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" ><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b>
+                                        <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" ><span class="icon-follow_red" style="font-size:1rem;"></span><b class="font_follow2">ติดตาม</b>
                                             <input type="hidden" name="submit" value="submit">
                                             <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
                                             <input type="hidden" name="GAME_ID" value="{{ $game->GAME_ID }}">
@@ -176,8 +156,8 @@
                             @endguest
                             <img class="rate_pic2" style="width: 13%;" src="{{ asset('section/game_rate/'.$game->RATED_ESRB.'.svg') }}" />
                             <div class="game_name2">
-                                <b style="font-size: 25px;color: #fff;">{{ $game->GAME_NAME }}</b>
-                                <div class="mt-1" style="font-size: 22px;color: #fff;">{{ $game->RATED_B_L }} • Online</div>
+                                <b style="font-size: 1.2em;color: #fff;">{{ $game->GAME_NAME }}</b>
+                                <div class="mt-1" style="font-size: 1em;color: #fff;">{{ $game->RATED_B_L }} • Online</div>
                             </div>
                             <button id="down" class="down2 btn btn-dark panel-heading" data-toggle="collapse" data-target="#{{ $game->GAME_NAME }}" aria-expanded="false" aria-controls="collapseExample"><img id="downImg" src="{{asset('icon/down1.svg')}}"></button>
                             <!-- <button id="down" class="down2 btn btn-dark" data-toggle="collapse"data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><img id="downImg" src="{{asset('icon/down1.svg')}}"></button> -->
@@ -230,7 +210,7 @@
                                             @if($countDown->GAME_ID == $gameId->GAME_ID)
                                                 @foreach($Com_count as $com_count)
                                                     @if($com_count->GAME_ID == $gameId->GAME_ID)
-                                                        <b style="color:#f6c12c; font-size:30px;">{{round($count, 1)}}/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
+                                                        <b style="color:#f6c12c; font-size:1em;">{{round($count, 1)}}/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
                                                         <b>{{ $com_count->com_count }}</b> &nbsp;คอมเมนท์</br>
                                                         <b>{{ $countDown->downloads_count }} </b>ดาวน์โหลด &nbsp; &nbsp;
                                                     @endif
@@ -294,19 +274,17 @@
     </div>
 </section>
 
-        
-
 <!-- การติดตามของฉัน -->
 @auth
     @if($Follows->count() > 0)
-        <section class="site-section" id="myfollow">
+        <section class="site-section" id="myfollow" style="background-color: #141621;">
             <div class="container-fluid">
                 <div class="row mt-4 ">
                     <div class="col-5 text-left" data-aos="fade">
-                        <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">การติดตามของฉัน</h2>
+                        <h2 class="section-title mb-3 font text-left" style="font-family:myfont;font-size:1.7rem;color:#fff">การติดตามของฉัน</h2>
                     </div>
                     <div class="col-7 text-right" data-aos="fade">
-                        <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('FollowMe') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
+                        <h2 class="section-title mb-3 text-right" style="font-family:myfont;font-size:1.7rem;"><a class="game_cat mr-4" href="{{ route('FollowMe') }}">ดูทั้งหมด </a><img class="pViewmore" src="{{asset('icon/next1.svg') }}" /></h2>
                     </div>
                 </div>
                 <div class="owl-carousel" id="owl-demo2">
@@ -323,15 +301,15 @@
                                                 <!-- <button class="btn_follow4 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button> -->
                                                 <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
-                                                    <button class="btn_follow4 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b>
+                                                    <button class="btn_follow4 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:1rem; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b>
                                                         <input type="hidden" name="submit" value="submit">
                                                         <input type="hidden" name="FOLLOW_ID" value="{{ $followMe->FOLLOW_ID }}">
                                                     </button>
                                                 </form>
                                                 <img class="rate_pic2" style="width: 13%;" src="{{asset('section/game_rate/'.$gameMe->RATED_ESRB.'.svg') }}" />
                                                 <div class="game_name2">
-                                                    <b style="font-size: 25px;color: #fff;">{{$gameMe->GAME_NAME}}</b>
-                                                    <div class="mt-1" style="font-size: 22px;color: #fff;">{{ $gameMe->RATED_B_L }} • Online</div>
+                                                    <b style="font-size: 1rem;color: #fff;">{{$gameMe->GAME_NAME}}</b>
+                                                    <div class="mt-1" style="font-size: 1rem;color: #fff;">{{ $gameMe->RATED_B_L }} • Online</div>
                                                 </div>
                                                 <!-- <div class="down2"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
                                                 <button id="down" class="down2 btn btn-dark" data-toggle="collapse" data-target="#{{ $gameMe->GAME_NAME }}2" aria-expanded="false" aria-controls="collapseExample"><img id="downImg2" src="{{asset('icon/down1.svg')}}"></button>
@@ -410,16 +388,16 @@
     @endif
 @endauth
 
-<!-- เกมที่เล่นล่าสุด-->
-<section class="site-section">
+<!-- เกมแนะนำ-->
+<section class="site-section" style="background-color: #141621;">
     <div class="container-fluid">
         <div class="row mt-4 ">
             <div class="col-5 text-left" data-aos="fade">
                 <!-- <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">เกมที่เล่นล่าสุด</h2> -->
-                <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">เกมแนะนำ</h2>
+                <h2 class="section-title mb-3 font text-left" style="font-family:myfont;font-size:1.7rem;color:#fff;">เกมแนะนำ</h2>
             </div>
             <div class="col-7 text-right" data-aos="fade">
-                <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('gameCategory') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
+                <h2 class="section-title mb-3 text-right" style="font-family:myfont;font-size:1.7rem;"><a class="game_cat mr-4" href="{{ route('gameCategory') }}">ดูทั้งหมด </a><img class="pViewmore" src="{{asset('icon/next1.svg') }}" /></h2>
             </div>
         </div>
         <div class="owl-carousel " id="owl-demo3">
@@ -432,7 +410,7 @@
                             <!-- <button class="btn_follow2 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
                             @guest
                                 <form action="{{route('login-levelUp')}}">
-                                    <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                                    <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:1rem;"></span><b class="font_follow2">ติดตาม</b></button >
                                 </form>
                             @else
                                 @if($Follows->count() > 0)
@@ -440,7 +418,7 @@
                                         @if($gameHot->GAME_ID == $follow->GAME_ID)
                                             <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
-                                                <button class="btn_follow4 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b>
+                                                <button class="btn_follow4 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:1rem; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b>
                                                     <input type="hidden" name="submit" value="submit">
                                                     <input type="hidden" name="FOLLOW_ID" value="{{ $follow->FOLLOW_ID }}">
                                                 </button >
@@ -449,7 +427,7 @@
                                         @else
                                             <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
                                                 @csrf
-                                                <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b>
+                                                <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:1rem;"></span><b class="font_follow2">ติดตาม</b>
                                                     <input type="hidden" name="submit" value="submit">
                                                     <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
                                                     <input type="hidden" name="GAME_ID" value="{{ $gameHot->GAME_ID }}">
@@ -462,7 +440,7 @@
                                 @else
                                     <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
-                                        <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b>
+                                        <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:1rem;"></span><b class="font_follow2">ติดตาม</b>
                                             <input type="hidden" name="submit" value="submit">
                                             <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
                                             <input type="hidden" name="GAME_ID" value="{{ $gameHot->GAME_ID }}">
@@ -474,8 +452,8 @@
                             @endguest
                             <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/'.$gameHot->RATED_ESRB.'.svg') }}" />
                             <div class="game_name">
-                                <b style="font-size: 30px;color: #fff;">{{ $gameHot->GAME_NAME }}</b>
-                                <div class="mt-1" style="font-size: 25px;color: #fff;">{{ $gameHot->RATED_B_L }} • Online</div>
+                                <b style="font-size: 1.2rem;color: #fff;">{{ $gameHot->GAME_NAME }}</b>
+                                <div class="mt-1" style="font-size: 1rem;color: #fff;">{{ $gameHot->RATED_B_L }} • Online</div>
                             </div>
                             <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
                             <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#{{ $gameHot->GAME_NAME }}4  " aria-expanded="false" aria-controls="collapseExample"><img id="downImg6" src="{{asset('icon/down1.svg')}}"></button>
@@ -520,7 +498,7 @@
                                             @if($com_count->GAME_ID == $gameHotID->GAME_ID)
                                                 @foreach($CDownload as $countDown)
                                                     @if($countDown->GAME_ID == $gameHotID->GAME_ID)
-                                                        <b style="color:#f6c12c; font-size:30px;">{{round($count, 1)}}/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
+                                                        <b style="color:#f6c12c; font-size:1rem;">{{round($count, 1)}}/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
                                                         <b>{{ $com_count->com_count }}</b> &nbsp;คอมเมนท์</br>
                                                         <b>{{ $countDown->downloads_count }} </b>ดาวน์โหลด &nbsp; &nbsp;
                                                         <!-- <b>104.5</b> &nbsp;ชั่วโมง -->
@@ -549,14 +527,14 @@
 </section>
 
 <!-- เกมออกใหม่-->
-<section class="site-section">
+<section class="site-section" style="background-color: #141621;">
     <div class="container-fluid">
         <div class="row mt-4 ">
             <div class="col-5 text-left" data-aos="fade">
-                <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">เกมออกใหม่</h2>
+                <h2 class="section-title mb-3 font text-left" style="font-family:myfont;font-size:1.7rem;color:#fff;">เกมออกใหม่</h2>
             </div>
             <div class="col-7 text-right" data-aos="fade">
-                <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="{{ route('gameCategory') }}">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
+                <h2 class="section-title mb-3 text-right" style="font-family:myfont;font-size:1.7rem;"><a class="game_cat mr-4" href="{{ route('gameCategory') }}">ดูทั้งหมด </a><img class="pViewmore" src="{{asset('icon/next1.svg') }}" /></h2>
             </div>
         </div>
         <div class="owl-carousel " id="owl-demo4">
@@ -569,7 +547,7 @@
                         <!-- <button class="btn_follow2 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
                         @guest
                             <form action="{{route('login-levelUp')}}">
-                                <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button >
+                                <button class="btn_follow3" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:1rem;"></span><b class="font_follow2">ติดตาม</b></button >
                             </form>
                         @else
                             @if($Follows->count() > 0)
@@ -577,7 +555,7 @@
                                     @if($gameNew->GAME_ID == $follow->GAME_ID)
                                         <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            <button class="btn_follow4 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b>
+                                            <button class="btn_follow4 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:1rem; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b>
                                                 <input type="hidden" name="submit" value="submit">
                                                 <input type="hidden" name="FOLLOW_ID" value="{{ $follow->FOLLOW_ID }}">
                                             </button >
@@ -611,8 +589,8 @@
                         @endguest
                         <img class="rate_pic" style="width: 20%;" src="{{asset('section/game_rate/'.$gameNew->RATED_ESRB.'.svg') }}" />
                         <div class="game_name">
-                            <b style="font-size: 30px;color: #fff;">{{ $gameNew->GAME_NAME }}</b>
-                            <div class="mt-1" style="font-size: 25px;color: #fff;">{{ $gameNew->RATED_B_L }} • Online</div>
+                            <b style="font-size: 1rem;color: #fff;">{{ $gameNew->GAME_NAME }}</b>
+                            <div class="mt-1" style="font-size: 1rem;color: #fff;">{{ $gameNew->RATED_B_L }} • Online</div>
                         </div>
                         <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
                         <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#{{ $gameNew->GAME_NAME }}6  " aria-expanded="false" aria-controls="collapseExample"><img id="downImg6" src="{{asset('icon/down1.svg')}}"></button>
@@ -658,7 +636,7 @@
                                             @if($com_count->GAME_ID == $gameNewId->GAME_ID)
                                                 @foreach($CDownload as $countDown)
                                                     @if($countDown->GAME_ID == $gameNewId->GAME_ID)
-                                                        <b style="color:#f6c12c; font-size:30px;">{{round($count, 1)}}/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
+                                                        <b style="color:#f6c12c; font-size:1rem;">{{round($count, 1)}}/5</b>&nbsp; &nbsp;| &nbsp; &nbsp;
                                                         <b>{{ $com_count->com_count }}</b> &nbsp;คอมเมนท์</br>
                                                         <b>{{ $countDown->downloads_count }} </b>ดาวน์โหลด &nbsp; &nbsp;
                                                         <!-- <b>104.5</b> &nbsp;ชั่วโมง -->
@@ -694,7 +672,7 @@
                 <h2 class="section-title mb-3 font text-left" style="font-family:myfont;">พบกันเร็วๆนี้</h2>
             </div>
             <div class="col-7 text-right" data-aos="fade">
-                <h2 class="section-title mb-3 text-right" style="font-family:myfont1;"><a class="game_cat" href="">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
+                <h2 class="section-title mb-3 text-right" style="font-family:myfont;"><a class="game_cat" href="">ดูทั้งหมด </a><img style="padding-top:13px;" src="{{asset('icon/next1.svg') }}" /></h2>
             </div>
         </div>
         <div class="owl-carousel" id="owl-demo5">
@@ -1067,6 +1045,11 @@ $(document).ready(function() {
         // document.getElementById(cityName).style.display = "block";
         // evt.currentTarget.className += "active";
     }
+</script>
+<script>
+    $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+    });
 </script>
 
     <!-- <script>
