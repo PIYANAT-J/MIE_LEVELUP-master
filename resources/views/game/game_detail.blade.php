@@ -37,7 +37,8 @@
             <div class="col-lg-6 ">
                 <div class="owl-carousel" id="owl-demo1">
                     <div class="item" >
-                        <iframe class="video_detail" src="{{ $detailGame->GAME_VDO_LINK }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="video_detail2" src="{{ $detailGame->GAME_VDO_LINK }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <!-- <iframe class="video_detail2" src="https://www.youtube.com/embed/Pq_mbTSR-a0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  -->
                     </div>
                     <div class="item">
                         <img class="img-detail"   src="{{asset('section/picture_game/pubg.jpeg') }}" />
