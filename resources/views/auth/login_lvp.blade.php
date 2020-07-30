@@ -20,39 +20,69 @@
                     <a href="{{ route('register-levelUp') }}"><span class="btn-login-reg ">สมัครสมาชิก</span></a>
                 </div>
             </div>
-            <div class="row row2 text-center ">
+            <div class="row row2 ">
                 <div class="col-sm-12">
                     <form action="{{ route('login') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <span class="font-condition my-3">กรุณากรอกอีเมลและรหัสผ่านเพื่อเข้าสู่ระบบ</span></br>
-                        <input type="email" name="email" class="input-login mt-4 mb-2 @error('email') is-invalid @enderror"  placeholder="อีเมลผู้ใช้งาน" required autocomplete="email">
+                        <div class="row text-center">
+                            <div class="col-lg-12"><span class="font-condition my-3">กรุณากรอกอีเมลและรหัสผ่านเพื่อเข้าสู่ระบบ</span></div>
+                        </div>
+                        
+                        <div class="row mt-3">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-8">
+                                <label class="bgInput field-wrap">
+                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">อีเมลผู้ใช้งาน</label> <br>
+                                    <input type="email" name="email" class="input-login ml-2 @error('email') is-invalid @enderror"  required autocomplete="email">
+                                </label>
+                            </div>
+                            <div class="col-lg-2"></div>
+                        </div>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        <input name="password" type='password' class="input-login @error('password') is-invalid @enderror"  placeholder="รหัสผ่าน" required autocomplete="current-password">
+
+                            <div class="row">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-8">
+                                <label class="bgInput field-wrap">
+                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">รหัสผ่าน</label> <br>
+                                    <input name="password" type='password' class="input-login ml-2 @error('password') is-invalid @enderror" required autocomplete="current-password">
+                                </label>
+                            </div>
+                            <div class="col-lg-2"></div>
+                        </div>
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         <div class="row mt-2">
-                            <div class="col-6">
+                            <div class="col-lg-2"></div>
+                            <div class="col-4">
                                 <div class="checkbox">
                                     <input type="checkbox" id="checkbox_1" name="remember" value="{{ old('remember') ? 'checked' : '' }}">
-                                    <label for="checkbox_1" class="font-remember">{{__('จำฉันไว้')}}</label>
+                                    <label for="checkbox_1" class="font-remember2">{{__('จำฉันไว้')}}</label>
                                 </div>
                             </div>
-                            <div class="col-6 ">
+                            <div class="col-4 text-right">
                                 @if (Route::has('password.request'))
                                     <a class="forgot-password" href="{{ route('password.request') }}">
                                         {{ __('ลืมรหัสผ่าน ?') }}
                                     </a>
                                 @endif
                             </div>
+                            <div class="col-lg-2"></div>
                         </div>
-                        <input type="submit" name="button" id="submit" value="{{ __('เข้าสู่ระบบ') }}" class="btn-login-2">
+                        <div class="row">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-8">
+                                <input type="submit" name="button" id="submit" value="{{ __('เข้าสู่ระบบ') }}" class="btn-login-2">
+                            </div>
+                            <div class="col-lg-2"></div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -65,7 +95,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="col-1"></div>
-                <div class="col-10 text-center" style="font-family:myfont;font-wieght:bold;font-size:1.2em;color:#000;">แจ้งเตือน</div>
+                <div class="col-10 text-center" style="font-family:myfont1;;font-size:1.2em;color:#000;">แจ้งเตือน</div>
                     <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
                 <div class="col-1"></div>
             </div>
@@ -73,7 +103,7 @@
             <div class="modal-body font-rate-modal">
                 <div class="row px-3">
                     <div class="col-lg-12 pb-1">
-                        <div class="row"><label class="status-none-approve" style="text-align:center;">{{ Session::get('email') }}</label></div>
+                        <div class="row"><label class="massagrbox1" style="text-align:center;">{{ Session::get('email') }}</label></div>
                         <!-- <div class="row bg-disabled mb-2 py-2">
                             <div class="col-3"><input type="text" id="modal" value="modal" class="input-disable" disabled></input></div>
                             <div class="col-9 text-right">

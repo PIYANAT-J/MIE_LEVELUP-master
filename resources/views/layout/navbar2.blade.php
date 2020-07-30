@@ -21,24 +21,6 @@
         <link rel="stylesheet" href="{{ asset('home/font/font.css') }}">
         <link rel="stylesheet" href="{{ asset('icon/font_lvp.css') }}">
 
-
-        <style>
-            @font-face {
-            font-family:myfont;
-            src: url('home/font/dbheaventmedv3.2-webfont.woff2') format('woff2'),
-                    url('home/font/dbheaventmedv3.2-webfont.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            }
-            @font-face {
-            font-family:myfont1;
-            src: url('home/font/dbheaventliv3.2-webfont.woff2') format('woff2'),
-                    url('home/font/dbheaventliv3.2-webfont.woff2') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            }
-            
-        </style>
     </head>
 
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">

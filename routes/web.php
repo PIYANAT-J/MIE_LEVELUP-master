@@ -88,6 +88,7 @@ Route::get('/user_rank', 'TransferController@userRank')->name('UserRank');
 
 Route::get('/user_topup', 'qrPaymentController@indexPayment')->name('UserTopup');
 Route::post('/user_topup/qrCode', 'qrPaymentController@mobilebanking')->name('QrPayment');
+Route::post('/user_topup/qrCode/callback', 'Topup\Call_back\Callback_scbController@callback')->name('callbackQr');
 Route::post('/user_topup/transfer', 'TransferController@transferPayment')->name('transferPayment');
 // Route::get('/user_topup/qrCode/{invoice}', 'qrPaymentController@qrcode')->name('qrcode');
 
