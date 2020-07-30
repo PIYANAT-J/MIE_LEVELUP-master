@@ -25,17 +25,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
         <link rel="stylesheet" href="{{ asset('dist/css/dropzone/dropzone.css') }}">
-        <style>
-            @font-face {
-            font-family:myfont;
-            src: url('home/font/dbheaventmedv3.2-webfont.woff2') format('woff2'),
-                    url('home/font/dbheaventmedv3.2-webfont.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            }
-            div
-            {font-family:myfont;}
-        </style>
+        
         
         @yield('head')
     <!-- เรียกใช้ Theme -->

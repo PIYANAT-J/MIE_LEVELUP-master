@@ -18,7 +18,7 @@ class FollowController extends Controller
             if(Auth::user()->users_type == '1'){
                 $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
                 $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
-                $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+                $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->first();
                 return view('game.game_follow', compact('Follows', 'Games', 'guest_user'));
             }elseif(Auth::user()->users_type == '2'){
                 $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();

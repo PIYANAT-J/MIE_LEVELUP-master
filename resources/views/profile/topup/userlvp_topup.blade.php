@@ -13,26 +13,31 @@
                     @foreach($guest_user as $USER)
                         <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
                             <div class="row mb-2">
-                                <div class="col-5 text-right pr-2">
+                                <div class="col-lg-4 text-right">
                                     <img class="sidebar-pic" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
                                 </div>
-                                <div class="col-7 sidebar_name pt-2">
-                                    <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้ใช้ทั่วไป</br>เป็นสมาชิก : {{ Auth::user()->created_at }}</span>
+                                <div class="col-lg-8 sidebar_name pt-2">
+                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
                                 </div>
                             </div>
                             <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
                                 <div class="col-lg-12 text-center">
-                                    <button class="btn-point pb-2">
-                                        <span class="font-point">พอยท์</span></br>
-                                        <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">0</span>
-                                        <i class="icon-Icon_Point"></i>
-                                    </button>
-
-                                    <button class="btn-coin pb-2">
-                                        <span class="font-point">เหรียญ</span></br>
-                                        <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">0</span>
-                                        <i class="icon-Icon_Coin"></i>
-                                    </button>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label class="btn-point pb-2">
+                                                <span class="font-point">พอยท์</span></br>
+                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
+                                                <i class="icon-Icon_Point"></i>
+                                            </label>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="btn-coin pb-2 ">
+                                                <span class="font-point">เหรียญ</span></br>
+                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
+                                                <i class="icon-Icon_Coin"></i>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -40,50 +45,55 @@
                 @else
                     <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
                         <div class="row mb-2">
-                            <div class="col-5 text-right pr-2">
+                            <div class="col-lg-4 text-right">
                                 <img class="sidebar-pic" src="{{asset('home/imgProfile/No_Img.jpg') }}" />
                             </div>
-                            <div class="col-7 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้ใช้ทั่วไป</br>เป็นสมาชิก : {{ Auth::user()->created_at }}</span>
+                            <div class="col-lg-8 sidebar_name pt-2">
+                                <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
                             </div>
                         </div>
                         <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
                             <div class="col-lg-12 text-center">
-                                <button class="btn-point pb-2">
-                                    <span class="font-point">พอยท์</span></br>
-                                    <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">52</span>
-                                    <i class="icon-Icon_Point"></i>
-                                </button>
-
-                                <button class="btn-coin pb-2">
-                                    <span class="font-point">เหรียญ</span></br>
-                                    <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">70</span>
-                                    <i class="icon-Icon_Coin"></i>
-                                </button>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label class="btn-point pb-2">
+                                            <span class="font-point">พอยท์</span></br>
+                                            <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
+                                            <i class="icon-Icon_Point"></i>
+                                        </label>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="btn-coin pb-2 ">
+                                            <span class="font-point">เหรียญ</span></br>
+                                            <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
+                                            <i class="icon-Icon_Coin"></i>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 @endif
                 <div class="col-lg-1"></div>
-                <a href="{{ route('Avatar') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ตัวละครของฉัน (Avatar)</button></a>
-                <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ข้อมูลส่วนตัว</button></a>
-                <a href="{{ route('UserKyc') }}" style="width: 100%;"><button class="btn-sidebar"><span style="font-family: myfont1;font-size: 20px;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
+                <a href="{{ route('Avatar') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile menuIcon" ></i>ตัวละครของฉัน (Avatar)</button></a>
+                <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile menuIcon" ></i>ข้อมูลส่วนตัว</button></a>
+                <a href="{{ route('UserKyc') }}" style="width: 100%;"><button class="btn-sidebar"><span style="font-family: myfont1;font-size: 1em;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
                     @if($userKyc->KYC_STATUS == null)
                         <span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span>
                     @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
                         <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
                     @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวต้นแล้ว</span>
+                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวตนแล้ว</span>
                     @else
                         <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
                     @endif
                 </button></a>
-                <a href="{{ route('UserShelf') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-game-shelf" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ตู้เกม (เกมเชล)</button></a>
-                <a href="{{ route('UserHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ประวัติพอยท์</button></a>
-                <a href="{{ route('UserRank') }}" style="width: 100%;"><button class="btn-sidebar"><img class="pic4" src="{{asset('icon/rank1.svg') }}" />อันดับผู้ใช้</button></a>
-                <a href="{{ route('UserTopup') }}" style="width: 100%;"><button class="btn-sidebar  active"><i class="icon-top-up1" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เติมเงิน</button></a>
-                <a href="/user_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เปลี่ยนรหัสผ่าน</button></a>
-                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><img class="pic4" src="{{asset('icon/logout.svg') }}" />ออกจากระบบ</button></a> 
+                <a href="{{ route('UserShelf') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
+                <a href="{{ route('UserHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
+                <a href="{{ route('UserRank') }}" style="width: 100%;"><button class="btn-sidebar"><i class="fa fa-star-o menuIcon" ></i>อันดับผู้ใช้</button></a>
+                <a href="{{ route('UserTopup') }}" style="width: 100%;"><button class="btn-sidebar  active"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</button></a>
+                <a href="/user_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
+                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><i class="icon-logout menuIcon"></i>ออกจากระบบ</button></a>  
             </div>
         </div>
         <!-- sidebar -->
@@ -96,11 +106,11 @@
                         <div class="col-lg-6 line1">
                             <div style="font-family:myfont;font-size:1.3em;color:#000;">เติมเงิน</div>
                             <div class="row bg-topup ml-0 mb-2">
-                                <div class="col-lg-6 lext-center">ยอดเงินในวอลเล็ท
+                                <div class="col-6 lext-center">ยอดเงินในวอลเล็ท
                                 </div>
-                                <div class="col-lg-6 lext-center">฿ {{round($wallet, 2)}}</div>
+                                <div class="col--6 lext-center">฿ {{round($wallet, 2)}}</div>
                             </div>
-                            <div style="font-family:myfont;font-size:1.3em;color:#000;">จำนวนเงินที่ต้องการเติม (ขั้นต่ำ  ฿100 )</div>
+                            <div style="font-family:myfont1;font-size:1em;color:#000;">จำนวนเงินที่ต้องการเติม (ขั้นต่ำ  ฿100 )</div>
                             <div class="input-group mb-3 input-topup">
                                 <div class="input-group-prepend"><span class="input-group-text money_icon">฿</span></div>
                                 <input type="text" class="form-control money" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="amount" name="amount" value="{{ old('amount') }}" require>
@@ -115,28 +125,28 @@
                                     @endif
                                 <!-- <input type="text" id="moneyQr"> -->
                             </div>
-                            <div style="font-family:myfont;font-size:1.3em;color:#000;">ช่องทางการชำระเงิน</div>
+                            <div style="font-family:myfont;font-size:1em;color:#000;">ช่องทางการชำระเงิน</div>
                             <div class="row">
                                 <div class="col-12">
                                     <div id="banking" class="custom02">
                                         <div data-toggle="modal" data-target="#myModal2">
                                             <input type="radio" name="bank" value="visa" id="visa">
-                                            <label for="visa" style="font-family: myfont;font-size:1.3em;color:#000;">บัตรเครดิต/บัตรเดบิต</label>
+                                            <label for="visa" style="font-family: myfont1;font-size:1em;color:#000;">บัตรเครดิต/บัตรเดบิต</label>
                                             <img src="{{asset('home/logo/visa.png') }}" />
                                             <img src="{{asset('home/logo/visa2.png') }}" />
                                         </div>
                                         <div>
                                             <input type="radio" name="bank" value="atm" id="atm">
-                                            <label for="atm" style="font-family: myfont;font-size:1.3em;color:#000;" for="nl">โอน/ชำระผ่านบัญชีธนาคาร</label>
+                                            <label for="atm" style="font-family: myfont1;font-size:1em;color:#000;" for="nl">โอน/ชำระผ่านบัญชีธนาคาร</label>
                                         </div>
                                         <div>
                                             <input type="radio" name="bank" value="ibank" id="ibank">
-                                            <label for="ibank"style="font-family: myfont1;font-size:1.3em;color:#000;font-weight: bold;" for="es">iBanking / Mobile Banking</label>
+                                            <label for="ibank"style="font-family: myfont1;font-size:1em;color:#000;" for="es">iBanking / Mobile Banking</label>
                                         </div>
                                     
                                     
                                         <div class="atmlist">
-                                            <div for="atmdlabel" style="font-family: myfont1;font-size:1.3em;color:#000;">เลือกธนาคารที่ต้องการชำระ</div>
+                                            <div for="atmdlabel" style="font-family: myfont1;font-size:1em;color:#000;">เลือกธนาคารที่ต้องการชำระ</div>
                                             <div name="atmdiv" form="banking">
                                                 <button class="btn-bangkok" data-toggle="modal" data-target="#myModal5"><img src="{{asset('home/logo/bangkok.svg') }}" /></button>
                                                 <button class="btn-ktc" data-toggle="modal" data-target="#myModal6"><img src="{{asset('home/logo/ktc.svg') }}" /></button>
@@ -146,7 +156,7 @@
                                         </div>
                                         
                                         <div class="ibanklist ">
-                                            <div for="ibanklable"style="font-family: myfont1;font-size:1.3em;color:#000;">เลือกธนาคารที่ต้องการชำระ</div>
+                                            <div for="ibanklable"style="font-family: myfont1;font-size:1em;color:#000;">เลือกธนาคารที่ต้องการชำระ</div>
                                             <div name="ibankdiv" form="banking">
                                                 <!-- <button class="btn-bangkok" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/bangkok.svg') }}" /></button>
                                                 <button class="btn-ktc" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/ktc.svg') }}" /></button>
@@ -189,9 +199,9 @@
                                                         <div class="col-lg-12">
                                                             <div class="row">
                                                                 <div class="col-6">
-                                                                    <span class="text-right" style="font-family:myfont;font-size:1.23em;color:#000;">iBanking / Mobile Banking</span><br>
+                                                                    <span class="text-right" style="font-family:myfont;font-size:1em;color:#000;">iBanking / Mobile Banking</span><br>
                                                                     <img class="mr-2" src="{{asset('home/logo/'.$PaymentList->bank_name.'.svg') }}" />
-                                                                    <span style="font-family:myfont;font-size:1.23em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
+                                                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
                                                                     </div>
                                                                 <div class="col-6  text-right" style="padding-top:35px">
                                                                     <span class="font-bank1" >+{{ $PaymentList->amount }} ฿</span></br>
@@ -199,15 +209,15 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-6">
-                                                                    <span style="font-family:myfont1;font-size:1.23em;color:#000;">หมายเลขคำร้อง</span>
+                                                                    <span style="font-family:myfont1;font-size:1em;color:#000;">หมายเลขคำร้อง</span>
                                                                     </div>
                                                                 <div class="col-6 text-right">
-                                                                    <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">{{ $PaymentList->qr_invoice }}</span>
+                                                                    <span class="py-2" style="font-family:myfont;font-size:1em;color:#000;">{{ $PaymentList->qr_invoice }}</span>
                                                                 </div> 
                                                             </div>
                                                             <div class="row ">
                                                                 <div class="col-6">
-                                                                    <span style="font-family:myfont;font-size:1.23em;color:#ff6f6f;">ชำระเงินเรียบร้อย</span>
+                                                                    <span style="font-family:myfont;font-size:1em;color:#ff6f6f;">ชำระเงินเรียบร้อย</span>
                                                                 </div>
                                                                 <div class="col-6 text-right">
                                                                     <label class="font-game-shelf">{{ $PaymentList->confirm_at}}</label>
@@ -220,9 +230,9 @@
                                                         <div class="col-lg-12">
                                                             <div class="row">
                                                                 <div class="col-6">
-                                                                    <span class="text-right" style="font-family:myfont;font-size:1.23em;color:#000;">iBanking / Mobile Banking</span><br>
+                                                                    <span class="text-right" style="font-family:myfont;font-size:1em;color:#000;">iBanking / Mobile Banking</span><br>
                                                                     <img class="mr-2" src="{{asset('home/logo/'.$PaymentList->bank_name.'.svg') }}" />
-                                                                    <span style="font-family:myfont;font-size:1.23em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
+                                                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
                                                                     </div>
                                                                 <div class="col-6  text-right" style="padding-top:35px">
                                                                     <span class="font-bank1" >+{{ $PaymentList->amount }} ฿</span></br>
@@ -230,15 +240,15 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-6">
-                                                                    <span style="font-family:myfont1;font-size:1.23em;color:#000;">หมายเลขคำร้อง</span>
+                                                                    <span style="font-family:myfont1;font-size:1em;color:#000;">หมายเลขคำร้อง</span>
                                                                     </div>
                                                                 <div class="col-6 text-right">
-                                                                    <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">{{ $PaymentList->qr_invoice }}</span>
+                                                                    <span class="py-2" style="font-family:myfont;font-size:1em;color:#000;">{{ $PaymentList->qr_invoice }}</span>
                                                                 </div> 
                                                             </div>
                                                             <div class="row ">
                                                                 <div class="col-6">
-                                                                    <span style="font-family:myfont;font-size:1.23em;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</span>
+                                                                    <span style="font-family:myfont;font-size:1em;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</span>
                                                                 </div>
                                                                 <div class="col-6 text-right pt-2">
                                                                     <button class="btn-submit-s" data-toggle="modal" data-target="#{{ $PaymentList->invoice }}">โอนเงิน</button>
@@ -258,16 +268,16 @@
                                                     <div class="col-lg-12">
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                <span class="text-right" style="font-family:myfont;font-size:1.23em;color:#000;">โอน/ชำระผ่านบัญชีธนาคาร</span><br>
+                                                                <span class="text-right" style="font-family:myfont;font-size:1em;color:#000;">โอน/ชำระผ่านบัญชีธนาคาร</span><br>
                                                                 <img class="mr-2" src="{{asset('home/logo/'.$transferLits->transferฺBank_name.'.svg') }}" />
                                                                 @if($transferLits->transferฺBank_name == "bangkok")
-                                                                    <span style="font-family:myfont;font-size:1.23em;color:#000;">ธนาคารกรุงเทพ</span><br>
+                                                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงเทพ</span><br>
                                                                 @elseif($transferLits->transferฺBank_name == "ktc")
-                                                                    <span style="font-family:myfont;font-size:1.23em;color:#000;">ธนาคารกรุงไทย</span><br>
+                                                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงไทย</span><br>
                                                                 @elseif($transferLits->transferฺBank_name == "kbank")
-                                                                    <span style="font-family:myfont;font-size:1.23em;color:#000;">ธนาคารกสิกรไทย</span><br>
+                                                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกสิกรไทย</span><br>
                                                                 @elseif($transferLits->transferฺBank_name == "scb")
-                                                                    <span style="font-family:myfont;font-size:1.23em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
+                                                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
                                                                 @endif
                                                             </div>
                                                             <div class="col-6  text-right" style="padding-top:35px">
@@ -276,15 +286,15 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                <span style="font-family:myfont1;font-size:1.23em;color:#000;">หมายเลขคำร้อง</span>
+                                                                <span style="font-family:myfont1;font-size:1em;color:#000;">หมายเลขคำร้อง</span>
                                                                 </div>
                                                             <div class="col-6 text-right">
-                                                                <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">{{ $transferLits->transferInvoice }}</span>
+                                                                <span class="py-2" style="font-family:myfont;font-size:1em;color:#000;">{{ $transferLits->transferInvoice }}</span>
                                                             </div> 
                                                         </div>
                                                         <div class="row ">
                                                             <div class="col-6">
-                                                                <span style="font-family:myfont;font-size:1.23em;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</span>
+                                                                <span style="font-family:myfont;font-size:0.9em;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</span>
                                                             </div>
                                                             <div class="col-6 text-right pt-2">
                                                                 <button class="btn-submit-s" data-toggle="modal" data-target="#{{ $transferLits->invoice }}">ยืนยันการโอน</button>
@@ -297,16 +307,16 @@
                                                     <div class="col-lg-12">
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                <span class="text-right" style="font-family:myfont;font-size:1.23em;color:#000;">โอน/ชำระผ่านบัญชีธนาคาร</span><br>
+                                                                <span class="text-right" style="font-family:myfont;font-size:1em;color:#000;">โอน/ชำระผ่านบัญชีธนาคาร</span><br>
                                                                 <img class="mr-2" src="{{asset('home/logo/'.$transferLits->transferฺBank_name.'.svg') }}" />
                                                                 @if($transferLits->transferฺBank_name == "bangkok")
-                                                                    <span style="font-family:myfont;font-size:1.23em;color:#000;">ธนาคารกรุงเทพ</span><br>
+                                                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงเทพ</span><br>
                                                                 @elseif($transferLits->transferฺBank_name == "ktc")
-                                                                    <span style="font-family:myfont;font-size:1.23em;color:#000;">ธนาคารกรุงไทย</span><br>
+                                                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงไทย</span><br>
                                                                 @elseif($transferLits->transferฺBank_name == "kbank")
-                                                                    <span style="font-family:myfont;font-size:1.23em;color:#000;">ธนาคารกสิกรไทย</span><br>
+                                                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกสิกรไทย</span><br>
                                                                 @elseif($transferLits->transferฺBank_name == "scb")
-                                                                    <span style="font-family:myfont;font-size:1.23em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
+                                                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
                                                                 @endif
                                                             </div>
                                                             <div class="col-6  text-right" style="padding-top:35px">
@@ -315,15 +325,15 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                <span style="font-family:myfont1;font-size:1.23em;color:#000;">หมายเลขคำร้อง</span>
+                                                                <span style="font-family:myfont1;font-size:1em;color:#000;">หมายเลขคำร้อง</span>
                                                                 </div>
                                                             <div class="col-6 text-right">
-                                                                <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">{{ $transferLits->transferInvoice }}</span>
+                                                                <span class="py-2" style="font-family:myfont;font-size:1em;color:#000;">{{ $transferLits->transferInvoice }}</span>
                                                             </div> 
                                                         </div>
                                                         <div class="row ">
                                                             <div class="col-6">
-                                                                <span style="font-family:myfont;font-size:1.23em;color:#ff6f6f;">ชำระเงินแล้ว</span>
+                                                                <span style="font-family:myfont;font-size:1em;color:#ff6f6f;">ชำระเงินแล้ว</span>
                                                             </div>
                                                             <div class="col-6 text-right pt-2">
                                                                 <button class="btn-topup-wait">รอการอนุมัติ</button>
@@ -336,16 +346,16 @@
                                                     <div class="col-lg-12">
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                <span class="text-right" style="font-family:myfont;font-size:1.23em;color:#000;">โอน/ชำระผ่านบัญชีธนาคาร</span><br>
+                                                                <span class="text-right" style="font-family:myfont;font-size:1em;color:#000;">โอน/ชำระผ่านบัญชีธนาคาร</span><br>
                                                                 <img class="mr-2" src="{{asset('home/logo/'.$transferLits->transferฺBank_name.'.svg') }}" />
                                                                 @if($transferLits->transferฺBank_name == "bangkok")
-                                                                    <span style="font-family:myfont;font-size:1.23em;color:#000;">ธนาคารกรุงเทพ</span><br>
+                                                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงเทพ</span><br>
                                                                 @elseif($transferLits->transferฺBank_name == "ktc")
-                                                                    <span style="font-family:myfont;font-size:1.23em;color:#000;">ธนาคารกรุงไทย</span><br>
+                                                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงไทย</span><br>
                                                                 @elseif($transferLits->transferฺBank_name == "kbank")
-                                                                    <span style="font-family:myfont;font-size:1.23em;color:#000;">ธนาคารกสิกรไทย</span><br>
+                                                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกสิกรไทย</span><br>
                                                                 @elseif($transferLits->transferฺBank_name == "scb")
-                                                                    <span style="font-family:myfont;font-size:1.23em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
+                                                                    <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
                                                                 @endif
                                                             </div>
                                                             <div class="col-6  text-right" style="padding-top:35px">
@@ -354,15 +364,15 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                <span style="font-family:myfont1;font-size:1.23em;color:#000;">หมายเลขคำร้อง</span>
+                                                                <span style="font-family:myfont1;font-size:1em;color:#000;">หมายเลขคำร้อง</span>
                                                                 </div>
                                                             <div class="col-6 text-right">
-                                                                <span class="py-2" style="font-family:myfont;font-size:1.23em;color:#000;">{{ $transferLits->transferInvoice }}</span>
+                                                                <span class="py-2" style="font-family:myfont;font-size:1em;color:#000;">{{ $transferLits->transferInvoice }}</span>
                                                             </div> 
                                                         </div>
                                                         <div class="row ">
                                                             <div class="col-6">
-                                                                <span style="font-family:myfont;font-size:1.23em;color:#ff6f6f;">ชำระเงินเรียบร้อย</span>
+                                                                <span style="font-family:myfont;font-size:1em;color:#ff6f6f;">ชำระเงินเรียบร้อย</span>
                                                             </div>
                                                             <div class="col-6 text-right">
                                                                 <label class="font-game-shelf">15:47 17/06/63</label>
@@ -587,8 +597,8 @@
                 <div class="row text-center">
                     <div class="col-lg-12 mb-2">
                         <img src="{{asset('icon/correct.svg') }}"/></br>
-                        <span style="font-family:myfont;font-size:1.5em;color: #23c197;">เติมเงินสำเร็จ</span></br>
-                        <span style="font-family:myfont;color:#000;">คุณได้เติมเงินลงในวอลเล็ตของคุณเรียบร้อย</br>คุณสามารถเช็คยอดเงินได้ที่วอลเล็ตของคุณ</span>
+                        <span style="font-family:myfont;font-size:1.3em;color: #23c197;">เติมเงินสำเร็จ</span></br>
+                        <span style="font-family:myfont1;color:#000;">คุณได้เติมเงินลงในวอลเล็ตของคุณเรียบร้อย</br>คุณสามารถเช็คยอดเงินได้ที่วอลเล็ตของคุณ</span>
                     </div>
                 </div>
             </div>

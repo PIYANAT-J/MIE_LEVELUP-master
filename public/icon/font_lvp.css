@@ -129,3 +129,8 @@
 .icon-search-back:before {
   content: "\e916";
 }
+
+.icon-logout:before {
+  content: "\e91a";
+  color: #ce0005;
+}

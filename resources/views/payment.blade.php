@@ -623,38 +623,113 @@
                             <div class="row">
                                 <div class="col-12">
                                     <label class="custom03">
-                                        <input type="radio" name="select1" value="01" id="01">
-                                        <label for="01"></label>
+                                        <input type="radio" name="select1" value="03" id="03">
+                                        <label for="03"></label>
                                     </label>
-                                    <label class="font-address ml-2">
-                                        <label>ชื่อ - นามสกุล<br>ที่อยู่</label>
+                                    <label class="font-VisaCredit ml-2">
+                                    <img style="height:25px;" src="{{asset('home/logo/visa1.svg')}}" >
                                     </label>
-                                    <label class="font-address2 ml-2">
-                                        <label>สมหญิง รักดี <label style="color:#ce0005;font-weight: 700;">(ที่อยู่หลัก)</label> <br>52/2 ซ.เจริญนคร 78 ถนน เจริญนคร บุคคโลเขตธนบุรี จังหวัดกรุงเทพมหานคร 10600</label>
+                                    <label class="font-VisaCredit2 ml-2">
+                                        <label>ธนาคารไทยพาณิชย์ *1234 </label><label class="ml-3" style="color:#ce0005;font-weight: 700;">(บัตรหลัก)</label>
                                     </label>
+                                    <label class="pTrashAvatar"> <img style="width:20px;" src="{{asset('icon/trash.svg')}}" ></label>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-12">
                                     <label class="custom03">
-                                        <input type="radio" name="select1" value="02" id="02">
-                                        <label for="02"></label>
+                                        <input type="radio" name="select1" value="04" id="04">
+                                        <label for="04"></label>
                                     </label>
-                                    <label class="font-address ml-2">
-                                        <label>ชื่อ - นามสกุล<br>ที่อยู่</label>
+                                    <label class="font-VisaCredit ml-2">
+                                    <img style="height:25px;" src="{{asset('home/logo/credit.svg')}}" >
                                     </label>
-                                    <label class="font-address2 ml-2">
-                                        <label>สมหญิง รักดี  <br>26 ซอยลาดปลาเค้า แขวงอนุสาวรีย์ เขตบางเขน กทม. 10220</label>
+                                    <label class="font-VisaCredit2 ml-2">
+                                        <label>ธนาคารไทยพาณิชย์ *1234 </label>
                                     </label>
                                     <label class="pTrashAvatar"> <img style="width:20px;" src="{{asset('icon/trash.svg')}}" ></label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <button class="addAddress"  data-dismiss="modal" data-toggle="modal" data-target="#address2">+ เพิ่มที่อยู่</button>
+                                    <button class="addAddress" style="color:#ce0005" data-dismiss="modal" data-toggle="modal" data-target="#VisaCredit2">+ เพิ่มบัตรเครดิต/บัตรเดบิต</button>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-submit-modal">ยกเลิก</button>
+                <button type="button" class="btn-submit-modal-red">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="VisaCredit2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label style="font-size:1.4em;color:#000;">เพิ่มบัตรเครดิต / บัตรเดบิต</label>
+                    </div>
+                </div>
+                <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
+            </div>
+
+            <div class="modal-body font-rate-modal" style="padding-bottom:0;">
+                <div class="col-lg-12" >
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label> <img style="height: 40px;" src="{{asset('home/logo/visa3.png')}}"></label>
+                            <label class="bgInput field-wrap">
+                                <label class="fontHeadInput px-3" style="padding:0;">หมายเลขบัตร</label>
+                                <input class="text-box px-3" required="true" type="text" name="text1">
+                                <button class="text-clear"><img src="{{asset('icon/close-grey.svg') }}" ></button>
+                            </label>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <label class="bgInput field-wrap">
+                                <label class="fontHeadInput px-3" style="padding:0;">ชื่อที่ผูกกับบัตร</label>
+                                <input class="text-box px-3" required="true" type="text" name="text1">
+                                <button class="text-clear"><img src="{{asset('icon/close-grey.svg') }}" ></button>
+                            </label>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="bgInput field-wrap">
+                                <label class="fontHeadInput px-3" style="padding:0;">เดือนปีหมดอายุ</label>
+                                <input class="text-box px-3" required="true" type="text" name="text1">
+                                <button class="text-clear"><img src="{{asset('icon/close-grey.svg') }}" ></button>
+                            </label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="bgInput field-wrap">
+                                <label class="fontHeadInput px-3" style="padding:0;">CVV</label>
+                                <input class="text-box px-3" required="true" type="text" name="text1">
+                                <button class="text-clear"><img src="{{asset('icon/close-grey.svg') }}" ></button>
+                            </label>
+                        </div>
+                        
+                        <div class="col-lg-8 mb-2 ">
+                            <div class="pl-2" style="font-family:myfont1;font-size:0.8em;color:#000;line-height: 150%;"><span style="font-weight:bold;">บันทึกบัตรไว้ใช้ในภายหลัง</span></br>ข้อมูลบัตรของท่านจะถูกเก็บรักษาไว้อย่างปลอดภัย</div>
+                        </div>
+                        <div class="col-lg-4 mb-2 text-right">
+                            <div class="wrapper">
+                                <div class="switch_box box_2">
+                                    <input type="checkbox" class="switch_1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="checkbox ml-3 mt-2">
+                            <input type="checkbox" id="checkbox_02" name="accept_02">
+                            <label for="checkbox_02" style="color:#000;font-weight:bold;padding-top:2px;padding-left:10px;" >บัตรหลัก</label>
                         </div>
                     </div>
                 </div>

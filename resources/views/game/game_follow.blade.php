@@ -3,15 +3,15 @@
 <div class="container-fluid" style="padding:0;">
     <div class="row my-5 "></div>
     <div class="row my-2 "></div>
-    <div class="row bg-wh pt-4">
+    <div class="row bg-wh pt-4" style="background-color: #202433;">
         <div class="col-lg-1"></div>
         <div class="col-lg-11 pt-3 pb-2">
             <span class="font-category mr-3">กำลังติดตาม</span>
             <button class="btn-total-category" data-toggle="collapse" data-target="#demo">ประเภทเกม</button>
         </div>
 
-        <div id="demo" class="collapse row3">
-            <div class="row mx-5 mt-3">
+        <div id="demo" class="collapse row3" style="background-color: #141621;">
+            <div class="row mx-5 mt-3" >
                 <div class="col-lg-4">
                     <div class="row">
                         <div class="col-4">
@@ -147,13 +147,13 @@
                     </div>
                 </div>
             </div>
-            <div class="row mx-5">
+            <div class="row mx-5" >
                 <div class="col-lg-4">
                     <div class="row">
                         <div class="col-4">
                             <div class="checkbox">
                                 <input type="checkbox" id="checkbox_19">
-                                <label for="checkbox_19" class="font-remember" style="line-height: 80%;padding-top:10px;font-size:18px;">Side Scrolling <br>Game </label>
+                                <label for="checkbox_19" class="font-remember" style="line-height: 1.2;padding-top:8px;font-size:0.85rem;">Side Scrolling <br>Game </label>
                             </div>
                         </div>
                         <div class="col-4 ">
@@ -198,7 +198,7 @@
                         <div class="col-4 ">
                             <div class="checkbox">
                                 <input type="checkbox" id="checkbox_25">
-                                <label for="checkbox_25" class="font-remember" style="line-height: 80%;padding-top:10px;font-size:18px;">Tactical <br>Combat</label>
+                                <label for="checkbox_25" class="font-remember" style="line-height: 1.2;padding-top:8px;font-size:0.85rem;">Tactical <br>Combat</label>
                             </div>
                         </div>
                         <div class="col-4 ">
@@ -222,7 +222,7 @@
                         <div class="col-4">
                             <div class="checkbox">
                                 <input type="checkbox" id="checkbox_28">
-                                <label for="checkbox_28" class="font-remember"  style="font-size:18px;">Trading Card </label>
+                                <label for="checkbox_28" class="font-remember"  style="line-height: 1.2;padding-top:8px;font-size:0.85rem;">Trading Card </label>
                             </div>
                         </div>
                         <div class="col-4 "></div>
@@ -237,42 +237,47 @@
         </div>
     </div>
     
-    <div class="row bg1">
+    <div class="row bg1" style="background-color: #141621;">
         <div class="col-lg-1"></div>
-        <div class="col-lg-10 ">
-            <div class="row">
-                <div class="col-lg-9">
-                    <select class="selectpicker" id="mySelect" data-live-search="true">
-                        <option class="option-select-rate">เรทเกม</option>
-                        <option class="option-select-rate">EC : Early Childhood</option>
-                        <option class="option-select-rate">E : Everyone</option>
-                        <option class="option-select-rate">E10+ : Everyone 10+</option>
-                        <option class="option-select-rate">T : Teen</option>
-                        <option class="option-select-rate">M : Mature</option>
-                        <option class="option-select-rate">AO : Adults Only</option>
-                        <option class="option-select-rate">RP : Rating Pending</option>
-                    </select>
+            <div class="col-lg-10 ">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <select class="select1 my-2">
+                            <option class="option-select-rate">เรทเกม</option>
+                            <option class="option-select-rate">EC : Early Childhood</option>
+                            <option class="option-select-rate">E : Everyone</option>
+                            <option class="option-select-rate">E10+ : Everyone 10+</option>
+                            <option class="option-select-rate">T : Teen</option>
+                            <option class="option-select-rate">M : Mature</option>
+                            <option class="option-select-rate">AO : Adults Only</option>
+                            <option class="option-select-rate">RP : Rating Pending</option>
+                        </select>
+                    </div>
 
-                    <select class="selectpicker" id="mySelect" data-live-search="true">
-                        <option class="option-select-rate">เรทเนื้อหาเกม</option>
-                        <option class="option-select-rate">Discrimination : มีการแบ่งแยก แบ่งแยกฝ่ายอย่างชัดเจน</option>
-                        <option class="option-select-rate">Drugs : มีการใช้สารเสพติดในเกม</option>
-                        <option class="option-select-rate">Fear : มีการใช้ความกลัวเข้ามาอยู่ในเกม</option>
-                        <option class="option-select-rate">Gambling : มีเรื่องของการพนันอยู่ในเกม</option>
-                        <option class="option-select-rate">Sex : มีเรื่องเพศเกี่ยวข้องอยู่ในเกม</option>
-                        <option class="option-select-rate">Violence : มีการใช้ความรุนแรงภายในเกม</option>
-                        <option class="option-select-rate">Online : เป็นเกมที่ต้องเล่นออนไลน์เท่านั้น เป็นเรทที่พิเศษแยกออกมา</option>
-                        <option class="option-select-rate">Other:อื่น</option>
-                    </select>
+                    <div class="col-lg-3">
+                        <select class="select1 my-2">
+                            <option class="option-select-rate">เรทเนื้อหาเกม</option>
+                            <option class="option-select-rate">Discrimination : มีการแบ่งแยก แบ่งแยกฝ่ายอย่างชัดเจน</option>
+                            <option class="option-select-rate">Drugs : มีการใช้สารเสพติดในเกม</option>
+                            <option class="option-select-rate">Fear : มีการใช้ความกลัวเข้ามาอยู่ในเกม</option>
+                            <option class="option-select-rate">Gambling : มีเรื่องของการพนันอยู่ในเกม</option>
+                            <option class="option-select-rate">Sex : มีเรื่องเพศเกี่ยวข้องอยู่ในเกม</option>
+                            <option class="option-select-rate">Violence : มีการใช้ความรุนแรงภายในเกม</option>
+                            <option class="option-select-rate">Online : เป็นเกมที่ต้องเล่นออนไลน์เท่านั้น เป็นเรทที่พิเศษแยกออกมา</option>
+                            <option class="option-select-rate">Other:อื่น</option>
+                        </select>
+                    </div>
     
-                    <select class="selectpicker" id="mySelect">
-                        <option class="option-select-rate">คะแนน</option>
-                        <option class="option-select-rate">5 ดาว</option>
-                        <option class="option-select-rate">4 ดาว</option>
-                        <option class="option-select-rate">3 ดาว</option>
-                        <option class="option-select-rate">2 ดาว</option>
-                        <option class="option-select-rate">1 ดาว</option>
-                    </select>
+                    <div class="col-lg-3">
+                        <select class="select1 my-2">
+                            <option class="option-select-rate">คะแนน</option>
+                            <option class="option-select-rate">5 ดาว</option>
+                            <option class="option-select-rate">4 ดาว</option>
+                            <option class="option-select-rate">3 ดาว</option>
+                            <option class="option-select-rate">2 ดาว</option>
+                            <option class="option-select-rate">1 ดาว</option>
+                        </select>
+                    </div>
                     <button class="btn-reset"><i class="icon-update_version" style="font-size:15px;"> </i><span style="text-decoration: underline;">รีเซ็ท</span></button>
                 </div>
                 <div class="col-lg-3"></div>
@@ -281,7 +286,7 @@
         <div class="col-lg-1"></div>
     </div>
 
-    <div class="row bg1">
+    <div class="row bg1" style="background-color: #141621;">
         <div class="col-lg-1"></div>
         <div class="col-lg-10 row4 ">
             <div class="row py-3">
@@ -295,13 +300,13 @@
                                     <span class="desc">
                                         <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b>
+                                            <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:1em;">กำลังติดตาม</b>
                                                 <input type="hidden" name="submit" value="submit">
                                                 <input type="hidden" name="FOLLOW_ID" value="{{ $followMe->FOLLOW_ID }}">
                                             </button>
                                         </form>
-                                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                                        <!-- <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button > -->
+                                        <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:1em;">กำลังติดตาม</b></button > -->
+                                        <!-- <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:1em;">ติดตาม</b></button > -->
                                     </span>
                                 </div>
                                 @break
@@ -310,7 +315,7 @@
                     @else
                         <div class="col-lg-11 pt-3 pb-2">
                             <span>
-                                <label style="font-family:myfont;font-size:2em;">ไม่มีเกมที่กำลังติดตาม</label>
+                                <label style="font-family:myfont;font-size:1em;color:#fff;">ไม่มีเกมที่กำลังติดตาม</label>
                             </span>
                         </div>
                         @break
