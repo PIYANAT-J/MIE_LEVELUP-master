@@ -26,9 +26,9 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row my-5 "></div>
+    <div class="row my-5 " ></div>
     <div class="row my-2 "></div>
-    <div class="row bg-wh pt-4">
+    <div class="row bg-wh pt-4" style="background-color: #202433;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.42);">
         <div class="col-lg-1"></div>
         <div class="col-lg-11 pt-3 pb-2" id="filters">
             <span class="font-category mr-3">ประเภทเกม</span>
@@ -36,8 +36,8 @@
             <button class="btn-total-category" data-toggle="collapse" data-target="#demo">อื่นๆ</button>
         </div>
 
-        <div id="demo" class="collapse row3 bg1">
-            <div class="row mx-5 mt-3">
+        <div id="demo" class="collapse row3 bg1" style="background-color: #141621;">
+            <div class="row mx-5 mt-3" >
                 <div class="col-lg-4">
                     <div class="row">
                         <div class="col-4">
@@ -179,7 +179,7 @@
                         <div class="col-4">
                             <div class="checkbox">
                                 <input type="checkbox" id="checkbox_19">
-                                <label for="checkbox_19" class="font-remember" style="line-height: 80%;padding-top:10px;font-size:18px;">Side Scrolling <br>Game </label>
+                                <label for="checkbox_19" class="font-remember" style="line-height: 1.2;padding-top:8px;font-size:0.85rem;">Side Scrolling <br>Game </label>
                             </div>
                         </div>
                         <div class="col-4 ">
@@ -224,7 +224,7 @@
                         <div class="col-4 ">
                             <div class="checkbox">
                                 <input type="checkbox" id="checkbox_25">
-                                <label for="checkbox_25" class="font-remember" style="line-height: 80%;padding-top:10px;font-size:18px;">Tactical <br>Combat</label>
+                                <label for="checkbox_25" class="font-remember" style="line-height: 1.2;padding-top:8px;font-size:0.85rem;">Tactical <br>Combat</label>
                             </div>
                         </div>
                         <div class="col-4 ">
@@ -248,7 +248,7 @@
                         <div class="col-4">
                             <div class="checkbox">
                                 <input type="checkbox" id="checkbox_28">
-                                <label for="checkbox_28" class="font-remember"  style="font-size:18px;">Trading Card </label>
+                                <label for="checkbox_28" class="font-remember"  style="font-size:0.85rem;padding-top:5px;">Trading Card </label>
                             </div>
                         </div>
                         <div class="col-4 "></div>
@@ -274,12 +274,12 @@
         </div>
     </div>
     
-    <div class="row bg1">
+    <div class="row" style="background-color: #141621;">
         <div class="col-lg-1"></div>
         <div class="col-lg-10 ">
             <div class="row">
-                <div class="col-lg-9">
-                    <select class="selectpicker" id="mySelect" data-live-search="true">
+                <div class="col-lg-3">
+                    <select class="select1 my-2">
                         <option class="option-select-rate">เรทเกม</option>
                         <option class="option-select-rate">EC : Early Childhood</option>
                         <option class="option-select-rate">E : Everyone</option>
@@ -289,8 +289,9 @@
                         <option class="option-select-rate">AO : Adults Only</option>
                         <option class="option-select-rate">RP : Rating Pending</option>
                     </select>
-
-                    <select class="selectpicker" id="mySelect" data-live-search="true">
+                </div>
+                <div class="col-lg-3">
+                    <select class="select1 my-2">
                         <option class="option-select-rate">เรทเนื้อหาเกม</option>
                         <option class="option-select-rate">Discrimination : มีการแบ่งแยก แบ่งแยกฝ่ายอย่างชัดเจน</option>
                         <option class="option-select-rate">Drugs : มีการใช้สารเสพติดในเกม</option>
@@ -301,8 +302,9 @@
                         <option class="option-select-rate">Online : เป็นเกมที่ต้องเล่นออนไลน์เท่านั้น เป็นเรทที่พิเศษแยกออกมา</option>
                         <option class="option-select-rate">Other:อื่น</option>
                     </select>
-    
-                    <select class="selectpicker" id="mySelect">
+                </div>
+                <div class="col-lg-3">
+                    <select class="select1 my-2">
                         <option class="option-select-rate">คะแนน</option>
                         <option class="option-select-rate">5 ดาว</option>
                         <option class="option-select-rate">4 ดาว</option>
@@ -310,15 +312,16 @@
                         <option class="option-select-rate">2 ดาว</option>
                         <option class="option-select-rate">1 ดาว</option>
                     </select>
-                    <button class="btn-reset"><i class="icon-update_version" style="font-size:15px;"> </i><span style="text-decoration: underline;">รีเซ็ท</span></button>
                 </div>
-                <div class="col-lg-3"></div>
+                <div class="col-lg-3 mt-3">
+                    <button class="btn-reset"><i class="icon-update_version" style="font-size:0.7rem;"> </i><span style="text-decoration: underline;">รีเซ็ท</span></button>
+                </div>
             </div>
         </div>
         <div class="col-lg-1"></div>
     </div>
 
-    <div class="row bg1">
+    <div class="row" style="background-color: #141621;">
         <div class="col-lg-1"></div>
         <div class="col-lg-10 row4 ">
             <div class="row py-3">
@@ -328,8 +331,8 @@
                             <div class="col-md-2 ">
                                 <a href="{{ route('login-levelUp') }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
                                 <span class="desc">
-                                    <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b></button > -->
-                                    <a href="{{route('login-levelUp')}}"><button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b></button ></a>
+                                    <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:1em;">กำลังติดตาม</b></button > -->
+                                    <a href="{{route('login-levelUp')}}"><button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:1em;">ติดตาม</b></button ></a>
                                 </span>
                             </div>
                         @else
@@ -341,7 +344,7 @@
                                             <span class="desc">
                                                 <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
-                                                    <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:20px;">กำลังติดตาม</b>
+                                                    <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px;"></span><b class="font_follow" style="font-size:1em;">กำลังติดตาม</b>
                                                         <input type="hidden" name="submit" value="submit">
                                                         <input type="hidden" name="FOLLOW_ID" value="{{ $follow->FOLLOW_ID }}">
                                                     </button>
@@ -355,7 +358,7 @@
                                             <span class="desc">
                                                 <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
                                                     @csrf
-                                                    <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b>
+                                                    <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:1em;">ติดตาม</b>
                                                         <input type="hidden" name="submit" value="submit">
                                                         <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
                                                         <input type="hidden" name="GAME_ID" value="{{ $game->GAME_ID }}">
@@ -373,7 +376,7 @@
                                     <span class="desc">
                                         <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:20px;">ติดตาม</b>
+                                            <button class="btn_follow8" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:15px;"></span><b class="font_follow2" style="font-size:1em;">ติดตาม</b>
                                                 <input type="hidden" name="submit" value="submit">
                                                 <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
                                                 <input type="hidden" name="GAME_ID" value="{{ $game->GAME_ID }}">

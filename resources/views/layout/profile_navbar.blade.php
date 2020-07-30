@@ -23,25 +23,6 @@
         <link rel="stylesheet" href="{{ asset('bootstrap-select/dist/css/bootstrap-select.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap-select/dist/css/bootstrap-select.min.css') }}">
         
-        <style>
-            @font-face {
-            font-family:myfont;
-            src: url('home/font/dbheaventmedv3.2-webfont.woff2') format('woff2'),
-                    url('home/font/dbheaventmedv3.2-webfont.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            }
-            @font-face {
-            font-family:myfont1;
-            src: url('home/font/dbheaventliv3.2-webfont.woff2') format('woff2'),
-                    url('home/font/dbheaventliv3.2-webfont.woff2') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            }
-            html,body {
-                font-size: XXpx;
-            }
-        </style>
     </head>
 
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -55,7 +36,7 @@
                 <div class="site-mobile-menu-body"></div>
             </div>
 
-            <header class="site-navbar2  js-sticky-header site-navbar-target" role="banner">
+            <header class="site-navbar2 py-3 site-navbar-target" role="banner">
                 <div class="row align-items-center">
                     <div class="col-6 col-xl-2">
                         <h1 class="site-logo"><a href="{{ url('/') }}" class="mb-0"><img class="img_logo" src="{{asset('home/logo/logo_lvp.svg') }}" ></a></h1>
@@ -64,23 +45,23 @@
                     <div class="col-12 col-md-10 d-none d-xl-block font_navbar home">
                         <nav class="site-navigation position-relative" role="navigation">
                             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block text-right" style="margin-top:50px;"> 
-                                <li><a href="{{ url('/') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px; ">หน้าแรก</a></li>
-                                <li><a href="{{ route('gameCategory') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;">หมวดหมู่</a></li>
+                                <li><a href="{{ url('/') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;font-size:0.7em; ">หน้าแรก</a></li>
+                                <li><a href="{{ route('gameCategory') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;font-size:0.7em;">หมวดหมู่</a></li>
                                 @guest
-                                    <li><a href="{{ route('login-levelUp') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px">การติดตามของฉัน</a></li>
+                                    <li><a href="{{ route('login-levelUp') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px;font-size:0.7em;">การติดตามของฉัน</a></li>
                                 @else
-                                    <li><a href="{{ route('FollowMe') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px">การติดตามของฉัน</a></li>
+                                    <li><a href="{{ route('FollowMe') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px;font-size:0.7em;">การติดตามของฉัน</a></li>
                                 @endguest
                                 <li class="inputWithIcon">
-                                    <input style="font-family:myfont1;" class="search_btn" type="text" placeholder="ค้นหา" aria-label="Search">
+                                    <input style="font-family:myfont1;font-size:0.7em;" class="search_btn" type="text" placeholder="ค้นหา" aria-label="Search">
                                     <i class="icon-search" aria-hidden="true" style="font-size:18px"></i>
                                 </li>
                                 @guest
                                     <img style="padding:0px 0px 0px 20px;" src="{{asset('/icon/sign_in.svg') }}">
-                                    <label class="sign_in" style="font-family:myfont; padding: 0px 0px 0px 0px;">
+                                    <label class="sign_in" style="font-family:myfont; padding: 0px 0px 0px 0px;font-size:0.7em;">
                                         <a href="{{ route('login-levelUp') }}">{{ __('เข้าสู่ระบบ') }}</a>
                                     </label>
-                                    <label style="font-family:myfont;"><a class="text2">/ </a></label>
+                                    <label style="font-family:myfont;font-size:0.7em;"><a class="text2">/ </a></label>
 
                                         @if (Route::has('register'))
                                             <label style="font-family:myfont;">
@@ -89,7 +70,7 @@
                                         @endif
                             </ul>
                                 @else
-                                <li class="has-children">
+                                
                                     @if(Auth::user()->users_type == '2')
                                         @foreach($developer as $Dev)
                                             <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" />
@@ -101,6 +82,7 @@
                                             <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
                                         @endforeach
                                     @endif
+                                    <li class="has-children">
                                     <a href="#about-section" class="nav-link font_name" >{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
                                     <ul class="dropdown">
                                         <li class="nav-item">
