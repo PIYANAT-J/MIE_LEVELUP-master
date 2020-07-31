@@ -9,7 +9,6 @@
         <div class="col-lg-3" style="background-color: #17202c;">
             <div class="row">
                 <div class="col-lg-1"></div>
-                @if(Auth::user()->updateData == 'true')
                     @foreach($guest_user as $USER)
                         <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
                             <div class="row mb-2">
@@ -42,38 +41,6 @@
                             </div>
                         </div>
                     @endforeach
-                @else
-                    <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                        <div class="row mb-2">
-                            <div class="col-lg-4 text-right" >
-                                <img class="sidebar-pic" src="{{asset('home/imgProfile/No_Img.jpg') }}" />
-                            </div>
-                            <div class="col-lg-8 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
-                            </div>
-                        </div>
-                        <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                            <div class="col-lg-12 text-center">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label class="btn-point pb-2">
-                                            <span class="font-point">พอยท์</span></br>
-                                            <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                            <i class="icon-Icon_Point"></i>
-                                        </label>
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="btn-coin pb-2 ">
-                                            <span class="font-point">เหรียญ</span></br>
-                                            <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                            <i class="icon-Icon_Coin"></i>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endif
                 <div class="col-lg-1"></div>
                 <a href="{{ route('Avatar') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile menuIcon"></i>ตัวละครของฉัน (Avatar)</button></a>
                 <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar active"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว</button></a>
@@ -98,170 +65,98 @@
         </div>
         <!-- sidebar -->
         <!-- update profile -->
-        @if(Auth::user()->updateData == 'true')
-            @foreach($guest_user as $USER)
-                @if($USER->USER_ID == Auth::user()->id)
-                        <div class="col-lg-9" style="background-color:#f5f5f5;">
-                            <div class="row mt-4" >
-                                <div class="col-lg-1"></div>
-                                <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-                                    <form action="{{ route('EditProfile') }}" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="row">
-                                            <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                                                <span class="font-profile1">ข้อมูลส่วนตัว (ถ้าอัพเดทโปรไฟล์จะได้ พอยท์เพิ่ม 100 พอยท์ )</br>
-                                                <b style="font-family:myfont1;font-size: 0.8em;color: #666666;">จัดการข้อมูลส่วนตัวคุณของคุณเพื่อให้ใช้งานได้สะดวกขึ้น</b></span>
-                                            </div>
+        @foreach($guest_user as $USER)
+            @if($USER->USER_ID == Auth::user()->id)
+                    <div class="col-lg-9" style="background-color:#f5f5f5;">
+                        <div class="row mt-4" >
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
+                                <form action="{{ route('EditProfile') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
+                                            <span class="font-profile1">ข้อมูลส่วนตัว (ถ้าอัพเดทโปรไฟล์จะได้ พอยท์เพิ่ม 100 พอยท์ )</br>
+                                            <b style="font-family:myfont1;font-size: 0.8em;color: #666666;">จัดการข้อมูลส่วนตัวคุณของคุณเพื่อให้ใช้งานได้สะดวกขึ้น</b></span>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-12 line1 mt-2" >
-                                                        <label class="bgInput field-wrap">
-                                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อ</label> <br>
-                                                            <input name="name" class="input-login px-3" value="{{ Auth::user()->name }}"></input>
-                                                        </label>
-                                                        @error('name')
-                                                            <span class="text-danger font-error">กรุณากรอกชื่อ</span>
-                                                        @enderror
-                                                        <label class="bgInput field-wrap">
-                                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">นามสกุล</label> <br>
-                                                            <input name="surname" class="input-login px-3" value="{{ Auth::user()->surname }}" ></input>
-                                                        </label>
-                                                        @error('surname')
-                                                            <span class="text-danger font-error">กรุณากรอกนามสกุล</span>
-                                                        @enderror
-                                                        <label class="bgInput field-wrap">
-                                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">เบอร์โทรศัพท์</label> <br>
-                                                            <input name="GUEST_USERS_TEL" type="text" class="input-login px-3 @error('GUEST_USERS_TEL') is-invalid @enderror"  data-toggle="tooltip" value="{{ $USER->GUEST_USERS_TEL }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
-                                                        </label>
-                                                        @error('GUEST_USERS_TEL')
-                                                            <span class="text-danger font-error">กรุณากรอกเบอร์โทรศัพท์</span>
-                                                        @enderror
-                                                        <label class="bgInput field-wrap">
-                                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขบัตรประจำตัวประชาชน</label> <br>
-                                                            <input name="GUEST_USERS_ID_CARD" type="text" class="input-login px-3" value="{{ $USER->GUEST_USERS_ID_CARD }}" minlength="13" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
-                                                        </label>
-                                                        @error('GUEST_USERS_ID_CARD')
-                                                            <span class="text-danger font-error">เลขบัตรประจำตัวประชาชนไม่ถูกต้อง</span>
-                                                        @enderror
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <div class="row mx-0">
-                                                                    <!-- <input id="GUEST_USERS_BIRTHDAY" name="GUEST_USERS_BIRTHDAY" type="text" class="form-control textbox1 " placeholder="YYYY-MM-DD" value="{{ old('GUEST_USERS_BIRTHDAY') }}" title=""> -->
-                                                                <!-- <input type="number" name="RATING" id="rating-input" min="1" max="5"> -->
-                                                                    <?php
-                                                                        $yyyy = substr($USER->GUEST_USERS_BIRTHDAY,0,4);
-                                                                        $mm = substr($USER->GUEST_USERS_BIRTHDAY,5,2);
-                                                                        $dd = substr($USER->GUEST_USERS_BIRTHDAY,8,2);
-                                                                    ?>
-                                                                    <label class="bgInput field-wrap">
-                                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">วัน เดือน ปีเกิด</label> <br>
-                                                                        <label style="padding:0;"><SELECT  size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></label>
-                                                                        <label style="padding:0;"><SELECT  size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></label>
-                                                                        <label style="padding:0;"><SELECT  size="1" id ="day" name = "dd"></SELECT></label>
-                                                                    </label>
-                                                                </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="col-lg-12 line1 mt-2" >
+                                                    <label class="bgInput field-wrap">
+                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อ</label> <br>
+                                                        <input name="name" class="input-login px-3" value="{{ Auth::user()->name }}"></input>
+                                                    </label>
+                                                    @error('name')
+                                                        <span class="text-danger font-error">กรุณากรอกชื่อ</span>
+                                                    @enderror
+                                                    <label class="bgInput field-wrap">
+                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">นามสกุล</label> <br>
+                                                        <input name="surname" class="input-login px-3" value="{{ Auth::user()->surname }}" ></input>
+                                                    </label>
+                                                    @error('surname')
+                                                        <span class="text-danger font-error">กรุณากรอกนามสกุล</span>
+                                                    @enderror
+                                                    <label class="bgInput field-wrap">
+                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">เบอร์โทรศัพท์</label> <br>
+                                                        <input name="GUEST_USERS_TEL" type="text" class="input-login px-3 @error('GUEST_USERS_TEL') is-invalid @enderror"  data-toggle="tooltip" value="{{ $USER->GUEST_USERS_TEL ?? old('GUEST_USERS_TEL') }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
+                                                    </label>
+                                                    @error('GUEST_USERS_TEL')
+                                                        <span class="text-danger font-error">กรุณากรอกเบอร์โทรศัพท์</span>
+                                                    @enderror
+                                                    <label class="bgInput field-wrap">
+                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขบัตรประจำตัวประชาชน</label> <br>
+                                                        <input name="GUEST_USERS_ID_CARD" type="text" class="input-login px-3" value="{{ $USER->GUEST_USERS_ID_CARD ?? old('GUEST_USERS_ID_CARD')}}" minlength="13" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
+                                                    </label>
+                                                    @error('GUEST_USERS_ID_CARD')
+                                                        <span class="text-danger font-error">เลขบัตรประจำตัวประชาชนไม่ถูกต้อง</span>
+                                                    @enderror
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="row mx-0">
+                                                                <!-- <input id="GUEST_USERS_BIRTHDAY" name="GUEST_USERS_BIRTHDAY" type="text" class="form-control textbox1 " placeholder="YYYY-MM-DD" value="{{ old('GUEST_USERS_BIRTHDAY') }}" title=""> -->
+                                                            <!-- <input type="number" name="RATING" id="rating-input" min="1" max="5"> -->
+                                                                <?php
+                                                                    $yyyy = substr($USER->GUEST_USERS_BIRTHDAY,0,4);
+                                                                    $mm = substr($USER->GUEST_USERS_BIRTHDAY,5,2);
+                                                                    $dd = substr($USER->GUEST_USERS_BIRTHDAY,8,2);
+                                                                ?>
+                                                                <label class="bgInput field-wrap">
+                                                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">วัน เดือน ปีเกิด</label> <br>
+                                                                    <label style="padding:0;"><SELECT  size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></label>
+                                                                    <label style="padding:0;"><SELECT  size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></label>
+                                                                    <label style="padding:0;"><SELECT  size="1" id ="day" name = "dd"></SELECT></label>
+                                                                </label>
                                                             </div>
-                                                            <div class="col-lg-12 mt-2">
-                                                                <button name="submit" id="submit" value="submit" type="submit" class="btn-submit">ยืนยัน
-                                                                    <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                                                                    <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-                                                                    <input type="hidden" name="DATE_MODIFY" value="{{ date('Y-m-d H:i:s') }}">
-                                                                </button>
-                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 mt-2">
+                                                            <button name="submit" id="submit" value="submit" type="submit" class="btn-submit">ยืนยัน
+                                                                <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                                                <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
+                                                                <input type="hidden" name="DATE_MODIFY" value="{{ date('Y-m-d H:i:s') }}">
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group mt-5" align="center">
-                                                    <div id="thumb" class="thumb-profile "><img src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG)}}"></div>    
-                                                    <input id="file_upload" style="display:none" name="GUEST_USERS_IMG" type="file" multiple="true" accept="image/* "/>
-                                                    <button id="upload" class="btn-upload-pic mt-2">เลือกรูป</button>
-                                                    <div class="des-profile-pic mt-2">ขนาดไฟล์: สูงสุด 1 MB</div>
-                                                </div>
-                                            </div>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="col-lg-1"></div>
-                            </div>
-                        </div>
-                    </form>
-                @endif
-            @endforeach
-        @else
-            <div class="col-lg-9" style="background-color:#f5f5f5;">
-                <div class="row mt-4" >
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-                        <div class="row">
-                            <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                                <span class="font-profile1">ข้อมูลส่วนตัว (ถ้าอัพเดทโปรไฟล์จะได้ พอยท์เพิ่ม 100 พอยท์ )</br><b style="font-size: 18px;color: #666666;">จัดการข้อมูลส่วนตัวคุณของคุณเพื่อให้ใช้งานได้สะดวกขึ้น</b></span>
-                            </div>
-                        </div>
-                        <form action="{{ route('EditProfile') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="row">
-                                        <div class="col-lg-12 line1 mt-2" >
-                                            <input name="name" class="input-update" value="{{ Auth::user()->name }}" placeholder="ชื่อ" require></input>
-                                            @error('name')
-                                                <span class="text-danger font-error">กรุณากรอกชื่อ...</span>
-                                            @enderror
-                                            <input name="surname" class="input-update" value="{{ Auth::user()->surname }}" placeholder="นามสกุล" require></input>
-                                            @error('surname')
-                                                <span class="text-danger font-error">กรุณากรอกนามสกุล...</span>
-                                            @enderror
-                                            <input name="GUEST_USERS_TEL" type="text" class="input-update"  placeholder="เบอร์โทร" data-toggle="tooltip" value="{{ old('GUEST_USERS_TEL') }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" maxlength="10"></input>
-                                            @error('GUEST_USERS_TEL')
-                                                <span class="text-danger font-error">กรุณากรอกเบอร์โทรศัพท์...</span>
-                                            @enderror
-                                            <input name="GUEST_USERS_ID_CARD" type="text" class="input-update"  placeholder="บัตรประจำตัวประชาชน" value="{{ old('GUEST_USERS_ID_CARD') }}" minlength="13" maxlength="13" title="กรุณากรอกข้อมูลให้ครบถ้วน" require></input>
-                                            @error('GUEST_USERS_ID_CARD')
-                                                <span class="text-danger font-error">เลขบัตรประจำตัวประชาชนไม่ถูกต้อง...</span>
-                                            @enderror
-                                            <div class="row ">
-                                                <div class="col-lg-12">
-                                                    <div class="row mx-0">
-                                                    <!-- <input id="GUEST_USERS_BIRTHDAY" name="GUEST_USERS_BIRTHDAY" type="text" class="form-control textbox1 " placeholder="YYYY-MM-DD" value="{{ old('GUEST_USERS_BIRTHDAY') }}" title=""> -->
-                                                        <div class="col-4 mt-2" style="padding:0;"><SELECT  size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></div>
-                                                        <div class="col-4 mt-2" style="padding:0;"><SELECT  size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></div>
-                                                        <div class="col-4 mt-2" style="padding:0;"><SELECT  size="1" id ="day" name = "dd" ></SELECT></div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 mt-2">
-                                                    <button name="submit" id="submit" type="submit" value="submit" class="btn-submit">ยืนยัน
-                                                        <!-- <input name="submit" id="submit" type="hidden"> -->
-                                                        <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                                                        <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-                                                        <input type="hidden" name="DATE_CREATE" value="{{ date('Y-m-d H:i:s') }}">
-                                                    </button>
-                                                </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group mt-5" align="center">
+                                                <div id="thumb" class="thumb-profile "><img src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG)}}"></div>    
+                                                <input id="file_upload" style="display:none" name="GUEST_USERS_IMG" type="file" multiple="true" accept="image/* "/>
+                                                <button id="upload" class="btn-upload-pic mt-2">เลือกรูป</button>
+                                                <div class="des-profile-pic mt-2">ขนาดไฟล์: สูงสุด 1 MB</div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group mt-5" align="center">
-                                        <div id="thumb" class="thumb-profile "><img src="home/imgProfile/pic-profile.png"></div>    
-                                        <input id="file_upload" style="display:none" name="GUEST_USERS_IMG" type="file" multiple="true" accept="image/* "/>
-                                        @error('GUEST_USERS_IMG')
-                                            <span class="text-danger font-error">นามสกุลไฟล์ไม่ถูกต้อง</span>
-                                        @enderror
-                                        <button id="upload" class="btn-upload-pic mt-2">เลือกรูป</button>
-                                        <div class="des-profile-pic mt-2">ขนาดไฟล์: สูงสุด 1 MB</div>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
-                        </form>
+                            <div class="col-lg-1"></div>
+                        </div>
                     </div>
-                    <div class="col-lg-1"></div>
-                </div>
-            </div>
-        @endif
+                </form>
+            @endif
+        @endforeach
     </div>
 </div>
 
