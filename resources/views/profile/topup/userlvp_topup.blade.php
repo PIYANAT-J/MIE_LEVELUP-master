@@ -9,7 +9,6 @@
         <div class="col-lg-3" style="background-color: #17202c;">
             <div class="row">
                 <div class="col-lg-1"></div>
-                @if(Auth::user()->updateData == 'true')
                     @foreach($guest_user as $USER)
                         <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
                             <div class="row mb-2">
@@ -42,38 +41,6 @@
                             </div>
                         </div>
                     @endforeach
-                @else
-                    <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                        <div class="row mb-2">
-                            <div class="col-lg-4 text-right">
-                                <img class="sidebar-pic" src="{{asset('home/imgProfile/No_Img.jpg') }}" />
-                            </div>
-                            <div class="col-lg-8 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
-                            </div>
-                        </div>
-                        <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                            <div class="col-lg-12 text-center">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label class="btn-point pb-2">
-                                            <span class="font-point">พอยท์</span></br>
-                                            <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                            <i class="icon-Icon_Point"></i>
-                                        </label>
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="btn-coin pb-2 ">
-                                            <span class="font-point">เหรียญ</span></br>
-                                            <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                            <i class="icon-Icon_Coin"></i>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endif
                 <div class="col-lg-1"></div>
                 <a href="{{ route('Avatar') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile menuIcon" ></i>ตัวละครของฉัน (Avatar)</button></a>
                 <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile menuIcon" ></i>ข้อมูลส่วนตัว</button></a>
@@ -108,7 +75,7 @@
                             <div class="row bg-topup ml-0 mb-2">
                                 <div class="col-6 lext-center">ยอดเงินในวอลเล็ท
                                 </div>
-                                <div class="col--6 lext-center">฿ {{round($wallet, 2)}}</div>
+                                <div class="col-6 lext-center">฿ {{round($wallet, 2)}}</div>
                             </div>
                             <div style="font-family:myfont1;font-size:1em;color:#000;">จำนวนเงินที่ต้องการเติม (ขั้นต่ำ  ฿100 )</div>
                             <div class="input-group mb-3 input-topup">
@@ -892,6 +859,27 @@
         </div>
     </div>
 </div> -->
+<div class="modal fade" id="popupmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-1"></div>
+                <div class="col-10 text-center" style="font-family:myfont1;;font-size:1.2em;color:#000;">แจ้งเตือน</div>
+                    <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
+                <div class="col-1"></div>
+            </div>
+
+            <div class="modal-body font-rate-modal">
+                <div class="row px-3">
+                    <div class="col-lg-12 pb-1">
+                        <div class="row"><label class="status-approve" style="text-align:center;">{{ Session::get('success') }}</label></div>
+                    </div>
+                </div>
+                <button type="button" class="btn-submit-modal-red d-none">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container-fluid">
     <div class="row">
@@ -1099,5 +1087,13 @@ function() {
         });
     });
 </script>
+
+@if( Session::has('success'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#popupmodal').modal();
+        });
+    </script>
+@endif
 
 @endsection

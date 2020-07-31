@@ -89,11 +89,8 @@ class Callback_scbController extends Controller
                     $qrpayment->save();
                 // }
             }
-
             return response()->json(['success'=>$qrpayment->invoice], 200);
-
         } else {
-
             return response()->json(['success'=>'empty'], 200);
         }
         

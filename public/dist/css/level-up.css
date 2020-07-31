@@ -1213,7 +1213,7 @@ p {
 
 .label2{
   color: #a8a8a8;
-  font-size: 1.2em;
+  font-size: 1em;
   font-family: myfont;
 }
 
@@ -1974,12 +1974,16 @@ body {
 /* .bs-tooltip-auto[x-placement^=bottom] .arrow::before,
 .bs-tooltip-bottom .arrow::before {
   border-bottom-color: #f00;
-  /* Red */
+  /* Red
 } */
 
 .video_detail{
   width: 100%;
   height:385px;
+}
+.video_detail2{
+  width: 800px;
+  height: 385px;
 }
 
 /* For mobile phones: */
@@ -2636,7 +2640,7 @@ body {
   font-size: 1rem;
   border: none;
   background-color: #f2f2f2;
-  width: 70%;
+  width: 96%;
 }
 .input-login:focus{
   outline: none;
@@ -3657,7 +3661,7 @@ input.date{
   border: solid 2px #17202c;
   color: #17202c;
   font-family: myfont;
-  font-size: 1.2em;
+  font-size: 1em;
   background-color: #fff;
 }
 
@@ -3672,7 +3676,7 @@ input.date{
   border: solid 2px #ce0005;
   color: #ce0005;
   font-family: myfont;
-  font-size: 1.2em;
+  font-size: 1em;
   background-color: #fff;
 }
 
@@ -3818,7 +3822,7 @@ div.sticky {
 .bg-bank{
   width: 100%;
   object-fit: contain;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   background-color: #f2f2f2;
 }
 .font-bank1{
@@ -4225,6 +4229,7 @@ ul.thumb-Images li {
   height: 30px;
   border: none!important;
   padding: 0 3px;
+  width: 95%;
 }
 
 .search_btn2{

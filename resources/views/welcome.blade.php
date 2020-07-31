@@ -517,7 +517,7 @@
                             <p class="font_detail ">{{ $gameHotID->GAME_DESCRIPTION }}</p>
                             <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button > -->
                             <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                            <button class="btn_follow7"><b class="font_follow2" style="color: #fff;">รายละเอียด</b></button>  
+                            <a href="{{ route('GameDetail', ['id'=>$gameHotID->GAME_ID]) }}"><button class="btn_follow7"><b class="font_follow2" style="color: #fff;">รายละเอียด</b></button></a>
                         </div>
                     </div>
                 </div>
@@ -655,7 +655,7 @@
                             <p class="font_detail ">{{ $gameNewId->GAME_DESCRIPTION }}</p>
                             <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button > -->
                             <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                            <button class="btn_follow7"><b class="font_follow2" style="color: #fff;">รายละเอียด</b></button>  
+                            <a href="{{ route('GameDetail', ['id'=>$gameNewId->GAME_ID]) }}"><button class="btn_follow7"><b class="font_follow2" style="color: #fff;">รายละเอียด</b></button></a>
                         </div>
                     </div>
                 </div>

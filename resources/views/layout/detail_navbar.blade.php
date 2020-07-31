@@ -53,13 +53,13 @@
                                 </li>
                                 @guest
                                     <img style="padding:0px 0px 0px 20px;" src="{{asset('/icon/sign_in.svg') }}"/>
-                                    <label class="sign_in" style="font-family:myfont; padding: 0px 0px 0px 0px;">
+                                    <label class="sign_in" style="font-family:myfont; font-size:0.7em; padding: 0px 0px 0px 0px;">
                                         <a href="{{ route('login-levelUp') }}">{{ __('เข้าสู่ระบบ') }}</a>
                                     </label>
-                                    <label style="font-family:myfont;"><a class="text2">/ </a></label>
+                                    <label style="font-family:myfont; font-size:0.7em;"><a class="text2">/ </a></label>
 
                                         @if (Route::has('register'))
-                                            <label style="font-family:myfont;">
+                                            <label style="font-family:myfont;font-size:0.7em;">
                                                 <a class="sign_up mr-3" href="{{ route('register') }}">{{ __('ลงทะเบียน') }}</a>
                                             </label>
                                         @endif

@@ -63,7 +63,7 @@
                                     <label class="sign_in" style="font-family:myfont;font-size:0.7em; padding: 0px 0px 0px 0px;">
                                         <a href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
                                     </label>
-                                    <label style="font-family:myfont;"><a class="text2">/ </a></label>
+                                    <label style="font-family:myfont; font-size:0.7em;"><a class="text2">/ </a></label>
 
                                         @if (Route::has('register'))
                                             <label style="font-family:myfont;font-size:0.7em;">
