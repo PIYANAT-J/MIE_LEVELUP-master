@@ -11,64 +11,41 @@
         <div class="col-lg-3" style="background-color: #17202c;">
             <div class="row">
                 <div class="col-lg-1"></div>
-                @if(Auth::user()->updateData == 'true')
                     @foreach($developer as $Dev)
                         <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
                             <div class="row mb-2">
-                                <div class="col-5 text-right pr-2">
+                                <div class="col-lg-4 text-right">
                                     <img class="sidebar-pic" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" />
                                 </div>
-                                <div class="col-7 sidebar_name pt-2">
-                                    <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้พัฒนาระบบ</br>เป็นสมาชิก : {{ Auth::user()->created_at }}</span>
+                                <div class="col-lg-8 sidebar_name pt-2">
+                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้พัฒนาระบบ</br>เป็นสมาชิก : </br>{{ Auth::user()->created_at }}</span>
                                 </div>
                             </div>
                             <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
                                 <div class="col-lg-12 text-center">
-                                    <button class="btn-point pb-2">
-                                        <span class="font-point">พอยท์</span></br>
-                                        <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">52</span>
-                                        <i class="icon-Icon_Point"></i>
-                                    </button>
-
-                                    <button class="btn-coin pb-2">
-                                        <span class="font-point">เหรียญ</span></br>
-                                        <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">70</span>
-                                        <i class="icon-Icon_Coin"></i>
-                                    </button>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label class="btn-point pb-2">
+                                                <span class="font-point">พอยท์</span></br>
+                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">0</span>
+                                                <i class="icon-Icon_Point"></i>
+                                            </label>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="btn-coin pb-2 ">
+                                                <span class="font-point">เหรียญ</span></br>
+                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">0</span>
+                                                <i class="icon-Icon_Coin"></i>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-                @else
-                    <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                        <div class="row mb-2">
-                            <div class="col-5 text-right pr-2">
-                                <img class="sidebar-pic" src="{{asset('home/imgProfile/No_Img.jpg') }}" />
-                            </div>
-                            <div class="col-7 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้พัฒนาระบบ</br>เป็นสมาชิก : {{ Auth::user()->created_at }}</span>
-                            </div>
-                        </div>
-                        <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                            <div class="col-lg-12 text-center">
-                                <button class="btn-point pb-2">
-                                    <span class="font-point">พอยท์</span></br>
-                                    <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">52</span>
-                                    <i class="icon-Icon_Point"></i>
-                                </button>
-
-                                <button class="btn-coin pb-2">
-                                    <span class="font-point">เหรียญ</span></br>
-                                    <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">70</span>
-                                    <i class="icon-Icon_Coin"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                @endif
                 <div class="col-lg-1"></div>
-                <a href="{{ route('DevProfile') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ข้อมูลส่วนตัว</button></a>
-                <a href="{{ route('DevKyc') }}" style="width: 100%;"><button class="btn-sidebar"><span style="font-family: myfont1;font-size: 20px;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
+                <a href="{{ route('DevProfile') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว</button></a>
+                <a href="{{ route('DevKyc') }}" style="width: 100%;"><button class="btn-sidebar"><span style="font-family: myfont1;font-size: 1em;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
                     @if($userKyc->KYC_STATUS == null)
                         <span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span>
                     @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
@@ -79,12 +56,12 @@
                         <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
                     @endif
                 </button></a>
-                <a href="{{ route('DevShelf') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-game-shelf" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ตู้เกม (เกมเชล)</button></a>
-                <a href="{{ route('DevHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ประวัติพอยท์</button></a>
-                <a href="{{ route('DevUpload') }}" style="width: 100%;"><button class="btn-sidebar active"><i class="icon-upload-game" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>อัพโหลดเกม</button></a>
-                <a href="{{ route('DevWithdraw') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-withdraw" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ถอนเงิน</button></a>
-                <a href="/develper_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เปลี่ยนรหัสผ่าน</button></a>
-                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><img class="pic4" src="{{asset('icon/logout.svg') }}" />ออกจากระบบ</button></a> 
+                <a href="{{ route('DevShelf') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
+                <a href="{{ route('DevHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
+                <a href="{{ route('DevUpload') }}" style="width: 100%;"><button class="btn-sidebar active"><i class="icon-upload-game menuIcon"></i>อัพโหลดเกม</button></a>
+                <a href="{{ route('DevWithdraw') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-withdraw menuIcon"></i>ถอนเงิน</button></a>
+                <a href="/develper_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
+                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</button></a> 
             </div>
         </div>
         <!-- sidebar -->
@@ -115,63 +92,83 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <input type="text" class="input-update mb-3" name="GAME_NAME" value="{{ old('GAME_NAME') }}" placeholder="ชื่อเกม" require></input>
-                                        <textarea name="GAME_DESCRIPTION" id="data" class="input-update" style="padding-top:22px;line-height:120%;" placeholder="คำอธิบายไม่เกิน 150 ตัวอักษร" row="3" value="{{ old('GAME_DESCRIPTION') }}" require></textarea><span class="label2" id="now_length"></span>
-                                        <select class=" input-update mb-3" id="mySelect" data-live-search="true" style="border-radius: 0px;" name="RATED_ESRB" value="{{ old('RATED_ESRB') }}">
-                                            <option class="option-select-rate">เรทเกม</option>
-                                            <option class="option-select-rate" name="RATED_ESRB" value="EarlyChildhood">EC : Early Childhood</option>
-                                            <option class="option-select-rate" name="RATED_ESRB" value="Everyone">E : Everyone</option>
-                                            <option class="option-select-rate" name="RATED_ESRB" value="Everyone10">E10+ : Everyone 10+</option>
-                                            <option class="option-select-rate" name="RATED_ESRB" value="Teen">T : Teen</option>
-                                            <option class="option-select-rate" name="RATED_ESRB" value="Mature">M : Mature</option>
-                                            <option class="option-select-rate" name="RATED_ESRB" value="AdultsOnly">AO : Adults Only</option>
-                                            <option class="option-select-rate" name="RATED_ESRB" value="RatingPending">RP : Rating Pending</option>
-                                        </select>
-                                        <select class=" input-update mb-3" id="mySelect" data-live-search="true" style="border-radius: 0px;" name="RATED_B_L" value="{{ old('RATED_B_L') }}">
-                                            <option class="option-select-rate">เรทเนื้อหาเกม</option>
-                                            <option class="option-select-rate" name="RATED_B_L" value="Discrimination">Discrimination : มีการแบ่งแยก แบ่งแยกฝ่ายอย่างชัดเจน</option>
-                                            <option class="option-select-rate" name="RATED_B_L" value="Drugs">Drugs : มีการใช้สารเสพติดในเกม</option>
-                                            <option class="option-select-rate" name="RATED_B_L" value="Fear">Fear : มีการใช้ความกลัวเข้ามาอยู่ในเกม</option>
-                                            <option class="option-select-rate" name="RATED_B_L" value="Gambling">Gambling : มีเรื่องของการพนันอยู่ในเกม</option>
-                                            <option class="option-select-rate" name="RATED_B_L" value="Sex">Sex : มีเรื่องเพศเกี่ยวข้องอยู่ในเกม</option>
-                                            <option class="option-select-rate" name="RATED_B_L" value="Violence">Violence : มีการใช้ความรุนแรงภายในเกม</option>
-                                            <option class="option-select-rate" name="RATED_B_L" value="Online">Online : เป็นเกมที่ต้องเล่นออนไลน์เท่านั้น เป็นเรทที่พิเศษแยกออกมา</option>
-                                            <option class="option-select-rate" name="RATED_B_L" value="Other">Other : อื่นๆ</option>
-                                        </select>
-                                        <select class=" input-update mb-3" id="mySelect" data-live-search="true" style="border-radius: 0px;" name="GAME_TYPE" value="{{ old('GAME_TYPE') }}">
-                                            <option class="option-select-rate">ประเภทเกม</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Action">Action</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Adventure">Adventure</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="BBG">BBG</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Board Game">Board Game</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Casual">Casual</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Console">Console</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Fantasy">Fantasy</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Fighting">Fighting</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Flight">Flight</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="FPS">FPS</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Historical">Historical</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Martail Arts">Martail Arts</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="MMORPG">MMORPG</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="MOBA">MOBA</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Music Game">Music Game</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Puzzle">Puzzle</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Racing">Racing</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="RTS">RTS</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Side Scrolling Game">Side Scrolling Game</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Simulation">Simulation</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Social">Social</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Sport">Sport</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Strategy">Strategy</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Survival">Survival</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Tactical Combat">Tactical Combat</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="TBS">TBS</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="TPS">TPS</option>
-                                            <option class="option-select-rate" name="GAME_TYPE" value="Trading card">Trading card </option>
-                                        </select>
-                                        <input type="text" class="input-update mb-3" name="GAME_VDO_LINK" value="{{ old('GAME_VDO_LINK') }}" placeholder="ลิงค์วีดีโอ" require></input>
-                                        <textarea class="input-update" style="padding-top:22px;line-height:120%;" placeholder="รายละเอียด" row="3" name="GAME_DESCRIPTION_FULL" value="{{ old('GAME_DESCRIPTION_FULL') }}" require></textarea>
-                                        
+                                        <label class="bgInput field-wrap">
+                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อเกม</label> <br>
+                                            <input type="text" class="input-login px-3" name="GAME_NAME" value="{{ old('GAME_NAME') }}" require></input>
+                                        </label>
+                                        <label class="bgInput field-wrap">
+                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">คำอธิบาย</label> <br>
+                                            <textarea name="GAME_DESCRIPTION" id="data" class="input-login px-3" style="line-height:120%;" row="3" value="{{ old('GAME_DESCRIPTION') }}" require></textarea><br><span class="label2 ml-3" id="now_length"></span>
+                                        </label>
+                                        <label class="bgInput field-wrap">
+                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">เรทเกม</label> <br>
+                                            <select class=" input-login" id="mySelect" data-live-search="true" style="border-radius: 0px;" name="RATED_ESRB" value="{{ old('RATED_ESRB') }}">
+                                                <option class="option-select-rate">เลือกเรทเกม</option>
+                                                <option class="option-select-rate" name="RATED_ESRB" value="EarlyChildhood">EC : Early Childhood</option>
+                                                <option class="option-select-rate" name="RATED_ESRB" value="Everyone">E : Everyone</option>
+                                                <option class="option-select-rate" name="RATED_ESRB" value="Everyone10">E10+ : Everyone 10+</option>
+                                                <option class="option-select-rate" name="RATED_ESRB" value="Teen">T : Teen</option>
+                                                <option class="option-select-rate" name="RATED_ESRB" value="Mature">M : Mature</option>
+                                                <option class="option-select-rate" name="RATED_ESRB" value="AdultsOnly">AO : Adults Only</option>
+                                                <option class="option-select-rate" name="RATED_ESRB" value="RatingPending">RP : Rating Pending</option>
+                                            </select>
+                                        </label>
+                                        <label class="bgInput field-wrap">
+                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">เรทเนื้อหาเกม</label> <br>
+                                            <select class="input-login" id="mySelect" data-live-search="true" style="border-radius: 0px;" name="RATED_B_L" value="{{ old('RATED_B_L') }}">
+                                                <option class="option-select-rate">เลือกเนื้อหา</option>
+                                                <option class="option-select-rate" name="RATED_B_L" value="Discrimination">Discrimination : มีการแบ่งแยก แบ่งแยกฝ่ายอย่างชัดเจน</option>
+                                                <option class="option-select-rate" name="RATED_B_L" value="Drugs">Drugs : มีการใช้สารเสพติดในเกม</option>
+                                                <option class="option-select-rate" name="RATED_B_L" value="Fear">Fear : มีการใช้ความกลัวเข้ามาอยู่ในเกม</option>
+                                                <option class="option-select-rate" name="RATED_B_L" value="Gambling">Gambling : มีเรื่องของการพนันอยู่ในเกม</option>
+                                                <option class="option-select-rate" name="RATED_B_L" value="Sex">Sex : มีเรื่องเพศเกี่ยวข้องอยู่ในเกม</option>
+                                                <option class="option-select-rate" name="RATED_B_L" value="Violence">Violence : มีการใช้ความรุนแรงภายในเกม</option>
+                                                <option class="option-select-rate" name="RATED_B_L" value="Online">Online : เป็นเกมที่ต้องเล่นออนไลน์เท่านั้น เป็นเรทที่พิเศษแยกออกมา</option>
+                                                <option class="option-select-rate" name="RATED_B_L" value="Other">Other : อื่นๆ</option>
+                                            </select>
+                                        </label>
+                                        <label class="bgInput field-wrap">
+                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ประเภทเกม</label> <br>
+                                            <select class=" input-login" id="mySelect" data-live-search="true" style="border-radius: 0px;" name="GAME_TYPE" value="{{ old('GAME_TYPE') }}">
+                                                <option class="option-select-rate">เลือกประเภท</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Action">Action</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Adventure">Adventure</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="BBG">BBG</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Board Game">Board Game</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Casual">Casual</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Console">Console</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Fantasy">Fantasy</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Fighting">Fighting</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Flight">Flight</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="FPS">FPS</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Historical">Historical</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Martail Arts">Martail Arts</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="MMORPG">MMORPG</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="MOBA">MOBA</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Music Game">Music Game</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Puzzle">Puzzle</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Racing">Racing</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="RTS">RTS</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Side Scrolling Game">Side Scrolling Game</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Simulation">Simulation</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Social">Social</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Sport">Sport</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Strategy">Strategy</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Survival">Survival</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Tactical Combat">Tactical Combat</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="TBS">TBS</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="TPS">TPS</option>
+                                                <option class="option-select-rate" name="GAME_TYPE" value="Trading card">Trading card </option>
+                                            </select>
+                                        </label>
+                                        <label class="bgInput field-wrap">
+                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ลิงค์วีดีโอ</label> <br>
+                                            <input type="text" class="input-login px-3" name="GAME_VDO_LINK" value="{{ old('GAME_VDO_LINK') }}" require></input>
+                                        </label>
+                                        <label class="bgInput field-wrap">
+                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">รายละเอียด</label> <br>
+                                            <textarea class="input-login px-3" style="line-height:120%;" row="3" name="GAME_DESCRIPTION_FULL" value="{{ old('GAME_DESCRIPTION_FULL') }}" require></textarea>
+                                        </label>
                                         <div class="row ">
                                             <div class="col-lg-12 mt-2">
                                               <button name="submit" id="submit" type="submit" value="submit" class="btn-submit">ยืนยัน
@@ -327,13 +324,13 @@ $(function () {
 
 <script type="text/javascript">
 $(function(){
-    var max_length=150; // กำหนดจำนวนตัวอักษร
+    var max_length=500; // กำหนดจำนวนตัวอักษร
     $("#data").keyup(function(){ // เมื่อ textarea id เท่ากับ data  มี event keyup
             var this_length=max_length-$(this).val().length; // หาจำนวนตัวอักษรที่เหลือ
             if(this_length<0){
-                $(this).val($(this).val().substr(0,150)); // แสดงตามจำนวนตัวอักษรที่กำหนด
+                $(this).val($(this).val().substr(0,500)); // แสดงตามจำนวนตัวอักษรที่กำหนด
             }else{
-                $("#now_length").html(this_length+" /150 ตัวอักษร"); 
+                $("#now_length").html(this_length+" /500 ตัวอักษร"); 
               // แสดงตัวอักษรที่เหลือ           
             }           
     });

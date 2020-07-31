@@ -9,7 +9,6 @@
         <div class="col-lg-3" style="background-color: #17202c;">
             <div class="row">
                 <div class="col-lg-1"></div>
-                @if(Auth::user()->updateData == 'true')
                     @foreach($guest_user as $USER)
                         <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
                             <div class="row mb-2">
@@ -42,38 +41,6 @@
                             </div>
                         </div>
                     @endforeach
-                @else
-                    <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                        <div class="row mb-2">
-                            <div class="col-lg-4 text-right">
-                                <img class="sidebar-pic" src="{{asset('home/imgProfile/No_Img.jpg') }}" />
-                            </div>
-                            <div class="col-lg-8 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
-                            </div>
-                        </div>
-                        <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                            <div class="col-lg-12 text-center">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label class="btn-point pb-2">
-                                            <span class="font-point">พอยท์</span></br>
-                                            <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                            <i class="icon-Icon_Point"></i>
-                                        </label>
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="btn-coin pb-2 ">
-                                            <span class="font-point">เหรียญ</span></br>
-                                            <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                            <i class="icon-Icon_Coin"></i>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endif
                 <div class="col-lg-1"></div>
                 <a href="{{ route('Avatar') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile menuIcon"></i>ตัวละครของฉัน (Avatar)</button></a>
                 <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว</button></a>
@@ -178,13 +145,6 @@
                                                         </div>
                                                         <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
                                                     </div>
-                                                    <!-- <div class="font-kyc2 my-3 line2"><span style="font-family:myfont;">อัพโหลดรูปหลักฐานยืนยันตัวตน</span>( อัพโหลดได้ไม่เกิน 2 mb ) </div>
-                                                    <div>
-                                                        <label id="upload" style="cursor:pointer;" class="font-kyc-upload"><img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />อัพโหลดรูปภาพ</label>
-                                                        <div id="thumb" class="thumb-kyc"><img src="home/Kyc/pic-kyc.png"></div>    
-                                                        <input id="file_upload" style="display:none" name="file_upload[]" type="file" accept="image/* "/>
-                                                    </div>
-                                                    <div class="col-lg-12 mt-2"><button type="submit" class="btn-submit">ยืนยัน</button></div> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -216,13 +176,6 @@
                                                         </div>
                                                         <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
                                                     </div>
-                                                    <!-- <div class="font-kyc2 my-3 line2"><span style="font-family:myfont;">อัพโหลดรูปหลักฐานยืนยันตัวตน</span>( อัพโหลดได้ไม่เกิน 2 mb ) </div>
-                                                    <div>
-                                                        <label id="upload" style="cursor:pointer;" class="font-kyc-upload"><img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />อัพโหลดรูปภาพ</label>
-                                                        <div id="thumb" class="thumb-kyc"><img src="home/Kyc/pic-kyc.png"></div>    
-                                                        <input id="file_upload" style="display:none" name="file_upload[]" type="file" accept="image/* "/>
-                                                    </div> -->
-                                                    <!-- <div class="col-lg-12 mt-2"><button type="submit" class="btn-submit">ยืนยัน</button></div> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -234,7 +187,7 @@
                                                 <div class="col-lg-6 mt-2" >
                                                     <label class="bgInput field-wrap">
                                                         <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขบัตรประจำตัวประชาชน</label> <br>
-                                                        <input name="GUEST_USERS_ID_CARD" class="input-login px-3"  minlength="13" maxlength="13" value="{{ $user->GUEST_USERS_ID_CARD }}" require></input>
+                                                        <input name="GUEST_USERS_ID_CARD" class="input-login px-3"  minlength="13" maxlength="13" value="{{ $user->GUEST_USERS_ID_CARD }}" readonly></input>
                                                     </label>
                                                 </div>
                                                 <div class="col-lg-6"></div>
@@ -273,7 +226,7 @@
                                                 <div class="col-lg-6 mt-2" >
                                                     <label class="bgInput field-wrap">
                                                         <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขบัตรประจำตัวประชาชน</label> <br>
-                                                        <input name="GUEST_USERS_ID_CARD" class="input-login px-3"  minlength="13" maxlength="13" value="{{ $user->GUEST_USERS_ID_CARD }}" require></input>
+                                                        <input name="GUEST_USERS_ID_CARD" class="input-login px-3"  minlength="13" maxlength="13" value="{{ $user->GUEST_USERS_ID_CARD }}" readonly></input>
                                                     </label>
                                                 </div>
                                                 <div class="col-lg-6"></div>
@@ -339,13 +292,6 @@
                                                     </div>
                                                     <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
                                                 </div>
-                                                <!-- <div class="font-kyc2 my-3 line2"><span style="font-family:myfont;">อัพโหลดรูปหลักฐานยืนยันตัวตน</span>( อัพโหลดได้ไม่เกิน 2 mb ) </div>
-                                                <div>
-                                                    <label id="upload" style="cursor:pointer;" class="font-kyc-upload"><img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />อัพโหลดรูปภาพ</label>
-                                                    <div id="thumb" class="thumb-kyc"><img src="home/Kyc/pic-kyc.png"></div>    
-                                                    <input id="file_upload" style="display:none" name="file_upload[]" type="file" accept="image/* "/>
-                                                </div>
-                                                <div class="col-lg-12 mt-2"><button type="submit" class="btn-submit">ยืนยัน</button></div> -->
                                             </div>
                                         </div>
                                     </div>
