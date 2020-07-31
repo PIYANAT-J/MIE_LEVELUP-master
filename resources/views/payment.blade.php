@@ -13,26 +13,31 @@
                     @foreach($guest_user as $USER)
                         <div class="col-lg-10 mb-3 pb-2" style="background-color: #000;">
                             <div class="row mb-2">
-                                <div class="col-5 text-right pr-2">
+                                <div class="col-lg-4 text-right pr-2">
                                     <img class="sidebar-pic2" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
                                 </div>
-                                <div class="col-7 sidebar_name pt-2">
-                                    <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้ใช้ทั่วไป</br>เป็นสมาชิก : {{ Auth::user()->created_at }}</span>
+                                <div class="col-lg-8 sidebar_name pt-2">
+                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
                                 </div>
                             </div>
                             <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
                                 <div class="col-lg-12 text-center">
-                                    <button class="btn-point pb-2" style="background-color: #000;">
-                                        <span class="font-point">พอยท์</span></br>
-                                        <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">52</span>
-                                        <i class="icon-Icon_Point"></i>
-                                    </button>
-
-                                    <button class="btn-coin pb-2" style="background-color: #000;">
-                                        <span class="font-point">เหรียญ</span></br>
-                                        <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">70</span>
-                                        <i class="icon-Icon_Coin"></i>
-                                    </button>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label class="btn-point2 pb-2">
+                                                <span class="font-point">พอยท์</span></br>
+                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
+                                                <i class="icon-Icon_Point"></i>
+                                            </label>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="btn-coin2 pb-2 ">
+                                                <span class="font-point">เหรียญ</span></br>
+                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
+                                                <i class="icon-Icon_Coin"></i>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -48,42 +53,47 @@
                             </div>
                         </div>
                         <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                            <div class="col-lg-12 text-center">
-                                <button class="btn-point pb-2">
-                                    <span class="font-point">พอยท์</span></br>
-                                    <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">52</span>
-                                    <i class="icon-Icon_Point"></i>
-                                </button>
-
-                                <button class="btn-coin pb-2">
-                                    <span class="font-point">เหรียญ</span></br>
-                                    <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">70</span>
-                                    <i class="icon-Icon_Coin"></i>
-                                </button>
+                                <div class="col-lg-12 text-center">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label class="btn-point2 pb-2">
+                                                <span class="font-point">พอยท์</span></br>
+                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
+                                                <i class="icon-Icon_Point"></i>
+                                            </label>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="btn-coin2 pb-2 ">
+                                                <span class="font-point">เหรียญ</span></br>
+                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
+                                                <i class="icon-Icon_Coin"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 @endif
                 <div class="col-lg-1"></div>
-                <a href="{{ route('Avatar') }}" style="width: 100%;"><button class="btn-sidebar2 active"><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ตัวละครของฉัน (Avatar)</button></a>
-                <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ข้อมูลส่วนตัว</button></a>
-                <a href="{{ route('UserKyc') }}" style="width: 100%;"><button class="btn-sidebar2"><span style="font-family: myfont1;font-size: 20px;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
+                <a href="{{ route('Avatar') }}" style="width: 100%;"><button class="btn-sidebar2 active"><i class="icon-profile menuIcon"></i>ตัวละครของฉัน (Avatar)</button></a>
+                <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว</button></a>
+                <a href="{{ route('UserKyc') }}" style="width: 100%;"><button class="btn-sidebar2"><span style="font-family: myfont1;font-size: 1em;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
                     @if($userKyc->KYC_STATUS == null)
                         <span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span>
                     @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
                         <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
                     @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวต้นแล้ว</span>
+                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวตนแล้ว</span>
                     @else
                         <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
                     @endif
                 </button></a>
-                <a href="{{ route('UserShelf') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-game-shelf" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ตู้เกม (เกมเชล)</button></a>
-                <a href="{{ route('UserHistory') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-history" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ประวัติพอยท์</button></a>
-                <a href="{{ route('UserRank') }}" style="width: 100%;"><button class="btn-sidebar2"><img class="pic4" src="{{asset('icon/rank1.svg') }}" />อันดับผู้ใช้</button></a>
-                <a href="{{ route('UserTopup') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-top-up1" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เติมเงิน</button></a>
-                <a href="/user_change_password" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-change-pass" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เปลี่ยนรหัสผ่าน</button></a>
-                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar2"><img class="pic4" src="{{asset('icon/logout.svg') }}" />ออกจากระบบ</button></a> 
+                <a href="{{ route('UserShelf') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
+                <a href="{{ route('UserHistory') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
+                <a href="{{ route('UserRank') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="fa fa-star-o menuIcon"></i>อันดับผู้ใช้</button></a>
+                <a href="{{ route('UserTopup') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</button></a>
+                <a href="/user_change_password" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
+                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar2"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</button></a>
             </div>
         </div>
         <!-- sidebar -->
@@ -94,12 +104,18 @@
                 @if($USER->USER_ID == Auth::user()->id)
                         <div class="col-lg-9" style="background-color:#141621; ">
                             <div class="row mt-4 px-4" >
-                                <div class="col-12 " style="color:#fff;">
+                                <div class="col-6 " style="color:#fff;">
                                     <a href="/avatar"class="avatar-link active"> Avatar</a>
                                     <a class="avatar-link" style="margin: 0 8px;"> > </a>
-                                    <a href="/shopping_cart" class="avatar-link active">ตะกร้าสินค้า</a>
+                                    <a href="/shopping_cart" class="avatar-link active" style="font-size:1em;">ตะกร้าสินค้า</a>
                                     <a class="avatar-link" style="margin: 0 8px;"> > </a>
-                                    <a href="/payment" class="avatar-link">ชำระเงิน</a>
+                                    <a href="/payment" class="avatar-link" style="font-size:1em;">ชำระเงิน</a>
+                                </div>
+
+                                <div class="col-6 text-right">
+                                    <a href="/simulator_trade"><label class="bg-shop">
+                                        <div style="font-family:myfont1;font-size:1em;color:#fff;">Simulator Trade</div> 
+                                    </label></a>
                                 </div>
                             </div>
 
@@ -107,7 +123,7 @@
                                 <div class="col-lg-12"> 
                                     <div class="row mx-0" style="background-color:#202433;border-radius: 6px;">
                                         <div class="col-lg-12 mt-1">
-                                            <div class="row mx-2 pb-2" style="font-family:myfont;font-size:1.5em;color:#fff;border-bottom:1px solid #fff;">ชำระเงิน</div>
+                                            <div class="row mx-2 pb-2" style="font-family:myfont;font-size:1.2em;color:#fff;border-bottom:1px solid #fff;">ชำระเงิน</div>
                                             <div class="row row8">
                                                 <div class="col-lg-12">
                                                     <div class="row mx-2 mt-3" style="border-bottom:1px solid rgb(255, 255, 255,0.3);">  
@@ -123,12 +139,12 @@
                                                         </div>
 
                                                         <div class="col-2 my-4 text-center" style="padding:0;">
-                                                            <label style="font-family:myfont;font-size:1.5em;color:#ffffff">1 ชิ้น</label>
+                                                            <label style="font-family:myfont1;font-size:1.2em;color:#ffffff">1 ชิ้น</label>
                                                         </div>
 
                                                         <div class="col-3 my-3">
-                                                            <span class="font-price3" style="line-height: 0.3; display:block;text-align:right;">
-                                                                <b class="font-price">฿1,000.00</b></br>
+                                                            <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;font-size:1em;">
+                                                                <b class="font-price" style="font-size:1.5em;">฿1,000.00</b></br>
                                                                 <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </b> (-37%)
                                                             </span>
                                                         </div>
@@ -146,12 +162,12 @@
                                                         </div>
 
                                                         <div class="col-2 my-4 text-center" style="padding:0;">
-                                                            <label style="font-family:myfont;font-size:1.5em;color:#ffffff">1 ชิ้น</label>
+                                                            <label style="font-family:myfont1;font-size:1.2em;color:#ffffff">1 ชิ้น</label>
                                                         </div>
 
                                                         <div class="col-3 my-3">
-                                                            <span class="font-price3" style="line-height: 0.3; display:block;text-align:right;">
-                                                                <b class="font-price">฿5,000.00</b></br>
+                                                            <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;font-size:1em;">
+                                                                <b class="font-price" style="font-size:1.5em;">฿5,000.00</b></br>
                                                                 <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </b> (-37%)
                                                             </span>
                                                         </div>
@@ -161,9 +177,9 @@
 
                                             <div class="row mt-3 py-2" style="background-color:#191b29;">
                                                 <div class="col-lg-12">
-                                                    <div class="row mx-0">
-                                                        <label style="font-family:myfont;font-size:1.5em;color:#fff;">ที่อยู่ในการออกใบเสร็จ</label>
-                                                        <label class="ml-2" style="font-family:myfont1;font-size:1.4em;color:#ce0005;cursor:pointer;border-bottom:1px solid #ce0005;height:1.2em;" data-toggle="modal" data-target="#address">เปลี่ยน</label>
+                                                    <div class="row mx-2">
+                                                        <label style="font-family:myfont;font-size:1.2em;color:#fff;">ที่อยู่ในการออกใบเสร็จ</label>
+                                                        <label class="ml-2" style="font-family:myfont1;font-size:1.1em;color:#ce0005;cursor:pointer;border-bottom:1px solid #ce0005;height:1.2em;" data-toggle="modal" data-target="#address">เปลี่ยน</label>
                                                     </div>
                                                     <div class="row mx-3">
                                                         <div class="col-lg-6" >
@@ -190,15 +206,15 @@
 
                                             <div class="row mt-2">
                                                 <div class="col-lg-12">
-                                                    <div class="row mx-0">
-                                                        <label style="font-family:myfont;font-size:1.5em;color:#fff;">วิธีชำระเงิน</label>
+                                                    <div class="row mx-2">
+                                                        <label style="font-family:myfont;font-size:1.2em;color:#fff;">วิธีชำระเงิน</label>
                                                     </div>
                                                     <div class="row mx-0 " >
                                                         <div>
                                                             <label  class="bgPayment labellogo mx-1" onClick="myFunction()">
                                                                 <img class="center logoT10" src="{{asset('home/logo/t10.svg') }}" >
                                                                 <label class="font-payment-avatar fontLogoPosition" style="color:#0b0e17;">T10 วอลเล็ท</label>
-                                                                <label class="font-payment-avatar fontdetailPosition" style="color:#a0a0a0;font-size:1.1em;">ฟรีค่าธรรมเนียม</label>
+                                                                <label class="font-payment-avatar fontdetailPosition" style="color:#a0a0a0;font-size:0.9em;">ฟรีค่าธรรมเนียม</label>
                                                                 <div id="first">
                                                                     <label class="bordergreen">
                                                                     <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
@@ -220,7 +236,7 @@
                                                             <label  class="bgPayment labellogo mx-1" onClick="myFunction3()">
                                                                 <img class="center logoT10" src="{{asset('home/logo/mobile-icon.svg') }}" >
                                                                 <label class="font-payment-avatar fontLogoPosition" style="color:#0b0e17;">โมบายแบงค์กิ้ง</label>
-                                                                <label class="font-payment-avatar fontdetailPosition3" style="color:#a0a0a0;font-size:1.1em;">รอยืนยัน 45 นาที หลังชำระเงิน</label>
+                                                                <label class="font-payment-avatar fontdetailPosition3" style="color:#a0a0a0;font-size:0.9em;">รอยืนยัน 45 นาที หลังชำระเงิน</label>
                                                                 <div id="third">
                                                                     <label class="bordergreen">
                                                                     <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
@@ -231,7 +247,7 @@
                                                             <label  class="bgPayment labellogo mx-1" onClick="myFunction4()">
                                                                 <img class="center logoT10" src="{{asset('home/logo/bank-icon.svg') }}" >
                                                                 <label class="font-payment-avatar fontLogoPosition" style="color:#0b0e17;">โอนเงินธนาคาร</label>
-                                                                <label class="font-payment-avatar fontdetailPosition3" style="color:#a0a0a0;font-size:1.1em;">รอยืนยัน 45 นาที หลังชำระเงิน</label>
+                                                                <label class="font-payment-avatar fontdetailPosition3" style="color:#a0a0a0;font-size:0.9em;">รอยืนยัน 45 นาที หลังชำระเงิน</label>
                                                                 <div id="four">
                                                                     <label class="bordergreen">
                                                                     <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
@@ -250,7 +266,7 @@
                                                     <div class="col-lg-6">
                                                         <div class="row" style="border-right:1px solid #455160;">
                                                             <div class="col-lg-12">
-                                                                <label style="font-family:myfont;font-size:1.5em;color:#fff;">เหรียญ T10</label>
+                                                                <label style="font-family:myfont;font-size:1.2em;color:#fff;">เหรียญ T10</label>
                                                             </div>
                                                             <div class="col-lg-12">
                                                                 <input class="input-payment" type="text" placeholder="จำนวนเหรียญที่ต้องการใช้">
@@ -261,7 +277,7 @@
                                                     <div class="col-lg-6">
                                                         <div class="row">
                                                             <div class="col-lg-12">
-                                                                <label style="font-family:myfont;font-size:1.5em;color:#fff;">คูปอง / ส่วนลดของฉัน</label>
+                                                                <label style="font-family:myfont;font-size:1.2em;color:#fff;">คูปอง / ส่วนลดของฉัน</label>
                                                             </div>
                                                             <div class="col-lg-12">
                                                                 <div class="input-group mb-3">
@@ -281,21 +297,21 @@
                                                     <div class="col-lg-5">
                                                         <div class="row" style="border-right:1px solid #455160;">
                                                             <div class="col-lg-12">
-                                                                <label style="font-family:myfont;font-size:1.5em;color:#fff;">บัญชี</label>
+                                                                <label style="font-family:myfont;font-size:1.2em;color:#fff;">บัญชี</label>
                                                             </div>
                                                             <div class="col-lg-12">
                                                                 <label class="VisaCredit">
                                                                     <img class="pVisaCredit" style="height:25px;" src="{{asset('home/logo/visa1.svg')}}" >
-                                                                    <label class="pBankAvatar" style="font-family:myfont;font-size:1.1em;color:#414141;">ธนาคารไทยพาณิชย์</label>
-                                                                    <label class="pNBankAvatar" style="font-family:myfont1;font-size:1.1em;color:#414141;">*1234</label>
-                                                                    <label class="pDotBankAvatar" style="font-family:myfont1;font-size:1.1em;color:#414141;line-height:0;cursor:pointer;" data-toggle="modal" data-target="#VisaCredit">•••</label>
+                                                                    <label class="pBankAvatar" style="font-family:myfont1;font-size:1em;color:#414141;">ธนาคารไทยพาณิชย์</label>
+                                                                    <label class="pNBankAvatar" style="font-family:myfont1;font-size:1em;color:#414141;">*1234</label>
+                                                                    <label class="pDotBankAvatar" style="font-family:myfont1;font-size:1em;color:#414141;line-height:0;cursor:pointer;" data-toggle="modal" data-target="#VisaCredit">•••</label>
                                                                 </label>
                                                             </div>
                                                             <div class="col-lg-12">
                                                                 <label class="VisaCredit">
                                                                     <img class="pVisaCredit" style="height:25px;" src="{{asset('home/logo/credit.svg')}}" >
-                                                                    <label class="pBankAvatar" style="font-family:myfont;font-size:1.1em;color:#414141;">ธนาคารไทยพาณิชย์</label>
-                                                                    <label class="pNBankAvatar" style="font-family:myfont1;font-size:1.1em;color:#414141;">*1234</label>
+                                                                    <label class="pBankAvatar" style="font-family:myfont1;font-size:1em;color:#414141;">ธนาคารไทยพาณิชย์</label>
+                                                                    <label class="pNBankAvatar" style="font-family:myfont1;font-size:1em;color:#414141;">*1234</label>
                                                                     <label class="pDotBankAvatar" style="font-family:myfont1;font-size:1.1em;color:#414141;line-height:0;cursor:pointer;" data-toggle="modal" data-target="#VisaCredit">•••</label>
                                                                 </label>
                                                             </div>
@@ -305,7 +321,7 @@
                                                     <div class="col-lg-7">
                                                         <div class="row">
                                                             <div class="col-lg-12">
-                                                                <label style="font-family:myfont;font-size:1.5em;color:#fff;">คูปอง / ส่วนลดของฉัน</label>
+                                                                <label style="font-family:myfont;font-size:1.2em;color:#fff;">คูปอง / ส่วนลดของฉัน</label>
                                                             </div>
                                                             <div class="col-lg-12">
                                                                 <div class="input-group mb-3">
@@ -336,14 +352,14 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-6 text-right font-payment2 pt-2">รวมราคาทั้งสิ้น</div>
-                                                                <div class="col-6 text-right font-price" style="font-size:2.5em;">฿ 6,000</div>
+                                                                <div class="col-6 text-right font-price" style="font-size:2em;">฿ 6,000</div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row mx-4 mt-3">
                                                         <div class="col-lg-10"></div>
                                                         <div class="col-lg-2 text-right">
-                                                            <a href="payment_confirmation"><label class="btn-submit-modal-red" style="text-align:center;line-height:2;cursor:pointer;">ชำระเงิน</label></a>
+                                                            <a href="payment_confirmation"><label class="btn-submit-red2" >ชำระเงิน</label></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -421,10 +437,10 @@
             <div class="modal-header">
                 <div class="row">
                     <div class="col-lg-12">
-                        <label style="font-size:1.4em;color:#000;">ที่อยู่</label>
+                        <label style="font-size:1.2em;color:#000;">ที่อยู่</label>
                     </div>
                 </div>
-                <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
+                <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 14px;"></i></button>
             </div>
 
             <div class="modal-body font-rate-modal">
@@ -487,10 +503,10 @@
             <div class="modal-header">
                 <div class="row">
                     <div class="col-lg-12">
-                        <label style="font-size:1.4em;color:#000;">เพิ่มที่อยู่</label>
+                        <label style="font-size:1.2em;color:#000;">เพิ่มที่อยู่</label>
                     </div>
                 </div>
-                <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
+                <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 14px;"></i></button>
             </div>
 
             <div class="modal-body font-rate-modal" style="padding-bottom:0;">
@@ -508,7 +524,7 @@
                             <div class="">
                                 <label class="bgInput field-wrap">
                                     <label class="fontHeadInput px-3" style="padding:0;">จังหวัด</label>
-                                    <select class="selectProvince px-3" required="true" type="text" name="text4">
+                                    <select class="selectProvince" required="true" type="text" name="text4">
                                         <option value="">ดึงจาก DB</option>
                                         <option value="">ดึงจาก DB</option>
                                         <option value="">ดึงจาก DB</option>
@@ -520,19 +536,20 @@
                         <div class="col-lg-6">
                             <label class="bgInput field-wrap">
                                 <label class="fontHeadInput px-3">รหัสไปรษณีย์</label><br>
-                                    <select class="selectProvince px-3" required="true" type="text" name="text4">
+                                    <input class="text-box px-3" style="padding-top:12px;" required="true" type="text" name="zipcode">
+                                    <!-- <select class="selectProvince" required="true" type="text" name="text4">
                                         <option value="">ดึงจาก DB</option>
                                         <option value="">ดึงจาก DB</option>
                                         <option value="">ดึงจาก DB</option>
                                         <option value="">ดึงจาก DB</option>
-                                    </select>
+                                    </select> -->
                             </label>
                         </div>
                         <div class="col-lg-6">
                             <div class="">
                                 <label class="bgInput field-wrap">
                                     <label class="fontHeadInput px-3" style="padding:0;">ตำบล</label>
-                                    <select class="selectProvince px-3" required="true" type="text" name="text4">
+                                    <select class="selectProvince" required="true" type="text" name="text4">
                                         <option value="">ดึงจาก DB</option>
                                         <option value="">ดึงจาก DB</option>
                                         <option value="">ดึงจาก DB</option>
@@ -544,7 +561,7 @@
                         <div class="col-lg-6">
                             <label class="bgInput field-wrap">
                                 <label class="fontHeadInput px-3">อำเภอ</label><br>
-                                    <select class="selectProvince px-3" required="true" type="text" name="text4">
+                                    <select class="selectProvince" required="true" type="text" name="text4">
                                         <option value="">ดึงจาก DB</option>
                                         <option value="">ดึงจาก DB</option>
                                         <option value="">ดึงจาก DB</option>
@@ -675,13 +692,13 @@
             <div class="modal-header">
                 <div class="row">
                     <div class="col-lg-12">
-                        <label style="font-size:1.4em;color:#000;">เพิ่มบัตรเครดิต / บัตรเดบิต</label>
+                        <label style="font-size:1.2em;color:#000;">เพิ่มบัตรเครดิต / บัตรเดบิต</label>
                     </div>
                 </div>
-                <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
+                <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 14px;"></i></button>
             </div>
 
-            <div class="modal-body font-rate-modal" style="padding-bottom:0;">
+            <!-- <div class="modal-body font-rate-modal" style="padding-bottom:0;">
                 <div class="col-lg-12" >
                     <div class="row">
                         <div class="col-lg-12">
@@ -730,6 +747,38 @@
                         <div class="checkbox ml-3 mt-2">
                             <input type="checkbox" id="checkbox_02" name="accept_02">
                             <label for="checkbox_02" style="color:#000;font-weight:bold;padding-top:2px;padding-left:10px;" >บัตรหลัก</label>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="modal-body font-rate-modal">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label> <img style="height: 40px;" src="{{asset('home/logo/visa3.png')}}"></label>
+                    </div>
+                    <div class="col-lg-12 mb-2">
+                        <input type="text" class="form-control input-bank" placeholder="หมายเลขบัตร" require></input>
+                    </div>
+                    <div class="col-lg-12 mb-2">
+                        <input type="text" class="form-control input-bank" placeholder="ชื่อผู้ถือบัตร" require></input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 mb-2">
+                        <input type="text" class="form-control input-bank" placeholder="CCV" require></input>
+                    </div>
+                    <div class="col-lg-6 mb-2">
+                        <input type="text" class="form-control input-bank" placeholder="วันหมดอายุ" require></input>
+                    </div>
+                    <div class="col-lg-8 mb-2 ">
+                        <div class="pl-2" style="font-family:myfont1;font-size:0.8em;color:#000;line-height: 150%;"><span style="font-weight:bold;">บันทึกบัตรไว้ใช้ในภายหลัง</span></br>ข้อมูลบัตรของท่านจะถูกเก็บรักษาไว้อย่างปลอดภัย</div>
+                    </div>
+                    <div class="col-lg-4 mb-2 text-right">
+                        <div class="wrapper">
+                            <div class="switch_box box_2">
+                                <input type="checkbox" class="switch_2">
+                            </div>
                         </div>
                     </div>
                 </div>
