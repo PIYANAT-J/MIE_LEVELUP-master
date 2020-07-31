@@ -38,6 +38,7 @@
                 <div class="owl-carousel" id="owl-demo1">
                     <div class="item" >
                         <iframe style="width:100%;height:385px;" src="{{ $detailGame->GAME_VDO_LINK }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <!-- <iframe class="video_detail2" src="{{ $detailGame->GAME_VDO_LINK }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
                     </div>
                     <div class="item">
                         <img class="img-detail"   src="{{asset('section/picture_game/pubg.jpeg') }}" />

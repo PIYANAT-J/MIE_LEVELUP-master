@@ -134,3 +134,12 @@
   content: "\e91a";
   color: #ce0005;
 }
+
+.icon-up-green:before {
+  content: "\e91b";
+  color: #0ce63e;
+}
+.icon-down-red:before {
+  content: "\e91c";
+  color: #d50000;
+}
