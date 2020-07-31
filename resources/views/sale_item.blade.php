@@ -13,26 +13,31 @@
                     @foreach($guest_user as $USER)
                         <div class="col-lg-10 mb-3 pb-2" style="background-color: #000;">
                             <div class="row mb-2">
-                                <div class="col-5 text-right pr-2">
+                                <div class="col-lg-4 text-right pr-2">
                                     <img class="sidebar-pic2" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
                                 </div>
-                                <div class="col-7 sidebar_name pt-2">
-                                    <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้ใช้ทั่วไป</br>เป็นสมาชิก : {{ Auth::user()->created_at }}</span>
+                                <div class="col-lg-8 sidebar_name pt-2">
+                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
                                 </div>
                             </div>
                             <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
                                 <div class="col-lg-12 text-center">
-                                    <button class="btn-point pb-2" style="background-color: #000;">
-                                        <span class="font-point">พอยท์</span></br>
-                                        <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">52</span>
-                                        <i class="icon-Icon_Point"></i>
-                                    </button>
-
-                                    <button class="btn-coin pb-2" style="background-color: #000;">
-                                        <span class="font-point">เหรียญ</span></br>
-                                        <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">70</span>
-                                        <i class="icon-Icon_Coin"></i>
-                                    </button>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label class="btn-point2 pb-2">
+                                                <span class="font-point">พอยท์</span></br>
+                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
+                                                <i class="icon-Icon_Point"></i>
+                                            </label>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="btn-coin2 pb-2 ">
+                                                <span class="font-point">เหรียญ</span></br>
+                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
+                                                <i class="icon-Icon_Coin"></i>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -48,42 +53,47 @@
                             </div>
                         </div>
                         <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                            <div class="col-lg-12 text-center">
-                                <button class="btn-point pb-2">
-                                    <span class="font-point">พอยท์</span></br>
-                                    <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">52</span>
-                                    <i class="icon-Icon_Point"></i>
-                                </button>
-
-                                <button class="btn-coin pb-2">
-                                    <span class="font-point">เหรียญ</span></br>
-                                    <span style="font-family:myfont;font-size: 3em;line-height: 0.2;color: #ffffff;">70</span>
-                                    <i class="icon-Icon_Coin"></i>
-                                </button>
+                                <div class="col-lg-12 text-center">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label class="btn-point2 pb-2">
+                                                <span class="font-point">พอยท์</span></br>
+                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
+                                                <i class="icon-Icon_Point"></i>
+                                            </label>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="btn-coin2 pb-2 ">
+                                                <span class="font-point">เหรียญ</span></br>
+                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
+                                                <i class="icon-Icon_Coin"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 @endif
                 <div class="col-lg-1"></div>
-                <a href="{{ route('Avatar') }}" style="width: 100%;"><button class="btn-sidebar2 active"><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ตัวละครของฉัน (Avatar)</button></a>
-                <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ข้อมูลส่วนตัว</button></a>
-                <a href="{{ route('UserKyc') }}" style="width: 100%;"><button class="btn-sidebar2"><span style="font-family: myfont1;font-size: 20px;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
+                <a href="{{ route('Avatar') }}" style="width: 100%;"><button class="btn-sidebar2 active"><i class="icon-profile menuIcon"></i>ตัวละครของฉัน (Avatar)</button></a>
+                <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว</button></a>
+                <a href="{{ route('UserKyc') }}" style="width: 100%;"><button class="btn-sidebar2"><span style="font-family: myfont1;font-size: 1em;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
                     @if($userKyc->KYC_STATUS == null)
                         <span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span>
                     @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
                         <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
                     @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวต้นแล้ว</span>
+                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวตนแล้ว</span>
                     @else
                         <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
                     @endif
                 </button></a>
-                <a href="{{ route('UserShelf') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-game-shelf" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ตู้เกม (เกมเชล)</button></a>
-                <a href="{{ route('UserHistory') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-history" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>ประวัติพอยท์</button></a>
-                <a href="{{ route('UserRank') }}" style="width: 100%;"><button class="btn-sidebar2"><img class="pic4" src="{{asset('icon/rank1.svg') }}" />อันดับผู้ใช้</button></a>
-                <a href="{{ route('UserTopup') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-top-up1" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เติมเงิน</button></a>
-                <a href="/user_change_password" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-change-pass" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>เปลี่ยนรหัสผ่าน</button></a>
-                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar2"><img class="pic4" src="{{asset('icon/logout.svg') }}" />ออกจากระบบ</button></a> 
+                <a href="{{ route('UserShelf') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
+                <a href="{{ route('UserHistory') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
+                <a href="{{ route('UserRank') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="fa fa-star-o menuIcon"></i>อันดับผู้ใช้</button></a>
+                <a href="{{ route('UserTopup') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</button></a>
+                <a href="/user_change_password" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
+                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar2"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</button></a>
             </div>
         </div>
         <!-- sidebar -->
@@ -93,16 +103,19 @@
                 @if($USER->USER_ID == Auth::user()->id)
                         <div class="col-lg-9" style="background-color:#141621; ">
                             <div class="row mt-4 px-4" >
-                                <div class="col-8 " style="color:#fff;">
+                                <div class="col-6 " style="color:#fff;">
                                     <a href="/avatar"class="avatar-link active"> Avatar</a>
                                     <a class="avatar-link" style="margin: 0 8px;"> > </a>
-                                    <a href="/shop" class="avatar-link active">ตลาดซื้อขาย</a>
+                                    <a href="/shop" class="avatar-link active" style="font-size:1em;">ตลาดซื้อขาย</a>
                                     <a class="avatar-link" style="margin: 0 8px;"> > </a>
-                                    <a href="/sale" class="avatar-link">ขายไอเทม</a>
+                                    <a href="/sale" class="avatar-link" style="font-size:1em;">ขายไอเทม</a>
                                 </div>
-                                <div class="col-4 text-right">
+                                <div class="col-6 text-right">
+                                    <a href="/simulator_trade"><label class="bg-shop">
+                                        <div style="font-family:myfont1;font-size:1em;color:#fff;">Simulator Trade</div> 
+                                    </label></a>
                                     <a href="/add_sale_item"><label class="labelshop bg-shop">
-                                        <div style="font-family:myfont;font-size:20px;color:#fff;">+ เพิ่มไอเทมขาย</div> 
+                                        <div style="font-family:myfont1;font-size:1em;color:#fff;">+ เพิ่มไอเทมขาย</div> 
                                     </label></a>
                                 </div>
                             </div>
@@ -112,7 +125,7 @@
                                     <div class="row mx-0 pb-3 row7" style="background-color:#202433;border-radius: 6px;">
                                         <div class="col-lg-12">
                                             <!-- ทรงผม -->
-                                            <div class="row">
+                                            <div class="row mt-2">
                                                 <div class="col-lg-12">
                                                     <div class="font-sale1">ทรงผม</div>
                                                 </div>
@@ -394,13 +407,13 @@
                                         <div class="col-lg-12 px-3 mt-3" style="background-color:#191b29;">
                                             <div class="row ">
                                                 <div class="col-6 main">
-                                                    <span class=" font-sale5 inner">
+                                                    <span class=" font-sale5 inner mt-1">
                                                         <label>เหลือ (จำนวน)</label></br>
-                                                        <label style="font-size:2em;">1 /</label>&nbsp;<label style="font-size:2em;color:#ce0005;">5</label>
+                                                        <label style="font-family:myfont;font-size:1.5em;">1 /</label>&nbsp;<label style="font-family:myfont;font-size:1.5em;color:#ce0005;">5</label>
                                                      </span>   
                                                 </div>
                                                 <div class="col-6 text-right">
-                                                    <label style="font-family:myfont;font-size:3em;color:#fff;" >฿9,000.00</label>
+                                                    <label style="font-family:myfont;font-size:1.8em;color:#fff;" >฿9,000.00</label>
                                                 </div>
                                             </div>
                                         </div>

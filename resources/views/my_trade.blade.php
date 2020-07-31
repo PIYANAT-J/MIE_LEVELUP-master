@@ -12,12 +12,12 @@
                 @if(Auth::user()->updateData == 'true')
                     @foreach($guest_user as $USER)
                         <div class="col-lg-10 mb-3 pb-2">
-                            <div class="row mb-4 pb-2 pt-4" style="background-color: #fff;border-radius: 6px;box-shadow: 0 5px 0 0 #c3c3c3;">
-                                <div class="col-5 text-right pr-2">
+                            <div class="row mb-3 pb-2 pt-4" style="background-color: #fff;border-radius: 6px;box-shadow: 0 5px 0 0 #c3c3c3;">
+                                <div class="col-lg-4 text-right pr-2">
                                     <img class="sidebar-pic2" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
                                 </div>
-                                <div class="col-7 sidebar_name2 pt-2">
-                                    <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>เป็นสมาชิก : {{ Auth::user()->created_at }}</span>
+                                <div class="col-lg-8 sidebar_name2 pt-3">
+                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="item my-4">
@@ -30,38 +30,38 @@
 
                             <div class="row mb-2 py-2" style="background-color: #fff;border-radius: 6px;box-shadow: 0 5px 0 0 #c3c3c3;">
                                 <div class="col-lg-12 px-5 my-3">
-                                    <label class="font-sim1"><b style="font-size:1.3em;">$20,000.00</b><br>STARTING PRICE </label>
+                                    <label class="font-sim1"><b>$20,000.00</b><br>STARTING PRICE </label>
                                 </div>
                                 <div class="col-lg-12 px-5">
-                                    <label class="font-sim1"><b style="font-size:1.3em;">$35000.45</b><b style="font-size:1.3em;color:#0ce63e;"> (+5%)</b><br>PERIOD CHANGE</label>
+                                    <label class="font-sim1"><b>$35000.45</b><b style="color:#0ce63e;"> (+5%)</b><br>PERIOD CHANGE</label>
                                 </div>
                             </div>
 
                             <div class="row mt-3">
                                 <div class="col-lg-12" style="padding:0px">
                                     <a href="/simulator_trade">
-                                        <label class="bg-simulate pl-3"> 
+                                        <label class="bg-simulate py-2"> 
                                             <div class="row">
-                                                <div class="col-lg-9"><label style="cursor:pointer;">Simulator Trade</label></div>
+                                                <div class="col-lg-9"><label class="pfontSim">Simulator Trade</label></div>
                                                 <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
                                             </div>
                                         </label>
                                     </a>
 
                                     <a href="/my_trade">
-                                        <label class="bg-simulate active pl-3 my-2"> 
+                                        <label class="bg-simulate active py-2 mt-2"> 
                                             <div class="row">
-                                                <div class="col-lg-9"><label style="cursor:pointer;">การซื้อขายของฉัน</label></div>
-                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px; aria-hidden="true"></i></div>
+                                                <div class="col-lg-9"><label class="pfontSim">การซื้อขายของฉัน</label></div>
+                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
                                             </div>
                                         </label>
                                     </a>
 
                                     <a href="/ranking_trade">
-                                        <label class="bg-simulate pl-3 my-2"> 
+                                        <label class="bg-simulate py-2 mt-2"> 
                                             <div class="row">
-                                                <div class="col-lg-9"><label style="cursor:pointer;">Ranking</label></div>
-                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px; aria-hidden="true"></i></div>
+                                                <div class="col-lg-9"><label class="pfontSim">Ranking</label></div>
+                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
                                             </div>
                                         </label>
                                     </a>
@@ -72,11 +72,11 @@
                 @else
                     <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
                         <div class="row mb-2">
-                            <div class="col-5 text-right pr-2">
+                            <div class="col-lg-4 text-right">
                                 <img class="sidebar-pic" src="{{asset('home/imgProfile/No_Img.jpg') }}" />
                             </div>
-                            <div class="col-7 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>เป็นสมาชิก : {{ Auth::user()->created_at }}</span>
+                            <div class="col-lg-8 sidebar_name pt-2">
+                                <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
                             </div>
                         </div>
                     </div>
@@ -90,28 +90,187 @@
             @foreach($guest_user as $USER)
                 @if($USER->USER_ID == Auth::user()->id)
                         <div class="col-lg-9" style="background-color:#141621; ">
-                            <div class="row px-4" >
-                                <div class="col-12 " style="font-family:myfont1;color:#fff;font-size:1.5em;line-height:1;"><b style="font-size:1.5em;">Simulator Trade</b><br>การซื้อขายหลักทรัพย์ ของฉัน
-                                    <span class="pl-3">
-                                        <label class="inputWithIcon4">
-                                            <input style="font-family:myfont1;" class="search_btn5" type="text" placeholder="ค้นหา Symbol" aria-label="Search">
-                                            <i class="icon-search" aria-hidden="true" style="font-size:18px"></i>
-                                        </label>
-                                    </span >
+                            <div class="row px-4 mt-4" >
+                                <div class="col-12">
+                                    <label style="color:#fff;line-height:1">
+                                        <label style="font-family:myfont;font-size:1.3em;">Simulator Trade</label><br>
+                                        <label style="font-family:myfont1;font-size:1em;">การซื้อขายหลักทรัพย์ ของฉัน</label>
+                                    </label>
                                 </div>
                             </div>
                             <div class="row pl-4" >
                                 <div class="col-lg-8">
-                                    <div class="row mt-2 mb-3">
+                                    <div class="row mb-3">
                                         <div class="col-lg-12">
-                                            <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade5.png') }}" /></div>
+                                            <!-- <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade3.png') }}" /></div> -->
+                                            <div class="chart">
+                                                <div class="row mx-2 my-2">
+                                                    <div class="col-lg-4 bgdetail">
+                                                        <label class="detail-rank py-2 my-2">Symbol</label>
+                                                    </div>
+                                                    <div class="col-lg-2 bgdetail">
+                                                        <label class="detail-rank py-2 my-2">Avail Vol</label>
+                                                    </div>
+                                                    <div class="col-lg-2 bgdetail">
+                                                        <label class="detail-rank py-2 my-2">Avg</label>
+                                                    </div>
+                                                    <div class="col-lg-2 bgdetail">
+                                                        <label class="detail-rank py-2 my-2">Market</label>
+                                                    </div>
+                                                    <div class="col-lg-2 bgdetail">
+                                                        <label class="detail-rank py-2 my-2">%U.PL</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mx-2 ">
+                                                    <div class="col-lg-4">
+                                                        <a href="#"><label class="detailTable my-2" style="cursor:pointer;">RS</label></a>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">10,300</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">30.55</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">12.7</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <!-- <label class="detailTableGreen my-2">+58.48</label> -->
+                                                        <label class="detailTableRed my-2">-58.48</label>
+                                                        <!-- <label class="detail-rank my-2">12.7</label> -->
+                                                    </div>
+                                                </div>
+                                                <div class="row mx-2 ">
+                                                    <div class="col-lg-4">
+                                                        <a href="#"><label class="detailTable my-2" style="cursor:pointer;">ADVANCE</label></a>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">5,400</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">27.68</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">34.67</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detailTableGreen my-2">+5.67</label>
+                                                        <!-- <label class="detailTableRed my-2">-58.48</label> -->
+                                                        <!-- <label class="detail-rank my-2">12.7</label> -->
+                                                    </div>
+                                                </div>
+                                                <div class="row mx-2 ">
+                                                    <div class="col-lg-4">
+                                                        <a href="#"><label class="detailTable my-2" style="cursor:pointer;">DTEC</label></a>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">2,500</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">134.89</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">134.89</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <!-- <label class="detailTableGreen my-2">+5.67</label> -->
+                                                        <!-- <label class="detailTableRed my-2">-58.48</label> -->
+                                                        <label class="detail-rank my-2">0</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row mx-2 ">
+                                                    <div class="col-lg-4">
+                                                    <a href="#"><label class="detailTable my-2" style="cursor:pointer;">BBL</label></a>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">100,000</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">33.77</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">23.56</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detailTableGreen my-2">+10.56</label>
+                                                        <!-- <label class="detailTableRed my-2">-58.48</label> -->
+                                                        <!-- <label class="detail-rank my-2">0</label> -->
+                                                    </div>
+                                                </div>
+                                                <div class="row mx-2 ">
+                                                    <div class="col-lg-4">
+                                                        <a href="#"><label class="detailTable my-2" style="cursor:pointer;">SCB</label></a>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">1,000</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">34.78</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">56.89</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detailTableGreen my-2">+23.56</label>
+                                                        <!-- <label class="detailTableRed my-2">-58.48</label> -->
+                                                        <!-- <label class="detail-rank my-2">0</label> -->
+                                                    </div>
+                                                </div>
+                                                <div class="row mx-2 ">
+                                                    <div class="col-lg-4">
+                                                        <a href="#"><label class="detailTable my-2" style="cursor:pointer;">SCG</label></a>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">2,900</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">123.55</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">150.56</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detailTableGreen my-2">+24.67</label>
+                                                        <!-- <label class="detailTableRed my-2">-58.48</label> -->
+                                                        <!-- <label class="detail-rank my-2">0</label> -->
+                                                    </div>
+                                                </div>
+                                                <div class="row mx-2 ">
+                                                    <div class="col-lg-4">
+                                                        <a href="#"><label class="detailTable my-2" style="cursor:pointer;">PPT</label></a>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">3,000</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">234.67</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="detail-rank my-2">234.67</label>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <!-- <label class="detailTableGreen my-2">+24.67</label> -->
+                                                        <!-- <label class="detailTableRed my-2">-58.48</label> -->
+                                                        <label class="detail-rank my-2">0</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row mx-2 mt-3 py-2" style="border-top:1px solid #dddddd">
+                                                    <div class="col-lg-6">
+                                                        <label class="detailTable my-2">Total</label>
+                                                    </div>
+                                                    <div class="col-lg-6 text-right">
+                                                        <label class="detailTableGreen my-2 pr-2">+198.78 %</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <label class="mr-1" style="font-family:myfont;color:#fff;font-size:2em;">Ranking</label>
+                                            <label class="mr-1" style="font-family:myfont;color:#fff;font-size:1.5em;">Ranking</label>
                                             <select class="select-trade">
                                                 <option select>SET</option>
                                                 <option>SET50</option>

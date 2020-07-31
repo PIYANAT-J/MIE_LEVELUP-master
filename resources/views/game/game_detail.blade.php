@@ -29,7 +29,7 @@
 <div class="container-fluid">
     @foreach($Detail as $detailGame)
         <div class="row my-5 "></div>
-        <div class="row my-2 "></div>
+        <div class="row my-3 "></div>
         <div class="row dark">
             <div class="col-lg-3 font_back">
                 <a href="{{ url('/') }}" style="color:#fff;"><i class="icon-prev mx-2"></i>Back</a>
