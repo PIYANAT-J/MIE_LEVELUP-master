@@ -20,16 +20,18 @@ use DB;
 class UploadImageProfile extends Controller
 {
     public function Developer(){
-        $game_img = DB::table('games')->where('USER_ID', Auth::user()->id)->get();
-        if($game_img->count() == 0){
+        // $game_img = DB::table('games')->where('USER_ID', Auth::user()->id)->get();
+        // if($game_img->count() == 0){
+        //     $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
+        //     $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        //     dd($developer);
+        //     return view('profile.devlvp_profile', compact('developer', 'userKyc'));
+        // }else{
             $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
             $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            // dd($developer);
             return view('profile.devlvp_profile', compact('developer', 'userKyc'));
-        }else{
-            $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('profile.devlvp_profile', compact('developer', 'userKyc'));
-        }
+        // }
     }
 
     public function developer_shelf(){
@@ -250,7 +252,7 @@ class UploadImageProfile extends Controller
     }
 
     public function saveProfileDev(Request $request){
-    
+        dd($request);
         if ($request->input('submit') != null ){
 
             // $this->validate($request, [
