@@ -336,6 +336,75 @@
                                                 </div>
                                             </div>
 
+                                            <div id="four1">
+                                                <div class="row my-3 fade-in">
+                                                    <div class="col-lg-5">
+                                                        <div class="row" style="border-right:1px solid #455160;">
+                                                            <div class="col-lg-12">
+                                                                <label style="font-family:myfont;font-size:1.2em;color:#fff;">บัญชี</label>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="checkbox01 ">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12 mb-2">
+                                                                            <input type="radio" name="bank" value="bank01" id="bank01">
+                                                                            <label for="bank01"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
+                                                                            <span class="ml-2" style="font-family:myfont1;color:#fff;font-size:1em;">ธนาคารกรุงเทพ</span>
+                                                                        </div>
+                                                                        <div class="col-lg-12 mb-2">
+                                                                            <input type="radio" name="bank" value="bank02" id="bank02">
+                                                                            <label for="bank02"><img src="{{asset('home/logo/ktc.svg')}}" ></label>
+                                                                            <span class="ml-2" style="font-family:myfont1;color:#fff;font-size:1em;">ธนาคารกรุงไทย</span>
+                                                                        </div>
+                                                                        <div class="col-lg-12 mb-2">
+                                                                            <input type="radio" name="bank" value="bank03" id="bank03">
+                                                                            <label for="bank03"><img src="{{asset('home/logo/kbank.svg')}}" ></label>
+                                                                            <span class="ml-2" style="font-family:myfont1;color:#fff;font-size:1em;">ธนาคารกสิกรไทย</span>
+                                                                        </div>
+                                                                        <div class="col-lg-12 mb-2">
+                                                                            <input type="radio" name="bank" value="bank02" id="bank04">
+                                                                            <label for="bank04"><img src="{{asset('home/logo/scb.svg')}}" ></label>
+                                                                            <span class="ml-2" style="font-family:myfont1;color:#fff;font-size:1em;">ธนาคารไทยพาณิชย์</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 mt-2">
+                                                                <label style="font-family:myfont;font-size:1.2em;color:#fff;">คูปอง / ส่วนลดของฉัน</label>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="input-group mb-3">
+                                                                    <input class="input-payment3" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text select-code" id="basic-addon2" data-toggle="modal" data-target="#code">เลือกโค้ดส่วนลด</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-7">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <label style="font-size:1.2em;color:#ffffff;">ชำระเงินอย่างไร</label> <br>
+                                                                <label style="font-family:myfont1;font-size:0.9em;color:#ffffff;">
+                                                                    1. ล็อกอินเข้าระบบ K Plus <br>
+                                                                    2. เลือกเมนู “จ่ายบิล” <br>
+                                                                    3. เลือก “รายการใหม่” <br>
+                                                                    4. เลือก “บิลอื่น” <br>
+                                                                    5. เลือก “บริษัท” เป็น “123 เซอร์วิส” <br>
+                                                                    6. ใส่ เลขที่อ้างอิง ใน “รหัสลูกค้า” <br>
+                                                                    7. ใส่หมายเลขโทรศัพท์มือถือใน “รหัสใบสั่งซื้อ”<br>
+                                                                    8. ใส่จำนวนเงิน <br>
+                                                                    9. กด “จ่ายบิล” <br> 
+                                                                    10. ตรวจสอบความถูกต้อง และกด “ยืนยัน” <br>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
 
                                             <div class="row mt-3 py-2 " style="background-color:#000;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
                                                 <div class="col-lg-12">
@@ -816,6 +885,7 @@ const myFunction = () => {
   document.getElementById("second1").style.display ='none'
   document.getElementById("third").style.display ='none'
   document.getElementById("four").style.display ='none'
+  document.getElementById("four1").style.display ='none'
 }
 
 const myFunction2 = () => {
@@ -825,6 +895,7 @@ const myFunction2 = () => {
   document.getElementById("second1").style.display ='block'
   document.getElementById("third").style.display ='none'
   document.getElementById("four").style.display ='none'
+  document.getElementById("four1").style.display ='none'
 }
 
 const myFunction3 = () => {
@@ -834,6 +905,7 @@ const myFunction3 = () => {
   document.getElementById("second1").style.display ='none'
   document.getElementById("third").style.display ='block'
   document.getElementById("four").style.display ='none'
+  document.getElementById("four1").style.display ='none'
 }
 
 const myFunction4 = () => {
@@ -843,6 +915,7 @@ const myFunction4 = () => {
   document.getElementById("second1").style.display ='none'
   document.getElementById("third").style.display ='none'
   document.getElementById("four").style.display ='block'
+  document.getElementById("four1").style.display ='block'
 }
 
 </script>
