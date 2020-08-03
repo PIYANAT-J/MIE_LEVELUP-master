@@ -601,7 +601,7 @@
 
             <div class="row mb-3">
                 <div class="col-lg-12">
-                    <!-- <div class="owl-carousel" id="owl-demo1">
+                    <div class="owl-carousel" id="owl-demo1">
                         <div class="item">
                             <img class="minigame-img" src="{{asset('section/picture_game/game.png') }}">
                         </div>
@@ -632,20 +632,20 @@
                         <div class="item">
                             <img class="minigame-img" src="{{asset('section/picture_game/game10.png') }}">
                         </div>
-                    </div> -->
-                    <!-- <div class="btns">
+                    </div>
+                    <div class="btns">
                         <div class="nav-next1"><img class="middle" style="width:0.5em" src="{{asset('icon/next.svg') }}" /></div>
                         <div class="nav-prev1"><img class="middle" style="width:0.5em" src="{{asset('icon/prev.svg') }}" /></div>
-                    </div> -->
+                    </div>
 
-                    <img class="minigame-img" src="{{asset('section/picture_game/game.png') }}">
+                    <!-- <img class="minigame-img" src="{{asset('section/picture_game/game.png') }}">
                     <img class="minigame-img" src="{{asset('section/picture_game/game2.png') }}">                        
                     <img class="minigame-img" src="{{asset('section/picture_game/game3.png') }}">                        
                     <img class="minigame-img" src="{{asset('section/picture_game/game4.png') }}">                        
                     <img class="minigame-img" src="{{asset('section/picture_game/game5.png') }}">
                     <img class="minigame-img" src="{{asset('section/picture_game/game6.png') }}">                        
                     <img class="minigame-img" src="{{asset('section/picture_game/game7.png') }}">
-                        
+                         -->
                 </div>
             </div>
         </div>
@@ -688,7 +688,7 @@ function() {
 );
 </script>
 
-<!-- <script>
+<script>
     $(document).ready(function(){
     var owl = $('#owl-demo1');
     owl.owlCarousel({
@@ -698,48 +698,34 @@ function() {
         responsiveClass:true,
         responsive:{
             0:{
-                items:2,
-                nav:false
+                items:2
             },
             600:{
-                items:3,
-                nav:false
+                items:3
             },
             700:{
-                items:3,
-                nav:false
+                items:3
             },
             760:{
-                items:4,
-                nav:false
+                items:4
             },
             980:{
-                items:4,
-                nav:false
+                items:4
             },
             1000:{
-                items:5,
-                nav:false,
-                loop:true
+                items:5
             },
             1280:{
-                items:5.3,
-                nav:false,
-                loop:true
+                items:5
             },
             1600:{
-                items:7,
-                nav:false
+                items:7
             },
             1680 :{
-                items:9,
-                nav:false,
-                loop:true
+                items:9
             },
             1920:{
-                items:10,
-                nav:false,
-                loop:true
+                items:10
             }
         }
     });
@@ -753,5 +739,5 @@ function() {
     });
     
     });
-</script> -->
+</script>
 @endsection
