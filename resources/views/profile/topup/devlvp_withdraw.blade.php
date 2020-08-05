@@ -70,7 +70,7 @@
                 <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
                     <div class="row">
                         <div class="col-lg-6 line1">
-                            <div style="font-family:myfont;font-size:1.2em;color:#000;">ถอนเงิน</div>
+                            <div style="font-family:myfont;font-size:1.3em;color:#000;">ถอนเงิน</div>
                             <div class="row bg-topup ml-0 mb-2">
                                 <div class="col-lg-6 lext-center">ยอดเงินในวอลเล็ท
                                 </div>
@@ -91,11 +91,11 @@
                                     @endif
                             </div>
                             <div class="row mb-2">
-                                <div class="col-lg-6" style="font-family:myfont;font-size:1.2em;color:#000;">ช่องทางการรับเงิน</div>
+                                <div class="col-lg-6" style="font-family:myfont;font-size:1em;color:#000;">ช่องทางการรับเงิน</div>
                                 @if(isset($bank))
-                                    <div class="col-lg-6 text-right" style="font-family:myfont;font-size:1.1em;color: #0061fc;text-decoration:underline;cursor:pointer;" data-toggle="modal" data-target="#BankAccount">เปลี่ยนบัญชีธนาคารของฉัน</div>
+                                    <div class="col-lg-6 text-right" style="font-family:myfont;font-size:1em;color: #0061fc;text-decoration:underline;cursor:pointer;" data-toggle="modal" data-target="#BankAccount">เปลี่ยนบัญชีธนาคารของฉัน</div>
                                 @else
-                                    <div class="col-lg-6 text-right" style="font-family:myfont;font-size:1.1em;color: #0061fc;text-decoration:underline;cursor:pointer;" data-toggle="modal" data-target="#BankAccount">เพิ่มบัญชีธนาคารของฉัน</div>
+                                    <div class="col-lg-6 text-right" style="font-family:myfont;font-size:1em;color: #0061fc;text-decoration:underline;cursor:pointer;" data-toggle="modal" data-target="#BankAccount">เพิ่มบัญชีธนาคารของฉัน</div>
                                 @endif
                             </div>
                             @if(isset($bank))
@@ -107,7 +107,7 @@
                                                     <!-- <input type="radio" class="message_pri" id="radio01" name="web" value="1" /><label for="radio01"></label> -->
                                                 </div>
                                                 <img class="mx-2" style="width: 33px;" src="{{asset('home/logo/'.$bank->bankName.'.svg') }}" />
-                                                <span style="font-family:myfont1;font-size:1.2em;color:#b1b7bc;line-height:90%;">
+                                                <span style="font-family:myfont1;font-size:1em;color:#b1b7bc;line-height:90%;">
                                                     @if($bank->bankName == "scb")
                                                         <b style="font-family:myfont1;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</b></br>{{ $bank->accountNumber }}
                                                     @elseif($bank->bankName == "ktc")

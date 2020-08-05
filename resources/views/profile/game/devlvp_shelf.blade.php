@@ -75,7 +75,7 @@
                         <div class="col-lg-12">
                             <div class="row mt-2 ">
                                 <div class="col-lg-12" >
-                                    <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1.2em;color:#000;">
+                                    <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1em;color:#000;">
                                         <div class="col-5">ชื่อเกม</div>
                                         <div class="col-3 text-center ">จำนวนดาวน์โหลด</div>
                                         <div class="col-2 text-center ">วันที่อัพเดต</div>
@@ -167,7 +167,8 @@
                                                                         @else
                                                                             <label class="ml-2 px-1" style="color:#fff;font-size:0.9em;background-color: #ce0005;border-radius: 6px;">ไม่อนุมัติ</label></br>
                                                                         @endif
-                                                                        {{ $Game->RATED_B_L }} • Other</br>เวอร์ชั่น 1.03
+                                                                        <span style="font-size:0.9em;">{{ $Game->RATED_B_L }} • Other</span></br>
+                                                                        <span style="font-size:0.9em;">เวอร์ชั่น 1.03</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
