@@ -197,54 +197,14 @@ class UploadImageProfile extends Controller
         }
     }
 
-    
-    public function SimulatorTrade(){
-        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
-        if($gameShalf->count() == 0){
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('simulator_trade', compact('guest_user', 'userKyc'));
-        }else{
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('simulator_trade', compact('guest_user', 'userKyc'));
-        }
-    }
-
-    public function MyTrade(){
-        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
-        if($gameShalf->count() == 0){
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('my_trade', compact('guest_user', 'userKyc'));
-        }else{
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('my_trade', compact('guest_user', 'userKyc'));
-        }
-    }
-
-    public function RankingTrade(){
-        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
-        if($gameShalf->count() == 0){
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('ranking_trade', compact('guest_user', 'userKyc'));
-        }else{
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('ranking_trade', compact('guest_user', 'userKyc'));
-        }
-    }
-
     // public function updateGuest_user(){
     //     $guest_user = DB::select('select * from guest_users');
     //     return view('profile.updateProfile.userUpdate_profile', ['guest_user'=> $guest_user]);
     // }
 
     public function indexSpon(){
-        $sponsor = DB::select('select * from sponsors');
-        return view('profile.spon_profile', ['sponsor'=> $sponsor]);
+        $spon = DB::tabel('sponsors')->where('USER_ID', Auth::user()->id)->get();
+        return view('profile.spon_profile', compact('spon'));
     }
     public function updateSpon(){
         $sponsor = DB::select('select * from sponsors');
@@ -563,7 +523,6 @@ class UploadImageProfile extends Controller
                 $SPON_TEL = $request->input('SPON_TEL');
                 $SPON_ID_CARD = $request->input('SPON_ID_CARD');
                 $SPON_IMG = $img_name;
-                $SPON_BIRTHDAY = $request->input('SPON_BIRTHDAY');
                 $SPON_AGE = $request->input('SPON_AGE');
                 $SPON_GENDER = $request->input('SPON_GENDER');
                 $SPON_ADDRESS = $request->input('SPON_ADDRESS');
@@ -573,11 +532,29 @@ class UploadImageProfile extends Controller
                 $CREATE = $request->input('DATE_CREATE');
                 $MODIFY = $request->input('DATE_MODIFY');
 
+                $name = $request->input('name');
+                $surname = $request->input('surname');
+
+                if($request->input('yyyy') == "year"){
+                    $BIRTHDAY = DB::table('sponsors')->where('USER_ID', $USER_ID)->value('SPON_BIRTHDAY');
+                    if($BIRTHDAY == null){
+                        $SPON_BIRTHDAY = date('Y-m-d');
+                    }else{
+                        $SPON_BIRTHDAY = $BIRTHDAY;
+                    }
+                }else{
+                    $yyyy = $request->input('yyyy');
+                    $mm = $request->input('mm');
+                    $dd = $request->input('dd');
+
+                    $SPON_BIRTHDAY = $yyyy.'-'.$mm .'-'.$dd;
+                }
+
                 if($USER_EMAIL != '' || $SPON_TEL != '' || $SPON_ID_CARD != '' || $SPON_IMG != '' || $SPON_BIRTHDAY != '' || $SPON_AGE != '' || $SPON_GENDER != '' || $SPON_ADDRESS != '' 
                     || $ZIPCODE_ID != '' || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
                     $data = array("SPON_TEL"=>$SPON_TEL, "SPON_ID_CARD"=>$SPON_ID_CARD, "SPON_IMG"=>$SPON_IMG, "SPON_BIRTHDAY"=>$SPON_BIRTHDAY,
                                 "SPON_AGE"=>$SPON_AGE, "SPON_GENDER"=>$SPON_GENDER, "SPON_ADDRESS"=>$SPON_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
-                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY);
+                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY, "name"=>$name, "surname"=>$surname);
         
                     // Insert && Update
                     $value = Sponsors::InsertAndUpdateData($data);
@@ -590,7 +567,6 @@ class UploadImageProfile extends Controller
             }else{
                 $SPON_TEL = $request->input('SPON_TEL');
                 $SPON_ID_CARD = $request->input('SPON_ID_CARD');
-                $SPON_BIRTHDAY = $request->input('SPON_BIRTHDAY');
                 $SPON_AGE = $request->input('SPON_AGE');
                 $SPON_GENDER = $request->input('SPON_GENDER');
                 $SPON_ADDRESS = $request->input('SPON_ADDRESS');
@@ -600,11 +576,29 @@ class UploadImageProfile extends Controller
                 $CREATE = $request->input('DATE_CREATE');
                 $MODIFY = $request->input('DATE_MODIFY');
 
+                $name = $request->input('name');
+                $surname = $request->input('surname');
+
+                if($request->input('yyyy') == "year"){
+                    $BIRTHDAY = DB::table('sponsors')->where('USER_ID', $USER_ID)->value('SPON_BIRTHDAY');
+                    if($BIRTHDAY == null){
+                        $SPON_BIRTHDAY = date('Y-m-d');
+                    }else{
+                        $SPON_BIRTHDAY = $BIRTHDAY;
+                    }
+                }else{
+                    $yyyy = $request->input('yyyy');
+                    $mm = $request->input('mm');
+                    $dd = $request->input('dd');
+
+                    $SPON_BIRTHDAY = $yyyy.'-'.$mm .'-'.$dd;
+                }
+
                 if($USER_EMAIL != '' || $SPON_TEL != '' || $SPON_ID_CARD != '' || $SPON_BIRTHDAY != '' || $SPON_AGE != '' || $SPON_GENDER != '' || $SPON_ADDRESS != '' 
                     || $ZIPCODE_ID != '' || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
                     $data = array("SPON_TEL"=>$SPON_TEL, "SPON_ID_CARD"=>$SPON_ID_CARD, "SPON_BIRTHDAY"=>$SPON_BIRTHDAY,
                                 "SPON_AGE"=>$SPON_AGE, "SPON_GENDER"=>$SPON_GENDER, "SPON_ADDRESS"=>$SPON_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
-                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY);
+                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY, "name"=>$name, "surname"=>$surname);
         
                     // Insert && Update
                     $value = Sponsors::InsertAndUpdateData($data);

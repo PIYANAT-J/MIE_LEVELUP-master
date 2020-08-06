@@ -120,7 +120,7 @@ box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.42);
 .font_navbar{
   color: #fff;
   font-size: 25px;
-  
+
 }
 
 
@@ -146,7 +146,7 @@ box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.42);
 .sign_in a{
   color: #fff;
   background-color: none;
- 
+
 }
 
 .sign_in a:hover{
@@ -166,7 +166,6 @@ box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.42);
   color: #ce0005;
   text-align: center;
 }
-
 .sign_up:hover{
   width: 97px;
   height: 43px;
@@ -284,7 +283,7 @@ box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.42);
           visibility: visible;
           opacity: 1; }
 
-          
+
 .site-mobile-menu {
   width: 300px;
   position: fixed;
@@ -1061,7 +1060,7 @@ overflow: hidden;
   border: 1px solid #17202c;
   background: #17202c;
   width: 100px;
-  
+
   cursor: pointer;
 }
 .file::-webkit-file-upload-button:hover{
@@ -1247,14 +1246,14 @@ input[type='file']:focus{
 /* width */
 ::-webkit-scrollbar {
   width: 6px;
-  
+
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   background: #141621; 
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #adadad;
@@ -1587,7 +1586,7 @@ input[type='file']:focus{
 .imgteaser a {
   text-decoration: none;
   float: left;
-  
+
 }
 /* ถ้าไม่ใส่ cursor: pointer ไป ตอนแสดงใน ie6 caption จะหน่วงนิดนึง*/
 .imgteaser a:hover {
@@ -1615,7 +1614,7 @@ input[type='file']:focus{
   opacity: 80%;
   border: #ce0005 3px solid;
 }
- 
+
 /* ตัว strong ใน caption กำหนดให้ใหญ่กว่าปกติหน่อย เพื่อความสวยงาม*/
 .imgteaser a:hover .desc strong {
   display: block;
@@ -1688,7 +1687,7 @@ input[type='file']:focus{
 .imgteaser2 a {
   text-decoration: none;
   float: left;
-  
+
 }
 /* ถ้าไม่ใส่ cursor: pointer ไป ตอนแสดงใน ie6 caption จะหน่วงนิดนึง*/
 .imgteaser2 a:hover {
@@ -1716,7 +1715,7 @@ input[type='file']:focus{
   opacity: 80%;
   border: #ce0005 3px solid;
 }
- 
+
 /* ตัว strong ใน caption กำหนดให้ใหญ่กว่าปกติหน่อย เพื่อความสวยงาม*/
 .imgteaser2 a:hover .desc2 strong {
   display: block;
@@ -1796,7 +1795,7 @@ input[type='file']:focus{
   width: 30px;
   height: 30px;
   padding: 3px 0px 0px 0px;
-  
+
 }
 .down3{ 
   position: absolute;
@@ -1806,7 +1805,7 @@ input[type='file']:focus{
   width: 30px;
   height: 30px;
   padding: 3px 0px 0px 0px;
-  
+
 }
 
 input[type='image']:focus{
@@ -2524,7 +2523,7 @@ body {
   width: 40%;
   height: auto;
 } 
- 
+
 .img_login{
   width: 80%;
   height: auto;
@@ -3028,7 +3027,7 @@ margin: 30px auto;
   position: relative;
   display: inline-block;
   padding-left: 5px;
-  
+
 }
 
 .checkbox2 label::before,
@@ -3075,7 +3074,7 @@ margin: 30px auto;
   position: relative;
   display: inline-block;
   padding-left: 5px;
-  
+
 }
 
 .checkbox-wh label::before,
@@ -3245,7 +3244,7 @@ margin: 30px auto;
 }
 
 .sidebar_bg{
-  
+
   height: 100%;
   background-color: #17202c;
 }
@@ -4014,11 +4013,11 @@ input[type="checkbox"].switch_1{
 	-webkit-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
   }
-  
+
   input[type="checkbox"].switch_1:checked{
 	background: #4bd964;
   }
-  
+
   input[type="checkbox"].switch_1:after{
 	position: absolute;
 	content: "";
@@ -4034,11 +4033,11 @@ input[type="checkbox"].switch_1{
 	-webkit-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
   }
-  
+
   input[type="checkbox"].switch_1:checked:after{
 	left: calc(100% - 1em);
   }
-	
+
 /* Switch 1 Specific Style End */
 
 #partitioned {
@@ -4188,7 +4187,7 @@ input[type="checkbox"].switch_1{
   /* font-size: 200px; */
   direction: ltr;
   cursor: pointer;
-  
+
 }
 
 .thumb {
@@ -4206,7 +4205,7 @@ ul.thumb-Images li {
   vertical-align: top;
   border-radius: 8px;
   /* background-color: #ce0005; */
-  
+
 }
 
 .img-close{
@@ -4625,6 +4624,59 @@ outline: none!important;
 	transform: scale(1);
 }
 
+/* --------------------------------- */
+
+.checkbox01 input[type="radio"] {
+	display: none;
+}
+.checkbox01 label {
+	position: relative;
+	display: inline-block;
+  padding: 0 0 0 25px;
+  margin: 0;
+	cursor: pointer;
+}
+.checkbox01 label::before,
+.checkbox01 label::after {
+	position: absolute;
+	content: '';
+	top: 45%;
+	border-radius: 100%;
+	-webkit-transition: all .2s;
+	transition: all .2s;
+}
+.checkbox01 label::before {
+	left: 0;
+	width: 16px;
+	height: 16px;
+	margin-top: -8px;
+	background: #202433;
+	border: 2px solid #fff;
+}
+.checkbox01 label:hover::before {
+	background: #fff;
+}
+.checkbox01 label::after {
+	opacity: 0;
+	left: 3px;
+	width: 10px;
+	height: 10px;
+	margin-top: -5px;
+  background: #ce0005;
+  border: 1px solid #ce0005;
+	-webkit-transform: scale(2);
+	transform: scale(2);
+}
+.checkbox01 input[type="radio"]:checked + label::before {
+	background: #fff;
+  border: 1px solid #ce0005;
+}
+.checkbox01 input[type="radio"]:checked + label::after {
+	opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
 .fontItem{
   font-family: myfont1;
   font-size: 1em;
@@ -4768,13 +4820,14 @@ outline: none!important;
 .btn-avatar:focus{
   outline: none!important;
 }
- 
+
 .minigame-img {
   border-radius: 8px;
   border: solid 1px rgba(255, 255, 255, 0.096);
-  width: 10em!important;
-  height: 10em!important;
+  width: 130px;
+  height:130px;
   object-fit: cover;
+  margin: 5px 0 0 0 ;
 }
 
 .nav-next1{
@@ -4839,7 +4892,7 @@ outline: none!important;
   background-color: #ce0005;
   border-radius: 50px;
   line-height: 0.5;
-  
+
 }
 
 .labelWithImg{
@@ -5584,7 +5637,7 @@ input[type="number"] {
   position: relative;
   display: inline-block;
   padding-left: 5px;
-  
+
 }
 
 .checkbox-wh2 label::before,
@@ -5669,7 +5722,7 @@ input[type=number]
   position: absolute;
   top: 8px;
   left: 75px;
-  
+
 }
 
 .quantity-down {
@@ -6186,6 +6239,21 @@ input[type=number]
   outline: none;
 }
 
+.input-payment3{
+  width: 55%;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  font-family: myfont1;
+  font-size: 1.1em;
+  background-color: #fff;
+  border: none;
+  padding: 3px 10px;
+}
+.input-payment3:focus{
+  background-color: #fff !important;
+  outline: none;
+}
+
 .select-code{
   font-family: myfont;
   font-size: 1.1em;
@@ -6201,7 +6269,10 @@ input[type=number]
   color: #fff;
 }
 
-#first,#first1, #second, #second1, #third, #third1, #four,#four4{
+#first,#first1, #second, #second1, #third, #third1, #four,#four1{
+  display: none
+}
+#man,#woman{
   display: none
 }
 
@@ -6635,11 +6706,11 @@ input[type="checkbox"].switch_2{
 	-webkit-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
   }
-  
+
   input[type="checkbox"].switch_2:checked{
 	background: #ce0005;
   }
-  
+
   input[type="checkbox"].switch_2:after{
 	position: absolute;
 	content: "";
@@ -6655,11 +6726,11 @@ input[type="checkbox"].switch_2{
 	-webkit-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
   }
-  
+
   input[type="checkbox"].switch_2:checked:after{
 	left: calc(100% - 1em);
   }
-	
+
 /* Switch 2 Specific Style End */
 
 .pViewmore{

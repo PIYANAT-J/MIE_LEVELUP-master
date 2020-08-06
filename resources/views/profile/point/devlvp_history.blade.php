@@ -82,7 +82,7 @@
                         <div class="col-lg-12">
                             <div class="row mt-2 ">
                                 <div class="col-lg-12" >
-                                    <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1.3em;color:#000;">
+                                    <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1em;color:#000;">
                                         <div class="col-8">ประวัติ</div>
                                         <div class="col-2 text-center">พอยท์</div>
                                         <div class="col-2 text-center">วัน-เวลา</div>
@@ -93,24 +93,24 @@
                                 <div class="col-lg-12" >
                                     <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
                                         <div class="col-8">
-                                        <span class="font-game-shelf" style="color:#000;font-family:myfont;">อัพเดตโปรไฟล์</span>
+                                        <span class="font-game-shelf2" style="color:#000;font-family:myfont1;">อัพเดตโปรไฟล์</span>
                                         </div>
                                         <div class="col-2 text-center">
-                                            <span class="font-game-shelf" style="color:#23c197;font-family:myfont;">+20</span>
+                                            <span class="font-game-shelf2" style="color:#23c197;">+20</span>
                                             <!-- <span class="font-game-shelf" style="color:#ce0005;font-family:myfont;">-50</span> -->
                                         </div>
-                                        <div class="col-2 text-center"><span class="font-game-shelf">09:10 17/05/63</span></div>
+                                        <div class="col-2 text-center"><span class="font-game-shelf2" style="font-size:0.8em;font-family:myfont1;">09:10 17/05/63</span></div>
                                     </div>
 
                                     <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
                                         <div class="col-8">
-                                        <span class="font-game-shelf" style="color:#000;font-family:myfont;">อัพเดตโปรไฟล์</span>
+                                        <span class="font-game-shelf2" style="color:#000;font-family:myfont1;">อัพเดตโปรไฟล์</span>
                                         </div>
                                         <div class="col-2 text-center">
                                             <!-- <span class="font-game-shelf" style="color:#23c197;font-family:myfont;">+20</span> -->
-                                            <span class="font-game-shelf" style="color:#ce0005;font-family:myfont;">-20</span>
+                                            <span class="font-game-shelf2" style="color:#ce0005;">-20</span>
                                         </div>
-                                        <div class="col-2 text-center"><span class="font-game-shelf">09:10 17/05/63</span></div>
+                                        <div class="col-2 text-center"><span class="font-game-shelf2" style="font-size:0.8em;font-family:myfont1;">09:10 17/05/63</span></div>
                                     </div>
 
                                     <!-- <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">

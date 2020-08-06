@@ -28,16 +28,6 @@ Route::view('/registerlvp', 'auth.register_lvp')->name('register-levelUp');
 // Route::view('/email', 'auth.passwords.email');
 Route::view('/confirm', 'auth.passwords.confirm');
 
-// Route::get('/home', 'HomeController@index')->name('home');
-
-// Route::get('/user_profile', 'UploadImageProfile@indexGuest_user')->name('homeProfile');
-// Route::get('/userUpdate_profile', 'UploadImageProfile@updateGuest_user')->name('EditProfile');
-// Route::post('/userUpdate_profile/edit', 'UploadImageProfile@saveProfileUser')->name('UserEditProfile');
-
-// Route::get('/dev_profile', 'UploadImageProfile@index')->name('devProfile');
-// Route::get('/devUpdate_profile', 'UploadImageProfile@update')->name('UpDate');
-// Route::post('/devUpdate_profile/edit', 'UploadImageProfile@saveProfileDev')->name('DevEditProfile');
-
 Route::post('/dev_profile/GameImg', 'GameController@saveGameProfile')->name('GameImg');
 
 Route::get('/spon_profile', 'UploadImageProfile@indexSpon')->name('sponProfile');
@@ -51,18 +41,6 @@ Route::get('/change_password', function () {
 // Route::get('/userKyc', 'KycController@indexUserKyc')->name('userKyc');
 // Route::get('/devKyc', 'KycController@indexDevKyc')->name('devKyc');
 Route::get('/sponKyc', 'KycController@indexSponKyc')->name('sponKyc');
-
-// Route::post('/kyc/create', 'KycController@createKyc')->name('CreateKyc');
-
-// Route::get('/game_shelf', 'DownloadController@indexGame')->name('GAMESHELF');
-// Route::post('/game_shelf/download', 'DownloadController@downloadGame')->name('downloadGame');
-
-// Route::get('/edit_upload_game', 'UploadImageProfile@edit_game')->name('EditGame');
-
-// Route::get('/user_mamagement', 'AdminController@indexAdmin')->name('Admin')->middleware('Admin');
-// Route::post('/user_mamagement/Kyc', 'AdminController@approveKyc')->name('AppKyc');
-// Route::post('/user_mamagement/Game', 'AdminController@approveGame')->name('AppGame');
-// Route::post('/user_mamagement/AddAdmin', 'AdminController@createAdmin')->name('AddAdmin');
 
 Route::get('/detail-{id}', 'GameController@gameDetail')->name('GameDetail');
 Route::post('/detail/download', 'DownloadController@downloadGame')->name('downloadGame');
@@ -86,14 +64,11 @@ Route::get('/user_shelf', 'UploadImageProfile@user_shelf')->name('UserShelf');
 Route::get('/user_history', 'TransferController@userPoint')->name('UserHistory');
 Route::get('/user_rank', 'TransferController@userRank')->name('UserRank');
 
-Route::get('/user_topup', 'qrPaymentController@indexPayment')->name('UserTopup');
-Route::post('/user_topup/qrCode', 'qrPaymentController@mobilebanking')->name('QrPayment');
+Route::get('/user_topup', 'Topup\qrPaymentController@indexPayment')->name('UserTopup');
+Route::post('/user_topup/qrCode', 'Topup\qrPaymentController@mobilebanking')->name('QrPayment');
 Route::post('/user_topup/qrCode/callback', 'Topup\Call_back\Callback_scbController@callback')->name('callbackQr');
 Route::post('/user_topup/transfer', 'TransferController@transferPayment')->name('transferPayment');
-// Route::get('/user_topup/qrCode/{invoice}', 'qrPaymentController@qrcode')->name('qrcode');
 
-
-// Route::view('/user_change_password', 'profile.password.userlvp_change_password');
 Route::get('/user_change_password', 'Auth\ResetPasswordController@userPass')->name('userPsss');
 Route::post('/user_change_password/Reset', 'Auth\ResetPasswordController@passwordUserReset')->name('passwordUserReset');
 
@@ -152,6 +127,8 @@ Route::get('/shopping_cart', 'UploadImageProfile@ShoppingCart')->name('ShoppingC
 Route::get('/payment', 'UploadImageProfile@Payment')->name('Payment');
 Route::get('/payment_confirmation', 'UploadImageProfile@PaymentConfirmation')->name('PaymentConfirmation');
 Route::get('/successful_payment', 'UploadImageProfile@SuccessfulPayment')->name('SuccessfulPayment');
-Route::get('/simulator_trade', 'UploadImageProfile@SimulatorTrade')->name('SimulatorTrade');
-Route::get('/my_trade', 'UploadImageProfile@MyTrade')->name('MyTrade');
-Route::get('/ranking_trade', 'UploadImageProfile@RankingTrade')->name('RankingTrade');
+
+//trading
+Route::get('/simulator_trade', 'simulatorTrade\tradeController@SimulatorTrade')->name('SimulatorTrade');
+Route::get('/my_trade', 'simulatorTrade\tradeController@MyTrade')->name('MyTrade');
+Route::get('/ranking_trade', 'simulatorTrade\tradeController@RankingTrade')->name('RankingTrade');
