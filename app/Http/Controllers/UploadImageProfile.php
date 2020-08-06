@@ -95,124 +95,64 @@ class UploadImageProfile extends Controller
 
 
     public function Avatar(){
-        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
-        if($gameShalf->count() == 0){
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('profile.avatar', compact('guest_user', 'userKyc'));
-        }else{
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('profile.avatar', compact('guest_user', 'userKyc'));
-        }
+        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('avatar.avatar', compact('guest_user', 'userKyc'));
     }
 
     public function Shop(){
-        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
-        if($gameShalf->count() == 0){
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('shop', compact('guest_user', 'userKyc'));
-        }else{
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('shop', compact('guest_user', 'userKyc'));
-        }
+        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('avatar.shopItem.shop', compact('guest_user', 'userKyc'));
     }
 
     public function Sale(){
-        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
-        if($gameShalf->count() == 0){
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('sale_item', compact('guest_user', 'userKyc'));
-        }else{
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('sale_item', compact('guest_user', 'userKyc'));
-        }
+        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('avatar.saleItem.sale_item', compact('guest_user', 'userKyc'));
     }
 
     public function AddSaleItem(){
-        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
-        if($gameShalf->count() == 0){
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('add_sale_item', compact('guest_user', 'userKyc'));
-        }else{
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('add_sale_item', compact('guest_user', 'userKyc'));
-        }
+        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('avatar.saleItem.add_sale_item', compact('guest_user', 'userKyc'));
     }
 
     public function ShoppingCart(){
-        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
-        if($gameShalf->count() == 0){
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('shopping_cart', compact('guest_user', 'userKyc'));
-        }else{
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('shopping_cart', compact('guest_user', 'userKyc'));
-        }
+        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('avatar.shopItem.shopping_cart', compact('guest_user', 'userKyc'));
     }
 
     public function Payment(){
-        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
-        if($gameShalf->count() == 0){
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('payment', compact('guest_user', 'userKyc'));
-        }else{
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('payment', compact('guest_user', 'userKyc'));
-        }
+        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('avatar.payment.payment', compact('guest_user', 'userKyc'));
     }
 
     public function PaymentConfirmation(){
-        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
-        if($gameShalf->count() == 0){
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('payment_confirmation', compact('guest_user', 'userKyc'));
-        }else{
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('payment_confirmation', compact('guest_user', 'userKyc'));
-        }
+        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('avatar.payment.payment_confirmation', compact('guest_user', 'userKyc'));
     }
     public function SuccessfulPayment(){
-        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
-        if($gameShalf->count() == 0){
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('successful_payment', compact('guest_user', 'userKyc'));
-        }else{
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('successful_payment', compact('guest_user', 'userKyc'));
-        }
+        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('avatar.payment.successful_payment', compact('guest_user', 'userKyc'));
     }
-
-    // public function updateGuest_user(){
-    //     $guest_user = DB::select('select * from guest_users');
-    //     return view('profile.updateProfile.userUpdate_profile', ['guest_user'=> $guest_user]);
-    // }
 
     public function indexSpon(){
-        $spon = DB::tabel('sponsors')->where('USER_ID', Auth::user()->id)->get();
-        return view('profile.spon_profile', compact('spon'));
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.sponsor_profile', compact('sponsor'));
     }
-    public function updateSpon(){
-        $sponsor = DB::select('select * from sponsors');
-        return view('profile.updateProfile.sponUpdate_profile', ['sponsor'=> $sponsor]);
+
+    public function AdvertisingPackage(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.sponsor.advertising_package', compact('sponsor'));
     }
 
     public function saveProfileDev(Request $request){
-        dd($request);
+        // dd($request);
         if ($request->input('submit') != null ){
 
             // $this->validate($request, [

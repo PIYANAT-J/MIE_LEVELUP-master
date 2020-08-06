@@ -339,6 +339,21 @@
 
 @section('script')
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{ asset('dist/js/popper.min.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.countdown.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('dist/js/aos.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.sticky.js') }}"></script>
+<script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('dist/js/main.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+
 
 <script>
  jQuery('').insertAfter('.quantity input');
@@ -349,7 +364,6 @@
         btnDown = spinner.find('.quantity-down'),
         min = input.attr('min'),
         max = input.attr('max');
-
       btnUp.click(function() {
         var oldValue = parseFloat(input.val());
         if (oldValue >= max) {
@@ -360,7 +374,6 @@
         spinner.find("input").val(newVal);
         spinner.find("input").trigger("change");
       });
-
       btnDown.click(function() {
         var oldValue = parseFloat(input.val());
         if (oldValue <= min) {
@@ -371,7 +384,6 @@
         spinner.find("input").val(newVal);
         spinner.find("input").trigger("change");
       });
-
     });
 </script>
 

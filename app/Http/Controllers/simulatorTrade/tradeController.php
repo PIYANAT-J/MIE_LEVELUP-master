@@ -32,9 +32,21 @@ class tradeController extends Controller
         return view('avatar.simulator_trade.my_trade', compact('guest_user', 'userKyc'));
     }
 
+    public function MyTradeDetail(){
+        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('avatar.simulator_trade.my_trade_detail', compact('guest_user', 'userKyc'));
+    }
+
     public function RankingTrade(){
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
         return view('avatar.simulator_trade.ranking_trade', compact('guest_user', 'userKyc'));
+    }
+
+    public function RealInvestors(){
+        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('avatar.realTarde.real_investors', compact('guest_user', 'userKyc'));
     }
 }

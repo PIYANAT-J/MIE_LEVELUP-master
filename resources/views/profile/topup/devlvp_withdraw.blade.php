@@ -49,7 +49,7 @@
                     @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
                         <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
                     @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวต้นแล้ว</span>
+                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวตนแล้ว</span>
                     @else
                         <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
                     @endif
@@ -70,7 +70,7 @@
                 <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
                     <div class="row">
                         <div class="col-lg-6 line1">
-                            <div style="font-family:myfont;font-size:1.3em;color:#000;">ถอนเงิน</div>
+                            <div style="font-family:myfont;font-size:1.2em;color:#000;">ถอนเงิน</div>
                             <div class="row bg-topup ml-0 mb-2">
                                 <div class="col-lg-6 lext-center">ยอดเงินในวอลเล็ท
                                 </div>
@@ -91,9 +91,9 @@
                                     @endif
                             </div>
                             <div class="row mb-2">
-                                <div class="col-lg-6" style="font-family:myfont;font-size:1em;color:#000;">ช่องทางการรับเงิน</div>
+                                <div class="col-lg-6" style="font-family:myfont;font-size:1.2em;color:#000;">ช่องทางการรับเงิน</div>
                                 @if(isset($bank))
-                                    <div class="col-lg-6 text-right" style="font-family:myfont;font-size:1em;color: #0061fc;text-decoration:underline;cursor:pointer;" data-toggle="modal" data-target="#BankAccount">เปลี่ยนบัญชีธนาคารของฉัน</div>
+                                    <div class="col-lg-6 text-right" style="font-family:myfont1;font-size:1em;color: #0061fc;text-decoration:underline;cursor:pointer;" data-toggle="modal" data-target="#BankAccount">เปลี่ยนบัญชีธนาคารของฉัน</div>
                                 @else
                                     <div class="col-lg-6 text-right" style="font-family:myfont;font-size:1em;color: #0061fc;text-decoration:underline;cursor:pointer;" data-toggle="modal" data-target="#BankAccount">เพิ่มบัญชีธนาคารของฉัน</div>
                                 @endif
@@ -107,7 +107,7 @@
                                                     <!-- <input type="radio" class="message_pri" id="radio01" name="web" value="1" /><label for="radio01"></label> -->
                                                 </div>
                                                 <img class="mx-2" style="width: 33px;" src="{{asset('home/logo/'.$bank->bankName.'.svg') }}" />
-                                                <span style="font-family:myfont1;font-size:1em;color:#b1b7bc;line-height:90%;">
+                                                <span style="font-family:myfont1;font-size:1.2em;color:#b1b7bc;line-height:90%;">
                                                     @if($bank->bankName == "scb")
                                                         <b style="font-family:myfont1;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</b></br>{{ $bank->accountNumber }}
                                                     @elseif($bank->bankName == "ktc")
@@ -137,10 +137,9 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="custom02">
-                                            <div class="row mb-2">
-                                                <div class="col-1 mb-2"></div>
-                                                <span style="font-family:myfont1;font-size:1.2em;color:#b1b7bc;line-height:90%;">
-                                                    <b style="font-size:1em;color:#000;">ไม่มีบัญชีธนาคาร</b>
+                                            <div class="row mb-2 ml-1">
+                                                <span style="font-family:myfont1;font-size:em;color:#a8a8a8;;line-height:90%;">
+                                                    ไม่มีบัญชีธนาคาร
                                                 </span>
                                             </div>
                                         </div>
@@ -312,6 +311,22 @@
 @endsection
 
 @section('script')
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{ asset('dist/js/popper.min.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.countdown.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('dist/js/aos.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.sticky.js') }}"></script>
+<script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('dist/js/main.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('dist/moment/dist/moment.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
 <script>
 $(document).ready(function(){
