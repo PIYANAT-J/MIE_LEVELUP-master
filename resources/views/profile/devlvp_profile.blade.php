@@ -49,7 +49,7 @@
                     @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
                         <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
                     @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวต้นแล้ว</span>
+                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวตนแล้ว</span>
                     @else
                         <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
                     @endif
@@ -65,7 +65,7 @@
         <!-- sidebar -->
 
         @foreach($developer as $Dev)
-            @if($Dev->USER_ID == Auth::user()->id)
+            @if($Dev->USER_EMAIL == Auth::user()->email)
                     <div class="col-lg-9" style="background-color:#f5f5f5;">
                         <div class="row mt-4" >
                             <div class="col-lg-1"></div>
@@ -114,9 +114,9 @@
                                                         <div class="col-lg-12">
                                                             <div class="row mx-0">
                                                                 <?php
-                                                                    $yyyy = substr($Dev->DEV_BIRTHDAY,0,4);
-                                                                    $mm = substr($Dev->DEV_BIRTHDAY,5,2);
-                                                                    $dd = substr($Dev->DEV_BIRTHDAY,8,2);
+                                                                    // $yyyy = substr($Dev->DEV_BIRTHDAY,0,4);
+                                                                    // $mm = substr($Dev->DEV_BIRTHDAY,5,2);
+                                                                    // $dd = substr($Dev->DEV_BIRTHDAY,8,2);
                                                                 ?>
                                                                 <label class="bgInput field-wrap">
                                                                     <label class="fontHeadInput px-3 py-2" style="padding:0;">วัน เดือน ปีเกิด</label> <br>
@@ -171,12 +171,20 @@
 @endsection
 
 @section('script')
-<!-- <script>
-$('button').on('click', function(){
-    $('button').removeClass('active');
-    $(this).addClass('active');
-});
-</script> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{ asset('dist/js/popper.min.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.countdown.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('dist/js/aos.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.sticky.js') }}"></script>
+<script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('dist/js/main.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
 <script>
 $(document).ready(function(){
@@ -188,7 +196,7 @@ $(document).ready(function(){
 <script>
 var Days = [31,28,31,30,31,30,31,31,30,31,30,31];// index => month [0-11]
 $(document).ready(function(){
-    var option = '<option  class="font-select" value="day">{{$dd}}</option>';
+    var option = '<option  class="font-select" value="day">วัน</option>';
     var selectedDay="day";
     for (var i=1;i <= Days[0];i++){ //add option days
         option += '<option class="font-select" value="'+ i +'">' + i + '</option>';
@@ -196,7 +204,7 @@ $(document).ready(function(){
     $('#day').append(option);
     $('#day').val(selectedDay);
     
-    var option = '<option class="font-select" value="month">{{$mm}}</option>';
+    var option = '<option class="font-select" value="month">เดือน</option>';
     var selectedMon ="month";
     for (var i=1;i <= 12;i++){
         // option += '<option value="'+ i + '">' + i + '</option>';
@@ -237,7 +245,7 @@ $(document).ready(function(){
     $('#month2').val(selectedMon);
   
     var d = new Date();
-    var option = '<option  class="font-select" value="year">{{$yyyy}}</option>';
+    var option = '<option  class="font-select" value="year">ปี</option>';
     selectedYear ="year";
     for (var i=1930;i <= d.getFullYear();i++){// years start i
         option += '<option  class="font-select" value="'+ i + '">' + i + '</option>';

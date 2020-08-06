@@ -13,13 +13,13 @@
                                 <img class="sidebar-pic" src="{{asset('dist/images/person_5.jpg') }}" />
                             </div>
                             <div class="col-7 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1.1em;">ชื่อ-นามสกุล</b></br>Admin</br>เป็นสมาชิก:25/05/63</span>
+                                <span><b style="font-family: myfont;">ชื่อ-นามสกุล</b></br>Admin</br>เป็นสมาชิก:25/05/63</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-1"></div>
                     <a href="/admin_management" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>จัดการผู้ดูแลระบบ</button></a>
-                    <button class="btn-sidebar"  data-toggle="collapse" data-target="#demo"><span style="font-family: myfont1;font-size: 20px;padding:0px 11px 0px 5px;">KYC</span>จัดการการยืนยันตัวตน</button>
+                    <button class="btn-sidebar"  data-toggle="collapse" data-target="#demo"><span style="font-family: myfont1;font-size: 1em;padding:0px 11px 0px 5px;">KYC</span>จัดการการยืนยันตัวตน</button>
                         <div id="demo" class="collapse">
                             <a href="/user_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; ผู้ใช้ทั่วไป</button></a>
                             <a href="/develop_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; ผู้พัฒนาระบบ</button></a>
@@ -48,7 +48,7 @@
             <div class="row py-3" style="background-color: #fff;">
                 <div class="col-lg-12">
                     <div class="inputWithIcon2">
-                        <input style="font-family:myfont1;font-size:1.3em" class="search_btn2" type="text" placeholder="ค้นหา" aria-label="Search">
+                        <input style="font-family:myfont1;font-size:1em" class="search_btn2" type="text" placeholder="ค้นหา" aria-label="Search">
                         <i class="icon-search-back" aria-hidden="true" style="font-size:1.1em"></i>
                     </div>
                 </div>
@@ -66,16 +66,33 @@
                             <div class="row">
                                 <div class="col-lg-12  mt-2" >
                                 <form>
-                                    <input type="password" class="input-update"  placeholder="รหัสผ่านเก่า" require></input>
-                                    <input type="password" class="input-update"  placeholder="รหัสผ่านใหม่" require></input>
-                                    <input type="password" class="input-update"  placeholder="ยืนยันรหัสผ่านใหม่" require></input>
+                                <label class="bgInput field-wrap">
+                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">รหัสผ่านเก่า</label> <br>
+                                    <input type="password" class="input-login px-3" require></input>
+                                </label>
+                                <label class="bgInput field-wrap">
+                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">รหัสผ่านใหม่</label> <br>
+                                    <input type="password" class="input-login px-3" require></input>
+                                </label>
+                                <label class="bgInput field-wrap">
+                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ยืนยันรหัสผ่านใหม่</label> <br>
+                                    <input type="password" class="input-login px-3" require></input>
+                                </label>
                                     <button type="submit" class="btn-submit mt-2">ยืนยัน</button>
                                     <button type="reset" class="btn-cancal mt-2">รีเซ็ต</button>
                                 </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6"></div>
+                        <div class="col-lg-6">
+                            <label class="mt-2" style="font-family:myfont;font-size:0.9em;">วิธีตั้งรหัสผ่าน</label> <br>
+                            <label style="font-family:myfont1;font-size:0.8em;">
+                                1. รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร<br>
+                                2. ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว <br>
+                                3. ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว <br>
+                                4. ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว <br>
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-1"></div>

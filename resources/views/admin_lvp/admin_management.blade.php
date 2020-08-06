@@ -9,17 +9,17 @@
                 <div class="col-lg-1"></div>
                     <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
                         <div class="row mb-2">
-                            <div class="col-5 text-right pr-2">
+                            <div class="col-4 text-right pr-2">
                                 <img class="sidebar-pic" src="{{asset('dist/images/person_5.jpg') }}" />
                             </div>
-                            <div class="col-7 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1.1em;">{{Auth::user()->name}}-{{Auth::user()->surname}}</b></br>Admin</br>เป็นสมาชิก:{{Auth::user()->created_at}}</span>
+                            <div class="col-8 sidebar_name pt-2">
+                                <span><b style="font-family: myfont;">{{Auth::user()->name}}-{{Auth::user()->surname}}</b></br>Admin</br>เป็นสมาชิก:{{Auth::user()->created_at}}</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-1"></div>
                     <a href="/admin_management" style="width: 100%;"><button class="btn-sidebar active"><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>จัดการผู้ดูแลระบบ</button></a>
-                    <button class="btn-sidebar"  data-toggle="collapse" data-target="#demo"><span style="font-family: myfont1;font-size: 20px;padding:0px 11px 0px 5px;">KYC</span>จัดการการยืนยันตัวตน</button>
+                    <button class="btn-sidebar"  data-toggle="collapse" data-target="#demo"><span style="font-family: myfont1;font-size: 1em;padding:0px 11px 0px 5px;">KYC</span>จัดการการยืนยันตัวตน</button>
                         <div id="demo" class="collapse">
                             <a href="/user_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; ผู้ใช้ทั่วไป</button></a>
                             <a href="/develop_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; ผู้พัฒนาระบบ</button></a>
@@ -52,14 +52,14 @@
             <div class="row py-3" style="background-color: #fff;">
                 <div class="col-lg-12">
                     <div class="inputWithIcon2">
-                        <input style="font-family:myfont1;font-size:1.3em" class="search_btn2" type="text" placeholder="ค้นหา" aria-label="Search">
+                        <input style="font-family:myfont1;font-size:1em" class="search_btn2" type="text" placeholder="ค้นหา" aria-label="Search">
                         <i class="icon-search-back" aria-hidden="true" style="font-size:1.1em"></i>
                     </div>
                 </div>
             </div>
 
             <div class="row pb-2 pt-3">
-                <div class="col-lg-12" style="font-family:myfont;color:#000;font-size:1.4em;">ข้อมูลผู้ดูแลระบบ</div>
+                <div class="col-lg-12" style="font-family:myfont;color:#000;font-size:1.2em;">ข้อมูลผู้ดูแลระบบ</div>
             </div>
             
             <div class="row">
@@ -93,7 +93,7 @@
                                                         <div class="col-1 py-1 td1">{{ $i }}</div>
                                                         <div class="col-3 py-1 td1 ">{{ $adminList->name }}</div>
                                                         <div class="col-3 py-1 td1">{{ $adminList->email }}</div>
-                                                        <div class="col-2 py-1 td1">{{ $adminList->created_at }}</div>
+                                                        <div class="col-2 py-1 td1" style="font-size:0.9em;">{{ $adminList->created_at }}</div>
                                                         <div class="col-2 py-1 td1">เพิ่มโดย</div>
                                                         @if($adminList->id != Auth::user()->id)
                                                             <div class="col-1 py-1 td1 text-center"><i class="fa fa-trash-o" aria-hidden="true" style="font-size:0.8em;cursor:pointer;"></i></div>
@@ -123,31 +123,46 @@
                                                             <form action="{{ route('AddAdmin') }}" method="POST" enctype="multipart/form-data">
                                                                 @csrf
                                                                 <!-- <input type="text" class="input-update"  placeholder="ชื่อ" require></input> -->
-                                                                <input id="name" type="text" name="name" placeholder="ชื่อ" class="input-update @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                                                    <label class="bgInput field-wrap">
+                                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อ</label> <br>
+                                                                        <input id="name" type="text" name="name" class="input-login px-3 @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                                                    </label>
                                                                     @error('name')
                                                                         <span class="invalid-feedback" role="alert">
                                                                             <strong>{{ $message }}</strong>
                                                                         </span>
                                                                     @enderror
-                                                                <input id="surname" type="text" name="surname" placeholder="นามสกุน" class="input-update @error('surname') is-invalid @enderror" value="{{ old('surname') }}" required>
+                                                                    <label class="bgInput field-wrap">
+                                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">นามสกุล</label> <br>
+                                                                        <input id="surname" type="text" name="surname" class="input-login px-3 @error('surname') is-invalid @enderror" value="{{ old('surname') }}" required>
+                                                                    </label>
                                                                     @error('surname')
                                                                         <span class="invalid-feedback" role="alert">
                                                                             <strong>{{ $message }}</strong>
                                                                         </span>
                                                                     @enderror
-                                                                <input id="email" type="email" name="email" placeholder="อีเมล" data-toggle="tooltip" data-placement="bottom" title="example@email.com" class="input-update @error('email') is-invalid @enderror" value="{{ old('email') }}" required> 
+                                                                    <label class="bgInput field-wrap">
+                                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">อีเมล</label> <br>
+                                                                        <input id="email" type="email" name="email" data-toggle="tooltip" data-placement="bottom" title="example@email.com" class="input-login px-3 @error('email') is-invalid @enderror" value="{{ old('email') }}" required> 
+                                                                    </label>
                                                                     @error('email')
                                                                         <span class="invalid-feedback" role="alert">
                                                                             <strong>{{ $message }}</strong>
                                                                         </span>
                                                                     @enderror
-                                                                <input id="password" type="password" name="password" placeholder="รหัสผ่าน" class="input-update @error('password') is-invalid @enderror" required>
+                                                                    <label class="bgInput field-wrap">
+                                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">รหัสผ่าน</label> <br>
+                                                                        <input id="password" type="password" name="password" class="input-login px-3 @error('password') is-invalid @enderror" required>
+                                                                    </label>
                                                                     @error('password')
                                                                         <span class="invalid-feedback" role="alert">
                                                                             <strong>{{ $message }}</strong>
                                                                         </span>
                                                                     @enderror
-                                                                <input id="password-confirm" type="password" name="password_confirmation" placeholder="ยืนยันรหัสผ่าน" class="input-update" required>
+                                                                    <label class="bgInput field-wrap">
+                                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">ยืนยันรหัสผ่าน</label> <br>
+                                                                        <input id="password-confirm" type="password" name="password_confirmation" class="input-login px-3" required>
+                                                                    </label>
                                                                 <div class="input-group col-lg-6 mb-1">
                                                                     <div class="input-group-prepend">
                                                                         <span id="MESSAGE"></span>
@@ -197,6 +212,20 @@
 @endsection
 
 @section('script')
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{ asset('dist/js/popper.min.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.countdown.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('dist/js/aos.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.sticky.js') }}"></script>
+<script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('dist/js/main.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
+
 <script>
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();

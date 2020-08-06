@@ -120,7 +120,7 @@ box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.42);
 .font_navbar{
   color: #fff;
   font-size: 25px;
-
+  
 }
 
 
@@ -146,7 +146,7 @@ box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.42);
 .sign_in a{
   color: #fff;
   background-color: none;
-
+ 
 }
 
 .sign_in a:hover{
@@ -283,7 +283,7 @@ box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.42);
           visibility: visible;
           opacity: 1; }
 
-
+          
 .site-mobile-menu {
   width: 300px;
   position: fixed;
@@ -879,7 +879,7 @@ overflow: hidden;
   background-color: #17202c;
   color: #fff;
   font-family: myfont;
-  font-size: 1.3em;
+  font-size: 1em;
   width: 10%;
   line-height: 80%;
 }
@@ -889,7 +889,7 @@ overflow: hidden;
   background-color: #fff;
   color: #000;
   font-family: myfont1;
-  font-size: 1.3em;
+  font-size: 1em;
   border-bottom: #dddddd solid 1px;
 }
 
@@ -1060,7 +1060,7 @@ overflow: hidden;
   border: 1px solid #17202c;
   background: #17202c;
   width: 100px;
-
+  
   cursor: pointer;
 }
 .file::-webkit-file-upload-button:hover{
@@ -1246,14 +1246,14 @@ input[type='file']:focus{
 /* width */
 ::-webkit-scrollbar {
   width: 6px;
-
+  
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   background: #141621; 
 }
-
+ 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #adadad;
@@ -1586,7 +1586,7 @@ input[type='file']:focus{
 .imgteaser a {
   text-decoration: none;
   float: left;
-
+  
 }
 /* ถ้าไม่ใส่ cursor: pointer ไป ตอนแสดงใน ie6 caption จะหน่วงนิดนึง*/
 .imgteaser a:hover {
@@ -1614,7 +1614,7 @@ input[type='file']:focus{
   opacity: 80%;
   border: #ce0005 3px solid;
 }
-
+ 
 /* ตัว strong ใน caption กำหนดให้ใหญ่กว่าปกติหน่อย เพื่อความสวยงาม*/
 .imgteaser a:hover .desc strong {
   display: block;
@@ -1687,7 +1687,7 @@ input[type='file']:focus{
 .imgteaser2 a {
   text-decoration: none;
   float: left;
-
+  
 }
 /* ถ้าไม่ใส่ cursor: pointer ไป ตอนแสดงใน ie6 caption จะหน่วงนิดนึง*/
 .imgteaser2 a:hover {
@@ -1715,7 +1715,7 @@ input[type='file']:focus{
   opacity: 80%;
   border: #ce0005 3px solid;
 }
-
+ 
 /* ตัว strong ใน caption กำหนดให้ใหญ่กว่าปกติหน่อย เพื่อความสวยงาม*/
 .imgteaser2 a:hover .desc2 strong {
   display: block;
@@ -1795,7 +1795,7 @@ input[type='file']:focus{
   width: 30px;
   height: 30px;
   padding: 3px 0px 0px 0px;
-
+  
 }
 .down3{ 
   position: absolute;
@@ -1805,7 +1805,7 @@ input[type='file']:focus{
   width: 30px;
   height: 30px;
   padding: 3px 0px 0px 0px;
-
+  
 }
 
 input[type='image']:focus{
@@ -2523,7 +2523,7 @@ body {
   width: 40%;
   height: auto;
 } 
-
+ 
 .img_login{
   width: 80%;
   height: auto;
@@ -3027,7 +3027,7 @@ margin: 30px auto;
   position: relative;
   display: inline-block;
   padding-left: 5px;
-
+  
 }
 
 .checkbox2 label::before,
@@ -3074,7 +3074,7 @@ margin: 30px auto;
   position: relative;
   display: inline-block;
   padding-left: 5px;
-
+  
 }
 
 .checkbox-wh label::before,
@@ -3244,7 +3244,7 @@ margin: 30px auto;
 }
 
 .sidebar_bg{
-
+  
   height: 100%;
   background-color: #17202c;
 }
@@ -3408,7 +3408,7 @@ margin: 30px auto;
 .font-profile1{
   object-fit: contain;
   font-family:myfont;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 300;
   font-stretch: normal;
   font-style: normal;
@@ -3627,7 +3627,7 @@ input.date{
 }
 .font-game-shelf{
   font-family: myfont1;
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -3657,7 +3657,7 @@ input.date{
   border: solid 2px #17202c;
   color: #17202c;
   font-family: myfont;
-  font-size: 1em;
+  font-size: 0.9em;
   background-color: #fff;
 }
 
@@ -4013,11 +4013,11 @@ input[type="checkbox"].switch_1{
 	-webkit-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
   }
-
+  
   input[type="checkbox"].switch_1:checked{
 	background: #4bd964;
   }
-
+  
   input[type="checkbox"].switch_1:after{
 	position: absolute;
 	content: "";
@@ -4033,11 +4033,11 @@ input[type="checkbox"].switch_1{
 	-webkit-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
   }
-
+  
   input[type="checkbox"].switch_1:checked:after{
 	left: calc(100% - 1em);
   }
-
+	
 /* Switch 1 Specific Style End */
 
 #partitioned {
@@ -4187,7 +4187,7 @@ input[type="checkbox"].switch_1{
   /* font-size: 200px; */
   direction: ltr;
   cursor: pointer;
-
+  
 }
 
 .thumb {
@@ -4205,7 +4205,7 @@ ul.thumb-Images li {
   vertical-align: top;
   border-radius: 8px;
   /* background-color: #ce0005; */
-
+  
 }
 
 .img-close{
@@ -4274,6 +4274,7 @@ ul.thumb-Images li {
 }
 .search_btn2:focus{
   background-color: #fff!important;
+  outline: none;
 }
 
 .inputWithIcon2{
@@ -4288,13 +4289,13 @@ ul.thumb-Images li {
 
 .topnav2 a{
   font-family: myfont1;
-  font-size: 1.3em;
+  font-size: 1em;
   color: #a8a8a8;
   background-color: #f5f5f5;
   border-bottom: 3px solid #f5f5f5;
   text-align: center;
   height: 44px;
-  padding: 5px 20px 0px 20px;
+  padding: 10px 20px;
 }
 .topnav2 a:hover{
   color: #17202c;
@@ -4820,7 +4821,7 @@ outline: none!important;
 .btn-avatar:focus{
   outline: none!important;
 }
-
+ 
 .minigame-img {
   border-radius: 8px;
   border: solid 1px rgba(255, 255, 255, 0.096);
@@ -4892,7 +4893,7 @@ outline: none!important;
   background-color: #ce0005;
   border-radius: 50px;
   line-height: 0.5;
-
+  
 }
 
 .labelWithImg{
@@ -5637,7 +5638,7 @@ input[type="number"] {
   position: relative;
   display: inline-block;
   padding-left: 5px;
-
+  
 }
 
 .checkbox-wh2 label::before,
@@ -5722,7 +5723,7 @@ input[type=number]
   position: absolute;
   top: 8px;
   left: 75px;
-
+  
 }
 
 .quantity-down {
@@ -5924,6 +5925,7 @@ input[type=number]
   position: absolute;
   top: 8px;
   left: 30px;
+  cursor: pointer;
 }
 
 .font-sim1{
@@ -6016,6 +6018,13 @@ input[type=number]
 .detail-rank{
   font-family: myfont1;
   font-size: 1em;
+  color: #fff;
+  line-height: 1;
+}
+
+.detail-rank2{
+  font-family: myfont1;
+  font-size: 0.9em;
   color: #fff;
   line-height: 1;
 }
@@ -6706,11 +6715,11 @@ input[type="checkbox"].switch_2{
 	-webkit-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
   }
-
+  
   input[type="checkbox"].switch_2:checked{
 	background: #ce0005;
   }
-
+  
   input[type="checkbox"].switch_2:after{
 	position: absolute;
 	content: "";
@@ -6726,11 +6735,11 @@ input[type="checkbox"].switch_2{
 	-webkit-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
   }
-
+  
   input[type="checkbox"].switch_2:checked:after{
 	left: calc(100% - 1em);
   }
-
+	
 /* Switch 2 Specific Style End */
 
 .pViewmore{
@@ -6761,4 +6770,114 @@ input[type="checkbox"].switch_2{
 .menuIcon{
   font-size:1.1em;
   padding:0px 17px 0px 10px;
+}
+
+.simulatorLink{
+  font-family:myfont1;
+  font-size:1em;
+  cursor: pointer;
+}
+
+.simulatorLink.active{
+  color: #0b98ff;
+  text-decoration: underline;
+}
+
+.font-trade-detail{
+  font-family: myfont1;
+  font-size: 0.9em;
+  line-height: 0.8;
+  color:#fff;
+}
+
+.font-trade-detail2{
+  font-family: myfont1;
+  font-size: 0.9em;
+  line-height: 0.8;
+  color:#0ce63e;
+}
+
+.btnBuy{
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 0 12px 0 rgba(255, 255, 255, 0.66);
+    background-color: #ffffff;
+    padding: 10px 40px;
+    cursor: pointer;
+}
+
+.btnSell{
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 0 12px 0 rgba(255, 255, 255, 0.66);
+  background-color: #5bf89d;
+  padding: 10px 40px;
+  cursor: pointer;
+}
+
+.bgPackage{
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.16);
+  width: 100%;
+  height: 400px;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.btnBuyPackage{
+  background-color: #ce0005;
+  border-radius: 6px;
+  padding: 5px 15px 0 15px;
+}
+
+.fontDetailPackage{
+  font-family:myfont1;
+  font-size:0.9em;
+  color:#a8a8a8;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.imgCorrectPackage{
+  width:15px;
+}
+
+.bgMyPackage{
+  background-color: #1f2a37;
+  border-radius: 6px;
+  padding: 10px 20px;
+  height: 120px;
+}
+
+.bgManagePackage{
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 5px 10px 0 10px;
+  margin-top: 10px;
+}
+
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.icon {
+  padding: 10px;
+  background: dodgerblue;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid dodgerblue;
 }

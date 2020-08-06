@@ -817,7 +817,6 @@
                     <div class="col-10 text-center" style="font-family:myfont;font-wieght:bold;font-size:1.2em;color:#000;">iBanking / Mobile Banking</div> 
                     <div class="col-1"></div>
             </div>
-
             <div class="modal-body font-rate-modal">
                 <div class="row px-3">
                     <div class="col-lg-12 pb-1 bg-bank text-center">
@@ -835,7 +834,6 @@
                         <span style="font-family:myfont;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</span>
                     </div>
                 </div>
-
                 <div class="row px-3 mt-3">
                     <div class="col-lg-12 pb-1 bg-bank">
                         <div class="row">
@@ -852,7 +850,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn-submit-modal" >บันทึก</button>
             </div>
@@ -894,12 +891,20 @@
 @endsection
 
 @section('script')
-<!-- <script> 
-$('button').on('click', function(){
-    $('button').removeClass('active');
-    $(this).addClass('active');
-});
-</script> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{ asset('dist/js/popper.min.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.countdown.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('dist/js/aos.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.sticky.js') }}"></script>
+<script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('dist/js/main.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
 <script>
 $(document).ready(function(){
@@ -1041,7 +1046,6 @@ function() {
 
 <script>
     $(document).ready(function(){
-
         // $('#myModalSCB').DataTable({
         //     processing: true,
         //     serverSide: true,
@@ -1049,11 +1053,9 @@ function() {
         //         url: "{{ route('UserTopup') }}",
         //     }
         // });
-
         $('#myModal_SCB').click(function(){
             $('#myModalSCB').modal('show')
         });
-
         $('#qr_scb').on('submit', function(event){
             event.preventDefault();
             if($('#submit').val() == 'submit'){

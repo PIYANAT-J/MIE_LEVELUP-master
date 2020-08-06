@@ -30,13 +30,12 @@ Route::view('/confirm', 'auth.passwords.confirm');
 
 Route::post('/dev_profile/GameImg', 'GameController@saveGameProfile')->name('GameImg');
 
-Route::get('/spon_profile', 'UploadImageProfile@indexSpon')->name('sponProfile');
-Route::get('/sponUpdate_profile', 'UploadImageProfile@updateSpon')->name('SponUpDate');
-Route::post('/sponUpdate_profile/edit', 'UploadImageProfile@saveProfileSpon')->name('SponEditProfile');
+// Route::get('/spon_profile', 'UploadImageProfile@indexSpon')->name('sponProfile');
+// Route::get('/sponUpdate_profile', 'UploadImageProfile@updateSpon')->name('SponUpDate');
 
-Route::get('/change_password', function () {
-    return view('change_password');
-});
+// Route::get('/change_password', function () {
+//     return view('change_password');
+// });
 
 // Route::get('/userKyc', 'KycController@indexUserKyc')->name('userKyc');
 // Route::get('/devKyc', 'KycController@indexDevKyc')->name('devKyc');
@@ -131,4 +130,11 @@ Route::get('/successful_payment', 'UploadImageProfile@SuccessfulPayment')->name(
 //trading
 Route::get('/simulator_trade', 'simulatorTrade\tradeController@SimulatorTrade')->name('SimulatorTrade');
 Route::get('/my_trade', 'simulatorTrade\tradeController@MyTrade')->name('MyTrade');
+Route::get('/my_trade_detail', 'simulatorTrade\tradeController@MyTradeDetail')->name('MyTradeDetail');
 Route::get('/ranking_trade', 'simulatorTrade\tradeController@RankingTrade')->name('RankingTrade');
+Route::get('/real_investors', 'simulatorTrade\tradeController@RealInvestors')->name('RealInvestors');
+
+//sponsor
+Route::get('/sponsor_profile', 'UploadImageProfile@indexSpon')->name('SponsorProfile');
+Route::post('/sponsor_profile/edit', 'UploadImageProfile@saveProfileSpon')->name('SponEditProfile');
+Route::get('/advertising_package', 'UploadImageProfile@AdvertisingPackage')->name('AdvertisingPackage');

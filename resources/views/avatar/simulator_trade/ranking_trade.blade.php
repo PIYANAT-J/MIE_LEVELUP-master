@@ -65,6 +65,15 @@
                                             </div>
                                         </label>
                                     </a>
+
+                                    <a href="/real_investors">
+                                        <label class="bg-simulate py-2 mt-2"> 
+                                            <div class="row">
+                                                <div class="col-lg-9"><label class="pfontSim">นักลงทุนจริง</label></div>
+                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
+                                            </div>
+                                        </label>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -417,12 +426,20 @@
 @endsection
 
 @section('script')
-<!-- <script>
-$('button').on('click', function(){
-    $('button').removeClass('active');
-    $(this).addClass('active');
-});
-</script> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{ asset('dist/js/popper.min.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.countdown.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('dist/js/aos.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.sticky.js') }}"></script>
+<script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('dist/js/main.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
 <script>
 $(document).ready(function(){

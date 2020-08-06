@@ -51,7 +51,7 @@
                     @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
                         <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
                     @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวต้นแล้ว</span>
+                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวตนแล้ว</span>
                     @else
                         <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
                     @endif
@@ -86,7 +86,7 @@
                                                 <div class="col-12">
                                                     <div class="box mr-2">
                                                         <input type="file" name="GAME_FILE" id="file-2" class="inputfile inputfile-2" data-multiple-caption="{count} files selected" accept=".zip" require>
-                                                        <label for="file-2"><span>+ อัพโหลดไฟล์เกม</span></label>
+                                                        <label for="file-2" style="font-size:1em;"><span>+ อัพโหลดไฟล์เกม</span></label>
                                                     </div>
                                                     <label class="label2 ml-">ต้องเป็นไฟล์ .zip เท่านั้น</label>
                                                 </div>
@@ -206,7 +206,7 @@
                                 <div class="row ">
                                     <div class="col-lg-12">
                                         <span class="fileinput-button">
-                                            <span><label id="upload" style="cursor:pointer;" class="font-kyc-upload"><img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />อัพโหลดรูปภาพ</label></span>
+                                            <span><label id="upload" style="cursor:pointer;font-size:1em;" class="font-kyc-upload"><img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />อัพโหลดรูปภาพ</label></span>
                                             <input type="file" name="GAME_IMG_NAME[]" id="files" multiple accept="image/*"><br />
                                         </span></br>
                                         <output id="Filelist"></output>
@@ -236,12 +236,20 @@
 @endsection
 
 @section('script')
-<!-- <script>
-$('button').on('click', function(){
-    $('button').removeClass('active');
-    $(this).addClass('active');
-});
-</script> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{ asset('dist/js/popper.min.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.countdown.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('dist/js/aos.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.sticky.js') }}"></script>
+<script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('dist/js/main.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
 <script>
 $(document).ready(function(){
@@ -300,7 +308,6 @@ $(function () {
 	{
 		var label	 = input.nextElementSibling,
 			labelVal = label.innerHTML;
-
 		input.addEventListener( 'change', function( e )
 		{
 			var fileName = '';
@@ -308,13 +315,11 @@ $(function () {
 				fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
 			else
 				fileName = e.target.value.split( '\\' ).pop();
-
 			if( fileName )
 				label.querySelector( 'span' ).innerHTML = fileName;
 			else
 				label.innerHTML = labelVal;
 		});
-
 		// Firefox bug fix
 		input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
 		input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
@@ -340,55 +345,43 @@ $(function(){
 <script>
 //I added event handler for the file upload control to access the files properties.
 document.addEventListener("DOMContentLoaded", init, false);
-
 //To save an array of attachments
 var AttachmentArray = [];
-
 //counter for attachment array
 var arrCounter = 0;
-
 //to make sure the error message for number of files will be shown only one time.
 var filesCounterAlertStatus = false;
-
 //un ordered list to keep attachments thumbnails
 var ul = document.createElement("ul");
 ul.className = "thumb-Images";
 ul.id = "imgList";
-
 function init() {
   //add javascript handlers for the file upload event
   document
     .querySelector("#files")
     .addEventListener("change", handleFileSelect, false);
 }
-
 //the handler for file upload event
 function handleFileSelect(e) {
   //to make sure the user select file/files
   if (!e.target.files) return;
-
   //To obtaine a File reference
   var files = e.target.files;
-
   // Loop through the FileList and then to render image files as thumbnails.
   for (var i = 0, f; (f = files[i]); i++) {
     //instantiate a FileReader object to read its contents into memory
     var fileReader = new FileReader();
-
     // Closure to capture the file information and apply validation.
     fileReader.onload = (function(readerEvt) {
       return function(e) {
         //Apply the validation rules for attachments upload
         ApplyFileValidationRules(readerEvt);
-
         //Render attachments thumbnails.
         RenderThumbnail(e, readerEvt);
-
         //Fill the array of attachment
         FillAttachmentArray(e, readerEvt);
       };
     })(f);
-
     // Read in the image file as a data URL.
     // readAsDataURL: The result property will contain the file/blob's data encoded as a data URL.
     // More info about Data URI scheme https://en.wikipedia.org/wiki/Data_URI_scheme
@@ -398,7 +391,6 @@ function handleFileSelect(e) {
     .getElementById("files")
     .addEventListener("change", handleFileSelect, false);
 }
-
 //To remove attachment once user click on x button
 jQuery(function($) {
   $("div").on("click", ".img-wrap .close", function() {
@@ -406,7 +398,6 @@ jQuery(function($) {
       .closest(".img-wrap")
       .find("img")
       .data("id");
-
     //to remove the deleted item from array
     var elementPos = AttachmentArray.map(function(x) {
       return x.FileName;
@@ -414,21 +405,18 @@ jQuery(function($) {
     if (elementPos !== -1) {
       AttachmentArray.splice(elementPos, 1);
     }
-
     //to remove image tag
     $(this)
       .parent()
       .find("img")
       .not()
       .remove();
-
     //to remove div tag that contain the image
     $(this)
       .parent()
       .find("div")
       .not()
       .remove();
-
     //to remove div tag that contain caption name
     $(this)
       .parent()
@@ -436,7 +424,6 @@ jQuery(function($) {
       .find("div")
       .not()
       .remove();
-
     //to remove li tag
     var lis = document.querySelectorAll("#imgList li");
     for (var i = 0; (li = lis[i]); i++) {
@@ -446,7 +433,6 @@ jQuery(function($) {
     }
   });
 });
-
 //Apply the validation rules for attachments upload
 function ApplyFileValidationRules(readerEvt) {
   //To check file type according to upload conditions
@@ -459,7 +445,6 @@ function ApplyFileValidationRules(readerEvt) {
     e.preventDefault();
     return;
   }
-
   //To check file Size according to upload conditions
   if (CheckFileSize(readerEvt.size) == false) {
     alert(
@@ -470,7 +455,6 @@ function ApplyFileValidationRules(readerEvt) {
     e.preventDefault();
     return;
   }
-
   //To check files count according to upload conditions
   if (CheckFilesCount(AttachmentArray) == false) {
     if (!filesCounterAlertStatus) {
@@ -483,7 +467,6 @@ function ApplyFileValidationRules(readerEvt) {
     return;
   }
 }
-
 //To check file type according to upload conditions
 function CheckFileType(fileType) {
   if (fileType == "image/jpeg") {
@@ -497,7 +480,6 @@ function CheckFileType(fileType) {
   }
   return true;
 }
-
 //To check file Size according to upload conditions
 function CheckFileSize(fileSize) {
   if (fileSize < 900000) {
@@ -507,7 +489,6 @@ function CheckFileSize(fileSize) {
   }
   return true;
 }
-
 //To check files count according to upload conditions
 function CheckFilesCount(AttachmentArray) {
   //Since AttachmentArray.length return the next available index in the array,
@@ -525,7 +506,6 @@ function CheckFilesCount(AttachmentArray) {
     return true;
   }
 }
-
 //Render attachments thumbnails.
 function RenderThumbnail(e, readerEvt) {
   var li = document.createElement("li");
@@ -540,14 +520,12 @@ function RenderThumbnail(e, readerEvt) {
     readerEvt.name,
     '"/>' + "</div>"
   ].join("");
-
   var div = document.createElement("div");
   div.className = "FileNameCaptionStyle";
   li.appendChild(div);
   div.innerHTML = [readerEvt.name].join("");
   document.getElementById("Filelist").insertBefore(ul, null);
 }
-
 //Fill the array of attachment
 function FillAttachmentArray(e, readerEvt) {
   AttachmentArray[arrCounter] = {
@@ -562,7 +540,6 @@ function FillAttachmentArray(e, readerEvt) {
   };
   arrCounter = arrCounter + 1;
 }
-
 </script>
 
 @endsection

@@ -75,7 +75,7 @@
                                     @if(Auth::user()->users_type == '2')
                                         <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$developer->DEV_IMG) }}" />
                                     @elseif(Auth::user()->users_type == '3')
-                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$spon->GUEST_USERS_IMG) }}" />
+                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$sponsor->SPON_IMG) }}" />
                                     @else
                                         <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$guest_user->GUEST_USERS_IMG) }}" />
                                     @endif
@@ -84,11 +84,13 @@
                                     <ul class="dropdown">
                                         <li class="nav-item">
                                             @if(Auth::user()->users_type == '2')
-                                                <a class="nav-link font_profile" href="{{ route('DevProfile') }}">{{ __('โปรไฟล์_DEV') }}</a>
+                                                <a class="nav-link font_profile" href="{{ route('DevProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @elseif(Auth::user()->users_type == '3')
-                                                <a class="nav-link font_profile" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์_SPON') }}</a>
-                                            @else
-                                                <a class="nav-link font_profile" href="{{ route('UserProfile') }}">{{ __('โปรไฟล์_USER') }}</a>
+                                                <a class="nav-link font_profile" href="{{ route('SponsorProfile') }}">{{ __('โปรไฟล์') }}</a>
+                                            @elseif(Auth::user()->users_type == '1')
+                                                <a class="nav-link font_profile" href="{{ route('UserProfile') }}">{{ __('โปรไฟล์') }}</a>
+                                            @elseif(Auth::user()->users_type == '0')
+                                                <a class="nav-link font_profile" href="{{ route('AdminManagement') }}">{{ __('จัดการผู้ใช้') }}</a>
                                             @endif
                                         </li>
                                         <li class="nav-item font_profile">
@@ -168,7 +170,7 @@
         <script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
         <script src="{{ asset('dist/js/main.js') }}"></script>
         <script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
-        <script src="{{ asset('dist/moment/dist/moment.js') }}"></script>
+        <!-- <script src="{{ asset('dist/moment/dist/moment.js') }}"></script> -->
         <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
         <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
         @yield('script')

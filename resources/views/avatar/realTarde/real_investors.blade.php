@@ -41,7 +41,7 @@
                             <div class="row mt-3">
                                 <div class="col-lg-12" style="padding:0px">
                                     <a href="/simulator_trade">
-                                        <label class="bg-simulate active py-2"> 
+                                        <label class="bg-simulate py-2"> 
                                             <div class="row">
                                                 <div class="col-lg-9"><label class="pfontSim">Simulator Trade</label></div>
                                                 <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
@@ -67,7 +67,7 @@
                                         </label>
                                     </a>
                                     <a href="/real_investors">
-                                        <label class="bg-simulate py-2 mt-2"> 
+                                        <label class="bg-simulate active py-2 mt-2"> 
                                             <div class="row">
                                                 <div class="col-lg-9"><label class="pfontSim">นักลงทุนจริง</label></div>
                                                 <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
@@ -442,39 +442,6 @@ function onRefresh(chart) {
 		});
 	});
 }
-
-function getChartData() {   
-
-$.ajax({
-    url: 'https://dev-api.shrimpy.io/v1/exchanges/kucoin/ticker',
-    type: 'GET',
-    // headers: {
-    //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    // },
-    dataType: 'json',
-    success: function (data) {
-
-    console.log(data);
-        var data = [];
-        var labels = [];
-
-
-
-        for (var i in data) {
-            data.push(data[i].orders_by_user);
-            labels.push(data[i].name);
-
-        }
-
-        renderChart(data, labels);
-    },
-    error: function (data) {
-
-        console.log(data);
-    }
-});
-}
-
 var color = Chart.helpers.color;
 var config = {
 	type: 'line',

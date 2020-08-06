@@ -9,17 +9,17 @@
                 <div class="col-lg-1"></div>
                     <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
                         <div class="row mb-2">
-                            <div class="col-5 text-right pr-2">
+                            <div class="col-4 text-right pr-2">
                                 <img class="sidebar-pic" src="{{asset('dist/images/person_5.jpg') }}" />
                             </div>
-                            <div class="col-7 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1.1em;">{{Auth::user()->name}}-{{Auth::user()->surname}}</b></br>Admin</br>เป็นสมาชิก:{{Auth::user()->created_at}}</span>
+                            <div class="col-8 sidebar_name pt-2">
+                                <span><b style="font-family: myfont;">{{Auth::user()->name}}-{{Auth::user()->surname}}</b></br>Admin</br>เป็นสมาชิก:{{Auth::user()->created_at}}</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-1"></div>
                     <a href="/admin_management" style="width: 100%;"><button class="btn-sidebar "><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>จัดการผู้ดูแลระบบ</button></a>
-                    <button class="btn-sidebar"  data-toggle="collapse" data-target="#demo"><span style="font-family: myfont1;font-size: 20px;padding:0px 11px 0px 5px;">KYC</span>จัดการการยืนยันตัวตน</button>
+                    <button class="btn-sidebar"  data-toggle="collapse" data-target="#demo"><span style="font-family: myfont1;font-size: 1em;padding:0px 11px 0px 5px;">KYC</span>จัดการการยืนยันตัวตน</button>
                         <div id="demo" class="collapse">
                             <a href="/user_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; ผู้ใช้ทั่วไป</button></a>
                             <a href="/develop_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; ผู้พัฒนาระบบ</button></a>
@@ -52,14 +52,14 @@
             <div class="row py-3" style="background-color: #fff;">
                 <div class="col-lg-12">
                     <div class="inputWithIcon2">
-                        <input style="font-family:myfont1;font-size:1.3em" class="search_btn2" type="text" placeholder="ค้นหา" aria-label="Search">
+                        <input style="font-family:myfont1;font-size:1em" class="search_btn2" type="text" placeholder="ค้นหา" aria-label="Search">
                         <i class="icon-search-back" aria-hidden="true" style="font-size:1.1em"></i>
                     </div>
                 </div>
             </div>
 
             <div class="row pb-2 pt-3">
-                <div class="col-lg-9" style="font-family:myfont;color:#000;font-size:1.4em;">การเติมเงินวอลเลต</div>
+                <div class="col-lg-9" style="font-family:myfont;color:#000;font-size:1.2em;">การเติมเงินวอลเลต</div>
                 <div class="col-lg-3">
                     <select class="select3">
                         <option class="option-select-rate">ประเภทผู้ใช้</option>
@@ -475,6 +475,20 @@
 @endsection
 
 @section('script')
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{ asset('dist/js/popper.min.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.countdown.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('dist/js/aos.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.sticky.js') }}"></script>
+<script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('dist/js/main.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
+
 <script>
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();

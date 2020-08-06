@@ -78,7 +78,7 @@
                                     @if(Auth::user()->users_type == '2')
                                         <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$developer->DEV_IMG) }}" />
                                     @elseif(Auth::user()->users_type == '3')
-                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$guest_user->GUEST_USERS_IMG) }}" />
+                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$sponsor->SPON_IMG) }}" />
                                     @elseif(Auth::user()->users_type == '1')
                                         <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$guest_user->GUEST_USERS_IMG) }}" />
                                     @else
@@ -91,7 +91,7 @@
                                             @if(Auth::user()->users_type == '2')
                                                 <a class="nav-link font_profile" href="{{ route('DevProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @elseif(Auth::user()->users_type == '3')
-                                                <a class="nav-link font_profile" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์') }}</a>
+                                                <a class="nav-link font_profile" href="{{ route('SponsorProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @elseif(Auth::user()->users_type == '1')
                                                 <a class="nav-link font_profile" href="{{ route('UserProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @elseif(Auth::user()->users_type == '0')

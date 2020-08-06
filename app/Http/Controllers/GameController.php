@@ -61,7 +61,7 @@ class GameController extends Controller
                                 ->get();
                 return view('welcome', compact('Games', 'Follows', 'GamesNew', 'CDownload', 'Com_count', 'CommentAll', 'developer', 'Gamehot'));
             }elseif(Auth::user()->users_type == '3'){
-                $spon = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->first();
+                $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->first();
                 $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
                 $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
                 $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
@@ -76,7 +76,7 @@ class GameController extends Controller
                                 ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
                                 ->select('games.*', 'comments.RATING')
                                 ->get();
-                return view('welcome', compact('Games', 'Follows', 'GamesNew', 'CDownload', 'Com_count', 'CommentAll', 'Gamehot', 'spon'));
+                return view('welcome', compact('Games', 'Follows', 'GamesNew', 'CDownload', 'Com_count', 'CommentAll', 'Gamehot', 'sponsor'));
             }else{
                 $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
                 $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
@@ -143,8 +143,8 @@ class GameController extends Controller
                 $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
                                 ->groupBy('GAME_ID')
                                 ->get();
-                $spon = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->first();
-                return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'CDownload', 'spon'));
+                $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->first();
+                return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'CDownload', 'sponsor'));
             }else{
                 $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
                 $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
@@ -206,7 +206,7 @@ class GameController extends Controller
                             ->get();
                 $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
                 return view('game.game_detail', compact('Detail', 'FollowDetail', 'Download', 'DownloadAll', 'CommentAll', 'developer'));
-            }else{
+            }elseif(Auth::user()->users_type == 3){
                 $Detail = DB::table('games')->where('GAME_ID', '=', $gameId)
                             ->join('users', 'users.id', '=', 'games.USER_ID')
                             ->select('games.*', 'users.name','surname')
@@ -223,7 +223,8 @@ class GameController extends Controller
                             ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'users.email')
                             ->select('comments.*', 'guest_users.GUEST_USERS_IMG', 'users.name','surname')
                             ->get();
-                return view('game.game_detail', compact('Detail', 'FollowDetail', 'Download', 'DownloadAll', 'CommentAll'));
+                $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->first();
+                return view('game.game_detail', compact('Detail', 'FollowDetail', 'Download', 'DownloadAll', 'CommentAll', 'sponsor'));
             }
         }else{
             $Detail = DB::table('games')->where('GAME_ID', '=', $gameId)
