@@ -277,6 +277,12 @@ class UploadImageProfile extends Controller
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
         return view('advertising_package', compact('sponsor'));
     }
+
+    public function AdvertisingManagement(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('advertising_management', compact('sponsor'));
+    }
+
     public function updateSpon(){
         $sponsor = DB::select('select * from sponsors');
         return view('profile.updateProfile.sponUpdate_profile', ['sponsor'=> $sponsor]);

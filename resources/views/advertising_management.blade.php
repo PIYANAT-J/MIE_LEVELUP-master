@@ -57,13 +57,22 @@
         @foreach($sponsor as $spon)
             @if($spon->USER_EMAIL == Auth::user()->email)
                     <div class="col-lg-9" style="background-color:#f5f5f5;">
-                        <div class="row mt-4" >
+                        <div class="row mt-4">
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-10 ">
+                                <a href="{{ route('AdvertisingPackage') }}"><label class="fontAd1 active">สนับสนุนเงินในเกม</label></a>
+                                <label class="fontAd1"> > </label>
+                                <label class="fontAd1" >จัดการแพ็กเกจ</label>
+                            </div>
+                            <div class="col-lg-1"></div>
+                        </div>
+                        <div class="row" >
                             <div class="col-lg-1"></div>
                             <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
 
                                 <div class="row">
                                     <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                                        <span class="font-profile1">เพคเกจของฉัน</span>
+                                        <span class="font-profile1">เพคเกจของฉัน ></span>
                                     </div>
                                 </div>
 
@@ -78,7 +87,7 @@
                                                 </div>
                                             </div>
                                             <label class="bgManagePackage">
-                                                <a class="linkAd" href="{{ route('AdvertisingManagement') }}"><label style="font-family:myfont1;font-size:0.9em;cursor: pointer;">จัดการแพ็กเกจ</label></a>
+                                                <label style="font-family:myfont1;font-size:0.9em;cursor: pointer;">จัดการแพ็กเกจ</label>
                                             </label>
                                         </label>
 
@@ -91,7 +100,7 @@
                                                 </div>
                                             </div>
                                             <label class="bgManagePackage">
-                                                <a class="linkAd" href="{{ route('AdvertisingManagement') }}"><label style="font-family:myfont1;font-size:0.9em;cursor: pointer;">จัดการแพ็กเกจ</label></a>
+                                                <label style="font-family:myfont1;font-size:0.9em;cursor: pointer;">จัดการแพ็กเกจ</label>
                                             </label>
                                         </label>
                                     </div>

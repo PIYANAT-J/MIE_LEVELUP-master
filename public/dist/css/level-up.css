@@ -6772,6 +6772,10 @@ input[type="checkbox"].switch_2{
   font-size:1.1em;
   padding:0px 17px 0px 10px;
 }
+.menuIcon2{
+  font-size:1em;
+  padding:0px 15px 0px 10px;
+}
 
 .simulatorLink{
   font-family:myfont1;
@@ -6820,16 +6824,16 @@ input[type="checkbox"].switch_2{
   background-color: #ffffff;
   border-radius: 6px;
   box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.16);
-  width: 100%;
-  height: 400px;
+  max-width: 260px;
   padding: 5px;
-  margin-top: 10px;
+  margin: 5px;
 }
 
 .btnBuyPackage{
   background-color: #ce0005;
   border-radius: 6px;
   padding: 5px 15px 0 15px;
+  cursor: pointer;
 }
 
 .fontDetailPackage{
@@ -6840,9 +6844,6 @@ input[type="checkbox"].switch_2{
   word-wrap: break-word;
 }
 
-.imgCorrectPackage{
-  width:15px;
-}
 
 .bgMyPackage{
   background-color: #1f2a37;
@@ -6856,29 +6857,37 @@ input[type="checkbox"].switch_2{
   border-radius: 6px;
   padding: 5px 10px 0 10px;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .input-container {
   display: -ms-flexbox; /* IE10 */
   display: flex;
   width: 100%;
-  margin-bottom: 15px;
 }
 
-.icon {
-  padding: 10px;
-  background: dodgerblue;
-  color: white;
-  min-width: 50px;
+.icon2 {
+  padding: 5px;
+  background: #fff;
+  min-width: 25px;
   text-align: center;
 }
 
 .input-field {
   width: 100%;
-  padding: 10px;
-  outline: none;
+  margin: 3px;
 }
 
-.input-field:focus {
-  border: 2px solid dodgerblue;
+.linkAd{
+  color: #000;
+}
+
+.fontAd1{
+  font-family: myfont1;
+  font-size: 1em;
+}
+
+.fontAd1.active{
+  color: #0061fc;
+  text-decoration:underline;
 }

@@ -160,3 +160,4 @@ Route::get('/real_investors', 'UploadImageProfile@RealInvestors')->name('RealInv
 
 Route::get('/sponsor_profile', 'UploadImageProfile@indexSpon')->name('SponsorProfile');
 Route::get('/advertising_package', 'UploadImageProfile@AdvertisingPackage')->name('AdvertisingPackage');
+Route::get('/advertising_management', 'UploadImageProfile@AdvertisingManagement')->name('AdvertisingManagement');
