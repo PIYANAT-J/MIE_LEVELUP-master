@@ -307,6 +307,12 @@
     </div>
 </div>
 
+<button onclick="getChartData()">
+    <!-- <a href="/simulator_trade"><label class="bg-shop"> -->
+        <div style="font-family:myfont1;font-size:1em;color:#fff;">Simulator Trade</div> 
+    <!-- </label></a> -->
+</button>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-3 bg_avatar3"></div>
@@ -350,6 +356,38 @@ function onRefresh(chart) {
 			y: randomScalingFactor()
 		});
 	});
+}
+
+function getChartData() {   
+
+    $.ajax({
+        url: 'https://dev-api.shrimpy.io/v1/exchanges/kucoin/ticker',
+        type: 'GET',
+        // headers: {
+        //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        // },
+        dataType: 'json',
+        success: function (data) {
+
+        console.log(data);
+            var data = [];
+            var labels = [];
+
+
+
+            for (var i in data) {
+                data.push(data[i].orders_by_user);
+                labels.push(data[i].name);
+
+            }
+
+            renderChart(data, labels);
+        },
+        error: function (data) {
+
+            console.log(data);
+        }
+    });
 }
 
 var color = Chart.helpers.color;

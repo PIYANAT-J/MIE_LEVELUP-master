@@ -160,13 +160,6 @@
                                     @endif
                                 @endif
                             @endif
-                            <!-- <button class="follow-before"><span class="icon-follow_red" style="font-size:16px;margin-right:15px"></span><b class="font_follow-before">ติดตาม</b></button >
-                            
-                            <button class="follow-before mt-1"><span class="icon-icon_download" style="font-size:16px;margin-right:15px"></span><b class="font_follow-before">ดาวน์โหลด</b></button >
-                            <button class="follow-after mt-1"><span class="icon-download_after" style="font-size:16px;margin-right:10px"></span><b class="font_follow-after">ดาวน์โหลดแล้ว</b></button >
-                            <a href="#"><button class="follow-before mt-1"><span class="icon-update_version" style="font-size:16px;margin-right:10px"></span><b class="font_follow-before">อัพเดตเวอร์ชัน</b></button ></a>
-                            <button data-toggle="modal" data-target="#myModal" class="follow-before mt-1"><span class="icon-support" style="font-size:16px;margin-right:15px"></span><b class="font_follow-before">สนับสนุนเกม</b></button >
-                            <button class="follow-after mt-1"><span class="icon-support_after" style="font-size:16px;margin-right:10px"></span><b class="font_follow-after">สนับสนุนแล้ว</b></button > -->
                         @endguest
                     </div>
                 </div>
@@ -210,31 +203,6 @@
             <div class="col-lg-1"></div>
         </div>
     @endforeach
-    <!-- <div class="row">
-        <div class="col-lg-3"></div>
-        <div class="col-lg-6 pl-4">
-            <div class="font_game_name">PlayerUnknown’s Battlegrounds</div>
-            <div class="w-100"></div>
-            <div class="rate_detail">Online • Other</div>
-            <div class="des_detail mb-3">
-            PlayerUnknown’s Battlegrounds (PUBG) is an online multiplayer battle royale game developed and published 
-            by PUBG Corporation, a subsidiary of South Korean video game company Bluehole. The game is based on previous 
-            mods that were created by Brendan “PlayerUnknown” Greene for other games, inspired by the 2000 Japanese film 
-            Battle Royale, and expanded into a standalone game under Greene’s creative direction. In the game, up to one 
-            hundred players parachute onto an island and scavenge for weapons and equipment to kill others while avoiding 
-            getting killed themselves. The available safe area of the game’s map decreases in size over time, directing 
-            surviving players into tighter areas to force encounters. The last player or team standing wins the round.
-            Battlegrounds was first released for Microsoft Windows via Steam’s early access beta program in March 2017, 
-            with a full release in December 2017. The game was also released by Microsoft Studios for the Xbox One via 
-            its Xbox Game Preview program that same month, and officially released in September 2018. A free-to-play 
-            mobile version for Android and iOS was released in 2018, in addition to a port for the PlayStation 4. 
-            A version for the Stadia streaming platform was released in April 2020. Battlegrounds is one of 
-            the best-selling and most-played video games of all time. By 2019, the PC and console versions of the game 
-            have sold over 60 million copies, in addition to PUBG Mobile having crossed 600 million downloads.
-            </div>
-        </div>
-        <div class="col-lg-3"></div>
-    </div> -->
 
     <div class="row pt-4" style="background-color: #141621;">
         <div class="col-lg-3"></div>
@@ -274,18 +242,33 @@
     <div class="row pt-3" style="background-color: #141621;">
         <div class="col-lg-3"></div>
             <div id="filters" class="filters button-group col-lg-6">
-                <!-- <button class="totalComment fontTotalComment active" data-filter="*"> ทั้งหมด (123)</button>
-                <button class="Comment fontComment" data-filter=".FI"> 5 ดาว (100)</button>
-                <button class="Comment fontComment" data-filter=".FO"> 4 ดาว (20)</button>
-                <button class="Comment fontComment" data-filter=".TE"> 3 ดาว (2)</button>
-                <button class="Comment fontComment" data-filter=".TO"> 2 ดาว (1)</button>
-                <button class="Comment fontComment" data-filter=".ON"> 1 ดาว (0)</button> -->
-                <button class="totalComment fontTotalComment active" onclick="filterSelection('all')"> ทั้งหมด (1230)</button>
-                <button class="Comment fontComment" onclick="filterSelection('FI')"> 5 ดาว (100)</button>
-                <button class="Comment fontComment" onclick="filterSelection('FO')"> 4 ดาว (20)</button>
-                <button class="Comment fontComment" onclick="filterSelection('TE')"> 3 ดาว (2)</button>
-                <button class="Comment fontComment" onclick="filterSelection('TO')"> 2 ดาว (1)</button>
-                <button class="Comment fontComment" onclick="filterSelection('ON')"> 1 ดาว (0)</button>
+                <button class="totalComment fontTotalComment active" onclick="filterSelection('all')"> ทั้งหมด ({{$CommentAll->count()}})</button>
+                <?php
+                    $FI = 0;
+                    $FO = 0;
+                    $TE = 0;
+                    $TO = 0;
+                    $ON = 0;
+                
+                foreach($CommentAll as $countCom){
+                    if($countCom->RATING == 5){
+                        $FI = $FI+1;
+                    }elseif($countCom->RATING == 4){
+                        $FO = $FO+1;
+                    }elseif($countCom->RATING == 3){
+                        $TE = $TE+1;
+                    }elseif($countCom->RATING == 2){
+                        $TO = $TO+1;
+                    }else{
+                        $ON = $ON+1;
+                    }
+                }
+                ?>
+                <button class="Comment fontComment" onclick="filterSelection('FI')"> 5 ดาว ({{$FI}})</button>
+                <button class="Comment fontComment" onclick="filterSelection('FO')"> 4 ดาว ({{$FO}})</button>
+                <button class="Comment fontComment" onclick="filterSelection('TE')"> 3 ดาว ({{$TE}})</button>
+                <button class="Comment fontComment" onclick="filterSelection('TO')"> 2 ดาว ({{$TO}})</button>
+                <button class="Comment fontComment" onclick="filterSelection('ON')"> 1 ดาว ({{$ON}})</button>
             </div>
         </div>
     </div>
@@ -395,21 +378,6 @@
                         </div>
                     </div>
                     @endif
-                    <!-- <div class="row mt-2 rate_bottom">
-                        <div class="col-2 text-center">
-                            <img class="imgComment" src="{{ asset('home/imgProfile/'.$commentAll->GUEST_USERS_IMG) }}"/>
-                        </div>
-                        <div class="col-8 commenter">{{ $commentAll->name }}.{{ $commentAll->surname }}</br>
-                            @for($i=1;$i <= 5 ;$i++)
-                                @if($i <= $commentAll->RATING)
-                                    <span style="font-size: 15px;" class="fa fa-star checked"></span>
-                                @else
-                                    <span style="font-size: 15px;" class="fa fa-star"></span>
-                                @endif
-                            @endfor
-                        </div> 
-                        <div class="row commentDetail ml-3 my-3">{{ $commentAll->COMMENT }}</div>
-                    </div> -->
                 @endforeach
             @endif
         </div>
