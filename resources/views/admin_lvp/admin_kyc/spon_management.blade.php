@@ -9,17 +9,17 @@
                 <div class="col-lg-1"></div>
                     <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
                         <div class="row mb-2">
-                            <div class="col-5 text-right pr-2">
+                            <div class="col-4 text-right pr-2">
                                 <img class="sidebar-pic" src="{{asset('dist/images/person_5.jpg') }}" />
                             </div>
-                            <div class="col-7 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1.1em;">{{Auth::user()->name}}-{{Auth::user()->surname}}</b></br>Admin</br>เป็นสมาชิก:{{Auth::user()->created_at}}</span>
+                            <div class="col-8 sidebar_name pt-2">
+                                <span><b style="font-family: myfont;">{{Auth::user()->name}}-{{Auth::user()->surname}}</b></br>Admin</br>เป็นสมาชิก:{{Auth::user()->created_at}}</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-1"></div>
                     <a href="/admin_management" style="width: 100%;"><button class="btn-sidebar "><i class="icon-profile" style="font-size:0.85em;padding:0px 17px 0px 10px;"></i>จัดการผู้ดูแลระบบ</button></a>
-                    <button class="btn-sidebar active"  data-toggle="collapse" data-target="#demo"><span style="font-family: myfont1;font-size: 20px;padding:0px 11px 0px 5px;">KYC</span>จัดการการยืนยันตัวตน</button>
+                    <button class="btn-sidebar active"  data-toggle="collapse" data-target="#demo"><span style="font-family: myfont1;font-size: 1em;padding:0px 11px 0px 5px;">KYC</span>จัดการการยืนยันตัวตน</button>
                         <div id="demo" class="collapse">
                             <a href="/user_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; ผู้ใช้ทั่วไป</button></a>
                             <a href="/develop_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; ผู้พัฒนาระบบ</button></a>
@@ -53,13 +53,13 @@
                     <div class="col-lg-12">
                         <div class="inputWithIcon2">
                             <input style="font-family:myfont1;font-size:1.3em" class="search_btn2" type="text" placeholder="ค้นหา" aria-label="Search">
-                            <i class="icon-search-back" aria-hidden="true" style="font-size:1.1em"></i>
+                            <i class="icon-search-back" aria-hidden="true" style="font-size:1em"></i>
                         </div>
                     </div>
                 </div>
 
                 <div class="row pb-2 pt-3">
-                    <div class="col-lg-9" style="font-family:myfont;color:#000;font-size:1.4em;">ข้อมูลสมาชิกผู้ใช้ทั่วไป</div>
+                    <div class="col-lg-9" style="font-family:myfont;color:#000;font-size:1.2em;">ข้อมูลสมาชิกผู้สนับสนุน</div>
                 </div>
                 
                 <div class="row">
@@ -83,7 +83,7 @@
                                             <div class="col-1 py-3 th1">#</div>
                                             <div class="col-2 py-3 th1 text-left">ชื่อ-นามสกุล</div>
                                             <div class="col-2 py-3 th1 text-left">อีเมล</div>
-                                            <div class="col-2 py-3 th1">สถานะ (ยืนยันตัวตน)</div>
+                                            <div class="col-2 py-3 th1">สถานะ</div>
                                             <div class="col-1 py-3 th1">ผู้อนุมัติ</div>
                                             <div class="col-2 py-3 th1">วันที่ยืนยัน</div>
                                             <div class="col-2 py-3 th1">ว้นที่อนุมัติ</div>
@@ -123,7 +123,7 @@
                                             <div class="col-1 py-3 th1">#</div>
                                             <div class="col-2 py-3 th1 text-left">ชื่อ-นามสกุล</div>
                                             <div class="col-2 py-3 th1 text-left">อีเมล</div>
-                                            <div class="col-2 py-3 th1">สถานะ (ยืนยันตัวตน)</div>
+                                            <div class="col-2 py-3 th1">สถานะ</div>
                                             <div class="col-1 py-3 th1">ผู้อนุมัติ</div>
                                             <div class="col-2 py-3 th1">วันที่ยืนยัน</div>
                                             <div class="col-2 py-3 th1">ว้นที่อนุมัติ</div>
@@ -156,7 +156,7 @@
                                             <div class="col-1 py-3 th1">#</div>
                                             <div class="col-2 py-3 th1 text-left">ชื่อ-นามสกุล</div>
                                             <div class="col-2 py-3 th1 text-left">อีเมล</div>
-                                            <div class="col-2 py-3 th1">สถานะ (ยืนยันตัวตน)</div>
+                                            <div class="col-2 py-3 th1">สถานะ</div>
                                             <div class="col-1 py-3 th1">ผู้อนุมัติ</div>
                                             <div class="col-2 py-3 th1">วันที่ยืนยัน</div>
                                             <div class="col-2 py-3 th1">ว้นที่อนุมัติ</div>
@@ -189,7 +189,7 @@
                                             <div class="col-1 py-3 th1">#</div>
                                             <div class="col-2 py-3 th1 text-left">ชื่อ-นามสกุล</div>
                                             <div class="col-2 py-3 th1 text-left">อีเมล</div>
-                                            <div class="col-2 py-3 th1">สถานะ (ยืนยันตัวตน)</div>
+                                            <div class="col-2 py-3 th1">สถานะ</div>
                                             <div class="col-1 py-3 th1">ผู้อนุมัติ</div>
                                             <div class="col-2 py-3 th1">วันที่ยืนยัน</div>
                                             <div class="col-2 py-3 th1">ว้นที่อนุมัติ</div>

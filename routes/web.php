@@ -154,4 +154,9 @@ Route::get('/payment_confirmation', 'UploadImageProfile@PaymentConfirmation')->n
 Route::get('/successful_payment', 'UploadImageProfile@SuccessfulPayment')->name('SuccessfulPayment');
 Route::get('/simulator_trade', 'UploadImageProfile@SimulatorTrade')->name('SimulatorTrade');
 Route::get('/my_trade', 'UploadImageProfile@MyTrade')->name('MyTrade');
+Route::get('/my_trade_detail', 'UploadImageProfile@MyTradeDetail')->name('MyTradeDetail');
 Route::get('/ranking_trade', 'UploadImageProfile@RankingTrade')->name('RankingTrade');
+Route::get('/real_investors', 'UploadImageProfile@RealInvestors')->name('RealInvestors');
+
+Route::get('/sponsor_profile', 'UploadImageProfile@indexSpon')->name('SponsorProfile');
+Route::get('/advertising_package', 'UploadImageProfile@AdvertisingPackage')->name('AdvertisingPackage');

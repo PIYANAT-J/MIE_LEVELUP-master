@@ -143,3 +143,8 @@
   content: "\e91c";
   color: #d50000;
 }
+
+.icon-money:before {
+  content: "\e91d";
+  color: #fff;
+}

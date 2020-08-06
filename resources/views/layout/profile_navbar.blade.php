@@ -76,7 +76,9 @@
                                             <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" />
                                         @endforeach
                                     @elseif(Auth::user()->users_type == '3')
-                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
+                                        @foreach($sponsor as $spon)
+                                            <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$spon->SPON_IMG) }}" />
+                                        @endforeach
                                     @else
                                         @foreach($guest_user as $USER)
                                             <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
@@ -89,7 +91,7 @@
                                             @if(Auth::user()->users_type == '2')
                                                 <a class="nav-link font_profile" href="{{ route('DevProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @elseif(Auth::user()->users_type == '3')
-                                                <a class="nav-link font_profile" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์') }}</a>
+                                                <a class="nav-link font_profile" href="{{ route('SponsorProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @else
                                                 <a class="nav-link font_profile" href="{{ route('UserProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @endif
@@ -157,9 +159,10 @@
             </div>
         </footer>   -->
     
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        
         <script src="{{ asset('dist/js/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('dist/js/jquery-ui.js') }}"></script>
+        <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="{{ asset('dist/js/popper.min.js') }}"></script>
         <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
@@ -173,7 +176,7 @@
         <script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
         <script src="{{ asset('dist/moment/dist/moment.js') }}"></script>
         <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
-        <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+        <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script> -->
         @yield('script')
     </body>
 </html>

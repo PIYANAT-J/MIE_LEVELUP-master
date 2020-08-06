@@ -336,7 +336,7 @@
                                                 </div>
                                             </div>
 
-                                            <div id="four1">
+                                            <div id="third1">
                                                 <div class="row my-3 fade-in">
                                                     <div class="col-lg-5">
                                                         <div class="row" style="border-right:1px solid #455160;">
@@ -398,6 +398,72 @@
                                                                     8. ใส่จำนวนเงิน <br>
                                                                     9. กด “จ่ายบิล” <br> 
                                                                     10. ตรวจสอบความถูกต้อง และกด “ยืนยัน” <br>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="four1">
+                                                <div class="row my-3 fade-in">
+                                                    <div class="col-lg-5">
+                                                        <div class="row" style="border-right:1px solid #455160;">
+                                                            <div class="col-lg-12">
+                                                                <label style="font-family:myfont;font-size:1.2em;color:#fff;">บัญชี</label>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="checkbox01 ">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12 mb-2">
+                                                                            <input type="radio" name="bank" value="bank01" id="bank01">
+                                                                            <label for="bank01"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
+                                                                            <span class="ml-2" style="font-family:myfont1;color:#fff;font-size:1em;">ธนาคารกรุงเทพ</span>
+                                                                        </div>
+                                                                        <div class="col-lg-12 mb-2">
+                                                                            <input type="radio" name="bank" value="bank02" id="bank02">
+                                                                            <label for="bank02"><img src="{{asset('home/logo/ktc.svg')}}" ></label>
+                                                                            <span class="ml-2" style="font-family:myfont1;color:#fff;font-size:1em;">ธนาคารกรุงไทย</span>
+                                                                        </div>
+                                                                        <div class="col-lg-12 mb-2">
+                                                                            <input type="radio" name="bank" value="bank03" id="bank03">
+                                                                            <label for="bank03"><img src="{{asset('home/logo/kbank.svg')}}" ></label>
+                                                                            <span class="ml-2" style="font-family:myfont1;color:#fff;font-size:1em;">ธนาคารกสิกรไทย</span>
+                                                                        </div>
+                                                                        <div class="col-lg-12 mb-2">
+                                                                            <input type="radio" name="bank" value="bank02" id="bank04">
+                                                                            <label for="bank04"><img src="{{asset('home/logo/scb.svg')}}" ></label>
+                                                                            <span class="ml-2" style="font-family:myfont1;color:#fff;font-size:1em;">ธนาคารไทยพาณิชย์</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 mt-2">
+                                                                <label style="font-family:myfont;font-size:1.2em;color:#fff;">คูปอง / ส่วนลดของฉัน</label>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="input-group mb-3">
+                                                                    <input class="input-payment3" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text select-code" id="basic-addon2" data-toggle="modal" data-target="#code">เลือกโค้ดส่วนลด</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-7">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <label style="font-size:1.2em;color:#ffffff;">ชำระเงินอย่างไร</label> <br>
+                                                                <label style="font-family:myfont1;font-size:0.9em;color:#ffffff;">
+                                                                1. เลือกจ่ายบิล / ชำระค่าบริการ <br>
+                                                                2. เลือกอื่นๆ > รหัสบริษัท > ระบุรหัสบริษัท > ออมทรัพย์<br>
+                                                                3. ใส่รหัสบริษัท 12345<br>
+                                                                4. ระบุหมายเลขอ้างอิงการชำระเงินสำหรับ “REF1”<br>
+                                                                5. ระบุหมายเลขโทรศัพท์มือถือ สำหรับ “REF2”<br>
+                                                                6. ระบุยอดเงิน<br>
+                                                                7. หมายเหตุ : ค่าธรรมเนียมขึ้นกับธนาคา หรือ ผู้ให้บริการ<br>
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -877,6 +943,21 @@
 @endsection
 
 @section('script')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{ asset('dist/js/popper.min.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.countdown.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('dist/js/aos.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.sticky.js') }}"></script>
+<script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('dist/js/main.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+
 <script>
 const myFunction = () => {
   document.getElementById("first").style.display ='block';
@@ -884,6 +965,7 @@ const myFunction = () => {
   document.getElementById("second").style.display ='none'
   document.getElementById("second1").style.display ='none'
   document.getElementById("third").style.display ='none'
+  document.getElementById("third1").style.display ='none'
   document.getElementById("four").style.display ='none'
   document.getElementById("four1").style.display ='none'
 }
@@ -894,6 +976,7 @@ const myFunction2 = () => {
   document.getElementById("second").style.display ='block'
   document.getElementById("second1").style.display ='block'
   document.getElementById("third").style.display ='none'
+  document.getElementById("third1").style.display ='none'
   document.getElementById("four").style.display ='none'
   document.getElementById("four1").style.display ='none'
 }
@@ -904,6 +987,7 @@ const myFunction3 = () => {
   document.getElementById("second").style.display ='none'
   document.getElementById("second1").style.display ='none'
   document.getElementById("third").style.display ='block'
+  document.getElementById("third1").style.display ='block'
   document.getElementById("four").style.display ='none'
   document.getElementById("four1").style.display ='none'
 }
@@ -914,6 +998,7 @@ const myFunction4 = () => {
   document.getElementById("second").style.display ='none'
   document.getElementById("second1").style.display ='none'
   document.getElementById("third").style.display ='none'
+  document.getElementById("third1").style.display ='none'
   document.getElementById("four").style.display ='block'
   document.getElementById("four1").style.display ='block'
 }

@@ -22,7 +22,6 @@
         <link rel="stylesheet" href="{{ asset('icon/font_lvp.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap-select/dist/css/bootstrap-select.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap-select/dist/css/bootstrap-select.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('chart.js-2.9.3/dist/Chart.css') }}">
         
     </head>
 
@@ -163,9 +162,9 @@
             </div>
         </footer>   -->
     
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="{{ asset('dist/js/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('dist/js/jquery-ui.js') }}"></script>
+        <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="{{ asset('dist/js/popper.min.js') }}"></script>
         <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
@@ -183,7 +182,7 @@
         <script src="{{ asset('chart.js-2.9.3/dist/Chart.js') }}"></script>
         <script src="{{ asset('chart.js-2.9.3/dist/Chart.min.js') }}"></script>
         <script src="{{ asset('chartjs-plugin-streaming-1.8.0/dist/chartjs-plugin-streaming.js') }}"></script>
-        <script src="{{ asset('chartjs-plugin-streaming-1.8.0/dist/chartjs-plugin-streaming.min.js') }}"></script>
+        <script src="{{ asset('chartjs-plugin-streaming-1.8.0/dist/chartjs-plugin-streaming.min.js') }}"></script> -->
         @yield('script')
     </body>
 </html>

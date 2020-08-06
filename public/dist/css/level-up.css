@@ -880,7 +880,7 @@ overflow: hidden;
   background-color: #17202c;
   color: #fff;
   font-family: myfont;
-  font-size: 1.3em;
+  font-size: 1em;
   width: 10%;
   line-height: 80%;
 }
@@ -890,7 +890,7 @@ overflow: hidden;
   background-color: #fff;
   color: #000;
   font-family: myfont1;
-  font-size: 1.3em;
+  font-size: 1em;
   border-bottom: #dddddd solid 1px;
 }
 
@@ -3409,7 +3409,7 @@ margin: 30px auto;
 .font-profile1{
   object-fit: contain;
   font-family:myfont;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 300;
   font-stretch: normal;
   font-style: normal;
@@ -3628,7 +3628,7 @@ input.date{
 }
 .font-game-shelf{
   font-family: myfont1;
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -3658,7 +3658,7 @@ input.date{
   border: solid 2px #17202c;
   color: #17202c;
   font-family: myfont;
-  font-size: 1em;
+  font-size: 0.9em;
   background-color: #fff;
 }
 
@@ -4275,6 +4275,7 @@ ul.thumb-Images li {
 }
 .search_btn2:focus{
   background-color: #fff!important;
+  outline: none;
 }
 
 .inputWithIcon2{
@@ -4289,13 +4290,13 @@ ul.thumb-Images li {
 
 .topnav2 a{
   font-family: myfont1;
-  font-size: 1.3em;
+  font-size: 1em;
   color: #a8a8a8;
   background-color: #f5f5f5;
   border-bottom: 3px solid #f5f5f5;
   text-align: center;
   height: 44px;
-  padding: 5px 20px 0px 20px;
+  padding: 10px 20px;
 }
 .topnav2 a:hover{
   color: #17202c;
@@ -5925,6 +5926,7 @@ input[type=number]
   position: absolute;
   top: 8px;
   left: 30px;
+  cursor: pointer;
 }
 
 .font-sim1{
@@ -6017,6 +6019,13 @@ input[type=number]
 .detail-rank{
   font-family: myfont1;
   font-size: 1em;
+  color: #fff;
+  line-height: 1;
+}
+
+.detail-rank2{
+  font-family: myfont1;
+  font-size: 0.9em;
   color: #fff;
   line-height: 1;
 }
@@ -6762,4 +6771,81 @@ input[type="checkbox"].switch_2{
 .menuIcon{
   font-size:1.1em;
   padding:0px 17px 0px 10px;
+}
+
+.simulatorLink{
+  font-family:myfont1;
+  font-size:1em;
+  cursor: pointer;
+}
+
+.simulatorLink.active{
+  color: #0b98ff;
+  text-decoration: underline;
+}
+
+.font-trade-detail{
+  font-family: myfont1;
+  font-size: 0.9em;
+  line-height: 0.8;
+  color:#fff;
+}
+
+.font-trade-detail2{
+  font-family: myfont1;
+  font-size: 0.9em;
+  line-height: 0.8;
+  color:#0ce63e;
+}
+
+.btnBuy{
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 0 12px 0 rgba(255, 255, 255, 0.66);
+    background-color: #ffffff;
+    padding: 10px 40px;
+    cursor: pointer;
+}
+
+.btnSell{
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 0 12px 0 rgba(255, 255, 255, 0.66);
+  background-color: #5bf89d;
+  padding: 10px 40px;
+  cursor: pointer;
+}
+
+.bgPackage{
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.16);
+  width: 100%;
+  height: 400px;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.btnBuyPackage{
+  background-color: #ce0005;
+  border-radius: 6px;
+  padding: 5px 15px 0 15px;
+}
+
+.fontDetailPackage{
+  font-family:myfont1;
+  font-size:0.9em;
+  color:#a8a8a8;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.imgCorrectPackage{
+  width:15px;
+}
+
+.bgMyPackage{
+  background-color: #1f2a37;
+  border-radius: 6px;
+  padding: 10px 20px;
 }

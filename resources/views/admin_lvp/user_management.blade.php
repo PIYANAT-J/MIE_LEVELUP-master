@@ -175,12 +175,12 @@
 @endsection
 
 @section('script')
-    <script>
-        $('#password, #password-confirm').on('keyup', function () {
-            if ($('#password').val() == $('#password-confirm').val()) {
-                $('#MESSAGE').html('Password Matching !').css('color', 'green');
-            } else 
-                $('#MESSAGE').html('Password does not match !').css('color', 'red');
-        });
-    </script>
+<script>
+    $('#password, #password-confirm').on('keyup', function () {
+        if ($('#password').val() == $('#password-confirm').val()) {
+            $('#MESSAGE').html('Password Matching !').css('color', 'green');
+        } else 
+            $('#MESSAGE').html('Password does not match !').css('color', 'red');
+    });
+</script>
 @endsection

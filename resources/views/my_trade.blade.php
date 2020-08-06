@@ -65,6 +65,15 @@
                                             </div>
                                         </label>
                                     </a>
+
+                                    <a href="/real_investors">
+                                        <label class="bg-simulate py-2 mt-2"> 
+                                            <div class="row">
+                                                <div class="col-lg-9"><label class="pfontSim">นักลงทุนจริง</label></div>
+                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
+                                            </div>
+                                        </label>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +133,7 @@
 
                                                 <div class="row mx-2 ">
                                                     <div class="col-lg-4">
-                                                        <a href="#"><label class="detailTable my-2" style="cursor:pointer;">RS</label></a>
+                                                        <a href="my_trade_detail"><label class="detailTable my-2" style="cursor:pointer;">RS</label></a>
                                                     </div>
                                                     <div class="col-lg-2">
                                                         <label class="detail-rank my-2">10,300</label>
@@ -324,7 +333,7 @@
 
                                             <div class="row pr-5">
                                                 <div class="col-lg-12 mt-2">
-                                                    <a href="shop"><label class="btn-buyItem2">ดูทั้งหมด</label></a>
+                                                    <a href="/ranking_trade"><label class="btn-buyItem2">ดูทั้งหมด</label></a>
                                                 </div>
                                             </div>
                                         </div>
