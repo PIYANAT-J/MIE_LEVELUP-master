@@ -70,13 +70,29 @@
                                 <div class="row mt-3">
                                     <div class="col-lg-12">
                                         <label class="bgMyPackage">
-                                                <div class="row">
-                                                <div class="col-lg-12 mt-2">
+                                            <div class="row">
+                                                <div class="col-lg-12 mt-2" style="line-height:0.7;">
                                                     <label style="font-family:myfont;font-size:1.3em;color:#ffffff;">฿900.00</label>
                                                     <label style="font-family:myfont1;font-size:0.9em;color:#ffffff;">/ เดือน</label> <br>
                                                     <label style="font-family:myfont1;font-size:0.9em;color:#23c197;">หมดอายุ : 25/05/20</label>
                                                 </div>
                                             </div>
+                                            <label class="bgManagePackage">
+                                                <label style="font-family:myfont1;font-size:0.9em;">จัดการแพ็กเกจ</label>
+                                            </label>
+                                        </label>
+
+                                        <label class="bgMyPackage">
+                                            <div class="row">
+                                                <div class="col-lg-12 mt-2" style="line-height:0.7;">
+                                                    <label style="font-family:myfont;font-size:1.3em;color:#ffffff;">฿1,200.00</label>
+                                                    <label style="font-family:myfont1;font-size:0.9em;color:#ffffff;">/ เดือน</label> <br>
+                                                    <label style="font-family:myfont1;font-size:0.9em;color:#23c197;">หมดอายุ : 25/05/20</label>
+                                                </div>
+                                            </div>
+                                            <label class="bgManagePackage">
+                                                <label style="font-family:myfont1;font-size:0.9em;">จัดการแพ็กเกจ</label>
+                                            </label>
                                         </label>
                                     </div>
                                 </div>
@@ -121,6 +137,11 @@
                                                             <img class="imgCorrectPackage" src="{{asset('icon/correct-green.svg') }}">
                                                             เลือกสนุบสนุนเกมได้ทั้งหมด 20 เกม/เดือน
                                                         </p>
+
+                                                        <div class="input-container">
+                                                            <i class="fa fa-user icon"></i>
+                                                            <input class="input-field" type="text" placeholder="Username" name="usrnm">
+                                                        </div>
                                                         <p style="margin:5px;">
                                                             <img class="imgCorrectPackage" src="{{asset('icon/correct-green.svg') }}">
                                                             สามารถเลือกเรทเกมได้ทุกชนิด
