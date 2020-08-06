@@ -51,7 +51,7 @@
                     @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
                         <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
                     @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวต้นแล้ว</span>
+                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวตนแล้ว</span>
                     @else
                         <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
                     @endif
@@ -86,7 +86,7 @@
                                                 <div class="col-12">
                                                     <div class="box mr-2">
                                                         <input type="file" name="GAME_FILE" id="file-2" class="inputfile inputfile-2" data-multiple-caption="{count} files selected" accept=".zip" require>
-                                                        <label for="file-2"><span>+ อัพโหลดไฟล์เกม</span></label>
+                                                        <label for="file-2" style="font-size:1em;"><span>+ อัพโหลดไฟล์เกม</span></label>
                                                     </div>
                                                     <label class="label2 ml-">ต้องเป็นไฟล์ .zip เท่านั้น</label>
                                                 </div>
@@ -206,7 +206,7 @@
                                 <div class="row ">
                                     <div class="col-lg-12">
                                         <span class="fileinput-button">
-                                            <span><label id="upload" style="cursor:pointer;" class="font-kyc-upload"><img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />อัพโหลดรูปภาพ</label></span>
+                                            <span><label id="upload" style="cursor:pointer;font-size:1em;" class="font-kyc-upload"><img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />อัพโหลดรูปภาพ</label></span>
                                             <input type="file" name="GAME_IMG_NAME[]" id="files" multiple accept="image/*"><br />
                                         </span></br>
                                         <output id="Filelist"></output>
@@ -236,12 +236,20 @@
 @endsection
 
 @section('script')
-<!-- <script>
-$('button').on('click', function(){
-    $('button').removeClass('active');
-    $(this).addClass('active');
-});
-</script> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{ asset('dist/js/popper.min.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.countdown.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('dist/js/aos.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.sticky.js') }}"></script>
+<script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('dist/js/main.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
 <script>
 $(document).ready(function(){

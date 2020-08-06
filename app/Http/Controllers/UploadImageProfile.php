@@ -224,6 +224,19 @@ class UploadImageProfile extends Controller
         }
     }
 
+    public function MyTradeDetail(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('my_trade_detail', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('my_trade_detail', compact('guest_user', 'userKyc'));
+        }
+    }
+
     public function RankingTrade(){
         $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
         if($gameShalf->count() == 0){
@@ -237,14 +250,32 @@ class UploadImageProfile extends Controller
         }
     }
 
+    public function RealInvestors(){
+        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
+        if($gameShalf->count() == 0){
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('real_investors', compact('guest_user', 'userKyc'));
+        }else{
+            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            return view('real_investors', compact('guest_user', 'userKyc'));
+        }
+    }
+
     // public function updateGuest_user(){
     //     $guest_user = DB::select('select * from guest_users');
     //     return view('profile.updateProfile.userUpdate_profile', ['guest_user'=> $guest_user]);
     // }
 
     public function indexSpon(){
-        $sponsor = DB::select('select * from sponsors');
-        return view('profile.spon_profile', ['sponsor'=> $sponsor]);
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.sponsor_profile', compact('sponsor'));
+    }
+
+    public function AdvertisingPackage(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('advertising_package', compact('sponsor'));
     }
     public function updateSpon(){
         $sponsor = DB::select('select * from sponsors');

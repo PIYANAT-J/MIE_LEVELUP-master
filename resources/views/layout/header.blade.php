@@ -28,9 +28,9 @@
      
         @yield('content')
         
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="{{ asset('dist/js/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('dist/js/jquery-ui.js') }}"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="{{ asset('dist/js/popper.min.js') }}"></script>
         <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
@@ -42,7 +42,7 @@
         <script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
         <script src="{{ asset('dist/js/main.js') }}"></script>
         <script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
-        <script src="{{ asset('dist/moment/dist/moment.js') }}"></script>
+        <!-- <script src="{{ asset('dist/moment/dist/moment.js') }}"></script> -->
         @yield('script')
     </body>
 </html>

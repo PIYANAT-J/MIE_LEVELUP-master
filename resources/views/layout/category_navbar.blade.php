@@ -174,7 +174,7 @@
         <script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
         <script src="{{ asset('dist/js/main.js') }}"></script>
         <script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
-        <script src="{{ asset('dist/moment/dist/moment.js') }}"></script>
+        <!-- <script src="{{ asset('dist/moment/dist/moment.js') }}"></script> -->
         <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
         <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
         @yield('script')

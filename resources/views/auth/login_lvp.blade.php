@@ -125,8 +125,6 @@
 @endsection
 
 @section('script')
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
 @if( Session::has('email'))
     <script type="text/javascript">
         $(document).ready(function() {

@@ -49,7 +49,7 @@
                     @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
                         <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
                     @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวต้นแล้ว</span>
+                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวตนแล้ว</span>
                     @else
                         <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
                     @endif
@@ -75,7 +75,7 @@
                         <div class="col-lg-12">
                             <div class="row mt-2 ">
                                 <div class="col-lg-12" >
-                                    <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1.2em;color:#000;">
+                                    <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1em;color:#000;">
                                         <div class="col-5">ชื่อเกม</div>
                                         <div class="col-3 text-center ">จำนวนดาวน์โหลด</div>
                                         <div class="col-2 text-center ">วันที่อัพเดต</div>
@@ -159,15 +159,15 @@
                                                                 <div class="col-4"><img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" /></div>
                                                                 <div class="col-8 font-game-shelf">
                                                                     <div>
-                                                                        <span style="font-family:myfont;color:#000;">{{ $Game->GAME_NAME }}</span>
+                                                                        <span style="font-family:myfont;color:#000;font-size:1em;">{{ $Game->GAME_NAME }}</span>
                                                                         @if($Game->GAME_STATUS == 'รออนุมัติ')
-                                                                            <label class="ml-2 px-1" style="color:#000;font-size:0.9em;background-color: #ffd629;border-radius: 6px;">รออนุมัติ</label></br>
+                                                                            <label class="ml-2 px-1" style="color:#000;font-size:0.7em;background-color: #ffd629;border-radius: 6px;">รออนุมัติ</label></br>
                                                                         @elseif($Game->GAME_STATUS == 'อนุมัติ')
-                                                                            <label class="ml-2 px-1" style="color:#fff;font-size:0.9em;background-color: #23c197;border-radius: 6px;">อนุมัติ</label></br>
+                                                                            <label class="ml-2 px-1" style="color:#fff;font-size:0.7em;background-color: #23c197;border-radius: 6px;">อนุมัติ</label></br>
                                                                         @else
-                                                                            <label class="ml-2 px-1" style="color:#fff;font-size:0.9em;background-color: #ce0005;border-radius: 6px;">ไม่อนุมัติ</label></br>
+                                                                            <label class="ml-2 px-1" style="color:#fff;font-size:0.7em;background-color: #ce0005;border-radius: 6px;">ไม่อนุมัติ</label></br>
                                                                         @endif
-                                                                        {{ $Game->RATED_B_L }} • Other</br>เวอร์ชั่น 1.03
+                                                                        <label style="font-size:0.8em;">{{ $Game->RATED_B_L }} • Other</br>เวอร์ชั่น 1.03</label>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -188,7 +188,7 @@
                                                             </span>
                                                         </div>
                                                         <div class="col-2 text-center">
-                                                            <span class="font-game-shelf">
+                                                            <span class="font-game-shelf2" style="font-size:0.7em;font-family:myfont1;color: #a8a8a8;">
                                                                 @if($Game->GAME_EDIT_DATE == null)
                                                                     {{ $Game->GAME_DATE }}
                                                                 @else
@@ -297,12 +297,20 @@
 @endsection
 
 @section('script')
-<!-- <script>
-$('button').on('click', function(){
-    $('button').removeClass('active');
-    $(this).addClass('active');
-});
-</script> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{ asset('dist/js/popper.min.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.countdown.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('dist/js/aos.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.sticky.js') }}"></script>
+<script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('dist/js/main.js') }}"></script>
+<script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
+<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
 <script>
 $(document).ready(function(){
