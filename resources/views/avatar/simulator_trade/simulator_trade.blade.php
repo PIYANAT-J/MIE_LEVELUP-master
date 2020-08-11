@@ -132,7 +132,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row px-4">
-                                                    <div class="col-6 " style="border-bottom:1px solid #373a41;padding-left:0;"><label style="font-family:myfont;font-size:1.5em;color:#fff;line-height:0;">SET</label></div>
+                                                    <div class="col-6 " style="border-bottom:1px solid #373a41;padding-left:0;"><label style="font-family:myfont;font-size:1.5em;color:#fff;line-height:0;">SET : {{$trade1->name}}</label></div>
                                                     <div class="col-6 text-right" style="border-bottom:1px solid #373a41;padding-right:0;"><label style="font-family:myfont;font-size:1.5em;color:#0ce63e;line-height:0;"> <img style="width:10px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}">1,444.63 (+5.97%)</label></div>
                                                     <!-- <div class="col-6 text-right" style="border-bottom:1px solid #373a41;padding-right:0;"><label style="font-family:myfont;font-size:1.5em;color:#ce0005;line-height:0;"><img style="width:10px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}">1,444.63 (+5.97%)</label></div> -->
                                                 </div>
@@ -152,9 +152,9 @@
                                                     </div>
                                                 </div>
 
-                                                <canvas class="pr-2" id="myChart" height="150"></canvas>
+                                                <!-- <canvas class="pr-2" id="myChart" height="150"></canvas> -->
+                                                <div id="myChart" style="height:500px;"></div>
                                             </div>
-                                            
                                         </div>
                                     </div>
                                     <div class="row mt-4 mb-3">
@@ -424,8 +424,11 @@
 <script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+<script src="{{ asset('dist/js/simulator_trade.js') }}"></script>
     
-<script>
+<!-- <script>
 var chartColors = {
     red: 'rgb(206, 0, 5)',
     white: 'rgb(255, 255, 255)',
@@ -443,59 +446,18 @@ function onRefresh(chart) {
 	});
 }
 
-function getChartData() {   
-
-$.ajax({
-    url: 'https://dev-api.shrimpy.io/v1/exchanges/kucoin/ticker',
-    type: 'GET',
-    // headers: {
-    //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    // },
-    dataType: 'json',
-    success: function (data) {
-
-    console.log(data);
-        var data = [];
-        var labels = [];
-
-
-
-        for (var i in data) {
-            data.push(data[i].orders_by_user);
-            labels.push(data[i].name);
-
-        }
-
-        renderChart(data, labels);
-    },
-    error: function (data) {
-
-        console.log(data);
-    }
-});
-}
-
 var color = Chart.helpers.color;
 var config = {
 	type: 'line',
 	data: {
 		datasets: [{
-			label: 'Dataset 1',
+			label: '{{$trade1->name}}',
 			backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
 			borderColor: chartColors.red,
             borderWidth: 1,
 			fill: false,
 			lineTension: 0,
 			// borderDash: [8, 4],
-			data: []
-		}, {
-			label: 'Dataset 2',
-			backgroundColor: color(chartColors.white).alpha(0.5).rgbString(),
-			borderColor: chartColors.white,
-            borderWidth: 1,
-			fill: false,
-            lineTension: 0,
-			// cubicInterpolationMode: 'monotone',
 			data: []
 		}]
 	},
@@ -566,5 +528,5 @@ document.getElementById('addData').addEventListener('click', function() {
 	onRefresh(window.myChart);
 	window.myChart.update();
 });
-</script>
+</script> -->
 @endsection

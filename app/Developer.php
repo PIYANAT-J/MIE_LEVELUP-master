@@ -10,24 +10,6 @@ use App\Kyc;
 
 class Developer extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'DEV_TEL', 
-        'DEV_ID_CARD', 
-        'DEV_IMG', 
-        'DEV_BIRTHDAY', 
-        'DEV_AGE', 
-        'DEV_GENDER', 
-        'DEV_ADDRESS', 
-        'ZIPCODE_ID', 
-        'USER_ID', 
-        'USER_EMAIL',
-    ];
-
     // public static function getuserData($DEV_ID = 0){
 
     //     if($DEV_ID == 0){
@@ -65,12 +47,6 @@ class Developer extends Model
         $value = DB::table('developers')->where('USER_EMAIL', $data['USER_EMAIL'])->get();
         if($value->count() == 0){
             DB::table('developers')->insert($data);
-
-            // DB::table('users')
-            //     ->where('email', $data['USER_EMAIL'])
-            //     ->update(['updateData'=> true]);
-
-            // $kyc = array('USER_ID' => $data['USER_ID'], 'USER_EMAIL' => $data['USER_EMAIL']);
             DB::table('kycs')->insert($data);
             return 1;
         }else{

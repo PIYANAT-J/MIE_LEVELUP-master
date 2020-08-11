@@ -42,7 +42,7 @@
                         </div>
                     @endforeach
                 <div class="col-lg-1"></div>
-                <a href="{{ route('DevProfile') }}" style="width: 100%;"><button class="btn-sidebar active"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว </button></a>
+                <a href="{{ route('SponsorProfile') }}" style="width: 100%;"><button class="btn-sidebar active"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว </button></a>
                 <a href="{{ route('AdvertisingPackage') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-money menuIcon"></i>สนับสนุนเงินในเกม</button></a>
                 <a href="{{ route('DevHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-product menuIcon"></i>สนับสนุนสินค้าในเกม</button></a>
                 <a href="{{ route('DevShelf') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
@@ -60,7 +60,7 @@
                         <div class="row mt-4" >
                             <div class="col-lg-1"></div>
                             <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-                                <form action="{{ route('DevEditProfile') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('SponEditProfile') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
@@ -75,8 +75,8 @@
                                             <div class="row">
                                                 <div class="col-lg-12 line1 mt-2" >
                                                     <label class="bgInput field-wrap">
-                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขผู้เสียภาษีอาการ</label> <br>
-                                                        <input name="taxID" class="input-login px-3" ></input>
+                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขผู้เสียภาษีอากร</label> <br>
+                                                        <input name="taxID" class="input-login px-3" value="{{ $spon->taxID ?? old('taxID') }}"></input>
                                                     </label>
                                                     <label class="bgInput field-wrap">
                                                         <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อ</label> <br>
@@ -94,9 +94,9 @@
                                                     @enderror
                                                     <label class="bgInput field-wrap">
                                                         <label class="fontHeadInput px-3 py-2" style="padding:0;">ที่อยู่</label> <br>
-                                                        <input name="address" class="input-login px-3"></input>
+                                                        <input name="SPON_ADDRESS" class="input-login px-3 " value="{{ $spon->SPON_ADDRESS ?? old('SPON_ADDRESS') }}"></input>
                                                     </label>
-                                                    @error('address')
+                                                    @error('SPON_ADDRESS')
                                                         <span class="text-danger font-error">กรุณากรอกที่อยู่</span>
                                                     @enderror
                                                     <div class="row">
@@ -104,32 +104,7 @@
                                                             <div class="">
                                                                 <label class="bgInput field-wrap">
                                                                     <label class="fontHeadInput px-3" style="padding:0;">จังหวัด</label>
-                                                                    <select class="selectProvince" required="true" type="text" name="text4">
-                                                                        <option value="">ดึงจาก DB</option>
-                                                                        <option value="">ดึงจาก DB</option>
-                                                                        <option value="">ดึงจาก DB</option>
-                                                                        <option value="">ดึงจาก DB</option>
-                                                                    </select>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <label class="bgInput field-wrap">
-                                                                <label class="fontHeadInput px-3">รหัสไปรษณีย์</label><br>
-                                                                    <input class="text-box px-3" style="padding-top:12px;" required="true" type="text" name="zipcode">
-                                                                    <!-- <select class="selectProvince" required="true" type="text" name="text4">
-                                                                        <option value="">ดึงจาก DB</option>
-                                                                        <option value="">ดึงจาก DB</option>
-                                                                        <option value="">ดึงจาก DB</option>
-                                                                        <option value="">ดึงจาก DB</option>
-                                                                    </select> -->
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="">
-                                                                <label class="bgInput field-wrap">
-                                                                    <label class="fontHeadInput px-3" style="padding:0;">ตำบล</label>
-                                                                    <select class="selectProvince" required="true" type="text" name="text4">
+                                                                    <select class="selectProvince" type="text" name="text4">
                                                                         <option value="">ดึงจาก DB</option>
                                                                         <option value="">ดึงจาก DB</option>
                                                                         <option value="">ดึงจาก DB</option>
@@ -141,12 +116,37 @@
                                                         <div class="col-lg-6">
                                                             <label class="bgInput field-wrap">
                                                                 <label class="fontHeadInput px-3">อำเภอ</label><br>
-                                                                    <select class="selectProvince" required="true" type="text" name="text4">
+                                                                    <select class="selectProvince" type="text" name="text4">
                                                                         <option value="">ดึงจาก DB</option>
                                                                         <option value="">ดึงจาก DB</option>
                                                                         <option value="">ดึงจาก DB</option>
                                                                         <option value="">ดึงจาก DB</option>
                                                                     </select>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="">
+                                                                <label class="bgInput field-wrap">
+                                                                    <label class="fontHeadInput px-3" style="padding:0;">ตำบล</label>
+                                                                    <select class="selectProvince" type="text" name="text4">
+                                                                        <option value="">ดึงจาก DB</option>
+                                                                        <option value="">ดึงจาก DB</option>
+                                                                        <option value="">ดึงจาก DB</option>
+                                                                        <option value="">ดึงจาก DB</option>
+                                                                    </select>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <label class="bgInput field-wrap">
+                                                                <label class="fontHeadInput px-3">รหัสไปรษณีย์</label><br>
+                                                                    <input class="text-box px-3" style="padding-top:12px;" type="text" name="ZIPCODE_ID" value="{{ $spon->ZIPCODE_ID ?? old('ZIPCODE_ID') }}">
+                                                                    <!-- <select class="selectProvince" required="true" type="text" name="text4">
+                                                                        <option value="">ดึงจาก DB</option>
+                                                                        <option value="">ดึงจาก DB</option>
+                                                                        <option value="">ดึงจาก DB</option>
+                                                                        <option value="">ดึงจาก DB</option>
+                                                                    </select> -->
                                                             </label>
                                                         </div>
                                                     </div>
