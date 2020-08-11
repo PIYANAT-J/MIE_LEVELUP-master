@@ -137,4 +137,10 @@ Route::get('/real_investors', 'simulatorTrade\tradeController@RealInvestors')->n
 //sponsor
 Route::get('/sponsor_profile', 'UploadImageProfile@indexSpon')->name('SponsorProfile');
 Route::post('/sponsor_profile/edit', 'UploadImageProfile@saveProfileSpon')->name('SponEditProfile');
-Route::get('/advertising_package', 'UploadImageProfile@AdvertisingPackage')->name('AdvertisingPackage');
+Route::get('/advt_package', 'UploadImageProfile@AdvtPackage')->name('AdvtPackage');
+Route::get('/advt_management', 'UploadImageProfile@AdvtManagement')->name('AdvtManagement');
+Route::get('/advt_add_game', 'UploadImageProfile@AdvtAddGame')->name('AdvtAddGame');
+Route::get('/product_support', 'UploadImageProfile@ProductSupport')->name('ProductSupport');
+Route::get('/product_support_select', 'UploadImageProfile@ProductSupportSelect')->name('ProductSupportSelect');
+Route::get('/sponlvp_shelf', 'UploadImageProfile@SponShelf')->name('SponShelf');
+Route::get('/spon_shopping_cart', 'UploadImageProfile@SponShoppingCart')->name('SponShoppingCart');

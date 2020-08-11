@@ -166,6 +166,7 @@ box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.42);
   color: #ce0005;
   text-align: center;
 }
+
 .sign_up:hover{
   width: 97px;
   height: 43px;
@@ -1213,7 +1214,8 @@ p {
 .label2{
   color: #a8a8a8;
   font-size: 1em;
-  font-family: myfont;
+  font-family: myfont1;
+  padding-top: 0;
 }
 
 /*input style*/
@@ -2403,20 +2405,17 @@ body {
 }
 
 .img-modal{
-  width: 100px;
-  height: 100px;
+  width: 6em;
+  height: 6em;
   border-radius: 8px;
-  overflow: hidden;
+  object-fit: cover;
+  border: 1px solid #000;
 }
 .font-gamename-modal {
-  object-fit: contain;
-  font-family: myfont;
-  font-size: 21px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+  font-family: myfont1;
+  font-size: 1em;
+  font-weight: 800;
   line-height: 1.43;
-  letter-spacing: normal;
   text-align: left;
 }
 
@@ -2479,7 +2478,8 @@ body {
   height: 50px;
   background-color: #17202c;
   color: #fff;
-  font-family: myfont;
+  font-family: myfont1;
+  font-weight: 800;
   font-size: 1em;
   border-radius: 8px;
   border: none;
@@ -2652,6 +2652,16 @@ body {
   padding-bottom: 10px;
   padding-top: 3px;
 }
+
+.fontTypeGamePackage {
+  font-family: myfont1;
+  font-size:0.9em;
+  text-align: left;
+  color: #000;
+  padding-bottom: 10px;
+  padding-top: 3px;
+}
+
 .font-remember2 {
   font-family: myfont;
   font-size:1em;
@@ -3002,9 +3012,6 @@ margin: 30px auto;
   padding-left: 18px;
 }
 .input-name-reg:hover{
-}
-.input-name-reg:active{
-  outline: none!important;
 }
 .input-name-reg:focus{
   outline: none!important;
@@ -3407,9 +3414,9 @@ margin: 30px auto;
 
 .font-profile1{
   object-fit: contain;
-  font-family:myfont;
+  font-family:myfont1;
   font-size: 1em;
-  font-weight: 300;
+  font-weight: 800;
   font-stretch: normal;
   font-style: normal;
   line-height: 10%;
@@ -3518,9 +3525,9 @@ input.date{
 }
 .des-profile-pic{
   object-fit: contain;
-  font-family: myfont;
-  font-size: 1em;
-  font-weight: normal;
+  font-family: myfont1;
+  font-size: 0.8em;
+  font-weight: 800;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.06;
@@ -3631,7 +3638,7 @@ input.date{
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 120%;
+  line-height: 1.2;
   letter-spacing: normal;
   text-align: left;
   color: #a8a8a8;
@@ -6771,6 +6778,10 @@ input[type="checkbox"].switch_2{
   font-size:1.1em;
   padding:0px 17px 0px 10px;
 }
+.menuIcon2{
+  font-size:1em;
+  padding:0px 15px 0px 10px;
+}
 
 .simulatorLink{
   font-family:myfont1;
@@ -6819,16 +6830,16 @@ input[type="checkbox"].switch_2{
   background-color: #ffffff;
   border-radius: 6px;
   box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.16);
-  width: 100%;
-  height: 400px;
+  max-width: 260px;
   padding: 5px;
-  margin-top: 10px;
+  margin: 5px;
 }
 
 .btnBuyPackage{
   background-color: #ce0005;
   border-radius: 6px;
   padding: 5px 15px 0 15px;
+  cursor: pointer;
 }
 
 .fontDetailPackage{
@@ -6839,15 +6850,17 @@ input[type="checkbox"].switch_2{
   word-wrap: break-word;
 }
 
-.imgCorrectPackage{
-  width:15px;
-}
 
 .bgMyPackage{
   background-color: #1f2a37;
   border-radius: 6px;
   padding: 10px 20px;
-  height: 120px;
+}
+.bgMyPackage2{
+  background-color: #1f2a37;
+  border-radius: 6px;
+  padding: 10px 20px;
+  width: 100%;
 }
 
 .bgManagePackage{
@@ -6855,29 +6868,459 @@ input[type="checkbox"].switch_2{
   border-radius: 6px;
   padding: 5px 10px 0 10px;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .input-container {
   display: -ms-flexbox; /* IE10 */
   display: flex;
   width: 100%;
-  margin-bottom: 15px;
 }
 
-.icon {
-  padding: 10px;
-  background: dodgerblue;
-  color: white;
-  min-width: 50px;
+.icon2 {
+  padding: 5px;
+  background: #fff;
+  min-width: 25px;
   text-align: center;
 }
 
 .input-field {
   width: 100%;
-  padding: 10px;
+  margin: 3px;
+}
+.input-field2 {
+  width: 100%;
+  margin: 3px;
+  font-family: myfont1;
+}
+
+.linkAd{
+  color: #000;
+  cursor: pointer;
+}
+
+.fontAd1{
+  font-family: myfont1;
+  font-weight: 600;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.fontAd1.active{
+  color: #0061fc;
+  text-decoration:underline;
+}
+
+.addGamePackage{
+  font-family: myfont1;
+  font-size: 1em;
+  color: #ffffff;
+  background-color: #ce0005;
+  border-radius: 6px;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.DetailGamePackage{
+  height: 5em;
+  width:11em;
+  border-radius: 6px;
+  font-family: myfont1;
+  font-size: 1em;
+  color: #a8a8a8;
+  line-height: 1.2;
+}
+
+.ImgGamePackage{
+  height: 5em;
+  width: 5em;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.TimeGamePackage{
+  font-family: myfont1;
+  font-size: 0.9em;
+  background-color: #ffffff;
+  border: 1px solid #000;
+  border-radius: 6px;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.rowGamePackage{
+  height: 350px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.typeGamePackage{
+  background-color: #fff;
+  border: 1px solid #ce0005;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-family: myfont1;
+  font-weight: 1em;
+  color: #ce0005;
+  cursor: pointer;
+}
+.typeGamePackage:focus{
+  color: #ffffff;
+  background-color: #ce0005;
   outline: none;
 }
 
-.input-field:focus {
-  border: 2px solid dodgerblue;
+.bgGameSpon{
+  background-color: #c9c9c9;
+  width: 140px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
 }
+
+.custom-check { margin:0; }
+
+/* VISUALLY HIDE THE ORIGINAL CHECKBOX/RADIOBUTTON */
+.custom-check input[type=checkbox] {
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    margin: -1px;
+    clip: rect(0,0,0,0);
+    overflow: hidden;
+    position: absolute;
+}
+
+.custom-check-elem, .custom-check-label {
+    cursor: pointer;
+    vertical-align: middle;
+    color: #ffffff;
+}
+
+/* CUSTOM CHECKBOX */
+.custom-check-elem { 
+    /* display: inline-block; */
+    /* position: relative; */
+    position: absolute;
+    margin-right: 4px;
+    border-radius: 6px;
+    width: 140px;
+    height: 200px;
+}
+
+/* CUSTOM CHECKBOX*/
+.custom-check-elem:before {
+    content: "\2713";
+    display: none;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 25px;
+    height: 25px;
+    background-color: #23c197;
+    border-radius: 50%;
+    font-family: myfont;
+    font-size: 1em;
+    line-height: 1.5;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* PSEUDO ELMENT CONTENT FOR CHECKED STATE */
+.custom-check-input:checked + .custom-check-elem:before,
+.custom-radio-input:checked + .custom-radio-elem:before { display: block; }
+/* IE8: needs js-fallback for :checked, don't mix selectors! */
+.custom-check-input.checked + .custom-check-elem:before,
+.custom-radio-input.checked + .custom-radio-elem:before { display: block; }
+
+
+.custom-check2 { margin:0; cursor: default; }
+
+/* VISUALLY HIDE THE ORIGINAL CHECKBOX/RADIOBUTTON */
+.custom-check2 input[type=checkbox] {
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    margin: -1px;
+    clip: rect(0,0,0,0);
+    overflow: hidden;
+    position: absolute;
+    cursor: default;
+}
+
+.custom-check-label2 {
+    cursor: pointer;
+    vertical-align: middle;
+    color: #ffffff;
+    cursor: default;
+    opacity: 55%;
+}
+
+/* CUSTOM CHECKBOX */
+.custom-check-elem2 { 
+    /* display: inline-block; */
+    /* position: relative; */
+    position: absolute;
+    z-index: 5;
+    margin-right: 4px;
+    border-radius: 6px;
+    width: 140px;
+    height: 200px;
+    cursor: default;
+}
+
+/* CUSTOM CHECKBOX*/
+.custom-check-elem2:before {
+    content: "\2713";
+    color: #fff;
+    display: none;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 25px;
+    height: 25px;
+    background-color: #a8a8a8;
+    border-radius: 50%;
+    font-family: myfont;
+    font-size: 1em;
+    line-height: 1.5;
+    font-weight: bold;
+    text-align: center;
+    cursor: default;
+}
+
+/* PSEUDO ELMENT CONTENT FOR CHECKED STATE */
+.custom-check-input2:checked + .custom-check-elem2:before,
+.custom-radio-input2:checked + .custom-radio-elem2:before { display: block; }
+/* IE8: needs js-fallback for :checked, don't mix selectors! */
+.custom-check-input2.checked + .custom-check-elem2:before,
+.custom-radio-input2.checked + .custom-radio-elem2:before { display: block; }
+
+.rowGamePackage2{
+  height:850px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+/* checkbox-dark */
+.checkbox-dark input[type="checkbox"] {
+  opacity: 0;
+}
+
+.checkbox-dark label {
+  position: relative;
+  display: inline-block;
+  padding-left: 5px;
+  
+}
+
+.checkbox-dark label::before,
+.checkbox-dark label::after {
+  position: absolute;
+  content: "";
+  display: inline-block;
+}
+
+.checkbox-dark label::before{
+  height: 16px;
+  width: 16px;
+  border: 1px solid #000;
+  left: -15px;
+  border-radius: 4px;
+  top: 12px;
+  margin-right: 10px;
+}
+
+.checkbox-dark label::after {
+  height: 5px;
+  width: 9px;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+  color: #000;
+  transform: rotate(-45deg);
+  left: -11px;
+  top: 16px;
+}
+
+.checkbox-dark input[type="checkbox"] + label::after {
+  content: none;
+}
+
+.checkbox-dark input[type="checkbox"]:checked + label::after {
+  content: "";
+}
+.selectAll{
+  background-color: #f2f2f2;
+  padding-right: 10px;
+  border-radius: 6px;
+}
+
+.selectAll2{
+  background-color: #1f2a37;
+  padding-right: 10px;
+  border-radius: 6px;
+  color: #ffffff;
+}
+.fontAddGame{
+  padding: 8px 20px;
+  font-family: myfont1;
+  font-size: 1em;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+
+/* img hover1 */
+.containerhover1 {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top; 
+  border: 2px solid #fff;
+  position: relative;
+  background-color: #000;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.imagehover1 {
+  opacity: 1;
+  display: block;
+  transition: .5s ease;
+  height: 5em;
+  width: 5em;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.middlehover1 {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.containerhover1:hover .image
+ {
+  opacity: 0.3;
+}
+
+.containerhover1:hover .middlehover1 {
+  opacity: 1;
+}
+
+.texthover1 {
+  color: white;
+  font-size: 0.9em;
+  font-family: myfont1;
+  font-weight: 600;
+  cursor: pointer;
+}
+/* img hover end */
+
+/* img hover2 */
+.containerhover2 {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top; 
+  border: 2px solid #fff;
+  position: relative;
+  background-color: #000;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.imagehover2 {
+  opacity: 1;
+  display: block;
+  transition: .5s ease;
+  height: 4.5em;
+  width: 4.5em;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.middlehover2 {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.containerhover2:hover .imagehover2 {
+  opacity: 0.3;
+}
+
+.containerhover2:hover .middlehover2 {
+  opacity: 1;
+}
+
+.texthover1 {
+  color: white;
+  font-size: 0.9em;
+  font-family: myfont1;
+  font-weight: 600;
+  cursor: pointer;
+}
+/* img hover2 end */
+
+.font-exd{
+  color:#ce0005;
+  font-family:myfont1;
+  font-size:0.7em;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+}
+
+.plabelimg{
+  display: inline-block;
+  vertical-align: top; 
+  position: relative;
+}
+.labelimg{
+  width: 5.5em;
+  height: 5.5em;
+  border: 1px solid #000;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.labelFont{
+  font-family: myfont1;
+  font-size: 1em;
+  color: #000;
+  line-height: 0.8;
+  display: inline-block;
+  vertical-align: top; 
+  position: relative;
+  text-align: left;
+}
+  
+.bglabelFont{
+  background: #ffffff;
+  height: 5.5em;
+  border-radius: 6px;
+  border: none;
+}
+
+

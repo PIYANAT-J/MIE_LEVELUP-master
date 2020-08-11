@@ -1,6 +1,8 @@
 @extends('layout.detail_navbar')
 
 @section('style')
+
+
 <style>
     .filterDiv {
     /* float: left; */
@@ -22,6 +24,8 @@
     margin-top: 20px;
     overflow: hidden;
     } */
+
+    
 </style>
 @endsection
 
@@ -672,30 +676,55 @@
     </div>
 
     <div class="modal fade mymodal" id="myModal" role="dialog">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" style="color: #000;">กรุณาเลือกช่วงเวลาในการสนับสนุน</h4>
+                    <h4 class="modal-title" style="font-family:myfont1;font-weight:900;font-size:1.2em;">กรุณาเลือกช่วงเวลาในการสนับสนุน</h4>
                     <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
                 </div>
 
                 <div class="modal-body">
                     <div class="containner-fluid">
                         <div class="row">
-                            <div class="col-sm-2">
-                                <img class="img-modal" src="{{asset('section/picture_game/game2.png') }}" />
+                            <div class="col-sm-9">
+                            <label class="containerhover1">
+                                <img class="img-modal" src="{{asset('section/picture_game/game15.png') }}" />
+                            </label> 
+                            <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">Witcher</label><br> Fantasy • Online <br> เวอร์ชั่น 1.03</label>
                             </div>
-                            <div class="col-sm-6">
-                                <a class="font-gamename-modal" style="color: #000;">PlayerUnknown’s Battlegrounds</a></br>
-                                <a class="font-rate-modal">Online • Other</a></br>
-                                <a class="font-rate-modal">เวอร์ชัน 12.0.1</a></br>
+                            <div class="col-6">
+                                <input type="text" class="form-control input-bank" placeholder="ลิงค์โฆษณา" require></input>
                             </div>
-                            <div class="col-sm-3 text-center">
-                                <a class="font-gamename-modal" style="color: #000;">เลือกช่วงเวลา</a></br>
-                                <div class="md-form md-outline">
-                                    <input type="time" id="default-picker" class="timepicker" />
-                                </div>
+                            <div class="col-6 pr-4">
+                                <select class="select3" name="" id="" style="height:42px;">
+                                    <option value="">ซื้อรายเกม</option>
+                                    <option value="">แพ็กเกจ 1</option>
+                                    <option value="">ดึงข้อมูลจาก DB</option>
+                                    <option value="">ดึงข้อมูลจาก DB</option>
+                                    <option value="">ดึงข้อมูลจาก DB</option>
+                                    <option value="">ดึงข้อมูลจาก DB</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-12 ">
+                                <label>
+                                    <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">เริ่มต้น</label></br>
+                                    <input style="font-family:myfont1;font-size:0.9em;width:250px;padding-left:5px;" type="datetime-local" id="default-picker" class="timepicker" />
+                                </label>
+
+                                <label>
+                                    <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">สิ้นสุด</label></br>
+                                    <input style="font-family:myfont1;font-size:0.9em;width:250px;padding-left:5px;" type="datetime-local" id="default-picker" class="timepicker" />
+                                </label>
+
+                                <label class="ml-2">
+                                    <label style="font-family:myfont1;font-size:0.8em;margin:0;font-weight:900;">จำนวนรอบการโฆษณา</label>
+                                    <div class="quantity-block">
+                                        <button class="quantity-arrow-minus"> - </button>
+                                        <input class="quantity-num" type="number" value="1" min="1"  />
+                                        <button class="quantity-arrow-plus"> + </button>
+                                    </div>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -706,8 +735,24 @@
                         <button type="button" class="btn-cancal" data-dismiss="modal">ยกเลิก</button>
                     </div>  
                     <div class="col-6 text-right my-2">
-                        <button type="button" class="btn-submit" data-dismiss="modal">ยืนยัน</button>
+                        <button type="button" class="btn-submit" data-dismiss="modal" data-toggle="modal" data-target="#successModal">ยืนยัน</button>
                     </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade mymodal" id="successModal" role="dialog">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
+                </div>
+
+                <div class="modal-body text-center">
+                    <img style="width:30%;" src="{{ asset('icon/correct-green.svg')}}"> <br>
+                    <label style="font-family:myfont1;font-weight:800;font-size:1em;">ทำรายการสำเร็จ</label> <br>
+                    <a class="linkAd" href="{{ route('SponShoppingCart') }}"><label class="selectAll px-5 py-2" style="font-family:myfont1;font-size:0.8em;cursor:pointer;">ดูตระกร้าสินค้า</label></a>
                 </div>
             </div>
         </div>
@@ -740,7 +785,6 @@
 @endsection
 
 @section('script')
-
 <script>
     $(document).ready(function() {
     
@@ -945,5 +989,25 @@ $(document).ready(function(){
         this.className += " active";
     });
     }
+</script>
+
+<script>
+$(function() {
+(function quantityProducts() {
+  var $quantityArrowMinus = $(".quantity-arrow-minus");
+  var $quantityArrowPlus = $(".quantity-arrow-plus");
+  var $quantityNum = $(".quantity-num");
+  $quantityArrowMinus.click(quantityMinus);
+  $quantityArrowPlus.click(quantityPlus);
+  function quantityMinus() {
+    if ($quantityNum.val() > 1) {
+      $quantityNum.val(+$quantityNum.val() - 1);
+    }
+  }
+  function quantityPlus() {
+    $quantityNum.val(+$quantityNum.val() + 1);
+  }
+})();
+});
 </script>
 @endsection
