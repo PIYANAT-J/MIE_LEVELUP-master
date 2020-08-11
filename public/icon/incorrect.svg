@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14.5" height="14.5" viewBox="0 0 14.5 14.5">
+    <defs>
+        <style>
+            .cls-2{fill:#fff}
+        </style>
+    </defs>
+    <g id="Group_3046" data-name="Group 3046" transform="translate(-631.502 -236.315)">
+        <g id="Icon_Select_Green" data-name="Icon/Select/Green" transform="translate(631.502 236.315)">
+            <g id="Group_86" data-name="Group 86">
+                <g id="Group_85" data-name="Group 85">
+                    <g id="Group_84" data-name="Group 84">
+                        <path id="Path_113" fill="#ce0005" d="M6.305 13.555a7.25 7.25 0 1 1 7.25-7.25 7.258 7.258 0 0 1-7.25 7.25z" data-name="Path 113" transform="translate(.945 .945)"/>
+                    </g>
+                </g>
+            </g>
+            <g id="Close" transform="translate(3.102 3.462)">
+                <rect id="Rectangle_123" width="1.263" height="10.104" class="cls-2" data-name="Rectangle 123" rx=".632" transform="rotate(45 3.573 8.625)"/>
+                <rect id="Rectangle_124" width="1.263" height="10.104" class="cls-2" data-name="Rectangle 124" rx=".632" transform="rotate(135 2.54 5.237)"/>
+            </g>
+        </g>
+    </g>
+</svg>
