@@ -10,24 +10,6 @@ use App\Kyc;
 
 class Guest_user extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'GUEST_USERS_TEL', 
-        'GUEST_USERS_ID_CARD', 
-        'GUEST_USERS_IMG', 
-        'GUEST_USERS_BIRTHDAY', 
-        'GUEST_USERS_AGE', 
-        'GUEST_USERS_GENDER', 
-        'GUEST_USERS_ADDRESS', 
-        'ZIPCODE_ID', 
-        'USER_ID', 
-        'USER_EMAIL',
-    ];
-
     public static function getuserData($GUEST_USERS_ID = 0){
 
         if($GUEST_USERS_ID == 0){
@@ -44,12 +26,6 @@ class Guest_user extends Model
         $value = DB::table('guest_users')->where('USER_EMAIL', $data['USER_EMAIL'])->get();
         if($value->count() == 0){
             DB::table('guest_users')->insert($data);
-
-            // DB::table('users')
-            //     ->where('email', $data['USER_EMAIL'])
-            //     ->update(['updateData'=> true]);
-            
-            // $kyc = array('USER_EMAIL' => $data['USER_EMAIL']);
             DB::table('kycs')->insert($data);
             return 1;
         }else{

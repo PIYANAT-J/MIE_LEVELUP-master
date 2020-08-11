@@ -15,8 +15,9 @@ class tradeController extends Controller
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
 
         $trade = $this->getDataTrade();
-        // dd($trade);
-        return view('avatar.simulator_trade.simulator_trade', compact('guest_user', 'userKyc', 'trade'));
+        $trade1 = $trade[0];
+        // dd($trade1);
+        return view('avatar.simulator_trade.simulator_trade', compact('guest_user', 'userKyc', 'trade1','trade'));
     }
 
     public function getDataTrade(){
