@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="114" height="114" viewBox="0 0 114 114">
+    <defs>
+        <clipPath id="clip-path">
+            <rect id="Rectangle_2055" width="105" height="106" fill="#fff" stroke="#707070" data-name="Rectangle 2055" rx="8" transform="translate(-2.862 -54)"/>
+        </clipPath>
+        <style>
+            .cls-4{fill:#a8a8a8}
+        </style>
+    </defs>
+    <g id="Group_3070" data-name="Group 3070" transform="translate(-414 -263)">
+        <g id="Rectangle_2052" fill="#f4f4f4" stroke="#c7c7c7" stroke-width="5px" data-name="Rectangle 2052" transform="translate(419 268)">
+            <rect width="104" height="104" stroke="none" rx="6"/>
+            <rect width="109" height="109" x="-2.5" y="-2.5" fill="none" rx="8.5"/>
+        </g>
+        <path id="Path_3811" d="M1136.477 1182.024h-55.611l-5.974 11.948h5.4v26.883h56.751v-26.883h5.4zm-1.847 2.987l2.987 5.975h-23.542l-2.987-5.975zm-51.918 0h23.542l-2.987 5.975h-23.542zm51.349 32.857h-23.9v-10.455h-2.987v10.455h-23.9v-23.9h21.831l2.064-4.128v13.089h2.987v-13.089l2.063 4.128h21.832z" class="cls-4" data-name="Path 3811" transform="translate(-637.451 -880.429)"/>
+        <path id="Path_3812" d="M1122.247 1281.479h8.961v2.986h-8.961z" class="cls-4" data-name="Path 3812" transform="translate(-673.428 -955.986)"/>
+        <path id="Path_3813" d="M1122.247 1306.343h8.961v2.987h-8.961z" class="cls-4" data-name="Path 3813" transform="translate(-673.428 -974.879)"/>
+        <path id="Path_3814" d="M1171.974 1306.343h2.987v2.987h-2.987z" class="cls-4" data-name="Path 3814" transform="translate(-711.208 -974.879)"/>
+    </g>
+</svg>
