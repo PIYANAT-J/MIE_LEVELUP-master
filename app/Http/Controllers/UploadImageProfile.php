@@ -146,9 +146,39 @@ class UploadImageProfile extends Controller
         return view('profile.sponsor_profile', compact('sponsor'));
     }
 
-    public function AdvertisingPackage(){
+    public function AdvtPackage(){
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('profile.sponsor.advertising_package', compact('sponsor'));
+        return view('profile.sponsor.advt_package', compact('sponsor'));
+    }
+
+    public function AdvtManagement(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.sponsor.advt_management', compact('sponsor'));
+    }
+
+    public function AdvtAddGame(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.sponsor.advt_add_game', compact('sponsor'));
+    }
+
+    public function ProductSupport(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.sponsor.product_support', compact('sponsor'));
+    }
+
+    public function ProductSupportSelect(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.sponsor.product_support_select', compact('sponsor'));
+    }
+
+    public function SponShelf(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.game.sponlvp_shelf', compact('sponsor'));
+    }
+
+    public function SponShoppingCart(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.sponsor.spon_shopping_cart', compact('sponsor'));
     }
 
     public function saveProfileDev(Request $request){
@@ -434,7 +464,7 @@ class UploadImageProfile extends Controller
     }
 
     public function saveProfileSpon(Request $request){
-    
+        // dd($request);
         if ($request->input('submit') != null ){
 
             // $this->validate($request, [
@@ -463,6 +493,7 @@ class UploadImageProfile extends Controller
                 $SPON_TEL = $request->input('SPON_TEL');
                 $SPON_ID_CARD = $request->input('SPON_ID_CARD');
                 $SPON_IMG = $img_name;
+                $taxID = $request->input('taxID');
                 $SPON_AGE = $request->input('SPON_AGE');
                 $SPON_GENDER = $request->input('SPON_GENDER');
                 $SPON_ADDRESS = $request->input('SPON_ADDRESS');
@@ -494,8 +525,8 @@ class UploadImageProfile extends Controller
                     || $ZIPCODE_ID != '' || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
                     $data = array("SPON_TEL"=>$SPON_TEL, "SPON_ID_CARD"=>$SPON_ID_CARD, "SPON_IMG"=>$SPON_IMG, "SPON_BIRTHDAY"=>$SPON_BIRTHDAY,
                                 "SPON_AGE"=>$SPON_AGE, "SPON_GENDER"=>$SPON_GENDER, "SPON_ADDRESS"=>$SPON_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
-                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY, "name"=>$name, "surname"=>$surname);
-        
+                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY, "name"=>$name, "surname"=>$surname, "taxID"=>$taxID);
+                    // dd($data);
                     // Insert && Update
                     $value = Sponsors::InsertAndUpdateData($data);
                     if($value){
@@ -508,6 +539,7 @@ class UploadImageProfile extends Controller
                 $SPON_TEL = $request->input('SPON_TEL');
                 $SPON_ID_CARD = $request->input('SPON_ID_CARD');
                 $SPON_AGE = $request->input('SPON_AGE');
+                $taxID = $request->input('taxID');
                 $SPON_GENDER = $request->input('SPON_GENDER');
                 $SPON_ADDRESS = $request->input('SPON_ADDRESS');
                 $ZIPCODE_ID = $request->input('ZIPCODE_ID');
@@ -538,8 +570,8 @@ class UploadImageProfile extends Controller
                     || $ZIPCODE_ID != '' || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
                     $data = array("SPON_TEL"=>$SPON_TEL, "SPON_ID_CARD"=>$SPON_ID_CARD, "SPON_BIRTHDAY"=>$SPON_BIRTHDAY,
                                 "SPON_AGE"=>$SPON_AGE, "SPON_GENDER"=>$SPON_GENDER, "SPON_ADDRESS"=>$SPON_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
-                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY, "name"=>$name, "surname"=>$surname);
-        
+                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY, "name"=>$name, "surname"=>$surname, "taxID"=>$taxID);
+                    // dd($data);
                     // Insert && Update
                     $value = Sponsors::InsertAndUpdateData($data);
                     if($value){

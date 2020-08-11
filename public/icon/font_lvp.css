@@ -143,8 +143,12 @@
   content: "\e91c";
   color: #d50000;
 }
-
 .icon-money:before {
   content: "\e91d";
   color: #fff;
+}
+
+.icon-correct-green .path1:before {
+  content: "\e91e";
+  color: rgb(35, 193, 151);
 }
