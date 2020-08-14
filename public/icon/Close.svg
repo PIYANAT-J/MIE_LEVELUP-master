@@ -1,29 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="51.565" height="51.565" viewBox="0 0 51.565 51.565">
+<svg xmlns="http://www.w3.org/2000/svg" id="Close" width="17.214" height="17.214" viewBox="0 0 17.214 17.214">
     <defs>
-        <filter id="prefix__Rectangle_123" width="51.565" height="51.565" x="0" y="0" filterUnits="userSpaceOnUse">
-            <feOffset/>
-            <feGaussianBlur result="blur" stdDeviation="5"/>
-            <feFlood flood-opacity=".549"/>
-            <feComposite in2="blur" operator="in"/>
-            <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="prefix__Rectangle_124" width="51.565" height="51.565" x="0" y="0" filterUnits="userSpaceOnUse">
-            <feOffset/>
-            <feGaussianBlur result="blur-2" stdDeviation="5"/>
-            <feFlood flood-opacity=".549"/>
-            <feComposite in2="blur-2" operator="in"/>
-            <feComposite in="SourceGraphic"/>
-        </filter>
         <style>
-            .prefix__cls-1{fill:#fff}
+            .cls-1{fill:#333}
         </style>
     </defs>
-    <g id="prefix__Close">
-        <g transform="translate(15 15) translate(-15 -15)">
-            <rect id="prefix__Rectangle_123-2" width="3.389" height="27.109" class="prefix__cls-1" data-name="Rectangle 123" rx="1.694" transform="rotate(45 -1.022 48.747)"/>
-        </g>
-        <g transform="translate(15 15) translate(-15 -15)">
-            <rect id="prefix__Rectangle_124-2" width="3.389" height="27.109" class="prefix__cls-1" data-name="Rectangle 124" rx="1.694" transform="rotate(135 11.208 24.659)"/>
-        </g>
-    </g>
+    <rect id="Rectangle_123" width="2.705" height="21.639" class="cls-1" data-name="Rectangle 123" rx="1.352" transform="rotate(45 7.65 18.47)"/>
+    <rect id="Rectangle_124" width="2.705" height="21.639" class="cls-1" data-name="Rectangle 124" rx="1.352" transform="rotate(135 5.438 11.216)"/>
 </svg>

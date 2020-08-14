@@ -687,17 +687,25 @@
                 <div class="modal-body">
                     <div class="containner-fluid">
                         <div class="row">
-                            <div class="col-sm-9">
-                            <label class="containerhover1">
-                                <img class="img-modal" src="{{asset('section/picture_game/game15.png') }}" />
-                            </label> 
-                            <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">Witcher</label><br> Fantasy • Online <br> เวอร์ชั่น 1.03</label>
+                            <div class="col-lg-9">
+                                <label class="containerhover1">
+                                    <img class="img-modal" src="{{asset('section/picture_game/game.png') }}" />
+                                </label> 
+                                <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">Witcher</label><br> Fantasy • Online <br> เวอร์ชั่น 1.03</label>
                             </div>
-                            <div class="col-6">
+                            <div class="col-lg-3">
+                                <span class="fontPriceAds1" style="line-height: 1.2; display:block;text-align:right;font-size:1em;">
+                                    <label class="py-3">
+                                        <b class="font-price" style="font-size:1.5em;">฿199.00</b></br>
+                                        <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿400 </b> (-65%)
+                                    </label>
+                                </span>
+                            </div>
+                            <div class="col-8" style="padding-right:0;">
                                 <input type="text" class="form-control input-bank" placeholder="ลิงค์โฆษณา" require></input>
                             </div>
-                            <div class="col-6 pr-4">
-                                <select class="select3" name="" id="" style="height:42px;">
+                            <div class="col-4 pr-4" style="padding-left:0;">
+                                <select class="select3 pl-2" name="" id="" style="height:42px;">
                                     <option value="">ซื้อรายเกม</option>
                                     <option value="">แพ็กเกจ 1</option>
                                     <option value="">ดึงข้อมูลจาก DB</option>
@@ -706,22 +714,20 @@
                                     <option value="">ดึงข้อมูลจาก DB</option>
                                 </select>
                             </div>
-                            <div class="col-lg-12 ">
+                            <div class="col-12 " style="padding-right:0;">
                                 <label>
                                     <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">เริ่มต้น</label></br>
-                                    <input style="font-family:myfont1;font-size:0.9em;width:250px;padding-left:5px;" type="datetime-local" id="default-picker" class="timepicker" />
+                                    <input style="font-family:myfont1;font-size:0.9em;width:auto;padding-left:5px;height:42px;" type="datetime-local" id="default-picker" class="timepicker" />
                                 </label>
-
                                 <label>
                                     <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">สิ้นสุด</label></br>
-                                    <input style="font-family:myfont1;font-size:0.9em;width:250px;padding-left:5px;" type="datetime-local" id="default-picker" class="timepicker" />
+                                    <input style="font-family:myfont1;font-size:0.9em;width:auto;padding-left:5px;height:42px;" type="datetime-local" id="default-picker" class="timepicker" />
                                 </label>
-
                                 <label class="ml-2">
                                     <label style="font-family:myfont1;font-size:0.8em;margin:0;font-weight:900;">จำนวนรอบการโฆษณา</label>
                                     <div class="quantity-block">
                                         <button class="quantity-arrow-minus"> - </button>
-                                        <input class="quantity-num" type="number" value="1" min="1"  />
+                                        <input class="quantity-num" style="font-size:0.9em;width:30%;" type="number" value="10" min="10" disabled />
                                         <button class="quantity-arrow-plus"> + </button>
                                     </div>
                                 </label>
@@ -842,25 +848,25 @@
 </script>
 
 <script>
-$(document).ready(function(){
-  var owl = $('#owl-demo1');
-  owl.owlCarousel({
-    loop:true,
-    margin:10,
-    nav:false,
-    items: 1,
-    dots: false,
-  });
-  
-  // Custom Button
-  $('.customNextBtn').click(function() {
-    owl.trigger('next.owl.carousel');
-  });
-  $('.customPreviousBtn').click(function() {
-    owl.trigger('prev.owl.carousel');
-  });
-  
-});
+    $(document).ready(function(){
+    var owl = $('#owl-demo1');
+    owl.owlCarousel({
+        loop:true,
+        margin:10,
+        nav:false,
+        items: 1,
+        dots: false,
+    });
+    
+    // Custom Button
+    $('.customNextBtn').click(function() {
+        owl.trigger('next.owl.carousel');
+    });
+    $('.customPreviousBtn').click(function() {
+        owl.trigger('prev.owl.carousel');
+    });
+    
+    });
 </script>
 
 <script>
@@ -979,7 +985,7 @@ $(document).ready(function(){
     element.className = arr1.join(" ");
     }
 
-// Add active class to the current button (highlight it)
+    // Add active class to the current button (highlight it)
     var btnContainer = document.getElementById("filters");
     var btns = btnContainer.getElementsByClassName("Comment");
     for (var i = 0; i < btns.length; i++) {
@@ -1001,11 +1007,11 @@ $(function() {
   $quantityArrowPlus.click(quantityPlus);
   function quantityMinus() {
     if ($quantityNum.val() > 1) {
-      $quantityNum.val(+$quantityNum.val() - 1);
+      $quantityNum.val(+$quantityNum.val() - 10);
     }
   }
   function quantityPlus() {
-    $quantityNum.val(+$quantityNum.val() + 1);
+    $quantityNum.val(+$quantityNum.val() + 10);
   }
 })();
 });

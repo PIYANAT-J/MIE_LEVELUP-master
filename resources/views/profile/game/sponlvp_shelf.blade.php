@@ -113,7 +113,7 @@
                                                             <div class="col-2 text-center"><span class="font-game-shelf" style="color:#000;">แพ็กเกจ 1 </span></div>
                                                             <div class="col-2 text-center"><span class="font-game-shelf">289</span></div>
                                                             <div class="col-2 text-center">
-                                                                <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span>
+                                                                <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span> <br>
                                                                 <!-- <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span> -->
                                                             </div>
                                                         </div>
@@ -134,7 +134,7 @@
                                                             <div class="col-2 text-center"><span class="font-game-shelf" style="color:#000;">แพ็กเกจ 1 </span></div>
                                                             <div class="col-2 text-center"><span class="font-game-shelf">289</span></div>
                                                             <div class="col-2 text-center">
-                                                                <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span>
+                                                                <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span> <br>
                                                                 <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
                                                             </div>
                                                         </div>

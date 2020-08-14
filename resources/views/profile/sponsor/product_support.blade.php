@@ -110,7 +110,8 @@
                                             <label style="padding:0;"><SELECT  size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></label>
                                             <label style="padding:0;"><SELECT  size="1" id ="day" name = "dd"></SELECT></label>
                                         </label>
-                                        <label class="font-profile1 mt-3">เลือกเกมที่ต้องการสนับสนุน</label>
+
+                                        <!-- <label class="font-profile1 mt-3">เลือกเกมที่ต้องการสนับสนุน</label>
                                         <div class="row my-2 ">
                                             <div class="col-lg-6 custom02">
                                                 <input type="radio" name="selectAll" id="selectAll01">
@@ -119,13 +120,15 @@
                                             <div class="col-lg-6">
                                             <a class="linkAd" href="{{ route('ProductSupportSelect') }}"><label class="addGamePackage">เลือกเกมที่ต้องการ</label></a>
                                             </div>
-                                        </div>
+                                        </div> -->
+
                                         <div class="row mb-2">
                                             <div class="col-lg-4">
                                                 <button class="btn-submit">ส่งคำขอ</button>
                                             </div>
                                         </div>
-                                        <div class=" pl-3 row5">
+
+                                        <!-- <div class=" pl-3 row5">
                                             <div class="row">
                                                 <label class="containerhover2">
                                                     <img class="imagehover2" src="{{asset('section/picture_game/game.png') }}" />
@@ -158,7 +161,7 @@
                                                     </label>
                                                 </label>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                     <div class="col-lg-6">
