@@ -688,7 +688,7 @@
         @endforeach
     </div>
     <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered " role="document">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title"  style="font-family:myfont1;font-weight:900;font-size:1.2em;">
@@ -698,7 +698,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-lg-7 pl-2" style="padding:0;">
+                    <div class="col-lg-5 pl-2" style="padding:0;">
                         <label class="containerhover1">
                             <img class="imagehover1" src="{{asset('section/picture_game/game3.png') }}" />
                             <label class="middlehover1">
@@ -708,21 +708,21 @@
                         </label> 
                         <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">Time Lie</label><br> Fantasy • Online <br> เวอร์ชั่น 1.03</label>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-7">
                         <label>
                             <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">เริ่มต้น</label></br>
-                            <input style="font-family:myfont1;font-size:0.9em;width:80px;padding-left:5px;" type="time" id="default-picker" class="timepicker" />
+                            <input style="font-family:myfont1;font-size:0.9em;" type="datetime-local" id="default-picker" class="timepicker" />
                         </label>
 
                         <label>
                             <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">สิ้นสุด</label></br>
-                            <input style="font-family:myfont1;font-size:0.9em;width:80px;padding-left:6px;" type="time" id="default-picker" class="timepicker" />
+                            <input style="font-family:myfont1;font-size:0.9em;" type="datetime-local" id="default-picker" class="timepicker" />
                         </label>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-7 pl-2" style="padding:0;">
+                    <div class="col-lg-5 pl-2" style="padding:0;">
                         <label class="containerhover1">
                             <img class="imagehover1" src="{{asset('section/picture_game/game.png') }}" />
                             <label class="middlehover1">
@@ -732,15 +732,15 @@
                         </label> 
                         <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">Witcher</label><br> Fantasy • Online <br> เวอร์ชั่น 1.03</label>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-7 text-left">
                         <label>
                             <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">เริ่มต้น</label></br>
-                            <input style="font-family:myfont1;font-size:0.9em;width:80px;padding-left:5px;" type="time" id="default-picker" class="timepicker" />
+                            <input style="font-family:myfont1;font-size:0.9em;" type="datetime-local" id="default-picker" class="timepicker" />
                         </label>
 
                         <label>
                             <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">สิ้นสุด</label></br>
-                            <input style="font-family:myfont1;font-size:0.9em;width:80px;padding-left:6px;" type="time" id="default-picker" class="timepicker" />
+                            <input style="font-family:myfont1;font-size:0.9em;" type="datetime-local" id="default-picker" class="timepicker" />
                         </label>
                     </div>
                 </div>

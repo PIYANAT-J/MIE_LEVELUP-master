@@ -144,3 +144,4 @@ Route::get('/product_support', 'UploadImageProfile@ProductSupport')->name('Produ
 Route::get('/product_support_select', 'UploadImageProfile@ProductSupportSelect')->name('ProductSupportSelect');
 Route::get('/sponlvp_shelf', 'UploadImageProfile@SponShelf')->name('SponShelf');
 Route::get('/spon_shopping_cart', 'UploadImageProfile@SponShoppingCart')->name('SponShoppingCart');
+Route::get('/sponsor_payment', 'UploadImageProfile@SponsorPayment')->name('SponsorPayment');

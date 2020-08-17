@@ -57,7 +57,16 @@
         @foreach($sponsor as $spon)
             @if($spon->USER_EMAIL == Auth::user()->email)
                     <div class="col-lg-9" style="background-color:#f5f5f5;">
-                        <div class="row my-4" >
+                        <div class="row mt-4 ">
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-10 ">
+                                <a href="{{ route('AdvtPackage') }}"><label class="fontAd1 active">สนับสนุนเงินในเกม</label></a>
+                                <label class="fontAd1"> > </label>
+                                <label class="fontAd1" >ตระกร้าสินค้า</label>
+                            </div>
+                            <div class="col-lg-1"></div>
+                        </div>
+                        <div class="row mb-4" >
                             <div class="col-lg-1"></div>
                             <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
                                 <div class="row">
@@ -65,10 +74,10 @@
                                         <span class="font-profile1">ตระกร้าสินค้า</span>
                                     </div>
                                 </div>
-                                <div class="row row4">
+                                <div class="row rowGameShopping">
                                     <div class="col-lg-12" style="border-bottom: 1px solid #f2f2f2;">
                                         <div class="row mx-2 mt-3" style="border-bottom:1px solid #fff;">  
-                                            <div class="col-6" style="padding:0;">
+                                            <div class="col-8" style="padding:0;">
                                                 <label class="checkbox-dark" style="padding-top:10px;">
                                                     <input type="checkbox" id="checkbox_01" name="accept_01">
                                                     <label for="checkbox_01" ></label>
@@ -76,32 +85,52 @@
                                                 <label class="plabelimg">
                                                     <img class="labelimg" src="{{asset('section/picture_game/game.png') }}" />
                                                 </label> 
-                                                <label class="labelFont bglabelFont ml-2 pt-3">
-                                                    <label style="font-weight: 700;">Witcher</label></br>
+                                                <label class="labelFont bglabelFont ml-2 py-3">
+                                                    <label style="font-weight: 700;">Witch</label></br>
                                                     <label style="color: #a8a8a8;">Fantasy • Online</label></br>
-                                                    <label style="color: #23c197;">ช่วงเวลา 11:00-12:00</label>
-                                                </label>
-                                            </div>
-
-                                            <div class="col-2 my-3">
-                                                <label class="quantity" style="width:100%;">
-                                                    <button class="quantity-down"> - </button>
-                                                    <input type="number" min="1" max="100" step="1" value="1">
-                                                    <button class="quantity-up"> + </button>
+                                                    <label style="color: #23c197;font-size:0.9em;">ช่วงเวลา 13/08/2020 11:00 - 14/08/2020 12:00</label>
+                                                    <label style="color: #23c197;font-size:0.9em;">จำนวนรอบโฆษณา 20 รอบ </label>
                                                 </label>
                                             </div>
 
                                             <div class="col-3 my-3">
-                                                <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;font-size:1em;">
-                                                    <b class="font-price" style="font-size:1.5em;">฿1,000.00</b></br>
-                                                    <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </b> (-37%)
+                                                <span class="fontPriceAds1" style="line-height: 1.2; display:block;text-align:right;font-size:1em;">
+                                                    <b class="font-price" style="font-size:1.5em;">฿279.00</b></br>
+                                                    <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿680 </b> (-37%)
                                                 </span>
                                             </div>
 
                                             <div class="col-1 my-4 py-1 text-center" style="padding:0;">
-                                                <img style="width:30%;cursor:pointer;" src="{{asset('icon/trash2.svg') }}" />
+                                                <img style="width:30%;cursor:pointer;" src="{{asset('icon/trash.svg') }}" />
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="row mx-0 my-3">
+                                    <div class="col-4">
+                                        <div class="row my-2">
+                                            <div class="col-lg-12">
+                                                <label class="checkbox-dark">
+                                                    <input type="checkbox" id="checkbox_all" name="accept_01" onclick="toggle(this);">
+                                                    <label for="checkbox_all" class="pt-2 ml-2" style="font-family:myfont1;font-size:1em;font-weight:800;">เลือกทั้งหมด</label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <div class="row mt-3 mb-2">
+                                            <div class="col-lg-12">
+                                                <span style="font-family:myfont1;font-size:1em;font-weight:800;">
+                                                    <label>รวมค่าสินค้า</label>
+                                                    <label>( 3 รายการ )</label>
+                                                    <label class="pl-3"><b class="font-price">฿279.00</b></label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="{{ route('SponsorPayment') }}"><label class="btn-submit-red2" style="">ชำระเงิน</label></a>
                                     </div>
                                 </div>
                             </div>
@@ -142,4 +171,14 @@
 <script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+
+<script>
+    function toggle(source) {
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i] != source)
+            checkboxes[i].checked = source.checked;
+    }
+}
+</script>
 @endsection
