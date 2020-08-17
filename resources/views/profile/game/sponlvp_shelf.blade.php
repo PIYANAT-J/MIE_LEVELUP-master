@@ -54,39 +54,37 @@
         </div>
         <!-- sidebar -->
 
-        @foreach($sponsor as $spon)
-            @if($spon->USER_EMAIL == Auth::user()->email)
-                    <div class="col-lg-9" style="background-color:#f5f5f5;">
-                        <div class="row mt-4" >
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-10 pb-2" style="padding-left:0;">
-                                <ul class="nav topnav2">
-                                    <li><a class="nav-link active" data-toggle="tab" href="#budget">สนับสนุนเงิน</a></li>
-                                    <li><a class="nav-link" data-toggle="tab" href="#product">สนับสนุนสินค้า</a></li>
-                                </ul>
+        <div class="col-lg-9" style="background-color:#f5f5f5;">
+            <div class="row mt-4" >
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 pb-2" style="padding-left:0;">
+                    <ul class="nav topnav2">
+                        <li><a class="nav-link active" data-toggle="tab" href="#budget">สนับสนุนเงิน</a></li>
+                        <li><a class="nav-link" data-toggle="tab" href="#product">สนับสนุนสินค้า</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <div class="row mb-4" >
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
+                    <div class="tab-content">
+                        <div id="budget" class="tab-pane active">
+                            <div class="row">
+                                <div class="col-lg-9 pb-2"> 
+                                    <span class="font-profile1">ตู้เกม (เกมเชล)</span>
+                                </div>
+                                <div class="col-lg-3 pb-2 pr-4"> 
+                                    <select class="select3" name="" id="">
+                                        <option value="">ทั้งหมด</option>
+                                        <option value="">แพ็กเกจ 1</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="col-lg-1"></div>
-                        </div>
-                        <div class="row mb-4" >
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-                                <div class="tab-content">
-                                    <div id="budget" class="tab-pane active">
-                                        <div class="row">
-                                            <div class="col-lg-9 pb-2"> 
-                                                <span class="font-profile1">ตู้เกม (เกมเชล)</span>
-                                            </div>
-                                            <div class="col-lg-3 pb-2 pr-4"> 
-                                                <select class="select3" name="" id="">
-                                                    <option value="">ทั้งหมด</option>
-                                                    <option value="">แพ็กเกจ 1</option>
-                                                    <option value="">ดึงข้อมูลจาก DB</option>
-                                                    <option value="">ดึงข้อมูลจาก DB</option>
-                                                    <option value="">ดึงข้อมูลจาก DB</option>
-                                                    <option value="">ดึงข้อมูลจาก DB</option>
-                                                </select>
-                                            </div>
-                                        </div>
                                         <div class="row mt-2 ">
                                             <div class="col-lg-12" >
                                                 <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1em;color:#000;">
@@ -140,186 +138,129 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div id="product" class="tab-pane">
-                                        <div class="row">
-                                            <div class="col-lg-9 pb-2"> 
-                                                <span class="font-profile1">ตู้เกม (เกมเชล)</span>
-                                            </div>
-                                            <div class="col-lg-3 pb-2 pr-4"> 
-                                                <select class="select3" name="" id="">
-                                                <option value="">ทั้งหมด</option>
-                                                <option value="">รออนุมัติ</option>
-                                                <option value="">อนุมัติแล้ว</option>
-                                                <option value="">หมดอายุ</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2 ">
-                                            <div class="col-lg-12" >
-                                                <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1em;color:#000;">
-                                                    <div class="col-6">ชื่อสินค้า</div>
-                                                    <div class="col-2 text-center">สถานะ</div>
-                                                    <div class="col-2 text-center">จำนวนที่แลก</div>
-                                                    <div class="col-2 text-center">วันหมดเขต</div>
+                                                <div class="col-2 text-center"><span class="font-game-shelf" style="color:#000;">แพ็กเกจ 1 </span></div>
+                                                <div class="col-2 text-center"><span class="font-game-shelf">289</span></div>
+                                                <div class="col-2 text-center">
+                                                    <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span>
+                                                    <!-- <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span> -->
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row row4">
-                                            <div class="col-lg-12">
-                                                <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                                    <div class="col-6">
-                                                        <div class="row">
-                                                            <div class="col-3"><img class="shelf-pic" src="{{asset('section/product/p1.jfif') }}" /></div>
-                                                            <div class="col-9 font-game-shelf">
-                                                                <div>
-                                                                    <span style="font-family:myfont;color:#000;">บะหมี่กึ่งสำเร็จรูปรสต้มยำกุ้งตรามาม่า</span><br>
-                                                                    คะแนนที่ใช้แลกสินค้า 200 พอยท์
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2 text-center">
-                                                        <span class="status-kyc3 px-2" style="font-size:0.8em;">รอการอนุมัติ</span>
-                                                        <!-- <span class="status-kyc2 px-2" style="font-size:0.8em;">อนุมัติแล้ว</span> -->
-                                                        <!-- <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span> -->
-                                                    </div>
-                                                    <div class="col-2 text-center"><span class="font-game-shelf"> <label style="color:#000;">0</label>/300</span></div>
-                                                    <div class="col-2 text-right">
-                                                        <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span> 
-                                                    </div>
-                                                </div>
 
-                                                <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                                    <div class="col-6">
-                                                        <div class="row">
-                                                            <div class="col-3"><img class="shelf-pic" src="{{asset('section/product/p2.jfif') }}" /></div>
-                                                            <div class="col-9 font-game-shelf">
-                                                                <div>
-                                                                    <span style="font-family:myfont;color:#000;">บะหมี่กึ่งสำเร็จรูปรสต้มยำกุ้งตรามาม่า</span> <br>
-                                                                    คะแนนที่ใช้แลกสินค้า 250 พอยท์
-                                                                </div>
+                                            <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
+                                                <div class="col-6">
+                                                    <div class="row">
+                                                        <div class="col-3"><img class="shelf-pic" src="{{asset('section/picture_game/game14.png') }}" /></div>
+                                                        <div class="col-9 font-game-shelf">
+                                                            <div>
+                                                                <span style="font-family:myfont;color:#000;">Forza Horizon 4</span></br>
+                                                                Online • Other</br>
+                                                                เวอร์ชั่น 1.03
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-2 text-center">
-                                                        <!-- <span class="status-kyc3 px-2" style="font-size:0.8em;">รอการอนุมัติ</span> -->
-                                                        <span class="status-kyc2 px-2" style="font-size:0.8em;">อนุมัติแล้ว</span>
-                                                        <!-- <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span> -->
-                                                    </div>
-                                                    <div class="col-2 text-center"><span class="font-game-shelf"> <label style="color:#000;">10</label>/300</span></div>
-                                                    <div class="col-2 text-right">
-                                                        <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span>
-                                                    </div>
                                                 </div>
-
-                                                <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                                    <div class="col-6">
-                                                        <div class="row">
-                                                            <div class="col-3"><img class="shelf-pic" src="{{asset('section/product/p3.jfif') }}" /></div>
-                                                            <div class="col-9 font-game-shelf">
-                                                                <div>
-                                                                    <span style="font-family:myfont;color:#000;">บะหมี่กึ่งสำเร็จรูปรสต้มยำกุ้งตรามาม่า</span> <br>
-                                                                    คะแนนที่ใช้แลกสินค้า 180 พอยท์
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2 text-center">
-                                                        <!-- <span class="status-kyc3 px-2" style="font-size:0.8em;">รอการอนุมัติ</span> -->
-                                                        <span class="status-kyc2 px-2" style="font-size:0.8em;">อนุมัติแล้ว</span>
-                                                        <!-- <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span> -->
-                                                    </div>
-                                                    <div class="col-2 text-center"><span class="font-game-shelf"> <label style="color:#000;">5</label>/300</span></div>
-                                                    <div class="col-2 text-right">
-                                                        <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span>
-                                                    </div>
+                                                <div class="col-2 text-center"><span class="font-game-shelf" style="color:#000;">แพ็กเกจ 1 </span></div>
+                                                <div class="col-2 text-center"><span class="font-game-shelf">289</span></div>
+                                                <div class="col-2 text-center">
+                                                    <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span>
+                                                    <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
                                                 </div>
-
-                                                <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                                    <div class="col-6">
-                                                        <div class="row">
-                                                            <div class="col-3"><img class="shelf-pic" src="{{asset('section/product/p4.jfif') }}" /></div>
-                                                            <div class="col-9 font-game-shelf">
-                                                                <div>
-                                                                    <span style="font-family:myfont;color:#000;">บะหมี่กึ่งสำเร็จรูปเย็นตาโฟตรามาม่า</span> <br>
-                                                                    คะแนนที่ใช้แลกสินค้า 200 พอยท์
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2 text-center">
-                                                        <!-- <span class="status-kyc3 px-2" style="font-size:0.8em;">รอการอนุมัติ</span> -->
-                                                        <span class="status-kyc2 px-2" style="font-size:0.8em;">อนุมัติแล้ว</span>
-                                                        <!-- <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span> -->
-                                                    </div>
-                                                    <div class="col-2 text-center"><span class="font-game-shelf"> <label style="color:#000;">62</label>/300</span></div>
-                                                    <div class="col-2 text-right">
-                                                        <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                                    <div class="col-6">
-                                                        <div class="row">
-                                                            <div class="col-3"><img class="shelf-pic" src="{{asset('section/product/p5.jfif') }}" /></div>
-                                                            <div class="col-9 font-game-shelf">
-                                                                <div>
-                                                                    <span style="font-family:myfont;color:#000;">บะหมี่กึ่งสำเร็จรูป</span> <br>
-                                                                    คะแนนที่ใช้แลกสินค้า 300 พอยท์
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2 text-center">
-                                                        <!-- <span class="status-kyc3 px-2" style="font-size:0.8em;">รอการอนุมัติ</span> -->
-                                                        <span class="status-kyc2 px-2" style="font-size:0.8em;">อนุมัติแล้ว</span>
-                                                        <!-- <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span> -->
-                                                    </div>
-                                                    <div class="col-2 text-center"><span class="font-game-shelf"> <label style="color:#000;">99</label>/300</span></div>
-                                                    <div class="col-2 text-right">
-                                                        <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                                    <div class="col-6">
-                                                        <div class="row">
-                                                            <div class="col-3"><img class="shelf-pic" src="{{asset('section/product/p6.jfif') }}" /></div>
-                                                            <div class="col-9 font-game-shelf">
-                                                                <div>
-                                                                    <span style="font-family:myfont;color:#000;">บะหมี่กึ่งสำเร็จรูป</span> <br>
-                                                                    คะแนนที่ใช้แลกสินค้า 350 พอยท์
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2 text-center">
-                                                        <!-- <span class="status-kyc3 px-2" style="font-size:0.8em;">รอการอนุมัติ</span> -->
-                                                        <!-- <span class="status-kyc2 px-2" style="font-size:0.8em;">อนุมัติแล้ว</span> -->
-                                                        <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
-                                                    </div>
-                                                    <div class="col-2 text-center"><span class="font-game-shelf"> <label style="color:#000;">80</label>/100</span></div>
-                                                    <div class="col-2 text-right">
-                                                        <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span>
-                                                    </div>
-                                                </div>
-                                                
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                            <div class="col-lg-1"></div>
+                        </div>
+
+                        <div id="product" class="tab-pane">
+                            <div class="row">
+                                <div class="col-lg-9 pb-2"> 
+                                    <span class="font-profile1">ตู้เกม (เกมเชล)</span>
+                                </div>
+                                <div class="col-lg-3 pb-2 pr-4"> 
+                                    <select class="select3" name="" id="">
+                                    <option value="">ทั้งหมด</option>
+                                    <option value="">รออนุมัติ</option>
+                                    <option value="">อนุมัติแล้ว</option>
+                                    <option value="">หมดอายุ</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-2 ">
+                                <div class="col-lg-12" >
+                                    <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1em;color:#000;">
+                                        <div class="col-6">ชื่อสินค้า</div>
+                                        <div class="col-2 text-center">สถานะ</div>
+                                        <div class="col-2 text-center">จำนวนที่แลก</div>
+                                        <div class="col-2 text-center">วันหมดเขต</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row4">
+                                <div class="col-lg-12">
+                                    @if(isset($product))
+                                        @foreach($product as $productAll)
+                                            <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
+                                                <div class="col-6">
+                                                    <div class="row">
+                                                        <div class="col-3"><img class="shelf-pic" src="{{asset('section/product//product_img/'.$productAll->product_img) }}" /></div>
+                                                        <div class="col-9 font-game-shelf">
+                                                            <div>
+                                                                <span style="font-family:myfont;color:#000;">{{$productAll->product_name}}</span><br>
+                                                                คะแนนที่ใช้แลกสินค้า {{$productAll->product_point}} พอยท์
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2 text-center">
+                                                    @if($productAll->product_status == "รออนุมัติ")
+                                                        <span class="status-kyc3 px-2" style="font-size:0.8em;">รอการอนุมัติ</span>
+                                                    @elseif($productAll->product_status == "อนุมัติ")
+                                                        <span class="status-kyc2 px-2" style="font-size:0.8em;">อนุมัติแล้ว</span>
+                                                    @elseif($productAll->product_status == "หมดอายุ")
+                                                        <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
+                                                    @endif
+                                                </div>
+                                                <div class="col-2 text-center"><span class="font-game-shelf"> <label style="color:#000;">0</label>/{{$productAll->product_amount}}</span></div>
+                                                <div class="col-2 text-right">
+                                                    <span class="font-game-shelf" style="font-size:0.7em;">{{$productAll->product_deadline}}</span> 
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
+
+                                    <!-- <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
+                                        <div class="col-6">
+                                            <div class="row">
+                                                <div class="col-3"><img class="shelf-pic" src="{{asset('section/product/p2.jfif') }}" /></div>
+                                                <div class="col-9 font-game-shelf">
+                                                    <div>
+                                                        <span style="font-family:myfont;color:#000;">บะหมี่กึ่งสำเร็จรูปรสต้มยำกุ้งตรามาม่า</span> <br>
+                                                        คะแนนที่ใช้แลกสินค้า 250 พอยท์
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 text-center">
+                                            <span class="status-kyc3 px-2" style="font-size:0.8em;">รอการอนุมัติ</span>
+                                            <span class="status-kyc2 px-2" style="font-size:0.8em;">อนุมัติแล้ว</span>
+                                            <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
+                                        </div>
+                                        <div class="col-2 text-center"><span class="font-game-shelf"> <label style="color:#000;">10</label>/300</span></div>
+                                        <div class="col-2 text-right">
+                                            <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span>
+                                        </div>
+                                    </div> -->
+                                    
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </form>
-            @endif
-        @endforeach
+
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
     </div>
 </div>
 
