@@ -139,7 +139,7 @@ Route::get('/sponsor_profile', 'UploadImageProfile@indexSpon')->name('SponsorPro
 Route::post('/sponsor_profile/edit', 'UploadImageProfile@saveProfileSpon')->name('SponEditProfile');
 Route::get('/advt_package', 'UploadImageProfile@AdvtPackage')->name('AdvtPackage');
 Route::get('/advt_management', 'UploadImageProfile@AdvtManagement')->name('AdvtManagement');
-Route::get('/advt_add_game', 'UploadImageProfile@AdvtAddGame')->name('AdvtAddGame');
+Route::get('/advt_add_game', 'Sponsor\game_sponController@AdvtAddGame')->name('AdvtAddGame');
 Route::get('/product_support', 'Sponsor\productController@ProductSupport')->name('ProductSupport');
 Route::post('/product_support/addproduct', 'Sponsor\productController@addProduct')->name('addProduct');
 Route::get('/product_support_select', 'Sponsor\productController@ProductSupportSelect')->name('ProductSupportSelect');

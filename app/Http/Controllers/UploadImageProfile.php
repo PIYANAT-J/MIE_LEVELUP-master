@@ -156,11 +156,6 @@ class UploadImageProfile extends Controller
         return view('profile.sponsor.advt_management', compact('sponsor'));
     }
 
-    public function AdvtAddGame(){
-        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('profile.sponsor.advt_add_game', compact('sponsor'));
-    }
-
     public function SponShoppingCart(){
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
         return view('profile.sponsor.spon_shopping_cart', compact('sponsor'));
