@@ -3700,6 +3700,15 @@ input.date{
   height: 35px;
   object-fit: contain;
   border-radius: 5px;
+  border: solid 1px #f2f2f2;
+  background-color: #f2f2f2;
+}
+
+.select4{
+  width: 100%;
+  height: 35px;
+  object-fit: contain;
+  border-radius: 5px;
   border: solid 1px #17202c;
   background-color: #fff;
 }
@@ -4105,7 +4114,8 @@ input[type="checkbox"].switch_1{
   padding-bottom: 10px;
   background-color: #ce0005;
   color: #fff;
-  font-family: myfont;
+  font-family: myfont1;
+  font-weight: 800;
   font-size: 1.2em;
   border-radius: 8px;
   border: none;
@@ -5370,7 +5380,7 @@ input[type="number"] {
   outline: none !important;
 }
 
-.quantity-arrow-minus:hover{
+/* .quantity-arrow-minus:hover{
   background-color: #fff;
   color: #455160;
 }
@@ -5378,7 +5388,7 @@ input[type="number"] {
 .quantity-arrow-plus:hover{
   background-color: #fff;
   color: #455160;
-}
+} */
 .quantity-num {
   font-size: 1em;
   border: none;
@@ -5768,9 +5778,10 @@ input[type=number]
   cursor: pointer;
 }
 .font-address{
-  font-family:myfont;
+  color: #000;
+  font-family:myfont1;
   font-size:1em;
-  color:#000;
+  font-weight: 700;
   line-height:1.3;
   vertical-align: text-top;
   cursor: pointer;
@@ -5810,9 +5821,9 @@ input[type=number]
 }
 
 .bgPayment{
-  width: 200px;
+  width: 190px;
   height: 120px;
-  background-color: #ffffff;
+  background-color: #fafaff;
   border-radius: 6px;
 }
 
@@ -6250,7 +6261,7 @@ input[type=number]
   border: none;
   padding: 3px 10px;
 }
-.input-payment:focus{
+.input-payment2:focus{
   background-color: #fff !important;
   outline: none;
 }
@@ -6285,7 +6296,7 @@ input[type=number]
   color: #fff;
 }
 
-#first,#first1, #second, #second1, #third, #third1, #four,#four1{
+#first,#first1,#first2, #second, #second1, #third, #third1, #four,#four1{
   display: none
 }
 #man,#woman{
@@ -6361,10 +6372,10 @@ button {
 }
 
 .addT10wallet{
-  background-color: #455160;
+  background-color: #fafaff;
   font-family: myfont1;
   font-size: 1.1em;
-  color: #fff;
+  font-weight: 800;
   height: 45px;
   width: 100%;
   text-align: center;
@@ -6467,15 +6478,15 @@ button {
 	transform: scale(1);
 }
 
-.addAddress{
+.bgAddress{
   font-weight: 700;
-  background-color: #f3f3f3;
+  background-color: #fafaff;
   width: 100%;
   border: none;
   padding: 10px 0px;
 }
 
-.addAddress:focus{
+.bgAddress:focus{
   outline: none;
 }
 
@@ -6633,7 +6644,7 @@ button {
 }
 
 .VisaCredit{
-  background-color: #f8eaf3;
+  background-color: #fafaff;
   width: 100%;
   height: 70px;
   font-family: myfont;
@@ -7309,11 +7320,12 @@ input[type="checkbox"].switch_2{
   font-family: myfont1;
   font-size: 1em;
   color: #000;
-  line-height: 0.8;
+  line-height: 0.5;
   display: inline-block;
   vertical-align: top; 
   position: relative;
   text-align: left;
+  word-wrap: break-word;
 }
   
 .bglabelFont{
@@ -7321,6 +7333,335 @@ input[type="checkbox"].switch_2{
   height: 5.5em;
   border-radius: 6px;
   border: none;
+  width: 65%;
+  
+}
+
+.fontPriceAds1{
+  object-fit: contain;
+  font-family: myfont1;
+  font-size: 1.2em;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.9;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
 }
 
 
+.rowGameShopping{
+  height: 500px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.fontAdsPayment{
+  font-family:myfont1;
+  font-size:1em;
+  font-weight: 800;
+  line-height:1.5;
+  vertical-align: text-top;
+  cursor: pointer;
+}
+
+.fontAdsPayment2{
+  font-family:myfont1;
+  font-size:1em;
+  line-height:1.5;
+  vertical-align: text-top;
+  cursor: pointer;
+}
+
+.fontAdsPayment3{
+  font-family:myfont1;
+  font-size:1em;
+  line-height:1.5;
+  width: 70%;
+  word-wrap: break-word;
+  vertical-align: text-top;
+  cursor: pointer;
+}
+
+.fontAdsPayment4{
+  font-family:myfont1;
+  font-size:1em;
+  line-height:1.5;
+  vertical-align: text-top;
+  cursor: pointer;
+  color:#a0a0a0;
+  font-size:0.9em
+}
+
+.pfontAds3{
+  position: absolute;
+  top: 60%;
+  left: 2%;
+}
+
+.BorderGreenSelectPayment{
+  width:100%;
+  height: 120px;
+  border: 2px solid #23c197;
+  border-radius: 6px;
+}
+
+.inputSponPayment{
+  width: 98%;
+  border-radius: 6px;
+  font-family: myfont1;
+  font-size: 1em;
+  background-color: #fafaff;
+  padding: 6px 10px;
+  border: none;
+}
+.inputSponPayment:focus{
+  background-color: #fafaff !important;
+  outline: none;
+}
+
+.inputSponPayment2{
+  width: 250px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  font-family: myfont1;
+  font-size: 1em;
+  border: none;
+  padding: 3px 10px;
+  background-color: #fafaff;
+}
+.inputSponPayment2:focus{
+  background-color: #fafaff !important;
+  outline: none;
+}
+
+.inputSponPayment3{
+  width: 250px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  font-family: myfont1;
+  font-size: 1em;
+  background-color: #fafaff;
+  border: none;
+  padding: 3px 10px;
+  color: #23c197;
+}
+.inputSponPayment3:focus{
+  background-color: #fafaff !important;
+  outline: none;
+}
+
+.select-code2{
+  font-family: myfont1;
+  font-size: 1em;
+  background-color: #17202c;
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+}
+
+.fontAdsPayment5{
+  font-family: myfont1;
+  font-size: 1.1em;
+}
+
+.modalGrey{
+  background: #f7f7f7;
+}
+.bgAmountT10pay{
+  background:#ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 9px 0 rgba(146, 146, 146, 0.26);
+  width: 100%;
+}
+
+.iconBahtAmountT10pay{
+  background-color: #f2f2f2;
+  color: #000;
+  border: none;
+  font-family: myfont1;
+  font-weight: 800;
+  font-size: 1.2em;
+  padding: 5px 10px 5px 13px;
+}
+
+.inputAmountT10pay{
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 8px;
+  font-family: myfont1;
+  font-weight: 800;
+  font-size: 1.2em;
+  color: #000;
+  width: 90%;
+}
+.inputAmountT10pay:focus{
+  outline: none!important;
+}
+
+.bgAmountT10payInner{
+  width: 94%;
+  border-radius: 6px;
+  margin: 15px;
+  object-fit: contain;
+  background-color: #f2f2f2;
+  border: none;
+}
+
+.bgVisaCredit{
+  width: 100%;
+  height: 45px;
+  color: #000;
+  border-top: 1px solid #c7c7c7b0;
+  margin: 0;
+}
+
+.visaCredit{
+  position: absolute;
+  z-index: 5;
+  top: 13px;
+  left: 30px;
+  margin: 0;
+}
+
+.nameVisaCredit{
+  position: absolute;
+  z-index: 5;
+  top: 11px;
+  left: 70px;
+  font-family:myfont1;
+  font-size:1em;
+  color:#414141;
+  cursor: pointer;
+  margin: 0;
+}
+
+.iconPlus{
+  position: absolute;
+  z-index: 5;
+  top: 13px;
+  left: 40px;
+  margin: 0;
+}
+
+.bankT10{
+  position: absolute;
+  z-index: 5;
+  top: 10px;
+  left: 30px;
+  margin: 0;
+}
+
+.submitModalRed{
+  width: 100%;
+  height: 50px;
+  background-color: #ce0005;
+  color: #fff;
+  font-family: myfont1;
+  font-size: 1.1em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+.submitModalRed:focus {
+  outline: none!important;
+}
+#bank{
+  display: none;
+}
+
+.pSelectGreenT10{
+  position: absolute;
+  top: 15px;
+  right: 25px;
+
+}
+
+.inputT10Add{
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 6px;
+  font-family: myfont1;
+  font-size: 1em;
+  color: #000;
+  width: 100%;
+  padding: 8px 0 8px 10px;
+}
+.inputT10Add:focus{
+  outline: none!important;
+}
+
+.modalRed{
+  background: #ce0005;
+}
+
+#codeBox1,#codeBox2,#codeBox3,#codeBox4,#codeBox5,#codeBox6{
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  text-align: center;
+  border-top:2px solid #fff;
+  border-left:2px solid #fff;
+  border-right:2px solid #fff;
+  border-bottom: 2px solid #ce0005;
+  font-family: myfont1;
+  font-size:2em;
+  color: #ce0005;
+}
+#codeBox1,#codeBox2,#codeBox3,#codeBox4,#codeBox5,#codeBox6, :focus{
+  outline: none;
+}
+
+.bgOTP{
+  background-color: #fff;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.submitModalWh{
+  width: 100%;
+  height: 50px;
+  background-color: #ffffff;
+  color: #ce0005;
+  font-family: myfont1;
+  font-size: 1.1em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+.submitModalWh:focus {
+  outline: none!important;
+}
+
+.inputSponPayment3{
+  width: 80%;
+  border-radius: 6px;
+  font-family: myfont1;
+  font-size: 1em;
+  background-color: #fafaff;
+  padding: 6px 10px;
+  border: none;
+}
+.inputSponPayment3focus{
+  background-color: #fafaff !important;
+  outline: none;
+}
+
+.bgT10ListBanking{
+  background-color: #fafaff;
+}
+.bgT10ListBankingPay{
+  background-color: #ce0005;
+  font-family: myfont1;
+  font-size: 1em;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0 10px 0 10px;
+  cursor: pointer;
+}
+
+.row200{
+  height: 100px;
+  overflow: scroll;
+  overflow-x: hidden;
+}

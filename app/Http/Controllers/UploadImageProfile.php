@@ -161,24 +161,14 @@ class UploadImageProfile extends Controller
         return view('profile.sponsor.advt_add_game', compact('sponsor'));
     }
 
-    public function ProductSupport(){
-        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('profile.sponsor.product_support', compact('sponsor'));
-    }
-
-    public function ProductSupportSelect(){
-        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('profile.sponsor.product_support_select', compact('sponsor'));
-    }
-
-    public function SponShelf(){
-        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('profile.game.sponlvp_shelf', compact('sponsor'));
-    }
-
     public function SponShoppingCart(){
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
         return view('profile.sponsor.spon_shopping_cart', compact('sponsor'));
+    }
+
+    public function SponsorPayment(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.sponsor.spon_payment', compact('sponsor'));
     }
 
     public function saveProfileDev(Request $request){
@@ -474,6 +464,7 @@ class UploadImageProfile extends Controller
             // Insert && Update
             if($request->has('SPON_IMG')){
                 $upload = $request->file('SPON_IMG');
+                // dd($upload);
                 $img_name = 'SPON_'.time().'.'.$upload->getClientOriginalExtension();
                 $path = public_path('home/imgProfile');
                 $resize_image = Image::make($upload->getRealPath());

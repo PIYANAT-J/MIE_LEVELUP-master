@@ -38,6 +38,8 @@ class Sponsors extends Model
                 ->update($user);
             return 0;
         }
-     
+    }
+    public static function productData($data){
+        DB::table('products')->insert($data);
     }
 }

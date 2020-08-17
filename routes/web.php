@@ -140,7 +140,9 @@ Route::post('/sponsor_profile/edit', 'UploadImageProfile@saveProfileSpon')->name
 Route::get('/advt_package', 'UploadImageProfile@AdvtPackage')->name('AdvtPackage');
 Route::get('/advt_management', 'UploadImageProfile@AdvtManagement')->name('AdvtManagement');
 Route::get('/advt_add_game', 'UploadImageProfile@AdvtAddGame')->name('AdvtAddGame');
-Route::get('/product_support', 'UploadImageProfile@ProductSupport')->name('ProductSupport');
-Route::get('/product_support_select', 'UploadImageProfile@ProductSupportSelect')->name('ProductSupportSelect');
-Route::get('/sponlvp_shelf', 'UploadImageProfile@SponShelf')->name('SponShelf');
+Route::get('/product_support', 'Sponsor\productController@ProductSupport')->name('ProductSupport');
+Route::post('/product_support/addproduct', 'Sponsor\productController@addProduct')->name('addProduct');
+Route::get('/product_support_select', 'Sponsor\productController@ProductSupportSelect')->name('ProductSupportSelect');
+Route::get('/sponlvp_shelf', 'Sponsor\productController@SponShelf')->name('SponShelf');
 Route::get('/spon_shopping_cart', 'UploadImageProfile@SponShoppingCart')->name('SponShoppingCart');
+Route::get('/sponsor_payment', 'UploadImageProfile@SponsorPayment')->name('SponsorPayment');
