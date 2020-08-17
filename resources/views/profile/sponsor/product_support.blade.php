@@ -54,159 +54,183 @@
         </div>
         <!-- sidebar -->
 
-        @foreach($sponsor as $spon)
-            @if($spon->USER_EMAIL == Auth::user()->email)
-                    <div class="col-lg-9" style="background-color:#f5f5f5;">
-                        <div class="row my-4" >
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
+        <div class="col-lg-9" style="background-color:#f5f5f5;">
+            <div class="row my-4" >
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
 
-                                <div class="row">
-                                    <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                                        <span class="font-profile1">สนับสนุนสินค้าในเกม</span>
+                    <div class="row">
+                        <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
+                            <span class="font-profile1">สนับสนุนสินค้าในเกม</span>
+                        </div>
+                    </div>
+                    <form action="{{ route('addProduct') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row mt-3">
+                            <div class="col-lg-6" style="border-right: 1px solid #f2f2f2;">
+                                <label class="font-profile1">เลือกรูปภาพสินค้า</label>
+                                <div class="row mt-2">
+                                    <div class="col-lg-12">
+                                        <div class="form-group" align="center">
+                                            <div id="thumb" class="thumb-game "><img src="icon/product_box.png"></div>    
+                                            <input id="file_upload" style="display:none" name="product_img" type="file" multiple="true" accept="image/* ">
+                                            <button id="upload" class="btn-upload-pic mt-2">เลือกรูป</button>
+                                            <div class="des-profile-pic mt-2">ขนาดไฟล์: สูงสุด 1 MB</div>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="row mt-3">
-                                    <div class="col-lg-6" style="border-right: 1px solid #f2f2f2;">
-                                        <label class="font-profile1">เลือกรูปภาพสินค้า</label>
-                                        <div class="row mt-2">
-                                            <div class="col-lg-12">
-                                                <div class="form-group" align="center">
-                                                    <div id="thumb" class="thumb-game "><img src="icon/product_box.png"></div>    
-                                                    <input id="file_upload" style="display:none" name="GAME_IMG_PROFILE" type="file" multiple="true" accept="image/* "/>
-                                                    <button id="upload" class="btn-upload-pic mt-2">เลือกรูป</button>
-                                                    <div class="des-profile-pic mt-2">ขนาดไฟล์: สูงสุด 1 MB</div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <label class="bgInput field-wrap">
+                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อสินค้า</label> <br>
+                                    <input type="text" class="input-login px-3" name="product_name" value="{{old('product_name')}}" require></input>
+                                </label>
+                                <div class="row">
+                                    <div class="col-lg-6">
                                         <label class="bgInput field-wrap">
-                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อสินค้า</label> <br>
-                                            <input type="text" class="input-login px-3" require></input>
+                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">จำนวนสินค้า</label> <br>
+                                            <input type="text" class="input-login px-3" name="product_amount" value="{{old('product_amount')}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" require></input>
                                         </label>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <label class="bgInput field-wrap">
-                                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">จำนวนสินค้า</label> <br>
-                                                    <input type="text" class="input-login px-3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" require></input>
-                                                </label>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <label class="bgInput field-wrap">
-                                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">จำนวน Point ที่ใช้แลก</label> <br>
-                                                    <input type="text" class="input-login px-3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" require></input>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <label class="bgInput field-wrap" style="margin-bottom:0;">
-                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">รายละเอียดสินค้า</label> <br>
-                                            <textarea id="data" class="input-login px-3" style="line-height:120%;" row="3" require></textarea><br>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label class="bgInput field-wrap">
+                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">จำนวน Point ที่ใช้แลก</label> <br>
+                                            <input type="text" class="input-login px-3" name="product_point" value="{{old('product_point')}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" require></input>
                                         </label>
-                                        <span class="label2 ml-3" id="now_length"></span>
+                                    </div>
+                                </div>
+                                <label class="bgInput field-wrap" style="margin-bottom:0;">
+                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">รายละเอียดสินค้า</label> <br>
+                                    <textarea id="data" class="input-login px-3" name="product_description" value="{{old('product_description')}}" style="line-height:120%;" row="3" require></textarea><br>
+                                </label>
+                                <span class="label2 ml-3" id="now_length"></span>
 
-                                        <label class="bgInput field-wrap mt-2">
-                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">วันหมดเขตการแลกสินค้า</label> <br>
-                                            <label style="padding:0;"><SELECT  size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></label>
-                                            <label style="padding:0;"><SELECT  size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></label>
-                                            <label style="padding:0;"><SELECT  size="1" id ="day" name = "dd"></SELECT></label>
+                                <label class="bgInput field-wrap mt-2">
+                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">วันหมดเขตการแลกสินค้า</label> <br>
+                                    <label style="padding:0;"><SELECT  size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></label>
+                                    <label style="padding:0;"><SELECT  size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></label>
+                                    <label style="padding:0;"><SELECT  size="1" id ="day" name = "dd"></SELECT></label>
+                                </label>
+                                <!-- <label class="font-profile1 mt-3">เลือกเกมที่ต้องการสนับสนุน</label>
+                                <div class="row my-2 ">
+                                    <div class="col-lg-6 custom02">
+                                        <input type="radio" name="selectAll" id="selectAll01">
+                                        <label for="selectAll01" style="font-family:myfont1;font-size:1em;">เกมทั้งหมด</label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                    <a class="linkAd" href="{{ route('ProductSupportSelect') }}"><label class="addGamePackage">เลือกเกมที่ต้องการ</label></a>
+                                    </div>
+                                </div> -->
+                                <div class="row mb-2">
+                                    <div class="col-lg-4">
+                                        <button type="submit" name="submit" value="submit" class="btn-submit">ส่งคำขอ</button>
+                                    </div>
+                                </div>
+                                <!-- <div class=" pl-3 row5">
+                                    <div class="row">
+                                        <label class="containerhover2">
+                                            <img class="imagehover2" src="{{asset('section/picture_game/game.png') }}" />
+                                            <label class="middlehover2">
+                                                <img style="cursor:pointer; width:20px;" src="{{asset('icon/trash2.svg')}}">
+                                            </label>
                                         </label>
-
-                                        <!-- <label class="font-profile1 mt-3">เลือกเกมที่ต้องการสนับสนุน</label>
-                                        <div class="row my-2 ">
-                                            <div class="col-lg-6 custom02">
-                                                <input type="radio" name="selectAll" id="selectAll01">
-                                                <label for="selectAll01" style="font-family:myfont1;font-size:1em;">เกมทั้งหมด</label>
-                                            </div>
-                                            <div class="col-lg-6">
-                                            <a class="linkAd" href="{{ route('ProductSupportSelect') }}"><label class="addGamePackage">เลือกเกมที่ต้องการ</label></a>
-                                            </div>
-                                        </div> -->
-
-                                        <div class="row mb-2">
-                                            <div class="col-lg-4">
-                                                <button class="btn-submit">ส่งคำขอ</button>
-                                            </div>
-                                        </div>
-
-                                        <!-- <div class=" pl-3 row5">
-                                            <div class="row">
-                                                <label class="containerhover2">
-                                                    <img class="imagehover2" src="{{asset('section/picture_game/game.png') }}" />
-                                                    <label class="middlehover2">
-                                                        <img style="cursor:pointer; width:20px;" src="{{asset('icon/trash2.svg')}}">
-                                                    </label>
-                                                </label>
-                                                <label class="containerhover2">
-                                                    <img class="imagehover2" src="{{asset('section/picture_game/game2.png') }}" />
-                                                    <label class="middlehover2">
-                                                        <img style="cursor:pointer; width:20px;" src="{{asset('icon/trash2.svg')}}">
-                                                    </label>
-                                                </label>
-                                                <label class="containerhover2">
-                                                    <img class="imagehover2" src="{{asset('section/picture_game/game3.png') }}" />
-                                                    <label class="middlehover2">
-                                                        <img style="cursor:pointer; width:20px;" src="{{asset('icon/trash2.svg')}}">
-                                                    </label>
-                                                </label>
-                                                <label class="containerhover2">
-                                                    <img class="imagehover2" src="{{asset('section/picture_game/game4.png') }}" />
-                                                    <label class="middlehover2">
-                                                        <img style="cursor:pointer; width:20px;" src="{{asset('icon/trash2.svg')}}">
-                                                    </label>
-                                                </label>
-                                                <label class="containerhover2">
-                                                    <img class="imagehover2" src="{{asset('section/picture_game/game5.png') }}" />
-                                                    <label class="middlehover2">
-                                                        <img style="cursor:pointer; width:20px;" src="{{asset('icon/trash2.svg')}}">
-                                                    </label>
-                                                </label>
-                                            </div>
-                                        </div> -->
+                                        <label class="containerhover2">
+                                            <img class="imagehover2" src="{{asset('section/picture_game/game2.png') }}" />
+                                            <label class="middlehover2">
+                                                <img style="cursor:pointer; width:20px;" src="{{asset('icon/trash2.svg')}}">
+                                            </label>
+                                        </label>
+                                        <label class="containerhover2">
+                                            <img class="imagehover2" src="{{asset('section/picture_game/game3.png') }}" />
+                                            <label class="middlehover2">
+                                                <img style="cursor:pointer; width:20px;" src="{{asset('icon/trash2.svg')}}">
+                                            </label>
+                                        </label>
+                                        <label class="containerhover2">
+                                            <img class="imagehover2" src="{{asset('section/picture_game/game4.png') }}" />
+                                            <label class="middlehover2">
+                                                <img style="cursor:pointer; width:20px;" src="{{asset('icon/trash2.svg')}}">
+                                            </label>
+                                        </label>
+                                        <label class="containerhover2">
+                                            <img class="imagehover2" src="{{asset('section/picture_game/game5.png') }}" />
+                                            <label class="middlehover2">
+                                                <img style="cursor:pointer; width:20px;" src="{{asset('icon/trash2.svg')}}">
+                                            </label>
+                                        </label>
+                                    </div>
+                                </div> -->
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-12 pb-2"> 
+                                        <span class="font-profile1">ข้อกำหนดของการสนับสนุนสินค้าในเกม</span>
                                     </div>
 
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                            <div class="col-lg-12 pb-2"> 
-                                                <span class="font-profile1">ข้อกำหนดของการสนับสนุนสินค้าในเกม</span>
+                                    <div class="row pl-3">
+                                        <div class="col-lg-12" >
+                                            <div class="input-container">
+                                                <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                <label class="input-field2 ">ข้อกำหนดของการสนับสนุนสินค้าในเกม</label>
+                                            </div>
+                                            <div class="input-container">
+                                                <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                <label class="input-field2 ">ข้อกำหนดของการสนับสนุนสินค้าในเกม</label>
                                             </div>
 
-                                            <div class="row pl-3">
-                                                <div class="col-lg-12" >
-                                                    <div class="input-container">
-                                                        <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                        <label class="input-field2 ">ข้อกำหนดของการสนับสนุนสินค้าในเกม</label>
-                                                    </div>
-                                                    <div class="input-container">
-                                                        <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                        <label class="input-field2 ">ข้อกำหนดของการสนับสนุนสินค้าในเกม</label>
-                                                    </div>
+                                            <div class="input-container">
+                                                <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                <label class="input-field2 ">ข้อกำหนดของการสนับสนุนสินค้าในเกม</label>
+                                            </div>
 
-                                                    <div class="input-container">
-                                                        <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                        <label class="input-field2 ">ข้อกำหนดของการสนับสนุนสินค้าในเกม</label>
-                                                    </div>
-
-                                                    <div class="input-container">
-                                                        <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                        <label class="input-field2 ">ข้อกำหนดของการสนับสนุนสินค้าในเกม</label>
-                                                    </div>
-                                                    
-                                                    <div class="input-container">
-                                                        <img class="imgCorrectPackage icon2" src="{{asset('icon/incorrect.svg') }}">
-                                                        <label class="input-field2 ">ข้อกำหนดของการสนับสนุนสินค้าในเกม</label>
-                                                    </div>
-                                                </div>
+                                            <div class="input-container">
+                                                <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                <label class="input-field2 ">ข้อกำหนดของการสนับสนุนสินค้าในเกม</label>
+                                            </div>
+                                            
+                                            <div class="input-container">
+                                                <img class="imgCorrectPackage icon2" src="{{asset('icon/incorrect.svg') }}">
+                                                <label class="input-field2 ">ข้อกำหนดของการสนับสนุนสินค้าในเกม</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-1"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popupmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-1"></div>
+                <div class="col-10 text-center" style="font-family:myfont1;;font-size:1.2em;color:#000;">แจ้งเตือน</div>
+                    <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
+                <div class="col-1"></div>
+            </div>
+
+            <div class="modal-body font-rate-modal">
+                <div class="row px-3">
+                    <div class="col-lg-12 pb-1">
+                        <div class="row">
+                            <label class="massagrbox1" style="text-align:center;">
+                            @if(Session::has('product'))
+                                {{ Session::get('product') }}
+                            @else
+                                {{ Session::get('deadline') }}
+                            @endif
+                            </label>
                         </div>
                     </div>
-                </form>
-            @endif
-        @endforeach
+                </div>
+                <button type="button" class="btn-submit-modal-red d-none">ยืนยัน</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -255,7 +279,7 @@ $(function () {
             var file = files[i]
             var imageType = /image.*/
             if(!file.type.match(imageType)){
-                //  console.log("Not an Image");
+                    //  console.log("Not an Image");
                 continue;
             }
             var image = document.createElement("img");
@@ -266,7 +290,7 @@ $(function () {
             reader.onload = (function(aImg){
                 return function(e){
                     aImg.src = e.target.result;
-                 };
+                };
             }(image))
             var ret = reader.readAsDataURL(file);
             var canvas = document.createElement("canvas");
@@ -412,4 +436,13 @@ $(function () {
             $(day).val(val);
         }
 </script>
+
+@if( Session::has('product') || Session::has('deadline'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#popupmodal').modal();
+        });
+    </script>
+@endif
+
 @endsection
