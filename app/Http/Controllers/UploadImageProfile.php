@@ -166,6 +166,11 @@ class UploadImageProfile extends Controller
         return view('profile.sponsor.spon_shopping_cart', compact('sponsor'));
     }
 
+    public function SponsorPayment(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.sponsor.spon_payment', compact('sponsor'));
+    }
+
     public function saveProfileDev(Request $request){
         // dd($request);
         if ($request->input('submit') != null ){
