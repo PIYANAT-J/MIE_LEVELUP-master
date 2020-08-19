@@ -110,7 +110,7 @@
                                     <a class="avatar-link" style="margin: 0 8px;"> > </a>
                                     <a href="/payment" class="avatar-link active" style="font-size:1em;">ชำระเงิน</a>
                                     <a class="avatar-link" style="margin: 0 8px;"> > </a>
-                                    <a href="/payment_confirmation" class="avatar-link" style="font-size:1em;">ยืนยันการชำระเงิน</a>
+                                    <a class="avatar-link" style="font-size:1em;">ยืนยันการชำระเงิน</a>
                                 </div>
                             </div>
 
@@ -125,23 +125,76 @@
                                             </div>
 
                                             <div class="row mx-2 py-3" style="border-bottom:1px solid #455160">
-                                                <div class="col-6 font-payment2">ช่องทางการชำระเงิน</div>
-                                                <div class="col-6 text-right font-payment2">T10 Wallet ชื่อบัญชี สมหญิง รักดี</div>
+                                                <div class="col-8">
+                                                    <label class="font-payment2">ช่องทางการชำระเงิน</label> <br>
+                                                    <label style="font-family:myfont1;font-size:0.9em;color:#fff;">
+                                                        ATM / โอนเข้าธนาคาร <br>
+                                                        กรุณาเก็บเอกสาร/หลักฐานการโอนเงินไว้ เพื่ออัพโหลดภายใน 24 ชม.
+                                                    </label>
+                                                </div>
+                                                <div class="col-4 text-right">
+                                                <label ><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
+                                                <label class="font-payment2">ธนาคารกรุงเทพ</label> <br>
+                                                <label class="ml-2" style="font-family:myfont1;font-size:1em;line-height:0;color:#fff;">บริษัท ทีเท็น จำกัด</label><br>
+                                                <label class="ml-2" style="font-family:myfont1;font-size:1em;line-height:0; color:#fff;" id="copy">766-2-1-7016-4</label>
+                                                <label class="ml-2" style="font-family:myfont1;font-size:1em;line-height:0;color:#ce0005;cursor:pointer;text-decoration:underline;" onclick="copyToClipboard('#copy')">คัดลอก</label>
+                                            </div>
                                             </div>
                                             
-                                            <div class="row mt-3 py-2 " style="background-color:#000;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
+                                            <div class="row mt-3 py-2 " style="border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
                                                 <div class="col-lg-12">
-                                                    <div class="row mt-3">
-                                                        <div class="col-lg-8"></div>
-                                                        <div class="col-lg-2 text-right">
-                                                            <a><label class="btn-submit-payment">ยกเลิก</label></a>
-                                                        </div>
-                                                        <div class="col-lg-2 text-right">
-                                                            <a href="/successful_payment"><label class="btn-submit-red2">ยืนยัน</label></a>
+                                                    <div class="row mt-2">
+                                                        <div class="col-lg-12 text-right">
+                                                            <label class="btn-submit-red3" onClick="myFunction()">แจ้งการชำระเงิน</label>
+                                                            <a href="{{ route('Payment') }}"><label class="btn-submit-wh">อัพโหลดภายหลัง</label></a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div id="Transfer">
+                                                <div class="row fade-in mt-3">
+                                                    <div class="col-lg-6">
+                                                        <label class="bgInput field-wrap">
+                                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">วันที่โอน</label> <br>
+                                                            <input type="date" name="date" class="input-login px-3" ></input>
+                                                        </label>
+                                                        <label class="bgInput field-wrap">
+                                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">เวลาที่โอน</label> <br>
+                                                            <input type="time" name="time" class="input-login px-3" ></input>
+                                                        </label>
+                                                        <label class="bgInput field-wrap">
+                                                            <label class="fontHeadInput px-3" style="padding:0;">ธนาคารทีโอน</label>
+                                                            <select class="selectBankSpon" type="text" name="text4">
+                                                                <option value="">ธนาคารกรุงเทพ</option>
+                                                                <option value="">ธนาคารกสิกรไทย</option>
+                                                                <option value="">ธนาคารกรุงไทย</option>
+                                                                <option value="">ธนาคารทหารไทย</option>
+                                                                <option value="">ธนาคารไทยพาณิชย์</option>
+                                                                <option value="">ธนาคารกรุงศรีอยุธยา</option>
+                                                                <option value="">ธนาคารเกียรตินาคิน</option>
+                                                                <option value="">ธนาคารเกียรตินาคิน</option>
+                                                                <option value="">ธนาคารทิสโก้</option>
+                                                                <option value="">ธนาคารธนชาต</option>
+                                                                <option value="">ธนาคารยูโอบี</option>
+                                                                <option value="">ธนาคารออมสิน</option>
+                                                                <option value="">ธนาคารอาคารสงเคราะห์</option>
+                                                                <option value="">ธนาคารอิสลามแห่งประเทศไทย</option>
+                                                            </select>
+                                                        </label>
+                                                        <a href="{{ route('Payment') }}"><label class="btn-submit-red3">ยืนยัน</label></a>
+                                                    </div>
+                                                    <div class="col-lg-6 ">
+                                                        <div>
+                                                            <label id="upload" style="cursor:pointer;font-family:myfont1;font-size:1em;font-weight:700;color:#fff;">
+                                                                <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />อัพโหลดรูปภาพ
+                                                            </label>
+                                                            <div id="thumb" class="thumb-topup"><img src="home/topup/pic-topup.png"/></div>    
+                                                            <input id="file_upload" style="display:none" name="transferImg" type="file" multiple="true" accept="image/* " require/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -238,4 +291,60 @@
 <script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+
+<script>
+    function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+</script>
+
+<script>
+    const myFunction = () => {
+    document.getElementById("Transfer").style.display ='block';}
+</script>
+
+<script> /* อัพโหลดรูปภาพ */
+$(function () {
+ $("#upload").on("click",function(e){
+     $("#file_upload").show().click().hide();
+     e.preventDefault();
+ });
+ $("#file_upload").on("change",function(e){
+     var files = this.files
+     showThumbnail(files)        
+ });
+ function showThumbnail(files){
+     $("#thumb").html("");
+     for(var i=0;i<files.length;i++){
+         var file = files[i]
+         var imageType = /image.*/
+         if(!file.type.match(imageType)){
+                //  console.log("Not an Image");
+             continue;
+         }
+         var image = document.createElement("img");
+         var thumbnail = document.getElementById("thumb");
+         image.file = file;
+         thumbnail.appendChild(image)
+         var reader = new FileReader()
+         reader.onload = (function(aImg){
+             return function(e){
+                 aImg.src = e.target.result;
+             };
+         }(image))
+         var ret = reader.readAsDataURL(file);
+         var canvas = document.createElement("canvas");
+         ctx = canvas.getContext("2d");
+         image.onload= function(){
+             ctx.drawImage(image,100,100)
+         }
+     } // end for loop
+     console.log(file);
+ } // end showThumbnail
+});
+</script>
 @endsection

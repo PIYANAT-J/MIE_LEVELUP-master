@@ -99,13 +99,13 @@
         <!-- sidebar -->
         <div class="col-lg-9" style="background-color:#141621; ">
             <div class="row mt-4 px-4" >
-                <div class="col-lg-6 " style="font-family:myfont;color:#fff;font-size:1.3em;">Avatar</div>
+                <div class="col-lg-6 " style="font-family:myfont1;color:#fff;font-size:1.2em;font-weight:800;">Avatar</div>
                 <div class="col-lg-6 text-right">
                     <a href="/simulator_trade"><label class="bg-shop">
                         <div style="font-family:myfont1;font-size:1em;color:#fff;">Simulator Trade</div> 
                     </label></a>
                     <a href="shop"><label class="bg-shop">
-                        <div style="font-family:myfont1;font-size:1em;color:#fff;"><img style="width:1em;margin-right:10px;" src="{{asset('icon/shop.png') }}"/>ซื้อขายตลาด</div> 
+                        <div style="font-family:myfont1;font-size:1em;color:#fff;"><img class="iconShop" src="{{asset('icon/shop.png') }}"/>ตลาดซื้อขาย</div> 
                     </label></a>
                 </div>
             </div>
@@ -596,7 +596,7 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-12" style="font-family:myfont;color:#fff;font-size:1.3em;">มินิเกม</div>
+                <div class="col-lg-12" style="font-family:myfont1;color:#fff;font-size:1.2em;font-weight:800;">มินิเกม</div>
             </div>
 
             <div class="row mb-3">

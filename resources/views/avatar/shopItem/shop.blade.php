@@ -155,7 +155,7 @@
                             <div class="row mx-4 pt-4 mb-3 pb-3" style="background-color: #202433;border-radius: 6px;">
                                 <div class="col-lg-12">
                                     <div class="row px-4" style="height:190px">
-                                        <div class="col-lg-12" style="font-family:myfont;color:#fff;font-size:1.3em;">แนะนำ</div>
+                                        <div class="col-lg-12" style="font-family:myfont1;color:#fff;font-size:1.2em;font-weight:800;">แนะนำ</div>
                                         <div class="col-lg-12">
                                             <div class="owl-carousel" id="owl-demo2">
                                                 <div class="item">
@@ -216,7 +216,7 @@
                                     </div>
 
                                     <div class="row px-4" style="height:190px">
-                                        <div class="col-lg-12" style="font-family:myfont;color:#fff;font-size:1.3em;">ศรีษะ</div>
+                                        <div class="col-lg-12" style="font-family:myfont1;color:#fff;font-size:1.2em;font-weight:800;">ศรีษะ</div>
                                         <div class="col-lg-12">
                                             <div class="owl-carousel" id="owl-demo3">
                                                 <div class="item">
@@ -278,7 +278,7 @@
                                     </div>
 
                                     <div class="row px-4" style="height:190px">
-                                        <div class="col-lg-12" style="font-family:myfont;color:#fff;font-size:1.3em;">เสื้อผ้า</div>
+                                        <div class="col-lg-12" style="font-family:myfont1;color:#fff;font-size:1.2em;font-weight:800;">เสื้อผ้า</div>
                                         <div class="col-lg-12">
                                             <div class="owl-carousel" id="owl-demo4">
                                                 <div class="item">
@@ -340,7 +340,7 @@
                                     </div>
 
                                     <div class="row px-4" style="height:190px">
-                                        <div class="col-lg-12" style="font-family:myfont;color:#fff;font-size:1.3em;">อาวุธ</div>
+                                        <div class="col-lg-12" style="font-family:myfont1;color:#fff;font-size:1.2em;font-weight:800;">อาวุธ</div>
                                         <div class="col-lg-12">
                                             <div class="owl-carousel" id="owl-demo5">
                                                 <div class="item">
@@ -402,7 +402,7 @@
                                     </div>
 
                                     <div class="row px-4" style="height:190px">
-                                        <div class="col-lg-12" style="font-family:myfont;color:#fff;font-size:1.3em;">ไอเทมพิเศษ</div>
+                                        <div class="col-lg-12" style="font-family:myfont1;color:#fff;font-size:1.2em;font-weight:800;">ไอเทมพิเศษ</div>
                                         <div class="col-lg-12">
                                             <div class="owl-carousel" id="owl-demo6">
                                                 <div class="item">

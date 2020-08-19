@@ -152,3 +152,7 @@
   content: "\e91e";
   color: rgb(35, 193, 151);
 }
+
+.icon-dropdown:before {
+  content: "\e920";
+}

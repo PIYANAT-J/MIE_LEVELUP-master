@@ -3875,8 +3875,9 @@ div.sticky {
   height: 50px;
   background-color: #17202c;
   color: #fff;
-  font-family: myfont;
-  font-size: 1em;
+  font-family: myfont1;
+  font-size: 1.1em;
+  font-weight: 800;
   border-radius: 8px;
   border: none;
 }
@@ -3890,8 +3891,8 @@ div.sticky {
   padding-bottom: 10px;
   background-color: #17202c;
   color: #fff;
-  font-family: myfont;
-  font-size: 1.2em;
+  font-family: myfont1;
+  font-size: 1em;
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -4115,14 +4116,13 @@ input[type="checkbox"].switch_1{
   background-color: #ce0005;
   color: #fff;
   font-family: myfont1;
-  font-weight: 800;
-  font-size: 1.2em;
+  font-size: 1em;
   border-radius: 8px;
   border: none;
   text-align: center;
   cursor: pointer;
 }
-.btn-submit-modal-red:focus {
+.btn-submit-red2:focus {
   outline: none!important;
 }
 
@@ -4545,7 +4545,8 @@ ul.thumb-Images li {
     border-radius: 6px;
     background-color: #202433;
     color: #57677b;
-    font-family: myfont;
+    font-family: myfont1;
+    font-weight:800;
     font-size: 1.1em;
     border: none;
     box-shadow: 0 5px 0 0 #191b29;
@@ -4570,7 +4571,8 @@ ul.thumb-Images li {
   border-radius: 6px;
   background-color: #202433;
   color: #57677b;
-  font-family: myfont;
+  font-family: myfont1;
+  font-weight: 800;
   font-size: 1.1em;
   line-height: 0.9;
   border: none;
@@ -4697,7 +4699,7 @@ outline: none!important;
 
 .fontItem{
   font-family: myfont1;
-  font-size: 1em;
+  font-size: 1.1em;
   color: #fff;
 }
 
@@ -4825,7 +4827,8 @@ outline: none!important;
 
  .btn-avatar{
   color: #000;
-  font-family: myfont;
+  font-family: myfont1;
+  font-weight: 800;
   font-size: 1.2em;
   width: 164px;
   height: 50px;
@@ -5445,9 +5448,11 @@ input[type="number"] {
 
 .avatar-link{
   color: #fff;
-  font-family:myfont;
-  font-size:1.2em;
+  font-family:myfont1;
+  font-size:1em;
   cursor:pointer;
+  font-weight: 800;
+  
 }
 
 .avatar-link:hover{
@@ -5455,6 +5460,7 @@ input[type="number"] {
 }
 .avatar-link.active{
   color:#0061fc;
+  text-decoration: underline;
 }
 
 .font-sale1{
@@ -5530,8 +5536,9 @@ input[type="number"] {
   border-radius: 6px;
   background-color: #c3c3c3;
   color: #000;
-  font-family: myfont;
-  font-size: 1.2em;
+  font-family: myfont1;
+  font-weight: 800;
+  font-size: 1.1em;
   border: none;
   box-shadow: 0 0 12px 0 #7b7b7b;
   cursor: pointer;
@@ -5576,7 +5583,8 @@ input[type="number"] {
   border-radius: 6px;
   background-color: #c3c3c3;
   color: #000;
-  font-family: myfont;
+  font-family: myfont1;
+  font-weight: 800;
   font-size: 1.2em;
   border: none;
   box-shadow: 0 0 12px 0 #7b7b7b;
@@ -5827,6 +5835,13 @@ input[type=number]
   border-radius: 6px;
 }
 
+.bgPaymentAvatar{
+  width: 200px;
+  height: 120px;
+  background-color: #fafaff;
+  border-radius: 6px;
+}
+
 .showme{
   display: none;
   border: 2px solid #46e63e;
@@ -5900,12 +5915,14 @@ input[type=number]
 .btn-buyItem{
   width: 5em;
   height: 2em;
+  padding-top: 3px;
   border-radius: 1px;
   box-shadow: 0 0 4px 0 rgba(230, 185, 41, 0.76);
   border: solid 2px #e6b926;
   background-color: rgba(230, 185, 41, 0.7);
-  font-family: myfont;
+  font-family: myfont1;
   font-size: 1em;
+  font-weight: 800;
   text-align: center;
   color: #000;
   cursor: pointer;
@@ -6070,9 +6087,10 @@ input[type=number]
   box-shadow: 0 0 4px 0 rgba(230, 185, 41, 0.76);
   border: solid 2px #e6b926;
   background-color: rgba(230, 185, 41, 0.7);
-  font-family: myfont;
+  font-family: myfont1;
+  font-weight: 800;
   padding: 5px 0;
-  font-size: 1.1em;
+  font-size: 1em;
   text-align: center;
   color: #000;
   cursor: pointer;
@@ -6197,11 +6215,13 @@ input[type=number]
   z-index: 8;
   position: absolute;
   top: 25px;
-  left: 150px;
+  left: 170px;
+  line-height: 1.5;
 }
 
 .btn-view{
-  font-family: myfont;
+  font-family: myfont1;
+  font-weight: 800;
   font-size: 1em;
   background-color: #fff;
   color: #000;
@@ -6219,7 +6239,8 @@ input[type=number]
 }
 
 .btn-viewlock{
-  font-family: myfont;
+  font-family: myfont1;
+  font-weight: 800;
   font-size: 1em;
   background-color: #455160;
   color: #000;
@@ -6256,7 +6277,7 @@ input[type=number]
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   font-family: myfont1;
-  font-size: 1.1em;
+  font-size: 1em;
   background-color: #fff;
   border: none;
   padding: 3px 10px;
@@ -6282,8 +6303,9 @@ input[type=number]
 }
 
 .select-code{
-  font-family: myfont;
-  font-size: 1.1em;
+  font-family: myfont1;
+  font-weight: 800;
+  font-size: 1em;
   color: #000;
   background-color: #5bf89d;
   border: none;
@@ -6292,13 +6314,14 @@ input[type=number]
 
 .font-payment2{
   font-family: myfont1;
-  font-size: 1.1em;
+  font-size: 1em;
   color: #fff;
 }
 
-#first,#first1,#first2, #second, #second1, #third, #third1, #four,#four1{
+#first, #first1, #T10, #second, #second1,#VisaCredit, #third, #third1,#iBanking, #four,#four1,#Transfer {
   display: none
 }
+
 #man,#woman{
   display: none
 }
@@ -6374,7 +6397,7 @@ button {
 .addT10wallet{
   background-color: #fafaff;
   font-family: myfont1;
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: 800;
   height: 45px;
   width: 100%;
@@ -6404,6 +6427,7 @@ button {
   height: 80px;
   background-color: #f3f3f3;
   border-radius: 6px;
+  border: 2px solid #f3f3f3;
 }
 
 .bordergreen2{
@@ -6424,7 +6448,6 @@ button {
   position: absolute;
   top: 30px;
   right: 10px;
-
 }
 
 .custom03 input[type="radio"] {
@@ -6646,25 +6669,27 @@ button {
 .VisaCredit{
   background-color: #fafaff;
   width: 100%;
-  height: 70px;
+  height: 50px;
   font-family: myfont;
   font-size: 1.2em;
   color: #000;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .pVisaCredit{
   position: absolute;
   z-index: 5;
-  top: 23px;
+  top: 13px;
   left: 30px;
 }
 
 .pBankAvatar{
   position: absolute;
   z-index: 5;
-  top: 20px;
-  left: 100px;
+  top: 13px;
+  left: 80px;
+  cursor: pointer;
 }
 
 .pNBankAvatar{
@@ -6849,7 +6874,7 @@ input[type="checkbox"].switch_2{
 .btnBuyPackage{
   background-color: #ce0005;
   border-radius: 6px;
-  padding: 5px 15px 0 15px;
+  padding: 6px 15px 0 15px;
   cursor: pointer;
 }
 
@@ -7421,7 +7446,7 @@ input[type="checkbox"].switch_2{
 }
 
 .inputSponPayment2{
-  width: 250px;
+  width: 65%;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   font-family: myfont1;
@@ -7435,21 +7460,7 @@ input[type="checkbox"].switch_2{
   outline: none;
 }
 
-.inputSponPayment3{
-  width: 250px;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-  font-family: myfont1;
-  font-size: 1em;
-  background-color: #fafaff;
-  border: none;
-  padding: 3px 10px;
-  color: #23c197;
-}
-.inputSponPayment3:focus{
-  background-color: #fafaff !important;
-  outline: none;
-}
+
 
 .select-code2{
   font-family: myfont1;
@@ -7512,7 +7523,13 @@ input[type="checkbox"].switch_2{
   width: 100%;
   height: 45px;
   color: #000;
-  border-top: 1px solid #c7c7c7b0;
+  border-top: 1px solid #e6e5e598;
+  margin: 0;
+}
+.bgVisaCredit2{
+  width: 100%;
+  height: 45px;
+  color: #000;
   margin: 0;
 }
 
@@ -7566,7 +7583,7 @@ input[type="checkbox"].switch_2{
 .submitModalRed:focus {
   outline: none!important;
 }
-#bank{
+#bank,#sBank{
   display: none;
 }
 
@@ -7648,7 +7665,11 @@ input[type="checkbox"].switch_2{
 }
 
 .bgT10ListBanking{
-  background-color: #fafaff;
+  background-color: #ffffff;
+}
+
+.bgT10ListBanking2{
+  background-color: #202433;
 }
 .bgT10ListBankingPay{
   background-color: #ce0005;
@@ -7664,4 +7685,249 @@ input[type="checkbox"].switch_2{
   height: 100px;
   overflow: scroll;
   overflow-x: hidden;
+}
+
+.addBank{
+  background-color: #171f2b;
+  color: #ffffff;
+  font-family: myfont1;
+  font-size: 1em;
+  padding: 8px 10px;
+  border-radius: 6px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.selectGreenPosition3{
+  position: absolute;
+  top: 15px;
+  right: 30px;
+}
+
+.row300{
+  height: 300px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+
+.redioGreen input[type="radio"] {
+  display: none;
+}
+
+.redioGreen input[type="radio"]:checked + label {
+  border: 2px solid #23c197;
+}
+
+.redioGreen2 input[type="radio"] {
+  display: none;
+}
+
+.redioGreen2 input[type="radio"]:checked + label {
+  /* border: 2px solid #23c197; */
+  background-color: #23c19720;
+}
+
+.redioGreenAvatar input[type="radio"] {
+  display: none;
+}
+
+.redioGreenAvatar  input[type="radio"]:checked + label {
+  border: 2px solid #46e63e;
+}
+
+.fontCopy{
+  font-family: myfont1;
+  font-size: 1em;
+  font-weight: 800;
+  color: #ce0005;
+  position: absolute;
+  top:11px;
+  right: 40px;
+  cursor: pointer;
+}
+
+.fontGreen{
+  font-family: myfont1;
+  font-size: 1em;
+  font-weight: 800;
+  color: #23c197;
+  position: absolute;
+  top:11px;
+  right: 40px;
+  cursor: pointer;
+}
+
+.nameVisaCredit2{
+  position: absolute;
+  z-index: 5;
+  top: 11px;
+  left: 30px;
+  font-family:myfont1;
+  font-size:1em;
+  color:#414141;
+  cursor: pointer;
+  margin: 0;
+}
+
+.accordions {
+  font-family: myfont1;
+  width: 100%;
+  color: #000;
+}
+
+.accordion-item {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.accordion-item .accordion-title {
+  cursor: pointer;
+  transition: all 0.4s;
+  border-radius: 5px 5px 0 0;
+  padding: 10px 5px 10px 20px;
+}
+
+.accordion-item .accordion-title.active-title {
+  background-color: #edeef3;
+  color: #000;
+}
+.accordion-item .accordion-title label {
+  margin: 0;
+  font-size: 0.7em;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0 8px 25px;
+}
+
+.accordion-item .accordion-title i.icon-dropdown {
+  transform: rotate(0);
+  transition: 0.4s;
+}
+
+.accordion-item .accordion-title i.icon-dropdown.chevron-top {
+  transform: rotate(180deg);
+}
+
+.accordion-item .accordion-content {
+  display: none;
+  line-height: 1.7;
+  padding: 20px;
+  background-color: #fffff;
+  border-radius: 0 0 5px 5px;
+}
+
+.accordion-item .accordion-content.active {
+  display: block;
+}
+
+.accordion-item .accordion-content p {
+  margin: 0;
+}
+
+
+.font-payment3{
+  font-family: myfont1;
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.btn-submit-drak2{
+  padding: 10px 30px 10px 30px;
+  background-color: #17202c;
+  color: #fff;
+  font-family: myfont1;
+  font-size: 1em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+.btn-submit-drak2:focus {
+  outline: none!important;
+}
+
+.btn-submit-red3{
+  padding: 10px 20px 10px 20px;
+  background-color: #ce0005;
+  color: #fff;
+  font-family: myfont1;
+  font-size: 1em;
+  border-radius: 8px;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+}
+.btn-submit-red3:focus {
+  outline: none!important;
+}
+
+.btn-submit-wh{
+  padding: 10px 20px 10px 20px;
+  background-color: #ffffff;
+  color: #ce0005;
+  font-family: myfont1;
+  font-size: 1em;
+  border-radius: 8px;
+  border: 1px solid #ce0005;
+  text-align: center;
+  cursor: pointer;
+}
+.btn-submit-wh:focus {
+  outline: none!important;
+}
+
+.selectBankSpon{
+  width: 90%;
+  font-family: myfont1;
+  font-size: 1em;
+  height: 38px;
+  border: none;
+}
+
+.selectBankSpon:focus{
+  border: none;
+}
+
+.bgGreen{
+  background-color: #23c197;
+  font-family: myfont1;
+  font-size: 1em;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0 10px 0 10px;
+  cursor: pointer;
+}
+
+.inputT10Avatar{
+  width: 80%;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  font-family: myfont1;
+  font-size: 1em;
+  background-color: #fff;
+  border: none;
+  padding: 3px 10px;
+}
+.inputT10Avatar:focus{
+  background-color: #fff !important;
+  outline: none;
+}
+
+.bgOrange{
+  background-color: #fc8800;
+  font-family: myfont1;
+  font-size: 1em;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0 10px 0 10px;
+  cursor: pointer;
+}
+
+.iconShop{
+  max-width: 20px;
+  margin: -8px 10px 0 0;
 }

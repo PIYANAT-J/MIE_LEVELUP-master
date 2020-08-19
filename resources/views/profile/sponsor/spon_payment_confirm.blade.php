@@ -1,5 +1,6 @@
 @extends('layout.sponsor_navbar')
 @section('content')
+
 <div class="container-fluid">
     <div class="row my-5"></div>
     <div class="row my-2"></div>
@@ -57,12 +58,16 @@
         @foreach($sponsor as $spon)
             @if($spon->USER_EMAIL == Auth::user()->email)
                     <div class="col-lg-9" style="background-color:#f5f5f5;">
-                        <div class="row mt-4 ">
+                    <div class="row mt-4 ">
                             <div class="col-lg-1"></div>
                             <div class="col-lg-10 ">
                                 <a href="{{ route('AdvtPackage') }}"><label class="fontAd1 active">สนับสนุนเงินในเกม</label></a>
                                 <label class="fontAd1"> > </label>
-                                <label class="fontAd1" >ตระกร้าสินค้า</label>
+                                <a href="{{ route('SponShoppingCart') }}"><label class="fontAd1 active">ตระกร้าสินค้า</label></a>
+                                <label class="fontAd1"> > </label>
+                                <a href="{{ route('SponsorPayment') }}"><label class="fontAd1 active" >ชำระเงิน</label></a>
+                                <label class="fontAd1"> > </label>
+                                <label class="fontAd1" >ยืนยันการชำระเงิน</label>
                             </div>
                             <div class="col-lg-1"></div>
                         </div>
@@ -71,66 +76,34 @@
                             <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
                                 <div class="row">
                                     <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                                        <span class="font-profile1">ตระกร้าสินค้า</span>
+                                        <span class="font-profile1">ยืนยันการชำระเงิน</span>
                                     </div>
                                 </div>
-                                <div class="row rowGameShopping">
-                                    <div class="col-lg-12" style="border-bottom: 1px solid #f2f2f2;">
-                                        <div class="row mx-2 mt-3" style="border-bottom:1px solid #fff;">  
-                                            <div class="col-8" style="padding:0;">
-                                                <label class="checkbox-dark" style="padding-top:10px;">
-                                                    <input type="checkbox" id="checkbox_01" name="accept_01">
-                                                    <label for="checkbox_01" ></label>
-                                                </label>
-                                                <label class="plabelimg">
-                                                    <img class="labelimg" src="{{asset('section/picture_game/game.png') }}" />
-                                                </label> 
-                                                <label class="labelFont bglabelFont ml-2 py-3">
-                                                    <label style="font-weight: 700;">Witch</label></br>
-                                                    <label style="color: #a8a8a8;">Fantasy • Online</label></br>
-                                                    <label style="color: #23c197;font-size:0.9em;">ช่วงเวลา 13/08/2020 11:00 - 14/08/2020 12:00</label>
-                                                    <label style="color: #23c197;font-size:0.9em;">จำนวนรอบโฆษณา 20 รอบ </label>
-                                                </label>
-                                            </div>
-
-                                            <div class="col-3 my-3">
-                                                <span class="fontPriceAds1" style="line-height: 1.2; display:block;text-align:right;font-size:1em;">
-                                                    <b class="font-price" style="font-size:1.5em;">฿279.00</b></br>
-                                                    <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿680 </b> (-37%)
-                                                </span>
-                                            </div>
-
-                                            <div class="col-1 my-4 py-1 text-center" style="padding:0;">
-                                                <img style="width:30%;cursor:pointer;" src="{{asset('icon/trash.svg') }}" />
-                                            </div>
+                                <div class="row">
+                                    <div class="col-lg-12 mt-1">
+                                        <div class="row mx-2 py-3" style="border-bottom:1px solid #edeef3">
+                                            <div class="col-6 font-payment3">จำนวนเงินที่ต้องชำระ</div>
+                                            <div class="col-6 text-right font-price" style="font-size:1.5em;">฿ 279.00</div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row mx-0 my-3">
-                                    <div class="col-4">
-                                        <div class="row my-2">
-                                            <div class="col-lg-12">
-                                                <label class="checkbox-dark">
-                                                    <input type="checkbox" id="checkbox_all" name="accept_01" onclick="toggle(this);">
-                                                    <label for="checkbox_all" class="pt-2 ml-2" style="font-family:myfont1;font-size:1em;font-weight:800;">เลือกทั้งหมด</label>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 text-right">
-                                        <div class="row mt-3 mb-2">
-                                            <div class="col-lg-12">
-                                                <span style="font-family:myfont1;font-size:1em;font-weight:800;">
-                                                    <label>รวมค่าสินค้า</label>
-                                                    <label>( 3 รายการ )</label>
-                                                    <label class="pl-3"><b class="font-price">฿279.00</b></label>
-                                                </span>
-                                            </div>
+
+                                        <div class="row mx-2 py-3" style="border-bottom:1px solid #edeef3">
+                                            <div class="col-6 font-payment3">ช่องทางการชำระเงิน</div>
+                                            <div class="col-6 text-right font-payment3">T10 Wallet ชื่อบัญชี สมหญิง รักดี</div>
                                         </div>
                                         
-                                    </div>
-                                    <div class="col-2">
-                                        <a href="{{ route('SponsorPayment') }}"><label class="btn-submit-red2" style="">ชำระเงิน</label></a>
+                                        <div class="row mt-3 py-2 " style="border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
+                                            <div class="col-lg-12">
+                                                <div class="row mt-3">
+                                                    <div class="col-lg-8"></div>
+                                                    <div class="col-lg-2 text-right">
+                                                        <a><label class="btn-submit-payment">ยกเลิก</label></a>
+                                                    </div>
+                                                    <div class="col-lg-2 text-right">
+                                                        <a href="{{ route('SponsorSuccessfulPayment') }}"><label class="btn-submit-red2">ยืนยัน</label></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -172,13 +145,5 @@
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
-<script>
-    function toggle(source) {
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    for (var i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i] != source)
-            checkboxes[i].checked = source.checked;
-    }
-}
-</script>
+
 @endsection
