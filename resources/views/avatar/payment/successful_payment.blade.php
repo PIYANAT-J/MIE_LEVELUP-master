@@ -106,9 +106,11 @@
                                 <div class="col-12 " style="color:#fff;">
                                     <a href="/avatar"class="avatar-link active"> Avatar</a>
                                     <a class="avatar-link" style="margin: 0 8px;"> > </a>
-                                    <a href="/shopping_cart" class="avatar-link active" style="margin: 0 8px;">ตะกร้าสินค้า</a>
+                                    <a href="/shopping_cart" class="avatar-link active" style="font-size:1em;">ตะกร้าสินค้า</a>
                                     <a class="avatar-link" style="margin: 0 8px;"> > </a>
-                                    <a href="/payment" class="avatar-link" style="margin: 0 8px;">ชำระเงิน</a>
+                                    <a href="/payment" class="avatar-link active" style="font-size:1em;">ชำระเงิน</a>
+                                    <a class="avatar-link" style="margin: 0 8px;"> > </a>
+                                    <a href="/successful_payment" class="avatar-link" style="font-size:1em;">ชำระเงินสำเร็จ</a>
                                 </div>
                             </div>
 
@@ -119,8 +121,8 @@
                                             <div class="row">
                                                 <div class="col-lg-12 text-center mt-3">
                                                     <img style="width:34px;" src="{{asset('icon/select_green.svg')}}" alt=""> <br>
-                                                    <label class="mt-5" style="font-family:myfont;font-size:1.3em;color:#fff;line-height:0;">ชำระเงินเรียบร้อยแล้ว</label> <br>
-                                                    <label class="" style="font-family:myfont1;font-size:1.1em;color:#a8a8a8;line-height:0;">หมายเลขคำสั่งซื้อ 7483246834</label>
+                                                    <label class="mt-3" style="font-family:myfont1;font-size:1em;color:#fff;line-height:0;font-weight:800;">ชำระเงินเรียบร้อยแล้ว</label> <br>
+                                                    <label class="" style="font-family:myfont1;font-size:0.9em;color:#a8a8a8;line-height:0;">หมายเลขคำสั่งซื้อ 7483246834</label>
                                                 </div>
                                             </div>
 
@@ -174,7 +176,7 @@
                                             <div class="row mt-3 py-2" style="background-color:#191b29;">
                                                 <div class="col-lg-12">
                                                     <div class="row mx-2 mt-2">
-                                                        <label style="font-family:myfont;font-size:1.2em;color:#fff;">ที่อยู่ในการออกใบเสร็จ</label>
+                                                        <label style="font-family:myfont1;font-size:1em;color:#fff;font-weight:800;">ที่อยู่ในการออกใบเสร็จ</label>
                                                     </div>
                                                     <div class="row mx-3">
                                                         <div class="col-lg-6" >

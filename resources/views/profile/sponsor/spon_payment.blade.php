@@ -1,5 +1,6 @@
 @extends('layout.sponsor_navbar')
 @section('content')
+
 <div class="container-fluid">
     <div class="row my-5"></div>
     <div class="row my-2"></div>
@@ -43,12 +44,12 @@
                     @endforeach
                 <div class="col-lg-1"></div>
                 <a href="{{ route('SponsorProfile') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว </button></a>
-                <a href="{{ route('AdvtPackage') }}" style="width: 100%;"><button class="btn-sidebar active"><i class="icon-money menuIcon"></i>สนับสนุนเงินในเกม</button></a>
+                <a href="{{ route('AdvtPackage') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-money menuIcon"></i>สนับสนุนเงินในเกม</button></a>
                 <a href="{{ route('ProductSupport') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-product menuIcon2"></i>สนับสนุนสินค้าในเกม</button></a>
                 <a href="{{ route('SponShelf') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
                 <!-- <a href="{{ route('DevHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a> -->
-                <a href="{{ route('DevWithdraw') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</button></a>
-                <a href="/develper_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
+                <a href="{{ route('SponsorTopup') }}" style="width: 100%;"><button class="btn-sidebar active"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</button></a>
+                <a href="{{ route('SponsorChangePassword') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
                 <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</button></a> 
             </div>
         </div>
@@ -199,18 +200,7 @@
                                                     <div class="input-group mb-3">
                                                         <input class="inputSponPayment3" type="text" value="200 บาท" aria-describedby="basic-addon2" readonly>
                                                         <div class="input-group-append">
-                                                            <span class="input-group-text select-code2" id="basic-addon2" data-toggle="modal" data-target="#T10">เติมเงิน</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <label style="font-family:myfont1;font-size:1em;font-weight:800;">คูปอง / ส่วนลดของฉัน</label>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="input-group mb-3">
-                                                        <input class="inputSponPayment2" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text select-code2" id="basic-addon2" data-toggle="modal" data-target="#code">เลือกโค้ดส่วนลด</span>
+                                                            <span class="input-group-text select-code2" id="basic-addon2" data-toggle="modal" data-target="#T10Topup">เติมเงิน</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -218,13 +208,27 @@
                                         </div>
 
                                         <div class="col-lg-6">
+                                            <label style="font-family:myfont1;font-size:1em;font-weight:800;">คูปอง / ส่วนลดของฉัน</label>
+                                            <div class="col-lg-12" style="padding:0;">
+                                                <div class="input-group mb-3">
+                                                    <input class="inputSponPayment2" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text select-code2" id="basic-addon2" data-toggle="modal" data-target="#code">เลือกโค้ดส่วนลด</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
                                             <label class="ml-2" style="font-family:myfont1;font-size:1em;font-weight:800;">รายการรอชำระ</label><br>
                                             <div class="row pl-2 row200">
-                                                <label class="ml-2 bgT10ListBanking">
-                                                    <label class="bgT10ListBankingPay">ชำระเงิน</label>
-                                                    <label style="font-family:myfont1;font-size:1em;"> ฿100 ธนาคารกรุงเทพ</label>
-                                                    <label style="font-family:myfont1;font-size:0.9em;color:#ce0005;"> ควรชำระก่อน 10/10/20</label> 
-                                                </label>
+                                                <div class="col-lg-12 pl-2">
+                                                    <label class="ml-2 bgT10ListBanking">
+                                                        <label class="bgT10ListBankingPay" data-toggle="modal" data-target="#VisaCredit3">ชำระเงิน</label>
+                                                        <label style="font-family:myfont1;font-size:1em;"> ฿100 ธนาคารกรุงเทพ</label>
+                                                        <label style="font-family:myfont1;font-size:0.9em;color:#ce0005;"> ควรชำระก่อน 10/10/20</label> 
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -232,31 +236,35 @@
 
                                 <div id="second1">
                                     <div class="row my-3 fade-in">
-                                        <div class="col-lg-5">
+                                        <div class="col-lg-6">
                                             <div class="row" style="border-right:1px solid #455160;">
-                                                <div class="col-lg-12">
+                                                <div class="col-lg-12 pl-4">
                                                     <label style="font-family:myfont1;font-size:1em;font-weight:800;">บัญชี</label>
                                                 </div>
-                                                <div class="col-lg-12">
-                                                    <label class="VisaCredit">
+                                            </div>
+                                            <div class="row " style="border-right:1px solid #455160;">
+                                                <div class="col-lg-12 redioGreen">
+                                                    <input type="radio" name="VisaCredit" value="visa" id="visa" />
+                                                    <label for="visa" class="VisaCredit">
                                                         <img class="pVisaCredit" style="height:25px;" src="{{asset('home/logo/visa1.svg')}}" >
-                                                        <label class="pBankAvatar" style="font-family:myfont1;font-size:1em;color:#414141;">ธนาคารไทยพาณิชย์</label>
-                                                        <label class="pNBankAvatar" style="font-family:myfont1;font-size:1em;color:#414141;">*1234</label>
-                                                        <label class="pDotBankAvatar" style="font-family:myfont1;font-size:1.1em;color:#414141;line-height:0;cursor:pointer;" data-toggle="modal" data-target="#VisaCredit">•••</label>
+                                                        <label for="visa" class="pBankAvatar" style="font-family:myfont1;font-size:0.9em;color:#414141;">ธนาคารไทยพาณิชย์ *1234</label>
                                                     </label>
                                                 </div>
-                                                <div class="col-lg-12">
-                                                    <label class="VisaCredit">
+                                                <div class="col-lg-12 redioGreen">
+                                                    <input type="radio" name="VisaCredit" value="credit" id="credit" />
+                                                    <label for="credit" class="VisaCredit">
                                                         <img class="pVisaCredit" style="height:25px;" src="{{asset('home/logo/credit.svg')}}" >
-                                                        <label class="pBankAvatar" style="font-family:myfont1;font-size:1em;color:#414141;">ธนาคารไทยพาณิชย์</label>
-                                                        <label class="pNBankAvatar" style="font-family:myfont1;font-size:1em;color:#414141;">*1234</label>
-                                                        <label class="pDotBankAvatar" style="font-family:myfont1;font-size:1.1em;color:#414141;line-height:0;cursor:pointer;" data-toggle="modal" data-target="#VisaCredit">•••</label>
+                                                        <label for="credit" class="pBankAvatar" style="font-family:myfont1;font-size:0.9em;color:#414141;">ธนาคารไทยพาณิชย์ *1234</label>
                                                     </label>
+                                                </div>
+                                                <div class="col-lg-12 px-3 mt-2">
+                                                    <label class="addBank px-2" data-toggle="modal" data-target="#VisaCredit2">เพิ่มบัตรเครดิต / เดบิต</label>
                                                 </div>
                                             </div>
+                                             
                                         </div>
 
-                                        <div class="col-lg-7">
+                                        <div class="col-lg-6">
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <label style="font-family:myfont1;font-size:1em;font-weight:800;">คูปอง / ส่วนลดของฉัน</label>
@@ -276,8 +284,8 @@
 
                                 <div id="third1">
                                     <div class="row my-3 fade-in">
-                                        <div class="col-lg-5">
-                                            <div class="row" style="border-right:1px solid #455160;">
+                                        <div class="col-lg-6">
+                                            <div class="row pl-3" style="border-right:1px solid #455160;">
                                                 <div class="col-lg-12">
                                                     <label style="font-family:myfont1;font-size:1em;font-weight:800;">บัญชี</label>
                                                 </div>
@@ -312,7 +320,7 @@
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <div class="input-group mb-3">
-                                                        <input class="inputSponPayment3" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
+                                                        <input class="inputSponPayment2" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
                                                         <div class="input-group-append">
                                                             <span class="input-group-text select-code2" id="basic-addon2" data-toggle="modal" data-target="#code">เลือกโค้ดส่วนลด</span>
                                                         </div>
@@ -321,7 +329,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-7">
+                                        <div class="col-lg-6">
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <label style="font-family:myfont1;font-size:1em;font-weight:800;">ชำระเงินอย่างไร</label> <br>
@@ -345,8 +353,8 @@
 
                                 <div id="four1">
                                     <div class="row my-3 fade-in">
-                                        <div class="col-lg-5">
-                                            <div class="row" style="border-right:1px solid #455160;">
+                                        <div class="col-lg-6">
+                                            <div class="row pl-3" style="border-right:1px solid #455160;">
                                                 <div class="col-lg-12">
                                                     <label style="font-family:myfont1;font-size:1em;font-weight:800;">บัญชี</label>
                                                 </div>
@@ -354,23 +362,23 @@
                                                     <div class="custom02">
                                                         <div class="row">
                                                             <div class="col-lg-12 mb-2">
-                                                                <input type="radio" name="bank" value="bank01" id="bank01">
-                                                                <label for="bank01"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
+                                                                <input type="radio" name="bank" value="bank05" id="bank05">
+                                                                <label for="bank05"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
                                                                 <span class="ml-2" style="font-family:myfont1;font-size:1em;">ธนาคารกรุงเทพ</span>
                                                             </div>
                                                             <div class="col-lg-12 mb-2">
-                                                                <input type="radio" name="bank" value="bank02" id="bank02">
-                                                                <label for="bank02"><img src="{{asset('home/logo/ktc.svg')}}" ></label>
+                                                                <input type="radio" name="bank" value="bank06" id="bank06">
+                                                                <label for="bank06"><img src="{{asset('home/logo/ktc.svg')}}" ></label>
                                                                 <span class="ml-2" style="font-family:myfont1;font-size:1em;">ธนาคารกรุงไทย</span>
                                                             </div>
                                                             <div class="col-lg-12 mb-2">
-                                                                <input type="radio" name="bank" value="bank03" id="bank03">
-                                                                <label for="bank03"><img src="{{asset('home/logo/kbank.svg')}}" ></label>
+                                                                <input type="radio" name="bank" value="bank07" id="bank07">
+                                                                <label for="bank07"><img src="{{asset('home/logo/kbank.svg')}}" ></label>
                                                                 <span class="ml-2" style="font-family:myfont1;font-size:1em;">ธนาคารกสิกรไทย</span>
                                                             </div>
                                                             <div class="col-lg-12 mb-2">
-                                                                <input type="radio" name="bank" value="bank02" id="bank04">
-                                                                <label for="bank04"><img src="{{asset('home/logo/scb.svg')}}" ></label>
+                                                                <input type="radio" name="bank" value="bank08" id="bank08">
+                                                                <label for="bank08"><img src="{{asset('home/logo/scb.svg')}}" ></label>
                                                                 <span class="ml-2" style="font-family:myfont1;font-size:1em;">ธนาคารไทยพาณิชย์</span>
                                                             </div>
                                                         </div>
@@ -381,7 +389,7 @@
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <div class="input-group mb-3">
-                                                        <input class="inputSponPayment3" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
+                                                        <input class="inputSponPayment2" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
                                                         <div class="input-group-append">
                                                             <span class="input-group-text select-code2" id="basic-addon2" data-toggle="modal" data-target="#code">เลือกโค้ดส่วนลด</span>
                                                         </div>
@@ -390,7 +398,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-7">
+                                        <div class="col-lg-6">
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <label style="font-family:myfont1;font-size:1em;font-weight:800;">ชำระเงินอย่างไร</label> <br>
@@ -406,18 +414,32 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="col-lg-12">
+                                            <label class="ml-2" style="font-family:myfont1;font-size:1em;font-weight:800;">รายการรอการแจ้งโอน</label><br>
+                                            <div class="row pl-2 row200">
+                                                <div class="col-lg-12 pl-2">
+                                                    <label class="ml-2 bgT10ListBanking">
+                                                        <a href="{{ route('SponsorTransfer') }}"><label class="bgT10ListBankingPay">ชำระเงิน</label></a>
+                                                        <label class="bgOrange">รออนุมัติ</label>
+                                                        <a href="{{ route('SponsorSuccessfulPayment') }}"><label class="bgGreen">อนุมัติแล้ว</label></a>
+                                                        <label style="font-family:myfont1;font-size:1em;"> ฿279 ธนาคารกรุงเทพ</label>
+                                                        <label style="font-family:myfont1;font-size:0.9em;color:#ce0005;"> ควรชำระก่อน 10/10/20</label> 
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
-
-                                <div class="row mt-3 py-2 " style="background-color:#fafaff;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
+                                <div class="row mt-3 py-2 " style="border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
                                     <div class="col-lg-12">
-                                        <div class="row mx-4" style="border-bottom:1px solid #455160">
+                                        <div class="row mx2">
                                             <div class="col-lg-6"></div>
                                             <div class="col-lg-6">
                                                 <div class="row">
                                                     <div class="col-6 text-right fontAdsPayment5">ยอดรวมสินค้า</div>
-                                                    <div class="col-6 text-right fontAdsPayment5">฿ 6,000</div>
+                                                    <div class="col-6 text-right fontAdsPayment5">฿ 279.00</div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-6 text-right fontAdsPayment5">ส่วนลด</div>
@@ -425,14 +447,23 @@
                                                 </div>
                                                 <div class="row mb-2">
                                                     <div class="col-6 text-right fontAdsPayment5 pt-2">รวมราคาทั้งสิ้น</div>
-                                                    <div class="col-6 text-right font-price" style="font-size:2em;">฿ 6,000</div>
+                                                    <div class="col-6 text-right font-price" style="font-size:2em;">฿ 279.00</div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row mx-4 mt-3">
+                                        <div class="row" >
                                             <div class="col-lg-10"></div>
-                                            <div class="col-lg-2 text-right">
-                                                <label class="btn-submit-red2">ชำระเงิน</label>
+                                            <div class="col-lg-2 text-right" id="T10">
+                                                <a href="{{ route('SponsorPaymentConfirm') }}"><label class="btn-submit-red2">ชำระเงิน</label></a>
+                                            </div>
+                                            <div class="col-lg-2 text-right" id="VisaCredit">
+                                                <a href="{{ route('SponsorPaymentConfirm') }}"><label class="btn-submit-red2">ชำระเงิน</label></a>
+                                            </div>
+                                            <div class="col-lg-2 text-right" id="iBanking">
+                                                <a href="{{ route('SponsorPaymentConfirm') }}"><label class="btn-submit-red2">ชำระเงิน</label></a>
+                                            </div>
+                                            <div class="col-lg-2 text-right" id="Transfer">
+                                                <a href="{{ route('SponsorTransfer') }}"><label class="btn-submit-red2">ชำระเงิน</label></a>
                                             </div>
                                         </div>
                                     </div>
@@ -614,7 +645,7 @@
 </div>
 
 <div class="modal fade" id="code" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="row">
@@ -626,17 +657,17 @@
             <div class="modal-body font-rate-modal">
                 <div class="col-lg-12" style="padding:0;">
                     <div class="row mb-3">
-                        <div class="col-lg-12">
-                            <div>
-                                <label  class="bgcode labellogo" onClick="myFunction5()">
-                                    <label class="fontcode fontcodeposition">DAY100TH (-฿100)</label>
-                                    <div id="code1">
-                                        <label class="BorderGreenSelectPayment2">
-                                        <img class="selectGreenPosition2" src="{{asset('icon/select_green2.svg') }}" >
-                                        </label>
-                                    </div>
-                                </label>
-                            </div>
+                        <div class="col-lg-12 redioGreen">
+                            <input type="radio" name="code" value="code1" id="code1" />
+                            <label for="code1"  class="bgcode labellogo">
+                                <label for="code1" class="fontcode fontcodeposition">DAY100TH (-฿100)</label>
+                            </label>
+                        </div>
+                        <div class="col-lg-12 redioGreen">
+                            <input type="radio" name="code" value="code2" id="code2" />
+                            <label for="code2"  class="bgcode labellogo">
+                                <label for="code2" class="fontcode fontcodeposition">DAY200TH (-฿200)</label>
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -650,7 +681,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="VisaCredit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="VisaCredit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -713,7 +744,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="modal fade" id="VisaCredit2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -726,57 +757,6 @@
                 </div>
                 <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 14px;"></i></button>
             </div>
-
-            <!-- <div class="modal-body font-rate-modal" style="padding-bottom:0;">
-                <div class="col-lg-12" >
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <label> <img style="height: 40px;" src="{{asset('home/logo/visa3.png')}}"></label>
-                            <label class="bgInput field-wrap">
-                                <label class="fontHeadInput px-3" style="padding:0;">หมายเลขบัตร</label>
-                                <input class="text-box px-3" required="true" type="text" name="text1">
-                                <button class="text-clear"><img src="{{asset('icon/close-grey.svg') }}" ></button>
-                            </label>
-                        </div>
-                        <div class="col-lg-12">
-                            <label class="bgInput field-wrap">
-                                <label class="fontHeadInput px-3" style="padding:0;">ชื่อที่ผูกกับบัตร</label>
-                                <input class="text-box px-3" required="true" type="text" name="text1">
-                                <button class="text-clear"><img src="{{asset('icon/close-grey.svg') }}" ></button>
-                            </label>
-                        </div>
-                        <div class="col-lg-6">
-                            <label class="bgInput field-wrap">
-                                <label class="fontHeadInput px-3" style="padding:0;">เดือนปีหมดอายุ</label>
-                                <input class="text-box px-3" required="true" type="text" name="text1">
-                                <button class="text-clear"><img src="{{asset('icon/close-grey.svg') }}" ></button>
-                            </label>
-                        </div>
-                        <div class="col-lg-6">
-                            <label class="bgInput field-wrap">
-                                <label class="fontHeadInput px-3" style="padding:0;">CVV</label>
-                                <input class="text-box px-3" required="true" type="text" name="text1">
-                                <button class="text-clear"><img src="{{asset('icon/close-grey.svg') }}" ></button>
-                            </label>
-                        </div>
-                        
-                        <div class="col-lg-8 mb-2 ">
-                            <div class="pl-2" style="font-family:myfont1;font-size:0.8em;color:#000;line-height: 150%;"><span style="font-weight:bold;">บันทึกบัตรไว้ใช้ในภายหลัง</span></br>ข้อมูลบัตรของท่านจะถูกเก็บรักษาไว้อย่างปลอดภัย</div>
-                        </div>
-                        <div class="col-lg-4 mb-2 text-right">
-                            <div class="wrapper">
-                                <div class="switch_box box_2">
-                                    <input type="checkbox" class="switch_1">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="checkbox ml-3 mt-2">
-                            <input type="checkbox" id="checkbox_02" name="accept_02">
-                            <label for="checkbox_02" style="color:#000;font-weight:bold;padding-top:2px;padding-left:10px;" >บัตรหลัก</label>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
 
             <div class="modal-body font-rate-modal">
                 <div class="row">
@@ -818,7 +798,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="T10" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="VisaCredit3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modalGrey">
             <div class="modal-body font-rate-modal">
@@ -827,7 +807,121 @@
                         <div class="row my-2">
                             <div class="col-1"></div>
                             <div class="col-10 text-center">
-                                <label style="font-family:myfont1;font-size:1.2em;color:#000;font-weight:900;">เติมเงินวอลเลต</label>
+                                <label style="font-family:myfont1;font-size:1.2em;color:#000;font-weight:900;">เติมเงินวอลเล็ท</label>
+                            </div>
+                            <div class="col-1"><button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 14px;"></i></button></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <label class="bgAmountT10pay">
+                                    <img style="width:50px;margin-top:20px;" src="{{asset('icon/waiting.svg')}}"> <br>
+                                    <label class="mt-2 " style="font-family:myfont;font-size:1em;font-weight:900;color:#000;">กำลังรอชำระเงิน <br> ผ่านโมบายแบงค์กิ้ง/การโอนเงิน</label> <br>
+                                    <label style="font-family:myfont1;font-size:1em;color:#000;">
+                                    กรุณาทำการชำระเงินผ่านโมบายแบงค์กิ้งหรือเอทีเอ็ม <br>
+                                    ภายใน 48 ชม. มิเช่นนั้นคำร้องของคุณ <br>
+                                    จะถูกยกเลิกอัตโนมัติ
+                                    </label><br>
+                                    <img style="width:150px;" src="{{asset('home/topup/qr.png')}}"> <br>
+                                    <label class="mb-3" style="font-family:myfont1;font-size:1em;color:#ce0005;">
+                                    ควรชำระเงินก่อน 10/05/2563 เวลา 10:09
+                                    </label>
+                                </label> 
+                            </div>
+                            <div class="col-lg-12">
+                                <label class="bgAmountT10pay mt-2">
+                                    <div class="row">
+                                        <div class="col-lg-12" style="height:45px;">
+                                            <label class="bgVisaCredit2">
+                                                <img class="bankT10" style="height:25px;" src="{{asset('home/logo/bangkok.svg')}}" >
+                                                <label class="nameVisaCredit">หมายเลขอ้างอิง <label style="font-weight:700;">1234567890</label></label>
+                                                <label class="fontCopy">คัดลอก</label>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-12" style="height:45px;">
+                                            <label class="bgVisaCredit">
+                                                <label class="nameVisaCredit2">หมายเลขคำร้องขอ <label style="font-weight:700;">123456789000</label></label>
+                                                <label class="fontCopy">คัดลอก</label>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-12" style="height:45px;">
+                                            <label class="bgVisaCredit">
+                                                <label class="nameVisaCredit2">จำนวนเงินที่ต้องการเติม
+                                                </label>
+                                                <label class="fontGreen">100 บาท</label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="col-lg-12 mt-2">
+                                <label class="ml-2 " style="font-family:myfont1;font-size:1em;font-weight:800;color:#383838;">ชำระเงินอย่างไร</label>
+                                <div class="accordions">
+                                    <div class="accordion-item bgAmountT10pay">
+                                        <div class="accordion-title" data-tab="item1">
+                                            <div class="row px-3">
+                                                <div class="col-lg-10" style="padding:0;">เอทีเอ็ม</div>
+                                                <div class="col-lg-2">
+                                                    <label style="cursor:pointer;"><i class="icon-dropdown"></i></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-content" id="item1">
+                                        <p> 1. เลือกจ่ายบิล / ชำระค่าบริการ <br>
+                                            2. เลือกอื่นๆ > รหัสบริษัท > ระบุรหัสบริษัท > ออมทรัพย์<br>
+                                            3. ใส่รหัสบริษัท 12345<br>
+                                            4. ระบุหมายเลขอ้างอิงการชำระเงินสำหรับ “REF1”<br>
+                                            5. ระบุหมายเลขโทรศัพท์มือถือ สำหรับ “REF2”<br>
+                                            6. ระบุยอดเงิน<br>
+                                            7. หมายเหตุ : ค่าธรรมเนียมขึ้นกับธนาคา หรือ ผู้ให้บริการ</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item bgAmountT10pay">
+                                        <div class="accordion-title" data-tab="item2">
+                                        <div class="row px-3">
+                                                <div class="col-lg-10" style="padding:0;">โมบายแบงค์กิ้ง</div>
+                                                <div class="col-lg-2">
+                                                    <label style="cursor:pointer;"><i class="icon-dropdown"></i></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-content" id="item2">
+                                        <p>
+                                            1. ล็อกอินเข้าระบบ K Plus <br>
+                                            2. เลือกเมนู “จ่ายบิล” <br>
+                                            3. เลือก “รายการใหม่” <br>
+                                            4. เลือก “บิลอื่น” <br>
+                                            5. เลือก “บริษัท” เป็น “123 เซอร์วิส” <br>
+                                            6. ใส่ เลขที่อ้างอิง ใน “รหัสลูกค้า” <br>
+                                            7. ใส่หมายเลขโทรศัพท์มือถือใน “รหัสใบสั่งซื้อ” <br>
+                                            8. ใส่จำนวนเงิน <br>
+                                            9. กด “จ่ายบิล” <br>
+                                            10. ตรวจสอบความถูกต้อง และกด “ยืนยัน”
+                                        </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="submitModalRed mt-2">ถัดไป</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="T10Topup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modalGrey">
+            <div class="modal-body font-rate-modal">
+                <div class="row px-4">
+                    <div class="col-lg-12" style="padding:0;">
+                        <div class="row my-2">
+                            <div class="col-1"></div>
+                            <div class="col-10 text-center">
+                                <label style="font-family:myfont1;font-size:1.2em;color:#000;font-weight:900;">เติมเงินวอลเล็ท</label>
                             </div>
                             <div class="col-1"><button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 14px;"></i></button></div>
                         </div>
@@ -844,23 +938,22 @@
                                 <label class="ml-2 mt-2" style="font-family:myfont1;font-size:1em;font-weight:800;color:#383838;">ช่องทางการชำระเงิน</label>
                                 <label class="bgAmountT10pay">
                                     <div class="row">
-                                        <div class="col-lg-12 pt-2 pl-4">
+                                        <div class="col-lg-12 pt-2 pl-4 ">
                                             <label style="font-family:myfont1;font-size:1em;color:#383838;">บัตรเครดิต/บัตรเดบิต</label>
                                             <label class="ml-2"> <img src="{{asset('home/logo/security.svg')}}" ></label>
                                         </div>
-                                        <div class="col-lg-12" style="height:45px;">
-                                            <label class="bgVisaCredit ">
+                                        <div class="col-lg-12 redioGreen2" style="height:45px;">
+                                            <input type="radio" name="bankT10" id="bankT10-1" />
+                                            <label for="bankT10-1" class="bgVisaCredit ">
                                                 <img class="visaCredit" style="height:25px;" src="{{asset('home/logo/visa1.svg')}}" >
-                                                <label class="nameVisaCredit" onClick="myFunction6()">ธนาคารไทยพาณิชย์ <label style="color:#c7c7c7;cursor:pointer;">*1234</label> </label>
-                                                <div id="bank">
-                                                    <img class="pSelectGreenT10" src="{{asset('icon/select_green2.svg') }}" >
-                                                </div>
+                                                <label for="bankT10-1" class="nameVisaCredit">ธนาคารไทยพาณิชย์ *1234</label>
                                             </label>
                                         </div>
-                                        <div class="col-lg-12" style="height:45px;">
-                                            <label class="bgVisaCredit">
+                                        <div class="col-lg-12 redioGreen2" style="height:45px;">
+                                            <input type="radio" name="bankT10" id="bankT10-2" />
+                                            <label for="bankT10-2" class="bgVisaCredit">
                                                 <img class="visaCredit" style="height:20px;" src="{{asset('home/logo/credit.svg')}}" >
-                                                <label class="nameVisaCredit">ธนาคารไทยพาณิชย์ <label style="color:#c7c7c7;cursor:pointer;">*1234</label> </label>
+                                                <label for="bankT10-2" class="nameVisaCredit">ธนาคารไทยพาณิชย์ *1234</label>
                                             </label>
                                         </div>
                                         <div class="col-lg-12" style="height:45px;">
@@ -876,7 +969,8 @@
                                     กรุณาทำการชำระเงินผ่านโมบายแบงค์กิ้งหรือเอทีเอ็ม <br>
                                     ภายใน 48 ชม. มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกอัตโนมัติ
                                 </label>
-                                <label class="bgAmountT10pay">
+
+                                <!-- <label class="bgAmountT10pay">
                                     <div class="row">
                                         <div class="col-lg-12" style="height:45px;">
                                             <label class="bgVisaCredit ">
@@ -904,7 +998,41 @@
                                         </div>
                                     </div>
                                 </label>
-                                <button type="button" class="submitModalRed mt-2" data-toggle="modal" data-target="#OTP" data-dismiss="modal">ถัดไป</button>
+                                <button type="button" class="submitModalRed mt-2" data-toggle="modal" data-target="#OTP" data-dismiss="modal">ถัดไป</button> -->
+
+                                <label class="bgAmountT10pay">
+                                    <div class="row">
+                                        <div class="col-lg-12 redioGreen2" style="height:45px;">
+                                            <input type="radio" name="bankT10" id="bankT10-3" />
+                                            <label for="bankT10-3" class="bgVisaCredit2 ">
+                                                <img class="bankT10" style="height:25px;" src="{{asset('home/logo/bangkok.svg')}}" >
+                                                <label for="bankT10-3" class="nameVisaCredit">ธนาคารกรุงเทพ</label>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-12 redioGreen2" style="height:45px;">
+                                            <input type="radio" name="bankT10" id="bankT10-4" />
+                                            <label for="bankT10-4" class="bgVisaCredit">
+                                                <img class="bankT10" style="height:25px;" src="{{asset('home/logo/ktc.svg')}}" >
+                                                <label for="bankT10-4" class="nameVisaCredit">ธนาคารกรุงไทย</label>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-12 redioGreen2" style="height:45px;">
+                                            <input type="radio" name="bankT10" id="bankT10-5" />
+                                            <label for="bankT10-5" class="bgVisaCredit">
+                                                <img class="bankT10" style="height:25px;" src="{{asset('home/logo/kbank.svg')}}" >
+                                                <label for="bankT10-5" class="nameVisaCredit">ธนาคารกสิกรไทย</label>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-12 redioGreen2" style="height:45px;">
+                                            <input type="radio" name="bankT10" id="bankT10-6" />
+                                            <label for="bankT10-6" class="bgVisaCredit">
+                                                <img class="bankT10" style="height:25px;" src="{{asset('home/logo/scb.svg')}}" >
+                                                <label for="bankT10-6" class="nameVisaCredit">ธนาคารไทยพาณิชย์</label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </label>
+                                <button type="button" class="submitModalRed mt-2" data-dismiss="modal">ตกลง</button>
                             </div>
                         </div>
                     </div>
@@ -1097,6 +1225,7 @@
         </div>
     </div>
 </div>
+
 </div>
 
 <div class="container-fluid">
@@ -1132,52 +1261,57 @@
     const myFunction = () => {
     document.getElementById("first").style.display ='block';
     document.getElementById("first1").style.display ='block';
-    document.getElementById("second").style.display ='none'
-    document.getElementById("second1").style.display ='none'
-    document.getElementById("third").style.display ='none'
-    document.getElementById("third1").style.display ='none'
-    document.getElementById("four").style.display ='none'
-    document.getElementById("four1").style.display ='none'
+    document.getElementById("T10").style.display ='block';
+    document.getElementById("second").style.display ='none';
+    document.getElementById("second1").style.display ='none';
+    document.getElementById("VisaCredit").style.display ='none';
+    document.getElementById("third").style.display ='none';
+    document.getElementById("third1").style.display ='none';
+    document.getElementById("four").style.display ='none';
+    document.getElementById("four1").style.display ='none';
+    document.getElementById("Transfer").style.display ='none';
     }
     const myFunction2 = () => {
-    document.getElementById("first").style.display ='none'
-    document.getElementById("first1").style.display ='none'
-    document.getElementById("second").style.display ='block'
-    document.getElementById("second1").style.display ='block'
-    document.getElementById("third").style.display ='none'
-    document.getElementById("third1").style.display ='none'
-    document.getElementById("four").style.display ='none'
-    document.getElementById("four1").style.display ='none'
+    document.getElementById("first").style.display ='none';
+    document.getElementById("first1").style.display ='none';
+    document.getElementById("T10").style.display ='none';
+    document.getElementById("second").style.display ='block';
+    document.getElementById("second1").style.display ='block';
+    document.getElementById("VisaCredit").style.display ='block';
+    document.getElementById("third").style.display ='none';
+    document.getElementById("third1").style.display ='none';
+    document.getElementById("iBanking").style.display ='none';
+    document.getElementById("four").style.display ='none';
+    document.getElementById("four1").style.display ='none';
+    document.getElementById("Transfer").style.display ='none';
     }
     const myFunction3 = () => {
-    document.getElementById("first").style.display ='none'
-    document.getElementById("first1").style.display ='none'
-    document.getElementById("second").style.display ='none'
-    document.getElementById("second1").style.display ='none'
-    document.getElementById("third").style.display ='block'
-    document.getElementById("third1").style.display ='block'
-    document.getElementById("four").style.display ='none'
-    document.getElementById("four1").style.display ='none'
+    document.getElementById("first").style.display ='none';
+    document.getElementById("first1").style.display ='none';
+    document.getElementById("T10").style.display ='none';
+    document.getElementById("second").style.display ='none';
+    document.getElementById("second1").style.display ='none';
+    document.getElementById("VisaCredit").style.display ='none';
+    document.getElementById("third").style.display ='block';
+    document.getElementById("third1").style.display ='block';
+    document.getElementById("iBanking").style.display ='block';
+    document.getElementById("four").style.display ='none';
+    document.getElementById("four1").style.display ='none';
+    document.getElementById("Transfer").style.display ='none';
     }
     const myFunction4 = () => {
-    document.getElementById("first").style.display ='none'
-    document.getElementById("first1").style.display ='none'
-    document.getElementById("second").style.display ='none'
-    document.getElementById("second1").style.display ='none'
-    document.getElementById("third").style.display ='none'
-    document.getElementById("third1").style.display ='none'
-    document.getElementById("four").style.display ='block'
-    document.getElementById("four1").style.display ='block'
-    }
-</script>
-
-<script>
-    const myFunction5 = () => {
-    document.getElementById("code1").style.display ='block';
-    }
-
-    const myFunction6 = () => {
-    document.getElementById("bank").style.display ='block';
+    document.getElementById("first").style.display ='none';
+    document.getElementById("first1").style.display ='none';
+    document.getElementById("T10").style.display ='none';
+    document.getElementById("second").style.display ='none';
+    document.getElementById("second1").style.display ='none';
+    document.getElementById("VisaCredit").style.display ='none';
+    document.getElementById("third").style.display ='none';
+    document.getElementById("third1").style.display ='none';
+    document.getElementById("iBanking").style.display ='none';
+    document.getElementById("four").style.display ='block';
+    document.getElementById("four1").style.display ='block';
+    document.getElementById("Transfer").style.display ='block';
     }
 </script>
 
@@ -1216,5 +1350,21 @@
             }
         }
         }
+</script>
+
+<script>
+    $(document).ready(function(){
+    $(".accordion-title").click(function(e){
+        var accordionitem = $(this).attr("data-tab");
+        $("#"+accordionitem).slideToggle().parent().siblings().find(".accordion-content").slideUp();
+
+        $(this).toggleClass("active-title");
+        $("#"+accordionitem).parent().siblings().find(".accordion-title").removeClass("active-title");
+
+        $("i.icon-dropdown",this).toggleClass("chevron-top");
+        $("#"+accordionitem).parent().siblings().find(".accordion-title i.icon-dropdown").removeClass("chevron-top");
+    });
+    
+});
 </script>
 @endsection

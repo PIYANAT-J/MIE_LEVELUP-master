@@ -106,7 +106,7 @@
                                 <div class="col-6 " style="color:#fff;">
                                     <a href="/avatar"class="avatar-link active"> Avatar</a>
                                     <a class="avatar-link" style="margin: 0 8px;"> > </a>
-                                    <a href="/add_sale_item" class="avatar-link" style="font-size:1em;">ตะกร้าสินค้า</a>
+                                    <a href="/shopping_cart" class="avatar-link" style="font-size:1em;">ตะกร้าสินค้า</a>
                                 </div>
                                 <div class="col-6 text-right">
                                     <a href="/simulator_trade"><label class="bg-shop">
@@ -119,7 +119,7 @@
                                 <div class="col-lg-12"> 
                                     <div class="row mx-0 pb-3" style="background-color:#202433;border-radius: 6px;">
                                         <div class="col-lg-12 mt-1">
-                                            <div class="row mx-2 py-2" style="font-family:myfont;font-size:1.2em;color:#fff;border-bottom:1px solid #fff;">ตะกร้าสินค้า</div>
+                                            <div class="row mx-2 py-3" style="font-family:myfont1;font-size:1em;color:#fff;border-bottom:1px solid #fff;font-weight:800;">ตะกร้าสินค้า</div>
                                             <div class="row row6">
                                                 <div class="col-lg-12">
                                                     <div class="row mx-2 mt-3" style="border-bottom:1px solid #fff;">  
@@ -237,7 +237,7 @@
                                                 <div class="col-lg-12">
                                                     <label class="checkbox-wh2">
                                                         <input type="checkbox" id="checkbox_all" name="accept_01" onclick="toggle(this);">
-                                                        <label for="checkbox_all" class="pt-1 ml-2" style="font-family:myfont;font-size:1.2em;color:#fff;">เลือกทั้งหมด</label>
+                                                        <label for="checkbox_all" class="pt-1 ml-2" style="font-family:myfont1;font-size:1.1em;color:#fff;">เลือกทั้งหมด</label>
                                                     </label>
                                                 </div>
                                             </div>
@@ -245,7 +245,7 @@
                                         <div class="col-6 text-right">
                                             <div class="row my-2">
                                                 <div class="col-lg-12">
-                                                    <span style="font-family:myfont;font-size:1.2em;color:#fff;">
+                                                    <span style="font-family:myfont1;font-size:1.1em;color:#fff;">
                                                         <label>รวมค่าสินค้า</label>
                                                         <label>( 3 รายการ )</label>
                                                         <label class="pl-3"><b class="font-price">฿15,000.00</b></label>

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?59d26k');
-  src:  url('fonts/icomoon.eot?59d26k#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?59d26k') format('truetype'),
-    url('fonts/icomoon.woff?59d26k') format('woff'),
-    url('fonts/icomoon.svg?59d26k#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?ltlrk5');
+  src:  url('fonts/icomoon.eot?ltlrk5#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ltlrk5') format('truetype'),
+    url('fonts/icomoon.woff?ltlrk5') format('woff'),
+    url('fonts/icomoon.svg?ltlrk5#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -37,6 +37,9 @@
 .icon-money:before {
   content: "\e91d";
   color: #fff;
+}
+.icon-dropdown:before {
+  content: "\e920";
 }
 .icon-up-green:before {
   content: "\e91b";
