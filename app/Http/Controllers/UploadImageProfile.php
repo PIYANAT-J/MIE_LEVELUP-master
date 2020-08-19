@@ -135,6 +135,12 @@ class UploadImageProfile extends Controller
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
         return view('avatar.payment.payment_confirmation', compact('guest_user', 'userKyc'));
     }
+    public function PaymentTransfer(){
+        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('avatar.payment.payment_transfer', compact('guest_user', 'userKyc'));
+    }
+
     public function SuccessfulPayment(){
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
@@ -156,11 +162,6 @@ class UploadImageProfile extends Controller
         return view('profile.sponsor.advt_management', compact('sponsor'));
     }
 
-    public function AdvtAddGame(){
-        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('profile.sponsor.advt_add_game', compact('sponsor'));
-    }
-
     public function SponShoppingCart(){
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
         return view('profile.sponsor.spon_shopping_cart', compact('sponsor'));
@@ -169,6 +170,31 @@ class UploadImageProfile extends Controller
     public function SponsorPayment(){
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
         return view('profile.sponsor.spon_payment', compact('sponsor'));
+    }
+
+    public function SponsorTransfer(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.sponsor.spon_transfer', compact('sponsor'));
+    }
+
+    public function SponsorPaymentConfirm(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.sponsor.spon_payment_confirm', compact('sponsor'));
+    }
+
+    public function SponsorSuccessfulPayment(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.sponsor.spon_successful_payment', compact('sponsor'));
+    }
+
+    public function SponsorTopup(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.topup.sponlvp_topup', compact('sponsor'));
+    }
+
+    public function SponsorChangePassword(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.password.sponlvp_change_password', compact('sponsor'));
     }
 
     public function saveProfileDev(Request $request){

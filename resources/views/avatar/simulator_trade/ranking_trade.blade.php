@@ -117,105 +117,125 @@
                             <div class="row px-2 mt-2">
                                 <div class="col-lg-6">
                                     <div class="row">
-                                        <div class="col-lg-12">
-                                            <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" />
-                                            <span class="number-rank3">1</span>
-                                            <div><img class="sidebar-pic4" src="{{asset('dist/images/person_1.jpg') }}" /></div>
-                                            <label class="detail-rank middle4">หนึ่ง ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
-                                            <!-- <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a> -->
-                                            <button class="btn-viewlock">ดูโปรไฟล์</button>
+                                        <div class="col-lg-12" style="padding-right:0;">
+                                            <div class="chart" style="height:115px;">
+                                                <!-- <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" /> -->
+                                                <span class="number-rank3">1</span>
+                                                <div><img class="sidebar-pic4" src="{{asset('dist/images/person_1.jpg') }}" /></div>
+                                                <label class="detail-rank middle4">หนึ่ง ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
+                                                <!-- <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a> -->
+                                                <button class="btn-viewlock">ดูโปรไฟล์</button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row my-3">
-                                        <div class="col-lg-12">
-                                            <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" />
-                                            <span class="number-rank4">2</span>
-                                            <div><img class="sidebar-pic4" src="{{asset('dist/images/person_6.jpg') }}" /></div>
-                                            <label class="detail-rank middle4">สอง ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
-                                            <!-- <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a> -->
-                                            <button class="btn-viewlock">ดูโปรไฟล์</button>
+                                        <div class="col-lg-12" style="padding-right:0;">
+                                            <div class="chart" style="height:115px;">
+                                                <!-- <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" /> -->
+                                                <span class="number-rank4">2</span>
+                                                <div><img class="sidebar-pic4" src="{{asset('dist/images/person_6.jpg') }}" /></div>
+                                                <label class="detail-rank middle4">สอง ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
+                                                <!-- <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a> -->
+                                                <button class="btn-viewlock">ดูโปรไฟล์</button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row my-3">
-                                        <div class="col-lg-12">
-                                            <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" />
-                                            <span class="number-rank4">3</span>
-                                            <div><img class="sidebar-pic4" src="{{asset('dist/images/person_2.jpg') }}" /></div>
-                                            <label class="detail-rank middle4">สาม ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
-                                            <!-- <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a> -->
-                                            <button class="btn-viewlock">ดูโปรไฟล์</button>
+                                        <div class="col-lg-12" style="padding-right:0;">
+                                            <div class="chart" style="height:115px;">
+                                                <!-- <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" /> -->
+                                                <span class="number-rank4">3</span>
+                                                <div><img class="sidebar-pic4" src="{{asset('dist/images/person_2.jpg') }}" /></div>
+                                                <label class="detail-rank middle4">สาม ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
+                                                <!-- <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a> -->
+                                                <button class="btn-viewlock">ดูโปรไฟล์</button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row my-3">
-                                        <div class="col-lg-12">
-                                            <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" />
-                                            <span class="number-rank4">4</span>
-                                            <div><img class="sidebar-pic4" src="{{asset('dist/images/person_3.jpg') }}" /></div>
-                                            <label class="detail-rank middle4">สี่ ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
-                                            <!-- <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a> -->
-                                            <button class="btn-viewlock">ดูโปรไฟล์</button>
+                                        <div class="col-lg-12" style="padding-right:0;">
+                                            <div class="chart" style="height:115px;">
+                                                <!-- <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" /> -->
+                                                <span class="number-rank4">4</span>
+                                                <div><img class="sidebar-pic4" src="{{asset('dist/images/person_3.jpg') }}" /></div>
+                                                <label class="detail-rank middle4">สี่ ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
+                                                <!-- <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a> -->
+                                                <button class="btn-viewlock">ดูโปรไฟล์</button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row my-3">
-                                        <div class="col-lg-12">
-                                            <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" />
-                                            <span class="number-rank4">5</span>
-                                            <div><img class="sidebar-pic4" src="{{asset('dist/images/person_4.jpg') }}" /></div>
-                                            <label class="detail-rank middle4">ห้า ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
-                                            <!-- <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a> -->
-                                            <button class="btn-viewlock">ดูโปรไฟล์</button>
+                                        <div class="col-lg-12" style="padding-right:0;">
+                                            <div class="chart" style="height:115px;">
+                                                <!-- <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" /> -->
+                                                <span class="number-rank4">5</span>
+                                                <div><img class="sidebar-pic4" src="{{asset('dist/images/person_4.jpg') }}" /></div>
+                                                <label class="detail-rank middle4">ห้า ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
+                                                <!-- <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a> -->
+                                                <button class="btn-viewlock">ดูโปรไฟล์</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="row">
-                                            <div class="col-lg-12">
-                                                <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" />
-                                                <span class="number-rank4">6</span>
-                                                <div><img class="sidebar-pic4" src="{{asset('dist/images/person_1.jpg') }}" /></div>
-                                                <label class="detail-rank middle4">หก ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
-                                                <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a>
-                                                <!-- <button class="btn-viewlock">ดูโปรไฟล์</button> -->
+                                            <div class="col-lg-12" style="padding-right:0;">
+                                                <div class="chart" style="height:115px;">
+                                                    <!-- <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" /> -->
+                                                    <span class="number-rank4">6</span>
+                                                    <div><img class="sidebar-pic4" src="{{asset('dist/images/person_1.jpg') }}" /></div>
+                                                    <label class="detail-rank middle4">หก ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
+                                                    <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a>
+                                                    <!-- <button class="btn-viewlock">ดูโปรไฟล์</button> -->
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row my-3">
-                                            <div class="col-lg-12">
-                                                <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" />
-                                                <span class="number-rank4">7</span>
-                                                <div><img class="sidebar-pic4" src="{{asset('dist/images/person_5.jpg') }}" /></div>
-                                                <label class="detail-rank middle4">เจ็ด ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
-                                                <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a>
-                                                <!-- <button class="btn-viewlock">ดูโปรไฟล์</button> -->
+                                            <div class="col-lg-12" style="padding-right:0;">
+                                                <div class="chart" style="height:115px;">
+                                                    <!-- <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" /> -->
+                                                    <span class="number-rank4">7</span>
+                                                    <div><img class="sidebar-pic4" src="{{asset('dist/images/person_5.jpg') }}" /></div>
+                                                    <label class="detail-rank middle4">เจ็ด ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
+                                                    <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a>
+                                                    <!-- <button class="btn-viewlock">ดูโปรไฟล์</button> -->
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row my-3">
-                                            <div class="col-lg-12">
-                                                <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" />
-                                                <span class="number-rank4">8</span>
-                                                <div><img class="sidebar-pic4" src="{{asset('dist/images/person_7.jpg') }}" /></div>
-                                                <label class="detail-rank middle4">แปด ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
-                                                <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a>
-                                                <!-- <button class="btn-viewlock">ดูโปรไฟล์</button> -->
+                                            <div class="col-lg-12" style="padding-right:0;">
+                                                <div class="chart" style="height:115px;">
+                                                    <!-- <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" /> -->
+                                                    <span class="number-rank4">8</span>
+                                                    <div><img class="sidebar-pic4" src="{{asset('dist/images/person_7.jpg') }}" /></div>
+                                                    <label class="detail-rank middle4">แปด ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
+                                                    <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a>
+                                                    <!-- <button class="btn-viewlock">ดูโปรไฟล์</button> -->
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row my-3">
-                                            <div class="col-lg-12">
-                                                <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" />
-                                                <span class="number-rank4">9</span>
-                                                <div><img class="sidebar-pic4" src="{{asset('dist/images/person_8.jpg') }}" /></div>
-                                                <label class="detail-rank middle4">เก้า ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
-                                                <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a>
-                                                <!-- <button class="btn-viewlock">ดูโปรไฟล์</button> -->
+                                            <div class="col-lg-12" style="padding-right:0;">
+                                                <div class="chart" style="height:115px;">
+                                                    <!-- <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" /> -->
+                                                    <span class="number-rank4">9</span>
+                                                    <div><img class="sidebar-pic4" src="{{asset('dist/images/person_8.jpg') }}" /></div>
+                                                    <label class="detail-rank middle4">เก้า ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
+                                                    <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a>
+                                                    <!-- <button class="btn-viewlock">ดูโปรไฟล์</button> -->
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row my-3">
-                                            <div class="col-lg-12">
-                                                <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" />
-                                                <span class="number-rank5">10</span>
-                                                <div><img class="sidebar-pic4" src="{{asset('dist/images/img_10.jpg') }}" /></div>
-                                                <label class="detail-rank middle4">สิบ ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
-                                                <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a>
-                                                <!-- <button class="btn-viewlock">ดูโปรไฟล์</button> -->
+                                            <div class="col-lg-12" style="padding-right:0;">
+                                                <div class="chart" style="height:115px;">
+                                                    <!-- <img style="width:100%;" src="{{asset('home/simulator/Simulator_trade13.png') }}" /> -->
+                                                    <span class="number-rank5">10</span>
+                                                    <div><img class="sidebar-pic4" src="{{asset('dist/images/img_10.jpg') }}" /></div>
+                                                    <label class="detail-rank middle4">สิบ ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
+                                                    <a href="#"><button class="btn-view">ดูโปรไฟล์</button></a>
+                                                    <!-- <button class="btn-viewlock">ดูโปรไฟล์</button> -->
+                                                </div>
                                             </div>
                                         </div>
                                 </div>

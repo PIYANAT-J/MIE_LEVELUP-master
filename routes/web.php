@@ -125,6 +125,7 @@ Route::get('/add_sale_item', 'UploadImageProfile@AddSaleItem')->name('AddSaleIte
 Route::get('/shopping_cart', 'UploadImageProfile@ShoppingCart')->name('ShoppingCart');
 Route::get('/payment', 'UploadImageProfile@Payment')->name('Payment');
 Route::get('/payment_confirmation', 'UploadImageProfile@PaymentConfirmation')->name('PaymentConfirmation');
+Route::get('/payment_transfer', 'UploadImageProfile@PaymentTransfer')->name('PaymentTransfer');
 Route::get('/successful_payment', 'UploadImageProfile@SuccessfulPayment')->name('SuccessfulPayment');
 
 //trading
@@ -139,10 +140,15 @@ Route::get('/sponsor_profile', 'UploadImageProfile@indexSpon')->name('SponsorPro
 Route::post('/sponsor_profile/edit', 'UploadImageProfile@saveProfileSpon')->name('SponEditProfile');
 Route::get('/advt_package', 'UploadImageProfile@AdvtPackage')->name('AdvtPackage');
 Route::get('/advt_management', 'UploadImageProfile@AdvtManagement')->name('AdvtManagement');
-Route::get('/advt_add_game', 'UploadImageProfile@AdvtAddGame')->name('AdvtAddGame');
+Route::get('/advt_add_game', 'Sponsor\game_sponController@AdvtAddGame')->name('AdvtAddGame');
 Route::get('/product_support', 'Sponsor\productController@ProductSupport')->name('ProductSupport');
 Route::post('/product_support/addproduct', 'Sponsor\productController@addProduct')->name('addProduct');
 Route::get('/product_support_select', 'Sponsor\productController@ProductSupportSelect')->name('ProductSupportSelect');
 Route::get('/sponlvp_shelf', 'Sponsor\productController@SponShelf')->name('SponShelf');
 Route::get('/spon_shopping_cart', 'UploadImageProfile@SponShoppingCart')->name('SponShoppingCart');
 Route::get('/sponsor_payment', 'UploadImageProfile@SponsorPayment')->name('SponsorPayment');
+Route::get('/sponsor_transfer', 'UploadImageProfile@SponsorTransfer')->name('SponsorTransfer');
+Route::get('/sponsor_payment_confirm', 'UploadImageProfile@SponsorPaymentConfirm')->name('SponsorPaymentConfirm');
+Route::get('/sponsor_successful_payment', 'UploadImageProfile@SponsorSuccessfulPayment')->name('SponsorSuccessfulPayment');
+Route::get('/sponsor_topup', 'UploadImageProfile@SponsorTopup')->name('SponsorTopup');
+Route::get('/sponsor_change_password', 'UploadImageProfile@SponsorChangePassword')->name('SponsorChangePassword');
