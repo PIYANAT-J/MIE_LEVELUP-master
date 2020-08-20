@@ -87,7 +87,7 @@
                             </div>
                             <div class="row mt-2 ">
                                 <div class="col-lg-12" >
-                                    <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1em;color:#000;">
+                                    <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont1;font-size:1em;color:#000;font-weight:800;">
                                         <div class="col-6">ชื่อเกม</div>
                                         <div class="col-2 text-center">แพ็กเกจ</div>
                                         <div class="col-2 text-center">จำนวนที่เข้าถึง</div>
@@ -101,7 +101,7 @@
                                                         <div class="col-3"><img class="shelf-pic" src="{{asset('section/picture_game/game3.png') }}" /></div>
                                                         <div class="col-9 font-game-shelf">
                                                             <div>
-                                                                <span style="font-family:myfont;color:#000;">Time Lie</span></br>
+                                                                <span style="font-family:myfont1;color:#000;font-weight:800;">Time Lie</span></br>
                                                                 Online • Other</br>
                                                                 เวอร์ชั่น 1.03
                                                             </div>
@@ -122,7 +122,7 @@
                                                         <div class="col-3"><img class="shelf-pic" src="{{asset('section/picture_game/game14.png') }}" /></div>
                                                         <div class="col-9 font-game-shelf">
                                                             <div>
-                                                                <span style="font-family:myfont;color:#000;">Forza Horizon 4</span></br>
+                                                                <span style="font-family:myfont1;color:#000;font-weight:800;">Forza Horizon 4</span></br>
                                                                 Online • Other</br>
                                                                 เวอร์ชั่น 1.03
                                                             </div>

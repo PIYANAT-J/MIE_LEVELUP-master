@@ -98,7 +98,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <label class="mt-2" style="font-family:myfont;font-size:0.9em;">วิธีตั้งรหัสผ่าน</label> <br>
+                            <label class="mt-2" style="font-family:myfont1;font-size:0.9em;font-weight:800;">วิธีตั้งรหัสผ่าน</label> <br>
                             <label style="font-family:myfont1;font-size:0.8em;">
                                 1. รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร<br>
                                 2. ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว <br>
