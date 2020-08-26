@@ -95,7 +95,52 @@
                                     </div>
                                     <div class="row row4">
                                         <div class="col-lg-12">
-                                            <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
+                                            @foreach($package as $gameSpon)
+                                                @if($gameSpon->packageBuy_gameSpon != null)
+                                                    <?php $packageGame = json_decode($gameSpon->packageBuy_gameSpon); ?>
+                                                    @foreach($game as $Game)
+                                                        @foreach($packageGame as $packageGameID)
+                                                            @if($packageGameID->gameid == $Game->GAME_ID)
+                                                                <?php
+                                                                    $start = explode("T",$packageGameID->start);
+                                                                    $deadline = explode("T",$packageGameID->deadline);
+                                                                    $dayIf = $deadline[0].' '.$deadline[1];
+                                                                ?>
+                                                                <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <div class="col-3"><img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" /></div>
+                                                                            <div class="col-9 font-game-shelf">
+                                                                                <div>
+                                                                                    <span style="font-family:myfont;color:#000;">{{$Game->GAME_NAME}}</span></br>
+                                                                                    {{$Game->RATED_B_L}} • Other</br>
+                                                                                    เวอร์ชั่น 1.03
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-2 text-center"><span class="font-game-shelf" style="color:#000;">แพ็กเกจ {{$gameSpon->packageBuy_name}}</span></div>
+                                                                    <div class="col-2 text-center"><span class="font-game-shelf">289</span></div>
+                                                                    <div class="col-2 text-center">
+                                                                        @if($dayIf == date("Y-m-d H:i"))
+                                                                            <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
+                                                                            <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
+                                                                        @else
+                                                                            <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
+                                                                        @endif
+                                                                        <!-- <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
+                                                                        <span class="font-game-shelf" style="font-size:0.7em;">{{$packageGameID->deadline}}</span> <br>
+                                                                        <span class="font-game-shelf" style="font-size:0.7em;">{{$dayIf}}</span> <br>
+                                                                        <span class="font-game-shelf" style="font-size:0.7em;">{{date("Y-m-d H:i")}}</span> <br>
+                                                                        <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span> -->
+                                                                    </div>
+                                                                </div>
+                                                            @endif
+                                                        @endforeach
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                            <!-- <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
                                                 <div class="col-6">
                                                     <div class="row">
                                                         <div class="col-3"><img class="shelf-pic" src="{{asset('section/picture_game/game3.png') }}" /></div>
@@ -112,58 +157,10 @@
                                                 <div class="col-2 text-center"><span class="font-game-shelf">289</span></div>
                                                 <div class="col-2 text-center">
                                                     <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span> <br>
-                                                    <!-- <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span> -->
-                                                </div>
-                                            </div>
-
-                                            <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                                <div class="col-6">
-                                                    <div class="row">
-                                                        <div class="col-3"><img class="shelf-pic" src="{{asset('section/picture_game/game14.png') }}" /></div>
-                                                        <div class="col-9 font-game-shelf">
-                                                            <div>
-                                                                <span style="font-family:myfont;color:#000;">Forza Horizon 4</span></br>
-                                                                Online • Other</br>
-                                                                เวอร์ชั่น 1.03
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-2 text-center"><span class="font-game-shelf" style="color:#000;">แพ็กเกจ 1 </span></div>
-                                                <div class="col-2 text-center"><span class="font-game-shelf">289</span></div>
-                                                <div class="col-2 text-center">
-                                                    <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span> <br>
                                                     <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
-                                    </div>
-                                    <div class="col-2 text-center"><span class="font-game-shelf" style="color:#000;">แพ็กเกจ 1 </span></div>
-                                    <div class="col-2 text-center"><span class="font-game-shelf">289</span></div>
-                                    <div class="col-2 text-center">
-                                        <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span>
-                                        <!-- <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span> -->
-                                    </div>
-                                </div>
-
-                                <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                    <div class="col-6">
-                                        <div class="row">
-                                            <div class="col-3"><img class="shelf-pic" src="{{asset('section/picture_game/game14.png') }}" /></div>
-                                            <div class="col-9 font-game-shelf">
-                                                <div>
-                                                    <span style="font-family:myfont;color:#000;">Forza Horizon 4</span></br>
-                                                    Online • Other</br>
-                                                    เวอร์ชั่น 1.03
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 text-center"><span class="font-game-shelf" style="color:#000;">แพ็กเกจ 1 </span></div>
-                                    <div class="col-2 text-center"><span class="font-game-shelf">289</span></div>
-                                    <div class="col-2 text-center">
-                                        <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span>
-                                        <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
                                     </div>
                                 </div>
                             </div>

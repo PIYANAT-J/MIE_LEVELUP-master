@@ -61,10 +61,6 @@
                 <div class="col-lg-10 ">
                     <a href="{{ route('AdvtPackage') }}"><label class="fontAd1 active">สนับสนุนเงินในเกม</label></a>
                     <label class="fontAd1"> > </label>
-                    <a href="{{ route('SponShoppingCart') }}"><label class="fontAd1 active">ตระกร้าสินค้า</label></a>
-                    <label class="fontAd1"> > </label>
-                    <a href="{{ route('SponsorPayment') }}"><label class="fontAd1 active" >ชำระเงิน</label></a>
-                    <label class="fontAd1"> > </label>
                     <label class="fontAd1" >ยืนยันการชำระเงิน</label>
                 </div>
                 <div class="col-lg-1"></div>
@@ -81,23 +77,35 @@
                         <div class="col-lg-12 mt-1">
                             <div class="row mx-2 py-3" style="border-bottom:1px solid #edeef3">
                                 <div class="col-6 font-payment3">จำนวนเงินที่ต้องชำระ</div>
-                                <div class="col-6 text-right font-price" style="font-size:1.5em;">฿ 279.00</div>
+                                <div class="col-6 text-right font-price" style="font-size:1.5em;">฿ {{$package->packageBuy_amount}}</div>
                             </div>
 
                             <div class="row mx-2 py-3" style="border-bottom:1px solid #edeef3">
                                 <div class="col-6 font-payment3">ช่องทางการชำระเงิน</div>
-                                <div class="col-6 text-right font-payment3">T10 Wallet ชื่อบัญชี สมหญิง รักดี</div>
+                                <div class="col-6 text-right font-payment3">ibanking</div>
+                                
                             </div>
-                            
+                            <div class="row justify-content-center">{!! DNS2D::getBarcodeHTML($invoice, "QRCODE",6,6) !!}</div>
                             <div class="row mt-3 py-2 " style="border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
                                 <div class="col-lg-12">
                                     <div class="row mt-3">
                                         <div class="col-lg-8"></div>
                                         <div class="col-lg-2 text-right">
-                                            <a><label class="btn-submit-payment">ยกเลิก</label></a>
+                                            <form action="{{route('cancalIbanking')}}" method="post">
+                                                @csrf
+                                                <button class="btn-submit-payment">ยกเลิก
+                                                    <input type="hidden" name="invoice" value="{{$qrpayment->invoice}}">
+                                                </button>
+                                                <!-- <label class="btn-submit-payment">ยกเลิก</label> -->
+                                            </form>
                                         </div>
                                         <div class="col-lg-2 text-right">
-                                            <a href="{{ route('SponsorSuccessfulPayment') }}"><label class="btn-submit-red2">ยืนยัน</label></a>
+                                            <form action="{{route('cancalIbanking')}}" method="post">
+                                                @csrf
+                                                <button class="btn-submit-red2" name="submit" value="submit">ยืนยัน
+                                                    <input type="hidden" name="invoice" value="{{$qrpayment->invoice}}">
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -106,6 +114,30 @@
                     </div>
                 </div>
                 <div class="col-lg-1"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popupmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-1"></div>
+                <div class="col-10 text-center" style="font-family:myfont1;;font-size:1.2em;color:#000;">แจ้งเตือน</div>
+                    <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
+                <div class="col-1"></div>
+            </div>
+
+            <div class="modal-body font-rate-modal">
+                <div class="row px-3">
+                    <div class="col-lg-12 pb-1">
+                        <div class="row">
+                            <label class="massagrbox1" style="text-align:center;">{{ Session::get('false') }}</label>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn-submit-modal-red d-none">ยืนยัน</button>
             </div>
         </div>
     </div>
@@ -140,5 +172,12 @@
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
+@if( Session::has('false'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#popupmodal').modal();
+        });
+    </script>
+@endif
 
 @endsection

@@ -23,6 +23,9 @@ class CreateSponsorsTable extends Migration
             $table->integer('taxID')->nullable();
             $table->set('SPON_GENDER', ['Select','Men', 'Women'])->collation('utf8_unicode_ci')->nullable();
             $table->text('SPON_ADDRESS')->collation('utf8_unicode_ci')->nullable();
+            $table->string('province')->collation('utf8_unicode_ci')->nullable();
+            $table->string('amphure')->collation('utf8_unicode_ci')->nullable();
+            $table->string('district')->collation('utf8_unicode_ci')->nullable();
             $table->string('ZIPCODE_ID')->collation('utf8_unicode_ci')->nullable();
             $table->integer('USER_ID')->nullable();
             $table->string('USER_EMAIL')->unique()->collation('utf8_unicode_ci');

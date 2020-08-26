@@ -55,119 +55,124 @@
         </div>
         <!-- sidebar -->
 
-        @foreach($sponsor as $spon)
-            @if($spon->USER_EMAIL == Auth::user()->email)
-                    <div class="col-lg-9" style="background-color:#f5f5f5;">
-                    <div class="row mt-4 ">
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-10 ">
-                                <a href="{{ route('AdvtPackage') }}"><label class="fontAd1 active">สนับสนุนเงินในเกม</label></a>
-                                <label class="fontAd1"> > </label>
-                                <a href="{{ route('SponShoppingCart') }}"><label class="fontAd1 active">ตระกร้าสินค้า</label></a>
-                                <label class="fontAd1"> > </label>
-                                <a href="{{ route('SponsorPayment') }}"><label class="fontAd1 active" >ชำระเงิน</label></a>
-                                <label class="fontAd1"> > </label>
-                                <label class="fontAd1" >ยืนยันการชำระเงิน</label>
+        <div class="col-lg-9" style="background-color:#f5f5f5;">
+            <div class="row mt-4 ">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 ">
+                    <a href="{{ route('AdvtPackage') }}"><label class="fontAd1 active">สนับสนุนเงินในเกม</label></a>
+                    <label class="fontAd1"> > </label>
+                    <!-- <a href="{{ route('SponShoppingCart') }}"><label class="fontAd1 active">ตระกร้าสินค้า</label></a>
+                    <label class="fontAd1"> > </label>
+                    <a href="{{ route('SponsorPayment') }}"><label class="fontAd1 active" >ชำระเงิน</label></a>
+                    <label class="fontAd1"> > </label> -->
+                    <label class="fontAd1" >ยืนยันการชำระเงิน</label>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <div class="row mb-4" >
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
+                    <div class="col-lg-12 mt-1">
+                        <div class="row">
+                            <div class="col-lg-12 text-center mt-3">
+                                <img style="width:34px;" src="{{asset('icon/select_green2.svg')}}" alt=""> <br>
+                                <label class="mt-5" style="font-family:myfont;font-size:1.3em;color:#000;line-height:0;">ชำระเงินเรียบร้อยแล้ว</label> <br>
+                                <label class="" style="font-family:myfont1;font-size:1em;color:#a8a8a8;line-height:0;">หมายเลขคำสั่งซื้อ {{decrypt($invoice)}}</label>
                             </div>
-                            <div class="col-lg-1"></div>
-                        </div>
-                        <div class="row mb-4" >
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-                                <div class="col-lg-12 mt-1">
-                                    <div class="row">
-                                        <div class="col-lg-12 text-center mt-3">
-                                            <img style="width:34px;" src="{{asset('icon/select_green2.svg')}}" alt=""> <br>
-                                            <label class="mt-5" style="font-family:myfont;font-size:1.3em;color:#000;line-height:0;">ชำระเงินเรียบร้อยแล้ว</label> <br>
-                                            <label class="" style="font-family:myfont1;font-size:1em;color:#a8a8a8;line-height:0;">หมายเลขคำสั่งซื้อ 7483246834</label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                    <div class="row mx-2 mt-5">  
-                                        <div class="col-9" style="padding:0;">
-                                            <label class="plabelimg">
-                                                <img class="labelimg" src="{{asset('section/picture_game/game.png') }}" />
-                                            </label> 
-                                            <label class="labelFont bglabelFont ml-2 py-3">
-                                                <label style="font-weight: 700;">Witch</label></br>
-                                                <label style="color: #a8a8a8;">Fantasy • Online</label></br>
-                                                <label style="color: #23c197;font-size:0.9em;">ช่วงเวลา 13/08/2020 11:00 - 14/08/2020 12:00</label>
-                                                <label style="color: #23c197;font-size:0.9em;">จำนวนรอบโฆษณา 20 รอบ </label>
-                                            </label>
-                                        </div>
-                                        <div class="col-3 my-3">
-                                            <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;font-size:1em;">
-                                                <b class="font-price" style="font-size:1.5em;">฿279.00</b></br>
-                                                <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </b> (-37%)
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mt-3 py-2" style="background-color:#fafaff;">
-                                        <div class="col-lg-12">
-                                            <div class="row mx-2 mt-3">
-                                                <label style="font-family:myfont1;font-size:1em;font-weight:800;">ที่อยู่ในการออกใบเสร็จ</label>
-                                            </div>
-                                            <div class="row mx-3">
-                                                <div class="col-lg-6" >
-                                                    <label class="fontAdsPayment">
-                                                        <label>ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</label>
-                                                    </label>
-                                                    <label class="fontAdsPayment2 ml-2">
-                                                        <label>สมหญิง รักดี (5-1005-00148-76-6)<br>(+66) 081-441-9585</label>
-                                                    </label>
-                                                </div>
-                                                <div class="col-lg-6" >
-                                                    <label class="fontAdsPayment">
-                                                        <label>ที่อยู่</label><br>
-                                                    </label>
-                                                    <label class="fontAdsPayment3 ml-2" style="margin:0;">
-                                                        <label>52/2 ซ.เจริญนคร 78 ถนน เจริญนคร บุคคโลเขตธนบุรี จังหวัดกรุงเทพมหานคร 10600
-                                                        </label>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mx-2 mt-3">
-                                        <div class="col-6 font-payment3">ช่องทางการชำระเงิน</div>
-                                        <div class="col-6 text-right font-payment3">T10 Wallet ชื่อบัญชี สมหญิง รักดี</div>
-                                    </div>
-                                    
-                                    <div class="row mt-3 py-2 " style="background-color:#fafaff ;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
-                                        <div class="col-lg-6"></div>
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="col-6 text-right fontAdsPayment5">ยอดรวมสินค้า</div>
-                                                <div class="col-6 text-right fontAdsPayment5">฿ 279.00</div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-6 text-right fontAdsPayment5">ส่วนลด</div>
-                                                <div class="col-6 text-right fontAdsPayment5">-</div>
-                                            </div>
-                                            <div class="row mb-2">
-                                                <div class="col-6 text-right fontAdsPayment5 pt-2">รวมราคาทั้งสิ้น</div>
-                                                <div class="col-6 text-right font-price" style="font-size:2em;">฿ 279.00</div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="row mx-1 mt-3">
-                                                <div class="col-lg-10"></div>
-                                                <div class="col-lg-2 text-right">
-                                                    <a href="{{route('SponShelf')}}"><button type="button" class="btn-submit-modal">ปิด</button></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>
-                            <div class="col-lg-1"></div>
                         </div>
                     </div>
-                </form>
-            @endif
-        @endforeach
+
+                        <div class="row mx-2 mt-5">  
+                            <!-- <div class="col-9" style="padding:0;">
+                                <label class="plabelimg">
+                                    <img class="labelimg" src="{{asset('section/picture_game/game.png') }}" />
+                                </label> 
+                                <label class="labelFont bglabelFont ml-2 py-3">
+                                    <label style="font-weight: 700;">Witch</label></br>
+                                    <label style="color: #a8a8a8;">Fantasy • Online</label></br>
+                                    <label style="color: #23c197;font-size:0.9em;">ช่วงเวลา 13/08/2020 11:00 - 14/08/2020 12:00</label>
+                                    <label style="color: #23c197;font-size:0.9em;">จำนวนรอบโฆษณา 20 รอบ </label>
+                                </label>
+                            </div> -->
+                            <div class="col-9" style="padding:0;">
+                                <label class="plabelimg">
+                                    <img src="{{asset('icon/money2.svg') }}" />
+                                </label> 
+                                <label class="labelFont bglabelFont ml-2 py-3">
+                                    <label style="font-weight: 700;">แพ็กเกจ 1 {{$package->packageBuy_name}}</label></br>
+                                    <label style="color: #23c197;font-size:0.9em;">{{$package->packageBuy_season}} เดือน</label>
+                                    <label style="color: #23c197;font-size:0.9em;">จำนวน {{$package->package_game}} เกม </label>
+                                </label>
+                            </div>
+                            <div class="col-3 my-3">
+                                <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;font-size:1em;">
+                                    <b class="font-price" style="font-size:1.5em;">฿{{$package->packageBuy_amount}}</b></br>
+                                    <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </b> (-37%)
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3 py-2" style="background-color:#fafaff;">
+                            <div class="col-lg-12">
+                                <div class="row mx-2 mt-3">
+                                    <label style="font-family:myfont1;font-size:1em;font-weight:800;">ที่อยู่ในการออกใบเสร็จ</label>
+                                </div>
+                                <div class="row mx-3">
+                                    <div class="col-lg-6" >
+                                        <label class="fontAdsPayment">
+                                            <label>ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</label>
+                                        </label>
+                                        <label class="fontAdsPayment2 ml-2">
+                                            <label>สมหญิง รักดี (5-1005-00148-76-6)<br>(+66) 081-441-9585</label>
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-6" >
+                                        <label class="fontAdsPayment">
+                                            <label>ที่อยู่</label><br>
+                                        </label>
+                                        <label class="fontAdsPayment3 ml-2" style="margin:0;">
+                                            <label>52/2 ซ.เจริญนคร 78 ถนน เจริญนคร บุคคโลเขตธนบุรี จังหวัดกรุงเทพมหานคร 10600
+                                            </label>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mx-2 mt-3">
+                            <div class="col-6 font-payment3">ช่องทางการชำระเงิน</div>
+                            <div class="col-6 text-right font-payment3">T10 Wallet ชื่อบัญชี สมหญิง รักดี</div>
+                        </div>
+                        
+                        <div class="row mt-3 py-2 " style="background-color:#fafaff ;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
+                            <div class="col-lg-6"></div>
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-6 text-right fontAdsPayment5">ยอดรวมสินค้า</div>
+                                    <div class="col-6 text-right fontAdsPayment5">฿ {{$package->packageBuy_amount}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 text-right fontAdsPayment5">ส่วนลด</div>
+                                    <div class="col-6 text-right fontAdsPayment5">-</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6 text-right fontAdsPayment5 pt-2">รวมราคาทั้งสิ้น</div>
+                                    <div class="col-6 text-right font-price" style="font-size:2em;">฿ {{$package->packageBuy_amount}}</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="row mx-1 mt-3">
+                                    <div class="col-lg-10"></div>
+                                    <div class="col-lg-2 text-right">
+                                        <a href="{{route('SponShelf')}}"><button type="button" class="btn-submit-modal">ปิด</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
     </div>
 </div>
 

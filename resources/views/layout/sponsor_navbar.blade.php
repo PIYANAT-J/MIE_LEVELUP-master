@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="{{ asset('icon/font_lvp.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap-select/dist/css/bootstrap-select.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap-select/dist/css/bootstrap-select.min.css') }}">
+        @yield('head')
 
     </head>
 

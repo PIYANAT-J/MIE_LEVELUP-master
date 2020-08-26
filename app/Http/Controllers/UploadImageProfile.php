@@ -152,16 +152,6 @@ class UploadImageProfile extends Controller
         return view('profile.sponsor_profile', compact('sponsor'));
     }
 
-    public function AdvtPackage(){
-        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('profile.sponsor.advt_package', compact('sponsor'));
-    }
-
-    public function AdvtManagement(){
-        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('profile.sponsor.advt_management', compact('sponsor'));
-    }
-
     public function SponShoppingCart(){
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
         return view('profile.sponsor.spon_shopping_cart', compact('sponsor'));
@@ -172,19 +162,9 @@ class UploadImageProfile extends Controller
         return view('profile.sponsor.spon_payment', compact('sponsor'));
     }
 
-    public function SponsorTransfer(){
-        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('profile.sponsor.spon_transfer', compact('sponsor'));
-    }
-
     public function SponsorPaymentConfirm(){
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
         return view('profile.sponsor.spon_payment_confirm', compact('sponsor'));
-    }
-
-    public function SponsorSuccessfulPayment(){
-        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('profile.sponsor.spon_successful_payment', compact('sponsor'));
     }
 
     public function SponsorTopup(){
@@ -514,11 +494,16 @@ class UploadImageProfile extends Controller
                 $SPON_AGE = $request->input('SPON_AGE');
                 $SPON_GENDER = $request->input('SPON_GENDER');
                 $SPON_ADDRESS = $request->input('SPON_ADDRESS');
+                $province = $request->input('province');
+                $amphure = $request->input('amphure');
+                $district = $request->input('district');
                 $ZIPCODE_ID = $request->input('ZIPCODE_ID');
                 $USER_ID = $request->input('USER_ID');
                 $USER_EMAIL = $request->input('USER_EMAIL');
                 $CREATE = $request->input('DATE_CREATE');
                 $MODIFY = $request->input('DATE_MODIFY');
+
+
 
                 $name = $request->input('name');
                 $surname = $request->input('surname');
@@ -542,7 +527,8 @@ class UploadImageProfile extends Controller
                     || $ZIPCODE_ID != '' || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
                     $data = array("SPON_TEL"=>$SPON_TEL, "SPON_ID_CARD"=>$SPON_ID_CARD, "SPON_IMG"=>$SPON_IMG, "SPON_BIRTHDAY"=>$SPON_BIRTHDAY,
                                 "SPON_AGE"=>$SPON_AGE, "SPON_GENDER"=>$SPON_GENDER, "SPON_ADDRESS"=>$SPON_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
-                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY, "name"=>$name, "surname"=>$surname, "taxID"=>$taxID);
+                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY, "name"=>$name, "surname"=>$surname, "taxID"=>$taxID,
+                                "province"=>$province,"amphure"=>$amphure,"district"=>$district);
                     // dd($data);
                     // Insert && Update
                     $value = Sponsors::InsertAndUpdateData($data);
@@ -560,6 +546,9 @@ class UploadImageProfile extends Controller
                 $SPON_GENDER = $request->input('SPON_GENDER');
                 $SPON_ADDRESS = $request->input('SPON_ADDRESS');
                 $ZIPCODE_ID = $request->input('ZIPCODE_ID');
+                $province = $request->input('province');
+                $amphure = $request->input('amphure');
+                $district = $request->input('district');
                 $USER_ID = $request->input('USER_ID');
                 $USER_EMAIL = $request->input('USER_EMAIL');
                 $CREATE = $request->input('DATE_CREATE');
@@ -587,7 +576,8 @@ class UploadImageProfile extends Controller
                     || $ZIPCODE_ID != '' || $USER_ID != '' || $CREATE != '' || $MODIFY != ''){
                     $data = array("SPON_TEL"=>$SPON_TEL, "SPON_ID_CARD"=>$SPON_ID_CARD, "SPON_BIRTHDAY"=>$SPON_BIRTHDAY,
                                 "SPON_AGE"=>$SPON_AGE, "SPON_GENDER"=>$SPON_GENDER, "SPON_ADDRESS"=>$SPON_ADDRESS, "ZIPCODE_ID"=>$ZIPCODE_ID, "USER_ID"=>$USER_ID,
-                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY, "name"=>$name, "surname"=>$surname, "taxID"=>$taxID);
+                                "USER_EMAIL" => $USER_EMAIL, "DATE_CREATE"=>$CREATE, "DATE_MODIFY"=>$MODIFY, "name"=>$name, "surname"=>$surname, "taxID"=>$taxID,
+                                "province"=>$province,"amphure"=>$amphure,"district"=>$district);
                     // dd($data);
                     // Insert && Update
                     $value = Sponsors::InsertAndUpdateData($data);

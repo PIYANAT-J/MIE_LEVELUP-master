@@ -29,11 +29,25 @@ class productController extends Controller
         $count = DB::table('products')->where('USER_EMAIL', Auth::user()->email)->get();
         if($count->count() == 0){
             $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-            return view('profile.game.sponlvp_shelf', compact('sponsor'));
+            $game = DB::table('games')->where('GAME_STATUS','อนุมัติ')->get();
+            $package = DB::table('my_package_buy')->where([['my_package_buy.USER_EMAIL', Auth::user()->email]])
+                            ->join('packages','packages.package_id','my_package_buy.package_id')
+                            ->select('my_package_buy.*', 'packages.package_game', 'packages.package_length')
+                            ->first();
+            $packageGame = json_decode($package->packageBuy_gameSpon);
+            return view('profile.game.sponlvp_shelf', compact('sponsor', 'game', 'package', 'packageGame'));
         }else{
             $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
             $product = DB::table('products')->where('USER_EMAIL', Auth::user()->email)->get();
-            return view('profile.game.sponlvp_shelf', compact('sponsor', 'product'));
+            $game = DB::table('games')->where('GAME_STATUS','อนุมัติ')->get();
+            $package = DB::table('my_package_buy')->where([['my_package_buy.USER_EMAIL', Auth::user()->email]])
+                            ->join('packages','packages.package_id','my_package_buy.package_id')
+                            ->select('my_package_buy.*', 'packages.package_game', 'packages.package_length')
+                            ->get();
+            // dd($package);
+            // $packageGame = json_decode($package->packageBuy_gameSpon);
+            // dd($package);
+            return view('profile.game.sponlvp_shelf', compact('sponsor', 'product', 'game', 'package'));
         }
     }
 
