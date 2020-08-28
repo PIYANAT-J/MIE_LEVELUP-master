@@ -58,7 +58,7 @@ class ResetPasswordController extends Controller
     public function passwordUserReset(Request $req){
         // dd('passwordUserReset');
         if($req->input('submit') != null){
-            // dd($req);
+            dd($req);
             $validate = $req->validate([
                 'old_password' => ['required', 'string', 'max:255'. Auth::user()->password],
                 'password' => ['required', 
