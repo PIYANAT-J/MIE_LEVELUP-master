@@ -104,7 +104,7 @@
                                                             3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
                                                             4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
                                                         </div>
-                                                        <div class="col-lg-6 text-center"><img src="{{asset('home/Kyc/kyc.png') }}" /></div>
+                                                        <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -135,7 +135,7 @@
                                                             3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
                                                             4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
                                                         </div>
-                                                        <div class="col-lg-6 text-center"><img src="{{asset('home/Kyc/kyc.png') }}" /></div>
+                                                        <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -167,7 +167,7 @@
                                                             4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
                                                             <b style="font-family:myfont;">หมายเหตุ : รายละเอียด</b>
                                                         </div>
-                                                        <div class="col-lg-6 text-center"><img src="{{asset('home/Kyc/kyc.png') }}" /></div>
+                                                        <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
                                                     </div>
                                                         <div class="font-kyc2 my-3 line2"><span style="font-family:myfont;">อัพโหลดรูปหลักฐานยืนยันตัวตน</span>( อัพโหลดได้ไม่เกิน 2 mb ) </div>
                                                     <div>
@@ -213,7 +213,7 @@
                                                             3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
                                                             4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
                                                         </div>
-                                                        <div class="col-lg-6 text-center"><img src="{{asset('home/Kyc/kyc.png') }}" /></div>
+                                                        <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
                                                     </div>
                                                     <div class="font-kyc2 my-3 line2"><span style="font-family:myfont;">อัพโหลดรูปหลักฐานยืนยันตัวตน</span>( อัพโหลดได้ไม่เกิน 2 mb ) </div>
                                                     <div>
@@ -261,7 +261,7 @@
                                                         4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
                                                         <b style="font-family:myfont;">หมายเหตุ ** กรุณาอัพเดทข้อมูลส่วนตัว</b>
                                                     </div>
-                                                    <div class="col-lg-6 text-center"><img src="{{asset('home/Kyc/kyc.png') }}" /></div>
+                                                    <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
                                                 </div>
                                             </div>
                                         </div>

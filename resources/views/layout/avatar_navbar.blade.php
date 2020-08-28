@@ -21,10 +21,8 @@
         <link rel="stylesheet" href="{{ asset('dist/css/level-up.css') }}">
         <link rel="stylesheet" href="{{ asset('home/font/font.css') }}">
         <link rel="stylesheet" href="{{ asset('icon/font_lvp.css') }}">
-        <link rel="stylesheet" href="{{ asset('bootstrap-select/dist/css/bootstrap-select.css') }}">
-        <link rel="stylesheet" href="{{ asset('bootstrap-select/dist/css/bootstrap-select.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('chart.js-2.9.3/dist/Chart.css') }}">
         
+        @yield('style')
     </head>
 
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -37,66 +35,74 @@
                 </div>
                 <div class="site-mobile-menu-body"></div>
             </div>
-            <header class="site-navbar2 py-3 site-navbar-target" role="banner">
+
+            <header class="site-navbar2 py-2 site-navbar-target" role="banner">
                 <div class="row align-items-center">
-                    <div class="col-6 col-xl-2">
-                        <h1 class="site-logo"><a href="{{ url('/') }}" class="mb-0"><img class="img_logo" src="{{asset('home/logo/logo_lvp.svg') }}" ></a></h1>
+                    <div class="col-sm-2 col-md-2 col-lg-1 col-xl-1 text-right">
+                        <a href="{{ url('/') }}"><img class="img_logo" src="{{asset('home/logo/logo_lvp.svg') }}" ></a>
                     </div>
 
-                    <div class="col-12 col-md-10 d-none d-xl-block font_navbar home">
+                    <div class="col-lg-7 col-xl-8  d-none d-lg-block d-xl-block">
                         <nav class="site-navigation position-relative" role="navigation">
-                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block text-right" style="margin-top:50px;"> 
-                                <li><a href="{{ url('/') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;font-size:0.7em; ">หน้าแรก</a></li>
-                                <li><a href="{{ route('gameCategory') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:20px;font-size:0.7em;">หมวดหมู่</a></li>
+                            <ul class="site-menu main-menu js-clone-nav d-none d-lg-block" style="margin-top:30px;"> 
+                                <li><a href="{{ url('/') }}" class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0"><h1 class="fontNavbar">หน้าแรก</h1></a></li>
+                                <li><a href="{{ route('gameCategory') }}" class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;"><h1 class="fontNavbar">หมวดหมู่</h1></a></li>
                                 @guest
-                                    <li><a href="{{ route('login-levelUp') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px;font-size:0.7em;">การติดตามของฉัน</a></li>
+                                    <li><a href="{{ route('login-levelUp') }}" class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;"><h1 class="fontNavbar">การติดตามของฉัน</h1></a></li>
                                 @else
-                                    <li><a href="{{ route('FollowMe') }}" class="nav-link" style="font-family:myfont; padding:0px; margin-right:10px;font-size:0.7em;">การติดตามของฉัน</a></li>
+                                    <li><a href="{{ route('FollowMe') }}" class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;"><h1 class="fontNavbar">การติดตามของฉัน</h1></a></li>
                                 @endguest
                                 <li class="inputWithIcon">
-                                    <input style="font-family:myfont1;font-size:0.7em;" class="search_btn" type="text" placeholder="ค้นหา" aria-label="Search">
-                                    <i class="icon-search" aria-hidden="true" style="font-size:18px"></i>
+                                    <h1><input class="search_btn" type="text" placeholder="ค้นหา" aria-label="Search"></h1>
+                                    <h1><i class="icon-search " aria-hidden="true"></i></h1>
                                 </li>
-                                @guest
-                                    <img style="padding:0px 0px 0px 20px;" src="{{asset('/icon/sign_in.svg') }}">
-                                    <label class="sign_in" style="font-family:myfont; padding: 0px 0px 0px 0px;font-size:0.7em;">
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="col-lg-4 col-xl-3 d-none d-lg-block d-xl-block text-right home">
+                        <nav class="site-navigation position-relative" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav" style="margin-top:50px;padding-left:0;">
+                            @guest
+                                    <img style="padding:0px 0px 0px 20px;" src="{{asset('/icon/sign_in.svg') }}"/>
+                                    <label class="sign_in" style="font-family:myfont;font-size:0.7em; padding: 0px 0px 0px 0px;">
                                         <a href="{{ route('login-levelUp') }}">{{ __('เข้าสู่ระบบ') }}</a>
                                     </label>
                                     <label style="font-family:myfont;font-size:0.7em;"><a class="text2">/ </a></label>
-
                                         @if (Route::has('register'))
-                                            <label style="font-family:myfont;">
-                                                <a class="sign_up mr-3" href="{{ route('register-levelUp') }}">{{ __('ลงทะเบียน') }}</a>
+                                            <label style="font-family:myfont;font-size:0.7em;">
+                                                <a class="sign_up mr-3" href="{{ route('register') }}">{{ __('ลงทะเบียน') }}</a>
                                             </label>
                                         @endif
                             </ul>
                                 @else
                                 <li class="labelWithImg">
                                     <a href="/shopping_cart">
-                                        <img style="width:1.3em" src="{{asset('icon/shopping-cart.png') }}" />
+                                        <img style="width:2em" src="{{asset('icon/shopping-cart.png') }}" />
                                         <span class="font-shop">3</span>
                                     </a>
                                 </li>
                                 
                                     @if(Auth::user()->users_type == '2')
                                         @foreach($developer as $Dev)
-                                            <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" />
+                                            <!-- <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" /> -->
                                         @endforeach
                                     @elseif(Auth::user()->users_type == '3')
-                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
+                                        <!-- <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$sponsor->SPON_IMG) }}" /> -->
                                     @else
                                         @foreach($guest_user as $USER)
-                                            <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
+                                            <!-- <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" /> -->
                                         @endforeach
                                     @endif
-                                    <li class="has-children">
+                                    
+                                <li class="has-children">    
                                     <a href="#about-section" class="nav-link font_name" >{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
                                     <ul class="dropdown">
                                         <li class="nav-item">
                                             @if(Auth::user()->users_type == '2')
-                                                <a class="nav-link font_profile" href="{{ route('DevProfile') }}">{{ __('โปรไฟล์') }}</a>
+                                                <a class="nav-link font_profile" style="" href="{{ route('DevProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @elseif(Auth::user()->users_type == '3')
-                                                <a class="nav-link font_profile" href="{{ route('sponProfile') }}">{{ __('โปรไฟล์') }}</a>
+                                                <a class="nav-link font_profile" href="{{ route('SponsorProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @else
                                                 <a class="nav-link font_profile" href="{{ route('UserProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @endif
@@ -115,59 +121,83 @@
                             </ul>
                         </nav>
                     </div>
-                    <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3 menu1"></span></a></div>
-                </div>
-            </header>  
-        </div>
-            @yield('content')
-            
-        <!-- <footer class="site-footer footer4">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-5">
-                        <img class="email_footer" src="{{asset('icon/email.svg') }}" />
-                        <img class="google_footer" src="{{asset('icon/google_p.svg') }}" />
-                        <img class="fb_footer" src="{{asset('icon/fb.svg') }}" />
+
+                    <div class="col-sm-8 col-md-8 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"></div>
+                    <div class="col-sm-2 col-md-1 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">
+                        <a href="#" class="site-menu-toggle js-menu-toggle text-center">
+                            <span class="icon-menu h1 menu1 mr-2"></span>
+                        </a>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-9">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="contact_us">CONTACT US</div>
-                                <div class="address mt-3"><a class="address2">Address:</a> 8/1 Borommaratchachonnani Road,</br>Salathammasop, Thawiwatthana,</br>Bangkok 10170</div>
-                                <div class="address"><a class="address2">Phone: </a> +66 2105 8699</div>
-                                <div class="address"><a class="address2">Website: </a> https://www.shopteenii.com</div>
-                                <div class="address"><a class="address2">Email: </a> info@mip.co.th</div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="contact_us">HELP</div>
-                                <div class="address mt-3">Home</div>
-                                <div class="address">Categories</div>
-                                <div class="address">My Follow</div>
-                                <div class="address">Sign in</div>
+            </header> 
+            
+            @yield('content')
+            
+            <!-- <footer class="site-footer footer1">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 pl-4 mt-2">
+                            <img class="email_footer" src="{{asset('icon/email.svg') }}" >
+                            <img class="google_footer" src="{{asset('icon/google_p.svg') }}" >
+                            <img class="fb_footer" src="{{asset('icon/fb.svg') }}" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row mt-4 pl-4">
+                                <div class="col-md-4 col-lg-4 col-xl-3">
+                                    <div>
+                                        <div><p class="fontAddressFooter"><a style="font-weight:800;">ที่อยู่ :</a> 8/1 ถนนบรมราชชนนี <br> 
+                                        แขวงศาลาธรรมสพน์ เขตทวีวัฒนา</br>
+                                        กรุงเทพมหานคร 10170</p></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 col-xl-3">
+                                    <div>
+                                        <p class="fontAddressFooter">
+                                            <a style="font-weight:800;">โทร : </a> +66 2105 8699 </br>
+                                            <a style="font-weight:800;">เว็บไซต์ : </a> https://www.level-ups.com </br>
+                                            <a style="font-weight:800;">อีเมล : </a> info@mip.co.th
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 col-xl-3">
+                                    <div>
+                                        <p class="fontAddressFooter">
+                                            <a href="{{ route('gameCategory') }}">หมวดหมู่</a></br>
+                                            <a href="{{ route('FollowMe') }}">การติดตามของฉัน</a></br>
+                                            <a href="{{ route('login-levelUp') }}">เข้าสู่ระบบ</a></br>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>  
+            </footer>
+
+            <footer class="container-fluid bg_footer">
+                <div class="row pt-3 pb-2 pl-4">
+                    <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8" >
+                        <div>
+                            <p class="fontCopyrightFooter">
+                                <script>document.write(new Date().getFullYear());</script> 
+                                &copy; All Rights Reserved @ Level Up | ข้อกำหนด และเงื่อนไข | นโยบายความเป็นส่วนตัว
+                            </p>
+                        </div> 
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 text-right">
+                        <img class="imgFooter mr-3" src="{{asset('home/logo/logo_wh.svg') }}">
+                        <img class="imgFooter" src="{{asset('home/logo/sega.svg') }}" >
+                    </div>
                 </div>
-            </div>  
-        </footer>
-        <footer class="container-fluid mt-4 bg_footer">
-            <div class="row">
-                <div class="col-md-9 text-left">
-                    <div class="footer3" style="padding-top:40px; color: #fff;"><script>document.write(new Date().getFullYear());</script> &copy; All Rights Reserved @ Level Up | ข้อกำหนด และเงื่อนไข | นโยบายความเป็นส่วนตัว</div>
-                </div>
-                <div class="col-md-3 text-center bg_footer footer3">
-                    <img style="margin-right:10px;" src="{{asset('home/logo/logo_wh.svg') }}"/>
-                    <img  src="{{asset('home/logo/sega.svg') }}" />
-                </div>
-            </div>
-        </footer>   -->
+            </footer>  -->
+        </div>
     
-        <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="{{ asset('dist/js/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('dist/js/jquery-ui.js') }}"></script>
-        <!-- <script src="{{ asset('dist/js/popper.min.js') }}"></script>
+        <script src="{{ asset('dist/js/popper.min.js') }}"></script>
         <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
         <script src="{{ asset('dist/js/jquery.countdown.min.js') }}"></script>
@@ -179,12 +209,6 @@
         <script src="{{ asset('dist/js/main.js') }}"></script>
         <script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
         <script src="{{ asset('dist/moment/dist/moment.js') }}"></script>
-        <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
-        <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
-        <script src="{{ asset('chart.js-2.9.3/dist/Chart.js') }}"></script>
-        <script src="{{ asset('chart.js-2.9.3/dist/Chart.min.js') }}"></script>
-        <script src="{{ asset('chartjs-plugin-streaming-1.8.0/dist/chartjs-plugin-streaming.js') }}"></script>
-        <script src="{{ asset('chartjs-plugin-streaming-1.8.0/dist/chartjs-plugin-streaming.min.js') }}"></script> -->
         @yield('script')
     </body>
 </html>
