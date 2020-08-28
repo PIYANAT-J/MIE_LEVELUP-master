@@ -54,156 +54,133 @@
         </div>
         <!-- sidebar -->
 
-        @foreach($sponsor as $spon)
-            @if($spon->USER_EMAIL == Auth::user()->email)
-                    <div class="col-lg-9" style="background-color:#f5f5f5;">
-                        <div class="row mt-4 ">
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-10 ">
-                                <a href="{{ route('AdvtPackage') }}"><label class="fontAd1 active">สนับสนุนเงินในเกม</label></a>
-                                <label class="fontAd1"> > </label>
-                                <label class="fontAd1" >จัดการแพ็กเกจ</label>
-                            </div>
-                            <div class="col-lg-1"></div>
-                        </div>
-                        <div class="row mb-4" >
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
+        <div class="col-lg-9" style="background-color:#f5f5f5;">
+            <div class="row mt-4 ">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 ">
+                    <a href="{{ route('AdvtPackage') }}"><label class="fontAd1 active">สนับสนุนเงินในเกม</label></a>
+                    <label class="fontAd1"> > </label>
+                    <label class="fontAd1" >จัดการแพ็กเกจ</label>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <div class="row mb-4" >
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
 
-                                <div class="row">
-                                    <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                                        <span class="font-profile1">เพิ่มเกม</span>
-                                    </div>
-                                </div>
-
-                                <div class="row mt-3">
-                                    <div class="col-lg-6" style="border-right: 1px solid #f2f2f2;">
-                                        <label class="bgMyPackage2">
-                                            <div class="row">
-                                                <div class="col-lg-12 mt-2" style="line-height:0.7;">
-                                                <label style="font-family:myfont1;font-size:1em;color:#ffffff;">แพ็กเกจ 1</label><br>
-                                                    <label style="font-family:myfont;font-size:1.3em;color:#ffffff;">฿900.00</label>
-                                                    <label style="font-family:myfont1;font-size:0.9em;color:#ffffff;">/ เดือน</label> <br>
-                                                    <label style="font-family:myfont1;font-size:0.9em;color:#23c197;">หมดอายุ : 25/05/20</label>
-                                                </div>
-                                            </div>
-                                        </label>
-                                        <label class="bgInput field-wrap">
-                                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ลิงค์โฆษณา</label> <br>
-                                            <input name="name" class="input-login px-3"></input>
-                                        </label>
-                                        <div class="row mt-2 mx-1" style="border-bottom: 1px solid #f2f2f2;">
-                                            <div class="col-lg-9" style="padding:0;">
-                                                <label class="font-profile1" style="margin:5px 0;">เกมที่สนับสนุน ( <label style="color:#23c197">5</label> / 20 )</label>
-                                            </div>
-                                            <div class="col-lg-3 text-right mb-2" style="padding:0;">
-                                            <a class="linkAd" href="{{ route('AdvtAddGame') }}"><label class="addGamePackage">+ เพิ่มเกม</label></a>
-                                            </div>
-                                        </div>
-                                        <div class="rowGamePackage">
-                                            <div class="row mt-2 mx-1 " style="border-bottom: 1px solid #f2f2f2;">
-                                                <div class="col-lg-9 mb-2" style="padding:0;">
-                                                    <label class="labelItem">
-                                                        <img class="ImgGamePackage" src="{{asset('section/picture_game/game3.png') }}" />
-                                                    </label> 
-                                                    <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">TimeLie</label><br> Fantasy • Online <br> เวอร์ชั่น 1.03</label>
-                                                </div>
-                                                <div class="col-lg-3 text-right" style="padding:0;">
-                                                    <label class="TimeGamePackage"> 10:30 - 11:30</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-2 mx-1" style="border-bottom: 1px solid #f2f2f2;">
-                                                <div class="col-lg-9 mb-2" style="padding:0;">
-                                                    <label class="labelItem">
-                                                        <img class="ImgGamePackage" src="{{asset('section/picture_game/game.png') }}" />
-                                                    </label> 
-                                                    <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">Witcher</label><br> Fantasy • Online <br> เวอร์ชั่น 1.03</label>
-                                                </div>
-                                                <div class="col-lg-3 text-right" style="padding:0;">
-                                                    <label class="TimeGamePackage"> 10:30 - 11:30</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-2 mx-1" style="border-bottom: 1px solid #f2f2f2;">
-                                                <div class="col-lg-9 mb-2" style="padding:0;">
-                                                    <label class="labelItem">
-                                                        <img class="ImgGamePackage" src="{{asset('section/picture_game/game4.png') }}" />
-                                                    </label> 
-                                                    <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">Mafia</label><br> Fantasy • Online <br> เวอร์ชั่น 1.03</label>
-                                                </div>
-                                                <div class="col-lg-3 text-right" style="padding:0;">
-                                                    <label class="TimeGamePackage"> 10:30 - 11:30</label>
-                                                </div>
-                                            </div>
-                                            <div class="row mt-2 mx-1" style="border-bottom: 1px solid #f2f2f2;">
-                                                <div class="col-lg-9 mb-2" style="padding:0;">
-                                                    <label class="labelItem">
-                                                        <img class="ImgGamePackage" src="{{asset('section/picture_game/game18.png') }}" />
-                                                    </label> 
-                                                    <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">Man Eater</label><br> Fantasy • Online <br> เวอร์ชั่น 1.03</label>
-                                                </div>
-                                                <div class="col-lg-3 text-right" style="padding:0;">
-                                                    <label class="TimeGamePackage"> 10:30 - 11:30</label>
-                                                </div>
-                                            </div>
-                                            <div class="row mt-2 mx-1" style="border-bottom: 1px solid #f2f2f2;">
-                                                <div class="col-lg-9 mb-2" style="padding:0;">
-                                                    <label class="labelItem">
-                                                        <img class="ImgGamePackage" src="{{asset('section/picture_game/game11.png') }}" />
-                                                    </label> 
-                                                    <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">Forza</label><br> Fantasy • Online <br> เวอร์ชั่น 1.03</label>
-                                                </div>
-                                                <div class="col-lg-3 text-right" style="padding:0;">
-                                                    <label class="TimeGamePackage"> 10:30 - 11:30</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                            <div class="col-lg-12 pb-2"> 
-                                                <span class="font-profile1">ข้อกำหนดของการสนับสนุนเงินในเกม</span>
-                                            </div>
-
-                                            <div class="row pl-3">
-                                                <div class="col-lg-12" >
-                                                    <div class="input-container">
-                                                        <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                        <label class="input-field2 ">เลือกสนุบสนุนเกมได้ทั้งหมด 20 เกม/เดือน</label>
-                                                    </div>
-                                                    <div class="input-container">
-                                                        <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                        <label class="input-field2 ">สามารถเลือกเรทเกมได้ทุกชนิด</label>
-                                                    </div>
-
-                                                    <div class="input-container">
-                                                        <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                        <label class="input-field2 ">ได้โฆษณาความยาว 15 วินาที</label>
-                                                    </div>
-
-                                                    <div class="input-container">
-                                                        <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                        <label class="input-field2 ">ได้สูงสุด 2 รอบ/เกม ระยะเวลา 1 เดือน</label>
-                                                    </div>
-                                                    
-                                                    <div class="input-container">
-                                                        <img class="imgCorrectPackage icon2" src="{{asset('icon/incorrect.svg') }}">
-                                                        <label class="input-field2 ">ได้สูงสุด 2 รอบ/เกม ระยะเวลา 1 เดือน</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-1"></div>
+                    <div class="row">
+                        <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
+                            <span class="font-profile1">เพิ่มเกม</span>
                         </div>
                     </div>
-                </form>
-            @endif
-        @endforeach
+
+                    <div class="row mt-3">
+                        <div class="col-lg-6" style="border-right: 1px solid #f2f2f2;">
+                            <label class="bgMyPackage2">
+                                <div class="row">
+                                    <div class="col-lg-12 mt-2" style="line-height:0.7;">
+                                        <label style="font-family:myfont1;font-size:1em;color:#ffffff;">แพ็กเกจ {{$package->packageBuy_name}}</label><br>
+                                        <label style="font-family:myfont;font-size:1.3em;color:#ffffff;">฿{{$package->packageBuy_amount}}</label>
+                                        <label style="font-family:myfont1;font-size:0.9em;color:#ffffff;">{{$package->packageBuy_season}} เดือน</label> <br>
+                                        <label style="font-family:myfont1;font-size:0.9em;color:#23c197;">หมดอายุ : {{$package->packageBuy_deadline}}</label>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="bgInput field-wrap">
+                                <label class="fontHeadInput px-3 py-2" style="padding:0;">ลิงค์โฆษณา</label> <br>
+                                <input name="name" class="input-login px-3"></input>
+                            </label>
+                            <div class="row mt-2 mx-1" style="border-bottom: 1px solid #f2f2f2;">
+                                <div class="col-lg-9" style="padding:0;">
+                                @if($packageGame == null)
+                                    <label class="font-profile1" style="margin:5px 0;">เกมที่สนับสนุน ( <label style="color:#23c197">0</label> / {{$package->package_game}} )</label>
+                                @else
+                                    <label class="font-profile1" style="margin:5px 0;">เกมที่สนับสนุน ( <label style="color:#23c197">{{ count($packageGame)}}</label> / {{$package->package_game}} )</label>
+                                @endif
+                                </div>
+                                <div class="col-lg-3 text-right mb-2" style="padding:0;">
+                                <a class="linkAd" href="{{ route('AdvtAddGame', ['id'=>encrypt($package->package_id), 'idM'=>encrypt(0)]) }}"><label class="addGamePackage">+ เพิ่มเกม</label></a>
+                                </div>
+                            </div>
+                            <div class="rowGamePackage">
+                                <!-- <div class="row mt-2 mx-1 " style="border-bottom: 1px solid #f2f2f2;">
+                                    <div class="col-lg-9 mb-2" style="padding:0;">
+                                        <label class="labelItem">
+                                            <img class="ImgGamePackage" src="{{asset('section/picture_game/game3.png') }}" />
+                                        </label> 
+                                        <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">TimeLie</label><br> Fantasy • Online <br> เวอร์ชั่น 1.03</label>
+                                    </div>
+                                    <div class="col-lg-3 text-right" style="padding:0;">
+                                        <label class="TimeGamePackage"> 10:30 - 11:30</label>
+                                    </div>
+                                </div> -->
+                                <!-- <p>{{$package->packageBuy_gameSpon}}</p> -->
+                                @if($packageGame != null)
+                                    @foreach($packageGame as $gameSpon)
+                                        @foreach($game as $Game)
+                                            @if($Game->GAME_ID == $gameSpon->gameid)
+                                                <?php
+                                                    $start = explode("T",$gameSpon->start);
+                                                    $deadline = explode("T",$gameSpon->deadline);
+                                                ?>
+                                                <div class="row mt-2 mx-1 " style="border-bottom: 1px solid #f2f2f2;">
+                                                    <div class="col-lg-9 mb-2" style="padding:0;">
+                                                        <label class="labelItem">
+                                                            <img class="ImgGamePackage" src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" />
+                                                        </label> 
+                                                        <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">{{$Game->GAME_NAME}}</label><br> {{$Game->RATED_B_L}} • Online <br> เวอร์ชั่น 1.03</label>
+                                                    </div>
+                                                    <div class="col-lg-3 text-right" style="padding:0;">
+                                                        <label class="TimeGamePackage"> {{$start[1]}} - {{$deadline[1]}}</label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 pb-2"> 
+                                    <span class="font-profile1">ข้อกำหนดของการสนับสนุนเงินในเกม</span>
+                                </div>
+
+                                <div class="row pl-3">
+                                    <div class="col-lg-12" >
+                                        <div class="input-container">
+                                            <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
+                                            <label class="input-field2 ">เลือกสนุบสนุนเกมได้ทั้งหมด 20 เกม/เดือน</label>
+                                        </div>
+                                        <div class="input-container">
+                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                            <label class="input-field2 ">สามารถเลือกเรทเกมได้ทุกชนิด</label>
+                                        </div>
+
+                                        <div class="input-container">
+                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                            <label class="input-field2 ">ได้โฆษณาความยาว 15 วินาที</label>
+                                        </div>
+
+                                        <div class="input-container">
+                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                            <label class="input-field2 ">ได้สูงสุด 2 รอบ/เกม ระยะเวลา 1 เดือน</label>
+                                        </div>
+                                        
+                                        <div class="input-container">
+                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/incorrect.svg') }}">
+                                            <label class="input-field2 ">ได้สูงสุด 2 รอบ/เกม ระยะเวลา 1 เดือน</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
     </div>
 </div>
 

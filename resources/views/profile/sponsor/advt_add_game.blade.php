@@ -60,7 +60,7 @@
                 <div class="col-lg-10 ">
                     <a href="{{ route('AdvtPackage') }}"><label class="fontAd1 active">สนับสนุนเงินในเกม</label></a>
                     <label class="fontAd1"> > </label>
-                    <a href="{{ route('AdvtManagement') }}"><label class="fontAd1 active" >จัดการแพ็กเกจ</label></a>
+                    <a href="{{ route('AdvtManagement', ['id'=>encrypt($package->package_id)]) }}"><label class="fontAd1 active" >จัดการแพ็กเกจ</label></a>
                     <label class="fontAd1"> > </label>
                     <label class="fontAd1" >เพิ่มเกม</label>
                 </div>
@@ -71,7 +71,11 @@
                 <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
                     <div class="row">
                         <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                            <label class="font-profile1" style="margin:5px 0;">เพิ่มเกม ( แพ็กเกจ 1 ) ( <label style="color:#23c197">5</label> / 20 ) </label>
+                        @if($packageGame != null)
+                            <label class="font-profile1" style="margin:5px 0;">เพิ่มเกม ( แพ็กเกจ {{$package->packageBuy_name}} ) ( <label style="color:#23c197">{{ count($packageGame)}}</label> / {{$package->package_game}} ) </label>
+                        @else
+                            <label class="font-profile1" style="margin:5px 0;">เพิ่มเกม ( แพ็กเกจ {{$package->packageBuy_name}} ) ( <label style="color:#23c197">0</label> / {{$package->package_game}} ) </label>
+                        @endif
                         </div>
                     </div>
 
@@ -331,31 +335,51 @@
                         </div>
                         <div class="col-lg-7"></div>
                         <div class="col-lg-2">
-                            <label class="selectAll2 fontAddGame" data-toggle="modal" data-target="#exampleModalScrollable">+ เพิ่มเกม</label>
+                            <!-- <label class="selectAll2 fontAddGame" data-toggle="modal" data-target="#exampleModalScrollable">+ เพิ่มเกม</label> -->
+                            <!-- <label class="selectAll2 fontAddGame" data-toggle="modal" data-target="#exampleModalScrollable">+ เพิ่มเกม</label> -->
+                            <!-- <button id="3" onclick="reply_click(this.id)" data-toggle="modal" data-target="#exampleModalScrollable">B3</button> -->
+                            <form action="{{route('addGame')}}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <button class="selectAll2 fontAddGame" name="addGame" value="addGame">+ เพิ่มเกม
+                                    <input type="hidden" name="packageBuy_game" id="data-checked">
+                                    <input type="hidden" name="packageBuy_invoice" value="{{$package->packageBuy_invoice}}">
+                                    <input type="hidden" name="package_id" value="{{$package->package_id}}">
+                                </button>
+                            </form>
                         </div>
                     </div>
 
                     <div class="row mr-3 rowGamePackage2">
                         <div class="col-lg-12">
-                        @foreach($game as $gameCustom)
-                            <label >
-                                <div class="custom-check">
-                                    <input class="custom-check-input" id="someCheck{{$gameCustom->GAME_ID}}" name="someCheck" value="{{$gameCustom->GAME_ID}}" type="checkbox" />
-                                    <label class="custom-check-elem" for="someCheck{{$gameCustom->GAME_ID}}"></label>
-                                    <label class="custom-check-label " for="someCheck{{$gameCustom->GAME_ID}}">
-                                        <img class="bgGameSpon" src="{{asset('section/File_game/Profile_game/'.$gameCustom->GAME_IMG_PROFILE) }}">
+                            <?php $arrayGame = array(); ?>
+                            @if($packageGame != null)
+                                @foreach($packageGame as $gameSpon)
+                                    <?php $arrayGame[] = $gameSpon->gameid; ?>
+                                @endforeach
+                            @endif
+                            @foreach($game as $gameCustom)
+                                @if(in_array($gameCustom->GAME_ID, $arrayGame))
+                                    <label>
+                                        <div class="custom-check2">
+                                            <input class="custom-check-input2 checked" id="someCheck{{$gameCustom->GAME_ID}}" name="someCheck" type="checkbox" />
+                                            <label class="custom-check-elem2" for="someCheck{{$gameCustom->GAME_ID}}"></label>
+                                            <label class="custom-check-label2 " for="someCheck{{$gameCustom->GAME_ID}}">
+                                                <img class="bgGameSpon" src="{{asset('section/File_game/Profile_game/'.$gameCustom->GAME_IMG_PROFILE)}}">
+                                            </label>
+                                        </div>
                                     </label>
-                                </div>
-                                <!-- <div class="custom-check2">
-                                    <input class="custom-check-input2 checked" id="someCheck1" name="someCheck" type="checkbox" />
-                                    <label class="custom-check-elem2" for="someCheck1"></label>
-                                    <label class="custom-check-label2 " for="someCheck1">
-                                        <img class="bgGameSpon" src="{{asset('section/picture_game/game.png') }}">
+                                @else
+                                    <label>
+                                        <div class="custom-check">
+                                            <input class="custom-check-input" id="someCheck{{$gameCustom->GAME_ID}}" name="someCheck" value="{{$gameCustom->GAME_ID}}" type="checkbox" />
+                                            <label class="custom-check-elem" for="someCheck{{$gameCustom->GAME_ID}}"></label>
+                                            <label class="custom-check-label " for="someCheck{{$gameCustom->GAME_ID}}">
+                                                <img class="bgGameSpon" src="{{asset('section/File_game/Profile_game/'.$gameCustom->GAME_IMG_PROFILE)}}">
+                                            </label>
+                                        </div>
                                     </label>
-                                </div> -->
-                            </label>
-                        @endforeach
-                            
+                                @endif
+                            @endforeach
                             <!-- <label >
                                 <div class="custom-check">
                                     <input class="custom-check-input" id="someCheck2" name="someCheck" type="checkbox" />
@@ -380,55 +404,70 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title"  style="font-family:myfont1;font-weight:900;font-size:1.2em;">
-                    <label>เพิ่มเกม ( แพ็กเกจ 1 ) ( <label style="color:#23c197;" id="count-checked">0</label> ) </label>
-                </h4>
-                <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                <?php 
-                    echo "<script>document.writeln(getJS);</script>";
-                ?>
-                <span id="data-checked">0</span>
-                    <div class="col-lg-5 pl-2" style="padding:0;">
-                        <label class="containerhover1">
-                            <img class="imagehover1" src="{{asset('section/picture_game/game3.png') }}" />
-                            <label class="middlehover1">
-                                <img style="cursor:pointer; width:25px;" src="{{asset('icon/trash2.svg')}}">
-                                <label class="texthover1">ลบ</label>
-                            </label>
-                        </label> 
-                        <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">Time Lie</label><br> Fantasy • Online <br> เวอร์ชั่น 1.03</label>
-                    </div>
-                    <div class="col-lg-7">
-                        <label>
-                            <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">เริ่มต้น</label></br>
-                            <input style="font-family:myfont1;font-size:0.9em;" type="datetime-local" id="default-picker" class="timepicker" />
-                        </label>
+    @if(isset($modal) && $modal == 1)
+        <?php 
+            $countGame = explode(',',$package->packageBuy_game);
+            $i;
+        ?>
+        <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"  style="font-family:myfont1;font-weight:900;font-size:1.2em;">
+                        <label>เพิ่มเกม ( แพ็กเกจ {{$package->packageBuy_name}} ) ( <label style="color:#23c197;" id="count-checked">{{ count($countGame)}}</label> ) </label>
+                    </h4>
+                    <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
+                </div>
+                <form action="{{route('addGame')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            @for($i=0;$i < count($countGame);$i++)
+                                @foreach($game as $key=>$gameModal)
+                                    @if($countGame[$i] == $gameModal->GAME_ID)
+                                        <div class="col-lg-5 pl-2" style="padding:0;">
+                                            <label class="containerhover1">
+                                                <img class="imagehover1" src="{{asset('section/File_game/Profile_game/'.$gameModal->GAME_IMG_PROFILE)}}" />
+                                                <label class="middlehover1">
+                                                    <img style="cursor:pointer; width:25px;" src="{{asset('icon/trash2.svg')}}">
+                                                    <label class="texthover1">ลบ</label>
+                                                </label>
+                                            </label> 
+                                            <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">{{$gameModal->GAME_NAME}}</label><br> {{$gameModal->RATED_B_L}} • Online <br> เวอร์ชั่น 1.03</label>
+                                        </div>
+                                        <input type="hidden" name="game_id{{$key}}" value="{{$gameModal->GAME_ID}}">
+                                        <div class="col-lg-7">
+                                            <label>
+                                                <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">เริ่มต้น</label></br>
+                                                <input style="font-family:myfont1;font-size:0.9em;" type="datetime-local" id="dateStart{{$key}}" name="dateStart{{$key}}" value="{{old('dateStart')}}" class="timepicker" />
+                                            </label>
 
-                        <label>
-                            <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">สิ้นสุด</label></br>
-                            <input style="font-family:myfont1;font-size:0.9em;" type="datetime-local" id="default-picker" class="timepicker" />
-                        </label>
+                                            <label>
+                                                <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">สิ้นสุด</label></br>
+                                                <input style="font-family:myfont1;font-size:0.9em;" type="datetime-local" id="dateDeadline{{$key}}" name="dateDeadline{{$key}}" value="{{old('dateDeadline')}}" class="timepicker" />
+                                            </label>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            @endfor
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="col-lg-4">
-                    <button class="btn-cancel">ยกเลิก</button>
-                </div>
-                <div class="col-lg-4"></div>
-                <div class="col-lg-4 ">
-                    <button class="btn-submit">ยืนยัน</button>
-                </div>
+                    <div class="modal-footer">
+                        <div class="col-lg-4">
+                            <button class="btn-cancel">ยกเลิก</button>
+                        </div>
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4 ">
+                            <button class="btn-submit" name="submit" value="submit">ยืนยัน</button>
+                            <input type="hidden" name="key" value="{{$key}}">
+                            <input type="hidden" name="package_id" value="{{$package->package_id}}">
+                            <input type="hidden" name="packageBuy_invoice" value="{{$package->packageBuy_invoice}}">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
+    @endif
 </div>
 
 <div class="container-fluid">
@@ -483,13 +522,22 @@
             $.each($("input[name='someCheck']:checked"), function(){            
                 favorite.push($(this).val());
             });
-            $('#data-checked').html(favorite.join(", "));
-            var getJS = "favorite";
-            console.log(getJS);
+            // $('#data-checked').html(favorite.join(", "));
+
+            document.querySelector('input#data-checked').value = favorite.join(", ")
+            console.log(favorite.join(", "));
             // data.value = favorite;
-            /* alert("My favourite sports are: " + favorite.join(", ")) */;
+            /* alert("My favourite sports are: " + favorite.join(", ")) */
         });
     });
 </script>
+
+@if(isset($modal) && $modal == 1)
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#exampleModalScrollable').modal();
+        });
+    </script>
+@endif
 
 @endsection

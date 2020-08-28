@@ -54,216 +54,212 @@
         </div>
         <!-- sidebar -->
 
-        @foreach($sponsor as $spon)
-            @if($spon->USER_EMAIL == Auth::user()->email)
-                    <div class="col-lg-9" style="background-color:#f5f5f5;">
-                        <div class="row mt-4" >
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-
-                                <div class="row">
-                                    <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                                        <span class="font-profile1">เพคเกจของฉัน</span>
-                                    </div>
-                                </div>
-
-                                <div class="row mt-3">
-                                    <div class="col-lg-12">
-                                        <label class="bgMyPackage">
-                                            <div class="row">
-                                                <div class="col-lg-12 mt-2" style="line-height:0.7;">
-                                                    <label style="font-family:myfont1;font-size:1em;color:#ffffff;">แพ็กเกจ 1</label><br>
-                                                    <label style="font-family:myfont;font-size:1.3em;color:#ffffff;">฿900.00</label>
-                                                    <label style="font-family:myfont1;font-size:0.9em;color:#ffffff;">/ เดือน</label> <br>
-                                                    <label style="font-family:myfont1;font-size:0.9em;color:#23c197;">หมดอายุ : 25/05/20</label>
-                                                </div>
-                                            </div>
-                                            <label class="bgManagePackage">
-                                                <a class="linkAd" href="{{ route('AdvtManagement') }}"><label style="font-family:myfont1;font-size:0.9em;cursor: pointer;">จัดการแพ็กเกจ</label></a>
-                                            </label>
-                                        </label>
-
-                                        <label class="bgMyPackage">
-                                            <div class="row">
-                                                <div class="col-lg-12 mt-2" style="line-height:0.7;">
-                                                <label style="font-family:myfont1;font-size:1em;color:#ffffff;">แพ็กเกจ 2</label><br>
-                                                    <label style="font-family:myfont;font-size:1.3em;color:#ffffff;">฿1,200.00</label>
-                                                    <label style="font-family:myfont1;font-size:0.9em;color:#ffffff;">/ เดือน</label> <br>
-                                                    <label style="font-family:myfont1;font-size:0.9em;color:#23c197;">หมดอายุ : 25/05/20</label>
-                                                </div>
-                                            </div>
-                                            <label class="bgManagePackage">
-                                                <a class="linkAd" href="{{ route('AdvtManagement') }}"><label style="font-family:myfont1;font-size:0.9em;cursor: pointer;">จัดการแพ็กเกจ</label></a>
-                                            </label>
-                                        </label>
-                                    </div>
-                                </div>
-                                <form action="{{ route('DevEditProfile') }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                                            <span class="font-profile1">สนับสนุนเงินในเกม</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mt-2 pl-2">
-                                        <div class="bgPackage">
-                                            <label>
-                                                <div class="row">
-                                                    <div class="col-lg-12 text-center mt-2">
-                                                        <img src="{{asset('icon/money2.svg') }}">
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-12 text-center mt-2">
-                                                        <label style="font-family:myfont1;font-size:1em;line-height:0.5;">แพ็กเกจ 1</label><br>
-                                                        <label style="font-family:myfont;font-size:1.3em;">฿900.00</label>
-                                                        <label style="font-family:myfont1;font-size:0.9em;">/ เดือน</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-12 text-center">
-                                                        <label class="btnBuyPackage">
-                                                            <a href="{{ route('SponsorPayment') }}"><label style="font-family:myfont1;font-size:1em;color:#ffffff;cursor: pointer;">ซื้อเลย</label></a>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="row my-2 px-4">
-                                                    <div class="col-lg-12 text-center" style="border-bottom:1px solid #f5f5f5"></div>
-                                                </div>
-                                                <div class="row pl-3">
-                                                    <div class="col-lg-12 ">
-                                                        <label style="font-family:myfont1;font-size:0.9em;font-weight: 800;">รายละเอียด</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row pl-2 pr-1">
-                                                    <div class="col-lg-12 fontDetailPackage">
-                                                        <div class="input-container">
-                                                            <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                            <label class="input-field ">เลือกสนุบสนุนเกมได้ทั้งหมด 20 เกม/เดือน</label>
-                                                        </div>
-
-                                                        <div class="input-container">
-                                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                            <label class="input-field ">สามารถเลือกเรทเกมได้ทุกชนิด</label>
-                                                        </div>
-
-                                                        <div class="input-container">
-                                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                            <label class="input-field ">ได้โฆษณาความยาว 15 วินาที</label>
-                                                        </div>
-
-                                                        <div class="input-container">
-                                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                            <label class="input-field ">ได้สูงสุด 2 รอบ/เกม ระยะเวลา 1 เดือน</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="bgPackage">
-                                            <label>
-                                                <div class="row">
-                                                    <div class="col-lg-12 text-center mt-2"><img src="{{asset('icon/money2.svg') }}"></div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-12 text-center mt-2">
-                                                        <label style="font-family:myfont1;font-size:1em;line-height:0.5;">แพ็กเกจ 2</label><br>
-                                                        <label style="font-family:myfont;font-size:1.3em;">฿1,200.00</label>
-                                                        <label style="font-family:myfont1;font-size:0.9em;">/ เดือน</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-12 text-center">
-                                                        <label class="btnBuyPackage">
-                                                            <a href="{{ route('SponsorPayment') }}"><label style="font-family:myfont1;font-size:1em;color:#ffffff;cursor: pointer;">ซื้อเลย</label></a>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="row my-2 px-4">
-                                                    <div class="col-lg-12 text-center" style="border-bottom:1px solid #f5f5f5"></div>
-                                                </div>
-                                                <div class="row pl-3">
-                                                    <div class="col-lg-12 ">
-                                                        <label style="font-family:myfont1;font-size:0.9em;font-weight: 800;">รายละเอียด</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row pl-2 pr-1">
-                                                    <div class="col-lg-12 fontDetailPackage">
-                                                        <div class="input-container">
-                                                            <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                            <label class="input-field ">เลือกสนุบสนุนเกมได้ทั้งหมด 20 เกม/เดือน</label>
-                                                        </div>
-
-                                                        <div class="input-container">
-                                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                            <label class="input-field ">สามารถเลือกเรทเกมได้ทุกชนิด</label>
-                                                        </div>
-
-                                                        <div class="input-container">
-                                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                            <label class="input-field ">ได้โฆษณาความยาว 30 วินาที</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="bgPackage">
-                                            <label>
-                                                <div class="row">
-                                                    <div class="col-lg-12 text-center mt-2"><img src="{{asset('icon/money2.svg') }}"></div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-12 text-center mt-2">
-                                                        <label style="font-family:myfont1;font-size:1em;line-height:0.5;">แพ็กเกจ 3</label><br>
-                                                        <label style="font-family:myfont;font-size:1.3em;">฿1,800.00</label>
-                                                        <label style="font-family:myfont1;font-size:0.9em;">/ เดือน</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-12 text-center">
-                                                        <label class="btnBuyPackage">
-                                                        <a href="{{ route('SponsorPayment') }}"><label style="font-family:myfont1;font-size:1em;color:#ffffff;cursor: pointer;">ซื้อเลย</label></a>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="row my-2 px-4">
-                                                    <div class="col-lg-12 text-center" style="border-bottom:1px solid #f5f5f5"></div>
-                                                </div>
-                                                <div class="row pl-3">
-                                                    <div class="col-lg-12 ">
-                                                        <label style="font-family:myfont1;font-size:0.9em;font-weight: 800;">รายละเอียด</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row pl-2 pr-1">
-                                                    <div class="col-lg-12 fontDetailPackage">
-                                                        <div class="input-container">
-                                                            <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                            <label class="input-field ">เลือกสนุบสนุนเกมได้ทั้งหมด 20 เกม/เดือน</label>
-                                                        </div>
-
-                                                        <div class="input-container">
-                                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                            <label class="input-field ">สามารถเลือกเรทเกมได้ทุกชนิด</label>
-                                                        </div>
-
-                                                        <div class="input-container">
-                                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                            <label class="input-field ">ได้โฆษณาความยาว 1 นาที แบบกดข้ามได้</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-lg-1"></div>
+        <div class="col-lg-9" style="background-color:#f5f5f5;">
+            <div class="row mt-4" >
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
+                    
+                    <div class="row">
+                        <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
+                            <span class="font-profile1">เพคเกจของฉัน</span>
                         </div>
                     </div>
-                </form>
-            @endif
-        @endforeach
+                    
+                    <div class="row mt-3">
+                        <div class="col-lg-12">
+                            @if(isset($package))
+                                @foreach($package as $packageMe)
+                                    @if($packageMe->packageBuy_status == 'true')
+                                        <label class="bgMyPackage">
+                                            <div class="row">
+                                                <div class="col-lg-12 mt-2" style="line-height:0.7;">
+                                                    <label style="font-family:myfont1;font-size:1em;color:#ffffff;">แพ็กเกจ {{$packageMe->packageBuy_name}}</label><br>
+                                                    <label style="font-family:myfont;font-size:1.3em;color:#ffffff;">฿{{$packageMe->packageBuy_amount}}</label>
+                                                    <label style="font-family:myfont1;font-size:0.9em;color:#ffffff;">{{$packageMe->packageBuy_season}} เดือน</label> <br>
+                                                    <label style="font-family:myfont1;font-size:0.9em;color:#23c197;">หมดอายุ : {{$packageMe->packageBuy_deadline}}</label>
+                                                </div>
+                                            </div>
+                                            <label class="bgManagePackage">
+                                                <a class="linkAd" href="{{ route('AdvtManagement', ['id'=>encrypt($packageMe->package_id)]) }}"><label style="font-family:myfont1;font-size:0.9em;cursor: pointer;">จัดการแพ็กเกจ</label></a>
+                                            </label>
+                                        </label>
+                                    @endif
+                                @endforeach
+                            @else
+                                <!-- <div class="col-lg-11 pt-3 pb-2"> -->
+                                    <span>
+                                        <label style="font-family:myfont;font-size:1em;color:#a8a8a8;">คุณต้องรีบซื้อเพคเกจน่ะจ้ะ</label>
+                                    </span>
+                                <!-- </div> -->
+                            @endif
+                        </div>
+                    </div>
+                    <form action="{{ route('DevEditProfile') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
+                                <span class="font-profile1">สนับสนุนเงินในเกม</span>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2 pl-2">
+                            @foreach($allPackage as $AllPackage)
+                                <div class="bgPackage">
+                                    <label>
+                                        <div class="row">
+                                            <div class="col-lg-12 text-center mt-2">
+                                                <img src="{{asset('icon/money2.svg') }}">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 text-center mt-2">
+                                                <label style="font-family:myfont1;font-size:1em;line-height:0.5;">แพ็กเกจ {{$AllPackage->package_name}}</label><br>
+                                                <label style="font-family:myfont;font-size:1.3em;">฿{{$AllPackage->package_amount}}</label><br>
+                                                <label style="font-family:myfont1;font-size:0.9em;">{{$AllPackage->package_season}} เดือน</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 text-center">
+                                                <label class="btnBuyPackage">
+                                                    <a href="{{ route('packagePay', ['id'=>encrypt($AllPackage->package_id)]) }}"><label style="font-family:myfont1;font-size:1em;color:#ffffff;cursor: pointer;">ซื้อเลย</label></a>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row my-2 px-4">
+                                            <div class="col-lg-12 text-center" style="border-bottom:1px solid #f5f5f5"></div>
+                                        </div>
+                                        <div class="row pl-3">
+                                            <div class="col-lg-12 ">
+                                                <label style="font-family:myfont1;font-size:0.9em;font-weight: 800;">รายละเอียด</label>
+                                            </div>
+                                        </div>
+                                        <div class="row pl-2 pr-1">
+                                            <div class="col-lg-12 fontDetailPackage">
+                                                <div class="input-container">
+                                                    <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                    <label class="input-field ">เลือกสนุบสนุนเกมได้ทั้งหมด {{$AllPackage->package_game}} เกม/เดือน</label>
+                                                </div>
+
+                                                <div class="input-container">
+                                                    <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                    <label class="input-field ">สามารถเลือกเรทเกมได้ทุกชนิด</label>
+                                                </div>
+
+                                                <div class="input-container">
+                                                    <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                    <label class="input-field ">ได้โฆษณาความยาว {{$AllPackage->package_length}} วินาที</label>
+                                                </div>
+
+                                                <div class="input-container">
+                                                    <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                    <label class="input-field ">ได้สูงสุด 2 รอบ/เกม ระยะเวลา 1 เดือน</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            @endforeach
+                            
+                            <!-- <div class="bgPackage">
+                                <label>
+                                    <div class="row">
+                                        <div class="col-lg-12 text-center mt-2"><img src="{{asset('icon/money2.svg') }}"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 text-center mt-2">
+                                            <label style="font-family:myfont1;font-size:1em;line-height:0.5;">แพ็กเกจ 2</label><br>
+                                            <label style="font-family:myfont;font-size:1.3em;">฿1,200.00</label>
+                                            <label style="font-family:myfont1;font-size:0.9em;">/ เดือน</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 text-center">
+                                            <label class="btnBuyPackage">
+                                                <a href="{{ route('SponsorPayment') }}"><label style="font-family:myfont1;font-size:1em;color:#ffffff;cursor: pointer;">ซื้อเลย</label></a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row my-2 px-4">
+                                        <div class="col-lg-12 text-center" style="border-bottom:1px solid #f5f5f5"></div>
+                                    </div>
+                                    <div class="row pl-3">
+                                        <div class="col-lg-12 ">
+                                            <label style="font-family:myfont1;font-size:0.9em;font-weight: 800;">รายละเอียด</label>
+                                        </div>
+                                    </div>
+                                    <div class="row pl-2 pr-1">
+                                        <div class="col-lg-12 fontDetailPackage">
+                                            <div class="input-container">
+                                                <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                <label class="input-field ">เลือกสนุบสนุนเกมได้ทั้งหมด 20 เกม/เดือน</label>
+                                            </div>
+
+                                            <div class="input-container">
+                                                <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                <label class="input-field ">สามารถเลือกเรทเกมได้ทุกชนิด</label>
+                                            </div>
+
+                                            <div class="input-container">
+                                                <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                <label class="input-field ">ได้โฆษณาความยาว 30 วินาที</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="bgPackage">
+                                <label>
+                                    <div class="row">
+                                        <div class="col-lg-12 text-center mt-2"><img src="{{asset('icon/money2.svg') }}"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 text-center mt-2">
+                                            <label style="font-family:myfont1;font-size:1em;line-height:0.5;">แพ็กเกจ 3</label><br>
+                                            <label style="font-family:myfont;font-size:1.3em;">฿1,800.00</label>
+                                            <label style="font-family:myfont1;font-size:0.9em;">/ เดือน</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 text-center">
+                                            <label class="btnBuyPackage">
+                                            <a href="{{ route('SponsorPayment') }}"><label style="font-family:myfont1;font-size:1em;color:#ffffff;cursor: pointer;">ซื้อเลย</label></a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row my-2 px-4">
+                                        <div class="col-lg-12 text-center" style="border-bottom:1px solid #f5f5f5"></div>
+                                    </div>
+                                    <div class="row pl-3">
+                                        <div class="col-lg-12 ">
+                                            <label style="font-family:myfont1;font-size:0.9em;font-weight: 800;">รายละเอียด</label>
+                                        </div>
+                                    </div>
+                                    <div class="row pl-2 pr-1">
+                                        <div class="col-lg-12 fontDetailPackage">
+                                            <div class="input-container">
+                                                <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                <label class="input-field ">เลือกสนุบสนุนเกมได้ทั้งหมด 20 เกม/เดือน</label>
+                                            </div>
+
+                                            <div class="input-container">
+                                                <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                <label class="input-field ">สามารถเลือกเรทเกมได้ทุกชนิด</label>
+                                            </div>
+
+                                            <div class="input-container">
+                                                <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                <label class="input-field ">ได้โฆษณาความยาว 1 นาที แบบกดข้ามได้</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div> -->
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
     </div>
 </div>
 
