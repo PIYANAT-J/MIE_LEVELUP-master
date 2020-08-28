@@ -112,8 +112,11 @@ Route::post('/topup_management/Transfer', 'AdminController@approveTransfer')->na
 
 Route::get('/withdraw_management', 'AdminController@withDraw')->name('WithdrawManagement');
 Route::post('/withdraw_management/approve', 'AdminController@approveWithdraw')->name('AppWithDraw');
+Route::get('/advertisement', 'AdminController@Advertisement')->name('Advertisement');
+Route::get('/package', 'AdminController@Package')->name('Package');
+Route::get('/product', 'AdminController@Product')->name('Product');
 
-Route::view('/product', 'product')->name('Product');
+
 
 Route::view('/admin_change_password', 'profile.password.adminlvp_change_password');
 

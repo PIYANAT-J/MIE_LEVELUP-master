@@ -18,6 +18,34 @@ class AdminController extends Controller
         return view('admin_lvp.admin_management', compact('admin'));
     }
 
+    public function Package(){
+        $admin = DB::table('users')->where('users_type', '0')->get();
+        // dd($admin);
+        return view('admin_lvp.admin_package.package_management', compact('admin'));
+    }
+
+    public function Advertisement(){
+        $admin = DB::table('users')->where('users_type', '0')->get();
+        // dd($admin);
+        $transfer = DB::table('users')
+                        ->join('transfer_payments', 'transfer_payments.user_id', 'users.id')
+                        ->orderBy('transfer_payments.id', 'desc')
+                        ->get();
+        // dd(date('Y-m-d H:i:s'));
+        return view('admin_lvp.admin_topup.ads_management', compact('transfer'));
+    }
+
+    public function Product(){
+        $admin = DB::table('users')->where('users_type', '0')->get();
+        // dd($admin);
+        $transfer = DB::table('users')
+                        ->join('transfer_payments', 'transfer_payments.user_id', 'users.id')
+                        ->orderBy('transfer_payments.id', 'desc')
+                        ->get();
+        // dd(date('Y-m-d H:i:s'));
+        return view('admin_lvp.admin_product.product', compact('transfer'));
+    }
+
     public function kycUsers(){
         $kyc = DB::table('users')->where('users.users_type', '1')
                     ->join('kycs', 'kycs.USER_EMAIL', 'users.email')
