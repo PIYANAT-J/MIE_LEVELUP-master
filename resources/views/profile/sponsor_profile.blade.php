@@ -311,7 +311,22 @@
         <div class="col-lg-9 bg_login2"></div>
     </div>
 </div>
-
+<style>
+    .tt-dataset{
+        background-color:#fff !important;
+        color:#000;
+        
+        border-bottom: 1px solid #000;
+    }
+    .tt-suggestion.tt-selectable:hover{
+        background-color:#ddd !important;
+    }
+    .tt-suggestion.tt-selectable{
+        border-bottom: 1px solid #ddd;
+        padding:10px 20px 10px 20px;
+        cursor:pointer;
+    }
+</style>
 @endsection
 
 @section('script')

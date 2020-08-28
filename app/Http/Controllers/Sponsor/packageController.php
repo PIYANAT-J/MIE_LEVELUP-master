@@ -34,16 +34,18 @@ class packageController extends Controller
 
     public function packagePay($id){
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        $address = DB::table('addresses')->where('USER_EMAIL', Auth::user()->email)->get();
         $allPackage = DB::table('packages')->where('package_id', decrypt($id))->first();
         $package = DB::table('my_package_buy')->where([['package_id', decrypt($id)], ['USER_EMAIL', Auth::user()->email]])->first();
         if($package != null){
             $transfer = DB::table('transfer_payments')->where('transferInvoice', $package->packageBuy_invoice)->first();
-            return view('profile.sponsor.spon_payment', compact('sponsor', 'allPackage', 'package', 'transfer'));
+            // dd($address );
+            return view('profile.sponsor.spon_payment', compact('sponsor', 'allPackage', 'package', 'transfer', 'address'));
         }
         // dd($package);
         
         // dd($transfer);
-        return view('profile.sponsor.spon_payment', compact('sponsor', 'allPackage', 'package'));
+        return view('profile.sponsor.spon_payment', compact('sponsor', 'allPackage', 'package', 'address'));
     }
 
     public function AdvtManagement($id){

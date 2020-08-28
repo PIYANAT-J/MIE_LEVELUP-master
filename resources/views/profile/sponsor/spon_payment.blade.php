@@ -1,7 +1,7 @@
 @extends('layout.sponsor_navbar')
 @section('head')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/css/uikit.css">
-    <link rel="stylesheet" href="filter/dist/jquery.Thailand.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/css/uikit.css">
+    <link rel="stylesheet" href="filter/dist/jquery.Thailand.min.css"> -->
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -136,26 +136,34 @@
                                 <label style="font-family:myfont1;font-size:1em;font-weight:800;">ที่อยู่ในการออกใบเสร็จ</label>
                                 <label class="ml-2" style="font-family:myfont1;font-size:1em;color:#ce0005;cursor:pointer;border-bottom:1px solid #ce0005;height:1.2em;" data-toggle="modal" data-target="#address">เปลี่ยน</label>
                             </div>
-                            <div class="row mx-3">
-                                <div class="col-lg-6" >
-                                    <label class="fontAdsPayment">
-                                        <label>ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</label>
-                                    </label>
-                                    <label class="fontAdsPayment2 ml-2">
-                                        <label>สมหญิง รักดี (5-1005-00148-76-6)<br>(+66) 081-441-9585</label>
-                                    </label>
-                                </div>
-                                <div class="col-lg-6" >
-                                    <label class="fontAdsPayment">
-                                        <label>ที่อยู่</label><br>
-                                    </label>
-                                    <label class="fontAdsPayment3 ml-2" style="margin:0;">
-                                        <label>52/2 ซ.เจริญนคร 78 ถนน เจริญนคร บุคคโลเขตธนบุรี จังหวัดกรุงเทพมหานคร 10600
-                                            <label style="color:#23c197;">(ที่อยู่หลัก)</label>
-                                        </label>
-                                    </label>
-                                </div>
-                            </div>
+                            @foreach($address as $addressOn)
+                                @if($addressOn->addresses_status == "true")
+                                    <div class="row mx-3">
+                                        <div class="col-lg-6" >
+                                            <label class="fontAdsPayment">
+                                                <label>ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</label>
+                                            </label>
+                                            <label class="fontAdsPayment2 ml-2">
+                                                <label>{{Auth::user()->name}} {{Auth::user()->surname}} 
+                                                    @foreach($sponsor as $spon)
+                                                        ({{$spon->taxID}})<br>(+66) {{$spon->SPON_TEL}}
+                                                    @endforeach
+                                                </label>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-6" >
+                                            <label class="fontAdsPayment">
+                                                <label>ที่อยู่</label><br>
+                                            </label>
+                                            <label class="fontAdsPayment3 ml-2" style="margin:0;">
+                                                <label>{{$addressOn->addresses}} แขวง{{$addressOn->district}}<br>เขต{{$addressOn->amphure}} จังหวัด{{$addressOn->province}} {{$addressOn->zipcode}}
+                                                    <label style="color:#23c197;">(ที่อยู่หลัก)</label>
+                                                </label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
 
@@ -582,57 +590,76 @@
                     </div>
                     <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 14px;"></i></button>
                 </div>
-
-                <div class="modal-body font-rate-modal">
-                    <div class="col-lg-12" style="padding:0;">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label class="custom03">
-                                            <input type="radio" name="select1" value="01" id="01">
-                                            <label for="01"></label>
-                                        </label>
-                                        <label class="font-address ml-2">
-                                            <label>ชื่อ - นามสกุล<br>ที่อยู่</label>
-                                        </label>
-                                        <label class="font-address2 ml-2">
-                                            <label>สมหญิง รักดี <label style="color:#ce0005;font-weight: 700;">(ที่อยู่หลัก)</label> 
-                                            <br>52/2 ซ.เจริญนคร 78 ถนน เจริญนคร บุคคโลเขตธนบุรี จังหวัดกรุงเทพมหานคร 10600</label>
-                                            <label class="pTrashAvatar"> <img style="width:20px;" src="{{asset('icon/trash.svg')}}" ></label>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label class="custom03">
-                                            <input type="radio" name="select1" value="02" id="02">
-                                            <label for="02"></label>
-                                        </label>
-                                        <label class="font-address ml-2">
-                                            <label>ชื่อ - นามสกุล<br>ที่อยู่</label>
-                                        </label>
-                                        <label class="font-address2 ml-2">
-                                            <label>สมหญิง รักดี  <br>26 ซอยลาดปลาเค้า แขวงอนุสาวรีย์ เขตบางเขน กทม. 10220</label>
-                                        </label>
-                                        <label class="pTrashAvatar"> <img style="width:20px;" src="{{asset('icon/trash.svg')}}" ></label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <button class="bgAddress"  data-dismiss="modal" data-toggle="modal" data-target="#address2">+ เพิ่มที่อยู่</button>
+                <form action="{{route('DeleteAddress')}}" method="post">
+                    @csrf
+                    <div class="modal-body font-rate-modal">
+                        <div class="col-lg-12" style="padding:0;">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    @foreach($address as $key=>$addressAll)
+                                        @if($addressAll->addresses_status == "true")
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label class="custom03">
+                                                        <input type="radio" name="ibank" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}" checked>
+                                                        <label for="KEY{{$key}}"></label>
+                                                    </label>
+                                                    <label class="font-address ml-2">
+                                                        <label>ชื่อ - นามสกุล<br>ที่อยู่</label>
+                                                    </label>
+                                                    <label class="font-address2 ml-2">
+                                                        <label>{{Auth::user()->name}} {{Auth::user()->surname}} <label style="color:#ce0005;font-weight: 700;">(ที่อยู่หลัก)</label> 
+                                                        <br>{{$addressAll->addresses}} แขวง{{$addressAll->district}}<br>เขต{{$addressAll->amphure}} จังหวัด{{$addressAll->province}} {{$addressAll->zipcode}}</label>
+                                                        
+                                                        <button class="pTrashAvatar" name="deleteAddress" value="deleteAddress">
+                                                            <img style="width:20px;" src="{{asset('icon/trash.svg')}}" >
+                                                            <input type="hidden" name="addresses_id" value="{{$addressAll->addresses_id}}">
+                                                        </button>
+                                                        <!-- <label class="pTrashAvatar"> <img style="width:20px;" src="{{asset('icon/trash.svg')}}" ></label> -->
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label class="custom03">
+                                                        <input type="radio" name="ibank" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}">
+                                                        <label for="KEY{{$key}}"></label>
+                                                    </label>
+                                                    <label class="font-address ml-2">
+                                                        <label>ชื่อ - นามสกุล<br>ที่อยู่</label>
+                                                    </label>
+                                                    <label class="font-address2 ml-2">
+                                                        <label>{{Auth::user()->name}} {{Auth::user()->surname}}  <br>
+                                                        {{$addressAll->addresses}} แขวง{{$addressAll->district}}<br>เขต{{$addressAll->amphure}} จังหวัด{{$addressAll->province}} {{$addressAll->zipcode}}</label>
+                                                    </label>
+                                                    
+                                                    <button class="pTrashAvatar" name="deleteAddress" value="deleteAddress">
+                                                        <img style="width:20px;" src="{{asset('icon/trash.svg')}}" >
+                                                        <input type="hidden" name="addresses_id" value="{{$addressAll->addresses_id}}">
+                                                    </button>
+                                                    <!-- <label class="pTrashAvatar"> <img style="width:20px;" src="{{asset('icon/trash.svg')}}" ></label> -->
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <button class="bgAddress"  data-dismiss="modal" data-toggle="modal" data-target="#address2">+ เพิ่มที่อยู่</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn-submit-modal">ยกเลิก</button>
-                    <button type="button" class="btn-submit-modal-red">ยืนยัน</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-submit-modal">ยกเลิก</button>
+                        <button class="btn-submit-modal-red" name="changeAddress" value="changeAddress">ยืนยัน
+                            <input type="hidden" name="changeAddID" id="change-add">
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -648,92 +675,74 @@
                     </div>
                     <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 14px;"></i></button>
                 </div>
-
-                <div class="modal-body font-rate-modal" style="padding-bottom:0;">
-                    <div class="col-lg-12" >
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อบริษัท/ชื่อ-นามสกุล</label> <br>
-                                    <input name="name" class="input-login px-3" value="{{ Auth::user()->name }} {{ Auth::user()->surname }}" readonly></input>
-                                </label>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขผู้เสียภาษีอาการ</label> <br>
-                                    <input name="name" class="input-login px-3"></input>
-                                </label>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ที่อยู่ผู้เสียภาษีอากร </label> <br>
-                                    <input name="name" class="input-login px-3"></input>
-                                </label>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="">
+                <form action="{{route('AddAddress')}}" method="POST" enctype="multipart/form-data" id="upDate">
+                    @csrf
+                    <div class="modal-body font-rate-modal" style="padding-bottom:0;">
+                        <div class="col-lg-12" >
+                            <div class="row">
+                                <div class="col-lg-12">
                                     <label class="bgInput field-wrap">
-                                        <label class="fontHeadInput px-3" style="padding:0;">จังหวัด</label>
-                                        <select class="selectProvince" required="true" type="text" name="text4">
-                                            <option value="">ดึงจาก DB</option>
-                                            <option value="">ดึงจาก DB</option>
-                                            <option value="">ดึงจาก DB</option>
-                                            <option value="">ดึงจาก DB</option>
-                                        </select>
+                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อบริษัท/ชื่อ-นามสกุล</label> <br>
+                                        <input name="name" class="input-login px-3" value="{{ Auth::user()->name }} {{ Auth::user()->surname }}" readonly></input>
                                     </label>
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3">รหัสไปรษณีย์</label><br>
-                                        <input class="text-box px-3" style="padding-top:12px;" required="true" type="text" name="zipcode">
-                                        <!-- <select class="selectProvince" required="true" type="text" name="text4">
-                                            <option value="">ดึงจาก DB</option>
-                                            <option value="">ดึงจาก DB</option>
-                                            <option value="">ดึงจาก DB</option>
-                                            <option value="">ดึงจาก DB</option>
-                                        </select> -->
-                                </label>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="">
+
+                                <div class="col-lg-12">
                                     <label class="bgInput field-wrap">
-                                        <label class="fontHeadInput px-3" style="padding:0;">ตำบล</label>
-                                        <select class="selectProvince" required="true" type="text" name="text4">
-                                            <option value="">ดึงจาก DB</option>
-                                            <option value="">ดึงจาก DB</option>
-                                            <option value="">ดึงจาก DB</option>
-                                            <option value="">ดึงจาก DB</option>
-                                        </select>
+                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขผู้เสียภาษีอาการ</label> <br>
+                                        @foreach($sponsor as $spon)
+                                            <input name="taxID" class="input-login px-3" value="{{$spon->taxID}}" readonly></input>
+                                        @endforeach
                                     </label>
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3">อำเภอ</label><br>
-                                        <select class="selectProvince" required="true" type="text" name="text4">
-                                            <option value="">ดึงจาก DB</option>
-                                            <option value="">ดึงจาก DB</option>
-                                            <option value="">ดึงจาก DB</option>
-                                            <option value="">ดึงจาก DB</option>
-                                        </select>
-                                </label>
-                            </div>
-                            <div class="checkbox ml-3 mt-2">
-                                <input type="checkbox" id="checkbox_01" name="accept_01">
-                                <label for="checkbox_01" style="color:#000;font-weight:bold;padding-top:2px;padding-left:10px;" >ที่อยู่หลัก</label>
+
+                                <div class="col-lg-12">
+                                    <label class="bgInput field-wrap">
+                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">ที่อยู่ผู้เสียภาษีอากร </label> <br>
+                                        <input name="addresses" class="input-login px-3"></input>
+                                    </label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="">
+                                        <label class="bgInput field-wrap">
+                                            <label class="fontHeadInput px-3" style="padding:0;">จังหวัด</label>
+                                            <input class="input-login px-3" style="padding-top:12px;" type="text" name="province">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="bgInput field-wrap">
+                                        <label class="fontHeadInput px-3">อำเภอ</label><br>
+                                        <input class="input-login px-3" style="padding-top:12px;" type="text" name="amphure">
+                                    </label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="">
+                                        <label class="bgInput field-wrap">
+                                            <label class="fontHeadInput px-3" style="padding:0;">ตำบล</label>
+                                            <input class="input-login px-3" style="padding-top:12px;" type="text" name="district">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="bgInput field-wrap">
+                                        <label class="fontHeadInput px-3">รหัสไปรษณีย์</label><br>
+                                        <input class="input-login px-3" style="padding-top:12px;" type="text" name="zipcode">
+                                    </label>
+                                </div>
+                                <div class="checkbox ml-3 mt-2">
+                                    <input type="checkbox" id="checkbox_01" name="accept_01">
+                                    <label for="checkbox_01" style="color:#000;font-weight:bold;padding-top:2px;padding-left:10px;" >ที่อยู่หลัก</label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn-submit-modal">ยกเลิก</button>
-                    <button type="button" class="btn-submit-modal-red">ยืนยัน</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-submit-modal">ยกเลิก</button>
+                        <button class="btn-submit-modal-red" name="submit" value="submit">ยืนยัน</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -1331,7 +1340,22 @@
         <div class="col-lg-9 bg_login2"></div>
     </div>
 </div>
-
+<style>
+    .tt-dataset{
+        background-color:#fff !important;
+        color:#000;
+        
+        border-bottom: 1px solid #000;
+    }
+    .tt-suggestion.tt-selectable:hover{
+        background-color:#ddd !important;
+    }
+    .tt-suggestion.tt-selectable{
+        border-bottom: 1px solid #ddd;
+        padding:10px 20px 10px 20px;
+        cursor:pointer;
+    }
+</style>
 @endsection
 
 @section('script')
@@ -1350,21 +1374,22 @@
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/js/uikit.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/js/uikit.min.js"></script>
 <script src="{{ asset('filter/dependencies/zip.js/zip.js') }}"></script>
 <script src="{{ asset('filter/dependencies/JQL.min.js') }}"></script>
 <script src="{{ asset('filter/dependencies/typeahead.bundle.js') }}"></script>
 <script src="{{ asset('filter/dist/jquery.Thailand.min.js') }}"></script>
 <script>
     $.Thailand({
-        database: 'filter/database/db.json',
+        // database: 'filter/database/db.json',
         $district: $('#upDate [name="district"]'),
         $amphoe: $('#upDate [name="amphure"]'),
         $province: $('#upDate [name="province"]'),
-        $zipcode: $('#upDate [name="ZIPCODE_ID"]'),
+        $zipcode: $('#upDate [name="zipcode"]'),
         onDataFill: function(data) {
             console.info('Data Filled', data);
         },
+        
     });
     $('#upDate [name="district"]').change(function() {
         console.log('ตำบล', this.value);
@@ -1375,10 +1400,10 @@
     $('#upDate [name="province"]').change(function() {
         console.log('จังหวัด', this.value);
     });
-    $('#upDate [name="ZIPCODE_ID"]').change(function() {
+    $('#upDate [name="zipcode"]').change(function() {
         console.log('รหัสไปรษณีย์', this.value);
     });
-</script>
+</script> -->
 
 <script>
     const myFunction = () => {
@@ -1490,7 +1515,7 @@ $(document).ready(function(){
 });
 </script>
 
-<script>
+<!-- <script>
     document.querySelector('input[name="ibank"]').addEventListener('keyup', (event)=>{
         var creditTransfer = document.querySelector('input[name="ibank"]').value
         var moneyTransfer = creditTransfer
@@ -1500,7 +1525,7 @@ $(document).ready(function(){
         document.querySelector('input#scb').value = moneyTransfer
         console.log(moneyTransfer);
     })
-</script>
+</script> -->
 <script>
     $(document).ready(function() {
         $(":radio").change(function() {
@@ -1509,8 +1534,61 @@ $(document).ready(function(){
             var moneyTransfer = creditTransfer
             document.querySelector('input#data-checked').value = moneyTransfer
             document.querySelector('input#data-bank').value = moneyTransfer
+            document.querySelector('input#change-add').value = moneyTransfer
             console.log(creditTransfer);
         });
     });
 </script>
+
+<!-- <script>
+    document.querySelector('input[name="changeAdd"]').addEventListener('keyup', (event)=>{
+        var creditTransfer = document.querySelector('input[name="changeAdd"]').value
+        var moneyTransfer = creditTransfer
+        document.querySelector('input#changeAddID').value = moneyTransfer
+        console.log(moneyTransfer);
+    })
+</script> -->
+<!-- <script>
+    $(document).ready(function() {
+        $(":radio").change(function() {
+            var closest = $(this).closest("div.row");
+            var creditTransfer = document.querySelector('input[name="changeAdd"]:checked').value
+            var moneyTransfer = creditTransfer
+            document.querySelector('input#changeAddID').value = moneyTransfer
+            console.log(moneyTransfer);
+        });
+    });
+</script> -->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+@if( Session::has('success'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            Swal.fire({
+                // position: 'top-end',
+                icon: 'success',
+                title: '{{ Session::get('success') }}',
+                // title: 'Oops...',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        });
+    </script>
+@endif
+
+@if( Session::has('Delete'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#address').modal();
+            Swal.fire({
+                // position: 'top-end',
+                icon: 'success',
+                title: '{{ Session::get('Delete') }}',
+                // title: 'Oops...',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        });
+    </script>
+@endif
 @endsection

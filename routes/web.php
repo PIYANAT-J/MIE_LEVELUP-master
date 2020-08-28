@@ -159,6 +159,9 @@ Route::get('/paymentPackage/{id}', 'Sponsor\packageController@packagePay')->name
 Route::post('/paymentPackage/sponsor_transfer', 'Sponsor\packageController@sponTransferPayment')->name('sponTransferPayment');
 Route::get('/sponsor_transfer/{invoice}', 'Sponsor\packageController@sponsorTransfer')->name('SponsorTransfer');
 
+Route::post('/paymentPackage/address', 'AddressController@addAddress')->name('AddAddress');
+Route::post('/paymentPackage/Delete', 'AddressController@deleteAddress')->name('DeleteAddress');
+
 Route::get('/sponsor_payment_ibanking_confirm/{invoice}', 'Sponsor\packageController@sponsoribanking')->name('Sponsoribanking');
 Route::post('/sponsor_payment_ibanking_confirm/cancal', 'Sponsor\packageController@cancalibanking')->name('cancalIbanking');
 Route::get('/sponsor_payment_confirm', 'UploadImageProfile@SponsorPaymentConfirm')->name('SponsorPaymentConfirm');

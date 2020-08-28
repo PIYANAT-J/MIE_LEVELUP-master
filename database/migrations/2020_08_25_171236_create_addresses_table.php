@@ -15,6 +15,9 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->bigIncrements('addresses_id');
+            // $table->string('name')->collation('utf8_unicode_ci');
+            // $table->string('surname')->collation('utf8_unicode_ci');
+            // $table->integer('taxID')->nullable();
             $table->text('addresses')->collation('utf8_unicode_ci');
             $table->string('province')->collation('utf8_unicode_ci');
             $table->string('amphure')->collation('utf8_unicode_ci');
@@ -22,8 +25,8 @@ class CreateAddressesTable extends Migration
             $table->string('zipcode')->collation('utf8_unicode_ci');
             $table->set('addresses_status', ['true', 'false'])->collation('utf8_unicode_ci')->default('true');
             $table->integer('USER_ID');
-            $table->string('USER_EMAIL')->unique()->collation('utf8_unicode_ci');
-            $table->timestamp('DATE_CREATE');
+            $table->string('USER_EMAIL')->collation('utf8_unicode_ci');
+            $table->timestamps();
         });
     }
 

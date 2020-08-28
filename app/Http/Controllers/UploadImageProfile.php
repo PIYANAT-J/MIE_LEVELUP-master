@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use App\Developer;
 use App\Guest_user;
 use App\Sponsors;
+use App\Address;
 use App\Game;
 
 use Session;
@@ -532,6 +533,18 @@ class UploadImageProfile extends Controller
                     // dd($data);
                     // Insert && Update
                     $value = Sponsors::InsertAndUpdateData($data);
+
+                    $address = new Address();
+                    $address->addresses = $SPON_ADDRESS;
+                    $address->province = $province;
+                    $address->amphure = $amphure;
+                    $address->district = $district;
+                    $address->zipcode = $ZIPCODE_ID;
+                    $address->USER_ID = Auth::user()->id;
+                    $address->USER_EMAIL = Auth::user()->email;
+                    // $address->DATE_CREATE = date('Y-m-d H:i:s');
+                    $address->save();
+
                     if($value){
                         Session::flash('message','Insert successfully.');
                     }else{
@@ -581,6 +594,19 @@ class UploadImageProfile extends Controller
                     // dd($data);
                     // Insert && Update
                     $value = Sponsors::InsertAndUpdateData($data);
+
+                    $address = new Address();
+                    $address->addresses = $SPON_ADDRESS;
+                    $address->province = $province;
+                    $address->amphure = $amphure;
+                    $address->district = $district;
+                    $address->zipcode = $ZIPCODE_ID;
+                    $address->USER_ID = Auth::user()->id;
+                    $address->USER_EMAIL = Auth::user()->email;
+                    // $address->DATE_CREATE = date('Y-m-d H:i:s');
+                    // dd($address);
+                    $address->save();
+
                     if($value){
                         Session::flash('message','Insert successfully.');
                     }else{
