@@ -122,7 +122,7 @@
                                                                     <div class="col-2 text-center"><span class="font-game-shelf" style="color:#000;">แพ็กเกจ {{$gameSpon->packageBuy_name}}</span></div>
                                                                     <div class="col-2 text-center"><span class="font-game-shelf">289</span></div>
                                                                     <div class="col-2 text-center">
-                                                                        @if($dayIf == date("Y-m-d H:i"))
+                                                                        @if($dayIf <= date("Y-m-d H:i"))
                                                                             <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
                                                                             <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
                                                                         @else

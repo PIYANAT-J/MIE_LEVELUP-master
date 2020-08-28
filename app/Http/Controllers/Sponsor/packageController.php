@@ -233,6 +233,7 @@ class packageController extends Controller
                         ->join('packages','packages.package_id','my_package_buy.package_id')
                         ->select('my_package_buy.*', 'packages.package_game', 'packages.package_length')
                         ->first();
-        return view('profile.sponsor.spon_successful_payment', compact('sponsor', 'package', 'invoice'));
+        $address = DB::table('addresses')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.sponsor.spon_successful_payment', compact('sponsor', 'package', 'invoice', 'address'));
     }
 }

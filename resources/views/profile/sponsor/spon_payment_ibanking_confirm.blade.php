@@ -172,10 +172,18 @@
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 @if( Session::has('false'))
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#popupmodal').modal();
+            Swal.fire({
+                // position: 'top-end',
+                icon: 'error',
+                title: '{{ Session::get('false') }}',
+                // title: 'Oops...',
+                showConfirmButton: false,
+                timer: 2000
+            })
         });
     </script>
 @endif

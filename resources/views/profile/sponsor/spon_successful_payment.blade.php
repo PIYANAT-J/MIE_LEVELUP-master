@@ -117,25 +117,34 @@
                                 <div class="row mx-2 mt-3">
                                     <label style="font-family:myfont1;font-size:1em;font-weight:800;">ที่อยู่ในการออกใบเสร็จ</label>
                                 </div>
-                                <div class="row mx-3">
-                                    <div class="col-lg-6" >
-                                        <label class="fontAdsPayment">
-                                            <label>ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</label>
-                                        </label>
-                                        <label class="fontAdsPayment2 ml-2">
-                                            <label>สมหญิง รักดี (5-1005-00148-76-6)<br>(+66) 081-441-9585</label>
-                                        </label>
-                                    </div>
-                                    <div class="col-lg-6" >
-                                        <label class="fontAdsPayment">
-                                            <label>ที่อยู่</label><br>
-                                        </label>
-                                        <label class="fontAdsPayment3 ml-2" style="margin:0;">
-                                            <label>52/2 ซ.เจริญนคร 78 ถนน เจริญนคร บุคคโลเขตธนบุรี จังหวัดกรุงเทพมหานคร 10600
-                                            </label>
-                                        </label>
-                                    </div>
-                                </div>
+                                @foreach($address as $addressOn)
+                                    @if($addressOn->addresses_status == "true")
+                                        <div class="row mx-3">
+                                            <div class="col-lg-6" >
+                                                <label class="fontAdsPayment">
+                                                    <label>ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</label>
+                                                </label>
+                                                <label class="fontAdsPayment2 ml-2">
+                                                    <label>{{Auth::user()->name}} {{Auth::user()->surname}} 
+                                                        @foreach($sponsor as $spon)
+                                                            ({{$spon->taxID}})<br>(+66) {{$spon->SPON_TEL}}
+                                                        @endforeach
+                                                    </label>
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-6" >
+                                                <label class="fontAdsPayment">
+                                                    <label>ที่อยู่</label><br>
+                                                </label>
+                                                <label class="fontAdsPayment3 ml-2" style="margin:0;">
+                                                    <label>{{$addressOn->addresses}} แขวง{{$addressOn->district}}<br>เขต{{$addressOn->amphure}} จังหวัด{{$addressOn->province}} {{$addressOn->zipcode}}
+                                                        <label style="color:#23c197;">(ที่อยู่หลัก)</label>
+                                                    </label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
                             </div>
                         </div>
 
