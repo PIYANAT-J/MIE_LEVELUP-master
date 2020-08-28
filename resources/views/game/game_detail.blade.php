@@ -24,6 +24,74 @@
     margin-top: 20px;
     overflow: hidden;
     } */
+     
+    * {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
 
     
 </style>
@@ -32,39 +100,44 @@
 @section('content')
 <div class="container-fluid">
     @foreach($Detail as $detailGame)
-        <div class="row my-5 "></div>
-        <div class="row my-3 "></div>
-        <div class="row dark">
-            <div class="col-lg-3 font_back">
-                <a href="{{ url('/') }}" style="color:#fff;"><i class="icon-prev mx-2"></i>Back</a>
+        <div class="row" style="background-color: #202433;height:130px;"></div>
+        <div class="row" style="background-color: #202433;">
+            <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3">
+                <a href="{{ url('/') }}" style="color:#fff;">
+                    <i class="icon-prev mx-2"></i>
+                    <label style="cursor:pointer;"><h1>Back</h1></label>
+                </a>
             </div>
-            <div class="col-lg-6 ">
-                <div class="owl-carousel" id="owl-demo1">
-                    <div class="item" >
-                        <iframe style="width:100%;height:385px;" src="{{ $detailGame->GAME_VDO_LINK }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <!-- <iframe class="video_detail2" src="{{ $detailGame->GAME_VDO_LINK }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6 ">
+                <div class="slideshow-container">
+
+                    <!-- Full-width images with number and caption text -->
+                    <div class="mySlides">
+                        <iframe style="width:100%;height:350px;margin:0;" src="{{ $detailGame->GAME_VDO_LINK }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
-                    <div class="item">
-                        <img class="img-detail"   src="{{asset('section/picture_game/pubg.jpeg') }}" />
+                    
+                    <div class="mySlides" style="padding-bottom:6px;">
+                        <img  src="{{asset('section/picture_game/pubg.jpeg') }}" style="width:100%;height:350px;object-fit: cover;">
                     </div>
-                    <div class="item">
-                        <img class="img-detail"   src="{{asset('section/picture_game/pubg_lite.jpeg') }}" />
+
+                    <div class="mySlides" style="padding-bottom:6px;">
+                        <img class="img-detail" src="{{asset('section/picture_game/pubg_lite.jpeg') }}" style="width:100%;height:350px;object-fit: cover;">
                     </div>
-                </div>
-                <div class="btns">
-                    <div class="customNextBtn"><i class='icon-next'></i></div>
-                    <div class="customPreviousBtn"><i class='icon-prev'></i></div>
+                    <!-- Next and previous buttons -->
+                        <a class="customNextBtn" onclick="plusSlides(1)"><i class='icon-next'></i></a>
+                        <a class="customPreviousBtn" onclick="plusSlides(-1)"><i class='icon-prev'></i></a>
                 </div>
             </div>
+            <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
         </div>
 
-        <div class="row mb-0" style="background-color: #141621;">
+        <div class="row" style="background-color: #141621;">
             <div class="col-lg-3"></div>
             <div class="col-lg-6">
                 <div class="row mt-3 ml-0">
                     <div class="col-1 pt-3"><img style="width:50px;" src="{{asset('section/game_rate/'.$detailGame->RATED_ESRB.'.svg') }}" /></div>
                     <div class="col-7 ">
-                        <p class="font_detail3 pt-4 ml-1 ">
+                        <p class="font_detail3 pt-4  ">
                             @if(isset($CommentAll))
                                 <?php $i = 0; ?>
                                 @foreach($CommentAll as $CAC)
@@ -848,28 +921,6 @@
 </script>
 
 <script>
-    $(document).ready(function(){
-    var owl = $('#owl-demo1');
-    owl.owlCarousel({
-        loop:true,
-        margin:10,
-        nav:false,
-        items: 1,
-        dots: false,
-    });
-    
-    // Custom Button
-    $('.customNextBtn').click(function() {
-        owl.trigger('next.owl.carousel');
-    });
-    $('.customPreviousBtn').click(function() {
-        owl.trigger('prev.owl.carousel');
-    });
-    
-    });
-</script>
-
-<script>
     $(document).ready(function() {
  
  $("#owl-demo3").owlCarousel({
@@ -1015,5 +1066,36 @@ $(function() {
   }
 })();
 });
+</script>
+
+<script>
+    var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
 </script>
 @endsection

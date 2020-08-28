@@ -91,7 +91,9 @@
                                         <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
                                             <span id="MESSAGE"></span>
                                         </div>
-                                        <button name="submit" value="submit" class="btn-submit mt-2">ยืนยัน</button>
+                                        <button name="submit" value="submit" class="btn-submit mt-2">ยืนยัน
+                                            <input type="hidden" name="users_type" value="{{Auth::user()->users_type}}">
+                                        </button>
                                         <button type="reset" class="btn-cancal mt-2">รีเซ็ต</button>
                                     </form>
                                 </div>
@@ -185,26 +187,19 @@ $(document).ready(function(){
     });
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 @if( Session::has('susee'))
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#popupmodal').modal();
-            // alert("{{Session::get('susee')}}");
+            Swal.fire({
+                // position: 'top-end',
+                icon: 'success',
+                title: '{{ Session::get('susee') }}',
+                // title: 'Oops...',
+                showConfirmButton: false,
+                timer: 2000
+            })
         });
     </script>
-    <!-- <div id="popupmodal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h3>Notification: Please read</h3>
-        </div>
-        <div class="modal-body">
-            <p>
-                {{ Session::get('email') }}
-            </p>
-        </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-        </div>
-    </div> -->
 @endif
 @endsection
