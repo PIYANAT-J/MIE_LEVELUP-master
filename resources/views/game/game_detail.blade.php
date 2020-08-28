@@ -100,7 +100,7 @@
 @section('content')
 <div class="container-fluid">
     @foreach($Detail as $detailGame)
-        <div class="row" style="background-color: #202433;height:150px;"></div>
+        <div class="row" style="background-color: #202433;height:130px;"></div>
         <div class="row" style="background-color: #202433;">
             <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3">
                 <a href="{{ url('/') }}" style="color:#fff;">

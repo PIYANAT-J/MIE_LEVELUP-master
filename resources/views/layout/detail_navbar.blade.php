@@ -62,18 +62,16 @@
 
                     <div class="col-lg-4 col-xl-3 d-none d-lg-block d-xl-block text-right home">
                         <nav class="site-navigation position-relative" role="navigation">
-                            <ul class="site-menu main-menu js-clone-nav" style="margin-top:50px;padding-left:0;">
-                            @guest
-                                    <img style="padding:0px 0px 0px 20px;" src="{{asset('/icon/sign_in.svg') }}"/>
-                                    <label class="sign_in" style="font-family:myfont;font-size:0.7em; padding: 0px 0px 0px 0px;">
-                                        <a href="{{ route('login-levelUp') }}">{{ __('เข้าสู่ระบบ') }}</a>
-                                    </label>
-                                    <label style="font-family:myfont;font-size:0.7em;"><a class="text2">/ </a></label>
-                                        @if (Route::has('register'))
-                                            <label style="font-family:myfont;font-size:0.7em;">
-                                                <a class="sign_up mr-3" href="{{ route('register') }}">{{ __('ลงทะเบียน') }}</a>
-                                            </label>
-                                        @endif
+                            <ul class="site-menu main-menu js-clone-nav" style="margin-top:50px;padding-left:0;"> 
+                                @guest
+                                <img style="width:20px;" class="mr-1 " src="{{asset('/icon/sign_in_wh.svg') }}">
+                                <label >
+                                    <a href="{{ route('login-levelUp') }}" style="padding:0;"><h1 class="fontSignIn" >{{ __('เข้าสู่ระบบ') }}</h1></a>
+                                </label>
+                                <label style="color:#fff;"><a class="text2 d-none d-lg-block d-xl-block"><h1>/</h1></a></label>
+                                    @if (Route::has('register'))
+                                        <label class="mr-4"><a class="sign_up " href="{{ route('register-levelUp') }}"><h1 style="margin-bottom:0;">{{ __('ลงทะเบียน') }}</h1></a></label>
+                                    @endif
                             </ul>
                                 @else
                                 
