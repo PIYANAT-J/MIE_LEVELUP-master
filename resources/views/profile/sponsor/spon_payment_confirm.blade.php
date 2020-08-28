@@ -55,64 +55,59 @@
         </div>
         <!-- sidebar -->
 
-        @foreach($sponsor as $spon)
-            @if($spon->USER_EMAIL == Auth::user()->email)
-                    <div class="col-lg-9" style="background-color:#f5f5f5;">
-                    <div class="row mt-4 ">
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-10 ">
-                                <a href="{{ route('AdvtPackage') }}"><label class="fontAd1 active">สนับสนุนเงินในเกม</label></a>
-                                <label class="fontAd1"> > </label>
-                                <a href="{{ route('SponShoppingCart') }}"><label class="fontAd1 active">ตระกร้าสินค้า</label></a>
-                                <label class="fontAd1"> > </label>
-                                <a href="{{ route('SponsorPayment') }}"><label class="fontAd1 active" >ชำระเงิน</label></a>
-                                <label class="fontAd1"> > </label>
-                                <label class="fontAd1" >ยืนยันการชำระเงิน</label>
-                            </div>
-                            <div class="col-lg-1"></div>
-                        </div>
-                        <div class="row mb-4" >
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-                                <div class="row">
-                                    <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                                        <span class="font-profile1">ยืนยันการชำระเงิน</span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12 mt-1">
-                                        <div class="row mx-2 py-3" style="border-bottom:1px solid #edeef3">
-                                            <div class="col-6 font-payment3">จำนวนเงินที่ต้องชำระ</div>
-                                            <div class="col-6 text-right font-price" style="font-size:1.5em;">฿ 279.00</div>
-                                        </div>
-
-                                        <div class="row mx-2 py-3" style="border-bottom:1px solid #edeef3">
-                                            <div class="col-6 font-payment3">ช่องทางการชำระเงิน</div>
-                                            <div class="col-6 text-right font-payment3">T10 Wallet ชื่อบัญชี สมหญิง รักดี</div>
-                                        </div>
-                                        
-                                        <div class="row mt-3 py-2 " style="border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
-                                            <div class="col-lg-12">
-                                                <div class="row mt-3">
-                                                    <div class="col-lg-8"></div>
-                                                    <div class="col-lg-2 text-right">
-                                                        <a><label class="btn-submit-payment">ยกเลิก</label></a>
-                                                    </div>
-                                                    <div class="col-lg-2 text-right">
-                                                        <a href="{{ route('SponsorSuccessfulPayment') }}"><label class="btn-submit-red2">ยืนยัน</label></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-1"></div>
+        <div class="col-lg-9" style="background-color:#f5f5f5;">
+            <div class="row mt-4 ">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 ">
+                    <a href="{{ route('AdvtPackage') }}"><label class="fontAd1 active">สนับสนุนเงินในเกม</label></a>
+                    <label class="fontAd1"> > </label>
+                    <a href="{{ route('SponShoppingCart') }}"><label class="fontAd1 active">ตระกร้าสินค้า</label></a>
+                    <label class="fontAd1"> > </label>
+                    <a href="{{ route('SponsorPayment') }}"><label class="fontAd1 active" >ชำระเงิน</label></a>
+                    <label class="fontAd1"> > </label>
+                    <label class="fontAd1" >ยืนยันการชำระเงิน</label>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <div class="row mb-4" >
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
+                    <div class="row">
+                        <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
+                            <span class="font-profile1">ยืนยันการชำระเงิน</span>
                         </div>
                     </div>
-                </form>
-            @endif
-        @endforeach
+                    <div class="row">
+                        <div class="col-lg-12 mt-1">
+                            <div class="row mx-2 py-3" style="border-bottom:1px solid #edeef3">
+                                <div class="col-6 font-payment3">จำนวนเงินที่ต้องชำระ</div>
+                                <div class="col-6 text-right font-price" style="font-size:1.5em;">฿ 279.00</div>
+                            </div>
+
+                            <div class="row mx-2 py-3" style="border-bottom:1px solid #edeef3">
+                                <div class="col-6 font-payment3">ช่องทางการชำระเงิน</div>
+                                <div class="col-6 text-right font-payment3">T10 Wallet ชื่อบัญชี สมหญิง รักดี</div>
+                            </div>
+                            
+                            <div class="row mt-3 py-2 " style="border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
+                                <div class="col-lg-12">
+                                    <div class="row mt-3">
+                                        <div class="col-lg-8"></div>
+                                        <div class="col-lg-2 text-right">
+                                            <a><label class="btn-submit-payment">ยกเลิก</label></a>
+                                        </div>
+                                        <div class="col-lg-2 text-right">
+                                            <a href="{{ route('SponsorSuccessfulPayment') }}"><label class="btn-submit-red2">ยืนยัน</label></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
     </div>
 </div>
 

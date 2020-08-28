@@ -60,13 +60,13 @@
                 <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
                     <div class="row">
                         <div class="col-lg-6 line1">
-                            <div style="font-family:myfont;font-size:1.3em;color:#000;">เติมเงิน</div>
+                            <div class="fontHead">เติมเงิน</div>
                             <div class="row bg-topup ml-0 mb-2">
                                 <div class="col-6 lext-center">ยอดเงินในวอลเล็ท
                                 </div>
                                 <div class="col-6 lext-center">10000000</div>
                             </div>
-                            <div style="font-family:myfont1;font-size:1em;color:#000;">จำนวนเงินที่ต้องการเติม (ขั้นต่ำ  ฿100 )</div>
+                            <div class="fontHead">จำนวนเงินที่ต้องการเติม (ขั้นต่ำ  ฿100 )</div>
                             <div class="input-group mb-3 input-topup">
                                 <div class="input-group-prepend"><span class="input-group-text money_icon">฿</span></div>
                                 <input type="text" class="form-control money" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="amount" name="amount" value="{{ old('amount') }}" require>
@@ -81,7 +81,7 @@
                                     @endif
                                 <!-- <input type="text" id="moneyQr"> -->
                             </div>
-                            <div style="font-family:myfont;font-size:1em;color:#000;">ช่องทางการชำระเงิน</div>
+                            <div class="fontHead">ช่องทางการชำระเงิน</div>
                             <div class="row">
                                 <div class="col-12">
                                     <div id="banking" class="custom02">
@@ -144,7 +144,7 @@
                             <!-- <div class="col-lg-12 mt-5"><button type="submit" class="btn-submit">เติมเงิน</button></div> -->
                         </div>
                         <div class="col-lg-6">
-                            <div style="font-family:myfont;font-size:1.3em;color:#000;">ประวัติการเติมเงิน</div>
+                            <div class="fontHead">ประวัติการเติมเงิน</div>
                             <div class="row row5">
                                 <div class="col-lg-12">
                                     @if(isset($payment))

@@ -30,21 +30,9 @@ class qrPaymentController extends Controller
         foreach($sumPayment as $sumpayment){
             $wallet = $wallet+$sumpayment->amount;
         }
-        // dd($payment->status);
 
         return view('profile.topup.userlvp_topup', compact('guest_user', 'userKyc', 'payment', 'transfer', 'wallet'));
     }
-
-    // public function qrcode($invoice = null){
-    //     $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-    //     $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-
-    //     $qrpayment = QrPayment::Where('invoice', decrypt($invoice))->get()->first();
-
-    //     $invoice =  DNS2D::getBarcodeHTML($qrpayment->rawQrCode, "QRCODE");
-    //     $invoice = $qrpayment->rawQrCode;
-    //     return view('profile.topup.userlvp_topup', compact('guest_user', 'userKyc', 'invoice'));
-    // }
 
     public function mobilebanking(Request $request){
         $qrpayment = new QrPayment();
@@ -75,7 +63,6 @@ class qrPaymentController extends Controller
         $qrpayment->invoice = $qrcode->invoice;
         $qrpayment->save();
 
-        // return redirect(route('qrcode', ['invoice' => encrypt($qrpayment->invoice)]));
         return redirect(route('UserTopup'));
     }
 

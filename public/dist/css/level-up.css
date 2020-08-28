@@ -879,7 +879,7 @@ overflow: hidden;
   text-align: center;
   background-color: #17202c;
   color: #fff;
-  font-family: myfont;
+  font-family: myfont1;
   font-size: 1em;
   width: 10%;
   line-height: 80%;
@@ -892,6 +892,8 @@ overflow: hidden;
   font-family: myfont1;
   font-size: 1em;
   border-bottom: #dddddd solid 1px;
+  max-width:100%;
+  word-wrap: break-word;
 }
 
 
@@ -2427,7 +2429,6 @@ body {
   font-style: normal;
   line-height: 1.57;
   letter-spacing: normal;
-  text-align: left;
   color:#a8a8a8;
 }
 
@@ -3401,15 +3402,16 @@ margin: 30px auto;
   outline: none!important;
 }
 .pic4{
-  padding: 5px 15px 0px 10px;
+  
+  padding: 0px 15px 0px 10px;
 }
 .pic5{
   width: 25px;
-  margin: 0 11px 0 7px;
+  margin: -5px 12px 0 7px;
 }
 .pic6{
-  width: 37px;
-  margin: 0 5px 0 0;
+  width: 35px;
+  margin: -8px 7px 0 2px;
 }
 
 .font-profile1{
@@ -3712,6 +3714,16 @@ input.date{
   border: solid 1px #17202c;
   background-color: #fff;
 }
+
+.select5{
+  width: 130px;
+  height: 35px;
+  object-fit: contain;
+  border-radius: 5px;
+  border: solid 1px #f2f2f2;
+  background-color: #f2f2f2;
+}
+
 .number-rank {
   object-fit: contain;
   font-family: myfont;
@@ -3774,9 +3786,10 @@ div.sticky {
   background-color: #f2f2f2;
   color: #000;
   border: none;
-  font-family: myfont;
+  font-family: myfont1;
+  font-weight: 800;
   font-size: 1.3em;
-  padding: 0 0 0 13px;
+  padding: 0 5px 0 13px;
 }
 
 
@@ -4100,7 +4113,8 @@ input[type="checkbox"].switch_1{
   height: 50px;
   background-color: #ce0005;
   color: #fff;
-  font-family: myfont;
+  font-family: myfont1;
+  font-weight: 800;
   font-size: 1em;
   border-radius: 8px;
   border: none;
@@ -4347,6 +4361,17 @@ ul.thumb-Images li {
   border-radius: 4px;
   cursor: pointer;
 }
+.status-approve2{
+  background-color: #e7f2e5;
+  font-family: myfont1;
+  font-size: 1em;
+  color: #5fb156;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+}
 
 .status-none-approve{
   background-color: #edd0d5;
@@ -4356,6 +4381,18 @@ ul.thumb-Images li {
   width: 100%;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.status-none-approve2{
+  background-color: #edd0d5;
+  font-family: myfont1;
+  font-size: 0.9em;
+  color:#ce0005;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
 }
 
 .massagrbox1{
@@ -6871,6 +6908,7 @@ input[type="checkbox"].switch_2{
   margin: 5px;
 }
 
+
 .btnBuyPackage{
   background-color: #ce0005;
   border-radius: 6px;
@@ -7930,4 +7968,19 @@ input[type="checkbox"].switch_2{
 .iconShop{
   max-width: 20px;
   margin: -8px 10px 0 0;
+}
+
+.fontHead{
+  font-family:myfont1;
+  font-size:1em;
+  color:#000;
+  font-weight: 800;
+}
+
+.imgProduct{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: solid 3px #dddddd;
+  border-radius: 6px;
 }
