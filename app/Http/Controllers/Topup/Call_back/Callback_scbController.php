@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\QrPayment;
+use App\Package;
 use DB;
 
 class Callback_scbController extends Controller
@@ -40,54 +41,68 @@ class Callback_scbController extends Controller
                 // $qrpayment->client_ip = request()->ip();
                 $qrpayment->confirm_at = date('Y-m-d H:i:s');
 
-                // if ($status === 1) {
-                //     $ack = $this->callack($invoice);
+                $packageBuy = DB::table('my_package_buy')->where('packageBuy_invoice', $invoice)->first();
+                $package = DB::table('packages')->where('package_id', $packageBuy->package_id)->first();
+                // dd($packageBuy);
+                if ($packageBuy->packageBuy_invoice == $invoice) {
+                    // dd("YES");
+                    $packageBuy_status = "true";
+                    $packageBuy_start = date('Y-m-d');
+                    $Y = date('Y');
+                    $m = date('m')+$package->package_season;
+                    $d = date('d');
+                    $packageBuy_deadline = $Y.'-'.$m.'-'.$d;
 
-                //     $amount = $mobiletopup->amount - ($mobiletopup->amount * 2.5 / 100);
-                //     $credit = $amount / 30;
-                //     $type = 'mobiletopup';
-                //     $user_id = $mobiletopup->user_id;
-                //     $campaign_id = 1;
-                //     $ref_id = $mobiletopup->id;
-                //     $status = 1;
-                //     $blockchain = "###MULTIINNOVATION###";
+                    $data = array("packageBuy_status"=>$packageBuy_status, "packageBuy_start"=>$packageBuy_start, "packageBuy_deadline"=>$packageBuy_deadline, "packageBuy_invoice"=>$invoice);
+                    $value = Package::packageBuy($data);
 
-                //     $transaction = new Transaction();
-                //     $transaction->type = $type;
-                //     $transaction->user_id = $user_id;
-                //     $transaction->campaign_id = $campaign_id;
-                //     $transaction->ref_id = $ref_id;
-                //     $transaction->credit = $credit;
-                //     $transaction->status = $status;
-                //     $transaction->blockchain = $blockchain;
+                    // $ack = $this->callack($invoice);
 
-                //     if ($transaction->save()) {
+                    // $amount = $mobiletopup->amount - ($mobiletopup->amount * 2.5 / 100);
+                    // $credit = $amount / 30;
+                    // $type = 'mobiletopup';
+                    // $user_id = $mobiletopup->user_id;
+                    // $campaign_id = 1;
+                    // $ref_id = $mobiletopup->id;
+                    // $status = 1;
+                    // $blockchain = "###MULTIINNOVATION###";
+
+                    // $transaction = new Transaction();
+                    // $transaction->type = $type;
+                    // $transaction->user_id = $user_id;
+                    // $transaction->campaign_id = $campaign_id;
+                    // $transaction->ref_id = $ref_id;
+                    // $transaction->credit = $credit;
+                    // $transaction->status = $status;
+                    // $transaction->blockchain = $blockchain;
+
+                    // if ($transaction->save()) {
         
-                //         $spi = new Spi();
-                //         $spi->type = $type;
-                //         $spi->description = $type;
-                //         $spi->amount = $mobiletopup->amount - $amount;
-                //         $spi->save();
+                    //     $spi = new Spi();
+                    //     $spi->type = $type;
+                    //     $spi->description = $type;
+                    //     $spi->amount = $mobiletopup->amount - $amount;
+                    //     $spi->save();
 
-                //         $balance = Balance::where('user_id', $user_id)
-                //         ->get()->first();
+                    //     $balance = Balance::where('user_id', $user_id)
+                    //     ->get()->first();
 
-                //         if ($balance) {
-                //             $balance->credit += $credit;
-                //             $balance->save();
-                //         } else {
-                //             $balance = new Balance();
-                //             $balance->user_id = $user_id;
-                //             $balance->credit = $credit;
-                //             $balance->save();
-                //         }
+                    //     if ($balance) {
+                    //         $balance->credit += $credit;
+                    //         $balance->save();
+                    //     } else {
+                    //         $balance = new Balance();
+                    //         $balance->user_id = $user_id;
+                    //         $balance->credit = $credit;
+                    //         $balance->save();
+                    //     }
 
-                //     }
+                    // }
 
-                //     $qrpayment->save();
-                // }else {
                     $qrpayment->save();
-                // }
+                }else {
+                    $qrpayment->save();
+                }
             }
             return response()->json(['success'=>$qrpayment->invoice], 200);
         } else {

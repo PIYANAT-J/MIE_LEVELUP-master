@@ -21,8 +21,10 @@
         <link rel="stylesheet" href="{{ asset('dist/css/level-up.css') }}">
         <link rel="stylesheet" href="{{ asset('home/font/font.css') }}">
         <link rel="stylesheet" href="{{ asset('icon/font_lvp.css') }}">
-        
-        @yield('style')
+        <link rel="stylesheet" href="{{ asset('bootstrap-select/dist/css/bootstrap-select.css') }}">
+        <link rel="stylesheet" href="{{ asset('bootstrap-select/dist/css/bootstrap-select.min.css') }}">
+        @yield('head')
+
     </head>
 
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">

@@ -121,7 +121,7 @@
                                     </div>
                                 </div>
                                 
-                                <div id="Ads" class="tab-pane active">
+                                <div id="Ads" class="tab-pane">
                                     <div class="row">
                                         <div class="col-1 py-3 th1">#</div>
                                         <div class="col-3 py-3 th1 text-left">โฆษณา</div>
