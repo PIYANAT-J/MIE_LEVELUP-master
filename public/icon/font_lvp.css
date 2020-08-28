@@ -156,3 +156,7 @@
 .icon-dropdown:before {
   content: "\e920";
 }
+.icon-dropdown-wh:before {
+  content: "\e921";
+  color: #fff;
+}

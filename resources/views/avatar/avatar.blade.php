@@ -43,7 +43,7 @@
                         </div>
                     @endforeach
                 @else
-                    <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
+                    <div class="col-lg-10 my-3 pt-2">
                         <div class="row mb-2">
                             <div class="col-5 text-right pr-2">
                                 <img class="sidebar-pic" src="{{asset('home/imgProfile/No_Img.jpg') }}" />
