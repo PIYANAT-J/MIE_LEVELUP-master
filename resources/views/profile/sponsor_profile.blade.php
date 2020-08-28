@@ -1,7 +1,7 @@
 @extends('layout.sponsor_navbar')
 @section('head')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/css/uikit.css">
-    <link rel="stylesheet" href="filter/dist/jquery.Thailand.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/css/uikit.css">
+    <link rel="stylesheet" href="filter/dist/jquery.Thailand.min.css"> -->
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -315,8 +315,9 @@
     .tt-dataset{
         background-color:#fff !important;
         color:#000;
-        
         border-bottom: 1px solid #000;
+        height:300px;
+        overflow:scroll;
     }
     .tt-suggestion.tt-selectable:hover{
         background-color:#ddd !important;
