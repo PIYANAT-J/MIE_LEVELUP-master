@@ -907,85 +907,92 @@
                         <p class="icon-close_modal" style="padding: 10px 0 0 0;"></p>
                     </button>
                 </div>
+                <form action="{{route('ListGame')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="containner-fluid">
+                            <div class="row">
+                                <div class="col-9">
+                                    <label>
+                                        <img class="img-modal" src="{{ asset('section/File_game/Profile_game/'.$detailGame->GAME_IMG_PROFILE) }}" />
+                                    </label>
+                                    <label class="py-3" style="padding-left:100px;">
+                                        <p style="color:#000;font-weight:800;margin:0;">{{$detailGame->GAME_NAME}}</p>
+                                        <p style="color:#a8a8a8;line-height:1.5;">{{$detailGame->RATED_B_L}} • Online <br> เวอร์ชั่น 1.03 </p>
+                                    </label>
+                                </div>
+                                <div class="col-3 text-right py-3">
+                                    <h4 style="color: #ce0005;margin:0;font-weight:900;">฿{{$detailGame->GAME_PRICE}}</h4>
+                                    <label><p class="mr-2" style="color:#b2b2b2;text-decoration:line-through;">฿400 </p></label>
+                                    <label><p style="display:block;text-align:right;font-weight:500;">(-{{$detailGame->GAME_DISCOUNT}}%)</p></label>
+                                </div>
+                            </div>
+                            <input type="hidden" name="game_id" value="{{$detailGame->GAME_ID}}">
+                            <input type="hidden" name="game_price" value="{{$detailGame->GAME_PRICE}}">
 
-                <div class="modal-body">
-                    <div class="containner-fluid">
-                        <div class="row">
-                            <div class="col-9">
-                                <label>
-                                    <img class="img-modal" src="{{asset('section/picture_game/game.png') }}" />
-                                </label>
-                                <label class="py-3" style="padding-left:100px;">
-                                    <p style="color:#000;font-weight:800;margin:0;">Witcher</p>
-                                    <p style="color:#a8a8a8;line-height:1.5;">Fantasy • Online <br> เวอร์ชั่น 1.03 </p>
-                                </label>
+                            <div class="row">
+                                <div class="col-6" style="padding-right:0;">
+                                    <select class="MySelect p ">
+                                        <option value="">เลือกโฆษณา</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <select class="MySelect p">
+                                        <option value="">ซื้อรายเกม</option>
+                                        <option value="">แพ็กเกจ 1</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="col-3 text-right py-3">
-                                <h4 style="color: #ce0005;margin:0;font-weight:900;">฿199.00</h4>
-                                <label><p class="mr-2" style="color:#b2b2b2;text-decoration:line-through;">฿400 </p></label>
-                                <label><p style="display:block;text-align:right;font-weight:500;">(-65%)</p></label>
+
+                            <div class="row">
+                                <div class="col-12 " style="padding-right:0;">
+                                    <label>
+                                        <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">เริ่มต้น</label></br>
+                                        <input class="MySelect p" type="datetime-local" id="default-picker" name="dateStart" value="{{old('dateStart')}}" class="timepicker" />
+                                    </label>
+                                    <label>
+                                        <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">สิ้นสุด</label></br>
+                                        <input class="MySelect p" type="datetime-local" id="default-picker" name="dateDeadline" value="{{old('dateDeadline')}}" class="timepicker" />
+                                    </label>
+                                    <label>
+                                    <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">จำนวนรอบการโฆษณา</label></br>
+                                        <div class="quantity-block">
+                                            <label class="quantity-arrow-minus"> - </label>
+                                            <input class="quantity-num" style="font-size:0.8em;width:30%;" type="number" value="10" min="10" disabled />
+                                            <label class="quantity-arrow-plus"> + </label>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
+
+                            <div class="row pt-3">
+                                <div class="col-sm-3 col-md-3 col-lg-2 col-lg-2">
+                                    <button type="button" class="btn-cancal" data-dismiss="modal">
+                                        <p style="margin:0;">ยกเลิก</p>
+                                    </button>
+                                </div>  
+                                <div class="col-sm-6 col-md-6 col-lg-8 col-lg-8"></div>
+                                <div class="col-sm-3 col-md-3 col-lg-2 col-lg-2">
+                                    <button type="button" class="btn-submit" data-dismiss="modal" data-toggle="modal" data-target="#successModal">
+                                        <p style="margin:0;">ยืนยัน</p>
+                                    </button>
+                                    <button name="submit" value="submit" class="btn-submit">ยืนยัน
+                                        <input type="hidden" name="numberAdvt" id="numberAdvt">
+                                    </button>
+                                </div>  
+                            </div>
+
                         </div>
-
-                        <div class="row">
-                            <div class="col-6" style="padding-right:0;">
-                                <select class="MySelect p ">
-                                    <option value="">เลือกโฆษณา</option>
-                                    <option value="">ดึงข้อมูลจาก DB</option>
-                                    <option value="">ดึงข้อมูลจาก DB</option>
-                                    <option value="">ดึงข้อมูลจาก DB</option>
-                                    <option value="">ดึงข้อมูลจาก DB</option>
-                                </select>
-                            </div>
-                            <div class="col-6">
-                                <select class="MySelect p">
-                                    <option value="">ซื้อรายเกม</option>
-                                    <option value="">แพ็กเกจ 1</option>
-                                    <option value="">ดึงข้อมูลจาก DB</option>
-                                    <option value="">ดึงข้อมูลจาก DB</option>
-                                    <option value="">ดึงข้อมูลจาก DB</option>
-                                    <option value="">ดึงข้อมูลจาก DB</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-12 " style="padding-right:0;">
-                                <label>
-                                    <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">เริ่มต้น</label></br>
-                                    <input class="MySelect p" type="datetime-local" id="default-picker" class="timepicker" />
-                                </label>
-                                <label>
-                                    <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">สิ้นสุด</label></br>
-                                    <input class="MySelect p" type="datetime-local" id="default-picker" class="timepicker" />
-                                </label>
-                                <label>
-                                <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">จำนวนรอบการโฆษณา</label></br>
-                                    <div class="quantity-block">
-                                        <button class="quantity-arrow-minus"> - </button>
-                                        <input class="quantity-num" style="font-size:0.8em;width:30%;" type="number" value="10" min="10" disabled />
-                                        <button class="quantity-arrow-plus"> + </button>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="row pt-3">
-                            <div class="col-sm-3 col-md-3 col-lg-2 col-lg-2">
-                                <button type="button" class="btn-cancal" data-dismiss="modal">
-                                    <p style="margin:0;">ยกเลิก</p>
-                                </button>
-                            </div>  
-                            <div class="col-sm-6 col-md-6 col-lg-8 col-lg-8"></div>
-                            <div class="col-sm-3 col-md-3 col-lg-2 col-lg-2">
-                                <button type="button" class="btn-submit" data-dismiss="modal" data-toggle="modal" data-target="#successModal">
-                                    <p style="margin:0;">ยืนยัน</p>
-                                </button>
-                            </div>  
-                        </div>
-
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -1191,21 +1198,27 @@
 
 <script>
 $(function() {
-(function quantityProducts() {
-  var $quantityArrowMinus = $(".quantity-arrow-minus");
-  var $quantityArrowPlus = $(".quantity-arrow-plus");
-  var $quantityNum = $(".quantity-num");
-  $quantityArrowMinus.click(quantityMinus);
-  $quantityArrowPlus.click(quantityPlus);
-  function quantityMinus() {
-    if ($quantityNum.val() > 1) {
-      $quantityNum.val(+$quantityNum.val() - 10);
-    }
-  }
-  function quantityPlus() {
-    $quantityNum.val(+$quantityNum.val() + 10);
-  }
-})();
+    (function quantityProducts() {
+        var $quantityArrowMinus = $(".quantity-arrow-minus");
+        var $quantityArrowPlus = $(".quantity-arrow-plus");
+        var $quantityNum = $(".quantity-num");
+        $quantityArrowMinus.click(quantityMinus);
+        $quantityArrowPlus.click(quantityPlus);
+        function quantityMinus() {
+            if ($quantityNum.val() > 1) {
+                $quantityNum.val(+$quantityNum.val() - 10);
+                document.querySelector('input#numberAdvt').value = $quantityNum.val()
+                console.log($quantityNum.val());
+            }
+        }
+        function quantityPlus() {
+            $quantityNum.val(+$quantityNum.val() + 10);
+            document.querySelector('input#numberAdvt').value = $quantityNum.val()
+            console.log($quantityNum.val());
+        }
+        document.querySelector('input#numberAdvt').value = $quantityNum.val()
+        console.log($quantityNum.val());
+    })();
 });
 </script>
 
@@ -1239,4 +1252,21 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+@if( Session::has('success'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            Swal.fire({
+                title: '{{ Session::get('success') }}',
+                icon: 'success',
+                footer:
+                '<a class="linkAd" href="{{ route('SponShoppingCart') }}">' +
+                '<label class="selectAll px-5 py-2" style="font-family:myfont1;font-size:0.8em;cursor:pointer;">ดูตระกร้าสินค้า</label></a>',
+                showCloseButton: true,
+                showConfirmButton: false,
+            })
+        });
+    </script>
+@endif
 @endsection
