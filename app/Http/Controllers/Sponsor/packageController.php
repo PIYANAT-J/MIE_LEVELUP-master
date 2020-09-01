@@ -35,17 +35,23 @@ class packageController extends Controller
     public function packagePay($id){
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
         $address = DB::table('addresses')->where('USER_EMAIL', Auth::user()->email)->get();
-        $allPackage = DB::table('packages')->where('package_id', decrypt($id))->first();
-        $package = DB::table('my_package_buy')->where([['package_id', decrypt($id)], ['USER_EMAIL', Auth::user()->email]])->first();
-        if($package != null){
-            $transfer = DB::table('transfer_payments')->where('transferInvoice', $package->packageBuy_invoice)->first();
-            // dd($address );
-            return view('profile.sponsor.spon_payment', compact('sponsor', 'allPackage', 'package', 'transfer', 'address'));
+        $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
+                            ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                            ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                            ->get();
+        if(decrypt($id) == "list"){
+            // dd("YES");
+            return view('profile.sponsor.spon_payment', compact('sponsor', 'address', 'countCart'));
+        }else{
+            $allPackage = DB::table('packages')->where('package_id', decrypt($id))->first();
+            $package = DB::table('my_package_buy')->where([['package_id', decrypt($id)], ['USER_EMAIL', Auth::user()->email]])->first();
+            if($package != null){
+                $transfer = DB::table('transfer_payments')->where('transferInvoice', $package->packageBuy_invoice)->first();
+                // dd($address );
+                return view('profile.sponsor.spon_payment', compact('sponsor', 'allPackage', 'package', 'transfer', 'address', 'countCart'));
+            }
+            return view('profile.sponsor.spon_payment', compact('sponsor', 'allPackage', 'package', 'address', 'countCart'));
         }
-        // dd($package);
-        
-        // dd($transfer);
-        return view('profile.sponsor.spon_payment', compact('sponsor', 'allPackage', 'package', 'address'));
     }
 
     public function AdvtManagement($id){
