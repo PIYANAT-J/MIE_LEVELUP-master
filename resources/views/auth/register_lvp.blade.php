@@ -55,10 +55,10 @@
 <div class="container-fluid">
     <div class="row" >
         <div class="col-lg-6 col-xl-6 d-none d-lg-block d-xl-block bgLogindark">
-            <div class="center-div3 text-center" style="background-color: #17202c;">
+            <div class="center-div text-center" style="background-color: #17202c;">
                 <img style="width:25%;" src="{{asset('home/logo/logo_lvp.svg') }}" />
                 <img class="my-3" style="max-width:100%;" src="{{asset('home/images/img_login.svg') }}" />
-                <h6 style="color:#fff">ยินดีต้อนรับ , Level Up</h6>
+                <h6 style="color:#fff;font-weight:800;">ยินดีต้อนรับ , Level Up</h6>
             </div>
         </div>
 
@@ -107,7 +107,7 @@
                                         <div class="col-6" style="padding:0 5px 0 0;">
                                             <label class="bgInput field-wrap">
                                                 <label><p class="fontHeadInput">ชื่อ</p></label><br>
-                                                <input id="name" name="name" class="input-login p ml-2 @error('name') is-denger @enderror"  value="{{ old('name') }}" autocomplete="name">
+                                                <input id="name" name="name" class="input1 p ml-2 @error('name') is-denger @enderror"  value="{{ old('name') }}" autocomplete="name">
                                             </label>
                                             @error('name')
                                                 <!-- <span class="invalid-feedback" role="alert">
@@ -120,7 +120,7 @@
                                         <div class="col-6" style="padding:0;">
                                             <label class="bgInput field-wrap">
                                                 <label><p class="fontHeadInput">นามสกุล</p></label><br>
-                                                <input id="surname" name="surname" class="input-login p ml-2 @error('surname') is-invalid @enderror"  value="{{ old('surname') }}" autocomplete="surname">
+                                                <input id="surname" name="surname" class="input1 p ml-2 @error('surname') is-invalid @enderror"  value="{{ old('surname') }}" autocomplete="surname">
                                             </label>
                                             @error('surname')
                                                 <!-- <span class="text-danger font-error" role="alert">
@@ -133,7 +133,7 @@
                                         <div class="col-12" style="padding:0;" data-toggle="tooltip" data-placement="bottom" title="example@email.com">
                                             <label class="bgInput field-wrap my-1">
                                                 <label><p class="fontHeadInput">อีเมล</p></label><br>
-                                                <input id="email" type="email" name="email" class="input-login p ml-2  @error('email') is-invalid @enderror" value="{{ old('email') }}" autocomplete="email" >
+                                                <input id="email" type="email" name="email" class="input1 p ml-2  @error('email') is-invalid @enderror" value="{{ old('email') }}" autocomplete="email" >
                                             </label>
                                             @error('email')
                                                 <h5 style="color:#ce0005;margin:0;">อีเมลไม่ถูกต้อง</h5>
@@ -143,7 +143,7 @@
                                         <div class="col-6" style="padding:0 5px 0 0;">
                                             <label class="bgInput field-wrap">
                                                 <label><p class="fontHeadInput">รหัสผ่าน</p></label><br>
-                                                <input id="password" type="password" name="password" class="input-login p ml-2 @error('password') is-invalid @enderror" min="8" autocomplete="new-password">
+                                                <input id="password" type="password" name="password" class="input1 p ml-2 @error('password') is-invalid @enderror" min="8" autocomplete="new-password">
                                             </label>
                                             @error('password')
                                                 <h5 id="MESSAGE" style="color:#ce0005;margin:0;">รหัสผ่านไม่ถูกต้อง</h5>
@@ -155,7 +155,7 @@
                                         <div class="col-6" style="padding:0;">
                                             <label class="bgInput field-wrap">
                                                 <label><p class="fontHeadInput">ยืนยันรหัสผ่าน</p></label><br>
-                                                <input id="password-confirm" type="password" name="password_confirmation" class="input-login p ml-2"  autocomplete="new-password">
+                                                <input id="password-confirm" type="password" name="password_confirmation" class="input1 p ml-2"  autocomplete="new-password">
                                             </label>
                                         </div>
 
@@ -212,7 +212,7 @@
                                         <div class="col-6" style="padding:0 5px 0 0;">
                                             <label class="bgInput field-wrap">
                                                 <label><p class="fontHeadInput">ชื่อ</p></label><br>
-                                                <input id="name" name="name" class="input-login p ml-2 @error('name') is-invalid @enderror" value="{{ old('name') }}" autocomplete="name">
+                                                <input id="name" name="name" class="input1 p ml-2 @error('name') is-invalid @enderror" value="{{ old('name') }}" autocomplete="name">
                                             </label>
                                             @error('name')
                                                 <h5 style="color:#ce0005;margin:0;">กรุณากรอกชื่อ</h5>
@@ -221,7 +221,7 @@
                                         <div class="col-6" style="padding:0">
                                             <label class="bgInput field-wrap">
                                                 <label><p class="fontHeadInput">นามสกุล</p></label><br>
-                                                <input id="surname" name="surname" class="input-login p ml-2 @error('surname') is-invalid @enderror" value="{{ old('surname') }}" autocomplete="surname">
+                                                <input id="surname" name="surname" class="input1 p ml-2 @error('surname') is-invalid @enderror" value="{{ old('surname') }}" autocomplete="surname">
                                             </label>
                                             @error('surname')
                                                 <h5 style="color:#ce0005;margin:0;">กรุณากรอกนามสกุล</h5>
@@ -230,7 +230,7 @@
                                         <div class="col-12" style="padding:0;"data-toggle="tooltip" data-placement="bottom" title="example@email.com">
                                             <label class="bgInput field-wrap my-1">
                                                 <label><p class="fontHeadInput">อีเมล</p></label><br>
-                                                <input id="email" type="email" name="email" class="input-login p ml-2  @error('email') is-invalid @enderror"  value="{{ old('email') }}" autocomplete="email">
+                                                <input id="email" type="email" name="email" class="input1 p ml-2  @error('email') is-invalid @enderror"  value="{{ old('email') }}" autocomplete="email">
                                             </label>
                                             @error('email')
                                                 <h5 style="color:#ce0005;margin:0;">อีเมลไม่ถูกต้อง</h5>
@@ -239,7 +239,7 @@
                                         <div class="col-6" style="padding:0 5px 0 0">
                                             <label class="bgInput field-wrap">
                                                 <label><p class="fontHeadInput">รหัสผ่าน</p></label><br>
-                                                <input id="password_dev" type="password" name="password" class="input-login p ml-2 @error('password') is-invalid @enderror" min="8" autocomplete="new-password">
+                                                <input id="password_dev" type="password" name="password" class="input1 p ml-2 @error('password') is-invalid @enderror" min="8" autocomplete="new-password">
                                             </label>
                                             @error('password')
                                                 <h5 id="MESSAGE-DEV" style="color:#ce0005;margin:0;">รหัสผ่านไม่ถูกต้อง</h5>
@@ -250,7 +250,7 @@
                                         <div class="col-6" style="padding:0;">
                                             <label class="bgInput field-wrap">
                                             <label><p class="fontHeadInput">ยืนยันรหัสผ่าน</p></label><br>
-                                                <input id="password-confirm_dev" type="password" name="password_confirmation" class="input-login p ml-2" autocomplete="new-password">
+                                                <input id="password-confirm_dev" type="password" name="password_confirmation" class="input1 p ml-2" autocomplete="new-password">
                                             </label>
                                         </div>
                                         <!-- <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
@@ -338,7 +338,7 @@
                                                 <div class="col-6" style="padding:0 5px 0 0;">
                                                     <label class="bgInput field-wrap">
                                                         <label><p class="fontHeadInput">ชื่อ</p></label><br>
-                                                        <input id="name" name="name" class="input-login p ml-2 @error('name') is-invalid @enderror" value="{{ old('name') }}" autocomplete="name">
+                                                        <input id="name" name="name" class="input1 p ml-2 @error('name') is-invalid @enderror" value="{{ old('name') }}" autocomplete="name">
                                                     </label>
                                                     @error('name')
                                                         <h5 style="color:#ce0005;margin:0;">กรุณากรอกชื่อ</h5>
@@ -347,7 +347,7 @@
                                                 <div class="col-6" style="padding:0;">
                                                     <label class="bgInput field-wrap">
                                                         <label><p class="fontHeadInput">นามสกุล</p></label><br>
-                                                        <input id="surname" name="surname" class="input-login p ml-2 @error('surname') is-invalid @enderror" value="{{ old('surname') }}"autocomplete="surname">
+                                                        <input id="surname" name="surname" class="input1 p ml-2 @error('surname') is-invalid @enderror" value="{{ old('surname') }}"autocomplete="surname">
                                                     </label>
                                                     @error('surname')
                                                         <h5 style="color:#ce0005;margin:0;">กรุณากรอกนามสกุล</h5>
@@ -356,7 +356,7 @@
                                                 <div class="col-12" style="padding:0;"data-toggle="tooltip" data-placement="bottom" title="example@email.com">
                                                     <label class="bgInput field-wrap my-1">
                                                         <label><p class="fontHeadInput">อีเมล</p></label><br>
-                                                        <input id="email" type="email" name="email" class="input-login p ml-2 @error('email') is-invalid @enderror" value="{{ old('email') }}"autocomplete="email">
+                                                        <input id="email" type="email" name="email" class="input1 p ml-2 @error('email') is-invalid @enderror" value="{{ old('email') }}"autocomplete="email">
                                                     </label>
                                                     @error('email')
                                                         <h5 style="color:#ce0005;margin:0;">อีเมลไม่ถูกต้อง</h5>
@@ -365,7 +365,7 @@
                                                 <div class="col-6" style="padding:0 5px 0 0;" data-toggle="tooltip" data-placement="bottom" title="อย่างน้อย 8 ตัวอักษร">
                                                     <label class="bgInput field-wrap">
                                                         <label><p class="fontHeadInput">รหัสผ่าน</p></label><br>
-                                                        <input id="password_spon" type="password" name="password" class="input-login p ml-2 @error('password') is-invalid @enderror"  min="8"autocomplete="new-password">
+                                                        <input id="password_spon" type="password" name="password" class="input1 p ml-2 @error('password') is-invalid @enderror"  min="8"autocomplete="new-password">
                                                     </label>
                                                     @error('password')
                                                         <h5 id="MESSAGE-SPON" style="color:#ce0005;margin:0;">รหัสผ่านไม่ถูกต้อง</h5>
@@ -376,7 +376,7 @@
                                                 <div class="col-6" style="padding:0;">
                                                     <label class="bgInput field-wrap">
                                                         <label><p class="fontHeadInput">ยืนยันรหัสผ่าน</p></label><br>
-                                                        <input id="password-confirm_spon" type="password" name="password_confirmation" class="input-login p ml-2"  autocomplete="new-password">
+                                                        <input id="password-confirm_spon" type="password" name="password_confirmation" class="input1 p ml-2"  autocomplete="new-password">
                                                     </label>
                                                 </div>
 
@@ -432,7 +432,7 @@
                                                 <div class="col-12" style="padding:0;">
                                                     <label class="bgInput field-wrap">
                                                         <label><p class="fontHeadInput">ชื่อบอริษัท</p></label><br>
-                                                        <input id="name" name="name" class="input-login p ml-2 @error('name') is-invalid @enderror" value="{{ old('name') }}" autocomplete="name">
+                                                        <input id="name" name="name" class="input1 p ml-2 @error('name') is-invalid @enderror" value="{{ old('name') }}" autocomplete="name">
                                                     </label>
                                                     @error('name')
                                                         <h5 style="color:#ce0005;margin:0;">กรุณากรอกชื่อ</h5>
@@ -441,7 +441,7 @@
                                                 <div class="col-12" style="padding:0;"data-toggle="tooltip" data-placement="bottom" title="example@email.com">
                                                     <label class="bgInput field-wrap my-1">
                                                         <label><p class="fontHeadInput">อีเมล</p></label><br>
-                                                        <input id="email" type="email" name="email" class="input-login p ml-2  @error('email') is-invalid @enderror" value="{{ old('email') }}" autocomplete="email">
+                                                        <input id="email" type="email" name="email" class="input1 p ml-2  @error('email') is-invalid @enderror" value="{{ old('email') }}" autocomplete="email">
                                                     </label>
                                                     @error('email')
                                                         <h5 style="color:#ce0005;margin:0;">อีเมลไม่ถูกต้อง</h5>
@@ -450,7 +450,7 @@
                                                 <div class="col-6" style="padding: 0 5px 0 0;">
                                                     <label class="bgInput field-wrap">
                                                         <label><p class="fontHeadInput">รหัสผ่าน</p></label><br>
-                                                        <input id="password_spon2" type="password" name="password" class="input-login p ml-2 @error('password') is-invalid @enderror" min="8" autocomplete="new-password">
+                                                        <input id="password_spon2" type="password" name="password" class="input1 p ml-2 @error('password') is-invalid @enderror" min="8" autocomplete="new-password">
                                                     </label>
                                                     @error('password')
                                                         <h5 id="MESSAGE-SPON2" style="color:#ce0005;margin:0;"">รหัสผ่านไม่ถูกต้อง</h5>
@@ -461,7 +461,7 @@
                                                 <div class="col-6" style="padding:0;">
                                                     <label class="bgInput field-wrap">
                                                         <label><p class="fontHeadInput">ยืนยันรหัสผ่าน</p></label><br>
-                                                        <input id="password-confirm_spon2" type="password" name="password_confirmation" class="input-login p ml-2" autocomplete="new-password">
+                                                        <input id="password-confirm_spon2" type="password" name="password_confirmation" class="input1 p ml-2" autocomplete="new-password">
                                                     </label>
                                                 </div>
                                                 <div class="col-12 mt-3" style="padding-left:5px;">
