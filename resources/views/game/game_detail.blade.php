@@ -931,7 +931,7 @@
                             <input type="hidden" name="game_price" value="{{$detailGame->GAME_PRICE}}">
 
                             <div class="row">
-                                <div class="col-6" style="padding-right:0;">
+                                <div class="col-12">
                                     <select class="MySelect p ">
                                         <option value="">เลือกโฆษณา</option>
                                         <option value="">ดึงข้อมูลจาก DB</option>
@@ -940,7 +940,7 @@
                                         <option value="">ดึงข้อมูลจาก DB</option>
                                     </select>
                                 </div>
-                                <div class="col-6">
+                                <!-- <div class="col-6">
                                     <select class="MySelect p">
                                         <option value="">ซื้อรายเกม</option>
                                         <option value="">แพ็กเกจ 1</option>
@@ -949,7 +949,7 @@
                                         <option value="">ดึงข้อมูลจาก DB</option>
                                         <option value="">ดึงข้อมูลจาก DB</option>
                                     </select>
-                                </div>
+                                </div> -->
                             </div>
 
                             <div class="row">
@@ -981,10 +981,10 @@
                                 </div>  
                                 <div class="col-sm-6 col-md-6 col-lg-8 col-lg-8"></div>
                                 <div class="col-sm-3 col-md-3 col-lg-2 col-lg-2">
-                                    <button type="button" class="btn-submit" data-dismiss="modal" data-toggle="modal" data-target="#successModal">
+                                    <!-- <button type="button" class="btn-submit" data-dismiss="modal" data-toggle="modal" data-target="#successModal">
                                         <p style="margin:0;">ยืนยัน</p>
-                                    </button>
-                                    <button name="submit" value="submit" class="btn-submit">ยืนยัน
+                                    </button> -->
+                                    <button name="submit" value="submit" class="btn-submit"><p style="margin:0;">ยืนยัน</p>
                                         <input type="hidden" name="numberAdvt" id="numberAdvt">
                                     </button>
                                 </div>  
