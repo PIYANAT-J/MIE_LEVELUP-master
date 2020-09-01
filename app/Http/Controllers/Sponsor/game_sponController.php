@@ -82,4 +82,39 @@ class game_sponController extends Controller
             return redirect(route('AdvtManagement', ['id'=> encrypt($id)]));
         }
     }
+
+    public function listGame(Request $req){
+        if($req->input('submit') != null){
+            $sponsor_cart_game = $req->input('game_id');
+            $sponsor_cart_price = $req->input('game_price');
+            $sponsor_cart_advt = $req->input('advt_id');
+            $sponsor_cart_package = $req->input('packageBuy_id');
+            $start = explode('T', $req->input('dateStart'));
+            $deadline = explode('T', $req->input('dateDeadline'));
+            // dd($deadline[0].' '.$deadline[1]);
+            $sponsor_cart_start = $start[0].' '.$start[1];
+            $sponsor_cart_deadline = $deadline[0].' '.$deadline[1];
+            $sponsor_cart_number = $req->input('numberAdvt');
+            $USER_ID = Auth::user()->id;
+            $USER_EMAIL = Auth::user()->email;
+
+            $data = array("sponsor_cart_game"=>$sponsor_cart_game, "sponsor_cart_price"=>$sponsor_cart_price, "sponsor_cart_advt"=>$sponsor_cart_advt,
+                        "sponsor_cart_package"=>$sponsor_cart_package, "sponsor_cart_start"=>$sponsor_cart_start, "sponsor_cart_deadline"=>$sponsor_cart_deadline, 
+                        "sponsor_cart_number"=>$sponsor_cart_number, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
+
+            // dd($data);
+            Package::cartGame($data);
+        }
+        return back()->with("success", "ทำรายการสำเร็จ");
+    }
+
+    public function SponShoppingCart(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
+                            ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                            ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                            ->get();
+        // dd($countCart);
+        return view('profile.sponsor.spon_shopping_cart', compact('sponsor', 'countCart'));
+    }
 }

@@ -1,8 +1,4 @@
 @extends('layout.sponsor_navbar')
-@section('head')
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/css/uikit.css">
-    <link rel="stylesheet" href="filter/dist/jquery.Thailand.min.css"> -->
-@endsection
 @section('content')
 <div class="container-fluid">
     <div class="row my-5"></div>
@@ -63,8 +59,7 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10 ">
                     <a href="{{ route('AdvtPackage') }}"><label class="fontAd1 active">สนับสนุนเงินในเกม</label></a>
-                    
-                    @if($allPackage == null)
+                    @if(empty($allPackage))
                         <label class="fontAd1"> > </label>
                         <a href="{{ route('SponShoppingCart') }}"><label class="fontAd1 active">ตระกร้าสินค้า</label></a>
                     @endif
@@ -105,29 +100,34 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif
-                        <!-- <div class="col-lg-12">
-                            <div class="row mx-2 mt-3" style="border-bottom:1px solid #f2f2f2;">  
-                                <div class="col-9" style="padding:0;">
-                                    <label class="plabelimg">
-                                        <img class="labelimg" src="{{asset('section/picture_game/game.png') }}" />
-                                    </label> 
-                                    <label class="labelFont bglabelFont ml-2 py-3">
-                                        <label style="font-weight: 700;">Witch</label></br>
-                                        <label style="color: #a8a8a8;">Fantasy • Online</label></br>
-                                        <label style="color: #23c197;font-size:0.9em;">ช่วงเวลา 13/08/2020 11:00 - 14/08/2020 12:00</label>
-                                        <label style="color: #23c197;font-size:0.9em;">จำนวนรอบโฆษณา 20 รอบ </label>
-                                    </label>
-                                </div>
+                        @else
+                            @foreach($countCart as $key=>$gameList)
+                                <div class="col-lg-12">
+                                    <div class="row mx-2 mt-3" style="border-bottom:1px solid #f2f2f2;">  
+                                        <div class="col-9" style="padding:0;">
+                                            <label class="plabelimg">
+                                                <img class="labelimg" src="{{ asset('section/File_game/Profile_game/'.$gameList->GAME_IMG_PROFILE) }}" />
+                                            </label> 
+                                            <label class="labelFont bglabelFont ml-2 py-3">
+                                                <label style="font-weight: 700;">{{$gameList->GAME_NAME}}</label></br>
+                                                <label style="color: #a8a8a8;">{{$gameList->RATED_B_L}} • Online</label></br>
+                                                <label style="color: #23c197;font-size:0.9em;">ช่วงเวลา {{$gameList->sponsor_cart_start}} - {{$gameList->sponsor_cart_deadline}}</label>
+                                                <label style="color: #23c197;font-size:0.9em;">จำนวนรอบโฆษณา {{$gameList->sponsor_cart_number}} รอบ </label>
+                                            </label>
+                                        </div>
 
-                                <div class="col-3 my-3">
-                                    <span class="fontPriceAds1" style="line-height: 1.2; display:block;text-align:right;font-size:1em;">
-                                        <b class="font-price" style="font-size:1.5em;">฿279.00</b></br>
-                                        <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿680 </b> (-37%)
-                                    </span>
+                                        <div class="col-3 my-3">
+                                            <span class="fontPriceAds1" style="line-height: 1.2; display:block;text-align:right;font-size:1em;">
+                                                <b class="font-price" style="font-size:1.5em;">฿{{$gameList->sponsor_cart_price}}</b></br>
+                                                @if($gameList->GAME_DISCOUNT != null)
+                                                    <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿680 </b> (-{{$gameList->GAME_DISCOUNT}}%)
+                                                @endif
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div> -->
+                            @endforeach
+                        @endif
                     </div>
 
                     <div class="row mt-3 py-2" style="background-color:#fafaff;">
@@ -490,89 +490,153 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="row mt-3 py-2 " style="border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
-                        <div class="col-lg-12">
-                            <div class="row mx2">
-                                <div class="col-lg-6"></div>
-                                <div class="col-lg-6">
-                                    <div class="row">
-                                        <div class="col-6 text-right fontAdsPayment5">ยอดรวมสินค้า</div>
-                                        <div class="col-6 text-right fontAdsPayment5">฿ {{$allPackage->package_amount}}</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 text-right fontAdsPayment5">ส่วนลด</div>
-                                        <div class="col-6 text-right fontAdsPayment5">-</div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-6 text-right fontAdsPayment5 pt-2">รวมราคาทั้งสิ้น</div>
-                                        <div class="col-6 text-right font-price" style="font-size:2em;">฿ {{$allPackage->package_amount}}</div>
+                    @if(isset($allPackage))
+                        <div class="row mt-3 py-2 " style="border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
+                            <div class="col-lg-12">
+                                <div class="row mx2">
+                                    <div class="col-lg-6"></div>
+                                    <div class="col-lg-6">
+                                        <div class="row">
+                                            <div class="col-6 text-right fontAdsPayment5">ยอดรวมสินค้า</div>
+                                            <div class="col-6 text-right fontAdsPayment5">฿ {{$allPackage->package_amount}}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 text-right fontAdsPayment5">ส่วนลด</div>
+                                            <div class="col-6 text-right fontAdsPayment5">-</div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-6 text-right fontAdsPayment5 pt-2">รวมราคาทั้งสิ้น</div>
+                                            <div class="col-6 text-right font-price" style="font-size:2em;">฿ {{$allPackage->package_amount}}</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row" >
-                                <div class="col-lg-10"></div>
-                                <div class="col-lg-2 text-right" id="T10">
-                                    <a href="{{ route('SponsorPaymentConfirm') }}"><label class="btn-submit-red2">ชำระเงิน</label></a>
-                                </div>
-                                <div class="col-lg-2 text-right" id="VisaCredit">
-                                    <a href="{{ route('SponsorPaymentConfirm') }}"><label class="btn-submit-red2">ชำระเงิน</label></a>
-                                </div>
-                                <div class="col-lg-2 text-right" id="iBanking">
-                                    <!-- <a href="{{ route('SponsorPaymentConfirm') }}"> -->
-                                    <!-- <label class="btn-submit-red2">ชำระเงิน</label> -->
-                                    <!-- </a> -->
-                                    @if($package == null)
-                                        <form action="{{route('packageibanking')}}" method="POST">
-                                            @csrf
-                                            <button class="btn-submit-red2">ชำระเงิน
-                                                <input type="hidden" name="amount" value="{{$allPackage->package_amount}}">
-                                                <input type="hidden" name="bank_name" id="data-checked">
-                                                <input type="hidden" name="paymentType" value="QrCode">
-                                                <input type="hidden" name="note" id="note" value="no">
-                                                <input type="hidden" name="package_id" value="{{$allPackage->package_id}}">
-                                                <input type="hidden" id="submit" name="submit" value="submit">
-                                            </button>
-                                        </form>
-                                    @else
-                                        @if($package->packageBuy_status == 'false')
-                                            <span>
-                                                <label style="font-family:myfont;font-size:1em;color:#a8a8a8;">รอการชำระเงิน</label>
-                                            </span>
+                                <div class="row" >
+                                    <div class="col-lg-10"></div>
+                                    <div class="col-lg-2 text-right" id="T10">
+                                        <a href="{{ route('SponsorPaymentConfirm') }}"><label class="btn-submit-red2">ชำระเงิน</label></a>
+                                    </div>
+                                    <div class="col-lg-2 text-right" id="VisaCredit">
+                                        <a href="{{ route('SponsorPaymentConfirm') }}"><label class="btn-submit-red2">ชำระเงิน</label></a>
+                                    </div>
+                                    <div class="col-lg-2 text-right" id="iBanking">
+                                        <!-- <a href="{{ route('SponsorPaymentConfirm') }}"> -->
+                                        <!-- <label class="btn-submit-red2">ชำระเงิน</label> -->
+                                        <!-- </a> -->
+                                        @if($package == null)
+                                            <form action="{{route('packageibanking')}}" method="POST">
+                                                @csrf
+                                                <button class="btn-submit-red2">ชำระเงิน
+                                                    <input type="hidden" name="amount" value="{{$allPackage->package_amount}}">
+                                                    <input type="hidden" name="bank_name" id="data-checked">
+                                                    <input type="hidden" name="paymentType" value="QrCode">
+                                                    <input type="hidden" name="note" id="note" value="no">
+                                                    <input type="hidden" name="package_id" value="{{$allPackage->package_id}}">
+                                                    <input type="hidden" id="submit" name="submit" value="submit">
+                                                </button>
+                                            </form>
                                         @else
-                                            <span>
-                                                <label style="font-family:myfont;font-size:1em;color:#a8a8a8;">คุณมีเพคเกจนี้จ้ะ</label>
-                                            </span>
+                                            @if($package->packageBuy_status == 'false')
+                                                <span>
+                                                    <label style="font-family:myfont;font-size:1em;color:#a8a8a8;">รอการชำระเงิน</label>
+                                                </span>
+                                            @else
+                                                <span>
+                                                    <label style="font-family:myfont;font-size:1em;color:#a8a8a8;">คุณมีเพคเกจนี้จ้ะ</label>
+                                                </span>
+                                            @endif
                                         @endif
-                                    @endif
-                                    
-                                </div>
-                                <div class="col-lg-2 text-right" id="Transfer">
-                                    @if($package == null)
-                                        <form action="{{route('sponTransferPayment')}}" method="POST">
-                                            @csrf
-                                            <button class="btn-submit-red2">ชำระเงิน
-                                                <input type="hidden" name="transferAmount" value="{{$allPackage->package_amount}}">
-                                                <input type="hidden" name="transferฺBank_name" id="data-bank">
-                                                <input type="hidden" name="package_id" value="{{$allPackage->package_id}}">
-                                                <input type="hidden" id="submit" name="submit" value="submit">
-                                            </button>
-                                        </form>
-                                    @else
-                                        @if($package->packageBuy_status == 'false')
-                                            <span>
-                                                <label style="font-family:myfont;font-size:1em;color:#a8a8a8;">รอการชำระเงิน</label>
-                                            </span>
+                                        
+                                    </div>
+                                    <div class="col-lg-2 text-right" id="Transfer">
+                                        @if($package == null)
+                                            <form action="{{route('sponTransferPayment')}}" method="POST">
+                                                @csrf
+                                                <button class="btn-submit-red2">ชำระเงิน
+                                                    <input type="hidden" name="transferAmount" value="{{$allPackage->package_amount}}">
+                                                    <input type="hidden" name="transferฺBank_name" id="data-bank">
+                                                    <input type="hidden" name="package_id" value="{{$allPackage->package_id}}">
+                                                    <input type="hidden" id="submit" name="submit" value="submit">
+                                                </button>
+                                            </form>
                                         @else
-                                            <span>
-                                                <label style="font-family:myfont;font-size:1em;color:#a8a8a8;">คุณมีเพคเกจนี้จ้ะ</label>
-                                            </span>
+                                            @if($package->packageBuy_status == 'false')
+                                                <span>
+                                                    <label style="font-family:myfont;font-size:1em;color:#a8a8a8;">รอการชำระเงิน</label>
+                                                </span>
+                                            @else
+                                                <span>
+                                                    <label style="font-family:myfont;font-size:1em;color:#a8a8a8;">คุณมีเพคเกจนี้จ้ะ</label>
+                                                </span>
+                                            @endif
                                         @endif
-                                    @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @else
+                        <div class="row mt-3 py-2 " style="border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
+                            <div class="col-lg-12">
+                                <div class="row mx2">
+                                    <div class="col-lg-6"></div>
+                                    <div class="col-lg-6">
+                                        <div class="row">
+                                            <div class="col-6 text-right fontAdsPayment5">ยอดรวมสินค้า</div>
+                                            <div class="col-6 text-right fontAdsPayment5">฿ </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 text-right fontAdsPayment5">ส่วนลด</div>
+                                            <div class="col-6 text-right fontAdsPayment5">-</div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-6 text-right fontAdsPayment5 pt-2">รวมราคาทั้งสิ้น</div>
+                                            <div class="col-6 text-right font-price" style="font-size:2em;">฿ </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" >
+                                    <div class="col-lg-10"></div>
+                                    <div class="col-lg-2 text-right" id="T10">
+                                        <a href="{{ route('SponsorPaymentConfirm') }}"><label class="btn-submit-red2">ชำระเงิน</label></a>
+                                    </div>
+                                    <div class="col-lg-2 text-right" id="VisaCredit">
+                                        <a href="{{ route('SponsorPaymentConfirm') }}"><label class="btn-submit-red2">ชำระเงิน</label></a>
+                                    </div>
+                                    <div class="col-lg-2 text-right" id="iBanking">
+                                        <!-- <a href="{{ route('SponsorPaymentConfirm') }}"> -->
+                                        <!-- <label class="btn-submit-red2">ชำระเงิน</label> -->
+                                        <!-- </a> -->
+                                        
+                                            <form action="{{route('packageibanking')}}" method="POST">
+                                                @csrf
+                                                <button class="btn-submit-red2">ชำระเงิน
+                                                    <input type="hidden" name="amount" >
+                                                    <input type="hidden" name="bank_name" id="data-checked">
+                                                    <input type="hidden" name="paymentType" value="QrCode">
+                                                    <input type="hidden" name="note" id="note" value="no">
+                                                    <input type="hidden">
+                                                    <input type="hidden" id="submit" name="submit" value="submit">
+                                                </button>
+                                            </form>
+                                        
+                                        
+                                    </div>
+                                    <div class="col-lg-2 text-right" id="Transfer">
+                                        
+                                            <form action="{{route('sponTransferPayment')}}" method="POST">
+                                                @csrf
+                                                <button class="btn-submit-red2">ชำระเงิน
+                                                    <input type="hidden" name="transferAmount" >
+                                                    <input type="hidden" name="transferฺBank_name" id="data-bank">
+                                                    <input type="hidden" >
+                                                    <input type="hidden" id="submit" name="submit" value="submit">
+                                                </button>
+                                            </form>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
                 <div class="col-lg-1"></div>
             </div>
@@ -601,7 +665,7 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <label class="custom03">
-                                                        <input type="radio" name="ibank" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}" checked>
+                                                        <input type="radio" name="changeAdd" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}" checked>
                                                         <label for="KEY{{$key}}"></label>
                                                     </label>
                                                     <label class="font-address ml-2">
@@ -623,7 +687,7 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <label class="custom03">
-                                                        <input type="radio" name="ibank" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}">
+                                                        <input type="radio" name="changeAdd" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}">
                                                         <label for="KEY{{$key}}"></label>
                                                     </label>
                                                     <label class="font-address ml-2">
@@ -1344,8 +1408,9 @@
     .tt-dataset{
         background-color:#fff !important;
         color:#000;
-        
         border-bottom: 1px solid #000;
+        height:300px;
+        overflow:scroll;
     }
     .tt-suggestion.tt-selectable:hover{
         background-color:#ddd !important;
@@ -1374,7 +1439,7 @@
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/js/uikit.min.js"></script>
 <script src="{{ asset('filter/dependencies/zip.js/zip.js') }}"></script>
 <script src="{{ asset('filter/dependencies/JQL.min.js') }}"></script>
 <script src="{{ asset('filter/dependencies/typeahead.bundle.js') }}"></script>
@@ -1403,7 +1468,7 @@
     $('#upDate [name="zipcode"]').change(function() {
         console.log('รหัสไปรษณีย์', this.value);
     });
-</script> -->
+</script>
 
 <script>
     const myFunction = () => {
@@ -1539,26 +1604,6 @@ $(document).ready(function(){
         });
     });
 </script>
-
-<!-- <script>
-    document.querySelector('input[name="changeAdd"]').addEventListener('keyup', (event)=>{
-        var creditTransfer = document.querySelector('input[name="changeAdd"]').value
-        var moneyTransfer = creditTransfer
-        document.querySelector('input#changeAddID').value = moneyTransfer
-        console.log(moneyTransfer);
-    })
-</script> -->
-<!-- <script>
-    $(document).ready(function() {
-        $(":radio").change(function() {
-            var closest = $(this).closest("div.row");
-            var creditTransfer = document.querySelector('input[name="changeAdd"]:checked').value
-            var moneyTransfer = creditTransfer
-            document.querySelector('input#changeAddID').value = moneyTransfer
-            console.log(moneyTransfer);
-        });
-    });
-</script> -->
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 @if( Session::has('success'))

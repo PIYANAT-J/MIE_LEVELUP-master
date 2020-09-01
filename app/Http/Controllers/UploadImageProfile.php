@@ -150,12 +150,9 @@ class UploadImageProfile extends Controller
 
     public function indexSpon(){
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('profile.sponsor_profile', compact('sponsor'));
-    }
-
-    public function SponShoppingCart(){
-        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('profile.sponsor.spon_shopping_cart', compact('sponsor'));
+        $countCart = DB::table('sponsor_shopping_cart')->where('USER_ID', Auth::user()->id)->get();
+        // dd(count($countCart));
+        return view('profile.sponsor_profile', compact('sponsor', 'countCart'));
     }
 
     public function SponsorPayment(){

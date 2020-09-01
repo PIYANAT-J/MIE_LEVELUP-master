@@ -756,67 +756,66 @@
                     <h4 class="modal-title" style="font-family:myfont1;font-weight:900;font-size:1.2em;">กรุณาเลือกช่วงเวลาในการสนับสนุน</h4>
                     <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
                 </div>
-
-                <div class="modal-body">
-                    <div class="containner-fluid">
-                        <div class="row">
-                            <div class="col-lg-9">
-                                <label class="containerhover1">
-                                    <img class="img-modal" src="{{asset('section/picture_game/game.png') }}" />
-                                </label> 
-                                <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">Witcher</label><br> Fantasy • Online <br> เวอร์ชั่น 1.03</label>
-                            </div>
-                            <div class="col-lg-3">
-                                <span class="fontPriceAds1" style="line-height: 1.2; display:block;text-align:right;font-size:1em;">
-                                    <label class="py-3">
-                                        <b class="font-price" style="font-size:1.5em;">฿199.00</b></br>
-                                        <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿400 </b> (-65%)
+                <form action="{{route('ListGame')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="containner-fluid">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <label class="containerhover1">
+                                        <img class="img-modal" src="{{ asset('section/File_game/Profile_game/'.$detailGame->GAME_IMG_PROFILE) }}" />
+                                    </label> 
+                                    <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">{{$detailGame->GAME_NAME}}</label><br> {{$detailGame->RATED_B_L}} • Online <br> เวอร์ชั่น 1.03</label>
+                                </div>
+                                <div class="col-lg-3">
+                                    <span class="fontPriceAds1" style="line-height: 1.2; display:block;text-align:right;font-size:1em;">
+                                        <label class="py-3">
+                                            <b class="font-price" style="font-size:1.5em;">฿{{$detailGame->GAME_PRICE}}</b></br>
+                                            @if($detailGame->GAME_DISCOUNT != null)
+                                                <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿400 </b> (-{{$detailGame->GAME_DISCOUNT}}%)
+                                            @endif
+                                        </label>
+                                        <input type="hidden" name="game_id" value="{{$detailGame->GAME_ID}}">
+                                        <input type="hidden" name="game_price" value="{{$detailGame->GAME_PRICE}}">
+                                    </span>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" class="form-control input-bank" placeholder="ลิงค์โฆษณา" require></input>
+                                </div>
+                                <div class="col-12 " style="padding-right:0;">
+                                    <label>
+                                        <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">เริ่มต้น</label></br>
+                                        <input style="font-family:myfont1;font-size:0.9em;width:auto;padding-left:5px;height:42px;" type="datetime-local" id="default-picker" name="dateStart" value="{{old('dateStart')}}" class="timepicker" />
                                     </label>
-                                </span>
-                            </div>
-                            <div class="col-8" style="padding-right:0;">
-                                <input type="text" class="form-control input-bank" placeholder="ลิงค์โฆษณา" require></input>
-                            </div>
-                            <div class="col-4 pr-4" style="padding-left:0;">
-                                <select class="select3 pl-2" name="" id="" style="height:42px;">
-                                    <option value="">ซื้อรายเกม</option>
-                                    <option value="">แพ็กเกจ 1</option>
-                                    <option value="">ดึงข้อมูลจาก DB</option>
-                                    <option value="">ดึงข้อมูลจาก DB</option>
-                                    <option value="">ดึงข้อมูลจาก DB</option>
-                                    <option value="">ดึงข้อมูลจาก DB</option>
-                                </select>
-                            </div>
-                            <div class="col-12 " style="padding-right:0;">
-                                <label>
-                                    <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">เริ่มต้น</label></br>
-                                    <input style="font-family:myfont1;font-size:0.9em;width:auto;padding-left:5px;height:42px;" type="datetime-local" id="default-picker" class="timepicker" />
-                                </label>
-                                <label>
-                                    <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">สิ้นสุด</label></br>
-                                    <input style="font-family:myfont1;font-size:0.9em;width:auto;padding-left:5px;height:42px;" type="datetime-local" id="default-picker" class="timepicker" />
-                                </label>
-                                <label class="ml-2">
-                                    <label style="font-family:myfont1;font-size:0.8em;margin:0;font-weight:900;">จำนวนรอบการโฆษณา</label>
-                                    <div class="quantity-block">
-                                        <button class="quantity-arrow-minus"> - </button>
-                                        <input class="quantity-num" style="font-size:0.9em;width:30%;" type="number" value="10" min="10" disabled />
-                                        <button class="quantity-arrow-plus"> + </button>
-                                    </div>
-                                </label>
+                                    <label>
+                                        <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">สิ้นสุด</label></br>
+                                        <input style="font-family:myfont1;font-size:0.9em;width:auto;padding-left:5px;height:42px;" type="datetime-local" id="default-picker" name="dateDeadline" value="{{old('dateDeadline')}}" class="timepicker" />
+                                    </label>
+                                    <label class="ml-2">
+                                        <label style="font-family:myfont1;font-size:0.8em;margin:0;font-weight:900;">จำนวนรอบการโฆษณา</label>
+                                        <div class="quantity-block">
+                                            <label class="quantity-arrow-minus"> - </label>
+                                            <input class="quantity-num" style="font-size:0.9em;width:30%;" type="number" value="10" min="10" disabled />
+                                            <label class="quantity-arrow-plus"> + </label>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row rate_top mx-0">
-                    <div class="col-6 text-left my-2">
-                        <button type="button" class="btn-cancal" data-dismiss="modal">ยกเลิก</button>
-                    </div>  
-                    <div class="col-6 text-right my-2">
-                        <button type="button" class="btn-submit" data-dismiss="modal" data-toggle="modal" data-target="#successModal">ยืนยัน</button>
-                    </div>  
-                </div>
+                    <div class="row rate_top mx-0">
+                        <div class="col-6 text-left my-2">
+                            <button type="button" class="btn-cancal" data-dismiss="modal">ยกเลิก</button>
+                        </div>  
+                        <div class="col-6 text-right my-2">
+                            <!-- <button name="submit" value="submit" class="btn-submit" data-dismiss="modal" data-toggle="modal" data-target="#successModal">ยืนยัน</button> -->
+                            <button name="submit" value="submit" class="btn-submit">ยืนยัน
+                                <input type="hidden" name="numberAdvt" id="numberAdvt">
+                            </button>
+                        </div>  
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -1050,21 +1049,27 @@
 
 <script>
 $(function() {
-(function quantityProducts() {
-  var $quantityArrowMinus = $(".quantity-arrow-minus");
-  var $quantityArrowPlus = $(".quantity-arrow-plus");
-  var $quantityNum = $(".quantity-num");
-  $quantityArrowMinus.click(quantityMinus);
-  $quantityArrowPlus.click(quantityPlus);
-  function quantityMinus() {
-    if ($quantityNum.val() > 1) {
-      $quantityNum.val(+$quantityNum.val() - 10);
-    }
-  }
-  function quantityPlus() {
-    $quantityNum.val(+$quantityNum.val() + 10);
-  }
-})();
+    (function quantityProducts() {
+        var $quantityArrowMinus = $(".quantity-arrow-minus");
+        var $quantityArrowPlus = $(".quantity-arrow-plus");
+        var $quantityNum = $(".quantity-num");
+        $quantityArrowMinus.click(quantityMinus);
+        $quantityArrowPlus.click(quantityPlus);
+        function quantityMinus() {
+            if ($quantityNum.val() > 1) {
+                $quantityNum.val(+$quantityNum.val() - 10);
+                document.querySelector('input#numberAdvt').value = $quantityNum.val()
+                console.log($quantityNum.val());
+            }
+        }
+        function quantityPlus() {
+            $quantityNum.val(+$quantityNum.val() + 10);
+            document.querySelector('input#numberAdvt').value = $quantityNum.val()
+            console.log($quantityNum.val());
+        }
+        document.querySelector('input#numberAdvt').value = $quantityNum.val()
+        console.log($quantityNum.val());
+    })();
 });
 </script>
 
@@ -1098,4 +1103,21 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+@if( Session::has('success'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            Swal.fire({
+                title: '{{ Session::get('success') }}',
+                icon: 'success',
+                footer:
+                '<a class="linkAd" href="{{ route('SponShoppingCart') }}">' +
+                '<label class="selectAll px-5 py-2" style="font-family:myfont1;font-size:0.8em;cursor:pointer;">ดูตระกร้าสินค้า</label></a>',
+                showCloseButton: true,
+                showConfirmButton: false,
+            })
+        });
+    </script>
+@endif
 @endsection

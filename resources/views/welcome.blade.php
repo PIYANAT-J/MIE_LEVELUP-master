@@ -311,7 +311,7 @@
                         @endguest
                         <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">< span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button> -->
                         <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <a href="{{ route('GameDetail', ['id'=>$gameId->GAME_ID]) }}">
+                        <a href="{{ route('GameDetail', ['id'=>encrypt($gameId->GAME_ID)]) }}">
                             <button class="btn_follow7">
                                 <p style="margin:0;">รายละเอียด</p>
                             </button>
@@ -410,7 +410,7 @@
                         @endguest
                         <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">< span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button> -->
                         <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <a href="{{ route('GameDetail', ['id'=>$gameId->GAME_ID]) }}">
+                        <a href="{{ route('GameDetail', ['id'=>encrypt($gameId->GAME_ID)]) }}">
                             <button class="btn_follow7">
                                 <p style="margin:0;">รายละเอียด</p>
                             </button>
@@ -542,7 +542,7 @@
                                 </div>
                                 <div class="col-12"><p style="color:#fff;">{{ $gameMeId->GAME_DESCRIPTION }}</p></div>
                             </div>
-                            <a href="{{ route('GameDetail', ['id'=>$gameMeId->GAME_ID]) }}">
+                            <a href="{{ route('GameDetail', ['id'=>encrypt($gameMeId->GAME_ID)]) }}">
                                 <button class="btn_follow7">
                                     <p style="margin:0;">รายละเอียด</p>
                                 </button>
@@ -710,7 +710,7 @@
                     </div>
                     <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button > -->
                     <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                    <a href="{{ route('GameDetail', ['id'=>$gameHotID->GAME_ID]) }}">
+                    <a href="{{ route('GameDetail', ['id'=>encrypt($gameHotID->GAME_ID)]) }}">
                         <button class="btn_follow7">
                             <p style="margin:0;">รายละเอียด</p>
                         </button>
@@ -875,7 +875,7 @@
                     </div>
                     <!-- <button class="btn_follow5" data-toggle="tooltip" data-placement="bottom" title="ติดตาม"><span class="icon-follow_red" style="font-size:16px;"></span><b class="font_follow2">ติดตาม</b></button > -->
                     <!-- <button class="btn_follow6 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                    <a href="{{ route('GameDetail', ['id'=>$gameNewId->GAME_ID]) }}">
+                    <a href="{{ route('GameDetail', ['id'=>encrypt($gameNewId->GAME_ID)]) }}">
                         <button class="btn_follow7">
                             <p style="margin:0;">รายละเอียด</p>
                         </button>

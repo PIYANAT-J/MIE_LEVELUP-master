@@ -1,4 +1,4 @@
-@extends('layout.profile_navbar')
+@extends('layout.sponsor_navbar')
 @section('content')
 <div class="container-fluid">
     <div class="row my-5"></div>
