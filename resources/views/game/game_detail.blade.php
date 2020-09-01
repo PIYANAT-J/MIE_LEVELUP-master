@@ -108,7 +108,7 @@
                     <label style="cursor:pointer;"><h1>Back</h1></label>
                 </a>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6 ">
+            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6">
                 <div class="slideshow-container">
 
                     <!-- Full-width images with number and caption text -->
@@ -132,12 +132,15 @@
         </div>
 
         <div class="row" style="background-color: #141621;">
-            <div class="col-lg-3"></div>
-            <div class="col-lg-6">
-                <div class="row mt-3 ml-0">
-                    <div class="col-1 pt-3"><img style="width:50px;" src="{{asset('section/game_rate/'.$detailGame->RATED_ESRB.'.svg') }}" /></div>
-                    <div class="col-7 ">
-                        <p class="font_detail3 pt-4  ">
+            <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
+            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6">
+                <div class="row" style="height:90px;">
+                    <div class="col-12">
+                        <label class="pImgRateDetail">
+                            <img style="width:50px;" src="{{asset('section/game_rate/'.$detailGame->RATED_ESRB.'.svg') }}" />
+                        </label>
+
+                        <div class="pFontRateDetail">
                             @if(isset($CommentAll))
                                 <?php $i = 0; ?>
                                 @foreach($CommentAll as $CAC)
@@ -151,43 +154,74 @@
                                     }
                                 ?>
                             @endif
-                            <b class="mr-2" style="font-family:myfont;color:#f6c12c; font-size:0.9em;">{{round($count, 1)}}/5</b>|<b class="ml-2 font_detail4" >{{$CommentAll->count()}} </b><label style="font-size:0.8em;">ความคิดเห็น</label></br>
-                            <b class="font_detail4">{{ $DownloadAll->count() }} </b><label style="font-size:0.8em;">ดาวน์โหลด</label> &nbsp; &nbsp;
+                            <label style="margin:0;"><h4 style="color:#f6c12c;font-weight:800;margin:0;">{{round($count, 1)}}/5 </h4></label>
+                            <label style="margin:0;"><h4 style="color:#a8a8a8;margin:0;"> | </h4></label>
+                            <label style="margin:0;"><h4 style="color:#ffffff;font-weight:800;margin:0;">{{$CommentAll->count()}} </h4></label>
+                            <label style="margin:0;"><h2 style="color:#a8a8a8;margin:0;"> ความคิดเห็น</h2></label></br>
+                            <label style="margin:0;"><h4 style="color:#ffffff;font-weight:800;margin:0;">{{ $DownloadAll->count() }} </label>
+                            <label style="margin:0;"><h2 style="color:#a8a8a8;margin:0;"> ดาวน์โหลด</label>
                             <!-- <b class="font_detail4">104.5</b> &nbsp; ชั่วโมง -->
-                        </p>
-                    </div>
-                    <div class="col-3 mr-3">
+                        </div>
                         @guest
                             <a href="{{ route('login-levelUp') }}">
-                                <button class="follow-before"><span class="icon-follow_red" style="font-size:16px;margin-right:15px"></span><b class="font_follow-before">ติดตาม</b></button >
-                                <button class="follow-before mt-1"><span class="icon-icon_download" style="font-size:16px;margin-right:15px"></span><b class="font_follow-before">ดาวน์โหลด</b></button >
+                                <button class="btnFollowDetail">
+                                    <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;"></p></label>
+                                    <label style="margin:0;"><p class="fontBTNDetail" >ติดตาม</p></label>
+                                </button>
+                                <button class="btnDownloadDetail">
+                                    <label style="margin:0;"><p class="icon-icon_download" style="cursor: pointer;"></p></label>
+                                    <label style="margin:0;"><p class="fontBTNDetail" >ดาวน์โหลด</p></label>
+                                </button >
                             </a>
                         @else
                             @if(isset($FollowDetail))
                                 <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <button class="follow-after"><span class="icon-follow_wh" style="font-size:16px;margin-right:10px"></span><b class="font_follow-after">กำลังติดตาม</b>
+                                    <button class="btnFollowingDetail">
+                                        <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;"></p></label>
+                                        <label style="margin:0;"><p class="fontBTNDetail-wh" >กำลังติดตาม</p></label>
                                         <input type="hidden" name="submit" value="submit">
                                         <input type="hidden" name="FOLLOW_ID" value="{{ $FollowDetail->FOLLOW_ID }}">
                                     </button>
                                 </form>
                                 @if(isset($Download))
-                                    <button class="follow-after mt-1"><span class="icon-download_after" style="font-size:16px;margin-right:10px"></span><b class="font_follow-after">ดาวน์โหลดแล้ว</b></button >
+                                    <button class="btnDownloaded">
+                                        <label style="margin:0;"><p class="icon-download_after" style="cursor: pointer;"></p></label>
+                                        <label style="margin:0;"><p class="fontBTNDetail-wh" >ดาวน์โหลดแล้ว</p></label>
+                                    </button >
                                     @if($detailGame->USER_ID == Auth::user()->id)
-                                        <a href="#"><button class="follow-before mt-1"><span class="icon-update_version" style="font-size:16px;margin-right:10px"></span><b class="font_follow-before" style="font-size:0.9em;">อัพเดตเวอร์ชัน</b></button ></a>
+                                        <a href="#">
+                                            <button class="btnUpdateDetail mt-1">
+                                                <label style="margin:0;"><p class="icon-update_version" style="cursor:pointer;"></p></label>
+                                                <label style="margin:0;"><p class="fontBTNDetail">อัพเดตเวอร์ชัน</p></label>
+                                            </button >
+                                        </a>
                                     @elseif(Auth::user()->users_type == '3')
-                                        <button data-toggle="modal" data-target="#myModal" class="follow-before mt-1"><span class="icon-support" style="font-size:16px;margin-right:15px"></span><b class="font_follow-before">สนับสนุนเกม</b></button >
+                                        <button data-toggle="modal" data-target="#myModal" class="btnSupportDetail">
+                                            <label style="margin:0;"><p class="icon-support" style="cursor:pointer;"></p></label>
+                                            <label style="margin:0;"><p class="fontBTNDetail">สนับสนุนเกม</p></label>
+                                        </button >
                                     @endif
                                 @else
                                     @if($detailGame->USER_ID == Auth::user()->id)
-                                        <a href="#"><button class="follow-before mt-1"><span class="icon-update_version" style="font-size:16px;margin-right:10px"></span><b class="font_follow-before" style="font-size:0.9em;">อัพเดตเวอร์ชัน</b></button ></a>
+                                        <a href="#">
+                                            <button class="btnUpdateDetail mt-1">
+                                                <label style="margin:0;"><p class="icon-update_version" style="cursor:pointer;"></p></label>
+                                                <label style="margin:0;"><p class="fontBTNDetail">อัพเดตเวอร์ชัน</p></label>
+                                            </button >
+                                        </a>
                                     @elseif(Auth::user()->users_type == '3')
-                                        <button data-toggle="modal" data-target="#myModal" class="follow-before mt-1"><span class="icon-support" style="font-size:16px;margin-right:15px"></span><b class="font_follow-before">สนับสนุนเกม</b></button >
+                                        <button data-toggle="modal" data-target="#myModal" class="btnSupportDetail">
+                                            <label style="margin:0;"><p class="icon-support" style="cursor:pointer;"></p></label>
+                                            <label style="margin:0;"><p class="fontBTNDetail">สนับสนุนเกม</p></label>
+                                        </button >
                                     @else
                                         @if(Auth::user()->users_type == '1')
                                             <form action="{{ route('downloadGame') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
-                                                <button class="follow-before mt-1"><span class="icon-icon_download" style="font-size:16px;margin-right:15px"></span><b class="font_follow-before">ดาวน์โหลด</b>
+                                                <button class="btnDownloadDetail2">
+                                                    <label style="margin:0;"><p class="icon-icon_download" style="cursor: pointer;"></p></label>
+                                                    <label style="margin:0;"><p class="fontBTNDetail" >ดาวน์โหลด</p></label>
                                                     <input type="hidden" name="submit" value="submit">
                                                     <input type="hidden" name="DOWNLOAD_DATE" value="{{ date('Y-m-d H:i:s') }}">  
                                                     <input type="hidden" name="GAME_ID" value="{{ $detailGame->GAME_ID }}">
@@ -201,7 +235,9 @@
                             @else
                                 <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <button class="follow-before" ><span class="icon-follow_red" style="font-size:16px;margin-right:15px"></span><b class="font_follow-before">ติดตาม</b>
+                                    <button class="btnFollowDetail">
+                                        <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;"></p></label>
+                                        <label style="margin:0;"><p class="fontBTNDetail" >ติดตาม</p></label>
                                         <input type="hidden" name="submit" value="submit">
                                         <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
                                         <input type="hidden" name="GAME_ID" value="{{ $detailGame->GAME_ID }}">
@@ -210,22 +246,43 @@
                                     </button >
                                 </form>
                                 @if(isset($Download))
-                                    <button class="follow-after mt-1"><span class="icon-download_after" style="font-size:16px;margin-right:10px"></span><b class="font_follow-after">ดาวน์โหลดแล้ว</b></button >
+                                    <button class="btnDownloaded">
+                                        <label style="margin:0;"><p class="icon-download_after" style="cursor: pointer;"></p></label>
+                                        <label style="margin:0;"><p class="fontBTNDetail-wh" >ดาวน์โหลดแล้ว</p></label>
+                                    </button >
                                     @if($detailGame->USER_ID == Auth::user()->id)
-                                        <a href="#"><button class="follow-before mt-1"><span class="icon-update_version" style="font-size:16px;margin-right:10px"></span><b class="font_follow-before" style="font-size:0.9em;">อัพเดตเวอร์ชัน</b></button ></a>
+                                        <a href="#">
+                                            <button class="btnUpdateDetail mt-1">
+                                                <label style="margin:0;"><p class="icon-update_version" style="cursor:pointer;"></p></label>
+                                                <label style="margin:0;"><p class="fontBTNDetail">อัพเดตเวอร์ชัน</p></label>
+                                            </button >
+                                        </a>
                                     @elseif(Auth::user()->users_type == '3')
-                                        <button data-toggle="modal" data-target="#myModal" class="follow-before mt-1"><span class="icon-support" style="font-size:16px;margin-right:15px"></span><b class="font_follow-before">สนับสนุนเกม</b></button >
+                                        <button data-toggle="modal" data-target="#myModal" class="btnSupportDetail">
+                                            <label style="margin:0;"><p class="icon-support" style="cursor:pointer;"></p></label>
+                                            <label style="margin:0;"><p class="fontBTNDetail">สนับสนุนเกม</p></label>
+                                        </button >
                                     @endif
                                 @else
                                     @if($detailGame->USER_ID == Auth::user()->id)
-                                        <a href="#"><button class="follow-before mt-1"><span class="icon-update_version" style="font-size:16px;margin-right:10px"></span><b class="font_follow-before" style="font-size:0.9em;">อัพเดตเวอร์ชัน</b></button ></a>
+                                        <a href="#">
+                                            <button class="btnUpdateDetail mt-1">
+                                                <label style="margin:0;"><p class="icon-update_version" style="cursor:pointer;"></p></label>
+                                                <label style="margin:0;"><p class="fontBTNDetail">อัพเดตเวอร์ชัน</p></label>
+                                            </button >
+                                        </a>
                                     @elseif(Auth::user()->users_type == '3')
-                                        <button data-toggle="modal" data-target="#myModal" class="follow-before mt-1"><span class="icon-support" style="font-size:16px;margin-right:15px"></span><b class="font_follow-before">สนับสนุนเกม</b></button >
+                                        <button data-toggle="modal" data-target="#myModal" class="btnSupportDetail">
+                                            <label style="margin:0;"><p class="icon-support" style="cursor:pointer;"></p></label>
+                                            <label style="margin:0;"><p class="fontBTNDetail">สนับสนุนเกม</p></label>
+                                        </button >
                                     @else
                                         @if(Auth::user()->users_type == '1')
                                             <form action="{{ route('downloadGame') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
-                                                <button class="follow-before mt-1"><span class="icon-icon_download" style="font-size:16px;margin-right:15px"></span><b class="font_follow-before">ดาวน์โหลด</b>
+                                                <button class="btnDownloadDetail">
+                                                    <label style="margin:0;"><p class="icon-icon_download" style="cursor: pointer;"></p></label>
+                                                    <label style="margin:0;"><p class="fontBTNDetail" >ดาวน์โหลด</p></label>
                                                     <input type="hidden" name="submit" value="submit">
                                                     <input type="hidden" name="DOWNLOAD_DATE" value="{{ date('Y-m-d H:i:s') }}">  
                                                     <input type="hidden" name="GAME_ID" value="{{ $detailGame->GAME_ID }}">
@@ -241,52 +298,47 @@
                     </div>
                 </div>
             </div>
+            <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
         </div>
 
         <div class="row" style="background-color: #141621;">
-            <div class="col-lg-3"></div>
-            <div class="col-lg-6 pl-4">
-                <div class="font_game_name">{{ $detailGame->GAME_NAME }}</div>
-                <div class="w-100"></div>
-                <div class="rate_detail">{{ $detailGame->RATED_B_L }}•Online</div>
-                <div class="des_detail mb-3">{{ $detailGame->GAME_DESCRIPTION }}
-                </div>
+            <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
+            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6">
+                <div style="color:#ffffff;font-weight:900;"><h4 style="margin:0;">{{ $detailGame->GAME_NAME }}</h4></div>
+                <div style="color:#ffffff;font-weight:900;"><h2>{{ $detailGame->RATED_B_L }} • Online</h2></div>
+                <div style="color:#ffffff;"><p>{{ $detailGame->GAME_DESCRIPTION }}</p></div>
             </div>
-            <div class="col-lg-3"></div>
+            <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
         </div>
 
-        <div class="row grey py-3" style="background-color: #202433;">
-            <div class="col-lg-3"></div>
-            <div class="col-lg-2 pl-4">
-                <div class="dev_detail">ผู้พัฒนา</div>
-                <div class="w-100"></div>
-                <div class="dev_detail2">{{ $detailGame->name }} {{ $detailGame->surname }}</div>
+        <div class="row py-3" style="background-color: #202433;">
+            <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
+            <div class="col-sm-4 col-md-4 col-lg-2 col-xl-2">
+                <div style="color:#707070;"><p style="margin:0;">ผู้พัฒนา</p></div>
+                <div style="color:#ffffff;"><p style="margin:0;">{{ $detailGame->name }} {{ $detailGame->surname }}</p></div>
             </div>
-            <div class="col-lg-1 pl-4">
-                <div class="dev_detail">ขนาดไฟล์ </div>
-                <div class="w-100"></div>
-                <div class="dev_detail2">{{ $detailGame->GAME_SIZE }}</div>
+            <div class="col-sm-2 col-md-3 col-lg-2 col-xl-1">
+                <div style="color:#707070;"><p style="margin:0;">ขนาดไฟล์</p></div>
+                <div style="color:#ffffff;"><p style="margin:0;">{{ $detailGame->GAME_SIZE }}</p></div>
             </div>
-            <div class="col-lg-1 pl-4">
-                <div class="dev_detail">เวอร์ชัน</div>
-                <div class="w-100"></div>
-                <div class="dev_detail2">12.0.1</div>
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xl-1">
+                <div style="color:#707070;"><p style="margin:0;">เวอร์ชั่น</p></div>
+                <div style="color:#ffffff;"><p style="margin:0;">12.0.1</p></div>
             </div>
-            <div class="col-lg-2 pl-4">
-                <div class="dev_detail">วันที่เผยพร่ </div>
-                <div class="w-100"></div>
-                <div class="dev_detail2">{{ Illuminate\Support\Str::limit($detailGame->GAME_APPROVE_DATE, 10, $end='') }}</div>
+            <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                <div style="color:#707070;"><p style="margin:0;">วันที่เผยแพร่</p></div>
+                <div style="color:#ffffff;"><p style="margin:0;">{{ Illuminate\Support\Str::limit($detailGame->GAME_APPROVE_DATE, 10, $end='') }}</p></div>
             </div>
-            <div class="col-lg-1"></div>
+            <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
         </div>
     @endforeach
 
     <div class="row pt-4" style="background-color: #141621;">
-        <div class="col-lg-3"></div>
-        <div class="col-lg-6 rate_bottom">
-            <div class="row">
-                <div class="col-6 text-left pl-4">
-                    <span class="font_rate3">การจัดอันดับ</span>
+        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6" >
+            <div class="row" style="border-bottom: #d3d7da 1px solid;">
+                <div class="col-6">
+                    <h3 style="margin:0;color:#ffffff;font-weight:900;">การจัดอันดับ</h3>
                 </div>
                 @if(isset($CommentAll))
                     <?php $i = 0; ?>
@@ -301,25 +353,27 @@
                         }
                     ?>
                 @endif
-                <div class="col-6 pb-4 text-right  ">
-                    <span class="rate" >{{round($count, 1)}}/5</span>
+                <div class="col-6 text-right">
+                    <label><h6 style="color: #f6c12c;font-weight:900;margin:0;">{{round($count, 1)}}/5</h6></label>
                     @for($i=1;$i <= 5 ;$i++)
                         @if($i <= round($count, 1))
-                            <span style="font-size: 1.3em;" class="fa fa-star checked"></span>
+                            <h6 style="font-size: 1.3em;" class="fa fa-star checked"></h6>
                         @else
-                            <span style="font-size: 1.3em;" class="fa fa-star"></span>
+                            <h6 style="font-size: 1.3em;" class="fa fa-star"></h6>
                         @endif
                     @endfor
                 </div>
             </div>
         </div>
-        <div class="col-lg-3"></div>
+        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
     </div>
 
     <div class="row pt-3" style="background-color: #141621;">
-        <div class="col-lg-3"></div>
-            <div id="filters" class="filters button-group col-lg-6">
-                <button class="totalComment fontTotalComment active" onclick="filterSelection('all')"> ทั้งหมด ({{$CommentAll->count()}})</button>
+        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
+            <div id="filters" class="filters button-group col-sm-12 col-md-12 col-lg-8 col-xl-6">
+                <button class="btnTotalComment active" onclick="filterSelection('all')">
+                    <p style="margin:0;">ทั้งหมด ({{$CommentAll->count()}})</p>
+                </button>
                 <?php
                     $FI = 0;
                     $FO = 0;
@@ -341,148 +395,167 @@
                     }
                 }
                 ?>
-                <button class="Comment fontComment" onclick="filterSelection('FI')"> 5 ดาว ({{$FI}})</button>
-                <button class="Comment fontComment" onclick="filterSelection('FO')"> 4 ดาว ({{$FO}})</button>
-                <button class="Comment fontComment" onclick="filterSelection('TE')"> 3 ดาว ({{$TE}})</button>
-                <button class="Comment fontComment" onclick="filterSelection('TO')"> 2 ดาว ({{$TO}})</button>
-                <button class="Comment fontComment" onclick="filterSelection('ON')"> 1 ดาว ({{$ON}})</button>
+                <button class="btnTotalComment" onclick="filterSelection('FI')">
+                    <p style="margin:0;">5 ดาว ({{$FI}})</p>
+                </button>
+                <button class="btnTotalComment" onclick="filterSelection('FO')">
+                    <p style="margin:0;"> 4 ดาว ({{$FO}})</p>
+                </button>
+                <button class="btnTotalComment" onclick="filterSelection('TE')">
+                    <p style="margin:0;"> 3 ดาว ({{$TE}})</p>
+                </button>
+                <button class="btnTotalComment" onclick="filterSelection('TO')">
+                    <p style="margin:0;"> 2 ดาว ({{$TO}})</p>
+                </button>
+                <button class="btnTotalComment" onclick="filterSelection('ON')">
+                    <p style="margin:0;"> 1 ดาว ({{$ON}})</p>
+                </button>
             </div>
         </div>
     </div>
 
     <div class="row pt-3 " style="background-color: #141621;">
-        <div class="col-lg-3 "></div>
-        <div class="col-lg-6 commentArea pl-4">
+        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3 "></div>
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6 commentArea pl-4">
             @if(isset($CommentAll))
                 @foreach($CommentAll as $commentAll)
                     @if($commentAll->RATING == 5)
-                    <div class="row rate_bottom">
-                        <div class="filterDiv FI mt-2 rate_bottom">
+                    <div class="row" style="border-bottom: #d3d7da 1px solid;">
+                        <div class="filterDiv FI mt-2">
                             <div class="row">
-                                <div class="col-lg-12" style="margin: 0;">
+                                <div class="col-12">
                                     <img class="imgComment" src="{{ asset('home/imgProfile/'.$commentAll->GUEST_USERS_IMG) }}"/>
-                                    <label class="pt-2 commenter">{{ $commentAll->name }}.{{ $commentAll->surname }}</br>
+                                    <label class="pt-1">
+                                        <p style="color:#ffffff;font-weight:500;margin:0;">{{ $commentAll->name }} {{ $commentAll->surname }}</p>
                                         @for($i=1;$i <= 5 ;$i++)
                                             @if($i <= $commentAll->RATING)
-                                                <span style="font-size: 15px;" class="fa fa-star checked"></span>
+                                                <h4 class="fa fa-star checked"></h4>
                                             @else
-                                                <span style="font-size: 15px;" class="fa fa-star"></span>
+                                                <h4 class="fa fa-star"></h4>
                                             @endif
                                         @endfor
                                     </label>
                                 </div>
-                                <div class="row commentDetail ml-3 my-3">{{ $commentAll->COMMENT }}</div>
+                                <div class="col-12"><p style="color:#ffffff;margin:0;margin-left: 20px;">{{ $commentAll->COMMENT }}</p></div>
                             </div>
                         </div>
                     </div>
                     @elseif($commentAll->RATING == 4)
-                    <div class="row rate_bottom">
-                        <div class="filterDiv FO mt-2 rate_bottom">
+                    <div class="row" style="border-bottom: #d3d7da 1px solid;">
+                        <div class="filterDiv FO mt-2">
                             <div class="row">
-                                <div class="col-lg-12" style="margin: 0;">
+                                <div class="col-12">
                                     <img class="imgComment" src="{{ asset('home/imgProfile/'.$commentAll->GUEST_USERS_IMG) }}"/>
-                                    <label class="col-8 commenter">{{ $commentAll->name }}.{{ $commentAll->surname }}</br>
+                                    <label class="pt-1">
+                                        <p style="color:#ffffff;font-weight:500;margin:0;">{{ $commentAll->name }} {{ $commentAll->surname }}</p>
                                         @for($i=1;$i <= 5 ;$i++)
                                             @if($i <= $commentAll->RATING)
-                                                <span style="font-size: 15px;" class="fa fa-star checked"></span>
+                                                <h4 class="fa fa-star checked"></h4>
                                             @else
-                                                <span style="font-size: 15px;" class="fa fa-star"></span>
+                                                <h4 class="fa fa-star"></h4>
                                             @endif
                                         @endfor
                                     </label>
                                 </div>
-                                <div class="col-lg-12 commentDetail my-3">{{ $commentAll->COMMENT }}</div>
+                                <div class="col-12"><p style="color:#ffffff;margin:0;margin-left: 20px;">{{ $commentAll->COMMENT }}</div>
                             </div>
                         </div>
                     </div>
                     @elseif($commentAll->RATING == 3)
-                    <div class="row rate_bottom">
+                    <div class="row" style="border-bottom: #d3d7da 1px solid;">
                         <div class="filterDiv TE mt-2">
                             <div class="row">
-                                <div class="col-lg-12" style="margin: 0;">
+                                <div class="col-lg-12">
                                     <img class="imgComment" src="{{ asset('home/imgProfile/'.$commentAll->GUEST_USERS_IMG) }}"/>
-                                    <label class="commenter">{{ $commentAll->name }}.{{ $commentAll->surname }}</br>
+                                    <label class="pt-1">
+                                        <p style="color:#ffffff;font-weight:500;margin:0;">{{ $commentAll->name }} {{ $commentAll->surname }}</p>
                                         @for($i=1;$i <= 5 ;$i++)
                                             @if($i <= $commentAll->RATING)
-                                                <span style="font-size: 15px;" class="fa fa-star checked"></span>
+                                                <h4 class="fa fa-star checked"></h4>
                                             @else
-                                                <span style="font-size: 15px;" class="fa fa-star"></span>
+                                                <h4 class="fa fa-star"></h4>
                                             @endif
                                         @endfor
                                     </label>
                                 </div>
-                                <div class="col-lg-12 commentDetail my-3">{{ $commentAll->COMMENT }}</div>
+                                <div class="col-12"><p style="color:#ffffff;margin:0;margin-left: 20px;">{{ $commentAll->COMMENT }}</div>
                             </div> 
                         </div>
                     </div>
                     @elseif($commentAll->RATING == 2)
-                    <div class="row rate_bottom">
+                    <div class="row" style="border-bottom: #d3d7da 1px solid;">
                         <div class="filterDiv TO mt-2 ">
                             <div class="row">
-                                <div class="col-lg-12" style="margin: 0;">
+                                <div class="col-lg-12">
                                     <img class="imgComment" src="{{ asset('home/imgProfile/'.$commentAll->GUEST_USERS_IMG) }}"/>
-                                    <label class="commenter">{{ $commentAll->name }}.{{ $commentAll->surname }}</br>
+                                    <label class="pt-1">
+                                        <p style="color:#ffffff;font-weight:500;margin:0;">{{ $commentAll->name }} {{ $commentAll->surname }}</p>
                                         @for($i=1;$i <= 5 ;$i++)
                                             @if($i <= $commentAll->RATING)
-                                                <span style="font-size: 15px;" class="fa fa-star checked"></span>
+                                                <h4 class="fa fa-star checked"></h4>
                                             @else
-                                                <span style="font-size: 15px;" class="fa fa-star"></span>
+                                                <h4 class="fa fa-star"></h4>
                                             @endif
                                         @endfor
                                     </label>
                                 </div>
-                                <div class="col-lg-12 commentDetail my-3 ">{{ $commentAll->COMMENT }}</div>
+                                <div class="col-12"><p style="color:#ffffff;margin:0;margin-left: 20px;">{{ $commentAll->COMMENT }}</div>
                             </div>
                         </div>
                     </div>
                     @else
-                    <div class="row rate_bottom">
+                    <div class="row" style="border-bottom: #d3d7da 1px solid;">
                         <div class="filterDiv ON mt-2">
                             <div class="row">
-                                <div class="col-lg-12" style="margin: 0;">
+                                <div class="col-lg-12">
                                     <img class="imgComment" src="{{ asset('home/imgProfile/'.$commentAll->GUEST_USERS_IMG) }}"/>
-                                    <label class="commenter">{{ $commentAll->name }}.{{ $commentAll->surname }}</br>
+                                    <label class="pt-1">
+                                        <p style="color:#ffffff;font-weight:500;margin:0;">{{ $commentAll->name }} {{ $commentAll->surname }}</p>
                                         @for($i=1;$i <= 5 ;$i++)
                                             @if($i <= $commentAll->RATING)
-                                                <span style="font-size: 15px;" class="fa fa-star checked"></span>
+                                                <h4 class="fa fa-star checked"></h4>
                                             @else
-                                                <span style="font-size: 15px;" class="fa fa-star"></span>
+                                                <h4 class="fa fa-star"></h4>
                                             @endif
                                         @endfor
                                     </label> 
                                 </div>
-                            <div class="row commentDetail ml-3 my-3">{{ $commentAll->COMMENT }}</div>
+                                <div class="col-12"><p style="color:#ffffff;margin:0;margin-left: 20px;">{{ $commentAll->COMMENT }}</div>
+                            </div>
                         </div>
                     </div>
                     @endif
                 @endforeach
             @endif
         </div>
+        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3 "></div>
     </div>
     @if(isset(Auth::user()->id))
         @if(isset($Download))
             @if(isset($Comment))
                 @if(Auth::user()->users_type == 1)
                     <div class="row pt-4" style="background-color: #141621;">
-                        <div class="col-lg-3"></div>
-                        <div class="col-lg-6 ml-2 pr-4"> 
-                            <label style="color:#ffffff;">ความคิดเห็นของฉัน</label>
-                            <div class="row mt-2 rate_bottom">
-                                <div class="col-lg-12">
-                                    <img class="imgComment" src="{{ asset('home/imgProfile/'.$Comment->GUEST_USERS_IMG) }}"/>
-                                    <label class="commenter">{{ Auth::user()->name }}.{{ Auth::user()->surname }}</br>
+                        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
+                        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6"> 
+                            <div><p style="color:#ffffff;font-weight:800;">ความคิดเห็นของฉัน</p></div>
+                            <div class="row" style="border-bottom: #d3d7da 1px solid;">
+                                <div class="col-12">
+                                    <img class="imgComment2" src="{{ asset('home/imgProfile/'.$Comment->GUEST_USERS_IMG) }}"/>
+                                    <label class="pt-1">
+                                        <p style="color:#ffffff;font-weight:500;margin:0;">{{ Auth::user()->name }} {{ Auth::user()->surname }}</p>
                                         @for($i=1;$i <= 5 ;$i++)
                                             @if($i <= $Comment->RATING)
-                                                <span style="font-size: 15px;" class="fa fa-star checked"></span>
+                                                <h4 class="fa fa-star checked"></h4>
                                             @else
-                                                <span style="font-size: 15px;" class="fa fa-star"></span>
+                                                <h4 class="fa fa-star"></h4>
                                             @endif
                                         @endfor
                                     </label>
                                 </div>
-                                <div class="col-lg-12 commentDetail my-3">{{ $Comment->COMMENT }}</div>
+                                <div class="col-12 mb-2"><p style="color:#ffffff;margin:0;margin-left: 20px;">{{ $Comment->COMMENT }}</div>
                             </div>
                         </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
                     </div>
                 <!-- @elseif(Auth::user()->users_type == 2)
                     <div class="row pt-4">
@@ -529,219 +602,295 @@
                 @endif -->
             @else
                 <div class="row pt-4" style="background-color: #141621;">
-                    <div class="col-lg-3"></div>
-                    <div class="col-lg-6 ml-2 pr-4"> 
+                    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
+                    <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6"> 
                         <form action="{{ route('Comment') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="number" name="RATING" id="rating-input" min="1" max="5" class="d-none">
-                            <div class="rating" role="optgroup">
-                                <span class="fontScoreComment mr-2">ระดับคะแนน</span>
+                            <div class="rating pl-2" role="optgroup">
+                                <label><p style="color:#ffffff;margin:0;">ระดับคะแนน</p></label>
                                 <i class="fa fa-star-o rating-star" id="rating-1" data-rating="1" tabindex="0" aria-label="Rate as one out of 5 stars" role="radio"></i>
                                 <i class="fa fa-star-o rating-star" id="rating-2" data-rating="2" tabindex="0" aria-label="Rate as two out of 5 stars" role="radio"></i>
                                 <i class="fa fa-star-o rating-star" id="rating-3" data-rating="3" tabindex="0" aria-label="Rate as three out of 5 stars" role="radio"></i>
                                 <i class="fa fa-star-o rating-star" id="rating-4" data-rating="4" tabindex="0" aria-label="Rate as four out of 5 stars" role="radio"></i>
                                 <i class="fa fa-star-o rating-star" id="rating-5" data-rating="5" tabindex="0" aria-label="Rate as five out of 5 stars" role="radio"></i>
                             </div>
-                            <textarea name="COMMENT" class="newComment_textarea" rows="8" placeholder="แสดงความคิดเห็น"></textarea>
-                            <button class="btn-newComment">ตกลง
-                                <input type="hidden" name="submit" value="submit">
-                                <input type="hidden" name="COMMENT_DATE" value="{{ date('Y-m-d H:i:s') }}">
-                                <input type="hidden" name="GAME_ID" value="{{ $detailGame->GAME_ID }}">
-                                <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                                <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-                            </button>
+                            <div class="px-2">
+                                <textarea name="COMMENT" class="newComment_textarea p" rows="6" placeholder="แสดงความคิดเห็น"></textarea>
+                                <button class="btn-newComment p">ตกลง
+                                    <input type="hidden" name="submit" value="submit">
+                                    <input type="hidden" name="COMMENT_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                                    <input type="hidden" name="GAME_ID" value="{{ $detailGame->GAME_ID }}">
+                                    <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                    <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
+                                </button>
+                            </div>
                         </form>
                     </div>
-                    <div class="col-lg-3"></div>
+                    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
                 </div>
             @endif
         @endif
     @endif
 
     <div class="row pt-4" style="background-color: #141621;">
-        <div class="col-lg-3"></div>
-        <div class="col-lg-6">
-            <div class="row">
-                <div class="col-6 text-left">
-                    <span class="font_rate3">เกมใกล้เคียง</span>
+        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6">
+            <div class="row px-2">
+                <div class="col-6  text-left">
+                    <h4 style="color:#fff;font-weight:900;">เกมใกล้เคียง</h4>
                 </div>
-                <div class="col-6 text-right mt-2">
-                    <h2 style="font-family:myfont;font-size:1.5em;"><a class="game_cat" href="{{ route('gameCategory') }}">ดูทั้งหมด </a><img style="padding-top:0;" src="{{asset('icon/next1.svg') }}" /></h2>
+                <div class="col-6 text-right">
+                    <a class=" mr-4" href="{{ route('gameCategory') }}">
+                        <label><h4 class="fontGameCat">ดูทั้งหมด </h4></label> 
+                        <label><img class="pViewmore" src="{{asset('icon/next1.svg') }}" /></label>
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3"></div>
+        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
     </div>
 
-    <div class="container-fluid pb-3" style="background-color: #141621;">
-        <div class="owl-carousel" id="owl-demo">
-            <div class="item imgteaser">
+    <div class="container-fluid pb-3 " style="background-color: #141621;">
+        <div class="owl-carousel" id="owl-demo" style="background-color: #141621;">
+            <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game.png') }}" />
                     <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
                     <span class="desc">
-                        <button class="btn_follow2 text-left" ><span class="icon-follow_wh " style="font-size:1em; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button >
-                        <!-- <button class="btn_follow"><span class="icon-follow_red" style="font-size:1em;"></span><b class="font_follow2">ติดตาม</b></button > -->
-                        <img class="rate_pic_cat" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name_cat">
-                            <b style="font-size: 1em;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 1em;color: #fff;">Discrimination • Online</div>
+                            <!-- <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
+                                <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
+                            </button> -->
+                            <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                                <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
+                            </button >
+                        <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
+                            <label style="margin:0;"><p style="margin:0;">Discrimination • Online</p></label>
                         </div>
-                        <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
-                        <!-- <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample"><img id="downImg1" src="{{asset('icon/down1.svg')}}"></button> -->
                     </span>
                 </a>
             </div>
-            <div class="item imgteaser">
+
+            <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game2.png') }}" />
                     <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
                     <span class="desc">
-                        <!-- <button class="btn_follow2 text-left" ><span class="icon-follow_wh " style="font-size:1em; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:1em;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic_cat" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name_cat">
-                            <b style="font-size: 1em;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 1em;color: #fff;">Discrimination • Online</div>
+                            <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
+                                <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
+                            </button>
+                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                                <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
+                            </button > -->
+                        <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
+                            <label style="margin:0;"><p style="margin:0;">Discrimination • Online</p></label>
                         </div>
-                        <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
-                        <!-- <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample"><img id="downImg1" src="{{asset('icon/down1.svg')}}"></button> -->
                     </span>
                 </a>
             </div>
-            <div class="item imgteaser">
+
+            <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game3.png') }}" />
                     <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
                     <span class="desc">
-                        <!-- <button class="btn_follow2 text-left" ><span class="icon-follow_wh " style="font-size:1em; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:1em;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic_cat" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name_cat">
-                            <b style="font-size: 1em;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 1em;color: #fff;">Discrimination • Online</div>
+                            <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
+                                <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
+                            </button>
+                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                                <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
+                            </button > -->
+                        <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
+                            <label style="margin:0;"><p style="margin:0;">Discrimination • Online</p></label>
                         </div>
-                        <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
-                        <!-- <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample"><img id="downImg1" src="{{asset('icon/down1.svg')}}"></button> -->
                     </span>
                 </a>
             </div>
-            <div class="item imgteaser">
+
+            <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game4.png') }}" />
                     <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
                     <span class="desc">
-                        <!-- <button class="btn_follow2 text-left" ><span class="icon-follow_wh " style="font-size:1em; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:1em;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic_cat" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name_cat">
-                            <b style="font-size: 1em;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 1em;color: #fff;">Discrimination • Online</div>
+                            <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
+                                <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
+                            </button>
+                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                                <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
+                            </button > -->
+                        <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
+                            <label style="margin:0;"><p style="margin:0;">Discrimination • Online</p></label>
                         </div>
-                        <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
-                        <!-- <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample"><img id="downImg1" src="{{asset('icon/down1.svg')}}"></button> -->
                     </span>
                 </a>
             </div>
-            <div class="item imgteaser">
+
+            <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game5.png') }}" />
                     <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
                     <span class="desc">
-                        <!-- <button class="btn_follow2 text-left" ><span class="icon-follow_wh " style="font-size:1em; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:1em;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic_cat" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name_cat">
-                            <b style="font-size: 1em;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 1em;color: #fff;">Discrimination • Online</div>
+                            <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
+                                <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
+                            </button>
+                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                                <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
+                            </button > -->
+                        <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
+                            <label style="margin:0;"><p style="margin:0;">Discrimination • Online</p></label>
                         </div>
-                        <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
-                        <!-- <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample"><img id="downImg1" src="{{asset('icon/down1.svg')}}"></button> -->
                     </span>
                 </a>
             </div>
-            <div class="item imgteaser">
+
+            <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game6.png') }}" />
                     <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
                     <span class="desc">
-                        <!-- <button class="btn_follow2 text-left" ><span class="icon-follow_wh " style="font-size:1em; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:1em;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic_cat" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name_cat">
-                            <b style="font-size: 1em;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 1em;color: #fff;">Discrimination • Online</div>
+                            <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
+                                <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
+                            </button>
+                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                                <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
+                            </button > -->
+                        <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
+                            <label style="margin:0;"><p style="margin:0;">Discrimination • Online</p></label>
                         </div>
-                        <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
-                        <!-- <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample"><img id="downImg1" src="{{asset('icon/down1.svg')}}"></button> -->
                     </span>
                 </a>
             </div>
-            <div class="item imgteaser">
+
+            <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game7.png') }}" />
                     <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
                     <span class="desc">
-                        <!-- <button class="btn_follow2 text-left" ><span class="icon-follow_wh " style="font-size:1em; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:1em;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic_cat" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name_cat">
-                            <b style="font-size: 1em;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 1em;color: #fff;">Discrimination • Online</div>
+                            <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
+                                <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
+                            </button>
+                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                                <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
+                            </button > -->
+                        <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
+                            <label style="margin:0;"><p style="margin:0;">Discrimination • Online</p></label>
                         </div>
-                        <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
-                        <!-- <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample"><img id="downImg1" src="{{asset('icon/down1.svg')}}"></button> -->
                     </span>
                 </a>
             </div>
-            <div class="item imgteaser">
+
+            <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game8.png') }}" />
                     <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
                     <span class="desc">
-                        <!-- <button class="btn_follow2 text-left" ><span class="icon-follow_wh " style="font-size:1em; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:1em;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic_cat" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name_cat">
-                            <b style="font-size: 1em;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 1em;color: #fff;">Discrimination • Online</div>
+                            <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
+                                <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
+                            </button>
+                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                                <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
+                            </button > -->
+                        <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
+                            <label style="margin:0;"><p style="margin:0;">Discrimination • Online</p></label>
                         </div>
-                        <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
-                        <!-- <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample"><img id="downImg1" src="{{asset('icon/down1.svg')}}"></button> -->
                     </span>
                 </a>
             </div>
-            <div class="item imgteaser">
+
+            <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game9.png') }}" />
                     <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
                     <span class="desc">
-                        <!-- <button class="btn_follow2 text-left" ><span class="icon-follow_wh " style="font-size:1em; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:1em;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic_cat" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name_cat">
-                            <b style="font-size: 1em;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 1em;color: #fff;">Discrimination • Online</div>
+                            <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
+                                <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
+                            </button>
+                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                                <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
+                            </button > -->
+                        <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
+                            <label style="margin:0;"><p style="margin:0;">Discrimination • Online</p></label>
                         </div>
-                        <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
-                        <!-- <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample"><img id="downImg1" src="{{asset('icon/down1.svg')}}"></button> -->
                     </span>
                 </a>
             </div>
-            <div class="item imgteaser">
+
+            <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game10.png') }}" />
                     <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
                     <span class="desc">
-                        <!-- <button class="btn_follow2 text-left" ><span class="icon-follow_wh " style="font-size:1em; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                        <button class="btn_follow"><span class="icon-follow_red" style="font-size:1em;"></span><b class="font_follow2">ติดตาม</b></button >
-                        <img class="rate_pic_cat" style="width: 20%;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name_cat">
-                            <b style="font-size: 1em;color: #fff;">Maneater</b>
-                            <div class="mt-1" style="font-size: 1em;color: #fff;">Discrimination • Online</div>
+                            <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
+                                <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
+                            </button>
+                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                                <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
+                            </button > -->
+                        <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
+                            <label style="margin:0;"><p style="margin:0;">Discrimination • Online</p></label>
                         </div>
-                        <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
-                        <!-- <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample"><img id="downImg1" src="{{asset('icon/down1.svg')}}"></button> -->
+                    </span>
+                </a>
+            </div>
+
+            <div class="item imgteaser" style="background-color: #141621;">
+                <a>
+                    <img class="game_4" src="{{asset('section/picture_game/game11.png') }}" />
+                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <span class="desc">
+                            <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
+                                <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
+                            </button>
+                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                                <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
+                                <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
+                            </button > -->
+                        <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
+                        <div class="game_name">
+                            <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
+                            <label style="margin:0;"><p style="margin:0;">Discrimination • Online</p></label>
+                        </div>
                     </span>
                 </a>
             </div>
@@ -753,67 +902,95 @@
             
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" style="font-family:myfont1;font-weight:900;font-size:1.2em;">กรุณาเลือกช่วงเวลาในการสนับสนุน</h4>
-                    <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
+                    <h1 class="modal-title" style="font-weight:900;padding: 10px 0 0 0;">กรุณาเลือกช่วงเวลาในการสนับสนุน</h1>
+                    <button type="button" class="close btn-closeModal" data-dismiss="modal">
+                        <p class="icon-close_modal" style="padding: 10px 0 0 0;"></p>
+                    </button>
                 </div>
                 <form action="{{route('ListGame')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="containner-fluid">
                             <div class="row">
-                                <div class="col-lg-9">
-                                    <label class="containerhover1">
+                                <div class="col-9">
+                                    <label>
                                         <img class="img-modal" src="{{ asset('section/File_game/Profile_game/'.$detailGame->GAME_IMG_PROFILE) }}" />
-                                    </label> 
-                                    <label class="DetailGamePackage"> <label class="pt-2" style="color:#000;">{{$detailGame->GAME_NAME}}</label><br> {{$detailGame->RATED_B_L}} • Online <br> เวอร์ชั่น 1.03</label>
+                                    </label>
+                                    <label class="py-3" style="padding-left:100px;">
+                                        <p style="color:#000;font-weight:800;margin:0;">{{$detailGame->GAME_NAME}}</p>
+                                        <p style="color:#a8a8a8;line-height:1.5;">{{$detailGame->RATED_B_L}} • Online <br> เวอร์ชั่น 1.03 </p>
+                                    </label>
                                 </div>
-                                <div class="col-lg-3">
-                                    <span class="fontPriceAds1" style="line-height: 1.2; display:block;text-align:right;font-size:1em;">
-                                        <label class="py-3">
-                                            <b class="font-price" style="font-size:1.5em;">฿{{$detailGame->GAME_PRICE}}</b></br>
-                                            @if($detailGame->GAME_DISCOUNT != null)
-                                                <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿400 </b> (-{{$detailGame->GAME_DISCOUNT}}%)
-                                            @endif
-                                        </label>
-                                        <input type="hidden" name="game_id" value="{{$detailGame->GAME_ID}}">
-                                        <input type="hidden" name="game_price" value="{{$detailGame->GAME_PRICE}}">
-                                    </span>
+                                <div class="col-3 text-right py-3">
+                                    <h4 style="color: #ce0005;margin:0;font-weight:900;">฿{{$detailGame->GAME_PRICE}}</h4>
+                                    <label><p class="mr-2" style="color:#b2b2b2;text-decoration:line-through;">฿400 </p></label>
+                                    <label><p style="display:block;text-align:right;font-weight:500;">(-{{$detailGame->GAME_DISCOUNT}}%)</p></label>
                                 </div>
-                                <div class="col-12">
-                                    <input type="text" class="form-control input-bank" placeholder="ลิงค์โฆษณา" require></input>
+                            </div>
+                            <input type="hidden" name="game_id" value="{{$detailGame->GAME_ID}}">
+                            <input type="hidden" name="game_price" value="{{$detailGame->GAME_PRICE}}">
+
+                            <div class="row">
+                                <div class="col-6" style="padding-right:0;">
+                                    <select class="MySelect p ">
+                                        <option value="">เลือกโฆษณา</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                    </select>
                                 </div>
+                                <div class="col-6">
+                                    <select class="MySelect p">
+                                        <option value="">ซื้อรายเกม</option>
+                                        <option value="">แพ็กเกจ 1</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                        <option value="">ดึงข้อมูลจาก DB</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="col-12 " style="padding-right:0;">
                                     <label>
-                                        <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">เริ่มต้น</label></br>
-                                        <input style="font-family:myfont1;font-size:0.9em;width:auto;padding-left:5px;height:42px;" type="datetime-local" id="default-picker" name="dateStart" value="{{old('dateStart')}}" class="timepicker" />
+                                        <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">เริ่มต้น</label></br>
+                                        <input class="MySelect p" type="datetime-local" id="default-picker" name="dateStart" value="{{old('dateStart')}}" class="timepicker" />
                                     </label>
                                     <label>
-                                        <label class="pl-1" style="font-family:myfont1;font-weight:900;font-size:0.8em;margin:0;">สิ้นสุด</label></br>
-                                        <input style="font-family:myfont1;font-size:0.9em;width:auto;padding-left:5px;height:42px;" type="datetime-local" id="default-picker" name="dateDeadline" value="{{old('dateDeadline')}}" class="timepicker" />
+                                        <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">สิ้นสุด</label></br>
+                                        <input class="MySelect p" type="datetime-local" id="default-picker" name="dateDeadline" value="{{old('dateDeadline')}}" class="timepicker" />
                                     </label>
-                                    <label class="ml-2">
-                                        <label style="font-family:myfont1;font-size:0.8em;margin:0;font-weight:900;">จำนวนรอบการโฆษณา</label>
+                                    <label>
+                                    <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">จำนวนรอบการโฆษณา</label></br>
                                         <div class="quantity-block">
                                             <label class="quantity-arrow-minus"> - </label>
-                                            <input class="quantity-num" style="font-size:0.9em;width:30%;" type="number" value="10" min="10" disabled />
+                                            <input class="quantity-num" style="font-size:0.8em;width:30%;" type="number" value="10" min="10" disabled />
                                             <label class="quantity-arrow-plus"> + </label>
                                         </div>
                                     </label>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="row rate_top mx-0">
-                        <div class="col-6 text-left my-2">
-                            <button type="button" class="btn-cancal" data-dismiss="modal">ยกเลิก</button>
-                        </div>  
-                        <div class="col-6 text-right my-2">
-                            <!-- <button name="submit" value="submit" class="btn-submit" data-dismiss="modal" data-toggle="modal" data-target="#successModal">ยืนยัน</button> -->
-                            <button name="submit" value="submit" class="btn-submit">ยืนยัน
-                                <input type="hidden" name="numberAdvt" id="numberAdvt">
-                            </button>
-                        </div>  
+                            <div class="row pt-3">
+                                <div class="col-sm-3 col-md-3 col-lg-2 col-lg-2">
+                                    <button type="button" class="btn-cancal" data-dismiss="modal">
+                                        <p style="margin:0;">ยกเลิก</p>
+                                    </button>
+                                </div>  
+                                <div class="col-sm-6 col-md-6 col-lg-8 col-lg-8"></div>
+                                <div class="col-sm-3 col-md-3 col-lg-2 col-lg-2">
+                                    <button type="button" class="btn-submit" data-dismiss="modal" data-toggle="modal" data-target="#successModal">
+                                        <p style="margin:0;">ยืนยัน</p>
+                                    </button>
+                                    <button name="submit" value="submit" class="btn-submit">ยืนยัน
+                                        <input type="hidden" name="numberAdvt" id="numberAdvt">
+                                    </button>
+                                </div>  
+                            </div>
+
+                        </div>
                     </div>
                 </form>
             </div>
@@ -823,14 +1000,19 @@
     <div class="modal fade mymodal" id="successModal" role="dialog">
         <div class="modal-dialog modal-sm modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
-                </div>
-
                 <div class="modal-body text-center">
-                    <img style="width:30%;" src="{{ asset('icon/correct-green.svg')}}"> <br>
-                    <label style="font-family:myfont1;font-weight:800;font-size:1em;">ทำรายการสำเร็จ</label> <br>
-                    <a class="linkAd" href="{{ route('SponShoppingCart') }}"><label class="selectAll px-5 py-2" style="font-family:myfont1;font-size:0.8em;cursor:pointer;">ดูตระกร้าสินค้า</label></a>
+                    <div class="row mb-3">
+                        <div class="col-12 text-right">
+                            <button type="button" class="close btn-closeModal" data-dismiss="modal">
+                                <p class="icon-close_modal" style="padding: 10px 0 0 0;margin:0;"></p>
+                            </button>
+                        </div>
+                    </div>
+                    <img style="width:50px;" src="{{ asset('icon/correct-green.svg')}}">
+                    <p style="font-weight:800;margin: 10px 0 10px 0">ทำรายการสำเร็จ</p>
+                    <a class="linkAd" href="{{ route('SponShoppingCart') }}">
+                        <p class="btnGrey" style="cursor:pointer;padding:10px">ดูตระกร้าสินค้า</p>
+                    </a>
                 </div>
             </div>
         </div>
@@ -863,6 +1045,7 @@
 @endsection
 
 @section('script')
+
 <script>
     $(document).ready(function() {
     
@@ -873,69 +1056,35 @@
             navText : ["<i class='icon-prev'></i>","<i class='icon-next'></i>"],
             responsiveClass:true,
             responsive:{
-                0:{
-                    items:2,
-                    nav:false
+                576:{
+                items:2,
+                nav:false
                 },
-                600:{
-                    items:3,
-                    nav:true
+                768:{
+                items:3,
+                nav:false
                 },
-                730:{
-                    items:3.3,
-                    nav:true
-                },
-                980:{
-                    items:4.3,
-                    nav:true
-                },
-                1000:{
-                    items:5,
-                    nav:true,
-                    loop:false
+                992:{
+                items:4,
+                nav:true
                 },
                 1280:{
-                    items:6,
-                    nav:true,
-                    loop:false
+                items:5,
+                nav:true
                 },
-                1600:{
-                    items:7,
-                    nav:true,
-                    loop:false
-                },
-                1680 :{
-                    items:7.3,
-                    nav:true,
-                    loop:false
+                1360:{
+                items:6,
+                nav:true
                 },
                 1920:{
-                    items:8.4,
-                    nav:true,
-                    loop:false
+                items:8,
+                nav:true
                 }
             }
         })
     });
 </script>
 
-<script>
-    $(document).ready(function() {
- 
- $("#owl-demo3").owlCarousel({
-     navigation : true, // Show next and prev buttons
-     slideSpeed : 300,
-     paginationSpeed : 400,
-     singleItem:true
-     // "singleItem:true" is a shortcut for:
-     // items : 1, 
-     // itemsDesktop : false,
-     // itemsDesktopSmall : false,
-     // itemsTablet: false,
-     // itemsMobile : false
- });
-});
-</script>
 
 <script>
     $(document).ready(function() {

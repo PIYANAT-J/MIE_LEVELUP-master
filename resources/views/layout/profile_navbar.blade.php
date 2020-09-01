@@ -21,7 +21,8 @@
         <link rel="stylesheet" href="{{ asset('dist/css/level-up.css') }}">
         <link rel="stylesheet" href="{{ asset('home/font/font.css') }}">
         <link rel="stylesheet" href="{{ asset('icon/font_lvp.css') }}">
-        
+        <link rel="stylesheet" href="{{ asset('drawer/dist/css/bootstrap-drawer.css') }}">
+        <link rel="stylesheet" href="{{ asset('drawer/dist/css/bootstrap-drawer.min.css') }}">
         @yield('style')
     </head>
 
@@ -90,7 +91,7 @@
                                     @endif
                                 <li class="has-children">    
                                     <a  class="nav-link mr-3" style="padding-left:0;">
-                                        <h1 class="font_name">{{ Auth::user()->name }}.{{ Auth::user()->surname }}</h1>
+                                        <h1 class="font_name">{{ Auth::user()->name }} {{ Auth::user()->surname }}</h1>
                                     </a>
                                     <ul class="dropdown">
                                         <li class="nav-item">
@@ -119,12 +120,170 @@
 
                     <div class="col-sm-8 col-md-8 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"></div>
                     <div class="col-sm-2 col-md-1 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">
-                        <a href="#" class="site-menu-toggle js-menu-toggle text-center">
-                            <span class="icon-menu h1 menu1 mr-2"></span>
+                        <!-- <a  class="site-menu-toggle js-menu-toggle text-center">
+                            <span class="icon-menu h1 menu1 mr-2" onclick="openTab('navbar');"></span>
+                        </a> -->
+                        <a  class="site-menu-toggle js-menu-toggle text-center">
+                            <span class="icon-menu h1 menu1 mr-2" data-toggle="drawer" data-target="#drawer-1"></span>
                         </a>
                     </div>
                 </div>
             </header> 
+
+            <!-- <div id="navbar" class="containerNavbar" style="background:#000;position:fixed;">
+                <span onclick="this.parentElement.style.display='none'" class="pCloseNavbar">
+                    <img style="width:15px;" src="{{asset('icon/close-wh.svg')}}" >
+                </span>
+                
+                <label class="pNavMobile">
+                    <div>
+                        <label class="text-center">
+                            <img class="navbar-pic" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
+                        </label>
+                        <label style="padding: 0 0 0 60px">
+                            <h1 style="color:#ffffff;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</br>สถานะ : ผู้ใช้ทั่วไป</h1>
+                            <h5 style="color:#ffffff;font-size:10px">เป็นสมาชิก :{{ Auth::user()->created_at }}</h5>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label style="margin:0;">
+                            <h1 style="color:#ffffff;">พอยท์</h1>
+                        </label>
+                        <label style="float: right;margin:0;">
+                            <h1 style="color: #ffffff;margin:0;padding:5px 0 0 0;">1000000
+                            <i class="icon-Icon_Point"></i></h1>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label style="margin:0;">
+                            <h1 style="color:#ffffff;">เหรียญ</h1>
+                        </label>
+                        <label style="float: right;margin:0;padding:5px 0 0 0;">
+                            <h1 style="color: #ffffff;margin:0;">100
+                            <i class="icon-Icon_Coin"></i></h1>
+                        </label>
+                    </div>
+
+                    <a href="{{ url('/') }}"><h1 style="color:#ffffff;">หน้าแรก</h1></a>
+                    <a href="{{ route('gameCategory') }}"><h1 style="color:#ffffff;">หมวดหมู่</h1></a>
+                    <a href="{{ route('FollowMe') }}"><h1 style="color:#ffffff;">การติดตามของฉัน</h1></a>
+                    <a href="{{ route('Avatar') }}"><h1 style="color:#ffffff;">ตัวละครของฉัน(Avatar)</h1></a>
+                    <a href="{{ route('UserProfile') }}"><h1 style="color:#ffffff;">ข้อมูลส่วนตัว</h1></a>
+                    <a href="{{ route('UserKyc') }}">
+                        <label style="margin:0;"><h1 style="color:#ffffff;">ยืนยันตัวตน</h1></label>
+                        @if($userKyc->KYC_STATUS == null)
+                            <label style="float: right;margin:0;padding:5px 0 0 0;">
+                                <h1 style="color: #ffd62;">กรุณายืนยันตัวตน</h1>
+                            </label>
+                        @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
+                            <label style="float: right;margin:0;padding:5px 0 0 0;">
+                                <h1 style="color: #fc8800;">รอการตรวจสอบ</h1>
+                            </label>
+                        @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
+                            <label style="float: right;margin:0;padding:5px 0 0 0;">
+                                <h1 style="color: #23c197;">ยืนยันตัวตนแล้ว</h1>
+                            </label>
+                        @else
+                            <label style="float: right;margin:0;padding:5px 0 0 0;">
+                                <h1 style="color: #ce0005;">ไม่ผ่านการอนุมัติ</h1>
+                            </label>
+                        @endif
+                    </a>
+                    <a href="{{ route('UserShelf') }}"><h1 style="color:#ffffff;">ตู้เกม (เกมเชล)</h1></a>
+                    <a href="{{ route('UserHistory') }}"><h1 style="color:#ffffff;">ประวัติพอยด์</h1></a>
+                    <a href="{{ route('UserRank') }}"><h1 style="color:#ffffff;">อันดับผู้ใช้</h1></a>
+                    <a href="{{ route('UserTopup') }}"><h1 style="color:#ffffff;">เติมเงิน</h1></a>
+                    <a href="/user_change_password"><h1 style="color:#ffffff;">เปลี่ยนรหัสผ่าน</h1></a>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <h1 style="color:#ffffff;">{{ __('ออกจากระบบ') }}</h1>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </label>
+            </div> -->
+
+                <!-- Drawer -->
+                <div class="drawer drawer-right slide" tabindex="-1" role="dialog" aria-labelledby="drawer-1-title" aria-hidden="true" id="drawer-1">
+                    <div class="drawer-content drawer-content-scrollable" role="document">
+                        <div class="drawer-body" style="background:#000"  aria-label="Close">
+                            <span class="pCloseNavbar" data-dismiss="drawer">
+                                <img style="width:15px;" src="{{asset('icon/close-wh.svg')}}" >
+                            </span>
+
+                            <label class="pNavMobile">
+                                <div>
+                                    <label class="text-center">
+                                        <img class="navbar-pic" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
+                                    </label>
+                                    <label style="padding: 0 0 0 60px">
+                                        <h1 style="color:#ffffff;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</br>สถานะ : ผู้ใช้ทั่วไป</h1>
+                                        <h5 style="color:#ffffff;font-size:12px">เป็นสมาชิก :{{ Auth::user()->created_at }}</h5>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label style="margin:0;">
+                                        <h1 style="color:#ffffff;">พอยท์</h1>
+                                    </label>
+                                    <label style="float: right;margin:0;">
+                                        <h1 style="color: #ffffff;margin:0;padding:5px 0 0 0;">1000000
+                                        <i class="icon-Icon_Point"></i></h1>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label style="margin:0;">
+                                        <h1 style="color:#ffffff;">เหรียญ</h1>
+                                    </label>
+                                    <label style="float: right;margin:0;padding:5px 0 0 0;">
+                                        <h1 style="color: #ffffff;margin:0;">100
+                                        <i class="icon-Icon_Coin"></i></h1>
+                                    </label>
+                                </div>
+
+                                <a href="{{ url('/') }}"><h1 class="navbarMobile">หน้าแรก</h1></a>
+                                <a href="{{ route('gameCategory') }}"><h1 class="navbarMobile">หมวดหมู่</h1></a>
+                                <a href="{{ route('FollowMe') }}"><h1 class="navbarMobile">การติดตามของฉัน</h1></a>
+                                <a href="{{ route('Avatar') }}"><h1 class="navbarMobile">ตัวละครของฉัน(Avatar)</h1></a>
+                                <a href="{{ route('UserProfile') }}"><h1 class="navbarMobile">ข้อมูลส่วนตัว</h1></a>
+                                <a href="{{ route('UserKyc') }}">
+                                    <label style="margin:0;"><h1 class="navbarMobile">ยืนยันตัวตน</h1></label>
+                                    @if($userKyc->KYC_STATUS == null)
+                                        <label style="float: right;margin:0;padding:5px 0 0 0;">
+                                            <h1 style="color: #ffd62;">กรุณายืนยันตัวตน</h1>
+                                        </label>
+                                    @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
+                                        <label style="float: right;margin:0;padding:5px 0 0 0;">
+                                            <h1 style="color: #fc8800;">รอการตรวจสอบ</h1>
+                                        </label>
+                                    @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
+                                        <label style="float: right;margin:0;padding:5px 0 0 0;">
+                                            <h1 style="color: #23c197;">ยืนยันตัวตนแล้ว</h1>
+                                        </label>
+                                    @else
+                                        <label style="float: right;margin:0;padding:5px 0 0 0;">
+                                            <h1 style="color: #ce0005;">ไม่ผ่านการอนุมัติ</h1>
+                                        </label>
+                                    @endif
+                                </a>
+                                <a href="{{ route('UserShelf') }}"><h1 class="navbarMobile">ตู้เกม (เกมเชล)</h1></a>
+                                <a href="{{ route('UserHistory') }}"><h1 class="navbarMobile">ประวัติพอยด์</h1></a>
+                                <a href="{{ route('UserRank') }}"><h1 class="navbarMobile">อันดับผู้ใช้</h1></a>
+                                <a href="{{ route('UserTopup') }}"><h1 class="navbarMobile">เติมเงิน</h1></a>
+                                <a href="/user_change_password"><h1 class="navbarMobile">เปลี่ยนรหัสผ่าน</h1></a>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <h1 class="navbarMobile">{{ __('ออกจากระบบ') }}</h1>
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </label>
+                        </div>
+                    </div>
+                </div>
             
             @yield('content')
             
@@ -203,7 +362,19 @@
         <script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
         <script src="{{ asset('dist/js/main.js') }}"></script>
         <script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
-        <script src="{{ asset('dist/moment/dist/moment.js') }}"></script>
+        <script src="{{ asset('drawer/dist/js/bootstrap-drawer.js') }}"></script>
+        <script src="{{ asset('drawer/dist/js/bootstrap-drawer.min.js') }}"></script>
         @yield('script')
+
+        <!-- <script>
+            function openTab(tabName) {
+            var i, x;
+            x = document.getElementsByClassName("containerNavbar");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+            }
+        </script> -->
     </body>
 </html>

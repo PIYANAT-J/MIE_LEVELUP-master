@@ -64,7 +64,9 @@
                                 @guest
                                 <img style="width:20px;" class="mr-1 " src="{{asset('/icon/sign_in_wh.svg') }}">
                                 <label >
-                                    <a href="{{ route('login-levelUp') }}" style="padding:0;"><h1 class="fontSignIn" >{{ __('เข้าสู่ระบบ') }}</h1></a>
+                                    <a href="{{ route('login-levelUp') }}" style="padding:0;">
+                                        <h1 class="fontSignIn" >{{ __('เข้าสู่ระบบ') }}</h1>
+                                    </a>
                                 </label>
                                 <label style="color:#fff;"><a class="text2 d-none d-lg-block d-xl-block"><h1>/</h1></a></label>
                                     @if (Route::has('register'))

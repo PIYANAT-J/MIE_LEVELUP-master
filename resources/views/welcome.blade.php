@@ -1,44 +1,5 @@
 @extends('layout.app')
 @section('headerContent')
-    <!-- <div class="slide-one-item home-slider owl-carousel">
-        <div class="site-blocks-cover overlay" style="background-image: url(home/images/pic.png);" data-aos="fade" id="home-section">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class=" col-md-8 mt-lg-5text-left">
-                        <img class="text-uppercase  img_logo2" src="{{asset('home/images/logo.png') }}" data-aos="fade-up">
-                        <h1 class="text-uppercase mb-1 text2" style="font-family:myfont; color:white; font-size: 30px;" data-aos="fade-up">RO ตัวใหม่ล่าสุดที่คราวนี้มาในรูปแบบ 3D MMORPG แถมยังได้ลิขสิทธิ์แท้จาก Gravity มาอีกด้วย</h1>
-                        <div data-aos="fade-up" data-aos-delay="100">
-                            <a href="#" class="btn smoothscroll button3"><span class="icon-icon_download"></span><b style="font-family:myfont;" class="download">ดาวน์โหลด</b></a>
-                            <a href="#" class="btn smoothscroll button10" style=" color: #fff;"><b style="font-family:myfont;" class="details">รายละเอียด</b></a>
-                        </div>
-                    </div>  
-                </div>
-            </div>
-            <a href="#about-section" class="mouse smoothscroll">
-                <span class="mouse-icon button4">
-                    <span class="mouse-wheel"></span>
-                </span>
-            </a>
-        </div>
-        <div class="site-blocks-cover overlay" style="background-image: url('home/images/slide_2.jpg');" data-aos="fade" id="home-section">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-md-8 mt-lg-5 text-center">
-                        <h1 class="text-uppercase mb-5" data-aos="fade-up">I'm Creative One Page Template by Colorlib</h1>
-                        <div data-aos="fade-up" data-aos-delay="100">
-                            <a href="#" class="btn smoothscroll button3"><span class="icon-icon_download"></span><b style="font-family:myfont;" class="download">ดาวน์โหลด</b></a>
-                            <a href="#" class="btn smoothscroll button10" style=" color: #fff;"><b style="font-family:myfont;" class="details">รายละเอียด</b></a>
-                        </div>
-                    </div> 
-                </div>
-            </div>
-            <a href="#about-section" class="mouse smoothscroll">
-                <span class="mouse-icon button4">
-                    <span class="mouse-wheel"></span>
-                </span>
-            </a>
-        </div>
-    </div> -->
     
     <div class="slide-one-item home-slider owl-carousel" style="background-color: #141621;">
         <div class="site-blocks-cover overlay" style="background-image: url(home/images/pic.png);" data-aos="fade" id="home-section">

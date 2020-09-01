@@ -35,7 +35,7 @@
             <div class="center-div text-center">
                 <img style="width:25%;" src="{{asset('home/logo/logo_lvp.svg') }}" />
                 <img class="my-3" style="max-width:100%;" src="{{asset('home/images/img_login.svg') }}" />
-                <h6 style="color:#fff">ยินดีต้อนรับ , Level Up</h6>
+                <h6 style="color:#fff;font-weight:800;">ยินดีต้อนรับ , Level Up</h6>
             </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 bgLoginwh">
@@ -70,7 +70,7 @@
                                 <div class="col-12">
                                     <label class="bgInput field-wrap my-2">
                                         <label><p class="fontHeadInput">อีเมลผู้ใช้งาน</p></label><br>
-                                        <input type="email" name="email" class="input-login p ml-2 @error('email') is-invalid @enderror"  required autocomplete="email">
+                                        <input type="email" name="email" class="input1 p ml-2 @error('email') is-invalid @enderror"  required autocomplete="email">
                                     </label>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@
                                     <div class="col-12">
                                         <label class="bgInput field-wrap">
                                             <label><p class="fontHeadInput">รหัสผ่าน</p></label><br>
-                                            <input name="password" type='password' class="input-login p ml-2 @error('password') is-invalid @enderror" required autocomplete="current-password">
+                                            <input name="password" type='password' class="input1 p ml-2 @error('password') is-invalid @enderror" required autocomplete="current-password">
                                         </label>
                                     </div>
                                 </div>
