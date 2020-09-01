@@ -457,7 +457,7 @@
                             <button class="btn-cancel">ยกเลิก</button>
                         </div>
                         <div class="col-lg-4"></div>
-                        <div class="col-lg-4 ">
+                        <div class="col-lg-4 text-right">
                             <button class="btn-submit" name="submit" value="submit">ยืนยัน</button>
                             <input type="hidden" name="key" value="{{$key}}">
                             <input type="hidden" name="package_id" value="{{$package->package_id}}">

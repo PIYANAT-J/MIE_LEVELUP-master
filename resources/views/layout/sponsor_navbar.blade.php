@@ -81,7 +81,7 @@
                                 <li class="labelWithImg">
                                     <a href="{{ route('SponShoppingCart') }}">
                                         <img style="width:2em" src="{{asset('icon/shopping-cart.png') }}" />
-                                        <span class="font-shop">3</span>
+                                        <span class="font-shop">{{count($countCart)}}</span>
                                     </a>
                                 </li>
                                 

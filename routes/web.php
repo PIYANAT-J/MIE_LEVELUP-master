@@ -30,18 +30,9 @@ Route::view('/confirm', 'auth.passwords.confirm');
 
 Route::post('/dev_profile/GameImg', 'GameController@saveGameProfile')->name('GameImg');
 
-// Route::get('/spon_profile', 'UploadImageProfile@indexSpon')->name('sponProfile');
-// Route::get('/sponUpdate_profile', 'UploadImageProfile@updateSpon')->name('SponUpDate');
-
-// Route::get('/change_password', function () {
-//     return view('change_password');
-// });
-
-// Route::get('/userKyc', 'KycController@indexUserKyc')->name('userKyc');
-// Route::get('/devKyc', 'KycController@indexDevKyc')->name('devKyc');
 Route::get('/sponKyc', 'KycController@indexSponKyc')->name('sponKyc');
 
-Route::get('/detail-{id}', 'GameController@gameDetail')->name('GameDetail');
+Route::get('/detail/{id}', 'GameController@gameDetail')->name('GameDetail');
 Route::post('/detail/download', 'DownloadController@downloadGame')->name('downloadGame');
 Route::post('/detail/comment', 'CommentController@createComment')->name('Comment');
 
@@ -58,8 +49,6 @@ Route::post('/kyc/create', 'KycController@createKyc')->name('CreateKyc');
 
 Route::get('/user_shelf', 'UploadImageProfile@user_shelf')->name('UserShelf');
 
-// Route::view('/user_history', 'profile.point.userlvp_history')->name('UserHistory');
-// Route::view('/user_rank', 'profile.userlvp_rank')->name('UserRank');
 Route::get('/user_history', 'TransferController@userPoint')->name('UserHistory');
 Route::get('/user_rank', 'TransferController@userRank')->name('UserRank');
 
@@ -146,6 +135,7 @@ Route::get('/advt_package', 'Sponsor\packageController@AdvtPackage')->name('Advt
 Route::get('/advt_management/{id}', 'Sponsor\packageController@AdvtManagement')->name('AdvtManagement');
 Route::get('/advt_add_game/{id}/{idM}', 'Sponsor\game_sponController@AdvtAddGame')->name('AdvtAddGame');
 Route::post('/advt_add_game/add', 'Sponsor\game_sponController@sponsorGame')->name('addGame');
+Route::post('/detail/listgame', 'Sponsor\game_sponController@listGame')->name('ListGame');
 // Route::post('/advt_add_game/addgame', 'Sponsor\game_sponController@addSponsorGame')->name('addSpongame');
 
 Route::get('/product_support', 'Sponsor\productController@ProductSupport')->name('ProductSupport');
@@ -153,7 +143,7 @@ Route::post('/product_support/addproduct', 'Sponsor\productController@addProduct
 Route::get('/product_support_select', 'Sponsor\productController@ProductSupportSelect')->name('ProductSupportSelect');
 Route::get('/sponlvp_shelf', 'Sponsor\productController@SponShelf')->name('SponShelf');
 
-Route::get('/spon_shopping_cart', 'UploadImageProfile@SponShoppingCart')->name('SponShoppingCart');
+Route::get('/spon_shopping_cart', 'Sponsor\game_sponController@SponShoppingCart')->name('SponShoppingCart');
 
 Route::get('/sponsor_payment', 'UploadImageProfile@SponsorPayment')->name('SponsorPayment');
 Route::post('/sponsor_payment/qrCode', 'Sponsor\packageController@packageibanking')->name('packageibanking');

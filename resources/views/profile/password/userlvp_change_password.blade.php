@@ -102,7 +102,9 @@
                                         <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
                                             <span id="MESSAGE"></span>
                                         </div>
-                                        <button name="submit" value="submit" class="btn-submit mt-2">ยืนยัน</button>
+                                        <button name="submit" value="submit" class="btn-submit mt-2">ยืนยัน
+                                            <input type="hidden" name="users_type" value="{{Auth::user()->users_type}}">
+                                        </button>
                                         <button type="reset" class="btn-cancal mt-2">รีเซ็ต</button>
                                     </form>
                                 </div>

@@ -28,4 +28,8 @@ class Package extends Model
             ->where('packageBuy_invoice', $data['packageBuy_invoice'])
             ->update($data);
     }
+
+    public static function cartGame($data){
+        DB::table('sponsor_shopping_cart')->insert($data);
+    }
 }
