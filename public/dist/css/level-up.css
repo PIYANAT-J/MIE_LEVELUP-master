@@ -8062,3 +8062,10 @@ input[type="checkbox"].switch_2{
   line-height: 1.5;
 }
 
+.thumbAvatar {
+  width:auto; 
+  height:20em; 
+  overflow: hidden;
+  border: solid 5px #ffffff;
+  border-radius:6px;}
+.thumbAvatar img {height:100%; width:auto; margin:0 auto;}
