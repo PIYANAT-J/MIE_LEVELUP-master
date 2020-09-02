@@ -19,7 +19,7 @@ class CreateMyPackageBuyTable extends Migration
             $table->integer('packageBuy_amount');
             $table->integer('packageBuy_season');
             $table->string('packageBuy_game')->collation('utf8_unicode_ci')->nullable();
-            $table->json('packageBuy_gameSpon')->collation('utf8_unicode_ci')->nullable();
+            $table->json('packageBuy_gameSpon')->nullable();
             $table->string('packageBuy_linkAdvt')->collation('utf8_unicode_ci')->nullable();
             $table->string('packageBuy_invoice')->collation('utf8_unicode_ci');
             $table->set('packageBuy_status', ['true', 'false'])->collation('utf8_unicode_ci')->default('false');

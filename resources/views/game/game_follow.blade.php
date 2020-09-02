@@ -1,8 +1,7 @@
 @extends('layout.follow_navbar')
 @section('content')
 <div class="container-fluid">
-    <div class="row my-5 "></div>
-    <div class="row my-2 "></div>
+    <div class="row py-5 " style="background-color: #202433;"></div>
     <div class="row pt-4" style="background-color: #202433;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.42);">
         <div class="col-lg-1 col-xl-1"></div>
         <div class="col-sm col-md col-lg-11 col-xl-11 pt-3 pb-2">

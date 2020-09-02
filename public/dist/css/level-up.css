@@ -1051,7 +1051,7 @@ overflow: hidden;
   overflow: hidden;
   border: solid 5px #dddddd;
   border-radius: 50%;}
-.thumb-profile img {height:100%; width:100%; margin:0 auto;}
+.thumb-profile img {height:auto; width:100%; margin:0 auto;}
 
 .thumb-game {
   width:8em; 
@@ -2271,6 +2271,18 @@ body {
   outline: none!important;
 }
 
+.btn-submit-red{
+  width: 100%;
+  background-color: #ce0005;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  padding: 8px 0;
+}
+.btn-submit-red:focus {
+  outline: none!important;
+}
+
 .rating {
 	cursor: pointer;
 }
@@ -2637,7 +2649,7 @@ body {
 }
 
 .row4{
-  height: 700px;
+  height: 500px;
   overflow: scroll;
   overflow-x: hidden;
 }
@@ -2973,11 +2985,19 @@ margin: 30px auto;
   right: 5px;
 }
 
-.sidebar-pic-user{
+.sidebar-pic-user{/*-*/
   border: solid 3px #fff;
   border-radius: 50px;
   width: 3.5em;
   height:3.5em; 
+  object-fit: cover;
+}
+
+.ImgRank{
+  border: solid 3px #fff;
+  border-radius: 50px;
+  width: 4.5em;
+  height:4.5em; 
   object-fit: cover;
 }
 
@@ -3105,9 +3125,8 @@ margin: 30px auto;
 }
 
 .fontHeader{
-  font-weight: 900;
+  font-weight: 800;
   color: #0f0f0f;
-  width: 100%;
 }
 
 .input-update{
@@ -3144,17 +3163,7 @@ margin: 30px auto;
 }
 
 SELECT{
-  margin: 0 10px 0 10px;
   width: 100%;
-  object-fit: contain;
-  background-color: #f2f2f2;
-  border: none;
-  font-family: myfont1;
-  font-size: 1em;
-  border-left: 5px solid #f2f2f2;
-  border-top: none;
-  border-bottom: none;
-  border-right: none;
 }
 SELECT:focus{
   outline: none;
@@ -3254,7 +3263,7 @@ input.date{
   border: solid 1px #707070;
   background-color: #ffffff;
 }
-.font-game-shelf{
+/* .font-game-shelf{
   font-family: myfont1;
   font-size: 0.9em;
   font-weight: normal;
@@ -3264,9 +3273,9 @@ input.date{
   letter-spacing: normal;
   text-align: left;
   color: #a8a8a8;
-}
+} */
 
-.font-game-shelf2{
+/* .font-game-shelf2{
   font-family: myfont;
   font-size: 1em;
   font-weight: normal;
@@ -3276,7 +3285,7 @@ input.date{
   letter-spacing: normal;
   text-align: left;
   color: #000;
-}
+} */
 
 .btn-update-game {
   width: 90%;
@@ -3309,14 +3318,15 @@ input.date{
   outline: none!important;
 }
 
-.select2{
+.SelectWh{
   width: 130px;
-  height: 35px;
-  object-fit: contain;
+  height: 30px;
   border-radius: 5px;
   border: solid 1px #17202c;
   background-color: #fff;
 }
+
+
 .MySelect{
   width: 100%;
   height: 40px;
@@ -3348,10 +3358,8 @@ input.date{
 .number-rank {
   object-fit: contain;
   font-family: myfont;
-  font-size: 3em;
+  font-size: 4.5em;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
   line-height: 0.97;
   letter-spacing: normal;
   text-align: center;
@@ -3374,13 +3382,9 @@ div.sticky {
 }
 .bg-topup{
   width: 100%;
-  padding: 30px 0;
+  padding: 25px 20px;
   border-radius: 6px;
   background-color: #23c197;
-  color: #fff;
-  font-family: myfont1;
-  font-size: 1.1em;
-  text-align: center;
 }
 
 .input-topup{
@@ -3396,21 +3400,14 @@ div.sticky {
   background-color: #f2f2f2;
   border: none;
   border-radius: 8px;
-  font-family: myfont;
-  font-size: 1.3em;
-  color: #000;
 }
 .money:focus{
   outline: none!important;
 }
 .money_icon{
   background-color: #f2f2f2;
-  color: #000;
   border: none;
-  font-family: myfont1;
-  font-weight: 800;
-  font-size: 1.3em;
-  padding: 0 5px 0 13px;
+  padding: 0 5px 0 20px;
 }
 
 
@@ -3465,12 +3462,20 @@ div.sticky {
 	transform: scale(1);
 }
 
-.bg-bank{
+.bg-bank{ /*-*/
   width: 100%;
   object-fit: contain;
   /* border-radius: 6px; */
   background-color: #f2f2f2;
 }
+
+.bgGrey{
+  width: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  background-color: #f2f2f2;
+}
+
 .font-bank1{
   object-fit: contain;
   font-family: myfont;
@@ -3729,7 +3734,7 @@ input[type="checkbox"].switch_1{
   text-align: center;
   color: #23c197;
 }
-.btn-submit-modal-red{
+.btn-submit-modal-red{ /*-*/
   width: 100%;
   height: 50px;
   background-color: #ce0005;
@@ -8062,3 +8067,53 @@ input[type="checkbox"].switch_2{
   line-height: 1.5;
 }
 
+.thumbAvatar {
+  width:auto; 
+  height:20em; 
+  overflow: hidden;
+  border: solid 5px #ffffff;
+  border-radius:6px;}
+.thumbAvatar img {height:100%; width:auto; margin:0 auto;}
+
+/* Custom radio buttons */
+.redioRed input[type="radio"] + label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 25px;
+  margin-right: 15px;
+  font-size: 13px;
+}
+
+.redioRed input[type="radio"] + label::before {
+  content: "";  
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin-right: 14px;
+  position: absolute;
+  top: 3px;
+  left: 0;
+  border: 1px solid #ce0005;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.redioRed input[type="radio"] {
+  display: none !important;
+  display: inline;
+} 
+
+.redioRed input[type="radio"]:checked + label::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 6px;
+  left: 3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ce0005;
+}
+
+/* // End Custom radio buttons */

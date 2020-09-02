@@ -60,15 +60,16 @@
                         <label style="margin: 0;"><p style="padding:0px 8px 0px 5px;margin: 0;">KYC</p></label>
                         <label style="margin: 0;"><p style="margin: 0;">ยืนยันตัวตน</p></label>
                     @if($userKyc->KYC_STATUS == null)
-                        <label style="margin: 0;" class="status-kyc3 "><p style="margin: 0;">กรุณายืนยันตัวตน<p></label>
+                        <label style="margin: 0;" class="status-kyc3 "><p style="margin: 0;">กรุณายืนยันตัวตน</p></label>
                     @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
-                        <label style="margin: 0;" class="status-kyc"><p style="margin: 0;">รอการตรวจสอบ<p></label>
+                        <label style="margin: 0;" class="status-kyc"><p style="margin: 0;">รอการตรวจสอบ</p></label>
                     @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <label style="margin: 0;" class="status-kyc2"><p style="margin: 0;">ยืนยันตัวตนแล้ว<p></label>
+                        <label style="margin: 0;" class="status-kyc2"><p style="margin: 0;">ยืนยันตัวตนแล้ว</p></label>
                     @else
-                        <label style="margin: 0;" class="status-kyc4"><p style="margin: 0;">ไม่ผ่านการอนุมัติ<p></label>
+                        <label style="margin: 0;" class="status-kyc4"><p style="margin: 0;">ไม่ผ่านการอนุมัติ</p></label>
                     @endif
-                </button></a>
+                    </button>
+                </a>
                 <a href="{{ route('UserShelf') }}" style="width: 100%;">
                     <button class="btn-sidebar">
                         <p style="margin: 0;"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</p>
@@ -102,15 +103,14 @@
             </div>
         </div>
         <!-- sidebar -->
+
         <div class="col-sm-1 col-md-1 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
-        <div class="col-sm-10 col-nd-10 col-lg-9 col-xl-9 pt-3  pb-4" style="background-color:#f5f5f5;">
+        <div class="col-sm-10 col-md-10 col-lg-9 col-xl-9 pt-3  pb-4" style="background-color:#f5f5f5;">
             <div style="background-color:#ffffff;border-radius: 8px;padding:20px">
                 <div class="row">
-                    <div class="col-12 pb-2" style="border-bottom: 1px solid #f2f2f2;">
-                        <span class="fontHeader">
-                            <h1>ยืนยันตัวตน (ถ้าอัพเดทโปรไฟล์จะได้ พอยท์เพิ่ม 100 พอยท์)</h1>
-                            <h5 style="color: #666666;">จัดการข้อมูลส่วนตัวคุณของคุณเพื่อให้ใช้งานได้สะดวกขึ้น</h5>
-                        </span>
+                    <div class="col-12 pb-2 mb-1" style="border-bottom: 1px solid #f2f2f2;">
+                        <h1 class="fontHeader">ยืนยันตัวตน (ถ้าอัพเดทโปรไฟล์จะได้ พอยท์เพิ่ม 100 พอยท์)</h1>
+                        <h5 style="color: #666666;">จัดการข้อมูลส่วนตัวคุณของคุณเพื่อให้ใช้งานได้สะดวกขึ้น</h5>
                     </div>
                 </div>
                 <!-- <div class="row">
@@ -163,6 +163,7 @@
                                             </div>
                                             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"></div>
                                         </div>
+
                                         <div class="row mt-2 ">
                                             <div class="col-12" >
                                                 <div class="row mx-0 py-3" style="background-color: #fffcf4;">
@@ -170,15 +171,15 @@
                                                     <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
                                                         <p style="margin:0;font-weight:800;color: #0f0f0f;">วิธีการยืนยันตัวตน </p>
                                                         <p style="line-height:1.5;color: #0f0f0f;">
-                                                            1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่าน </br>
-                                                            พร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า
-                                                            “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
+                                                            1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่านพร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
                                                             2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
                                                             3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
                                                             4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
                                                         </p>
                                                     </div>
-                                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
+                                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center">
+                                                        <img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -203,15 +204,15 @@
                                                     <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
                                                         <p style="margin:0;font-weight:800;color: #0f0f0f;">วิธีการยืนยันตัวตน </p>
                                                         <p style="line-height:1.5;color: #0f0f0f;">
-                                                            1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่าน </br>
-                                                            พร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า
-                                                            “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
+                                                            1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่าน พร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
                                                             2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
                                                             3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
                                                             4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
                                                         </p>
                                                     </div>
-                                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
+                                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center">
+                                                        <img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -236,15 +237,15 @@
                                                     <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
                                                         <p style="margin:0;font-weight:800;color: #0f0f0f;">วิธีการยืนยันตัวตน </p>
                                                         <p style="line-height:1.5;color: #0f0f0f;">
-                                                            1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่าน </br>
-                                                            พร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า
-                                                            “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
+                                                            1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่าน พร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
                                                             2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
                                                             3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
                                                             4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
                                                         </p>
                                                     </div>
-                                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
+                                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center">
+                                                        <img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" />
+                                                    </div>
                                                 </div>
 
                                                     <div class="my-3 line2">
@@ -259,16 +260,25 @@
                                                     <div id="thumb" class="thumb-kyc"><img src="home/Kyc/pic-kyc.png"></div>    
                                                     <input id="file_upload" style="display:none" name="KYC_IMG" type="file" accept="image/* "/>
                                                 </div>
-                                                <div class="col-12 mt-2" style="padding:0;">
-                                                    <button type="submit" class="btn-submit">
+                                                <div class="col-12 mt-2">
+                                                    <button name="submit" value="submit" type="submit" class="btn-submit">
                                                         <p style="margin:0;">ยืนยัน</p>
+                                                        <input type="hidden" name="KYC_STATUS" value="รออนุมัติ">
+                                                        <input type="hidden" name="KYC_CREATE_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                                                        <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                                        <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
+                                                        <input type="hidden" name="users_type" value="{{ Auth::user()->users_type }}">
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            
+                            
+                            
                             @else
+                            <!-- กรุณายืนยันตัวตน -->
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="row">
@@ -287,9 +297,7 @@
                                                     <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
                                                         <p style="margin:0;font-weight:800;color: #0f0f0f;">วิธีการยืนยันตัวตน </p>
                                                         <p style="line-height:1.5;color: #0f0f0f;">
-                                                            1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่าน </br>
-                                                            พร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า
-                                                            “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
+                                                            1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่าน พร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
                                                             2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
                                                             3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
                                                             4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
@@ -301,7 +309,7 @@
                                                 <div class="my-3 line2">
                                                     <label><h1 class="fontHeader">อัพโหลดรูปหลักฐานยืนยันตัวตน</h1></label>
                                                     <label><h5 style="color: #0f0f0f;">(อัพโหลดได้ไม่เกิน 2 mb)</h5></label> 
-                                                </div
+                                                </div>
 
                                                     <label id="upload" style="cursor:pointer;" class="font-kyc-upload">
                                                         <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
@@ -313,13 +321,14 @@
                                                 </div>
                                                 <div class="col-12 mt-2">
                                                     <button name="submit" value="submit" type="submit" class="btn-submit">
-                                                    <p style="margin:0;">ยืนยัน</p>
-                                                    <input type="hidden" name="KYC_STATUS" value="รออนุมัติ">
-                                                    <input type="hidden" name="KYC_CREATE_DATE" value="{{ date('Y-m-d H:i:s') }}">
-                                                    <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                                                    <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-                                                    <input type="hidden" name="users_type" value="{{ Auth::user()->users_type }}">
-                                                </button></div>
+                                                        <p style="margin:0;">ยืนยัน</p>
+                                                        <input type="hidden" name="KYC_STATUS" value="รออนุมัติ">
+                                                        <input type="hidden" name="KYC_CREATE_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                                                        <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                                        <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
+                                                        <input type="hidden" name="users_type" value="{{ Auth::user()->users_type }}">
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
