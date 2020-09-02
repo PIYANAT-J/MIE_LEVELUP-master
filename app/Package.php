@@ -36,15 +36,13 @@ class Package extends Model
     }
 
     public static function cartGame($data){
-        $shopping = DB::table('sponsor_shopping_cart')->where('sponsor_cart_id', $data['sponsor_cart_id'])->first();
-        if($shopping != null){
-            DB::table('sponsor_shopping_cart')
-                ->where('sponsor_cart_id', $data['sponsor_cart_id'])
-                ->update($data);
-        }else{
-            DB::table('sponsor_shopping_cart')->insert($data);
-        }
-        
+        DB::table('sponsor_shopping_cart')->insert($data);
+    }
+
+    public static function cartGameUpdate($data){
+        DB::table('sponsor_shopping_cart')
+            ->where('sponsor_cart_id', $data['sponsor_cart_id'])
+            ->update($data);
     }
 
     public static function cartPayment($data){
