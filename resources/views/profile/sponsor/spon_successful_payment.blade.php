@@ -60,10 +60,12 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10 ">
                     <a href="{{ route('AdvtPackage') }}"><label class="fontAd1 active">สนับสนุนเงินในเกม</label></a>
+                    @if(empty($package))
+                        <label class="fontAd1"> > </label>
+                        <a href="{{ route('SponShoppingCart') }}"><label class="fontAd1 active">ตระกร้าสินค้า</label></a>
+                    @endif
                     <label class="fontAd1"> > </label>
-                    <!-- <a href="{{ route('SponShoppingCart') }}"><label class="fontAd1 active">ตระกร้าสินค้า</label></a>
-                    <label class="fontAd1"> > </label>
-                    <a href="{{ route('SponsorPayment') }}"><label class="fontAd1 active" >ชำระเงิน</label></a>
+                    <!-- <a href="{{ route('SponsorPayment') }}"><label class="fontAd1 active" >ชำระเงิน</label></a>
                     <label class="fontAd1"> > </label> -->
                     <label class="fontAd1" >ยืนยันการชำระเงิน</label>
                 </div>
@@ -82,34 +84,49 @@
                         </div>
                     </div>
 
-                        <div class="row mx-2 mt-5">  
-                            <!-- <div class="col-9" style="padding:0;">
-                                <label class="plabelimg">
-                                    <img class="labelimg" src="{{asset('section/picture_game/game.png') }}" />
-                                </label> 
-                                <label class="labelFont bglabelFont ml-2 py-3">
-                                    <label style="font-weight: 700;">Witch</label></br>
-                                    <label style="color: #a8a8a8;">Fantasy • Online</label></br>
-                                    <label style="color: #23c197;font-size:0.9em;">ช่วงเวลา 13/08/2020 11:00 - 14/08/2020 12:00</label>
-                                    <label style="color: #23c197;font-size:0.9em;">จำนวนรอบโฆษณา 20 รอบ </label>
-                                </label>
-                            </div> -->
-                            <div class="col-9" style="padding:0;">
-                                <label class="plabelimg">
-                                    <img src="{{asset('icon/money2.svg') }}" />
-                                </label> 
-                                <label class="labelFont bglabelFont ml-2 py-3">
-                                    <label style="font-weight: 700;">แพ็กเกจ 1 {{$package->packageBuy_name}}</label></br>
-                                    <label style="color: #23c197;font-size:0.9em;">{{$package->packageBuy_season}} เดือน</label>
-                                    <label style="color: #23c197;font-size:0.9em;">จำนวน {{$package->package_game}} เกม </label>
-                                </label>
-                            </div>
-                            <div class="col-3 my-3">
-                                <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;font-size:1em;">
-                                    <b class="font-price" style="font-size:1.5em;">฿{{$package->packageBuy_amount}}</b></br>
-                                    <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </b> (-37%)
-                                </span>
-                            </div>
+                        <div class="row mx-2 mt-5"> 
+                            @if(isset($package))
+                                <div class="col-9" style="padding:0;">
+                                    <label class="plabelimg">
+                                        <img src="{{asset('icon/money2.svg') }}" />
+                                    </label> 
+                                    <label class="labelFont bglabelFont ml-2 py-3">
+                                        <label style="font-weight: 700;">แพ็กเกจ 1 {{$package->packageBuy_name}}</label></br>
+                                        <label style="color: #23c197;font-size:0.9em;">{{$package->packageBuy_season}} เดือน</label>
+                                        <label style="color: #23c197;font-size:0.9em;">จำนวน {{$package->package_game}} เกม </label>
+                                    </label>
+                                </div>
+                                <div class="col-3 my-3">
+                                    <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;font-size:1em;">
+                                        <b class="font-price" style="font-size:1.5em;">฿{{$package->packageBuy_amount}}</b></br>
+                                        <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </b> (-37%)
+                                    </span>
+                                </div>
+                            @else
+                                <?php 
+                                    $gameID = json_decode($transeection->transeection_gameSpon); 
+                                    $gamearray = array();
+                                ?>
+                                @foreach($gameID as $gameId)
+                                    <?php $gamearray[] = $gameId->gameid; ?>
+                                @endforeach
+                                
+                                @foreach($gameTrue as $gameList)
+                                    @if(in_array($gameList->sponsor_cart_game, $gamearray))
+                                        <div class="col-9" style="padding:0;">
+                                            <label class="plabelimg">
+                                                <img class="labelimg" src="{{ asset('section/File_game/Profile_game/'.$gameList->GAME_IMG_PROFILE) }}" />
+                                            </label> 
+                                            <label class="labelFont bglabelFont ml-2 py-3">
+                                                <label style="font-weight: 700;">{{$gameList->GAME_NAME}}</label></br>
+                                                <label style="color: #a8a8a8;">{{$gameList->RATED_B_L}} • Online</label></br>
+                                                <label style="color: #23c197;font-size:0.9em;">ช่วงเวลา {{$gameList->sponsor_cart_start}} - {{$gameList->sponsor_cart_deadline}}</label>
+                                                <label style="color: #23c197;font-size:0.9em;">จำนวนรอบโฆษณา {{$gameList->sponsor_cart_number}} รอบ </label>
+                                            </label>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
 
                         <div class="row mt-3 py-2" style="background-color:#fafaff;">
@@ -158,7 +175,11 @@
                             <div class="col-lg-6">
                                 <div class="row">
                                     <div class="col-6 text-right fontAdsPayment5">ยอดรวมสินค้า</div>
-                                    <div class="col-6 text-right fontAdsPayment5">฿ {{$package->packageBuy_amount}}</div>
+                                    @if(isset($package))
+                                        <div class="col-6 text-right fontAdsPayment5">฿ {{$package->packageBuy_amount}}</div>
+                                    @else
+                                        <div class="col-6 text-right font-price" style="font-size:2em;">฿ {{$transeection->transeection_amount}}</div>
+                                    @endif
                                 </div>
                                 <div class="row">
                                     <div class="col-6 text-right fontAdsPayment5">ส่วนลด</div>
@@ -166,7 +187,11 @@
                                 </div>
                                 <div class="row mb-2">
                                     <div class="col-6 text-right fontAdsPayment5 pt-2">รวมราคาทั้งสิ้น</div>
-                                    <div class="col-6 text-right font-price" style="font-size:2em;">฿ {{$package->packageBuy_amount}}</div>
+                                    @if(isset($package))
+                                        <div class="col-6 text-right font-price" style="font-size:2em;">฿ {{$package->packageBuy_amount}}</div>
+                                    @else
+                                        <div class="col-6 text-right font-price" style="font-size:2em;">฿ {{$transeection->transeection_amount}}</div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-lg-12">

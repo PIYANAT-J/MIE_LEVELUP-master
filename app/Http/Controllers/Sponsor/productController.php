@@ -16,7 +16,11 @@ class productController extends Controller
 {
     public function ProductSupport(){
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('profile.sponsor.product_support', compact('sponsor'));
+        $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
+                                ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                                ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                                ->get();
+        return view('profile.sponsor.product_support', compact('sponsor', 'countCart'));
     }
 
     public function ProductSupportSelect(){
@@ -34,9 +38,14 @@ class productController extends Controller
                             ->join('packages','packages.package_id','my_package_buy.package_id')
                             ->select('my_package_buy.*', 'packages.package_game', 'packages.package_length')
                             ->get();
+            $transeection = DB::table('transeection_sponshopping')->where([['transeection_status', 'true'], ['USER_ID', Auth::user()->id]])->get();
+            $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
+                            ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                            ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                            ->get();
             // $packageGame = json_decode($package->packageBuy_gameSpon);
             // dd($packageGame);
-            return view('profile.game.sponlvp_shelf', compact('sponsor', 'game', 'package'));
+            return view('profile.game.sponlvp_shelf', compact('sponsor', 'game', 'package', 'countCart', 'transeection'));
         }else{
             $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
             $product = DB::table('products')->where('USER_EMAIL', Auth::user()->email)->get();
@@ -45,6 +54,11 @@ class productController extends Controller
                             ->join('packages','packages.package_id','my_package_buy.package_id')
                             ->select('my_package_buy.*', 'packages.package_game', 'packages.package_length')
                             ->get();
+            $transeection = DB::table('transeection_sponshopping')->where([['transeection_status', 'true'], ['USER_ID', Auth::user()->id]])->get();
+            $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
+                                ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                                ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                                ->get();
             // dd($package);
             // $packageGame = [];
             // foreach($package as $packageID){
@@ -52,7 +66,7 @@ class productController extends Controller
             //     // $packageGame = json_decode($package->packageBuy_gameSpon);
             // }
             // dd($packageGame);
-            return view('profile.game.sponlvp_shelf', compact('sponsor', 'product', 'game', 'package'));
+            return view('profile.game.sponlvp_shelf', compact('sponsor', 'product', 'game', 'package', 'countCart', 'transeection'));
         }
     }
 
