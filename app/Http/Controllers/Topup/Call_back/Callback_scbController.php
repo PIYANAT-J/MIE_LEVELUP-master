@@ -69,7 +69,7 @@ class Callback_scbController extends Controller
                             $sponsor_cart_id = $shopping->sponsor_cart_id;
                             $sponsor_cart_status = "true";
                             $data = array("sponsor_cart_id"=>$sponsor_cart_id, "sponsor_cart_status"=>$sponsor_cart_status);
-                            Package::cartGame($data);
+                            Package::cartGameUpdate($data);
 
                             $start = explode(" ", $shopping->sponsor_cart_start);
                             $deadline = explode(" ", $shopping->sponsor_cart_deadline);
