@@ -158,6 +158,13 @@ class UploadImageProfile extends Controller
         return view('profile.sponsor_profile', compact('sponsor', 'countCart'));
     }
 
+    public function AdsSpon(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        $countCart = DB::table('sponsor_shopping_cart')->where('USER_ID', Auth::user()->id)->get();
+        // dd(count($countCart));
+        return view('profile.sponsor.ads_sponsor', compact('sponsor', 'countCart'));
+    }
+
     public function SponsorPayment(){
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
         return view('profile.sponsor.spon_payment', compact('sponsor'));

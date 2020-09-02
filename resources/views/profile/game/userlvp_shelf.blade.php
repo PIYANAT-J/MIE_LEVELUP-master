@@ -1,39 +1,40 @@
 @extends('layout.profile_navbar')
 @section('content')
 <div class="container-fluid">
-    <div class="row my-5"></div>
-    <div class="row my-2"></div>
-    <div class="row  mt-3">
+    <div class="row py-5" style="background-color: #f5f5f5;"></div>
+    <div class="row  pt-3" style="background-color: #f5f5f5;">
 
         <!-- sidebar -->
-        <div class="col-lg-3" style="background-color: #17202c;">
+        <div class="col-3 d-none d-lg-block d-xl-block" style="background-color: #17202c;">
             <div class="row">
-                <div class="col-lg-1"></div>
+                <div class="col-1"></div>
                     @foreach($guest_user as $USER)
-                        <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
+                        <div class="col-10 my-3 pt-2 sidebar_bg2">
                             <div class="row mb-2">
-                                <div class="col-lg-4 text-right">
+                                <div class="col-4 text-right">
                                     <img class="sidebar-pic" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
                                 </div>
-                                <div class="col-lg-8 sidebar_name pt-2">
-                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
+                                <div class="col-8">
+                                    <label class="pt-3">
+                                        <h5 style="font-weight:800;margin:0;color:#ffffff;">{{ Auth::user()->name }} {{ Auth::user()->surname }}</h5>
+                                        <h5 style="margin:0;color:#ffffff;">สถานะ : ผู้ใช้ทั่วไป</h5>
+                                        <h5 style="margin:0;color:#ffffff;">เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</h5>
+                                    </label>
                                 </div>
                             </div>
                             <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                                <div class="col-lg-12 text-center">
+                                <div class="col-12 text-center">
                                     <div class="row">
                                         <div class="col-6">
-                                            <label class="btn-point pb-2">
-                                                <span class="font-point">พอยท์</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Point"></i>
+                                            <label class="btn-point pt-2">
+                                                <h1 class="fontPoint">พอยท์</h1>
+                                                <h2 class="fontPoint">100 <i class="icon-Icon_Point"></i></h2>
                                             </label>
                                         </div>
                                         <div class="col-6">
-                                            <label class="btn-coin pb-2 ">
-                                                <span class="font-point">เหรียญ</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Coin"></i>
+                                            <label class="btn-point pt-2">
+                                                <h1 class="fontPoint">เหรียญ</h1>
+                                                <h2 class="fontPoint">100 <i class="icon-Icon_Coin"></i></h2>
                                             </label>
                                         </div>
                                     </div>
@@ -41,101 +42,137 @@
                             </div>
                         </div>
                     @endforeach
-                <div class="col-lg-1"></div>
-                <a href="{{ route('Avatar') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile menuIcon" ></i>ตัวละครของฉัน (Avatar)</button></a>
-                <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว</button></a>
-                <a href="{{ route('UserKyc') }}" style="width: 100%;"><button class="btn-sidebar"><span style="font-family: myfont1;font-size: 1em;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
+                <div class="col-1"></div>
+
+                <a href="{{ route('Avatar') }}" style="width: 100%;">
+                    <button class="btn-sidebar">
+                        <p style="margin: 0;"><i class="icon-profile menuIcon"></i>ตัวละครของฉัน (Avatar)</p>
+                    </button>
+                </a>
+                <a href="{{ route('UserProfile') }}" style="width: 100%;">
+                    <button class="btn-sidebar">
+                        <p style="margin: 0;"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว</p>
+                    </button>
+                </a>
+                <a href="{{ route('UserKyc') }}" style="width: 100%;">
+                    <button class="btn-sidebar">
+                        <label style="margin: 0;"><p style="padding:0px 8px 0px 5px;margin: 0;">KYC</p></label>
+                        <label style="margin: 0;"><p style="margin: 0;">ยืนยันตัวตน</p></label>
                     @if($userKyc->KYC_STATUS == null)
-                        <span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span>
+                        <label style="margin: 0;" class="status-kyc3 "><p style="margin: 0;">กรุณายืนยันตัวตน</p></label>
                     @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
-                        <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
+                        <label style="margin: 0;" class="status-kyc"><p style="margin: 0;">รอการตรวจสอบ</p></label>
                     @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวตนแล้ว</span>
+                        <label style="margin: 0;" class="status-kyc2"><p style="margin: 0;">ยืนยันตัวตนแล้ว</p></label>
                     @else
-                        <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
+                        <label style="margin: 0;" class="status-kyc4"><p style="margin: 0;">ไม่ผ่านการอนุมัติ</p></label>
                     @endif
-                </button></a>
-                <a href="{{ route('UserShelf') }}" style="width: 100%;"><button class="btn-sidebar active"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
-                <a href="{{ route('UserHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
-                <a href="{{ route('UserRank') }}" style="width: 100%;"><button class="btn-sidebar"><i class="fa fa-star-o menuIcon"></i>อันดับผู้ใช้</button></a>
-                <a href="{{ route('UserTopup') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</button></a>
-                <a href="/user_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
-                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</button></a>  
+                    </button>
+                </a>
+                <a href="{{ route('UserShelf') }}" style="width: 100%;">
+                    <button class="btn-sidebar active">
+                        <p style="margin: 0;"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</p>
+                    </button>
+                </a>
+                <a href="{{ route('UserHistory') }}" style="width: 100%;">
+                    <button class="btn-sidebar">
+                        <p style="margin: 0;"><i class="icon-history menuIcon"></i>ประวัติพอยท์</p>
+                    </button>
+                </a>
+                <a href="{{ route('UserRank') }}" style="width: 100%;">
+                    <button class="btn-sidebar">
+                        <p style="margin: 0;"><i class="fa fa-star-o menuIcon"></i>อันดับผู้ใช้</p>
+                    </button>
+                </a>
+                <a href="{{ route('UserTopup') }}" style="width: 100%;">
+                    <button class="btn-sidebar">
+                        <p style="margin: 0;"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</p>
+                    </button>
+                </a>
+                <a href="/user_change_password" style="width: 100%;">
+                    <button class="btn-sidebar">
+                        <p style="margin: 0;"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</p>
+                    </button>
+                </a>
+                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <button class="btn-sidebar">
+                        <p style="margin: 0;"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</p>
+                    </button>
+                </a>   
             </div>
         </div>
         <!-- sidebar -->
 
-        <div class="col-lg-9" style="background-color: #f5f5f5;">
-            <div class="row mt-4" >
-                <div class="col-lg-1"></div>
-                <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-                    <div class="row">
-                        <div class="col-lg-12 pb-2"><span class="font-profile1">ตู้เกม (เกมเชล)</span></div>
+        <div class="col-sm-12 col-md-12 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
+        <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 pt-3  pb-4" style="background-color:#f5f5f5;">
+            <div style="background-color:#ffffff;border-radius: 8px;padding:20px">
+                <div class="row">
+                    <div class="col-12 pb-2">
+                        <h1 class="fontHeader">ตู้เกม (เกมเชล)</<h1>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="row mt-2 ">
-                                <div class="col-lg-12" >
-                                    <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1em;color:#000;">
-                                        <div class="col-6">ชื่อเกม</div>
-                                        <div class="col-2 text-center">เล่นสะสม</div>
-                                        <div class="col-2 text-center">วันที่เล่นล่าสุด</div>
-                                        <div class="col-2 text-center">อัพเดต</div>
-                                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row mt-2 ">
+                            <div class="col-12" >
+                                <div class="row mx-0 py-2" style="background-color:#f2f2f2;color:#000;">
+                                    <div class="col-6"><p style="margin:0;font-weight: 800;">ชื่อเกม</p></div>
+                                    <div class="col-2 text-center"><p style="margin:0;font-weight: 800;">เล่นสะสม</p></div>
+                                    <div class="col-2 text-center"><p style="margin:0;font-weight: 800;">เล่นล่าสุด</p></div>
+                                    <div class="col-2 text-center"><p style="margin:0;font-weight: 800;">อัพเดต</p></div>
                                 </div>
                             </div>
-                            <div class="row mt-2 row4">
-                                <div class="col-lg-12" >
-                                    @if(isset($game))
-                                        @foreach($game as $Game)
-                                                    <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1em;color:#000;">
-                                                        <div class="col-6">
-                                                            <div class="row">
-                                                                <div class="col-3"><img class="shelf-pic" src="{{ asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE) }}" /></div>
-                                                                <div class="col-9 font-game-shelf">
-                                                                    <div>
-                                                                        <span style="font-family:myfont;color:#000;">{{ $Game->GAME_NAME }}</span></br>
-                                                                        <span style="font-size:0.9em;">{{ $Game->RATED_B_L }} • Other</span></br>
-                                                                        <span style="font-size:0.9em;">เวอร์ชั่น 1.03</span>
-                                                                    </div>
-                                                                </div>
+                        </div>
+                        <div class="row mt-2 row4">
+                            <div class="col-12" >
+                                @if(isset($game))
+                                    @foreach($game as $Game)
+                                                <div class="row mx-0 py-2 line2">
+                                                    <div class="col-6">
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <img class="shelf-pic" src="{{ asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE) }}" />
+                                                            </div>
+                                                            <div class="col-9" style="color:#000;">
+                                                                <p style="margin:0;font-weight:500;">{{ $Game->GAME_NAME }}</p>
+                                                                <p style="margin:0;">{{ $Game->RATED_B_L }} • Other</p>
+                                                                <p style="margin:0;">เวอร์ชั่น 1.03</p>
                                                             </div>
                                                         </div>
-                                                        <div class="col-2 text-center"><span class="font-game-shelf">5 ชั่วโมง</span></div>
-                                                        <div class="col-2 text-center"><span class="font-game-shelf">16/05/63</span></div>
-                                                        <div class="col-2 text-center">
-                                                        <span class="font-game-shelf">ล่าสุด</span>
-                                                        <!-- <button class="btn-update-game">อัพเดต</button> -->
-                                                        </div>
                                                     </div>
-                                        @endforeach
-                                    @endif  
-                                    <!-- <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                        <div class="col-6">
-                                            <div class="row">
-                                                <div class="col-3"><img class="shelf-pic" src="{{asset('section/picture_game/game3.png') }}" /></div>
-                                                <div class="col-9 font-game-shelf">
-                                                    <div>
-                                                        <span style="font-family:myfont;color:#000;">Time Lie</span></br>
-                                                        Online • Other</br>
-                                                        เวอร์ชั่น 1.03</span>
+                                                    <div class="col-2 text-center" style="color:#000;"><p style="margin:0;">5 ชั่วโมง</p></div>
+                                                    <div class="col-2 text-center" style="color:#000;"><p style="margin:0;">16/05/63</p></div>
+                                                    <div class="col-2 text-center" style="color:#000;">
+                                                        <p style="margin:0;">ล่าสุด</p>
+                                                    <!-- <button class="btn-update-game">อัพเดต</button> -->
                                                     </div>
+                                                </div>
+                                    @endforeach
+                                @endif  
+                                <!-- <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
+                                    <div class="col-6">
+                                        <div class="row">
+                                            <div class="col-3"><img class="shelf-pic" src="{{asset('section/picture_game/game3.png') }}" /></div>
+                                            <div class="col-9 font-game-shelf">
+                                                <div>
+                                                    <span style="font-family:myfont;color:#000;">Time Lie</span></br>
+                                                    Online • Other</br>
+                                                    เวอร์ชั่น 1.03</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-2 text-center"><span class="font-game-shelf">5 ชั่วโมง</span></div>
-                                        <div class="col-2 text-center"><span class="font-game-shelf">16/05/63</span></div>
-                                        <div class="col-2 text-center">
-                                        <span class="font-game-shelf">ล่าสุด</span>
-                                        <button class="btn-update-game">อัพเดต</button>
-                                        </div>
-                                    </div> -->
-                                </div>
+                                    </div>
+                                    <div class="col-2 text-center"><span class="font-game-shelf">5 ชั่วโมง</span></div>
+                                    <div class="col-2 text-center"><span class="font-game-shelf">16/05/63</span></div>
+                                    <div class="col-2 text-center">
+                                    <span class="font-game-shelf">ล่าสุด</span>
+                                    <button class="btn-update-game">อัพเดต</button>
+                                    </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-1"></div>
             </div>
         </div>
     </div>
@@ -143,12 +180,12 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_login"></div>
+        <div class="col-lg-3 col-xl-3 bgSidebar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 bg_login2"></div>
+        <div class="col-lg-9 col-xl-9 bgContent"></div>
     </div>
 </div>
 

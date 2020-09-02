@@ -18,6 +18,12 @@ class AdminController extends Controller
         return view('admin_lvp.admin_management', compact('admin'));
     }
 
+    public function AvatarManagement(){
+        $admin = DB::table('users')->where('users_type', '0')->get();
+        // dd($admin);
+        return view('admin_lvp.avatar_management', compact('admin'));
+    }
+
     public function Package(){
         $admin = DB::table('users')->where('users_type', '0')->get();
         // dd($admin);

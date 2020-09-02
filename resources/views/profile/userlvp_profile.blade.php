@@ -106,16 +106,14 @@
         <div class="col-sm-1 col-md-1 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
         @foreach($guest_user as $USER)
             @if($USER->USER_EMAIL == Auth::user()->email)
-                    <div class="col-sm-10 col-nd-10 col-lg-9 col-xl-9 pt-3 pb-4" style="background-color:#f5f5f5;">
+                    <div class="col-sm-10 col-md-10 col-lg-9 col-xl-9 pt-3 pb-4" style="background-color:#f5f5f5;">
                         <div style="background-color:#ffffff;border-radius: 8px;padding:20px;">
                             <form action="{{ route('EditProfile') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                                        <span class="fontHeader">
-                                            <h1>ข้อมูลส่วนตัว (ถ้าอัพเดทโปรไฟล์จะได้ พอยท์เพิ่ม 100 พอยท์)</h1>
-                                            <h5 style="color: #666666;">จัดการข้อมูลส่วนตัวคุณของคุณเพื่อให้ใช้งานได้สะดวกขึ้น</h5>
-                                        </span>
+                                    <div class="col-12 pb-2" style="border-bottom: 1px solid #f2f2f2;">
+                                        <h1 class="fontHeader">ข้อมูลส่วนตัว (ถ้าอัพเดทโปรไฟล์จะได้ พอยท์เพิ่ม 100 พอยท์)</h1>
+                                        <h5 style="color: #666666;">จัดการข้อมูลส่วนตัวคุณของคุณเพื่อให้ใช้งานได้สะดวกขึ้น</h5>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -162,9 +160,9 @@
                                                             ?>
                                                                 <label class="bgInput field- my-1">
                                                                 <label><p class="fontHeadInput">วัน เดือน ปีเกิด</p></label><br>
-                                                                <label style="padding:0;"><SELECT  size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></label>
-                                                                <label style="padding:0;"><SELECT  size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></label>
-                                                                <label style="padding:0;"><SELECT  size="1" id ="day" name = "dd"></SELECT></label>
+                                                                <label style="padding:0;"><SELECT class="MySelect p pl-2"  size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></label>
+                                                                <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></label>
+                                                                <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1" id ="day" name = "dd"></SELECT></label>
                                                             </label>
                                                         </div>
                                                     </div>
