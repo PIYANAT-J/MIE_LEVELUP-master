@@ -23,12 +23,20 @@ class packageController extends Controller
             $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
             $allPackage = DB::table('packages')->get();
             // dd($allPackage);
-            return view('profile.sponsor.advt_package', compact('sponsor', 'allPackage'));
+            $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
+                            ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                            ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                            ->get();
+            return view('profile.sponsor.advt_package', compact('sponsor', 'allPackage', 'countCart'));
         }else{
             $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
             $package = DB::table('my_package_buy')->where('USER_EMAIL', Auth::user()->email)->get();
             $allPackage = DB::table('packages')->get();
-            return view('profile.sponsor.advt_package', compact('sponsor', 'package', 'allPackage'));
+            $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
+                            ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                            ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                            ->get();
+            return view('profile.sponsor.advt_package', compact('sponsor', 'package', 'allPackage', 'countCart'));
         }
     }
 

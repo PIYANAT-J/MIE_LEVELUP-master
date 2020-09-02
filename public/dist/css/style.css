@@ -477,6 +477,7 @@ body:after {
         .site-mobile-menu .site-mobile-menu-header .site-mobile-menu-logo a:hover {
           text-decoration: none; }
   .site-mobile-menu .site-mobile-menu-body {
+    z-index: 1000;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     position: relative;
@@ -496,6 +497,7 @@ body:after {
         background-color: #000;
         color: #ffffff; }
     .site-mobile-menu .site-nav-wrap li {
+      z-index: 1010;
       position: relative;
       display: block; }
       .site-mobile-menu .site-nav-wrap li .active {

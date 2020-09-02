@@ -104,6 +104,7 @@ Route::post('/withdraw_management/approve', 'AdminController@approveWithdraw')->
 Route::get('/advertisement', 'AdminController@Advertisement')->name('Advertisement');
 Route::get('/package', 'AdminController@Package')->name('Package');
 Route::get('/product', 'AdminController@Product')->name('Product');
+Route::get('/avatar_management', 'AdminController@AvatarManagement')->name('AvatarManagement');
 
 
 
@@ -132,6 +133,7 @@ Route::get('/sponsor_profile', 'UploadImageProfile@indexSpon')->name('SponsorPro
 Route::post('/sponsor_profile/edit', 'UploadImageProfile@saveProfileSpon')->name('SponEditProfile');
 
 Route::get('/advt_package', 'Sponsor\packageController@AdvtPackage')->name('AdvtPackage');
+Route::get('/ads_sponsor', 'UploadImageProfile@AdsSpon')->name('AdsSpon');
 Route::get('/advt_management/{id}', 'Sponsor\packageController@AdvtManagement')->name('AdvtManagement');
 Route::get('/advt_add_game/{id}/{idM}', 'Sponsor\game_sponController@AdvtAddGame')->name('AdvtAddGame');
 Route::post('/advt_add_game/add', 'Sponsor\game_sponController@sponsorGame')->name('addGame');

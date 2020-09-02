@@ -41,15 +41,31 @@
                         <a href="{{ url('/') }}"><img class="img_logo" src="{{asset('home/logo/logo_lvp.svg') }}" ></a>
                     </div>
 
-                    <div class="col-lg-7 col-xl-8  d-none d-lg-block d-xl-block">
+                    <div class="col-lg-7 col-xl-8  d-none d-lg-block d-xl-block home">
                         <nav class="site-navigation position-relative" role="navigation">
-                            <ul class="site-menu main-menu js-clone-nav d-none d-lg-block" style="margin-top:30px;"> 
-                                <li><a href="{{ url('/') }}" class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0"><h1 class="fontNavbar">หน้าแรก</h1></a></li>
-                                <li><a href="{{ route('gameCategory') }}" class="nav-link active mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;"><h1 class="fontNavbar">หมวดหมู่</h1></a></li>
+                            <ul class="site-menu main-menu js-clone-nav d-none d-lg-block" style="margin-top:50px;"> 
+                                <a href="{{ url('/') }}" style="padding:0;"> 
+                                    <li class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0">
+                                        <h1 class="fontNavbar">หน้าแรก</h1>
+                                    </li>
+                                </a>
+                                <a href="{{ route('gameCategory') }}" style="padding:5px 0;">
+                                    <li class="nav-link active mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;">
+                                        <h1 class="fontNavbar">หมวดหมู่</h1>
+                                    </li>
+                                </a>
                                 @guest
-                                    <li><a href="{{ route('login-levelUp') }}" class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;"><h1 class="fontNavbar">การติดตามของฉัน</h1></a></li>
+                                <a href="{{ route('login-levelUp') }}" style="padding:0 0 5px 0;">
+                                    <li class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;">
+                                        <h1 class="fontNavbar">การติดตามของฉัน</h1>
+                                    </li>
+                                </a>
                                 @else
-                                    <li><a href="{{ route('FollowMe') }}" class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;"><h1 class="fontNavbar">การติดตามของฉัน</h1></a></li>
+                                <a href="{{ route('FollowMe') }}" style="padding:0 0 5px 0;">
+                                    <li class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;">
+                                        <h1 class="fontNavbar">การติดตามของฉัน</h1>
+                                    </li>
+                                </a>
                                 @endguest
                                 <li class="inputWithIcon">
                                     <h1><input class="search_btn" type="text" placeholder="ค้นหา" aria-label="Search"></h1>
