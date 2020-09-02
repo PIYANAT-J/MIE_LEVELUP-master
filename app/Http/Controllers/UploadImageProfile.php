@@ -150,7 +150,10 @@ class UploadImageProfile extends Controller
 
     public function indexSpon(){
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-        $countCart = DB::table('sponsor_shopping_cart')->where('USER_ID', Auth::user()->id)->get();
+        $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
+                                ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                                ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                                ->get();
         // dd(count($countCart));
         return view('profile.sponsor_profile', compact('sponsor', 'countCart'));
     }
@@ -179,7 +182,11 @@ class UploadImageProfile extends Controller
 
     public function SponsorChangePassword(){
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('profile.password.sponlvp_change_password', compact('sponsor'));
+        $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
+                                ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                                ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                                ->get();
+        return view('profile.password.sponlvp_change_password', compact('sponsor', 'countCart'));
     }
 
     public function saveProfileDev(Request $request){

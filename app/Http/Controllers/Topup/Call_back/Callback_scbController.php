@@ -42,10 +42,11 @@ class Callback_scbController extends Controller
                 $qrpayment->confirm_at = date('Y-m-d H:i:s');
 
                 $packageBuy = DB::table('my_package_buy')->where('packageBuy_invoice', $invoice)->first();
-                $package = DB::table('packages')->where('package_id', $packageBuy->package_id)->first();
+                
                 // dd($packageBuy);
-                if ($packageBuy->packageBuy_invoice == $invoice) {
-                    // dd("YES");
+                if ($packageBuy != null) {
+                    // dd("NO");
+                    $package = DB::table('packages')->where('package_id', $packageBuy->package_id)->first();
                     $packageBuy_status = "true";
                     $packageBuy_start = date('Y-m-d');
                     $Y = date('Y');
@@ -56,51 +57,33 @@ class Callback_scbController extends Controller
                     $data = array("packageBuy_status"=>$packageBuy_status, "packageBuy_start"=>$packageBuy_start, "packageBuy_deadline"=>$packageBuy_deadline, "packageBuy_invoice"=>$invoice);
                     $value = Package::packageBuy($data);
 
-                    // $ack = $this->callack($invoice);
-
-                    // $amount = $mobiletopup->amount - ($mobiletopup->amount * 2.5 / 100);
-                    // $credit = $amount / 30;
-                    // $type = 'mobiletopup';
-                    // $user_id = $mobiletopup->user_id;
-                    // $campaign_id = 1;
-                    // $ref_id = $mobiletopup->id;
-                    // $status = 1;
-                    // $blockchain = "###MULTIINNOVATION###";
-
-                    // $transaction = new Transaction();
-                    // $transaction->type = $type;
-                    // $transaction->user_id = $user_id;
-                    // $transaction->campaign_id = $campaign_id;
-                    // $transaction->ref_id = $ref_id;
-                    // $transaction->credit = $credit;
-                    // $transaction->status = $status;
-                    // $transaction->blockchain = $blockchain;
-
-                    // if ($transaction->save()) {
-        
-                    //     $spi = new Spi();
-                    //     $spi->type = $type;
-                    //     $spi->description = $type;
-                    //     $spi->amount = $mobiletopup->amount - $amount;
-                    //     $spi->save();
-
-                    //     $balance = Balance::where('user_id', $user_id)
-                    //     ->get()->first();
-
-                    //     if ($balance) {
-                    //         $balance->credit += $credit;
-                    //         $balance->save();
-                    //     } else {
-                    //         $balance = new Balance();
-                    //         $balance->user_id = $user_id;
-                    //         $balance->credit = $credit;
-                    //         $balance->save();
-                    //     }
-
-                    // }
-
                     $qrpayment->save();
                 }else {
+                    // dd("YES");
+                    $transeection = DB::table('transeection_sponshopping')->where('transeection_invoice', $invoice)->first();
+                    if($transeection != null){
+                        $game = explode(", ", $transeection->transeection_gameSpon);
+                        $gameSpon = [];
+                        for($i=0;$i<count($game);$i++){
+                            $shopping = DB::table('sponsor_shopping_cart')->where([['sponsor_cart_game', $game[$i]], ['USER_ID', $transeection->USER_ID], ['sponsor_cart_status', 'false']])->first();
+                            $sponsor_cart_id = $shopping->sponsor_cart_id;
+                            $sponsor_cart_status = "true";
+                            $data = array("sponsor_cart_id"=>$sponsor_cart_id, "sponsor_cart_status"=>$sponsor_cart_status);
+                            Package::cartGameUpdate($data);
+
+                            $start = explode(" ", $shopping->sponsor_cart_start);
+                            $deadline = explode(" ", $shopping->sponsor_cart_deadline);
+                            array_push($gameSpon, ([
+                                'gameid' => $shopping->sponsor_cart_game,
+                                'start' => $start[0].'T'.$start[1],
+                                'deadline' => $deadline[0].'T'.$deadline[1]
+                            ]));
+                        }
+                        
+                        $data = array("transeection_invoice"=>$invoice, "transeection_status"=>"true", "transeection_gameSpon"=>$gameSpon);
+                        // dd($data);
+                        Package::transeectionPaymentUpdate($data);
+                    }
                     $qrpayment->save();
                 }
             }
