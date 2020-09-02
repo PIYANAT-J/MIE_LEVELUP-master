@@ -24,8 +24,12 @@ class game_sponController extends Controller
                             ->select('my_package_buy.*', 'packages.package_game', 'packages.package_length')
                             ->first();
             $packageGame = json_decode($package->packageBuy_gameSpon);
+            $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
+                            ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                            ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                            ->get();
             // dd($packageGame);
-            return view('profile.sponsor.advt_add_game', compact('sponsor', 'game', 'package', 'packageGame'));
+            return view('profile.sponsor.advt_add_game', compact('sponsor', 'game', 'package', 'packageGame', 'countCart'));
         }elseif($idMD == 1){
             $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
             $game = DB::table('games')->where('GAME_STATUS','อนุมัติ')->get();
@@ -35,8 +39,12 @@ class game_sponController extends Controller
                             ->first();
             $packageGame = json_decode($package->packageBuy_gameSpon);
             $modal = 1;
+            $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
+                            ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                            ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                            ->get();
             // dd($package);
-            return view('profile.sponsor.advt_add_game', compact('sponsor', 'game', 'package', 'modal', 'packageGame'));
+            return view('profile.sponsor.advt_add_game', compact('sponsor', 'game', 'package', 'modal', 'packageGame', 'countCart'));
         }
     }
 
@@ -116,5 +124,27 @@ class game_sponController extends Controller
                             ->get();
         // dd($countCart);
         return view('profile.sponsor.spon_shopping_cart', compact('sponsor', 'countCart'));
+    }
+
+    public function SponShoppingCartPayment(Request $req){
+        if($req->input('submit') != null){
+            $transeection_amount = $req->input('sumTotal');
+            // $start = explode(', ', $req->input('gameId'));
+            // $gameId = [];
+            // for($i=0;$i<count($start);$i++){
+            //     array_push($gameId, ([
+            //         'gameId' => $start[$i]
+            //     ]));
+            // }
+            $transeection_gameSpon = $req->input('gameId');
+            $USER_ID = Auth::user()->id;
+            $USER_EMAIL = Auth::user()->email;
+
+            $data = array("transeection_amount"=>$transeection_amount, "transeection_gameSpon"=>$transeection_gameSpon, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
+            // dd($data);
+            Package::cartPayment($data);
+            // dd("YES");
+            return redirect(route('packagePay', ['id'=>encrypt('list')]));
+        }
     }
 }

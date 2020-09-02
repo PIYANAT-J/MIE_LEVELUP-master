@@ -60,13 +60,13 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10 ">
                     <a href="{{ route('AdvtPackage') }}"><label class="fontAd1 active">สนับสนุนเงินในเกม</label></a>
-                    @if($package == null)
+                    @if(empty($package))
                         <label class="fontAd1"> > </label>
                         <a href="{{ route('SponShoppingCart') }}"><label class="fontAd1 active">ตระกร้าสินค้า</label></a>
+                    @elseif(isset($package))
+                        <label class="fontAd1"> > </label>
+                        <a href="{{ route('packagePay', ['id'=>encrypt($package->package_id)]) }}"><label class="fontAd1 active" >ชำระเงิน</label></a>
                     @endif
-                    
-                    <label class="fontAd1"> > </label>
-                    <a href="{{ route('packagePay', ['id'=>encrypt($package->package_id)]) }}"><label class="fontAd1 active" >ชำระเงิน</label></a>
                     <label class="fontAd1"> > </label>
                     <label class="fontAd1" >ยืนยันการชำระเงิน</label>
                 </div>
@@ -126,7 +126,11 @@
                                     <div class="row mt-2">
                                         <div class="col-lg-12 text-right">
                                             <label class="btn-submit-red3" onClick="myFunction()">แจ้งการชำระเงิน</label>
-                                            <a href="{{ route('packagePay', ['id'=>encrypt($package->package_id)]) }}"><label class="btn-submit-wh">อัพโหลดภายหลัง</label></a>
+                                            @if(isset($package))
+                                                <a href="{{ route('packagePay', ['id'=>encrypt($package->package_id)]) }}"><label class="btn-submit-wh">อัพโหลดภายหลัง</label></a>
+                                            @else
+                                                <a href="{{ route('packagePay', ['id'=>encrypt($transeection->transeection_id)]) }}"><label class="btn-submit-wh">อัพโหลดภายหลัง</label></a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +170,11 @@
                                             <!-- <a href="{{ route('SponsorPayment') }}"><label class="btn-submit-drak2">ยืนยัน</label></a>transferNote -->
                                             <button class="btn-submit-drak2" name="submit" value="submit">ยืนยัน</button>
                                             <input type="hidden" name="id" value="{{$transfer->id}}">
-                                            <input type="hidden" name="package_id" value="{{$package->package_id}}">
+                                            @if(isset($package))
+                                                <input type="hidden" name="package_id" value="{{$package->package_id}}">
+                                            @else
+                                                <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
+                                            @endif
                                         </div>
                                         <div class="col-lg-6 ">
                                             <div>

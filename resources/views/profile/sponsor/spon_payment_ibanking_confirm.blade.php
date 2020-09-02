@@ -77,7 +77,11 @@
                         <div class="col-lg-12 mt-1">
                             <div class="row mx-2 py-3" style="border-bottom:1px solid #edeef3">
                                 <div class="col-6 font-payment3">จำนวนเงินที่ต้องชำระ</div>
-                                <div class="col-6 text-right font-price" style="font-size:1.5em;">฿ {{$package->packageBuy_amount}}</div>
+                                @if(isset($package))
+                                    <div class="col-6 text-right font-price" style="font-size:1.5em;">฿ {{$package->packageBuy_amount}}</div>
+                                @else
+                                    <div class="col-6 text-right font-price" style="font-size:1.5em;">฿ {{$transeection->transeection_amount}}</div>
+                                @endif
                             </div>
 
                             <div class="row mx-2 py-3" style="border-bottom:1px solid #edeef3">
@@ -93,9 +97,13 @@
                                         <div class="col-lg-2 text-right">
                                             <form action="{{route('cancalIbanking')}}" method="post">
                                                 @csrf
-                                                <button class="btn-submit-payment">ยกเลิก
+                                                <button class="btn-submit-payment">ยกเลิก</button>
                                                     <input type="hidden" name="invoice" value="{{$qrpayment->invoice}}">
-                                                </button>
+                                                    @if(isset($package))
+                                                        <input type="hidden" name="package_id" value="{{$package->package_id}}">
+                                                    @else
+                                                        <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
+                                                    @endif
                                                 <!-- <label class="btn-submit-payment">ยกเลิก</label> -->
                                             </form>
                                         </div>

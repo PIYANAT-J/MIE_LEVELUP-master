@@ -144,6 +144,7 @@ Route::get('/product_support_select', 'Sponsor\productController@ProductSupportS
 Route::get('/sponlvp_shelf', 'Sponsor\productController@SponShelf')->name('SponShelf');
 
 Route::get('/spon_shopping_cart', 'Sponsor\game_sponController@SponShoppingCart')->name('SponShoppingCart');
+Route::post('/spon_shopping_cart/payment', 'Sponsor\game_sponController@SponShoppingCartPayment')->name('sponShoppingCartPayment');
 
 Route::get('/sponsor_payment', 'UploadImageProfile@SponsorPayment')->name('SponsorPayment');
 Route::post('/sponsor_payment/qrCode', 'Sponsor\packageController@packageibanking')->name('packageibanking');

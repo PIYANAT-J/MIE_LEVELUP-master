@@ -72,14 +72,17 @@
                             <span class="font-profile1">ตระกร้าสินค้า</span>
                         </div>
                     </div>
+                    
                     <div class="row rowGameShopping">
                         <div class="col-lg-12" style="border-bottom: 1px solid #f2f2f2;">
                             <div class="row mx-2 mt-3" style="border-bottom:1px solid #fff;">
                                 @foreach($countCart as $key=>$gameList)
                                     <div class="col-8" style="padding:0;">
                                         <label class="checkbox-dark" style="padding-top:10px;">
-                                            <input type="checkbox" id="checkbox_{{$key}}" name="accept_01" value="{{$gameList->sponsor_cart_price}}">
+                                            <input type="checkbox" id="checkbox_{{$key}}" name="accept_01" value="{{$gameList->sponsor_cart_game}}" data-price="{{$gameList->sponsor_cart_price}}">
                                             <label for="checkbox_{{$key}}" ></label>
+                                            <!-- <input type="checkbox" id="checkbox_{{$key}}" name="someCheck" value="{{$gameList->sponsor_cart_game}}"> -->
+                                            <!-- <label for="checkbox{{$key}}" ></label> -->
                                         </label>
                                         <label class="plabelimg">
                                             <img class="labelimg" src="{{ asset('section/File_game/Profile_game/'.$gameList->GAME_IMG_PROFILE) }}" />
@@ -133,9 +136,17 @@
                             
                         </div>
                         <div class="col-2">
-                            <a href="{{ route('packagePay', ['id'=>encrypt('list')]) }}"><label class="btn-submit-red2" style="">ชำระเงิน</label></a>
+                            <!-- <a href="{{ route('packagePay', ['id'=>encrypt('list')]) }}"><label class="btn-submit-red2" style="">ชำระเงิน</label></a> -->
+                            <form action="{{route('sponShoppingCartPayment')}}" method="post">
+                                @csrf
+                                <button class="btn-submit-red2" name="submit" value="submit">ชำระเงิน
+                                    <input type="hidden" name="sumTotal" id="sumTotal">
+                                    <input type="hidden" name="gameId" id="data-checked">
+                                </button>
+                            </form>
                         </div>
                     </div>
+                    
                 </div>
                 <div class="col-lg-1"></div>
             </div>
@@ -190,12 +201,18 @@
             var countCheckedCheckboxes = $(":checkbox", closest).filter(':checked').length;
             $('#count-checked').html(countCheckedCheckboxes);
             console.log(countCheckedCheckboxes);
+            var favorite = [];
             $.each($("input[name='accept_01']:checked"), function(){
-                total += parseFloat($(this).val()) || 0;
+                favorite.push($(this).val());
             });
-            // document.querySelector('input#total').value = favorite.join(", ")
+            $("input[name='accept_01']:checked").each(function() {
+                total += parseFloat($(this).attr('data-price')) || 0;
+            });
             $('#total').html(total);
+            document.querySelector('input#sumTotal').value = total;
             console.log(total);
+            document.querySelector('input#data-checked').value = favorite.join(", ");
+            console.log(favorite);
         });
     });
 </script>
