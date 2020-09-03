@@ -4,9 +4,9 @@
     <div class="row my-5"></div>
     <div class="row my-2"></div>
     <div class="row  mt-3">
-
+        @include('profile.sidebar.sponsor_sidebar')
         <!-- sidebar -->
-        <div class="col-lg-3" style="background-color: #17202c;">
+        <!-- <div class="col-lg-3" style="background-color: #17202c;">
             <div class="row">
                 <div class="col-lg-1"></div>
                     @foreach($sponsor as $spon)
@@ -46,12 +46,12 @@
                 <a href="{{ route('AdvtPackage') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-money menuIcon"></i>สนับสนุนเงินในเกม</button></a>
                 <a href="{{ route('ProductSupport') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-product menuIcon2"></i>สนับสนุนสินค้าในเกม</button></a>
                 <a href="{{ route('SponShelf') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
-                <!-- <a href="{{ route('DevHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a> -->
+                <a href="{{ route('DevHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
                 <a href="{{ route('SponsorTopup') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</button></a>
                 <a href="{{ route('SponsorChangePassword') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
                 <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</button></a> 
             </div>
-        </div>
+        </div> -->
         <!-- sidebar -->
 
         <div class="col-lg-9" style="background-color:#f5f5f5;">
@@ -97,15 +97,24 @@
 
                                     <div class="col-3 my-3">
                                         <span class="fontPriceAds1" style="line-height: 1.2; display:block;text-align:right;font-size:1em;">
-                                            <b class="font-price" style="font-size:1.5em;">฿{{$gameList->sponsor_cart_price}}</b></br>
+                                            
                                             @if($gameList->GAME_DISCOUNT != null)
+                                                <b class="font-price" style="font-size:1.5em;">฿{{$gameList->sponsor_cart_price}}</b></br>
                                                 <b class="mr-2" style="color: #b2b2b2;text-decoration:line-through;">฿680 </b> (-{{$gameList->GAME_DISCOUNT}}%)
+                                            @else
+                                                <b class="font-price" style="font-size:1.5em; line-height:2.3;">฿{{$gameList->sponsor_cart_price}}</b></br>
                                             @endif
                                         </span>
                                     </div>
 
-                                    <div class="col-1 my-4 py-1 text-center" style="padding:0;">
-                                        <img style="width:30%;cursor:pointer;" src="{{asset('icon/trash.svg') }}" />
+                                    <div class="col-1 mt-4 py-1 text-center" style="padding:0; margin:0;">
+                                        <form action="{{route('daleteShoppingCart')}}" method="post">
+                                            @csrf
+                                            <button class="pTrashAvatar btnTrash" name="deleteGame" value="deleteGame">
+                                                <img style="width:100%;cursor:pointer;" src="{{asset('icon/trash.svg') }}" />
+                                                <input type="hidden" name="sponsor_cart_id" value="{{$gameList->sponsor_cart_id}}">
+                                            </button>
+                                        </form>
                                     </div>
                                 @endforeach
                             </div>
@@ -216,4 +225,21 @@
         });
     });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+@if( Session::has('Delete'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // $('#address').modal();
+            Swal.fire({
+                // position: 'top-end',
+                icon: 'success',
+                title: '{{ Session::get('Delete') }}',
+                // title: 'Oops...',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        });
+    </script>
+@endif
 @endsection
