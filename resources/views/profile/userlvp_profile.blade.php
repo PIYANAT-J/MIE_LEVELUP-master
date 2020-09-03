@@ -6,7 +6,7 @@
     <div class="row  mt-3">
  
         <!-- sidebar -->
-        <div class="col-3 d-none d-lg-block d-xl-block" style="background-color: #17202c;">
+        <div class="col-lg-4 col-xl-3 d-none d-lg-block d-xl-block" style="background-color: #17202c;">
             <div class="row">
                 <div class="col-1"></div>
                     @foreach($guest_user as $USER)
@@ -106,7 +106,7 @@
         <div class="col-sm-1 col-md-1 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
         @foreach($guest_user as $USER)
             @if($USER->USER_EMAIL == Auth::user()->email)
-                    <div class="col-sm-10 col-md-10 col-lg-9 col-xl-9 pt-3 pb-4" style="background-color:#f5f5f5;">
+                    <div class="col-sm-10 col-md-10 col-lg-8 col-xl-9 pt-3 pb-4" style="background-color:#f5f5f5;">
                         <div style="background-color:#ffffff;border-radius: 8px;padding:20px;">
                             <form action="{{ route('EditProfile') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -121,32 +121,32 @@
                                         <div class="row">
                                             <div class="col-12 mt-2" >
                                                 <label class="bgInput field-wrap my-1">
-                                                    <label><p class="fontHeadInput">ชื่อ</p></label><br>
+                                                    <p class="fontHeadInput">ชื่อ</p>
                                                     <input name="name" class="input1 p ml-2" value="{{ Auth::user()->name }}"></input>
                                                 </label>
                                                 @error('name')
-                                                    <p style="color:#383838;">กรุณากรอกชื่อ</p>
+                                                    <p style="color:#ce0005;">กรุณากรอกชื่อ</p>
                                                 @enderror
                                                 <label class="bgInput field-wrap my-1">
-                                                    <label><p class="fontHeadInput">นามสกุล</p></label><br>
+                                                    <p class="fontHeadInput">นามสกุล</p>
                                                     <input name="surname" class="input1 p ml-2" value="{{ Auth::user()->surname }}" ></input>
                                                 </label>
                                                 @error('surname')
-                                                    <p style="color:#383838;">กรุณากรอกนามสกุล</p>
+                                                    <p style="color:#ce0005;">กรุณากรอกนามสกุล</p>
                                                 @enderror
                                                 <label class="bgInput field- my-1">
-                                                    <label><p class="fontHeadInput">เบอร์โทรศัพท์</p></label><br>
+                                                    <p class="fontHeadInput">เบอร์โทรศัพท์</p>
                                                     <input name="GUEST_USERS_TEL" type="text" class="input1 p ml-2 @error('GUEST_USERS_TEL') is-invalid @enderror"  data-toggle="tooltip" value="{{ $USER->GUEST_USERS_TEL ?? old('GUEST_USERS_TEL') }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
                                                 </label>
                                                 @error('GUEST_USERS_TEL')
-                                                    <p style="color:#383838;">กรุณากรอกเบอร์โทรศัพท์</p>
+                                                    <p style="color:#ce0005;">กรุณากรอกเบอร์โทรศัพท์</p>
                                                 @enderror
                                                 <label class="bgInput field- my-1">
-                                                    <label><p class="fontHeadInput">เลขบัตรประจำตัวประชาชน</p></label><br>
+                                                    <p class="fontHeadInput">เลขบัตรประจำตัวประชาชน</p>
                                                     <input name="GUEST_USERS_ID_CARD" type="text" class="input1 p ml-2" value="{{ $USER->GUEST_USERS_ID_CARD ?? old('GUEST_USERS_ID_CARD')}}" minlength="13" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
                                                 </label>
                                                 @error('GUEST_USERS_ID_CARD')
-                                                    <p style="color:#383838;">เลขบัตรประจำตัวประชาชนไม่ถูกต้อง</p>
+                                                    <p style="color:#ce0005;">เลขบัตรประจำตัวประชาชนไม่ถูกต้อง</p>
                                                 @enderror
                                                 <div class="row">
                                                     <div class="col-12">
@@ -203,12 +203,12 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 col-xl-3 bgSidebar"></div>
+        <div class="col-lg-4 col-xl-3 bgSidebar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 col-xl-9 bgContent"></div>
+        <div class="col-lg-8 col-xl-9 bgContent"></div>
     </div>
 </div>
 

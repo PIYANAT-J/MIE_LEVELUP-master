@@ -5,7 +5,7 @@
     <div class="row  pt-3" style="background-color: #f5f5f5;">
     
         <!-- sidebar -->
-        <div class="col-3 d-none d-lg-block d-xl-block" style="background-color: #17202c;">
+        <div class="col-lg-4 col-xl-3 d-none d-lg-block d-xl-block" style="background-color: #17202c;">
             <div class="row">
                 <div class="col-1"></div>
                     @foreach($guest_user as $USER)
@@ -80,12 +80,12 @@
                     </button>
                 </a>
                 <a href="{{ route('UserRank') }}" style="width: 100%;">
-                    <button class="btn-sidebar active">
+                    <button class="btn-sidebar">
                         <p style="margin: 0;"><i class="fa fa-star-o menuIcon"></i>อันดับผู้ใช้</p>
                     </button>
                 </a>
                 <a href="{{ route('UserTopup') }}" style="width: 100%;">
-                    <button class="btn-sidebar">
+                    <button class="btn-sidebar active">
                         <p style="margin: 0;"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</p>
                     </button>
                 </a>
@@ -104,7 +104,7 @@
         <!-- sidebar -->
 
         <div class="col-sm-12 col-md-12 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
-        <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 pt-3  pb-4" style="background-color:#f5f5f5;">
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3  pb-4" style="background-color:#f5f5f5;">
             <div style="background-color:#ffffff;border-radius: 8px;padding:20px;">
                 <div class="row">
                     <div class=" col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-5">
@@ -114,12 +114,12 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 line1">
+                            <div class="col-12">
                                 <div class="row bg-topup ml-0 mb-2 mt-1">
-                                    <div class="col-6 text-left">
+                                    <div class="col-8  text-left" style="padding:0;">
                                         <h1 style="color:#ffffff;font-weight:500;">ยอดเงินในวอลเล็ท<h1>
                                     </div>
-                                    <div class="col-6 text-right">
+                                    <div class="col-4 text-right" style="padding:0;">
                                         <h1 style="color:#ffffff;font-weight:500;">฿ {{round($wallet, 2)}}</h1>
                                     </div>
                                 </div>
@@ -146,25 +146,25 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div id="banking" class="redioRed ">
-                                            <div data-toggle="modal" data-target="#myModal2">
+                                            <div data-toggle="modal" data-target="#myModal2" onClick="myFunction3()">
                                                 <input type="radio" name="bank" value="visa" id="visa">
                                                 <label for="visa"> <p style="margin:0;"> บัตรเครดิต/บัตรเดบิต</p></label>
                                                 <img src="{{asset('home/logo/visa.png') }}" />
                                                 <img src="{{asset('home/logo/visa2.png') }}" />
                                             </div>
-                                            <div>
+                                            <div onClick="myFunction()">
                                                 <input type="radio" name="bank" value="atm" id="atm">
                                                 <label for="atm"><p style="margin:0;">โอน/ชำระผ่านบัญชีธนาคาร</p></label>
                                             </div>
-                                            <div>
+                                            <div onClick="myFunction2()">
                                                 <input type="radio" name="bank" value="ibank" id="ibank">
                                                 <label for="ibank"><p style="margin:0;">iBanking / Mobile </p></label>
                                             </div>
                                         
                                         
-                                            <div class="atmlist mt-3">
-                                                <div for="atmdlabel"><p style="margin:0;font-weight:800;">เลือกธนาคารที่ต้องการชำระ</p></div>
-                                                <div name="atmdiv" form="banking">
+                                            <div class="mt-0" id="first">
+                                                <p style="margin:0;font-weight:800;">เลือกธนาคารที่ต้องการชำระ</p>
+                                                <div>
                                                     <button class="btn-bangkok" data-toggle="modal" data-target="#myModal5"><img src="{{asset('home/logo/bangkok.svg') }}" /></button>
                                                     <button class="btn-ktc" data-toggle="modal" data-target="#myModal6"><img src="{{asset('home/logo/ktc.svg') }}" /></button>
                                                     <button class="btn-kbank" data-toggle="modal" data-target="#myModal7"><img src="{{asset('home/logo/kbank.svg') }}" /></button>
@@ -172,9 +172,9 @@
                                                 </div>
                                             </div>
                                             
-                                            <div class="ibanklist ">
-                                                <div for="ibanklable"style="font-family: myfont1;font-size:1em;color:#000;">เลือกธนาคารที่ต้องการชำระ</div>
-                                                <div name="ibankdiv" form="banking">
+                                            <div class="mt-0 " id="second">
+                                                <p style="margin:0;font-weight:800;">เลือกธนาคารที่ต้องการชำระ</p>
+                                                <div>
                                                     <!-- <button class="btn-bangkok" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/bangkok.svg') }}" /></button>
                                                     <button class="btn-ktc" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/ktc.svg') }}" /></button>
                                                     <button class="btn-kbank" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/kbank.svg') }}" /></button> -->
@@ -206,76 +206,68 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
                         <div class="row">
                             <div class="col-12 pb-2 mb-2" style="border-bottom: 1px solid #f2f2f2;">
                                 <h1 class="fontHeader">ประวัติการเติมเงิน</h1>
                             </div>
                         </div>
                         <div class="row row5">
-                            <div class="col-lg-12">
+                            <div class="col-12">
                                 @if(isset($payment))
                                     @foreach($payment as $PaymentList)
                                         @if($PaymentList->paymentType == "QrCode")
                                             @if($PaymentList->status == "true")
                                                 <div class="row bg-bank ml-0 mb-2 py-2">
-                                                    <div class="col-lg-12">
+                                                    <div class="col-12">
                                                         <div class="row">
-                                                            <div class="col-6">
-                                                                <span class="text-right" style="font-family:myfont;font-size:1em;color:#000;">iBanking / Mobile Banking</span><br>
-                                                                <img class="mr-2" src="{{asset('home/logo/'.$PaymentList->bank_name.'.svg') }}" />
-                                                                <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
-                                                                </div>
-                                                            <div class="col-6  text-right" style="padding-top:35px">
-                                                                <span class="font-bank1" >+{{ $PaymentList->amount }} ฿</span></br>
+                                                            <div class="col-12">
+                                                                <p style="margin:0;font-weight:800;">iBanking / Mobile Banking</p>
+                                                                <img class="imgBank" src="{{asset('home/logo/'.$PaymentList->bank_name.'.svg') }}" />
+                                                                <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารไทยพาณิชย์</p>
+                                                                <p class="font-bank1">+{{ $PaymentList->amount }} ฿</p>
                                                             </div> 
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col-6">
-                                                                <span style="font-family:myfont1;font-size:1em;color:#000;">หมายเลขคำร้อง</span>
-                                                                </div>
-                                                            <div class="col-6 text-right">
-                                                                <span class="py-2" style="font-family:myfont;font-size:1em;color:#000;">{{ $PaymentList->qr_invoice }}</span>
+                                                            <div class="col-12">
+                                                                <p style="margin:0;">หมายเลขคำร้อง</p>
+                                                                <p class="fontInvoice">{{ $PaymentList->qr_invoice }}</p>
                                                             </div> 
                                                         </div>
                                                         <div class="row ">
-                                                            <div class="col-6">
-                                                                <span style="font-family:myfont;font-size:1em;color:#ff6f6f;">ชำระเงินเรียบร้อย</span>
-                                                            </div>
-                                                            <div class="col-6 text-right">
-                                                                <label class="font-game-shelf">{{ $PaymentList->confirm_at}}</label>
+                                                            <div class="col-12">
+                                                                <p style="color:#ff6f6f;margin:0;padding:10px 0 0 0">ชำระเงินเรียบร้อย</p>
+                                                                <p class="fontTimeConfirm">{{ $PaymentList->confirm_at}}</p>
                                                             </div> 
                                                         </div>
                                                     </div> 
                                                 </div>
                                             @else
                                                 <div class="row bg-bank ml-0 mb-2 py-2">
-                                                    <div class="col-lg-12">
+                                                    <div class="col-12">
                                                         <div class="row">
-                                                            <div class="col-6">
-                                                                <span class="text-right" style="font-family:myfont;font-size:1em;color:#000;">iBanking / Mobile Banking</span><br>
-                                                                <img class="mr-2" src="{{asset('home/logo/'.$PaymentList->bank_name.'.svg') }}" />
-                                                                <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
-                                                                </div>
-                                                            <div class="col-6  text-right" style="padding-top:35px">
-                                                                <span class="font-bank1" >+{{ $PaymentList->amount }} ฿</span></br>
+                                                            <div class="col-12 mb-3">
+                                                                <p style="margin:0;font-weight:800;">iBanking / Mobile Banking</p>
+                                                                <img class="imgBank" src="{{asset('home/logo/'.$PaymentList->bank_name.'.svg') }}" />
+                                                                <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารไทยพาณิชย์</p>   
+                                                                <p class="font-bank1">+{{ $PaymentList->amount }} ฿</p>
                                                             </div> 
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col-6">
-                                                                <span style="font-family:myfont1;font-size:1em;color:#000;">หมายเลขคำร้อง</span>
-                                                                </div>
-                                                            <div class="col-6 text-right">
-                                                                <span class="py-2" style="font-family:myfont;font-size:1em;color:#000;">{{ $PaymentList->qr_invoice }}</span>
+                                                            <div class="col-12">
+                                                                <p style="margin:0;">หมายเลขคำร้อง</p>
+                                                                <p class="fontInvoice">{{ $PaymentList->qr_invoice }}</p>
                                                             </div> 
                                                         </div>
-                                                        <div class="row ">
-                                                            <div class="col-6">
-                                                                <span style="font-family:myfont;font-size:1em;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</span>
+                                                        <div class="row mt-1">
+                                                            <div class="col-9 pb-2">
+                                                                <h5 style="color:#ff6f6f;margin:0;padding:10px 0 0 0;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</h5>
+                                                            </div> 
+                                                            <div class="col-3">
+                                                                <button class="btn-submit-s" style="position:absolute;top:0;right:16px" data-toggle="modal" data-target="#{{ $PaymentList->invoice }}">
+                                                                    <p style="margin:0;">โอนเงิน</p>
+                                                                </button>
                                                             </div>
-                                                            <div class="col-6 text-right pt-2">
-                                                                <button class="btn-submit-s" data-toggle="modal" data-target="#{{ $PaymentList->invoice }}">โอนเงิน</button>
-                                                            </div> 
                                                         </div>
                                                     </div> 
                                                 </div>
@@ -288,117 +280,105 @@
                                     @foreach($transfer as $transferLits)
                                         @if($transferLits->transferStatus == "ยืนยันการโอน")
                                             <div class="row bg-bank ml-0 mb-2 py-2">
-                                                <div class="col-lg-12">
+                                                <div class="col-12">
                                                     <div class="row">
-                                                        <div class="col-6">
-                                                            <span class="text-right" style="font-family:myfont;font-size:1em;color:#000;">โอน/ชำระผ่านบัญชีธนาคาร</span><br>
-                                                            <img class="mr-2" src="{{asset('home/logo/'.$transferLits->transferฺBank_name.'.svg') }}" />
+                                                        <div class="col-12 mb-3">
+                                                            <p style="margin:0;font-weight:800;">โอน/ชำระผ่านบัญชีธนาคาร</p>
+                                                            <img class="imgBank" src="{{asset('home/logo/'.$transferLits->transferฺBank_name.'.svg') }}" />
                                                             @if($transferLits->transferฺBank_name == "bangkok")
-                                                                <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงเทพ</span><br>
+                                                                <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารกรุงเทพ</p>
                                                             @elseif($transferLits->transferฺBank_name == "ktc")
-                                                                <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงไทย</span><br>
+                                                                <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารกรุงไทย</p>
                                                             @elseif($transferLits->transferฺBank_name == "kbank")
-                                                                <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกสิกรไทย</span><br>
+                                                                <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารกสิกรไทย</p>
                                                             @elseif($transferLits->transferฺBank_name == "scb")
-                                                                <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
+                                                                <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารไทยพาณิชย์</p>
                                                             @endif
-                                                        </div>
-                                                        <div class="col-6  text-right" style="padding-top:35px">
-                                                            <span class="font-bank1" >+{{ $transferLits->transferAmount }} ฿</span></br>
+                                                            <p class="font-bank1">+{{ $transferLits->transferAmount }} ฿</p>
                                                         </div> 
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-6">
-                                                            <span style="font-family:myfont1;font-size:1em;color:#000;">หมายเลขคำร้อง</span>
-                                                            </div>
-                                                        <div class="col-6 text-right">
-                                                            <span class="py-2" style="font-family:myfont;font-size:1em;color:#000;">{{ $transferLits->transferInvoice }}</span>
+                                                        <div class="col-12">
+                                                            <p style="margin:0;">หมายเลขคำร้อง</p>
+                                                            <p class="fontInvoice">{{ $transferLits->transferInvoice }}</p>
                                                         </div> 
                                                     </div>
-                                                    <div class="row ">
-                                                        <div class="col-6">
-                                                            <span style="font-family:myfont;font-size:0.9em;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</span>
+                                                    <div class="row mt-1">
+                                                        <div class="col-9 pb-2">
+                                                            <h5 style="color:#ff6f6f;margin:0;padding:10px 0 0 0;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</h5>
                                                         </div>
-                                                        <div class="col-6 text-right pt-2">
-                                                            <button class="btn-submit-s" data-toggle="modal" data-target="#{{ $transferLits->invoice }}">ยืนยันการโอน</button>
+                                                        <div class="col-3">
+                                                            <button class="btn-submit-s" style="position:absolute;top:0;right:16px" data-toggle="modal" data-target="#{{ $transferLits->invoice }}">
+                                                                <p style="margin:0;">แจ้งโอน</p>
+                                                            </button>
                                                         </div> 
                                                     </div>
                                                 </div> 
                                             </div>
                                         @elseif($transferLits->transferStatus == "รอการอนุมัติ")
                                             <div class="row bg-bank ml-0 mb-2 py-2">
-                                                <div class="col-lg-12">
+                                                <div class="col-12">
                                                     <div class="row">
-                                                        <div class="col-6">
-                                                            <span class="text-right" style="font-family:myfont;font-size:1em;color:#000;">โอน/ชำระผ่านบัญชีธนาคาร</span><br>
-                                                            <img class="mr-2" src="{{asset('home/logo/'.$transferLits->transferฺBank_name.'.svg') }}" />
+                                                        <div class="col-12 mb-3">
+                                                            <p style="margin:0;font-weight:800;">โอน/ชำระผ่านบัญชีธนาคาร</p>
+                                                            <img class="imgBank" src="{{asset('home/logo/'.$transferLits->transferฺBank_name.'.svg') }}" />
                                                             @if($transferLits->transferฺBank_name == "bangkok")
-                                                                <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงเทพ</span><br>
+                                                                <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารกรุงเทพ</p>
                                                             @elseif($transferLits->transferฺBank_name == "ktc")
-                                                                <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงไทย</span><br>
+                                                                <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารกรุงไทย</p>
                                                             @elseif($transferLits->transferฺBank_name == "kbank")
-                                                                <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกสิกรไทย</span><br>
+                                                                <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารกสิกรไทย</p>
                                                             @elseif($transferLits->transferฺBank_name == "scb")
-                                                                <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
+                                                                <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารไทยพาณิชย์</p>
                                                             @endif
-                                                        </div>
-                                                        <div class="col-6  text-right" style="padding-top:35px">
-                                                            <span class="font-bank1" >+{{ $transferLits->transferAmount }} ฿</span></br>
+                                                            <p class="font-bank1">+{{ $transferLits->transferAmount }} ฿</p>
                                                         </div> 
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-6">
-                                                            <span style="font-family:myfont1;font-size:1em;color:#000;">หมายเลขคำร้อง</span>
-                                                            </div>
-                                                        <div class="col-6 text-right">
-                                                            <span class="py-2" style="font-family:myfont;font-size:1em;color:#000;">{{ $transferLits->transferInvoice }}</span>
+                                                        <div class="col-12">
+                                                            <p style="margin:0;">หมายเลขคำร้อง</p>
+                                                            <p class="fontInvoice">{{ $transferLits->transferInvoice }}</p>
                                                         </div> 
                                                     </div>
                                                     <div class="row ">
-                                                        <div class="col-6">
-                                                            <span style="font-family:myfont;font-size:1em;color:#ff6f6f;">ชำระเงินแล้ว</span>
-                                                        </div>
-                                                        <div class="col-6 text-right pt-2">
-                                                            <button class="btn-topup-wait">รอการอนุมัติ</button>
+                                                        <div class="col-12">
+                                                            <p style="color:#ff6f6f;margin:0;padding:10px 0 0 0;">ชำระเงินแล้ว</p>
+                                                            <button class="btnWait" style="position:absolute;top:0;right:16px">
+                                                                <p style="margin:0;">รอการอนุมัติ</p>
+                                                            </button>
                                                         </div> 
                                                     </div>
                                                 </div> 
                                             </div>
                                         @elseif($transferLits->transferStatus == "อนุมัติแล้ว")
                                             <div class="row bg-bank ml-0 mb-2 py-2">
-                                                <div class="col-lg-12">
+                                                <div class="col-12">
                                                     <div class="row">
-                                                        <div class="col-6">
-                                                            <span class="text-right" style="font-family:myfont;font-size:1em;color:#000;">โอน/ชำระผ่านบัญชีธนาคาร</span><br>
-                                                            <img class="mr-2" src="{{asset('home/logo/'.$transferLits->transferฺBank_name.'.svg') }}" />
+                                                        <div class="col-12 mb-3">
+                                                            <p style="margin:0;font-weight:800;">โอน/ชำระผ่านบัญชีธนาคาร</p>
+                                                            <img class="imgBank" src="{{asset('home/logo/'.$transferLits->transferฺBank_name.'.svg') }}" />
                                                             @if($transferLits->transferฺBank_name == "bangkok")
-                                                                <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงเทพ</span><br>
+                                                                <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารกรุงเทพ</p>
                                                             @elseif($transferLits->transferฺBank_name == "ktc")
-                                                                <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงไทย</span><br>
+                                                                <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารกรุงไทย</p>
                                                             @elseif($transferLits->transferฺBank_name == "kbank")
-                                                                <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกสิกรไทย</span><br>
+                                                                <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารกสิกรไทย</p>
                                                             @elseif($transferLits->transferฺBank_name == "scb")
-                                                                <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
+                                                                <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารไทยพาณิชย์</p>
                                                             @endif
-                                                        </div>
-                                                        <div class="col-6  text-right" style="padding-top:35px">
-                                                            <span class="font-bank1" >+{{ $transferLits->transferAmount }} ฿</span></br>
+                                                            <p class="font-bank1">+{{ $transferLits->transferAmount }} ฿</p>
                                                         </div> 
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-6">
-                                                            <span style="font-family:myfont1;font-size:1em;color:#000;">หมายเลขคำร้อง</span>
-                                                            </div>
-                                                        <div class="col-6 text-right">
-                                                            <span class="py-2" style="font-family:myfont;font-size:1em;color:#000;">{{ $transferLits->transferInvoice }}</span>
+                                                        <div class="col-12">
+                                                            <p style="margin:0;">หมายเลขคำร้อง</p>
+                                                            <p class="fontInvoice">{{ $transferLits->transferInvoice }}</p>
                                                         </div> 
                                                     </div>
                                                     <div class="row ">
-                                                        <div class="col-6">
-                                                            <span style="font-family:myfont;font-size:1em;color:#ff6f6f;">ชำระเงินเรียบร้อย</span>
-                                                        </div>
-                                                        <div class="col-6 text-right">
-                                                            <label class="font-game-shelf">15:47 17/06/63</label>
+                                                        <div class="col-12">
+                                                            <label><p style="color:#ff6f6f;margin:0;">ชำระเงินแล้ว</p></label>
+                                                            <label style="float:right;"><h5 style="margin:0;padding-top:5px;">15:47 17/06/63</h5></label>
                                                         </div> 
                                                     </div>
                                                 </div> 
@@ -446,69 +426,72 @@
 
 @if(isset($transfer))
     @foreach($transfer as $transferModal)
+        <!-- แจ้งโอนเงินผ่านบัญชีธนาคาร -->
         <div class="modal fade" id="{{ $transferModal->invoice }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog " role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title"  style="color: #000;font-family:myfont;" id="exampleModalLabel">ยืนยันการโอนเงิน</h4>
+                        <h1 class="modal-title"  style="color: #000;" id="exampleModalLabel">ยืนยันการโอนเงิน</h1>
                         <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
                     </div>
                     <form action="{{ route('transferPayment') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="modal-body font-rate-modal">
+                        <div class="modal-body">
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="bg-bank px-2 pt-2 pb-1 mb-2">
-                                        <img class="mr-2" src="{{asset('home/logo/'.$transferModal->transferฺBank_name.'.svg') }}" />
+                                <div class="col-12">
+                                    <div class="bgGrey px-2 pt-2 mb-2">
+                                        <label><img style="mr-2" src="{{asset('home/logo/'.$transferModal->transferฺBank_name.'.svg') }}" /></label>
                                         @if($transferModal->transferฺBank_name == "bangkok")
-                                            <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงเทพ</span><br>
+                                            <label><p style="margin:0;font-weight:800;">ธนาคารกรุงเทพ</p></label>
                                         @elseif($transferModal->transferฺBank_name == "ktc")
-                                            <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกรุงไทย</span><br>
+                                            <label><p style="margin:0;font-weight:800;">ธนาคารกรุงไทย</p></label>
                                         @elseif($transferModal->transferฺBank_name == "kbank")
-                                            <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารกสิกรไทย</span><br>
+                                            <label><p style="margin:0;font-weight:800;">ธนาคารกสิกรไทย</p></label>
                                         @elseif($transferModal->transferฺBank_name == "scb")
-                                            <span style="font-family:myfont;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</span><br>
+                                            <label><p style="margin:0;font-weight:800;">ธนาคารไทยพาณิชย์</p></label>
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
-                                    <div class="bg-bank px-2 pt-2 pb-1 mb-2">
-                                        <span class="pl-1" style="font-family1:myfont;font-size:1em;color:#000;">1234567890123456</span>
-                                    </div>
+                                <div class="col-12">
+                                    <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">หมายเลขอ้างอิง</label></br>
+                                    <label class="bgGrey px-2 pt-2 pb-2 mb-2">
+                                        <p style="margin:0;padding-left:5px">1234567890123456</p>
+                                    </label>
                                 </div>
-                                <div class="col-lg-12">
-                                    <div class="bg-bank px-2 pt-2 pb-1 mb-2">
-                                        <select class="select-bank" require>
-                                            <option>เลือกธนาคาร</option>
-                                            <option>ธนาคารกสิกร</option>
-                                            <option>ธนาคารกรุงเทพ</option>
-                                            <option>ธนาคารไทยพาณิชย์</option>
-                                        </select>
-                                    </div>
+                                <div class="col-12 mb-2">
+                                    <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">ธนาคารที่ชำระเงิน</label></br>
+                                    <select class="MySelect p" require>
+                                        <option>เลือกธนาคาร</option>
+                                        <option>ธนาคารกสิกร</option>
+                                        <option>ธนาคารกรุงเทพ</option>
+                                        <option>ธนาคารไทยพาณิชย์</option>
+                                    </select>
                                 </div>
-                                <div class="col-lg-12 mb-2">
-                                    <input type="text" class="form-control input-bank" placeholder="ยอดที่ชำระ" value="{{ $transferModal->transferAmount }}" require></input>
+                                <div class="col-12 mb-2">
+                                    <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">จำนวนเงินที่ชำระ</label></br>
+                                    <input type="text" class="input2 p" style="padding-left:10px" value="{{ $transferModal->transferAmount }}" require></input>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-6 mb-2">
-                                    <input type="text" class="form-control input-bank" placeholder="วันที่โอน" require></input>
+                                <div class="col-6 mb-2" style="padding-right:0;">
+                                    <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">วันที่ชำระเงิน</label></br>
+                                    <input type="date" class="MySelect p" require></input>
                                 </div>
-                                <div class="col-lg-6 mb-2">
-                                    <input type="text" class="form-control input-bank" placeholder="เวลาที่โอน" require></input>
+                                <div class="col-6 mb-2">
+                                    <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">เวลาที่ชำระเงิน</label></br>
+                                    <input type="time" class="MySelect p" placeholder="เวลาที่โอน" require></input>
                                 </div>
                             </div>
                             <div>
                                 <label id="upload" style="cursor:pointer;" class="font-kyc-upload">
-                                    <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />อัพโหลดรูปภาพ
+                                    <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
+                                    <label><p style="margin:0;font-weight:800;">อัพโหลดรูปภาพ</p></label>
                                 </label>
                                 <div id="thumb" class="thumb-topup"><img src="home/topup/pic-topup.png"/></div>    
                                 <input id="file_upload" style="display:none" name="transferImg" type="file" multiple="true" accept="image/* " require/>
                             </div>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button class="btn-submit-modal">ยืนยัน
+                            <button class="btn-submit mt-3">
+                                <p style="margin:0;">ยืนยัน</p>
                                 <input type="hidden" name="submit" value="submit">
                                 <input type="hidden" name="id" value="{{ $transferModal->id }}">
                                 <!-- <input type="hidden" name="">
@@ -522,7 +505,7 @@
     @endforeach
 @endif
 
-
+<!-- ชำระผ่านบัตรเคดิต -->
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content ">
@@ -576,7 +559,7 @@
         </div>
     </div>
 </div>
-
+<!-- ยืนยันรหัส OTP -->
 <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -616,6 +599,7 @@
     </div>
 </div>
 
+<!-- ทำรายการสำเร็จ -->
 <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -642,26 +626,28 @@
     </div>
 </div>
 
+<!-- โอนเงินผ่านบัญชีธนาคารกรุงเทพ -->
 <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog " role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="text-right mt-3 mr-3">
-                <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
+                <button type="button" class="close btn-closeModal" data-dismiss="modal">
+                    <i class="icon-close_modal" style="font-size: 15px;"></i>
+                </button>
             </div>
 
-            <div class="modal-body font-rate-modal">
+            <div class="modal-body">
                 <div class="row ">
-                    <div class="col-lg-12">
+                    <div class="col-12">
                         <div class="row mx-2">
                             <div class="col-12 text-center">
-                                <img class="mr-2" style="weight:100px;" src="{{asset('home/logo/bangkok.svg') }}"/>
-                                <span style="color:#000;font-weight:bold;">ธนาคารกรุงเทพ</span> </br>
-                                <span style="color:#000;font-weight:bold;font-size:1.5em;">000-0000-0000</span></br>
-                                <div style="color:#000;">จำนวนเงินที่ต้องชำระ
-                                <span class="ml-3" style="color:#23c197;font-size-1.1em;font-weight:bold;"><input type="number" id="bangkokM"></span>
-                                </div>
-                                <span> กรุณาทำการชำระเงินภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกโดยอัตโนมัติ</span></br>
-                                <span style="font-size:0.9em;color:#ce0005;">*รอการยืนยันภายใน 48 ชั่วโมง</span>
+                                <label><img class="mr-2" style="weight:100px;" src="{{asset('home/logo/bangkok.svg') }}"/></label>
+                                <label><h1 style="color:#000;font-weight:800;">ธนาคารกรุงเทพ</h1></label>
+                                <h1 style="color:#000;font-weight:800;">000-0000-0000</h1>
+                                <label><p style="color:#000;">จำนวนเงินที่ต้องชำระ</p></label>
+                                <label><input class="input2 ml-3 p text-center" type="number" id="bangkokM" readonly></label>
+                                <p style="margin:0;"> กรุณาทำการชำระเงินภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกโดยอัตโนมัติ</p>
+                                <p style="color:#ce0005;margin:0;">*รอการยืนยันภายใน 48 ชั่วโมง</p>
                             </div>
                         </div>
                     </div>
@@ -669,44 +655,45 @@
             </div>
             <div class="mx-3 mb-3">
                 <div class="row">
-                    <div class="col-4"></div>
-                    <div class="col-4">
+                    <div class="col-12">
                         <form action="{{ route('transferPayment') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <button class="btn-submit-modal">บันทึก
+                            <button class="btn-submit">
+                                <p style="margin:0;">บันทึก</p>
                                 <input type="hidden" name="transferAmount" id="bangkok">
                                 <input type="hidden" name="transferฺBank_name" value="bangkok">
                                 <input type="hidden" name="submit" value="submit">
                             </button>
                         </form>
                     </div>
-                    <div class="col-4"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- โอนเงินผ่านบัญชีธนาคารกรุงไทย -->
 <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog " role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="text-right mt-3 mr-3">
-                <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
+                <button type="button" class="close btn-closeModal" data-dismiss="modal">
+                    <i class="icon-close_modal" style="font-size: 15px;"></i>
+                </button>
             </div>
 
             <div class="modal-body font-rate-modal">
                 <div class="row ">
-                    <div class="col-lg-12">
+                    <div class="col-12">
                         <div class="row mx-2">
                             <div class="col-12 text-center">
-                                <img class="mr-2" style="weight:100px;" src="{{asset('home/logo/ktc.svg') }}"/>
-                                <span style="color:#000;font-weight:bold;">ธนาคารกรุงไทย</span> </br>
-                                <span style="color:#000;font-weight:bold;font-size:1.5em;">000-0000-0000</span></br>
-                                <div style="color:#000;">จำนวนเงินที่ต้องชำระ
-                                <span class="ml-3" style="color:#23c197;font-size-1.1em;font-weight:bold;"><input type="number" id="ktcM"></span>
-                                </div>
-                                <span> กรุณาทำการชำระเงินภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกโดยอัตโนมัติ</span></br>
-                                <span style="font-size:0.9em;color:#ce0005;">*รอการยืนยันภายใน 48 ชั่วโมง</span>
+                                <label><img class="mr-2" style="weight:100px;" src="{{asset('home/logo/ktc.svg') }}"/></label>
+                                <label><h1 style="color:#000;font-weight:800;">ธนาคารกรุงไทย</h1></label>
+                                <h1 style="color:#000;font-weight:800;">000-0000-0000</h1>
+                                <label><p style="color:#000;">จำนวนเงินที่ต้องชำระ</p></label>
+                                <label><input class="input2 ml-3 p text-center" type="number" id="ktcM" readonly></label>
+                                <p style="margin:0;"> กรุณาทำการชำระเงินภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกโดยอัตโนมัติ</p>
+                                <p style="color:#ce0005;margin:0;">*รอการยืนยันภายใน 48 ชั่วโมง</p>
                             </div>
                         </div>
                     </div>
@@ -714,26 +701,26 @@
             </div>
             <div class="mx-3 mb-3">
                 <div class="row">
-                    <div class="col-4"></div>
-                    <div class="col-4">
+                    <div class="col-12">
                         <form action="{{ route('transferPayment') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <button class="btn-submit-modal">บันทึก
+                            <button class="btn-submit">
+                                <p style="margin:0;">บันทึก</p>
                                 <input type="hidden" name="transferAmount" id="ktc">
                                 <input type="hidden" name="transferฺBank_name" value="ktc">
                                 <input type="hidden" name="submit" value="submit">
                             </button>
                         </form>
                     </div>
-                    <div class="col-4"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- โอนเงินผ่านบัญชีธนาคารกสิกร -->
 <div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog " role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="text-right mt-3 mr-3">
                 <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
@@ -741,17 +728,16 @@
 
             <div class="modal-body font-rate-modal">
                 <div class="row ">
-                    <div class="col-lg-12">
+                    <div class="col-12">
                         <div class="row mx-2">
                             <div class="col-12 text-center">
-                                <img class="mr-2" style="weight:100px;" src="{{asset('home/logo/kbank.svg') }}"/>
-                                <span style="color:#000;font-weight:bold;">ธนาคารกสิกรไทย</span> </br>
-                                <span style="color:#000;font-weight:bold;font-size:1.5em;">000-0000-0000</span></br>
-                                <div style="color:#000;">จำนวนเงินที่ต้องชำระ
-                                <span class="ml-3" style="color:#23c197;font-size-1.1em;font-weight:bold;"><input type="number" id="kbankM"></span>
-                                </div>
-                                <span> กรุณาทำการชำระเงินภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกโดยอัตโนมัติ</span></br>
-                                <span style="font-size:0.9em;color:#ce0005;">*รอการยืนยันภายใน 48 ชั่วโมง</span>
+                                <label><img class="mr-2" style="weight:100px;" src="{{asset('home/logo/kbank.svg') }}"/></label>
+                                <label><h1 style="color:#000;font-weight:800;">ธนาคารกสิกรไทย</h1></label>
+                                <h1 style="color:#000;font-weight:800;">000-0000-0000</h1>
+                                <label><p style="color:#000;">จำนวนเงินที่ต้องชำระ</p></label>
+                                <label><input class="input2 ml-3 p text-center" type="number" id="kbankM" readonly></label>
+                                <p style="margin:0;"> กรุณาทำการชำระเงินภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกโดยอัตโนมัติ</p>
+                                <p style="color:#ce0005;margin:0;">*รอการยืนยันภายใน 48 ชั่วโมง</p>
                             </div>
                         </div>
                     </div>
@@ -759,26 +745,26 @@
             </div>
             <div class="mx-3 mb-3">
                 <div class="row">
-                    <div class="col-4"></div>
-                    <div class="col-4">
+                    <div class="col-12">
                         <form action="{{ route('transferPayment') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <button class="btn-submit-modal">บันทึก
+                            <button class="btn-submit">
+                                <p style="margin:0;">บันทึก</p>
                                 <input type="hidden" name="transferAmount" id="kbank">
                                 <input type="hidden" name="transferฺBank_name" value="kbank">
                                 <input type="hidden" name="submit" value="submit">
                             </button>
                         </form>
                     </div>
-                    <div class="col-4"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- โอนเงินผ่านบัญชีธนาคาร SCB -->
 <div class="modal fade" id="myModal8" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog " role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="text-right mt-3 mr-3">
                 <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
@@ -786,17 +772,16 @@
 
             <div class="modal-body font-rate-modal">
                 <div class="row ">
-                    <div class="col-lg-12">
+                    <div class="col-12">
                         <div class="row mx-2">
                             <div class="col-12 text-center">
-                                <img class="mr-2" style="weight:100px;" src="{{asset('home/logo/scb.svg') }}"/>
-                                <span style="color:#000;font-weight:bold;">ธนาคารไทยพาณิชย์</span> </br>
-                                <span style="color:#000;font-weight:bold;font-size:1.5em;">000-0000-0000</span></br>
-                                <div style="color:#000;">จำนวนเงินที่ต้องชำระ
-                                    <span class="ml-3" style="color:#23c197;font-size-1.1em;font-weight:bold;"><input type="number" id="scbM"></span>
-                                </div>
-                                <span> กรุณาทำการชำระเงินภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกโดยอัตโนมัติ</span></br>
-                                <span style="font-size:0.9em;color:#ce0005;">*รอการยืนยันภายใน 48 ชั่วโมง</span>
+                                <label><img class="mr-2" style="weight:100px;" src="{{asset('home/logo/scb.svg') }}"/></label>
+                                <label><h1 style="color:#000;font-weight:800;">ธนาคารไทยพาณิชย์</h1></label>
+                                <h1 style="color:#000;font-weight:800;">000-0000-0000</h1>
+                                <label><p style="color:#000;">จำนวนเงินที่ต้องชำระ</p></label>
+                                <label><input class="input2 ml-3 p text-center" type="number" id="scbM" readonly></label>
+                                <p style="margin:0;"> กรุณาทำการชำระเงินภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกโดยอัตโนมัติ</p>
+                                <p style="color:#ce0005;margin:0;">*รอการยืนยันภายใน 48 ชั่วโมง</p>
                             </div>
                         </div>
                     </div>
@@ -804,69 +789,79 @@
             </div>
             <div class="mx-3 mb-3">
                 <div class="row">
-                    <div class="col-4"></div>
-                    <div class="col-4">
+                    <div class="col-12">
                         <form action="{{ route('transferPayment') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <button class="btn-submit-modal">บันทึก
+                            <button class="btn-submit">
+                                <p style="margin:0;">บันทึก</p>
                                 <input type="hidden" name="transferAmount" id="scb">
                                 <input type="hidden" name="transferฺBank_name" value="scb">
                                 <input type="hidden" name="submit" value="submit">
                             </button>
                         </form>
                     </div>
-                    <div class="col-4"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+ <!-- QR -->
 @if(isset($payment))
     @foreach($payment as $qrPayment)
         <div class="modal fade" id="{{ $qrPayment->invoice }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                            <div class="col-1" style="cursor:pointer;"><img class="mr-2" src="{{asset('icon/back.svg') }}" data-dismiss="modal"/></div>
-                            <div class="col-10 text-center" style="font-family:myfont;font-wieght:bold;font-size:1.2em;color:#000;">iBanking / Mobile Banking</div> 
-                            <div class="col-1"></div>
+                        <div class="col-1"></div>
+                        <div class="col-10 text-center">
+                            <p style="margin:0;font-weight:800;">iBanking / Mobile Banking</div> 
+                        <div class="col-1 text-cente">
+                            <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
+                        </div>
                     </div>
 
-                    <div class="modal-body font-rate-modal">
+                    <div class="modal-body">
                         <div class="row px-3">
-                            <div class="col-lg-12 pb-1 bg-bank text-center">
-                                <div class="my-2"><img src="{{asset('icon/waiting.svg') }}" /></div>
-                                <span style="font-family:myfont;color:#000;">
-                                    กำลังรอชำระเงิน</br>ผ่านโมบายแบงค์กิ้ง/ไอแบงค์กิ้ง
-                                </span></br>
-                                <span style="color:#000";>
-                                    กรุณาทำการชำระเงินผ่านโมบายแบงค์กิ้งหรือเอทีเอ็มภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกอัตโนมัติ
-                                </span>
-                                <div class="row justify-content-center">{!! DNS2D::getBarcodeHTML($qrPayment->rawQrCode, "QRCODE",6,6) !!}</div>
-                                <span style="font-family:myfont;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</span>
+                            <div class="col-12 pb-1 bg-bank text-center">
+                                <div class="my-2"><img style="width:50px;" src="{{asset('icon/waiting.svg') }}" /></div>
+                                <p style="margin:0;font-weight:800;">กำลังรอชำระเงิน</br>ผ่านโมบายแบงค์กิ้ง/ไอแบงค์กิ้ง</p>
+                                <p class="mb-2" style="margin:0;">
+                                    กรุณาทำการชำระเงินผ่านโมบายแบงค์กิ้งหรือเอทีเอ็มภายใน 48 ชม.</br>
+                                    มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกอัตโนมัติ
+                                </p>
+                                <div class="row justify-content-center mb-2">{!! DNS2D::getBarcodeHTML($qrPayment->rawQrCode, "QRCODE",6,6) !!}</div>
+                                <h5 style="margin:0;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</h5>
                             </div>
                         </div>
 
                         <div class="row px-3 mt-3">
-                            <div class="col-lg-12 pb-1 bg-bank">
+                            <div class="col-12 bg-bank">
                                 <div class="row">
-                                    <div class="col-1 py-1" style="border-bottom: 1px solid #fff;"><img class="mt-3" src="{{asset('home/logo/scb.svg') }}" /></div>
-                                    <div class="col-8 mt-2 py-2" style="border-bottom: 1px solid #fff;"><span style="color:#000;">หมายเลขบัญชี <b class="ml-2"><label>1234567890</label></b></span></div>
-                                    <div class="col-3 text-center py-3"  style="font-family:myfont;color:#ff6f6f;border-bottom: 1px solid #fff;cursor:pointer;">คัดลอก</div>
-                                    <div class="col-1 py-1" style="border-bottom: 1px solid #fff;"></div>
-                                    <div class="col-8 py-3" style="border-bottom: 1px solid #fff;"><span style="color:#000;">หมายเลขคำร้อง<b class="ml-2"><label>1234567890123456</label></b></span></div>
-                                    <div class="col-3 py-2 text-center mt-2"  style="font-family:myfont;color:#ff6f6f; border-bottom: 1px solid #fff;cursor:pointer;">คัดลอก</div>
-                                    <div class="col-1 py-1" style="border-bottom: 1px solid #fff;"></div>
-                                    <div class="col-8 pt-3"><span style="color:#000;font-family:myfont;">จำนวนเงินที่ต้องการเติม</span></div>
-                                    <div class="col-3 py-2 text-center mt-2" style="font-family:myfont;color:#23c197;">{{ $qrPayment->amount }}</div>
+                                    <div class="col-12 " style="border-bottom: 1px solid #fff;">
+                                        <img style="width:25px;" src="{{asset('home/logo/scb.svg') }}" />
+                                        <label><p style="margin:0;">หมายเลขบัญชี</p></label>
+                                        <input type='text' id="copy-text" value="1234567890" class="input3 p mt-2" style="font-weight:800;">
+                                        <button class="btnNone" style="float:right;" onClick="copyToClipboard()">
+                                            <p style="color:#ff6f6f;cursor:pointer;padding-top:8px;margin:0;">คัดลอก</p>
+                                        </button>
+                                    </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 " style="border-bottom: 1px solid #fff;">
+                                    <label><p style="margin:0;padding-left:30px;">หมายเลขคำร้อง</p></label>
+                                    <input type='text' id="copy-text" value="12345678900000" class="input3 p mt-2" style="font-weight:800;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12" style="border-bottom: 1px solid #fff;">
+                                        <label><p style="margin:0;padding:8px 0 0 30px;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></label>
+                                        <label style="float:right;"><p style="color:#23c197;cursor:pointer;padding-top:5px;margin:0;">{{ $qrPayment->amount }} ฿</p></label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn-submit-modal" >บันทึก</button>
                     </div>
                 </div>
             </div>
@@ -945,12 +940,12 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 col-xl-3 bgSidebar"></div>
+        <div class="col-lg-4 col-xl-3 bgSidebar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 col-xl-9 bgContent"></div>
+        <div class="col-lg-8 col-xl-9 bgContent"></div>
     </div>
 </div>
 @endsection
@@ -972,12 +967,23 @@
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
 <script>
+function copyToClipboard() {
+
+var inputElement=document.getElementById('copy-text');
+inputElement.select();
+document.execCommand('copy');
+//   alert("Copied to clipboard");
+
+}
+</script>
+
+<script>
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();
 });
 </script>
 
-<script> /* รูปโปรไฟล์เกม */
+<script> /* รูป */
 $(function () {
  $("#upload").on("click",function(e){
      $("#file_upload").show().click().hide();
@@ -1019,31 +1025,18 @@ $(function () {
 </script>
 
 <script>
-$(document).ready(function() {
-  $('.atmlist').hide();
-  $('.ibanklist').hide();
-   
-  $('input:radio[name="bank"]').change(
-function() {
-	if ($(this).is(':checked') && $(this).val() == 'atm')
-	{
-    $('.atmlist').show();
-    $('.ibanklist').hide();
-		}
-  
-  else if ($(this).is(':checked') && $(this).val() == 'ibank'){
-    $('.atmlist').hide();
-    $('.ibanklist').show();
-   }
-   
-   else {
-    $('.atmlist').hide();
-    $('.ibanklist').hide();
-   }
-	}
-);
-}
-);
+    const myFunction = () => {
+    document.getElementById("first").style.display ='block';
+    document.getElementById("second").style.display ='none';
+    }
+    const myFunction2 = () => {
+    document.getElementById("first").style.display ='none';
+    document.getElementById("second").style.display ='block';
+    }
+    const myFunction3 = () => {
+    document.getElementById("first").style.display ='none';
+    document.getElementById("second").style.display ='none';
+    }
 </script>
 
 
