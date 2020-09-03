@@ -83,7 +83,10 @@ class Callback_scbController extends Controller
                         $data = array("transeection_invoice"=>$invoice, "transeection_status"=>"true", "transeection_gameSpon"=>$gameSpon);
                         // dd($data);
                         Package::transeectionPaymentUpdate($data);
+                        
                     }
+                    $data = array("transeection_type"=>$transeection->transeection_type, "USER_ID"=>$transeection->USER_ID);
+                    Package::transeectionPaymentDelete($data);
                     $qrpayment->save();
                 }
             }

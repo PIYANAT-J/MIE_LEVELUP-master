@@ -141,8 +141,9 @@ class packageController extends Controller
         }else{
             $transeection = DB::table('transeection_sponshopping')->where([['transeection_id', $request->input('transeection_id')]])->first();
             $transeection_invoice = $qrcode->invoice;
+            $transeection_type = "qr";
 
-            $data = array("transeection_id"=>$request->input('transeection_id'), "transeection_invoice"=>$transeection_invoice);
+            $data = array("transeection_id"=>$request->input('transeection_id'), "transeection_invoice"=>$transeection_invoice, "transeection_type"=>$transeection_type);
             Package::cartPaymentUpdate($data);
             return redirect(route('Sponsoribanking', ['invoice' => encrypt($qrpayment->invoice)]));
         }
@@ -309,8 +310,9 @@ class packageController extends Controller
                 }else{
                     $transeection = DB::table('transeection_sponshopping')->where([['transeection_id', $req->input('transeection_id')]])->first();
                     $transeection_invoice = $transferInvoice;
+                    $transeection_type = "Transfer";
 
-                    $data = array("transeection_id"=>$req->input('transeection_id'), "transeection_invoice"=>$transeection_invoice);
+                    $data = array("transeection_id"=>$req->input('transeection_id'), "transeection_invoice"=>$transeection_invoice, "transeection_type"=>$transeection_type);
                     Package::cartPaymentUpdate($data);
                     return redirect(route('SponsorTransfer', ['invoice' => encrypt($transferInvoice)]));
                 }
@@ -330,18 +332,40 @@ class packageController extends Controller
                             ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
                             ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
                             ->get();
-        // dd(json_decode($transeection->transeection_gameSpon));
         if($package == null){
             $gameTrue = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'true']])
                             ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
                             ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
                             ->get();
-            // dd($transeection);
             return view('profile.sponsor.spon_successful_payment', compact('sponsor', 'invoice', 'address', 'countCart', 'transeection', 'gameTrue'));
-            // return view('profile.sponsor.spon_transfer', compact('sponsor', 'transfer', 'countCart', 'transeection'));
         }else{
             return view('profile.sponsor.spon_successful_payment', compact('sponsor', 'package', 'invoice', 'address', 'countCart'));
-            // return view('profile.sponsor.spon_transfer', compact('sponsor', 'transfer', 'countCart', 'package'));
+        }
+    }
+
+    public function AdsSpon(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
+                            ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                            ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                            ->get();
+        $advertising = DB::table('advertising_links')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('profile.sponsor.ads_sponsor', compact('sponsor', 'countCart', 'advertising'));
+    }
+
+    public function addAdsSpon(Request $request){
+        if($request->input('submit') != null){
+            $advertising_name = $request->input('advertising_name');
+            $advertising_link = $request->input('advertising_link');
+            $advertising_create = date('Y-m-d H:i:s');
+            $USER_ID = Auth::user()->id;
+            $USER_EMAIL = Auth::user()->email;
+
+            $data = array("advertising_name"=>$advertising_name, "advertising_link"=>$advertising_link, "advertising_create"=>$advertising_create, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
+            // dd($data);
+            DB::table('advertising_links')->insert($data);
+            
+            return back()->with("advertising", "เพิ่มโฆษณาเรียบร้อย");
         }
     }
 }
