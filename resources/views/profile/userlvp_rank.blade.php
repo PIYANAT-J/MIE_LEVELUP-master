@@ -5,7 +5,7 @@
     <div class="row  pt-3" style="background-color: #f5f5f5;">
 
         <!-- sidebar -->
-        <div class="col-3 d-none d-lg-block d-xl-block" style="background-color: #17202c;">
+        <div class="col-lg-4 col-xl-3 d-none d-lg-block d-xl-block" style="background-color: #17202c;">
             <div class="row">
                 <div class="col-1"></div>
                     @foreach($guest_user as $USER)
@@ -104,7 +104,7 @@
         <!-- sidebar -->
 
         <div class="col-sm-12 col-md-12 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
-        <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 pt-3  pb-4" style="background-color:#f5f5f5;">
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3  pb-4" style="background-color:#f5f5f5;">
             <div style="background-color:#ffffff;border-radius: 8px;padding:20px"> 
                 <div class="row">
                     <div class="col-sm-6 col-md-8 col-9 pb-2">
@@ -429,12 +429,12 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 col-xl-3 bgSidebar"></div>
+        <div class="col-lg-4 col-xl-3 bgSidebar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 col-xl-9 bgContent"></div>
+        <div class="col-lg-8 col-xl-9 bgContent"></div>
     </div>
 </div>
 
