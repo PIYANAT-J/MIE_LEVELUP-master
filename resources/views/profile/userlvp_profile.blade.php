@@ -1,12 +1,12 @@
 @extends('layout.profile_navbar')
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" id="getActive" active="{{route('UserProfile')}}">
     <div class="row my-5"></div>
     <div class="row my-2"></div>
     <div class="row  mt-3">
- 
+        @include('profile.sidebar.user_sidebar')
         <!-- sidebar -->
-        <div class="col-lg-4 col-xl-3 d-none d-lg-block d-xl-block" style="background-color: #17202c;">
+        <!-- <div class="col-lg-4 col-xl-3 d-none d-lg-block d-xl-block" style="background-color: #17202c;">
             <div class="row">
                 <div class="col-1"></div>
                     @foreach($guest_user as $USER)
@@ -100,7 +100,7 @@
                     </button>
                 </a>   
             </div>
-        </div>
+        </div> -->
         <!-- sidebar -->
         <!-- update profile -->
         <div class="col-sm-1 col-md-1 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
