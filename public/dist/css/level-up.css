@@ -2979,7 +2979,7 @@ margin: 30px auto;
   width: 4em;
   height:4em; 
   object-fit: cover;
-  box-shadow: 0 0 12px 0 rgba(255, 255, 255, 0.84).84);
+  box-shadow: 0 0 12px 0 rgba(255, 255, 255, 0.84);
   position: absolute;
   top: 13px;
   right: 5px;
@@ -7473,7 +7473,7 @@ input[type="checkbox"].switch_2{
   display: none;
   line-height: 1.7;
   padding: 20px;
-  background-color: #fffff;
+  background-color: #ffff;
   border-radius: 0 0 5px 5px;
 }
 
@@ -8117,3 +8117,12 @@ input[type="checkbox"].switch_2{
 }
 
 /* // End Custom radio buttons */
+
+.btnTrash{
+  border:none;
+  background: none;
+}
+
+.btnTrash:focus{
+  outline: none;
+}

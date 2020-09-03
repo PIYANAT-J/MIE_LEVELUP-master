@@ -34,6 +34,7 @@ class productController extends Controller
         if($count->count() == 0){
             $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
             $game = DB::table('games')->where('GAME_STATUS','อนุมัติ')->get();
+            $allpackage = DB::table('packages')->where('package_status','true')->get();
             $package = DB::table('my_package_buy')->where([['my_package_buy.USER_EMAIL', Auth::user()->email], ['my_package_buy.packageBuy_status', 'true']])
                             ->join('packages','packages.package_id','my_package_buy.package_id')
                             ->select('my_package_buy.*', 'packages.package_game', 'packages.package_length')
@@ -45,11 +46,12 @@ class productController extends Controller
                             ->get();
             // $packageGame = json_decode($package->packageBuy_gameSpon);
             // dd($packageGame);
-            return view('profile.game.sponlvp_shelf', compact('sponsor', 'game', 'package', 'countCart', 'transeection'));
+            return view('profile.game.sponlvp_shelf', compact('sponsor', 'game', 'package', 'countCart', 'transeection', 'allpackage'));
         }else{
             $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
             $product = DB::table('products')->where('USER_EMAIL', Auth::user()->email)->get();
             $game = DB::table('games')->where('GAME_STATUS','อนุมัติ')->get();
+            $allpackage = DB::table('packages')->where('package_status','true')->get();
             $package = DB::table('my_package_buy')->where([['my_package_buy.USER_EMAIL', Auth::user()->email], ['my_package_buy.packageBuy_status', 'true']])
                             ->join('packages','packages.package_id','my_package_buy.package_id')
                             ->select('my_package_buy.*', 'packages.package_game', 'packages.package_length')
@@ -66,7 +68,7 @@ class productController extends Controller
             //     // $packageGame = json_decode($package->packageBuy_gameSpon);
             // }
             // dd($packageGame);
-            return view('profile.game.sponlvp_shelf', compact('sponsor', 'product', 'game', 'package', 'countCart', 'transeection'));
+            return view('profile.game.sponlvp_shelf', compact('sponsor', 'product', 'game', 'package', 'countCart', 'transeection', 'allpackage'));
         }
     }
 
