@@ -1051,7 +1051,12 @@ overflow: hidden;
   overflow: hidden;
   border: solid 5px #dddddd;
   border-radius: 50%;}
-.thumb-profile img {height:auto; width:100%; margin:0 auto;}
+.thumb-profile img {
+  height:100%; 
+  width:100%; 
+  margin:0 auto;
+  object-fit: cover;
+}
 
 .thumb-game {
   width:8em; 
@@ -1059,7 +1064,12 @@ overflow: hidden;
   overflow: hidden;
   border: solid 5px #dddddd;
   border-radius:6px;}
-.thumb-game img {height:100%; width:100%; margin:0 auto;}
+.thumb-game img {
+  height:100%; 
+  width:100%; 
+  margin:0 auto;
+  object-fit: cover
+}
 
 .thumb-kyc{
   width:30%;
@@ -2979,7 +2989,7 @@ margin: 30px auto;
   width: 4em;
   height:4em; 
   object-fit: cover;
-  box-shadow: 0 0 12px 0 rgba(255, 255, 255, 0.84).84);
+  box-shadow: 0 0 12px 0 rgba(255, 255, 255, 0.84);
   position: absolute;
   top: 13px;
   right: 5px;
@@ -3477,24 +3487,17 @@ div.sticky {
 }
 
 .font-bank1{
-  object-fit: contain;
-  font-family: myfont;
-  font-size: 1em;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.12;
-  letter-spacing: normal;
+  font-weight: 800;
   color: #23c197;
+  margin: 0;
+  position: absolute;
+  top: 27px;
+  right:16px;
 }
 
 .btn-submit-s{
-  width: 93.2px;
-  height: 33.5px;
-  object-fit: contain;
+  padding: 5px 15px;
   background-color: #17202c;
-  font-family: myfont1;
-  font-size: 1em;
   color: #fff;
   border-radius: 6px;
   border: 1px solid #17202c;
@@ -3563,19 +3566,15 @@ div.sticky {
   border: 1px solid #f2f2f2;
 } */
 
-.btn-topup-wait{
-  height: 33.5px;
-  object-fit: contain;
+.btnWait{
   background-color: #fed630;
   color: #fff;
-  font-family: myfont1;
-  font-size: 1em;
   border: none;
   border-radius: 6px;
-  padding: 0 10px;
+  padding: 5px 15px;
 }
 
-.btn-topup-wait:focus{
+.btnWait:focus{
   outline: none!important;
 }
 
@@ -7473,7 +7472,7 @@ input[type="checkbox"].switch_2{
   display: none;
   line-height: 1.7;
   padding: 20px;
-  background-color: #fffff;
+  background-color: #ffff;
   border-radius: 0 0 5px 5px;
 }
 
@@ -8117,3 +8116,46 @@ input[type="checkbox"].switch_2{
 }
 
 /* // End Custom radio buttons */
+
+.btnTrash{
+  border:none;
+  background: none;
+}
+
+.btnTrash:focus{
+  outline: none;
+}
+
+.imgBank{
+  position: absolute;
+  top: 23px;
+  left: 16px;
+  width: 28px;
+}
+.fontInvoice{
+  font-weight: 800;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  right: 16px;
+}
+
+.fontTimeConfirm{
+  margin: 0;
+  position: absolute;
+  top: 0;
+  right: 16px;
+}
+
+.btnNone{
+  background-color: none;
+  border: none;
+}
+.btnNone:focus{
+  outline: none;
+}
+.input3{
+  padding: 0;
+  background-color: #f2f2f2;
+  border: none;
+}

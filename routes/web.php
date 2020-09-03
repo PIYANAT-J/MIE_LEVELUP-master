@@ -133,7 +133,8 @@ Route::get('/sponsor_profile', 'UploadImageProfile@indexSpon')->name('SponsorPro
 Route::post('/sponsor_profile/edit', 'UploadImageProfile@saveProfileSpon')->name('SponEditProfile');
 
 Route::get('/advt_package', 'Sponsor\packageController@AdvtPackage')->name('AdvtPackage');
-Route::get('/ads_sponsor', 'UploadImageProfile@AdsSpon')->name('AdsSpon');
+Route::get('/ads_sponsor', 'Sponsor\packageController@AdsSpon')->name('AdsSpon');
+Route::post('/ads_sponsor/adsSpon', 'Sponsor\packageController@addAdsSpon')->name('AddAdsSpon');
 Route::get('/advt_management/{id}', 'Sponsor\packageController@AdvtManagement')->name('AdvtManagement');
 Route::get('/advt_add_game/{id}/{idM}', 'Sponsor\game_sponController@AdvtAddGame')->name('AdvtAddGame');
 Route::post('/advt_add_game/add', 'Sponsor\game_sponController@sponsorGame')->name('addGame');
@@ -147,6 +148,7 @@ Route::get('/sponlvp_shelf', 'Sponsor\productController@SponShelf')->name('SponS
 
 Route::get('/spon_shopping_cart', 'Sponsor\game_sponController@SponShoppingCart')->name('SponShoppingCart');
 Route::post('/spon_shopping_cart/payment', 'Sponsor\game_sponController@SponShoppingCartPayment')->name('sponShoppingCartPayment');
+Route::post('/spon_shopping_cart/delete', 'Sponsor\game_sponController@daleteSponShoppingCart')->name('daleteShoppingCart');
 
 Route::get('/sponsor_payment', 'UploadImageProfile@SponsorPayment')->name('SponsorPayment');
 Route::post('/sponsor_payment/qrCode', 'Sponsor\packageController@packageibanking')->name('packageibanking');

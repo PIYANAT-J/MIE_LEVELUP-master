@@ -45,7 +45,7 @@
 
                     <div class="col-lg-7 col-xl-8  d-none d-lg-block d-xl-block">
                         <nav class="site-navigation position-relative" role="navigation">
-                            <ul class="site-menu main-menu js-clone-nav d-none d-lg-block" style="margin-top:30px;"> 
+                            <ul class="site-menu main-menu js-clone-nav d-none d-lg-block d-xl-block" style="margin-top:30px;"> 
                                 <li><a href="{{ url('/') }}" class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0"><h1 class="fontNavbar">หน้าแรก</h1></a></li>
                                 <li><a href="{{ route('gameCategory') }}" class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;"><h1 class="fontNavbar">หมวดหมู่</h1></a></li>
                                 @guest
@@ -297,5 +297,13 @@
         <script src="{{ asset('drawer/dist/js/bootstrap-drawer.js') }}"></script>
         <script src="{{ asset('drawer/dist/js/bootstrap-drawer.min.js') }}"></script>
         @yield('script')
+        <script>
+            $(document).ready(function(){
+            //    alert('read'); 
+                var attrActive = $('#getActive').attr('active');
+                console.log(attrActive);
+                $('#navActive a[href="'+attrActive+'"] button').addClass('active');
+            });
+        </script>
     </body>
 </html>

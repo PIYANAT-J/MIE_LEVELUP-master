@@ -147,4 +147,13 @@ class game_sponController extends Controller
             return redirect(route('packagePay', ['id'=>encrypt('list')]));
         }
     }
+
+    public function daleteSponShoppingCart(Request $req){
+        if($req->input('deleteGame') != null){
+            // dd($req);
+            $sponsor_cart_id = $req->input('sponsor_cart_id');
+            DB::table('sponsor_shopping_cart')->where('sponsor_cart_id', $sponsor_cart_id)->delete();
+            return back()->with("Delete", "ลบเรียบร้อย");
+        }
+    }
 }

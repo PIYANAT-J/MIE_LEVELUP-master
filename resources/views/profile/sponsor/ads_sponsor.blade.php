@@ -1,12 +1,12 @@
 @extends('layout.sponsor_navbar')
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" id="getActive" active="{{ route('AdsSpon') }}">
     <div class="row my-5"></div>
     <div class="row my-2"></div>
     <div class="row  mt-3">
-
+        @include('profile.sidebar.sponsor_sidebar')
         <!-- sidebar -->
-        <div class="col-lg-3" style="background-color: #17202c;">
+        <!-- <div class="col-lg-3" style="background-color: #17202c;">
             <div class="row">
                 <div class="col-lg-1"></div>
                     @foreach($sponsor as $spon)
@@ -47,110 +47,130 @@
                 <a href="{{ route('AdvtPackage') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-money menuIcon"></i>สนับสนุนเงินในเกม</button></a>
                 <a href="{{ route('ProductSupport') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-product menuIcon2"></i>สนับสนุนสินค้าในเกม</button></a>
                 <a href="{{ route('SponShelf') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
-                <!-- <a href="{{ route('DevHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a> -->
+                <a href="{{ route('DevHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
                 <a href="{{ route('SponsorTopup') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</button></a>
                 <a href="{{ route('SponsorChangePassword') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
                 <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</button></a> 
             </div>
-        </div>
+        </div> -->
         <!-- sidebar -->
 
-        @foreach($sponsor as $spon)
-            @if($spon->USER_EMAIL == Auth::user()->email)
-                <div class="col-lg-9" style="background-color:#f5f5f5;">
-                    <div class="row mt-4" >
-                        <div class="col-lg-1"></div>
-                        <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-                            <form action="" method="POST" enctype="multipart/form-data" id="upDate">
+        <div class="col-lg-9" style="background-color:#f5f5f5;">
+            <div class="row mt-4" >
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
+                    <div class="row">
+                        <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
+                            <span class="font-profile1">ลิงค์โฆษณา<span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form action="{{route('AddAdsSpon')}}" method="POST" enctype="multipart/form-data" id="upDate">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                                        <span class="font-profile1">ลิงค์โฆษณา<span>
+                                    <div class="col-lg-12 line1 mt-2" >
+                                        <label class="bgInput field-wrap my-2">
+                                            <label><p class="fontHeadInput">ชื่อโฆษณา</p></label><br>
+                                            <input type="text" name="advertising_name" value="{{old('advertising_name')}}" class="input1 p ml-2 @error('advertising_name') is-invalid @enderror"  required>
+                                        </label>
+                                        <label class="bgInput field-wrap my-2">
+                                            <label><p class="fontHeadInput">ลิงค์โฆษณา</p></label><br>
+                                            <input type="text" name="advertising_link" value="{{old('advertising_link')}}" class="input1 p ml-2 @error('advertising_link') is-invalid @enderror"  required>
+                                        </label>
+                                        <div class="row ">
+                                            <div class="col-lg-12 mt-2">
+                                                <button name="submit" id="submit" value="submit" type="submit" class="btn-submit">ยืนยัน</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-6">
+                        <label class="mt-2" style="font-family:myfont;font-size:0.9em;">เงื่อนไขการโฆษณา</label> <br>
+                            <label style="font-family:myfont1;font-size:0.8em;">
+                                1. ต้องไม่ใช่สินค้าที่ผิดกฎหมาย หรือสินค้าละเมิดลิขสิทธิ์
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
 
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                            <div class="col-lg-12 line1 mt-2" >
-                                                <label class="bgInput field-wrap my-2">
-                                                    <label><p class="fontHeadInput">ชื่อโฆษณา</p></label><br>
-                                                    <input type="email" name="email" class="input1 p ml-2 @error('email') is-invalid @enderror"  required autocomplete="email">
-                                                </label>
-                                                <label class="bgInput field-wrap my-2">
-                                                    <label><p class="fontHeadInput">ลิงค์โฆษณา</p></label><br>
-                                                    <input type="email" name="email" class="input1 p ml-2 @error('email') is-invalid @enderror"  required autocomplete="email">
-                                                </label>
-                                                <div class="row ">
-                                                    <div class="col-lg-12 mt-2">
-                                                        <button name="submit" id="submit" value="submit" type="submit" class="btn-submit">ยืนยัน
-                                                            <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                                                            <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-                                                            <input type="hidden" name="DATE_MODIFY" value="{{ date('Y-m-d H:i:s') }}">
-                                                        </button>
+            <div class="row my-4" >
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
+                    <div class="row">
+                        <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
+                            <span class="font-profile1">รายการโฆษณา<span>
+                        </div>
+                    </div>
+
+                    <div class="row row5">
+                        <div class="col-lg-12">
+                            <div class="row mx-0 mt-2 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1em;color:#000;">
+                                <div class="col-6">ชื่อโฆษณา</div>
+                                <div class="col-2 text-center">โฆษณา</div>
+                                <div class="col-2 text-center">สถานะ</div>
+                                <div class="col-2 text-center">วัน-เวลา</div>
+                            </div>
+                            @foreach($advertising as $key=>$advt)
+                                <div class="row mx-0 py-2 line2">
+                                    <div class="col-6">
+                                        <span class="font-game-shelf2" style="color:#000;font-family:myfont1;">{{$advt->advertising_name}}</span>
+                                    </div>
+                                    <div class="col-2 text-center">
+                                        <div class="py-1 p" style="cursor:pointer;text-decoration: underline;color:#0061fc;"data-toggle="modal" data-target="#Ads{{$key}}">โฆษณา</div>
+                                    </div>
+                                    <div class="col-2 text-center">
+                                        @if($advt->advertising_status == "รออนุมัติ")
+                                            <label class="ml-2 px-1 p" style="color:#000;background-color: #ffd629;border-radius: 6px;margin:0;">รออนุมัติ</label></br>
+                                        @elseif($advt->advertising_status == "true")
+                                            <label class="ml-2 px-1 p" style="color:#fff;background-color: #23c197;border-radius: 6px;margin:0;">อนุมัติ</label></br>
+                                        @else
+                                            <label class="ml-2 px-1 p" style="color:#fff;background-color: #ce0005;border-radius: 6px;margin:0;">ไม่อนุมัติ</label>
+                                        @endif
+                                        <!-- <label class="ml-2 px-1 p" style="color:#000;background-color: #ffd629;border-radius: 6px;margin:0;">รออนุมัติ</label></br> -->
+                                        <!-- <label class="ml-2 px-1 p" style="color:#fff;background-color: #23c197;border-radius: 6px;margin:0;">อนุมัติ</label></br> -->
+                                        <!-- <label class="ml-2 px-1 p" style="color:#fff;background-color: #ce0005;border-radius: 6px;margin:0;">ไม่อนุมัติ</label></br> -->
+                                    </div>
+                                    <?php $dateTime = explode(" ", $advt->advertising_create); ?>
+                                    <div class="col-2 text-center"><span class="font-game-shelf2" style="font-size:0.8em;font-family:myfont1;">{{$dateTime[1]}}, {{$dateTime[0]}}</span></div>
+                                </div>
+
+                                <div class="modal fade" id="Ads{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <div class="col-1"></div>
+                                                <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">โฆษณา</div>
+                                                <button type="button" class="close btn-closeModal ml-3" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
+                                                <div class="col-1"></div>
+                                            </div>
+
+                                            <div class="modal-body font-rate-modal">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                    <iframe style="width:100%;height:385px;" src="{{$advt->advertising_link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                    <label class="mt-2" style="font-family:myfont;font-size:0.9em;">เงื่อนไขการโฆษณา</label> <br>
-                                        <label style="font-family:myfont1;font-size:0.8em;">
-                                            1. ต้องไม่ใช่สินค้าที่ผิดกฎหมาย หรือสินค้าละเมิดลิขสิทธิ์
-                                        </label>
-                                    </div>
                                 </div>
-                            </form>
+                            @endforeach
                         </div>
-                        <div class="col-lg-1"></div>
-                    </div>
-
-                    <div class="row my-4" >
-                        <div class="col-lg-1"></div>
-                        <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-                            <form action="" method="POST" enctype="multipart/form-data" id="upDate">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                                        <span class="font-profile1">รายการโฆษณา<span>
-                                    </div>
-                                </div>
-
-                                <div class="row row5">
-                                    <div class="col-lg-12">
-                                        <div class="row mx-0 mt-2 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1em;color:#000;">
-                                            <div class="col-6">ชื่อโฆษณา</div>
-                                            <div class="col-2 text-center">โฆษณา</div>
-                                            <div class="col-2 text-center">สถานะ</div>
-                                            <div class="col-2 text-center">วัน-เวลา</div>
-                                        </div>
-                                        <div class="row mx-0 py-2 line2">
-                                            <div class="col-6">
-                                                <span class="font-game-shelf2" style="color:#000;font-family:myfont1;">ชื่อโฆษณา</span>
-                                            </div>
-                                            <div class="col-2 text-center">
-                                                <div class="py-1 p" style="cursor:pointer;text-decoration: underline;color:#0061fc;"data-toggle="modal" data-target="#Ads">โฆษณา</div>
-                                            </div>
-                                            <div class="col-2 text-center">
-                                                <label class="ml-2 px-1 p" style="color:#000;background-color: #ffd629;border-radius: 6px;margin:0;">รออนุมัติ</label></br>
-                                                <!-- <label class="ml-2 px-1 p" style="color:#fff;background-color: #23c197;border-radius: 6px;margin:0;">อนุมัติ</label></br> -->
-                                                <!-- <label class="ml-2 px-1 p" style="color:#fff;background-color: #ce0005;border-radius: 6px;margin:0;">ไม่อนุมัติ</label></br> -->
-                                            </div>
-                                            <div class="col-2 text-center"><span class="font-game-shelf2" style="font-size:0.8em;font-family:myfont1;">09:10, 17/05/63</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-lg-1"></div>
                     </div>
                 </div>
-            @endif
-        @endforeach
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="modal fade" id="Ads" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="Ads" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -169,7 +189,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="container-fluid">
     <div class="row">
@@ -205,4 +225,20 @@
 <script src="{{ asset('filter/dependencies/typeahead.bundle.js') }}"></script>
 <script src="{{ asset('filter/dist/jquery.Thailand.min.js') }}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+@if( Session::has('advertising'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // $('#address').modal();
+            Swal.fire({
+                // position: 'top-end',
+                icon: 'success',
+                title: '{{ Session::get('advertising') }}',
+                // title: 'Oops...',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        });
+    </script>
+@endif
 @endsection
