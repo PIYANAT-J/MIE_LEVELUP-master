@@ -145,7 +145,6 @@
                             
                         </div>
                         <div class="col-2">
-                            <!-- <a href="{{ route('packagePay', ['id'=>encrypt('list')]) }}"><label class="btn-submit-red2" style="">ชำระเงิน</label></a> -->
                             <form action="{{route('sponShoppingCartPayment')}}" method="post">
                                 @csrf
                                 <button class="btn-submit-red2" name="submit" value="submit">ชำระเงิน

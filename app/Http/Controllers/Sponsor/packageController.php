@@ -40,7 +40,8 @@ class packageController extends Controller
         }
     }
 
-    public function packagePay($id){
+    public function packagePay($id, $idT){
+        // dd(decrypt($id),decrypt($idT));
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
         $address = DB::table('addresses')->where('USER_EMAIL', Auth::user()->email)->get();
         $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
@@ -60,10 +61,15 @@ class packageController extends Controller
                 $transfer = DB::table('transfer_payments')->where('transferInvoice', $package->packageBuy_invoice)->first();
                 return view('profile.sponsor.spon_payment', compact('sponsor', 'allPackage', 'package', 'transfer', 'address', 'countCart'));
             }else{
-                $transeection = DB::table('transeection_sponshopping')->where([['transeection_id', decrypt($id)]])->first();
-                $transfer = DB::table('transfer_payments')->where('transferInvoice', $transeection->transeection_invoice)->first();
+                // dd(decrypt($idT));
+                if(decrypt($idT) != "null"){
+                    $transeection = DB::table('transeection_sponshopping')->where([['transeection_id', decrypt($idT)]])->first();
+                    $transfer = DB::table('transfer_payments')->where('transferInvoice', $transeection->transeection_invoice)->first();
+                    return view('profile.sponsor.spon_payment', compact('sponsor', 'allPackage', 'package', 'address', 'countCart', 'transeection', 'transfer'));
+                }
+                    
                 // dd($transeection);
-                return view('profile.sponsor.spon_payment', compact('sponsor', 'allPackage', 'package', 'address', 'countCart', 'transeection', 'transfer'));
+                return view('profile.sponsor.spon_payment', compact('sponsor', 'allPackage', 'package', 'address', 'countCart'));
             }
         }
     }
@@ -212,6 +218,7 @@ class packageController extends Controller
             // dd("yes");
             return view('profile.sponsor.spon_transfer', compact('sponsor', 'transfer', 'countCart', 'transeection'));
         }else{
+            // dd($transfer);
             return view('profile.sponsor.spon_transfer', compact('sponsor', 'transfer', 'countCart', 'package'));
         }
     }
@@ -258,7 +265,7 @@ class packageController extends Controller
                     // $value = Package::packageBuy($data);
 
                     // return redirect(route('SponsorTransfer', ['invoice' => encrypt($transferInvoice)]));
-                    return redirect(route('packagePay', ['id' => encrypt($req->input('package_id'))]));
+                    return redirect(route('packagePay', ['id' => encrypt($req->input('package_id')), 'idT'=>encrypt('null')]));
                 }else{
                     // $transeection = DB::table('transeection_sponshopping')->where([['transeection_id', $req->input('transeection_id')]])->first();
                     // $transeection_invoice = $transferInvoice;
@@ -266,7 +273,7 @@ class packageController extends Controller
                     // $data = array("transeection_id"=>$req->input('transeection_id'), "transeection_invoice"=>$transeection_invoice);
                     // Package::cartPaymentUpdate($data);
                     // return redirect(route('SponsorTransfer', ['invoice' => encrypt($transferInvoice)]));
-                    return redirect(route('packagePay', ['id' => encrypt($req->input('transeection_id'))]));
+                    return redirect(route('packagePay', ['idT' => encrypt($req->input('transeection_id')), 'id'=>encrypt('null')]));
                 }
             }else{
                 // dd($req);

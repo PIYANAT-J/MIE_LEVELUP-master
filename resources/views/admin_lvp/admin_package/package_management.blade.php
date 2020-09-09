@@ -103,21 +103,28 @@
                                     </div>
                                     <div class="row row4"> 
                                         <div class="col-lg-12">
-                                            <div class="row">
-                                                <div class="col-1 py-1 td1">1</div>
-                                                <div class="col-2 py-1 td1 text-left">แพ็กเกจ 1</div>
-                                                <div class="col-2 py-1 td1">900</div>
-                                                <div class="col-2 py-1 td1">1 เดือน</div>
-                                                <div class="col-2 py-1 td1" style="cursor:pointer;text-decoration: underline;color:#0061fc;"data-toggle="modal" data-target="#PackageDetail">เพิ่มเติม</div>
-                                                <div class="col-2 py-1 td1 text-left">
-                                                    <label class="bgT10ListBankingPay" style="cursor:default;">ไม่ใช้งาน</label>
-                                                    <label class="bgGreen" style="cursor:default;">ใช้งาน</label>
+                                            <?php $i = 1; ?>
+                                            @foreach($package as $packageList)
+                                                <div class="row">
+                                                    <div class="col-1 py-1 td1">{{$i}}</div>
+                                                    <div class="col-2 py-1 td1 text-left">{{$packageList->package_name}}</div>
+                                                    <div class="col-2 py-1 td1">{{$packageList->package_amount}}</div>
+                                                    <div class="col-2 py-1 td1">{{$packageList->package_season}} เดือน</div>
+                                                    <div class="col-2 py-1 td1" style="cursor:pointer;text-decoration: underline;color:#0061fc;"data-toggle="modal" data-target="#PackageDetail">เพิ่มเติม</div>
+                                                    <div class="col-2 py-1 td1 text-left">
+                                                    @if($packageList->package_status == "true")
+                                                        <label class="bgGreen" style="cursor:default;">ใช้งาน</label>
+                                                    @else
+                                                        <label class="bgT10ListBankingPay" style="cursor:default;">ไม่ใช้งาน</label>
+                                                    @endif
+                                                    </div>
+                                                    <div class="col-1 py-1 td1 text-right">
+                                                        <i class="fa fa-trash-o mr-3" aria-hidden="true" style="font-size:1em;cursor:pointer;"></i>
+                                                        <i class="fa fa-pencil" aria-hidden="true" style="font-size:1em;cursor:pointer;" data-toggle="modal" data-target="#EditPackage"></i>
+                                                    </div>
                                                 </div>
-                                                <div class="col-1 py-1 td1 text-right">
-                                                    <i class="fa fa-trash-o mr-3" aria-hidden="true" style="font-size:1em;cursor:pointer;"></i>
-                                                    <i class="fa fa-pencil" aria-hidden="true" style="font-size:1em;cursor:pointer;" data-toggle="modal" data-target="#EditPackage"></i>
-                                                </div>
-                                            </div>
+                                                <?php $i++; ?>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -133,18 +140,27 @@
                                     </div>
                                     <div class="row row4"> 
                                         <div class="col-lg-12">
-                                            <div class="row">
-                                                <div class="col-1 py-1 td1">1</div>
-                                                <div class="col-3 py-1 td1 text-left">ชื่อโฆษณา 1</div>
-                                                <div class="col-2 py-1 td1 text-left">exam@email.com</div>
-                                                <div class="col-2 py-1 td1">
-                                                    <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label>
-                                                    <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label>
-                                                    <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove">ไม่ผ่านการอนุมัติ</label>
+                                            <?php $i = 1; ?>
+                                            @foreach($advertising as $advertisingAll)
+                                                <div class="row">
+                                                    <div class="col-1 py-1 td1">{{$i}}</div>
+                                                    <div class="col-3 py-1 td1 text-left">{{$advertisingAll->advertising_name}}</div>
+                                                    <div class="col-2 py-1 td1 text-left">{{$advertisingAll->advertising_link}}</div>
+                                                    <div class="col-2 py-1 td1">
+                                                        @if($advertisingAll->advertising_status == "รออนุมัติ")
+                                                            <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$advertisingAll->advertising_id}}">รอการตรวจสอบ</label>
+                                                        @elseif($advertisingAll->advertising_status == "true")
+                                                            <label class="status-approve" data-toggle="modal" data-target="#Approve{{$advertisingAll->advertising_id}}">อนุมัติแล้ว</label>
+                                                        @else
+                                                            <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove{{$advertisingAll->advertising_id}}">ไม่ผ่านการอนุมัติ</label>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-2 py-1 td1 ">{{$advertisingAll->admin_name}}</div>
+                                                    <div class="col-2 py-1 td1">{{$advertisingAll->advertising_update}}</div>
                                                 </div>
-                                                <div class="col-2 py-1 td1 ">Admin1</div>
-                                                <div class="col-2 py-1 td1">19/08/63</div>
-                                            </div>
+                                                <?php $i++; ?>
+                                            @endforeach
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -157,290 +173,298 @@
         </div>
     </div>
 
-<div class="modal fade" id="AddPackage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="col-1"></div>
-                <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">แพ็กเกจโฆษณา</div>
-                <button type="button" class="close btn-closeModal " data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
-                <div class="col-1"></div>
-            </div>
-
-            <div class="modal-body font-rate-modal">                        
-                <div class="row">
-                    <div class="col-lg-12 mb-2 pl-4">
-                        <label class="font-profile1 mt-3 mb-2">ข้อมูลแพ็กเกจ</label>
-                    </div>
-                    <div class="col-lg-12">
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อแพ็กเกจ</label> <br>
-                            <input id="name" type="text" class="input-login px-3" required autofocus>
-                        </label>
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ราคาแพ็กเกจ</label> <br>
-                            <input id="name" type="text" class="input-login px-3" required autofocus>
-                        </label>
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ระยะเวลา</label> <br>
-                            <select class="selectProvince" type="text" name="text4">
-                                <option value="">1 เดือน</option>
-                                <option value="">3 เดือน</option>
-                                <option value="">6 เดือน</option>
-                                <option value="">1 ปี</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div class="col-lg-12 mb-2 pl-4">
-                        <label class="font-profile1 mt-3 mb-2">รายละเอียดแพ็กเกจ</label>
-                    </div>
-                    <div class="col-lg-12">
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">เลือกสนุบสนุนเกมได้ทั้งหมด/เกม</label> <br>
-                            <input class="input-login px-3" required autofocus>
-                        </label>
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ความยาวโฆษณา</label> <br>
-                            <select class="selectProvince" type="text" name="text4">
-                                <option value="">15 วินาที</option>
-                                <option value="">30 วินาที</option>
-                                <option value="">45 วินาที</option>
-                                <option value="">1 นาที</option>
-                            </select>
-                        </label>
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">จำนวนรอบโฆษณา</label> <br>
-                            <input class="input-login px-3" required autofocus>
-                        </label>
-                    </div>
+    <div class="modal fade" id="AddPackage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col-1"></div>
+                    <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">แพ็กเกจโฆษณา</div>
+                    <button type="button" class="close btn-closeModal " data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
+                    <div class="col-1"></div>
                 </div>
-                <div class="row mt-2">
-                    <div class="col-lg-12">
-                        <button type="button" class="btn-submit-modal-red">ยืนยัน</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="modal fade" id="EditPackage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="col-1"></div>
-                <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">แก้ไขแพ็กเกจโฆษณา</div>
-                <button type="button" class="close btn-closeModal " data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
-                <div class="col-1"></div>
-            </div>
-
-            <div class="modal-body font-rate-modal">                        
-                <div class="row">
-                    <div class="col-lg-12 mb-2 pl-4">
-                        <label class="font-profile1 mt-3 mb-2">ข้อมูลแพ็กเกจ</label>
-                    </div>
-                    <div class="col-lg-12">
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อแพ็กเกจ</label> <br>
-                            <input id="name" type="text" class="input-login px-3" readonly>
-                        </label>
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ราคาแพ็กเกจ</label> <br>
-                            <input id="name" type="text" class="input-login px-3" readonly>
-                        </label>
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ระยะเวลา</label> <br>
-                            <input id="name" type="text" class="input-login px-3" readonly>
-                        </label>
-                    </div>
-                    <div class="col-lg-12 mb-2 pl-4">
-                        <label class="font-profile1 mt-3 mb-2">รายละเอียดแพ็กเกจ</label>
-                    </div>
-                    <div class="col-lg-12">
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">เลือกสนุบสนุนเกมได้ทั้งหมด/เกม</label> <br>
-                            <input id="name" type="text" class="input-login px-3" readonly>
-                        </label>
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ความยาวโฆษณา</label> <br>
-                            <input id="name" type="text" class="input-login px-3" readonly>
-                        </label>
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">จำนวนรอบโฆษณา</label> <br>
-                            <input id="name" type="text" class="input-login px-3" readonly>
-                        </label>
-                    </div>
-                    <div class="col-lg-12 mb-2 pl-4 custom02">
-                        <input type="radio" name="bank" value="inactive" id="inactive">
-                        <label for="inactive" style="color:#000;">ไม่ใช้งาน</label>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-lg-12">
-                        <button type="button" class="btn-submit-modal-red">ยืนยัน</button>
-                    </div>
+                <div class="modal-body font-rate-modal">                        
+                    <form action="{{route('addPackage')}}" method="post">
+                        @csrf
+                        <div class="row">
+                            <div class="col-lg-12 mb-2 pl-4">
+                                <label class="font-profile1 mt-3 mb-2">ข้อมูลแพ็กเกจ</label>
+                            </div>
+                            <div class="col-lg-12">
+                                <label class="bgInput field-wrap">
+                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อแพ็กเกจ</label> <br>
+                                    <input name="package_name" value="{{old('package_name')}}" type="text" class="input-login px-3" required autofocus>
+                                </label>
+                                <label class="bgInput field-wrap">
+                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ราคาแพ็กเกจ</label> <br>
+                                    <input name="package_amount" value="{{old('package_amount')}}" type="text" class="input-login px-3" required autofocus>
+                                </label>
+                                <label class="bgInput field-wrap">
+                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ระยะเวลา</label> <br>
+                                    <select class="selectProvince" type="text" name="package_season">
+                                        <option value="1">1 เดือน</option>
+                                        <option value="3">3 เดือน</option>
+                                        <option value="6">6 เดือน</option>
+                                        <option value="">1 ปี</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="col-lg-12 mb-2 pl-4">
+                                <label class="font-profile1 mt-3 mb-2">รายละเอียดแพ็กเกจ</label>
+                            </div>
+                            <div class="col-lg-12">
+                                <label class="bgInput field-wrap">
+                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">เลือกสนุบสนุนเกมได้ทั้งหมด/เกม</label> <br>
+                                    <input name="package_game" value="{{old('package_game')}}" class="input-login px-3" required autofocus>
+                                </label>
+                                <label class="bgInput field-wrap">
+                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ความยาวโฆษณา</label> <br>
+                                    <select class="selectProvince" type="text" name="package_length">
+                                        <option value="15">15 วินาที</option>
+                                        <option value="30">30 วินาที</option>
+                                        <option value="45">45 วินาที</option>
+                                        <option value="1">1 นาที</option>
+                                    </select>
+                                </label>
+                                <label class="bgInput field-wrap">
+                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">จำนวนรอบโฆษณา</label> <br>
+                                    <input name="package_advt" value="{{old('package_advt')}}" class="input-login px-3" required autofocus>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-lg-12">
+                                <button name="submit" value="submit" class="btn-submit-modal-red">ยืนยัน</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="modal fade" id="PackageDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="col-1"></div>
-                <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">รายละเอียดแพ็กเกจโฆษณา</div>
-                <button type="button" class="close btn-closeModal " data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
-                <div class="col-1"></div>
-            </div>
+    <div class="modal fade" id="EditPackage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col-1"></div>
+                    <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">แก้ไขแพ็กเกจโฆษณา</div>
+                    <button type="button" class="close btn-closeModal " data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
+                    <div class="col-1"></div>
+                </div>
 
-            <div class="modal-body font-rate-modal">                        
-                <div class="row ">
-                    <div class="col-lg-12 mb-3 mt-2">
-                        <div class="bgPackage" style="margin:auto;">
-                            <label>
-                                <div class="row">
-                                    <div class="col-lg-12 text-center mt-2">
-                                        <img src="{{asset('icon/money2.svg') }}">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12 text-center mt-2">
-                                        <label style="font-family:myfont1;font-size:1em;line-height:0.5;color:#000;">แพ็กเกจ 1</label><br>
-                                        <label style="font-family:myfont;font-size:1.3em;color:#000;">฿900.00</label>
-                                        <label style="font-family:myfont1;font-size:0.9em;color:#000;">/ เดือน</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12 text-center">
-                                        <label class="btnBuyPackage">
-                                            <a href="{{ route('SponsorPayment') }}"><label style="font-family:myfont1;font-size:1em;color:#ffffff;cursor: pointer;">ซื้อเลย</label></a>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="row my-2 px-4">
-                                    <div class="col-lg-12 text-center" style="border-bottom:1px solid #f5f5f5"></div>
-                                </div>
-                                <div class="row pl-3">
-                                    <div class="col-lg-12 ">
-                                        <label style="font-family:myfont1;font-size:0.9em;font-weight: 800;color:#000;">รายละเอียด</label>
-                                    </div>
-                                </div>
-                                <div class="row pl-2 pr-1">
-                                    <div class="col-lg-12 fontDetailPackage">
-                                        <div class="input-container">
-                                            <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
-                                            <label class="input-field ">เลือกสนุบสนุนเกมได้ทั้งหมด 20 เกม/เดือน</label>
-                                        </div>
-
-                                        <div class="input-container">
-                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                            <label class="input-field ">สามารถเลือกเรทเกมได้ทุกชนิด</label>
-                                        </div>
-
-                                        <div class="input-container">
-                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                            <label class="input-field ">ได้โฆษณาความยาว 15 วินาที</label>
-                                        </div>
-
-                                        <div class="input-container">
-                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                            <label class="input-field ">ได้สูงสุด 2 รอบ/เกม ระยะเวลา 1 เดือน</label>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="modal-body font-rate-modal">                        
+                    <div class="row">
+                        <div class="col-lg-12 mb-2 pl-4">
+                            <label class="font-profile1 mt-3 mb-2">ข้อมูลแพ็กเกจ</label>
+                        </div>
+                        <div class="col-lg-12">
+                            <label class="bgInput field-wrap">
+                                <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อแพ็กเกจ</label> <br>
+                                <input id="name" type="text" class="input-login px-3" readonly>
                             </label>
+                            <label class="bgInput field-wrap">
+                                <label class="fontHeadInput px-3 py-2" style="padding:0;">ราคาแพ็กเกจ</label> <br>
+                                <input id="name" type="text" class="input-login px-3" readonly>
+                            </label>
+                            <label class="bgInput field-wrap">
+                                <label class="fontHeadInput px-3 py-2" style="padding:0;">ระยะเวลา</label> <br>
+                                <input id="name" type="text" class="input-login px-3" readonly>
+                            </label>
+                        </div>
+                        <div class="col-lg-12 mb-2 pl-4">
+                            <label class="font-profile1 mt-3 mb-2">รายละเอียดแพ็กเกจ</label>
+                        </div>
+                        <div class="col-lg-12">
+                            <label class="bgInput field-wrap">
+                                <label class="fontHeadInput px-3 py-2" style="padding:0;">เลือกสนุบสนุนเกมได้ทั้งหมด/เกม</label> <br>
+                                <input id="name" type="text" class="input-login px-3" readonly>
+                            </label>
+                            <label class="bgInput field-wrap">
+                                <label class="fontHeadInput px-3 py-2" style="padding:0;">ความยาวโฆษณา</label> <br>
+                                <input id="name" type="text" class="input-login px-3" readonly>
+                            </label>
+                            <label class="bgInput field-wrap">
+                                <label class="fontHeadInput px-3 py-2" style="padding:0;">จำนวนรอบโฆษณา</label> <br>
+                                <input id="name" type="text" class="input-login px-3" readonly>
+                            </label>
+                        </div>
+                        <div class="col-lg-12 mb-2 pl-4 custom02">
+                            <input type="radio" name="bank" value="inactive" id="inactive">
+                            <label for="inactive" style="color:#000;">ไม่ใช้งาน</label>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-lg-12">
+                            <button type="button" class="btn-submit-modal-red">ยืนยัน</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="modal fade" id="pendingApprove" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="col-1"></div>
-                <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">อนุมัติโฆษณา</div>
-                <button type="button" class="close btn-closeModal ml-3" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
-                <div class="col-1"></div>
-            </div>
+    <div class="modal fade" id="PackageDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col-1"></div>
+                    <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">รายละเอียดแพ็กเกจโฆษณา</div>
+                    <button type="button" class="close btn-closeModal " data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
+                    <div class="col-1"></div>
+                </div>
 
-            <div class="modal-body font-rate-modal">
-                <div class="row">
-                    <div class="col-lg-12">
-                    <iframe style="width:100%;height:385px;" src="https://www.youtube.com/embed/grOw65QnD7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="col-lg-12 mb-2 pl-4 custom02">
-                        <input type="radio" name="Approve" id="approve">
-                        <label for="approve" style="color:#000;">อนุมัติ</label>
-                    </div>
-                    <div class="col-lg-12 mb-2 pl-4 custom02">
-                        <input type="radio" name="Approve" id="noneapprove">
-                        <label for="noneapprove" style="color:#000;">ไม่ใอนุมัติ</label>
-                    </div>
-                    <div class="col-lg-12">
-                        <button type="button" class="btn-submit-modal-red">ยืนยัน</button>
+                <div class="modal-body font-rate-modal">                        
+                    <div class="row ">
+                        <div class="col-lg-12 mb-3 mt-2">
+                            <div class="bgPackage" style="margin:auto;">
+                                <label>
+                                    <div class="row">
+                                        <div class="col-lg-12 text-center mt-2">
+                                            <img src="{{asset('icon/money2.svg') }}">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 text-center mt-2">
+                                            <label style="font-family:myfont1;font-size:1em;line-height:0.5;color:#000;">แพ็กเกจ 1</label><br>
+                                            <label style="font-family:myfont;font-size:1.3em;color:#000;">฿900.00</label>
+                                            <label style="font-family:myfont1;font-size:0.9em;color:#000;">/ เดือน</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 text-center">
+                                            <label class="btnBuyPackage">
+                                                <a href="{{ route('SponsorPayment') }}"><label style="font-family:myfont1;font-size:1em;color:#ffffff;cursor: pointer;">ซื้อเลย</label></a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row my-2 px-4">
+                                        <div class="col-lg-12 text-center" style="border-bottom:1px solid #f5f5f5"></div>
+                                    </div>
+                                    <div class="row pl-3">
+                                        <div class="col-lg-12 ">
+                                            <label style="font-family:myfont1;font-size:0.9em;font-weight: 800;color:#000;">รายละเอียด</label>
+                                        </div>
+                                    </div>
+                                    <div class="row pl-2 pr-1">
+                                        <div class="col-lg-12 fontDetailPackage">
+                                            <div class="input-container">
+                                                <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                <label class="input-field ">เลือกสนุบสนุนเกมได้ทั้งหมด 20 เกม/เดือน</label>
+                                            </div>
+
+                                            <div class="input-container">
+                                                <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                <label class="input-field ">สามารถเลือกเรทเกมได้ทุกชนิด</label>
+                                            </div>
+
+                                            <div class="input-container">
+                                                <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                <label class="input-field ">ได้โฆษณาความยาว 15 วินาที</label>
+                                            </div>
+
+                                            <div class="input-container">
+                                                <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                <label class="input-field ">ได้สูงสุด 2 รอบ/เกม ระยะเวลา 1 เดือน</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="modal fade" id="Approve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="col-1"></div>
-                <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">อนุมัติโฆษณา</div>
-                <button type="button" class="close btn-closeModal ml-3" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
-                <div class="col-1"></div>
-            </div>
+    @foreach($advertising as $key=>$advertisingModal)
+        <div class="modal fade" id="pendingApprove{{$advertisingModal->advertising_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="col-1"></div>
+                        <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">อนุมัติโฆษณา</div>
+                        <button type="button" class="close btn-closeModal ml-3" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
+                        <div class="col-1"></div>
+                    </div>
 
-            <div class="modal-body font-rate-modal">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <label class="status-approve2" >อนุมัติแล้ว</label>
+                    <div class="modal-body font-rate-modal">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <iframe style="width:100%;height:385px;" src="{{$advertisingModal->advertising_link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <form action="{{route('Advertising')}}" method="post">
+                                @csrf
+                                <div class="col-lg-12 mb-2 pl-4 custom02">
+                                    <input type="radio" name="advertising_status" id="approve{{$key}}" value="true">
+                                    <label for="approve{{$key}}" style="color:#000;">อนุมัติ</label>
+                                </div>
+                                <div class="col-lg-12 mb-2 pl-4 custom02">
+                                    <input type="radio" name="advertising_status" id="noneapprove{{$key}}" value="false">
+                                    <label for="noneapprove{{$key}}" style="color:#000;">ไม่ใอนุมัติ</label>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button name="submit" value="submit" class="btn-submit-modal-red">ยืนยัน</button>
+                                    <input type="hidden" name="advertising_id" value="{{$advertisingModal->advertising_id}}">
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="col-lg-12">
-                    <iframe style="width:100%;height:385px;" src="https://www.youtube.com/embed/grOw65QnD7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="modal fade" id="noneApprove" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="col-1"></div>
-                <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">อนุมัติโฆษณา</div>
-                <button type="button" class="close btn-closeModal ml-3" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
-                <div class="col-1"></div>
-            </div>
+        <div class="modal fade" id="Approve{{$advertisingModal->advertising_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="col-1"></div>
+                        <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">อนุมัติโฆษณา</div>
+                        <button type="button" class="close btn-closeModal ml-3" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
+                        <div class="col-1"></div>
+                    </div>
 
-            <div class="modal-body font-rate-modal">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <label class="status-none-approve2">ไม่ผ่านการอนุมัติ</label>
+                    <div class="modal-body font-rate-modal">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label class="status-approve2" >อนุมัติแล้ว</label>
+                            </div>
+                            <div class="col-lg-12">
+                            <iframe style="width:100%;height:385px;" src="https://www.youtube.com/embed/grOw65QnD7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            
+                        </div>
                     </div>
-                    <div class="col-lg-12">
-                    <iframe style="width:100%;height:385px;" src="https://www.youtube.com/embed/grOw65QnD7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
+        <div class="modal fade" id="noneApprove{{$advertisingModal->advertising_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="col-1"></div>
+                        <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">อนุมัติโฆษณา</div>
+                        <button type="button" class="close btn-closeModal ml-3" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
+                        <div class="col-1"></div>
+                    </div>
+
+                    <div class="modal-body font-rate-modal">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label class="status-none-approve2">ไม่ผ่านการอนุมัติ</label>
+                            </div>
+                            <div class="col-lg-12">
+                            <iframe style="width:100%;height:385px;" src="https://www.youtube.com/embed/grOw65QnD7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 </div>
 
 
@@ -597,4 +621,35 @@
     document.getElementById("first").style.display ='none';
     }
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+@if( Session::has('success'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // alert('yes')
+            Swal.fire({
+                // position: 'top-end',
+                icon: 'success',
+                title: '{{ Session::get('success') }}',
+                // title: 'Oops...',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        });
+    </script>
+@elseif( Session::has('successADVT'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // alert('yes')
+            Swal.fire({
+                // position: 'top-end',
+                icon: 'success',
+                title: '{{ Session::get('successADVT') }}',
+                // title: 'Oops...',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        });
+    </script>
+@endif
 @endsection

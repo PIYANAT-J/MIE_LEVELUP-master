@@ -103,7 +103,10 @@ Route::get('/withdraw_management', 'AdminController@withDraw')->name('WithdrawMa
 Route::post('/withdraw_management/approve', 'AdminController@approveWithdraw')->name('AppWithDraw');
 Route::get('/advertisement', 'AdminController@Advertisement')->name('Advertisement');
 Route::get('/package', 'AdminController@Package')->name('Package');
+Route::post('/package/add', 'AdminController@addPackage')->name('addPackage');
+Route::post('/package/advertising', 'AdminController@advertising')->name('Advertising');
 Route::get('/product', 'AdminController@Product')->name('Product');
+Route::post('/product/approve', 'AdminController@approveProduct')->name('ApproveProduct');
 Route::get('/avatar_management', 'AdminController@AvatarManagement')->name('AvatarManagement');
 
 
@@ -153,7 +156,7 @@ Route::post('/spon_shopping_cart/delete', 'Sponsor\game_sponController@daleteSpo
 Route::get('/sponsor_payment', 'UploadImageProfile@SponsorPayment')->name('SponsorPayment');
 Route::post('/sponsor_payment/qrCode', 'Sponsor\packageController@packageibanking')->name('packageibanking');
 
-Route::get('/paymentPackage/{id}', 'Sponsor\packageController@packagePay')->name('packagePay');
+Route::get('/paymentPackage/{id}/{idT}', 'Sponsor\packageController@packagePay')->name('packagePay');
 Route::post('/paymentPackage/sponsor_transfer', 'Sponsor\packageController@sponTransferPayment')->name('sponTransferPayment');
 Route::get('/sponsor_transfer/{invoice}', 'Sponsor\packageController@sponsorTransfer')->name('SponsorTransfer');
 
