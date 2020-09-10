@@ -45,5 +45,13 @@
         <script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
         <!-- <script src="{{ asset('dist/moment/dist/moment.js') }}"></script> -->
         @yield('script')
+        <script>
+            $(document).ready(function(){
+            //    alert('read'); 
+                var attrActive = $('#getActive').attr('active');
+                console.log(attrActive);
+                $('#navActive a[href="'+attrActive+'"] button').addClass('active');
+            });
+        </script>
     </body>
 </html>
