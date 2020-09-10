@@ -41,4 +41,8 @@ class Admin extends Model
             ->update($data);
         return 0;
     }
+
+    public static function addPackage($data){
+        DB::table('packages')->insert($data);
+    }
 }

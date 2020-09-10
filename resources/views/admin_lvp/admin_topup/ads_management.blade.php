@@ -32,61 +32,77 @@
                     <div class="row mx-0" >
                         <div class="col-12">
                             <div class="tab-content">
-                                <div id="topup1" class="tab-pane active">
-                                    <div class="row" >
-                                        <div class="col-1 py-3 th1 p">#</div>
-                                        <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
-                                        <div class="col-3 py-3 th1 p">ชื่อแพ็กเกจ</div>
-                                        <div class="col-2 py-3 th1 p">สถานะ</div>
-                                        <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
-                                        <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
-                                    </div>
-                                    <div class="row row4"> 
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-1 py-1 td1 p">#</div>
-                                                <div class="col-3 py-1 td1 p text-left">ชื่อ-นามสกุล</div>
-                                                <div class="col-3 py-1 td1 p">ชื่อแพ็กเกจ</div>
-                                                <div class="col-2 py-1 td1">
-                                                    <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">
-                                                        <p style="margin:0;">รอการตรวจสอบ</p>
-                                                    </label>
-                                                    <label class="status-approve" data-toggle="modal" data-target="#Approve">
-                                                        <p style="margin:0;">อนุมัติแล้ว</p>
-                                                    </label>
-                                                    <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1">
-                                                        <p style="margin:0;">ไม่ผ่านการอนุมัติ</p>
-                                                    </label>
-                                                </div>
-                                                <div class="col-1 py-1 td1 p">admin1</div>
-                                                <div class="col-2 py-1 td1 p">20/08/63</div>
+                                    <div id="topup1" class="tab-pane active">
+                                        <div class="row" >
+                                            <div class="col-1 py-3 th1 p">#</div>
+                                            <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
+                                            <div class="col-3 py-3 th1 p">ชื่อแพ็กเกจ</div>
+                                            <div class="col-2 py-3 th1 p">สถานะ</div>
+                                            <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
+                                            <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
+                                        </div>
+                                        <div class="row row4"> 
+                                            <div class="col-lg-12">
+                                                <?php $i = 1; ?>
+                                                @foreach($transfer as $transferList)
+                                                    <div class="row">
+                                                        <div class="col-1 py-1 td1 p">{{ $i }}</div>
+                                                        <div class="col-3 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
+                                                            @if(isset($transferList->packageBuy_name))
+                                                                <div class="col-3 py-1 td1 p">{{$transferList->packageBuy_name}}</div>
+                                                            @else
+                                                                <div class="col-3 py-1 td1 p">รายเกม</div>
+                                                            @endif
+                                                        <div class="col-2 py-1 td1 p">
+                                                            @if($transferList->transferStatus == "รอการอนุมัติ")
+                                                                <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$transferList->id}}">รอการตรวจสอบ</label>
+                                                            @elseif($transferList->transferStatus == "อนุมัติแล้ว")
+                                                                <label class="status-approve" data-toggle="modal" data-target="#Approve{{$transferList->id}}">อนุมัติแล้ว</label>
+                                                            @elseif($transferList->transferStatus == "ไม่อนุมัติ")
+                                                                <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1{{$transferList->id}}">ไม่ผ่านการอนุมัติ</label>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-1 py-1 td1 p">{{ $transferList->admin_name }}</div>
+                                                        <div class="col-2 py-1 td1 p">{{explode(' ',$transferList->confirm_at)[0]}}</div>
+                                                    </div>
+                                                    <?php $i = $i+1; ?>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div id="topup2" class="tab-pane">
-                                    <div class="row" >
-                                        <div class="col-1 py-3 th1 p">#</div>
-                                        <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
-                                        <div class="col-3 py-3 th1 p">ชื่อแพ็กเกจ</div>
-                                        <div class="col-2 py-3 th1 p">สถานะ</div>
-                                        <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
-                                        <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
-                                    </div>
-                                    <div class="row row4"> 
-                                        <div class="col-12">
-                                        <div class="row">
-                                                <div class="col-1 py-1 td1 p">#</div>
-                                                <div class="col-3 py-1 td1 p text-left">ชื่อ-นามสกุล</div>
-                                                <div class="col-3 py-1 td1 p">ชื่อแพ็กเกจ</div>
-                                                <div class="col-2 py-1 td1">
-                                                    <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">
-                                                        <p style="margin:0;">รอการตรวจสอบ</p>
-                                                    </label>
-                                                </div>
-                                                <div class="col-1 py-1 td1 p">admin1</div>
-                                                <div class="col-2 py-1 td1 p">20/08/63</div>
+                                
+                                    <div id="topup2" class="tab-pane">
+                                        <div class="row" >
+                                            <div class="col-1 py-3 th1 p">#</div>
+                                            <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
+                                            <div class="col-3 py-3 th1 p">ชื่อแพ็กเกจ</div>
+                                            <div class="col-2 py-3 th1 p">สถานะ</div>
+                                            <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
+                                            <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
+                                        </div>
+                                        <div class="row row4"> 
+                                            <div class="col-lg-12">
+                                                <?php $i = 1; ?>
+                                                @foreach($transfer as $transferList)
+                                                    @if($transferList->transferStatus == "รอการอนุมัติ")
+                                                        <div class="row">
+                                                            <div class="col-1 py-1 td1 p">{{ $i }}</div>
+                                                            <div class="col-3 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
+                                                                @if(isset($transferList->packageBuy_name))
+                                                                    <div class="col-3 py-1 td1 p">{{$transferList->packageBuy_name}}</div>
+                                                                @else
+                                                                    <div class="col-3 py-1 td1 p">รายเกม</div>
+                                                                @endif
+                                                            <div class="col-2 py-1 td1 p">
+                                                                <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$transferList->id}}">รอการตรวจสอบ</label>
+                                                            </div>
+                                                            <div class="col-1 py-1 td1 p">{{ $transferList->admin_name }}</div>
+                                                            <div class="col-2 py-1 td1 p">{{explode(' ',$transferList->confirm_at)[0]}}</div>
+                                                        </div>
+                                                        <?php $i = $i+1; ?>
+                                                    @endif
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -119,28 +135,37 @@
                                     </div>
                                 </div>
 
-                                <div id="topup4" class="tab-pane">
-                                    <div class="row" >
-                                        <div class="col-1 py-3 th1 p">#</div>
-                                        <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
-                                        <div class="col-3 py-3 th1 p">ชื่อแพ็กเกจ</div>
-                                        <div class="col-2 py-3 th1 p">สถานะ</div>
-                                        <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
-                                        <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
-                                    </div>
-                                    <div class="row row4"> 
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-1 py-1 td1 p">#</div>
-                                                <div class="col-3 py-1 td1 p text-left">ชื่อ-นามสกุล</div>
-                                                <div class="col-3 py-1 td1 p">ชื่อแพ็กเกจ</div>
-                                                <div class="col-2 py-1 td1 p">
-                                                    <label class="status-approve" data-toggle="modal" data-target="#Approve">
-                                                        <p style="margin:0;">อนุมัติแล้ว</p>
-                                                    </label>
-                                                </div>
-                                                <div class="col-1 py-1 td1 p">admin1</div>
-                                                <div class="col-2 py-1 td1 p">20/08/63</div>
+                                    <div id="topup4" class="tab-pane">
+                                        <div class="row" >
+                                            <div class="col-1 py-3 th1 p">#</div>
+                                            <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
+                                            <div class="col-3 py-3 th1 p">ชื่อแพ็กเกจ</div>
+                                            <div class="col-2 py-3 th1 p">สถานะ</div>
+                                            <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
+                                            <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
+                                        </div>
+                                        <div class="row row4"> 
+                                            <div class="col-lg-12">
+                                            <?php $i = 1; ?>
+                                                @foreach($transfer as $transferList)
+                                                    @if($transferList->transferStatus == "อนุมัติแล้ว")
+                                                        <div class="row">
+                                                            <div class="col-1 py-1 td1 p">{{ $i }}</div>
+                                                            <div class="col-3 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
+                                                                @if(isset($transferList->packageBuy_name))
+                                                                    <div class="col-3 py-1 td1 p">{{$transferList->packageBuy_name}}</div>
+                                                                @else
+                                                                    <div class="col-3 py-1 td1 p">รายเกม</div>
+                                                                @endif
+                                                            <div class="col-2 py-1 td1 p">
+                                                                <label class="status-approve" data-toggle="modal" data-target="#Approve{{$transferList->id}}">อนุมัติแล้ว</label>
+                                                            </div>
+                                                            <div class="col-1 py-1 td1 p">{{ $transferList->admin_name }}</div>
+                                                            <div class="col-2 py-1 td1 p">{{explode(' ',$transferList->confirm_at)[0]}}</div>
+                                                        </div>
+                                                        <?php $i = $i+1; ?>
+                                                    @endif
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -154,7 +179,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="pendingApprove" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach($transfer as $key=>$transferModal)
+<div class="modal fade" id="pendingApprove{{$transferModal->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -211,7 +237,7 @@
                     <div class="col-6 pb-1">
                         <form action="{{ route('ApproveTransfer') }}" method="post">
                             @csrf
-                            <div id="userKYC" class="custom02">
+                            <div id="userKYC{{$key}}" class="custom02">
                                 <div data-toggle="modal">
                                     <input type="radio" name="transferStatus" value="อนุมัติแล้ว" id="approve">
                                     <label for="approve"><p style="color:#000;margin:0;">อนุมัติ</p></label>
@@ -220,8 +246,6 @@
                                     <input type="radio" name="transferStatus" value="ไม่อนุมัติ" id="noneApprove">
                                     <label for="noneApprove" ><p style="color:#000;margin:0;">ไม่อนุมัติ</p></label>
                                 </div>
-                            
-                            
                                 <div class="noneApprovelist">
                                     <div for="noneApprovelabel"><p style="color:#000;margin:0;">หมายเหตุ</p></div>
                                     <div name="noneApprovediv" form="userKYC">
@@ -247,7 +271,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="Approve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Approve{{$transferModal->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -256,7 +280,6 @@
                 <button type="button" class="close btn-closeModal ml-3" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
                 <div class="col-1"></div>
             </div>
-
             <div class="modal-body">
                 <div class="row">
                     <div class="col-6">
@@ -313,7 +336,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="noneApprove1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="noneApprove1{{$transferModal->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -322,7 +345,6 @@
                 <button type="button" class="close btn-closeModal ml-3" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
                 <div class="col-1"></div>
             </div>
-
             <div class="modal-body">
                 <div class="row">
                     <div class="col-6">
@@ -385,6 +407,7 @@
         </div>
     </div>
 </div>
+@endforeach
 
 <!-- พื้นหลัง -->
 <div class="container-fluid">

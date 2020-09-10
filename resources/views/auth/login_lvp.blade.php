@@ -108,12 +108,30 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mb-2">
                                 <div class="col-12">
                                     <button type="submit" name="button" id="submit" value="{{ __('เข้าสู่ระบบ') }}" class="btn-login-2 p">เข้าสู่ระบบ</button>
                                 </div>
                             </div>
                         </form>
+                        <!-- <a class="btn btn-lg btn-primary btn-block" href="{{ route('login-facebook') }}">
+                            <strong>Login With Facebook</strong>
+                        </a> -->
+                        
+                        <div class="col-12 text-center">
+                            <a href="{{ route('login-google') }}">
+                                <button class="btnRed">
+                                    <!-- <i class="icon-FBLogo" style=" margin-right:10px;"></i> -->
+                                    <p style="margin:0;font-weight: 800;">เข้าสู่ระบบด้วย Gmail</p>
+                                </button>
+                            </a>
+                            <a href="{{ route('login-facebook') }}">
+                                <button class="btnBlue">
+                                    <i class="icon-FBLogo" style=" margin-right:10px;"></i>
+                                    <labal class="p" style="margin:0;font-weight: 800;font-color: #fff !important;">เข้าสู่ระบบด้วย Facebook</labal>
+                                </button>
+                            </a>
+                        </div>
                     </div>
                 </div>
            </div>

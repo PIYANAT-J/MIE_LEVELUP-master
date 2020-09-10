@@ -66,7 +66,7 @@
                         <a href="{{ route('SponShoppingCart') }}"><label class="fontAd1 active">ตระกร้าสินค้า</label></a>
                     @elseif(isset($package))
                         <label class="fontAd1"> > </label>
-                        <a href="{{ route('packagePay', ['id'=>encrypt($package->package_id)]) }}"><label class="fontAd1 active" >ชำระเงิน</label></a>
+                        <a href="{{ route('packagePay', ['id'=>encrypt($package->package_id), 'idT'=>encrypt('null')]) }}"><label class="fontAd1 active" >ชำระเงิน</label></a>
                     @endif
                     <label class="fontAd1"> > </label>
                     <label class="fontAd1" >ยืนยันการชำระเงิน</label>
@@ -128,9 +128,9 @@
                                         <div class="col-lg-12 text-right">
                                             <label class="btn-submit-red3" onClick="myFunction()">แจ้งการชำระเงิน</label>
                                             @if(isset($package))
-                                                <a href="{{ route('packagePay', ['id'=>encrypt($package->package_id)]) }}"><label class="btn-submit-wh">อัพโหลดภายหลัง</label></a>
+                                                <a href="{{ route('packagePay', ['id'=>encrypt($package->package_id), 'idT'=>encrypt('null')]) }}"><label class="btn-submit-wh">อัพโหลดภายหลัง</label></a>
                                             @else
-                                                <a href="{{ route('packagePay', ['id'=>encrypt($transeection->transeection_id)]) }}"><label class="btn-submit-wh">อัพโหลดภายหลัง</label></a>
+                                                <a href="{{ route('packagePay', ['idT'=>encrypt($transeection->transeection_id), 'id'=>encrypt('null')]) }}"><label class="btn-submit-wh">อัพโหลดภายหลัง</label></a>
                                             @endif
                                         </div>
                                     </div>

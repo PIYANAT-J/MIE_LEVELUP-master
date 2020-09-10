@@ -42,18 +42,26 @@
                                             <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
                                         </div>
                                         <div class="row row4"> 
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1 p">1</div>
-                                                    <div class="col-4 py-1 td1 p text-left">เส้นหมี่กึ่งสำเร็จรูปรสต้มยำกุ้ง</div>
-                                                    <div class="col-3 py-1 td1 p">ผู้สนับสนุน1</div>
-                                                    <div class="col-2 py-1 td1 p">
-                                                        <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label>
-                                                        <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label>
-                                                        <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1">ไม่ผ่านการอนุมัติ</label>
+                                            <div class="col-lg-12">
+                                                <?php $i = 1; ?>
+                                                @foreach($product as $productAll)
+                                                    <div class="row">
+                                                        <div class="col-1 py-1 td1 p">{{$i}}</div>
+                                                        <div class="col-4 py-1 td1 p text-left">{{$productAll->product_name}}</div>
+                                                        <div class="col-3 py-1 td1 p">{{$productAll->name}} {{$productAll->surname}}</div>
+                                                        <div class="col-2 py-1 td1 p">
+                                                            @if($productAll->product_status == "รออนุมัติ")
+                                                                <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$productAll->product_id}}">รอการตรวจสอบ</label>
+                                                            @elseif($productAll->product_status == "อนุมัติ")
+                                                                <label class="status-approve" data-toggle="modal" data-target="#Approve{{$productAll->product_id}}">อนุมัติแล้ว</label>
+                                                            @else
+                                                                <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1{{$productAll->product_id}}">ไม่ผ่านการอนุมัติ</label>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-2 py-2 td1 p">{{$productAll->ADMIN_NAME}}</div>
                                                     </div>
-                                                    <div class="col-2 py-2 td1 p">admin1</div>
-                                                </div>
+                                                    <?php $i++; ?>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -67,16 +75,22 @@
                                             <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
                                         </div>
                                         <div class="row row4"> 
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1 p">1</div>
-                                                    <div class="col-4 py-1 td1 p text-left">เส้นหมี่กึ่งสำเร็จรูปรสต้มยำกุ้ง</div>
-                                                    <div class="col-3 py-1 td1 p">ผู้สนับสนุน1</div>
-                                                    <div class="col-2 py-1 td1 p">
-                                                        <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label>
-                                                    </div>
-                                                    <div class="col-2 py-2 td1 p">admin1</div>
-                                                </div>
+                                            <div class="col-lg-12">
+                                                <?php $i = 1; ?>
+                                                @foreach($product as $productAll)
+                                                    @if($productAll->product_status == "รออนุมัติ")
+                                                        <div class="row">
+                                                            <div class="col-1 py-1 td1 p">{{$i}}</div>
+                                                            <div class="col-4 py-1 td1 p text-left">{{$productAll->product_name}}</div>
+                                                            <div class="col-3 py-1 td1 p">{{$productAll->name}} {{$productAll->surname}}</div>
+                                                            <div class="col-2 py-1 td1 p">
+                                                                <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$productAll->product_id}}">รอการตรวจสอบ</label>
+                                                            </div>
+                                                            <div class="col-2 py-2 td1 p">{{$productAll->ADMIN_NAME}}</div>
+                                                        </div>
+                                                        <?php $i++; ?>
+                                                    @endif
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -90,16 +104,21 @@
                                             <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
                                         </div>
                                         <div class="row row4"> 
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1 p">1</div>
-                                                    <div class="col-4 py-1 td1 p text-left">เส้นหมี่กึ่งสำเร็จรูปรสต้มยำกุ้ง</div>
-                                                    <div class="col-3 py-1 td1 p">ผู้สนับสนุน1</div>
-                                                    <div class="col-2 py-1 td1 p">
-                                                        <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1">ไม่ผ่านการอนุมัติ</label>
-                                                    </div>
-                                                    <div class="col-2 py-2 td1 p">admin1</div>
-                                                </div>
+                                            <div class="col-lg-12">
+                                                @foreach($product as $productAll)
+                                                    @if($productAll->product_status == "ไม่อนุมัติ")
+                                                        <div class="row">
+                                                            <div class="col-1 py-1 td1 p">{{$i}}</div>
+                                                            <div class="col-4 py-1 td1 p text-left">{{$productAll->product_name}}</div>
+                                                            <div class="col-3 py-1 td1 p">{{$productAll->name}} {{$productAll->surname}}</div>
+                                                            <div class="col-2 py-1 td1 p">
+                                                                <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1{{$productAll->product_id}}">ไม่ผ่านการอนุมัติ</label>
+                                                            </div>
+                                                            <div class="col-2 py-2 td1 p">{{$productAll->ADMIN_NAME}}</div>
+                                                        </div>
+                                                        <?php $i++; ?>
+                                                    @endif
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -113,16 +132,21 @@
                                             <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
                                         </div>
                                         <div class="row row4"> 
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1 p">1</div>
-                                                    <div class="col-4 py-1 td1 p text-left">เส้นหมี่กึ่งสำเร็จรูปรสต้มยำกุ้ง</div>
-                                                    <div class="col-3 py-1 td1 p">ผู้สนับสนุน1</div>
-                                                    <div class="col-2 py-1 td1 p">
-                                                        <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label>
-                                                    </div>
-                                                    <div class="col-2 py-2 td1 p">admin1</div>
-                                                </div>
+                                            <div class="col-lg-12">
+                                                @foreach($product as $productAll)
+                                                    @if($productAll->product_status == "อนุมัติ")
+                                                        <div class="row">
+                                                            <div class="col-1 py-1 td1 p">{{$i}}</div>
+                                                            <div class="col-4 py-1 td1 p text-left">{{$productAll->product_name}}</div>
+                                                            <div class="col-3 py-1 td1 p">{{$productAll->name}} {{$productAll->surname}}</div>
+                                                            <div class="col-2 py-1 td1 p">
+                                                                <label class="status-approve" data-toggle="modal" data-target="#Approve{{$productAll->product_id}}">อนุมัติแล้ว</label>
+                                                            </div>
+                                                            <div class="col-2 py-2 td1 p">{{$productAll->ADMIN_NAME}}</div>
+                                                        </div>
+                                                        <?php $i++; ?>
+                                                    @endif
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -136,7 +160,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="pendingApprove" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach($product as $key=>$productModal)
+<div class="modal fade" id="pendingApprove{{$productModal->product_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -206,7 +231,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="Approve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Approve{{$productModal->product_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -258,7 +283,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="noneApprove1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="noneApprove1{{$productModal->product_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -309,6 +334,8 @@
         </div>
     </div>
 </div>
+@endforeach
+
 
 <!-- พื้นหลัง -->
 <div class="container-fluid">
@@ -338,4 +365,20 @@
 <script src="{{ asset('dist/js/main.js') }}"></script>
 <script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+@if( Session::has('success'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // alert('yes')
+            Swal.fire({
+                // position: 'top-end',
+                icon: 'success',
+                title: '{{ Session::get('success') }}',
+                // title: 'Oops...',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        });
+    </script>
+@endif
 @endsection

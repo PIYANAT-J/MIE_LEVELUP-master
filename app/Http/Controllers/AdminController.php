@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 use App\Admin;
+use App\Package;
 use Auth;
 use DB;
 
@@ -14,42 +15,54 @@ class AdminController extends Controller
 {
     public function addAdmin(){
         $admin = DB::table('users')->where('users_type', '0')->get();
-        // dd($admin);
         return view('admin_lvp.admin_management', compact('admin'));
     }
 
     public function AvatarManagement(){
         $admin = DB::table('users')->where('users_type', '0')->get();
-        // dd($admin);
         return view('admin_lvp.avatar_management', compact('admin'));
     }
 
     public function Package(){
         $admin = DB::table('users')->where('users_type', '0')->get();
-        // dd($admin);
-        return view('admin_lvp.admin_package.package_management', compact('admin'));
+        $package = DB::table('packages')->get();
+        $advertising = DB::table('advertising_links')->get();
+        return view('admin_lvp.admin_package.package_management', compact('admin', 'package', 'advertising'));
     }
 
     public function Advertisement(){
         $admin = DB::table('users')->where('users_type', '0')->get();
-        // dd($admin);
-        $transfer = DB::table('users')
+        $package = DB::table('users')->where('users.users_type', '>', '2')
                         ->join('transfer_payments', 'transfer_payments.user_id', 'users.id')
+                        ->where([['transfer_payments.transferStatus', '!=', 'ยืนยันการโอน']])
+                        ->join('my_package_buy', 'my_package_buy.packageBuy_invoice', 'transfer_payments.transferInvoice')
                         ->orderBy('transfer_payments.id', 'desc')
                         ->get();
+
+        $transeection = DB::table('users')->where('users.users_type', '>', '2')
+                        ->join('transfer_payments', 'transfer_payments.user_id', 'users.id')
+                        ->where([['transfer_payments.transferStatus', '!=', 'ยืนยันการโอน']])
+                        ->join('transeection_sponshopping', 'transeection_sponshopping.transeection_invoice', 'transfer_payments.transferInvoice')
+                        ->orderBy('transfer_payments.id', 'desc')
+                        ->get();
+
+        $transfer = array_merge(json_decode($package), json_decode($transeection));
+        // dd($transfer);
+        // $package = DB::table('my_package_buy')->where('packageBuy_status', 'false')->get();
+        // $transeection = DB::table('transeection_sponshopping')->where('transeection_status', 'false')->get();
         // dd(date('Y-m-d H:i:s'));
         return view('admin_lvp.admin_topup.ads_management', compact('transfer'));
     }
 
     public function Product(){
         $admin = DB::table('users')->where('users_type', '0')->get();
-        // dd($admin);
-        $transfer = DB::table('users')
-                        ->join('transfer_payments', 'transfer_payments.user_id', 'users.id')
-                        ->orderBy('transfer_payments.id', 'desc')
+        $product = DB::table('users')
+                        ->join('products', 'products.USER_ID', 'users.id')
+                        ->where('products.product_status' ,'!=', 'หมดอายุ')
+                        ->orderBy('products.product_id', 'desc')
                         ->get();
-        // dd(date('Y-m-d H:i:s'));
-        return view('admin_lvp.admin_product.product', compact('transfer'));
+        // dd($product);
+        return view('admin_lvp.admin_product.product', compact('product'));
     }
 
     public function kycUsers(){
@@ -57,7 +70,6 @@ class AdminController extends Controller
                     ->join('kycs', 'kycs.USER_EMAIL', 'users.email')
                     ->orderBy('kycs.KYC_ID', 'desc')
                     ->get();
-        // dd($kyc);
         return view('admin_lvp.admin_kyc.user_management', compact('kyc'));
     }
     public function kycDev(){
@@ -65,7 +77,6 @@ class AdminController extends Controller
                     ->join('kycs', 'kycs.USER_EMAIL', 'users.email')
                     ->orderBy('kycs.KYC_ID', 'desc')
                     ->get();
-        // dd($kyc);
         return view('admin_lvp.admin_kyc.dev_management', compact('kyc'));
     }
     public function kycSpon(){
@@ -73,7 +84,6 @@ class AdminController extends Controller
                     ->join('kycs', 'kycs.USER_EMAIL', 'users.email')
                     ->orderBy('kycs.KYC_ID', 'desc')
                     ->get();
-        // dd($kyc);
         return view('admin_lvp.admin_kyc.spon_management', compact('kyc'));
     }
 
@@ -83,15 +93,16 @@ class AdminController extends Controller
                     ->orderBy('games.GAME_ID', 'desc')
                     ->get();
         $gameImg = DB::table('game_imgaes')->get();
-        // dd($game);
         return view('admin_lvp.admin_game.game_management', compact('game', 'gameImg'));
     }
 
     public function transfer(){
-        $transfer = DB::table('users')
+        $transfer = DB::table('users')->where('users.users_type', '!=', '3')
                         ->join('transfer_payments', 'transfer_payments.user_id', 'users.id')
+                        ->where([['transfer_payments.transferStatus', 'รอการอนุมัติ']])
                         ->orderBy('transfer_payments.id', 'desc')
                         ->get();
+        // dd($transfer);
         // dd(date('Y-m-d H:i:s'));
         return view('admin_lvp.admin_topup.topup_management', compact('transfer'));
     }
@@ -150,13 +161,59 @@ class AdminController extends Controller
         if($request->input('submit') != null){
             $id = $request->input('id');
             $transferStatus = $request->input('transferStatus');
-            $confirm_at = $request->input('confirm_at');
+            $confirm_at = date('Y-m-d H:i:s');
             $admin_name = Auth::user()->name.'-'.Auth::user()->surname;
 
             if($id != '' && $transferStatus != '' && $confirm_at != '' && $admin_name != ''){
                 $data = array("id"=>$id, "transferStatus"=>$transferStatus, "confirm_at"=>$confirm_at, "admin_name"=>$admin_name);
-                // die('<pre>'. print_r($data, 1));
                 $value = Admin::appTransfer($data);
+
+                $package = DB::table('my_package_buy')->where('packageBuy_invoice', $request->input('transferInvoice'))->first();
+                if($package != null){
+                    $packageBuy_start = date('Y-m-d');
+                    $Y = date('Y');
+                    $m = date('m')+$package->packageBuy_season;
+                    $d = date('d');
+                    $packageBuy_deadline = $Y.'-'.$m.'-'.$d;
+                    $dataPackage = array("packageBuy_invoice"=>$request->input('transferInvoice'), "packageBuy_start"=>$packageBuy_start, "packageBuy_deadline"=>$packageBuy_deadline,
+                                        "packageBuy_status"=>"true"
+                                    );
+                    DB::table('my_package_buy')
+                        ->where('packageBuy_invoice', $dataPackage['packageBuy_invoice'])
+                        ->update($dataPackage);
+
+                    return back()->with("success", "อนุมัตแล้ว");
+                }else{
+                    $transeection = DB::table('transeection_sponshopping')->where('transeection_invoice', $request->input('transferInvoice'))->first();
+                    if($transeection != null){
+                        $game = explode(", ", $transeection->transeection_gameSpon);
+                        $gameSpon = [];
+                        for($i=0;$i<count($game);$i++){
+                            $shopping = DB::table('sponsor_shopping_cart')->where([['sponsor_cart_game', $game[$i]], ['USER_ID', $transeection->USER_ID], ['sponsor_cart_status', 'false']])->first();
+                            
+                            $sponsor_cart_id = $shopping->sponsor_cart_id;
+                            $sponsor_cart_status = "true";
+                            $data = array("sponsor_cart_id"=>$sponsor_cart_id, "sponsor_cart_status"=>$sponsor_cart_status);
+                            Package::cartGameUpdate($data);
+
+                            $start = explode(" ", $shopping->sponsor_cart_start);
+                            $deadline = explode(" ", $shopping->sponsor_cart_deadline);
+                            array_push($gameSpon, ([
+                                'gameid' => $shopping->sponsor_cart_game,
+                                'start' => $start[0].'T'.$start[1],
+                                'deadline' => $deadline[0].'T'.$deadline[1]
+                            ]));
+                        }
+                        
+                        $data = array("transeection_invoice"=>$request->input('transferInvoice'), "transeection_status"=>"true", "transeection_gameSpon"=>$gameSpon);
+                        Package::transeectionPaymentUpdate($data);
+                        
+                    }
+                    $data = array("transeection_type"=>$transeection->transeection_type, "USER_ID"=>$transeection->USER_ID);
+                    Package::transeectionPaymentDelete($data);
+
+                    return back()->with("success", "อนุมัตแล้ว");;
+                }
             }
         }
         return redirect()->action('AdminController@transfer');
@@ -204,5 +261,51 @@ class AdminController extends Controller
             }
         }
         return redirect()->action('AdminController@addAdmin');
+    }
+
+    public function addPackage(Request $request){
+        if($request->input('submit') != null){
+            // dd($request);
+            $package_name = $request->input('package_name');
+            $package_amount = $request->input('package_amount');
+            $package_season = $request->input('package_season');
+            $package_game = $request->input('package_game');
+            $package_length = $request->input('package_length');
+            $package_advt = $request->input('package_advt');
+            $USER_EMAIL = Auth::user()->email;
+            $ADMIN_NAME = Auth::user()->name.' '.Auth::user()->surname; 
+
+            $data = array("package_name"=>$package_name, "package_amount"=>$package_amount, "package_season"=>$package_season, "package_game"=>$package_game,
+                        "package_length"=>$package_length, "package_advt"=>$package_advt, "USER_EMAIL"=>$USER_EMAIL, "ADMIN_NAME"=>$ADMIN_NAME);
+            // dd($data);
+            Admin::addPackage($data);
+        }
+        return back()->with("success", "เพิ่ม Package เรียบร้อย");
+    }
+
+    public function approveProduct(Request $request){
+        if($request->input('submit') != null){
+
+            $ADMIN_NAME = Auth::user()->name.' '.Auth::user()->surname;
+            $data = array("product_status"=>$request->input('Approve'), "product_date_approve"=>date('Y-m-d H:i:s'), "ADMIN_NAME"=>$ADMIN_NAME);
+            // dd($data);
+            DB::table('products')->where('product_id', $request->input('product_id'))
+                ->update($data);
+            
+            return back()->with("success", "อนุมัตแล้ว");
+        }
+    }
+
+    public function advertising(Request $request){
+        if($request->input('submit') != null){
+            // dd($request);
+            $admin_name = Auth::user()->name.' '.Auth::user()->surname;
+            $data = array("advertising_status"=>$request->input('advertising_status'), "advertising_update"=>date('Y-m-d H:i:s'), "admin_name"=>$admin_name, "advertising_comment"=>$request->input('advertising_comment'));
+            // dd($data);
+            DB::table('advertising_links')->where('advertising_id', $request->input('advertising_id'))
+                ->update($data);
+            
+            return back()->with("successADVT", "อนุมัตแล้ว");
+        }
     }
 }

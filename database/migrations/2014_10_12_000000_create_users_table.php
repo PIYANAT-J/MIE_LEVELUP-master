@@ -19,7 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('surname')->collation('utf8_unicode_ci')->nullable();
             $table->string('email')->collation('utf8_unicode_ci')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->collation('utf8_unicode_ci');
+            $table->string('facebook_id')->nullable();
+            $table->string('google_id')->nullable();
+            $table->string('password')->collation('utf8_unicode_ci')->nullable();
             $table->integer('users_type');
             $table->enum('updateData', ['true', 'false'])->collation('utf8_unicode_ci')->default('false');
             $table->rememberToken();
