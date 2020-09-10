@@ -24,6 +24,12 @@ Auth::routes(['verify' => true]);
 Route::view('/loginlvp', 'auth.login_lvp')->name('login-levelUp');
 Route::view('/registerlvp', 'auth.register_lvp')->name('register-levelUp');
 
+Route::get('login/facebook', 'Auth\LoginController@redirectToFacebook')->name('login-facebook');
+Route::get('callback/facebook', 'Auth\LoginController@handleFacebookCallback');
+
+Route::get('login/google', 'Auth\LoginController@redirectToGoogle')->name('login-google');
+Route::get('callback/google', 'Auth\LoginController@handleGoogleCallback'); 
+
 // Route::view('/reset', 'auth.passwords.reset');
 // Route::view('/email', 'auth.passwords.email');
 Route::view('/confirm', 'auth.passwords.confirm');
