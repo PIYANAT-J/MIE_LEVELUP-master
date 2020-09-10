@@ -45,7 +45,7 @@
 
                     <div class="col-lg-7 col-xl-8  d-none d-lg-block d-xl-block">
                         <nav class="site-navigation position-relative" role="navigation">
-                            <ul class="site-menu main-menu js-clone-nav d-none d-lg-block" style="margin-top:30px;"> 
+                            <ul class="site-menu main-menu js-clone-nav d-none d-lg-block d-xl-block" style="margin-top:30px;"> 
                                 <li><a href="{{ url('/') }}" class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0"><h1 class="fontNavbar">หน้าแรก</h1></a></li>
                                 <li><a href="{{ route('gameCategory') }}" class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;"><h1 class="fontNavbar">หมวดหมู่</h1></a></li>
                                 @guest
@@ -77,40 +77,35 @@
                                         @endif
                             </ul>
                                 @else
-                                <li class="labelWithImg">
-                                    <a href="/shopping_cart">
-                                        <img style="width:2em" src="{{asset('icon/shopping-cart.png') }}" />
-                                        <span class="font-shop">3</span>
-                                    </a>
-                                </li>
                                 
                                     @if(Auth::user()->users_type == '2')
                                         @foreach($developer as $Dev)
-                                            <!-- <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" /> -->
+                                            <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" />
                                         @endforeach
                                     @elseif(Auth::user()->users_type == '3')
-                                        <!-- <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$sponsor->SPON_IMG) }}" /> -->
+                                        <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$sponsor->SPON_IMG) }}" />
                                     @else
                                         @foreach($guest_user as $USER)
-                                            <!-- <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" /> -->
+                                            <img class="nav-pic ml-3" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
                                         @endforeach
                                     @endif
-                                    
                                 <li class="has-children">    
-                                    <a href="#about-section" class="nav-link font_name" >{{ Auth::user()->name }}.{{ Auth::user()->surname }}</a>
+                                    <a  class="nav-link mr-3" style="padding-left:0;">
+                                        <h1 class="font_name">{{ Auth::user()->name }} {{ Auth::user()->surname }}</h1>
+                                    </a>
                                     <ul class="dropdown">
                                         <li class="nav-item">
                                             @if(Auth::user()->users_type == '2')
-                                                <a class="nav-link font_profile" style="" href="{{ route('DevProfile') }}">{{ __('โปรไฟล์') }}</a>
+                                                <a class="nav-link"  style="padding-left:10px;" href="{{ route('DevProfile') }}"><p class="font_profile">{{ __('โปรไฟล์') }}</p></a>
                                             @elseif(Auth::user()->users_type == '3')
-                                                <a class="nav-link font_profile" href="{{ route('SponsorProfile') }}">{{ __('โปรไฟล์') }}</a>
+                                                <a class="nav-link"  style="padding-left:10px;" href="{{ route('SponsorProfile') }}"><p class="font_profile">{{ __('โปรไฟล์') }}</p></a>
                                             @else
-                                                <a class="nav-link font_profile" href="{{ route('UserProfile') }}">{{ __('โปรไฟล์') }}</a>
+                                                <a class="nav-link"  style="padding-left:10px;" href="{{ route('UserProfile') }}"><p class="font_profile">{{ __('โปรไฟล์') }}</p></a>
                                             @endif
                                         </li>
                                         <li class="nav-item font_profile">
-                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                {{ __('ออกจากระบบ') }}
+                                            <a class="dropdown-item" style="padding-left:10px;" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                <p class="font_profile">{{ __('ออกจากระบบ') }}</p>
                                             </a>
                                         </li>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -124,7 +119,7 @@
                     </div>
 
                     <div class="col-sm-8 col-md-8 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"></div>
-                    <div class="col-sm-2 col-md-1 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">
+                    <div class="col-sm-2 col-md-1 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">   
                         <a  class="site-menu-toggle js-menu-toggle text-center">
                             <span class="icon-menu h1 menu1 mr-2" data-toggle="drawer" data-target="#drawer-1"></span>
                         </a>
@@ -132,8 +127,8 @@
                 </div>
             </header> 
 
-            <!-- Drawer -->
-            <div class="drawer drawer-right slide" tabindex="-1" role="dialog" aria-labelledby="drawer-1-title" aria-hidden="true" id="drawer-1">
+                <!-- Drawer -->
+                <div class="drawer drawer-right slide" tabindex="-1" role="dialog" aria-labelledby="drawer-1-title" aria-hidden="true" id="drawer-1">
                     <div class="drawer-content drawer-content-scrollable" role="document">
                         <div class="drawer-body" style="background:#000"  aria-label="Close">
                             <span class="pCloseNavbar" data-dismiss="drawer">
@@ -159,10 +154,6 @@
                                         <h1 style="color:#ffffff;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</br>สถานะ : ผู้ใช้ทั่วไป</h1>
                                         <h5 style="color:#ffffff;font-size:12px">เป็นสมาชิก :{{ Auth::user()->created_at }}</h5>
                                     </label>
-                                    <a href="/shopping_cart">
-                                        <img class="pCart" style="width:30px" src="{{asset('icon/shopping-cart.png') }}" />
-                                        <span class="font-cart">3</span>
-                                    </a>
                                 </div>
 
                                 <div>
@@ -188,9 +179,8 @@
                                 <a href="{{ url('/') }}"><h1 class="navbarMobile">หน้าแรก</h1></a>
                                 <a href="{{ route('gameCategory') }}"><h1 class="navbarMobile">หมวดหมู่</h1></a>
                                 <a href="{{ route('FollowMe') }}"><h1 class="navbarMobile">การติดตามของฉัน</h1></a>
-                                <a href="{{ route('Avatar') }}"><h1 class="navbarMobile">ตัวละครของฉัน(Avatar)</h1></a>
-                                <a href="{{ route('UserProfile') }}"><h1 class="navbarMobile">ข้อมูลส่วนตัว</h1></a>
-                                <a href="{{ route('UserKyc') }}">
+                                <a href="{{ route('DevProfile') }}"><h1 class="navbarMobile">ข้อมูลส่วนตัว</h1></a>
+                                <a href="{{ route('DevKyc') }}">
                                     <label style="margin:0;"><h1 class="navbarMobile">ยืนยันตัวตน</h1></label>
                                     @if($userKyc->KYC_STATUS == null)
                                         <label style="float: right;margin:0;padding:5px 0 0 0;">
@@ -210,11 +200,11 @@
                                         </label>
                                     @endif
                                 </a>
-                                <a href="{{ route('UserShelf') }}"><h1 class="navbarMobile">ตู้เกม (เกมเชล)</h1></a>
-                                <a href="{{ route('UserHistory') }}"><h1 class="navbarMobile">ประวัติพอยด์</h1></a>
-                                <a href="{{ route('UserRank') }}"><h1 class="navbarMobile">อันดับผู้ใช้</h1></a>
-                                <a href="{{ route('UserTopup') }}"><h1 class="navbarMobile">เติมเงิน</h1></a>
-                                <a href="/user_change_password"><h1 class="navbarMobile">เปลี่ยนรหัสผ่าน</h1></a>
+                                <a href="{{ route('DevShelf') }}"><h1 class="navbarMobile">ตู้เกม (เกมเชล)</h1></a>
+                                <a href="{{ route('DevHistory') }}"><h1 class="navbarMobile">ประวัติพอยด์</h1></a>
+                                <a href="{{ route('DevUpload') }}"><h1 class="navbarMobile">อัพโหลดเกม<h1></a>
+                                <a href="{{ route('DevWithdraw') }}"><h1 class="navbarMobile">ถอนเงิน</h1></a>
+                                <a href="/develper_change_password"><h1 class="navbarMobile">เปลี่ยนรหัสผ่าน</h1></a>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <h1 class="navbarMobile">{{ __('ออกจากระบบ') }}</h1>
                                 </a>
@@ -303,9 +293,16 @@
         <script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
         <script src="{{ asset('dist/js/main.js') }}"></script>
         <script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
-        <script src="{{ asset('dist/moment/dist/moment.js') }}"></script>
         <script src="{{ asset('drawer/dist/js/bootstrap-drawer.js') }}"></script>
         <script src="{{ asset('drawer/dist/js/bootstrap-drawer.min.js') }}"></script>
         @yield('script')
+        <script>
+            $(document).ready(function(){
+            //    alert('read'); 
+                var attrActive = $('#getActive').attr('active');
+                console.log(attrActive);
+                $('#navActive a[href="'+attrActive+'"] button').addClass('active');
+            });
+        </script>
     </body>
 </html>

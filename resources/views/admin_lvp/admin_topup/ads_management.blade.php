@@ -1,187 +1,150 @@
 @extends('layout.header')
 @section('content')
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-3" style="background-color: #17202c;">
-
-        <!-- sidebar -->
-            <div class="row">
-                <div class="col-lg-1"></div>
-                    <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                        <div class="row mb-4">
-                            <div class="col-4 text-right pr-2">
-                                <img class="sidebar-pic" src="{{asset('dist/images/person_5.jpg') }}" />
-                            </div>
-                            <div class="col-8 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1em;">{{Auth::user()->name}}-{{Auth::user()->surname}}</b></br>Admin</br>เป็นสมาชิก:{{Auth::user()->created_at}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-1"></div>
-                    <a href="/admin_management" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile" style="font-size:0.85em;padding:0px 20px 0px 10px;"></i>จัดการผู้ดูแลระบบ</button></a>
-                    <button class="btn-sidebar"  data-toggle="collapse" data-target="#demo"><span style="font-family: myfont1;font-size: 1em;padding:0px 10px 0px 5px;">KYC</span>จัดการการยืนยันตัวตน</button>
-                        <div id="demo" class="collapse">
-                            <a href="/user_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; ผู้ใช้ทั่วไป</button></a>
-                            <a href="/develop_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; ผู้พัฒนาระบบ</button></a>
-                            <a href="/sponsor_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; ผู้สนับสนุน</button></a>
-                        </div> 
-                    <button class="btn-sidebar" data-toggle="collapse" data-target="#demo2"><img class="pic5" src="{{asset('icon/game.png') }}" />จัดการข้อมูลเกม</button>
-                        <div id="demo2" class="collapse">
-                            <a href="/game_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; การอัพโหลดเกม</button></a>
-                            <a href="/rate_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; จัดการประเภทเกม</button></a>
-                        </div>
-                    <button class="btn-sidebar active" data-toggle="collapse" data-target="#demo3"><i class="icon-top-up1" style="font-size:1.1em;padding:0px 17px 0px 9px;"></i>จัดการการโอนเงิน</button>
-                        <div id="demo3" class="collapse">
-                            <a href="/topup_management" style="width: 100%;"><button class="btn-sidebar " style="padding-left:3.5em;">• &nbsp; &nbsp; การเติมเงิน</button></a>
-                            <a href="/withdraw_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; การถอนเงิน</button></a>
-                            <a href="/advertisement" style="width: 100%;"><button class="btn-sidebar active" style="padding-left:3.5em;">• &nbsp; &nbsp; การซื้อโฆษณา</button></a>
-                        </div>
-                    <a href="/product" style="width: 100%;"><button class="btn-sidebar"><i class="icon-product" style="font-size:1.1em;padding:0px 14px 0px 8px;"></i>จัดการสินค้า</button></a>
-                    <a href="/package" style="width: 100%;"><button class="btn-sidebar pt-2"><img class="pic6" src="{{asset('icon/package.png') }}" />จัดการแพ็คเกจ</button></a>
-                    <a href="/avatar_management" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile" style="font-size:1.2vw;padding:0px 14px 0px 8px;"></i>จัดการตัวละคร</button></a>
-                    <a href="/admin_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass" style="font-size:1.1em;padding:0px 15px 0px 13px;"></i>เปลี่ยนรหัสผ่าน</button></a>
-                    <a href="{{ url('/') }}" style="width: 100%;"><button class="btn-sidebar"><i class="fa fa-home" style="font-size:1em;padding:0px 17px 0px 13px;"></i>หน้าหลัก</button></a>
-                    <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><i class="icon-logout" style="font-size:1.1em;padding:0px 15px 0px 15px;"></i>ออกจากระบบ</button></a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
-            </div>
-        <!-- sidebar -->
-
-        <div class="col-lg-9" style="background-color: #f5f5f5;">
+    <div class="row" id="getActive" active="/advertisement">
+        @include('profile.sidebar.admin_sidebar')
+        <div class="col-10" style="background-color: #f5f5f5;">
             <div class="row py-3" style="background-color: #fff;">
-                <div class="col-lg-12">
+                <div class="col-12">
                     <div class="inputWithIcon2">
-                        <input style="font-family:myfont1;font-size:1em" class="search_btn2" type="text" placeholder="ค้นหา" aria-label="Search">
+                        <input class="search_btn2 p" type="text" placeholder="ค้นหา" aria-label="Search">
                         <i class="icon-search-back" aria-hidden="true" style="font-size:1.1em"></i>
                     </div>
                 </div>
             </div>
 
             <div class="row pb-2 pt-3">
-                <div class="col-lg-9" style="font-family:myfont;color:#000;font-size:1.2em;">การซื้อโฆษณา</div>
-                <div class="col-lg-3"></div>
+                <div class="col-12"><h1 class="fontHeader">การซื้อโฆษณา</h1></div>
             </div>
             
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-12">
 
                     <!-- Nav tabs -->
                     <ul class="nav topnav2">
-                        <li><a class="nav-link active" data-toggle="tab" href="#topup1">ทั้งหมด</a></li>
-                        <li><a class="nav-link" data-toggle="tab" href="#topup2">รอการตรวจสอบ</a></li>
-                        <li><a class="nav-link" data-toggle="tab" href="#topup3">ไม่ผ่านการอนุมัติ</a></li>
-                        <li><a class="nav-link " data-toggle="tab" href="#topup4">อนุมัติแล้ว</a></li>
+                        <li><a class="nav-link active p" data-toggle="tab" href="#topup1">ทั้งหมด</a></li>
+                        <li><a class="nav-link p" data-toggle="tab" href="#topup2">รอการตรวจสอบ</a></li>
+                        <li><a class="nav-link p" data-toggle="tab" href="#topup3">ไม่ผ่านการอนุมัติ</a></li>
+                        <li><a class="nav-link p" data-toggle="tab" href="#topup4">อนุมัติแล้ว</a></li>
                     </ul>
                     <!-- Nav tabs -->
 
                     <div class="row mx-0" >
-                        <div class="col-lg-12">
+                        <div class="col-12">
                             <div class="tab-content">
-                                
-                                    <div id="topup1" class="tab-pane active">
-                                        <div class="row" >
-                                            <div class="col-1 py-3 th1">#</div>
-                                            <div class="col-3 py-3 th1 text-left">ชื่อ-นามสกุล</div>
-                                            <div class="col-3 py-3 th1">ชื่อแพ็กเกจ</div>
-                                            <div class="col-2 py-3 th1">สถานะ</div>
-                                            <div class="col-1 py-3 th1">ผู้อนุมัติ</div>
-                                            <div class="col-2 py-3 th1">อัพเดตล่าสุด</div>
-                                        </div>
-                                        <div class="row row4"> 
-                                            <div class="col-lg-12">
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1">#</div>
-                                                    <div class="col-3 py-1 td1 text-left">ชื่อ-นามสกุล</div>
-                                                    <div class="col-3 py-1 td1">ชื่อแพ็กเกจ</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label>
-                                                        <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label>
-                                                        <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1">ไม่ผ่านการอนุมัติ</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1">admin1</div>
-                                                    <div class="col-2 py-1 td1">20/08/63</div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div id="topup1" class="tab-pane active">
+                                    <div class="row" >
+                                        <div class="col-1 py-3 th1 p">#</div>
+                                        <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
+                                        <div class="col-3 py-3 th1 p">ชื่อแพ็กเกจ</div>
+                                        <div class="col-2 py-3 th1 p">สถานะ</div>
+                                        <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
+                                        <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
                                     </div>
-
-                                    <div id="topup2" class="tab-pane">
-                                        <div class="row" >
-                                            <div class="col-1 py-3 th1">#</div>
-                                            <div class="col-3 py-3 th1 text-left">ชื่อ-นามสกุล</div>
-                                            <div class="col-3 py-3 th1">ชื่อแพ็กเกจ</div>
-                                            <div class="col-2 py-3 th1">สถานะ</div>
-                                            <div class="col-1 py-3 th1">ผู้อนุมัติ</div>
-                                            <div class="col-2 py-3 th1">อัพเดตล่าสุด</div>
-                                        </div>
-                                        <div class="row row4"> 
-                                           <div class="col-lg-12">
+                                    <div class="row row4"> 
+                                        <div class="col-12">
                                             <div class="row">
-                                                    <div class="col-1 py-1 td1">#</div>
-                                                    <div class="col-3 py-1 td1 text-left">ชื่อ-นามสกุล</div>
-                                                    <div class="col-3 py-1 td1">ชื่อแพ็กเกจ</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1">admin1</div>
-                                                    <div class="col-2 py-1 td1">20/08/63</div>
+                                                <div class="col-1 py-1 td1 p">#</div>
+                                                <div class="col-3 py-1 td1 p text-left">ชื่อ-นามสกุล</div>
+                                                <div class="col-3 py-1 td1 p">ชื่อแพ็กเกจ</div>
+                                                <div class="col-2 py-1 td1">
+                                                    <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">
+                                                        <p style="margin:0;">รอการตรวจสอบ</p>
+                                                    </label>
+                                                    <label class="status-approve" data-toggle="modal" data-target="#Approve">
+                                                        <p style="margin:0;">อนุมัติแล้ว</p>
+                                                    </label>
+                                                    <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1">
+                                                        <p style="margin:0;">ไม่ผ่านการอนุมัติ</p>
+                                                    </label>
                                                 </div>
+                                                <div class="col-1 py-1 td1 p">admin1</div>
+                                                <div class="col-2 py-1 td1 p">20/08/63</div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div id="topup3" class="tab-pane">
-                                        <div class="row" >
-                                            <div class="col-1 py-3 th1">#</div>
-                                            <div class="col-3 py-3 th1 text-left">ชื่อ-นามสกุล</div>
-                                            <div class="col-3 py-3 th1">ชื่อแพ็กเกจ</div>
-                                            <div class="col-2 py-3 th1">สถานะ</div>
-                                            <div class="col-1 py-3 th1">ผู้อนุมัติ</div>
-                                            <div class="col-2 py-3 th1">อัพเดตล่าสุด</div>
-                                        </div>
-                                        <div class="row row4"> 
-                                            <div class="col-lg-12">
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1">#</div>
-                                                    <div class="col-3 py-1 td1 text-left">ชื่อ-นามสกุล</div>
-                                                    <div class="col-3 py-1 td1">ชื่อแพ็กเกจ</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1">ไม่ผ่านการอนุมัติ</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1">admin1</div>
-                                                    <div class="col-2 py-1 td1">20/08/63</div>
+                                <div id="topup2" class="tab-pane">
+                                    <div class="row" >
+                                        <div class="col-1 py-3 th1 p">#</div>
+                                        <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
+                                        <div class="col-3 py-3 th1 p">ชื่อแพ็กเกจ</div>
+                                        <div class="col-2 py-3 th1 p">สถานะ</div>
+                                        <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
+                                        <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
+                                    </div>
+                                    <div class="row row4"> 
+                                        <div class="col-12">
+                                        <div class="row">
+                                                <div class="col-1 py-1 td1 p">#</div>
+                                                <div class="col-3 py-1 td1 p text-left">ชื่อ-นามสกุล</div>
+                                                <div class="col-3 py-1 td1 p">ชื่อแพ็กเกจ</div>
+                                                <div class="col-2 py-1 td1">
+                                                    <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">
+                                                        <p style="margin:0;">รอการตรวจสอบ</p>
+                                                    </label>
                                                 </div>
+                                                <div class="col-1 py-1 td1 p">admin1</div>
+                                                <div class="col-2 py-1 td1 p">20/08/63</div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div id="topup4" class="tab-pane">
-                                        <div class="row" >
-                                            <div class="col-1 py-3 th1">#</div>
-                                            <div class="col-3 py-3 th1 text-left">ชื่อ-นามสกุล</div>
-                                            <div class="col-3 py-3 th1">ชื่อแพ็กเกจ</div>
-                                            <div class="col-2 py-3 th1">สถานะ</div>
-                                            <div class="col-1 py-3 th1">ผู้อนุมัติ</div>
-                                            <div class="col-2 py-3 th1">อัพเดตล่าสุด</div>
-                                        </div>
-                                        <div class="row row4"> 
-                                            <div class="col-lg-12">
-                                                <div class="row">
-                                                    <div class="col-1 py-1 td1">#</div>
-                                                    <div class="col-3 py-1 td1 text-left">ชื่อ-นามสกุล</div>
-                                                    <div class="col-3 py-1 td1">ชื่อแพ็กเกจ</div>
-                                                    <div class="col-2 py-1 td1">
-                                                        <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label>
-                                                    </div>
-                                                    <div class="col-1 py-1 td1">admin1</div>
-                                                    <div class="col-2 py-1 td1">20/08/63</div>
+                                <div id="topup3" class="tab-pane">
+                                    <div class="row" >
+                                        <div class="col-1 py-3 th1 p">#</div>
+                                        <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
+                                        <div class="col-3 py-3 th1 p">ชื่อแพ็กเกจ</div>
+                                        <div class="col-2 py-3 th1 p">สถานะ</div>
+                                        <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
+                                        <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
+                                    </div>
+                                    <div class="row row4"> 
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-1 py-1 td1 p">#</div>
+                                                <div class="col-3 py-1 td1 p text-left">ชื่อ-นามสกุล</div>
+                                                <div class="col-3 py-1 td1 p">ชื่อแพ็กเกจ</div>
+                                                <div class="col-2 py-1 td1">
+                                                    <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1">
+                                                        <p style="margin:0;">ไม่ผ่านการอนุมัติ</p>
+                                                    </label>
                                                 </div>
+                                                <div class="col-1 py-1 td1 p">admin1</div>
+                                                <div class="col-2 py-1 td1 p">20/08/63</div>
                                             </div>
                                         </div>
                                     </div>
-                                    
+                                </div>
+
+                                <div id="topup4" class="tab-pane">
+                                    <div class="row" >
+                                        <div class="col-1 py-3 th1 p">#</div>
+                                        <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
+                                        <div class="col-3 py-3 th1 p">ชื่อแพ็กเกจ</div>
+                                        <div class="col-2 py-3 th1 p">สถานะ</div>
+                                        <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
+                                        <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
+                                    </div>
+                                    <div class="row row4"> 
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-1 py-1 td1 p">#</div>
+                                                <div class="col-3 py-1 td1 p text-left">ชื่อ-นามสกุล</div>
+                                                <div class="col-3 py-1 td1 p">ชื่อแพ็กเกจ</div>
+                                                <div class="col-2 py-1 td1 p">
+                                                    <label class="status-approve" data-toggle="modal" data-target="#Approve">
+                                                        <p style="margin:0;">อนุมัติแล้ว</p>
+                                                    </label>
+                                                </div>
+                                                <div class="col-1 py-1 td1 p">admin1</div>
+                                                <div class="col-2 py-1 td1 p">20/08/63</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -192,95 +155,90 @@
 </div>
 
 <div class="modal fade" id="pendingApprove" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="col-1"></div>
-                <div class="col-10 text-center" style="font-family:myfont1;font-weight:800;font-size:1em;color:#000;">ยืนยีนการโอนเงิน</div>
+                <div class="col-10 text-center"><h1 style="margin:0;">ยืนยันการโอนเงิน</h1></div>
                 <button type="button" class="close btn-closeModal ml-3" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
                 <div class="col-1"></div>
             </div>
 
-            <div class="modal-body font-rate-modal">
-                <div class="row px-3">
-                    <div class="col-lg-6 pb-1">
-                        <div class="row mb-2 py-2 pl-3">
-                            <span style="font-family:myfont1;font-size:1em;color:#000;font-weight:800;">โอน/ชำระผ่านบัญชีธนาคาร</span>
-                        </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="px-2 pt-1 mb-1">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="row bgInput field-wrap my-1">
+                            <div class="px-2 pt-1 ">
                                 <img class="mr-2" src="{{asset('home/logo/scb.svg') }}" />
-                                    <span style="font-family:myfont1;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</span>
-                                <span style="font-size:1em;">(ธนาคารที่โอนเข้า)</span>
+                                <label><p style="margin:0;color:#000;">ธนาคารไทยพาณิชย์</p></label>
+                                <label><h5 style="margin:0;color:#000;">(ธนาคารที่โอนเข้า)</h5></label>
                             </div>
                         </div>
                         
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-lg-12 te">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ธนาคารที่ชำระ</label> <br>
-                                    <input type="text" class="input-login px-3" readonly></input>
+                        <label class="bgInput field-wrap my-1">
+                            <p class="fontHeadInput">วิธีชำระชำระเงิน</p>
+                            <input type="text" class="input1 p pl-2" value="โอน/ชำระผ่านบัญชีธนาคาร" disabled>
+                        </label>
+                        <div class="row">
+                            <div class="col-6" style="padding-right:5px;">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">ยอดเงินที่ต้องชำระ</p>
+                                    <input type="text" class="input1 p pl-2"disabled>
+                                </label>
+                            </div>
+                            <div class="col-6" style="padding-left:5px;">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">ยอดเงินที่ชำระจริง</p>
+                                    <input type="text" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
                         </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-lg-6">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ยอดเงินที่ต้องชำระ</label> <br>
-                                    <input type="text" class="input-login px-3" readonly></input>
+                        <div class="row">
+                            <div class="col-6" style="padding-right:5px;">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">วันที่ชำระ</p>
+                                    <input type="text" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
-                            <div class="col-lg-6">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ยอดเงินที่ชำระจริง</label> <br>
-                                    <input type="text" class="input-login px-3" readonly></input>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-lg-6">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">วันที่ชำระ</label> <br>
-                                    <input type="text" class="input-login px-3" readonly></input>
-                                </label>
-                            </div>
-                            <div class="col-lg-6">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">เวลาที่ชำระ</label> <br>
-                                    <input type="text" class="input-login px-3" readonly></input>
+                            <div class="col-6" style="padding-left:5px;">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">เวลาที่ชำระ</p>
+                                    <input type="text" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 pb-1">
+                    <div class="col-6 pb-1">
                         <form action="{{ route('ApproveTransfer') }}" method="post">
                             @csrf
                             <div id="userKYC" class="custom02">
                                 <div data-toggle="modal">
                                     <input type="radio" name="transferStatus" value="อนุมัติแล้ว" id="approve">
-                                    <label for="approve" style="color:#000;">อนุมัติ</label>
+                                    <label for="approve"><p style="color:#000;margin:0;">อนุมัติ</p></label>
                                 </div>
                                 <div>
                                     <input type="radio" name="transferStatus" value="ไม่อนุมัติ" id="noneApprove">
-                                    <label for="noneApprove" style="color:#000;" for="nl">ไม่อนุมัติ</label>
+                                    <label for="noneApprove" ><p style="color:#000;margin:0;">ไม่อนุมัติ</p></label>
                                 </div>
                             
                             
                                 <div class="noneApprovelist">
-                                    <div for="noneApprovelabel" style="color:#000;">หมายเหตุ</div>
+                                    <div for="noneApprovelabel"><p style="color:#000;margin:0;">หมายเหตุ</p></div>
                                     <div name="noneApprovediv" form="userKYC">
-                                        <textarea class="input-update" style="line-height:120%;font-size:1em;font-family:myfont1;" placeholder="รายละเอียด" row="3"  require></textarea>
+                                        <textarea class="input1 p pl-2" placeholder="รายละเอียด" row="3"  require></textarea>
                                     </div>
                                 </div>
                             </div>
-                            <button name="submit" value="submit" class="btn-submit-modal-red">ยืนยัน</button>
+                            <button name="submit" value="submit" class="btn-submit-red">
+                                <p style="margin:0;">ยืนยัน</p>
+                            </button>
                             <input type="hidden" name="confirm_at">  
                             <input type="hidden" name="id">
                         </form>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12 pb-1 text-center">
+                <div class="row mt-2">
+                    <div class="col-12 pb-1 text-center">
                         <img style="width:70%;" src="{{asset('home/topup/01.jpg') }}" >
                     </div>
                 </div>
@@ -290,70 +248,63 @@
 </div>
 
 <div class="modal fade" id="Approve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="col-1"></div>
-                <div class="col-10 text-center" style="font-family:myfont1;font-weight:800;font-size:1em;color:#000;">ยืนยีนการโอนเงิน</div>
+                <div class="col-10 text-center"><h1 style="margin:0;">ยืนยันการโอนเงิน</h1></div>
                 <button type="button" class="close btn-closeModal ml-3" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
                 <div class="col-1"></div>
             </div>
 
-            <div class="modal-body font-rate-modal">
-                <div class="row px-3">
-                    <div class="col-lg-6 pb-1 text-center">
-                        <div class="row"><label class="status-approve2" style="text-align:center;">อนุมัติแล้ว</label></div>
-                        <div class="row mb-2 py-2 pl-3">
-                            <span style="font-family:myfont1;font-size:1em;color:#000;font-weight:800;">โอน/ชำระผ่านบัญชีธนาคาร</span>
-                        </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="px-2 pt-1 mb-1">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="status-approve2 p" style="text-align:center;">อนุมัติแล้ว</label>
+                        <div class="row bgInput field-wrap my-1">
+                            <div class="px-2 pt-1 ">
                                 <img class="mr-2" src="{{asset('home/logo/scb.svg') }}" />
-                                    <span style="font-family:myfont1;font-size:1em;color:#000;">ธนาคารไทยพาณิชย์</span>
-                                <span style="font-size:1em;">(ธนาคารที่โอนเข้า)</span>
+                                <label><p style="margin:0;color:#000;">ธนาคารไทยพาณิชย์</p></label>
+                                <label><h5 style="margin:0;color:#000;">(ธนาคารที่โอนเข้า)</h5></label>
                             </div>
                         </div>
                         
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-lg-12 te">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ธนาคารที่ชำระ</label> <br>
-                                    <input type="text" class="input-login px-3" readonly></input>
+                        <label class="bgInput field-wrap my-1">
+                            <p class="fontHeadInput">วิธีชำระชำระเงิน</p>
+                            <input type="text" class="input1 p pl-2" value="โอน/ชำระผ่านบัญชีธนาคาร" disabled>
+                        </label>
+                        <div class="row">
+                            <div class="col-6" style="padding-right:5px;">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">ยอดเงินที่ต้องชำระ</p>
+                                    <input type="text" class="input1 p pl-2"disabled>
+                                </label>
+                            </div>
+                            <div class="col-6" style="padding-left:5px;">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">ยอดเงินที่ชำระจริง</p>
+                                    <input type="text" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
                         </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-lg-6">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ยอดเงินที่ต้องชำระ</label> <br>
-                                    <input type="text" class="input-login px-3" readonly></input>
+                        <div class="row">
+                            <div class="col-6" style="padding-right:5px;">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">วันที่ชำระ</p>
+                                    <input type="text" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
-                            <div class="col-lg-6">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ยอดเงินที่ชำระจริง</label> <br>
-                                    <input type="text" class="input-login px-3" readonly></input>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-lg-6">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">วันที่ชำระ</label> <br>
-                                    <input type="text" class="input-login px-3" readonly></input>
-                                </label>
-                            </div>
-                            <div class="col-lg-6">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">เวลาที่ชำระ</label> <br>
-                                    <input type="text" class="input-login px-3" readonly></input>
+                            <div class="col-6" style="padding-left:5px;">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">เวลาที่ชำระ</p>
+                                    <input type="text" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12 pb-1 text-center">
+                <div class="row mt-2">
+                    <div class="col-12 pb-1 text-center">
                         <img style="width:70%;" src="{{asset('home/topup/01.jpg') }}" >
                     </div>
                 </div>
@@ -367,76 +318,66 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="col-1"></div>
-                <div class="col-10 text-center" style="font-family:myfont1;font-weight:800;font-size:1em;color:#000;">ยืนยีนการโอนเงิน</div>
+                <div class="col-10 text-center"><h1 style="margin:0;">ยืนยันการโอนเงิน</h1></div>
                 <button type="button" class="close btn-closeModal ml-3" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
                 <div class="col-1"></div>
             </div>
 
-            <div class="modal-body font-rate-modal">
-                <div class="row px-3">
-                    <div class="col-lg-6 mb-3">
-                        <div class="row mb-2 py-2 pl-3">
-                            <span style="font-family:myfont1;font-size:1em;color:#000;font-weight:800">โอน/ชำระผ่านบัญชีธนาคาร</span>
-                        </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="px-2 pt-1 mb-1">
-                                <img class="mr-2" src="{{asset('home/logo/kbank.svg') }}" />
-                                <span style="font-family:myfont1;font-size:1em;color:#000;">ธนาคารกสิกรไทย</span>
-                                <span style="font-size:1em;">(ธนาคารที่โอนเข้า)</span>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="status-approve2 p" style="text-align:center;">อนุมัติแล้ว</label>
+                        <div class="row bgInput field-wrap my-1">
+                            <div class="px-2 pt-1 ">
+                                <img class="mr-2" src="{{asset('home/logo/scb.svg') }}" />
+                                <label><p style="margin:0;color:#000;">ธนาคารไทยพาณิชย์</p></label>
+                                <label><h5 style="margin:0;color:#000;">(ธนาคารที่โอนเข้า)</h5></label>
                             </div>
                         </div>
                         
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-lg-12">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ธนาคารที่ชำระ</label> <br>
-                                    <input type="text" class="input-login px-3" readonly></input>
+                        <label class="bgInput field-wrap my-1">
+                            <p class="fontHeadInput">วิธีชำระชำระเงิน</p>
+                            <input type="text" class="input1 p pl-2" value="โอน/ชำระผ่านบัญชีธนาคาร" disabled>
+                        </label>
+                        <div class="row">
+                            <div class="col-6" style="padding-right:5px;">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">ยอดเงินที่ต้องชำระ</p>
+                                    <input type="text" class="input1 p pl-2"disabled>
+                                </label>
+                            </div>
+                            <div class="col-6" style="padding-left:5px;">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">ยอดเงินที่ชำระจริง</p>
+                                    <input type="text" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
                         </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-lg-6">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ยอดที่ต้องชำระ</label> <br>
-                                    <input type="text" class="input-login px-3" readonly></input>
+                        <div class="row">
+                            <div class="col-6" style="padding-right:5px;">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">วันที่ชำระ</p>
+                                    <input type="text" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
-                            <div class="col-lg-6">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ยอดเงินที่ชำระจริง</label> <br>
-                                    <input type="text" class="input-login px-3" readonly></input>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row bg-disabled mb-2 py-2">
-                            <div class="col-lg-6">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">วันที่ชำระ</label> <br>
-                                    <input type="text" class="input-login px-3" readonly></input>
-                                </label>
-                            </div>
-                            <div class="col-lg-6">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">เวลาที่ชำระ</label> <br>
-                                    <input type="text" class="input-login px-3" readonly></input>
+                            <div class="col-6" style="padding-left:5px;">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">เวลาที่ชำระ</p>
+                                    <input type="text" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 pb-1">
-                        <label class="status-none-approve2" style="text-align:center;">ไม่ผ่านการอนุมัติ</label>
-                        <div class="row bg-disabled mx-0 pt-2 pb-1">
-                            <div class="col-lg-12">
-                                <label class="bgInput field-wrap">
-                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">หมายเหตุ</label> <br>
-                                    <input type="text" class="input-login px-3" readonly></input>
-                                </label>
-                            </div>
-                        </div>
+                    <div class="col-6 pb-1">
+                        <label class="status-none-approve2 p" style="text-align:center;">ไม่ผ่านการอนุมัติ</label>
+                        <label class="bgInput field-wrap my-1">
+                            <p class="fontHeadInput">หมายเหตุ</p>
+                            <label class="input1 p pl-2" ></label>
+                        </label>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12 pb-1 text-center">
+                <div class="row mt-2">
+                    <div class="col-12 pb-1 text-center">
                         <img style="width:70%;" src="{{asset('home/topup/01.jpg') }}" >
                     </div>
                 </div>
@@ -448,12 +389,12 @@
 <!-- พื้นหลัง -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_login"></div>
+        <div class="col-2 bgSidebar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 bg_login2"></div>
+        <div class="col-10 bgContent"></div>
     </div>
 </div>
 @endsection
