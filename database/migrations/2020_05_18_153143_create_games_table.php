@@ -28,7 +28,7 @@ class CreateGamesTable extends Migration
             $table->string('GAME_VDO_LINK')->collation('utf8_unicode_ci')->nullable();
             $table->string('GAME_TYPE')->nullable();
             $table->double('GAME_PRICE', 15, 4)->default(0);
-            $table->integer('GAME_DISCOUNT');
+            $table->integer('GAME_DISCOUNT')->nullable();
             $table->text('GAME_COMMENT')->collation('utf8_unicode_ci')->nullable();
             $table->string('RATED_ESRB')->nullable();
             $table->string('RATED_B_L')->nullable();

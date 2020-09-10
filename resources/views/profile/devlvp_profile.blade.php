@@ -1,170 +1,114 @@
-@extends('layout.profile_navbar')
+@extends('layout.dev_navbar')
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" id="getActive" active="{{route('DevProfile')}}">
     <div class="row my-5"></div>
     <div class="row my-2"></div>
-    <div class="row  mt-3">
+    <div class="row mt-3">
+        @include('profile.sidebar.dev_sidebar')
 
-        <!-- sidebar -->
-        <div class="col-lg-3" style="background-color: #17202c;">
-            <div class="row">
-                <div class="col-lg-1"></div>
-                    @foreach($developer as $Dev)
-                        <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                            <div class="row mb-2">
-                                <div class="col-lg-4 text-right">
-                                    <img class="sidebar-pic" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" />
-                                </div>
-                                <div class="col-lg-8 sidebar_name pt-2">
-                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้พัฒนาระบบ</br>เป็นสมาชิก : </br>{{ Auth::user()->created_at }}</span>
-                                </div>
-                            </div>
-                            <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                                <div class="col-lg-12 text-center">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="btn-point pb-2">
-                                                <span class="font-point">พอยท์</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">0</span>
-                                                <i class="icon-Icon_Point"></i>
-                                            </label>
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="btn-coin pb-2 ">
-                                                <span class="font-point">เหรียญ</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">0</span>
-                                                <i class="icon-Icon_Coin"></i>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                <div class="col-lg-1"></div>
-                <a href="{{ route('DevProfile') }}" style="width: 100%;"><button class="btn-sidebar active"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว</button></a>
-                <a href="{{ route('DevKyc') }}" style="width: 100%;"><button class="btn-sidebar"><span style="font-family: myfont1;font-size: 1em;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
-                    @if($userKyc->KYC_STATUS == null)
-                        <span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span>
-                    @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
-                        <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
-                    @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวตนแล้ว</span>
-                    @else
-                        <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
-                    @endif
-                </button></a>
-                <a href="{{ route('DevShelf') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
-                <a href="{{ route('DevHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
-                <a href="{{ route('DevUpload') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-upload-game menuIcon"></i>อัพโหลดเกม</button></a>
-                <a href="{{ route('DevWithdraw') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-withdraw menuIcon"></i>ถอนเงิน</button></a>
-                <a href="/develper_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
-                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</button></a> 
-            </div>
-        </div>
-        <!-- sidebar -->
-
+        <div class="col-sm-1 col-md-1 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
         @foreach($developer as $Dev)
             @if($Dev->USER_EMAIL == Auth::user()->email)
-                    <div class="col-lg-9" style="background-color:#f5f5f5;">
-                        <div class="row mt-4" >
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-                                <form action="{{ route('DevEditProfile') }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
+                <div class="col-sm-10 col-md-10 col-lg-8 col-xl-9 pt-3 pb-4" style="background-color:#f5f5f5;">
+                    <div style="background-color:#ffffff;border-radius: 8px;padding:20px;">
+                        <form action="{{ route('DevEditProfile') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+                                <div class="col-12 pb-2" style="border-bottom: 1px solid #f2f2f2;">
+                                    <h1 class="fontHeader">ข้อมูลส่วนตัว (ถ้าอัพเดทโปรไฟล์จะได้ พอยท์เพิ่ม 100 พอยท์)</h1>
+                                    <h5 style="color: #666666;">จัดการข้อมูลส่วนตัวคุณของคุณเพื่อให้ใช้งานได้สะดวกขึ้น</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                     <div class="row">
-                                        <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                                            <span class="font-profile1">ข้อมูลส่วนตัว (ถ้าอัพเดทโปรไฟล์จะได้ พอยท์เพิ่ม 100 พอยท์ )</br>
-                                            <b style="font-family:myfont1;font-size: 0.8em;color: #666666;">จัดการข้อมูลส่วนตัวคุณของคุณเพื่อให้ใช้งานได้สะดวกขึ้น</b></span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="col-lg-12 line1 mt-2" >
-                                                    <label class="bgInput field-wrap">
-                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อ</label> <br>
-                                                        <input name="name" class="input-login px-3" value="{{ Auth::user()->name }}"></input>
-                                                    </label>
-                                                    @error('name')
-                                                        <span class="text-danger font-error">กรุณากรอกชื่อ</span>
-                                                    @enderror
-                                                    <label class="bgInput field-wrap">
-                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">นามสกุล</label> <br>
-                                                        <input name="surname" class="input-login px-3" value="{{ Auth::user()->surname }}"></input>
-                                                    </label>
-                                                    @error('surname')
-                                                        <span class="text-danger font-error">กรุณากรอกนามสกุล</span>
-                                                    @enderror
-                                                    <label class="bgInput field-wrap">
-                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">เบอร์โทรศัพท์</label> <br>
-                                                        <input name="DEV_TEL" type="text" class="input-login px-3"  data-toggle="tooltip" value="{{ $Dev->DEV_TEL ?? old('DEV_TEL') }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
-                                                    </label>
-                                                    @error('DEV_TEL')
-                                                        <span class="text-danger font-error">กรุณากรอกเบอร์โทรศัพท์</span>
-                                                    @enderror
-                                                    <label class="bgInput field-wrap">
-                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขบัตรประจำตัวประชาชน</label> <br>
-                                                        <input name="DEV_ID_CARD" type="text" class="input-login px-3"  value="{{ $Dev->DEV_ID_CARD ?? old('DEV_ID_CARD') }}" minlength="13" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
-                                                    </label>
-                                                    @error('DEV_ID_CARD')
-                                                        <span class="text-danger font-error">เลขบัตรประจำตัวประชาชนไม่ถูกต้อง</span>
-                                                    @enderror
-                                                    <div class="row ">
-                                                        <div class="col-lg-12">
-                                                            <div class="row mx-0">
-                                                                <?php
-                                                                    // $yyyy = substr($Dev->DEV_BIRTHDAY,0,4);
-                                                                    // $mm = substr($Dev->DEV_BIRTHDAY,5,2);
-                                                                    // $dd = substr($Dev->DEV_BIRTHDAY,8,2);
-                                                                ?>
-                                                                <label class="bgInput field-wrap">
-                                                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">วัน เดือน ปีเกิด</label> <br>
-                                                                    <label style="padding:0;"><SELECT  size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></label>
-                                                                    <label style="padding:0;"><SELECT  size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></label>
-                                                                    <label style="padding:0;"><SELECT  size="1" id ="day" name = "dd"></SELECT></label>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12 mt-2">
-                                                            <button name="submit" id="submit" value="submit" type="submit" class="btn-submit">ยืนยัน
-                                                                <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                                                                <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-                                                                <input type="hidden" name="DATE_MODIFY" value="{{ date('Y-m-d H:i:s') }}">
-                                                            </button>
-                                                        </div>
+                                        <div class="col-12 mt-2" >
+                                            <label class="bgInput field-wrap my-1">
+                                                <p class="fontHeadInput">ชื่อ</p>
+                                                <input name="name" class="input1 p ml-2" value="{{ Auth::user()->name }}"></input>
+                                            </label>
+                                            @error('name')
+                                                <p style="color:#ce0005;">กรุณากรอกชื่อ</p>
+                                            @enderror
+                                            <label class="bgInput field-wrap my-1">
+                                                <p class="fontHeadInput">นามสกุล</p>
+                                                <input name="surname" class="input1 p ml-2" value="{{ Auth::user()->surname }}"></input>
+                                            </label>
+                                            @error('surname')
+                                                <p style="color:#ce0005;">กรุณากรอกนามสกุล</p>
+                                            @enderror
+                                            <label class="bgInput field-wrap my-1">
+                                                <p class="fontHeadInput">เบอร์โทรศัพท์</p>
+                                                <input name="DEV_TEL" type="text" class="input1 p ml-2"  data-toggle="tooltip" value="{{ $Dev->DEV_TEL ?? old('DEV_TEL') }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
+                                            </label>
+                                            @error('DEV_TEL')
+                                                <p style="color:#ce0005;">กรุณากรอกเบอร์โทรศัพท์</p>
+                                            @enderror
+                                            <label class="bgInput field-wrap my-1">
+                                                <p class="fontHeadInput">เลขบัตรประจำตัวประชาชน</p>
+                                                <input name="DEV_ID_CARD" type="text" class="input1 p ml-2"  value="{{ $Dev->DEV_ID_CARD ?? old('DEV_ID_CARD') }}" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
+                                            </label>
+                                            @error('DEV_ID_CARD')
+                                                <p style="color:#ce0005;">เลขบัตรประจำตัวประชาชนไม่ถูกต้อง</p>
+                                            @enderror
+                                            <div class="row ">
+                                                <div class="col-12">
+                                                    <div class="row mx-0">
+                                                        <?php
+                                                            // $yyyy = substr($Dev->DEV_BIRTHDAY,0,4);
+                                                            // $mm = substr($Dev->DEV_BIRTHDAY,5,2);
+                                                            // $dd = substr($Dev->DEV_BIRTHDAY,8,2);
+                                                        ?>
+                                                        <label class="bgInput field- my-1">
+                                                            <p class="fontHeadInput">วัน เดือน ปีเกิด</p>
+                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></label>
+                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></label>
+                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1" id ="day" name = "dd"></SELECT></label>
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group mt-5" align="center">
-                                                <div id="thumb" class="thumb-profile "><img src="{{asset('home/imgProfile/'.$Dev->DEV_IMG)}}"></div>    
-                                                <input id="file_upload" style="display:none" name="DEV_IMG" type="file" multiple="true" accept="image/* "/>
-                                                <button id="upload" class="btn-upload-pic mt-2">เลือกรูป</button>
-                                                <div class="des-profile-pic mt-2">ขนาดไฟล์: สูงสุด 1 MB</div>
-                                            </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                    <div class="form-group mt-5" align="center">
+                                        <div id="thumb" class="thumb-profile "><img src="{{asset('home/imgProfile/'.$Dev->DEV_IMG)}}"></div>    
+                                        <input id="file_upload" style="display:none" name="DEV_IMG" type="file" multiple="true" accept="image/* "/>
+                                        <button id="upload" class="btn-upload-pic mt-2">
+                                            <p style="margin:0;color:#ffffff;">เลือกรูป</p>
+                                        </button>
+                                        <div class=" mt-2">
+                                            <p style="margin:0;color:#b2b2b2;">ขนาดไฟล์: สูงสุด 1 MB</p>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2 mt-2">
+                                    <button name="submit" id="submit" value="submit" type="submit" class="btn-submit">
+                                        <p style="margin:0;">ยืนยัน</p>
+                                        <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                        <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
+                                        <input type="hidden" name="DATE_MODIFY" value="{{ date('Y-m-d H:i:s') }}">
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col-lg-1"></div>
-                        </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             @endif
         @endforeach
+        <div class="col-sm-1 col-md-1 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
     </div>
 </div>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_login"></div>
+        <div class="col-lg-4 col-xl-3 bgSidebar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 bg_login2"></div>
+        <div class="col-lg-8 col-xl-9 bgContent"></div>
     </div>
 </div>
 

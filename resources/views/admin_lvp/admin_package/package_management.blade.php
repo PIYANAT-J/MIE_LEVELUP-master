@@ -1,121 +1,75 @@
 @extends('layout.header')
 @section('content')
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-3" style="background-color: #17202c;">
-
-        <!-- sidebar -->
-            <div class="row">
-                <div class="col-lg-1"></div>
-                    <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                        <div class="row mb-4">
-                            <div class="col-4 text-right pr-2">
-                                <img class="sidebar-pic" src="{{asset('dist/images/person_5.jpg') }}" />
-                            </div>
-                            <div class="col-8 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1em;">{{Auth::user()->name}}-{{Auth::user()->surname}}</b></br>Admin</br>เป็นสมาชิก:{{Auth::user()->created_at}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-1"></div>
-                    <a href="/admin_management" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile" style="font-size:0.85em;padding:0px 20px 0px 10px;"></i>จัดการผู้ดูแลระบบ</button></a>
-                    <button class="btn-sidebar"  data-toggle="collapse" data-target="#demo"><span style="font-family: myfont1;font-size: 1em;padding:0px 10px 0px 5px;">KYC</span>จัดการการยืนยันตัวตน</button>
-                        <div id="demo" class="collapse">
-                            <a href="/user_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; ผู้ใช้ทั่วไป</button></a>
-                            <a href="/develop_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; ผู้พัฒนาระบบ</button></a>
-                            <a href="/sponsor_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; ผู้สนับสนุน</button></a>
-                        </div> 
-                    <button class="btn-sidebar" data-toggle="collapse" data-target="#demo2"><img class="pic5" src="{{asset('icon/game.png') }}" />จัดการข้อมูลเกม</button>
-                        <div id="demo2" class="collapse">
-                            <a href="/game_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; การอัพโหลดเกม</button></a>
-                            <a href="/rate_management" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; จัดการประเภทเกม</button></a>
-                        </div>
-                    <button class="btn-sidebar" data-toggle="collapse" data-target="#demo3"><i class="icon-top-up1" style="font-size:1.1em;padding:0px 17px 0px 9px;"></i>จัดการการโอนเงิน</button>
-                        <div id="demo3" class="collapse">
-                            <a href="/topup_management" style="width: 100%;"><button class="btn-sidebar " style="padding-left:3.5em;">• &nbsp; &nbsp; การเติมเงิน</button></a>
-                            <a href="/withdraw_management" style="width: 100%;"><button class="btn-sidebar " style="padding-left:3.5em;">• &nbsp; &nbsp; การถอนเงิน</button></a>
-                            <a href="/advertisement" style="width: 100%;"><button class="btn-sidebar" style="padding-left:3.5em;">• &nbsp; &nbsp; การซื้อโฆษณา</button></a>
-                        </div>
-                    <a href="/product" style="width: 100%;"><button class="btn-sidebar"><i class="icon-product" style="font-size:1.1em;padding:0px 14px 0px 8px;"></i>จัดการสินค้า</button></a>
-                    <a href="/package" style="width: 100%;"><button class="btn-sidebar pt-2 active"><img class="pic6" src="{{asset('icon/package.png') }}" />จัดการแพ็คเกจ</button></a>
-                    <a href="/avatar_management" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile" style="font-size:1.2vw;padding:0px 14px 0px 8px;"></i>จัดการตัวละคร</button></a>
-                    <a href="/admin_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass" style="font-size:1.1em;padding:0px 15px 0px 13px;"></i>เปลี่ยนรหัสผ่าน</button></a>
-                    <a href="{{ url('/') }}" style="width: 100%;"><button class="btn-sidebar"><i class="fa fa-home" style="font-size:1em;padding:0px 17px 0px 13px;"></i>หน้าหลัก</button></a>
-                    <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><i class="icon-logout" style="font-size:1.1em;padding:0px 15px 0px 15px;"></i>ออกจากระบบ</button></a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
-            </div>
-        <!-- sidebar -->
-
-        <div class="col-lg-9" style="background-color: #f5f5f5;">
+    <div class="row" id="getActive" active="/package">
+        @include('profile.sidebar.admin_sidebar')
+        <div class="col-10" style="background-color: #f5f5f5;">
             <div class="row py-3" style="background-color: #fff;">
-                <div class="col-lg-12">
+                <div class="col-12">
                     <div class="inputWithIcon2">
-                        <input style="font-family:myfont1;font-size:1em" class="search_btn2" type="text" placeholder="ค้นหา" aria-label="Search">
+                        <input class="search_btn2 p" type="text" placeholder="ค้นหา" aria-label="Search">
                         <i class="icon-search-back" aria-hidden="true" style="font-size:1.1em"></i>
                     </div>
                 </div>
             </div>
 
             <div class="row pb-2 pt-3">
-                <div class="col-6" style="font-family:myfont;color:#000;font-size:1.2em;height:35px;">ข้อมูลแพ็กเกจโฆษณา</div>
+                <div class="col-6"><h1 class="fontHeader">ข้อมูลแพ็กเกจโฆษณา</h5></div>
                 <div class="col-6 text-right" >
                     <div id="first">
-                        <select class="select5">
+                        <select class="SelectWh p">
                             <option value="0">สถานะ</option>
                             <option value="1">รออนุมัติ</option>
                             <option value="2">อนุมัติแล้ว</option>
                             <option value="3">ไม่ผ่าการอนุมัติ</option>
                         </select>
-                        <SELECT class="select5" size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT>
-                        <SELECT class="select5" size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT>
+                        <SELECT class="SelectWh p" size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT>
+                        <SELECT class="SelectWh p" size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT>
                         <!-- <div class="col-4 mt-2 d-none" style="padding:0;"><SELECT  size="1" id ="day" name = "dd" ></SELECT></div> -->
                     </div>
                 </div>
             </div>
             
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-12">
 
                     <!-- Nav tabs -->
                     <ul class="nav topnav2">
-                        <li><a class="nav-link active" data-toggle="tab" href="#Package" onClick="myFunction2()">รายการแพ็กเกจโฆษณา</a></li>
-                        <li><a class="nav-link" data-toggle="tab" href="#Ads" onClick="myFunction()">อนุมัติโฆษณา</a></li>
+                        <li><a class="nav-link active p" data-toggle="tab" href="#Package" onClick="myFunction2()">รายการแพ็กเกจโฆษณา</a></li>
+                        <li><a class="nav-link p" data-toggle="tab" href="#Ads" onClick="myFunction()">อนุมัติโฆษณา</a></li>
                     </ul>
                     <!-- Nav tabs -->
 
                     <div class="row mx-0" >
-                        <div class="col-lg-12">
+                        <div class="col-12">
                             <div class="tab-content">
                                 <div id="Package" class="tab-pane active">
                                     <div class="row">
-                                        <div class="col-1 py-3 th1">#</div>
-                                        <div class="col-2 py-3 th1 text-left">แพ็คเกจ</div>
-                                        <div class="col-2 py-3 th1">ราคา</div>
-                                        <div class="col-2 py-3 th1">ระยะเวลา</div>
-                                        <div class="col-2 py-3 th1">รายละเอียด</div>
-                                        <div class="col-1 py-3 th1">สถานะ</div>
-                                        <div class="col-2 py-3 th1 text-right">
-                                            <label style="cursor:pointer;font-family:myfont1;margin:0;" data-toggle="modal" data-target="#AddPackage"> + เพิ่มแพ็กเกจ</label>
+                                        <div class="col-1 py-3 th1 p">#</div>
+                                        <div class="col-2 py-3 th1 p text-left">แพ็คเกจ</div>
+                                        <div class="col-2 py-3 th1 p">ราคา</div>
+                                        <div class="col-2 py-3 th1 p">ระยะเวลา</div>
+                                        <div class="col-2 py-3 th1 p">รายละเอียด</div>
+                                        <div class="col-1 py-3 th1 p">สถานะ</div>
+                                        <div class="col-2 py-3 th1 p text-right">
+                                            <p style="cursor:pointer;margin:0;" data-toggle="modal" data-target="#AddPackage"> + เพิ่มแพ็กเกจ</p>
                                         </div>
                                     </div>
                                     <div class="row row4"> 
-                                        <div class="col-lg-12">
+                                        <div class="col-12">
                                             <div class="row">
-                                                <div class="col-1 py-1 td1">1</div>
-                                                <div class="col-2 py-1 td1 text-left">แพ็กเกจ 1</div>
-                                                <div class="col-2 py-1 td1">900</div>
-                                                <div class="col-2 py-1 td1">1 เดือน</div>
-                                                <div class="col-2 py-1 td1" style="cursor:pointer;text-decoration: underline;color:#0061fc;"data-toggle="modal" data-target="#PackageDetail">เพิ่มเติม</div>
-                                                <div class="col-2 py-1 td1 text-left">
-                                                    <label class="bgT10ListBankingPay" style="cursor:default;">ไม่ใช้งาน</label>
+                                                <div class="col-1 py-1 td1 p">1</div>
+                                                <div class="col-2 py-1 td1 p text-left">แพ็กเกจ 1</div>
+                                                <div class="col-2 py-1 td1 p">900</div>
+                                                <div class="col-2 py-1 td1 p">1 เดือน</div>
+                                                <div class="col-2 py-1 td1 p" style="cursor:pointer;text-decoration: underline;color:#0061fc;"data-toggle="modal" data-target="#PackageDetail">เพิ่มเติม</div>
+                                                <div class="col-2 py-1 td1 p text-left">
+                                                    <label class="bgT10ListBankingPay " style="cursor:default;">ไม่ใช้งาน</label>
                                                     <label class="bgGreen" style="cursor:default;">ใช้งาน</label>
                                                 </div>
-                                                <div class="col-1 py-1 td1 text-right">
-                                                    <i class="fa fa-trash-o mr-3" aria-hidden="true" style="font-size:1em;cursor:pointer;"></i>
-                                                    <i class="fa fa-pencil" aria-hidden="true" style="font-size:1em;cursor:pointer;" data-toggle="modal" data-target="#EditPackage"></i>
+                                                <div class="col-1 py-1 td1 p text-right">
+                                                    <i class="fa fa-trash-o mr-3" aria-hidden="true" style="cursor:pointer;"></i>
+                                                    <i class="fa fa-pencil" aria-hidden="true" style="cursor:pointer;" data-toggle="modal" data-target="#EditPackage"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,26 +78,32 @@
                                 
                                 <div id="Ads" class="tab-pane">
                                     <div class="row">
-                                        <div class="col-1 py-3 th1">#</div>
-                                        <div class="col-3 py-3 th1 text-left">โฆษณา</div>
-                                        <div class="col-2 py-3 th1 text-left">อีเมล</div>
-                                        <div class="col-2 py-3 th1">สถานะ</div>
-                                        <div class="col-2 py-3 th1">ผู้อนุมัติ</div>
-                                        <div class="col-2 py-3 th1">วันที่อนุมัติ</div>
+                                        <div class="col-1 py-3 th1 p">#</div>
+                                        <div class="col-3 py-3 th1 p text-left">โฆษณา</div>
+                                        <div class="col-2 py-3 th1 p text-left">อีเมล</div>
+                                        <div class="col-2 py-3 th1 p">สถานะ</div>
+                                        <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
+                                        <div class="col-2 py-3 th1 p">วันที่อนุมัติ</div>
                                     </div>
                                     <div class="row row4"> 
-                                        <div class="col-lg-12">
+                                        <div class="col-12">
                                             <div class="row">
-                                                <div class="col-1 py-1 td1">1</div>
-                                                <div class="col-3 py-1 td1 text-left">ชื่อโฆษณา 1</div>
-                                                <div class="col-2 py-1 td1 text-left">exam@email.com</div>
-                                                <div class="col-2 py-1 td1">
-                                                    <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">รอการตรวจสอบ</label>
-                                                    <label class="status-approve" data-toggle="modal" data-target="#Approve">อนุมัติแล้ว</label>
-                                                    <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove">ไม่ผ่านการอนุมัติ</label>
+                                                <div class="col-1 py-1 td1 p">1</div>
+                                                <div class="col-3 py-1 td1 p text-left">ชื่อโฆษณา 1</div>
+                                                <div class="col-2 py-1 td1 p text-left">exam@email.com</div>
+                                                <div class="col-2 py-1 td1 p">
+                                                    <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove">
+                                                        <p style="margin:0;">รอการตรวจสอบ</p>
+                                                    </label>
+                                                    <label class="status-approve" data-toggle="modal" data-target="#Approve">
+                                                        <p style="margin:0;">อนุมัติแล้ว</p>
+                                                    </label>
+                                                    <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove">
+                                                        <p style="margin:0;">ไม่ผ่านการอนุมัติ</p>
+                                                    </label>
                                                 </div>
-                                                <div class="col-2 py-1 td1 ">Admin1</div>
-                                                <div class="col-2 py-1 td1">19/08/63</div>
+                                                <div class="col-2 py-1 td1 p ">Admin1</div>
+                                                <div class="col-2 py-1 td1 p">19/08/63</div>
                                             </div>
                                         </div>
                                     </div>
@@ -162,28 +122,28 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="col-1"></div>
-                <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">แพ็กเกจโฆษณา</div>
+                <div class="col-10 text-center"><h1 style="margin:0;">แพ็กเกจโฆษณา</h1></div>
                 <button type="button" class="close btn-closeModal " data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
                 <div class="col-1"></div>
             </div>
 
-            <div class="modal-body font-rate-modal">                        
+            <div class="modal-body">                        
                 <div class="row">
-                    <div class="col-lg-12 mb-2 pl-4">
-                        <label class="font-profile1 mt-3 mb-2">ข้อมูลแพ็กเกจ</label>
+                    <div class="col-12 pl-4">
+                        <p style="margin:0;">ข้อมูลแพ็กเกจ</p>
                     </div>
-                    <div class="col-lg-12">
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อแพ็กเกจ</label> <br>
-                            <input id="name" type="text" class="input-login px-3" required autofocus>
+                    <div class="col-12">
+                        <label class="bgInput field-wrap my-1">
+                            <p class="fontHeadInput">ชื่อแพ็กเกจ</p>
+                            <input id="name" type="text" class="input1 p ml-2" required autofocus>
                         </label>
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ราคาแพ็กเกจ</label> <br>
-                            <input id="name" type="text" class="input-login px-3" required autofocus>
+                        <label class="bgInput field-wrap my-1">
+                            <p class="fontHeadInput">ราคาแพ็กเกจ</p>
+                            <input id="name" type="text" class="input1 p ml-2" required autofocus>
                         </label>
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ระยะเวลา</label> <br>
-                            <select class="selectProvince" type="text" name="text4">
+                        <label class="bgInput field-wrap my-1">
+                            <p class="fontHeadInput">ระยะเวลา</p>
+                            <select class="MySelect p pl-2" type="text" name="text4">
                                 <option value="">1 เดือน</option>
                                 <option value="">3 เดือน</option>
                                 <option value="">6 เดือน</option>
@@ -191,32 +151,34 @@
                             </select>
                         </label>
                     </div>
-                    <div class="col-lg-12 mb-2 pl-4">
-                        <label class="font-profile1 mt-3 mb-2">รายละเอียดแพ็กเกจ</label>
+                    <div class="col-12 pl-4 mt-2">
+                        <p style="margin:0;">รายละเอียดแพ็กเกจ</p>
                     </div>
-                    <div class="col-lg-12">
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">เลือกสนุบสนุนเกมได้ทั้งหมด/เกม</label> <br>
-                            <input class="input-login px-3" required autofocus>
+                    <div class="col-12">
+                        <label class="bgInput field-wrap my-1">
+                            <p class="fontHeadInput">เลือกสนุบสนุนเกมได้ทั้งหมด/เกม</p>
+                            <input class="input1 p ml-2" required autofocus>
                         </label>
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ความยาวโฆษณา</label> <br>
-                            <select class="selectProvince" type="text" name="text4">
+                        <label class="bgInput field-wrap my-1">
+                            <p class="fontHeadInput">ความยาวโฆษณา</p>
+                            <select class="MySelect p pl-2" type="text" name="text4">
                                 <option value="">15 วินาที</option>
                                 <option value="">30 วินาที</option>
                                 <option value="">45 วินาที</option>
                                 <option value="">1 นาที</option>
                             </select>
                         </label>
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">จำนวนรอบโฆษณา</label> <br>
-                            <input class="input-login px-3" required autofocus>
+                        <label class="bgInput field-wrap my-1">
+                            <p class="fontHeadInput">จำนวนรอบโฆษณา</p>
+                            <input class="input1 p ml-2" required autofocus>
                         </label>
                     </div>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-lg-12">
-                        <button type="button" class="btn-submit-modal-red">ยืนยัน</button>
+                    <div class="col-12">
+                        <button type="button" class="btn-submit-red">
+                            <p style="margin:0;">ยืนยัน</p>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -229,55 +191,57 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="col-1"></div>
-                <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">แก้ไขแพ็กเกจโฆษณา</div>
+                <div class="col-10 text-center"><h1 style="margin:0;">แก้ไขแพ็กเกจโฆษณา</h1></div>
                 <button type="button" class="close btn-closeModal " data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
                 <div class="col-1"></div>
             </div>
 
-            <div class="modal-body font-rate-modal">                        
+            <div class="modal-body">                        
                 <div class="row">
-                    <div class="col-lg-12 mb-2 pl-4">
-                        <label class="font-profile1 mt-3 mb-2">ข้อมูลแพ็กเกจ</label>
+                    <div class="col-12 pl-4">
+                        <p style="margin:0;">ข้อมูลแพ็กเกจ</p>
                     </div>
-                    <div class="col-lg-12">
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อแพ็กเกจ</label> <br>
-                            <input id="name" type="text" class="input-login px-3" readonly>
+                    <div class="col-12">
+                        <label class="bgInput field-wrap my-1">
+                            <p class="fontHeadInput">ชื่อแพ็กเกจ</p>
+                            <input id="name" type="text" class="input1 p ml-2" readonly>
                         </label>
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ราคาแพ็กเกจ</label> <br>
-                            <input id="name" type="text" class="input-login px-3" readonly>
+                        <label class="bgInput field-wrap my-1">
+                            <p class="fontHeadInput">ราคาแพ็กเกจ</p>
+                            <input id="name" type="text" class="input1 p ml-2" readonly>
                         </label>
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ระยะเวลา</label> <br>
-                            <input id="name" type="text" class="input-login px-3" readonly>
-                        </label>
-                    </div>
-                    <div class="col-lg-12 mb-2 pl-4">
-                        <label class="font-profile1 mt-3 mb-2">รายละเอียดแพ็กเกจ</label>
-                    </div>
-                    <div class="col-lg-12">
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">เลือกสนุบสนุนเกมได้ทั้งหมด/เกม</label> <br>
-                            <input id="name" type="text" class="input-login px-3" readonly>
-                        </label>
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ความยาวโฆษณา</label> <br>
-                            <input id="name" type="text" class="input-login px-3" readonly>
-                        </label>
-                        <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">จำนวนรอบโฆษณา</label> <br>
-                            <input id="name" type="text" class="input-login px-3" readonly>
+                        <label class="bgInput field-wrap my-1">
+                            <p class="fontHeadInput">ระยะเวลา</p>
+                            <input id="name" type="text" class="input1 p ml-2" readonly>
                         </label>
                     </div>
-                    <div class="col-lg-12 mb-2 pl-4 custom02">
-                        <input type="radio" name="bank" value="inactive" id="inactive">
-                        <label for="inactive" style="color:#000;">ไม่ใช้งาน</label>
+                    <div class="col-12 pl-4 mt-2">
+                        <p style="margin:0;">รายละเอียดแพ็กเกจ</p>
+                    </div>
+                    <div class="col-12">
+                        <label class="bgInput field-wrap my-1">
+                            <p class="fontHeadInput">เลือกสนุบสนุนเกมได้ทั้งหมด/เกม</p>
+                            <input id="name" type="text" class="input1 p ml-2" readonly>
+                        </label>
+                        <label class="bgInput field-wrap my-1">
+                            <p class="fontHeadInput">ความยาวโฆษณา</p>
+                            <input id="name" type="text" class="input1 p ml-2" readonly>
+                        </label>
+                        <label class="bgInput field-wrap my-1">
+                            <p class="fontHeadInput">จำนวนรอบโฆษณา</p>
+                            <input id="name" type="text" class="input1 p ml-2" readonly>
+                        </label>
+                    </div>
+                    <div class="checkboxAdmin ml-4 pt-1">
+                        <input type="checkbox" id="inactive"/>
+                        <label for="inactive" style="margin:0;">
+                            <p class="fontCheckbox">ไม่ใช้งาน</p>
+                        </label>
                     </div>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-lg-12">
-                        <button type="button" class="btn-submit-modal-red">ยืนยัน</button>
+                    <div class="col-12">
+                        <button type="button" class="btn-submit-red p">ยืนยัน</button>
                     </div>
                 </div>
             </div>
@@ -297,38 +261,38 @@
 
             <div class="modal-body font-rate-modal">                        
                 <div class="row ">
-                    <div class="col-lg-12 mb-3 mt-2">
+                    <div class="col-12 mb-3 mt-2">
                         <div class="bgPackage" style="margin:auto;">
                             <label>
                                 <div class="row">
-                                    <div class="col-lg-12 text-center mt-2">
+                                    <div class="col-12 text-center mt-2">
                                         <img src="{{asset('icon/money2.svg') }}">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-12 text-center mt-2">
+                                    <div class="col-12 text-center mt-2">
                                         <label style="font-family:myfont1;font-size:1em;line-height:0.5;color:#000;">แพ็กเกจ 1</label><br>
                                         <label style="font-family:myfont;font-size:1.3em;color:#000;">฿900.00</label>
                                         <label style="font-family:myfont1;font-size:0.9em;color:#000;">/ เดือน</label>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-12 text-center">
+                                    <div class="col-12 text-center">
                                         <label class="btnBuyPackage">
                                             <a href="{{ route('SponsorPayment') }}"><label style="font-family:myfont1;font-size:1em;color:#ffffff;cursor: pointer;">ซื้อเลย</label></a>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="row my-2 px-4">
-                                    <div class="col-lg-12 text-center" style="border-bottom:1px solid #f5f5f5"></div>
+                                    <div class="col-12 text-center" style="border-bottom:1px solid #f5f5f5"></div>
                                 </div>
                                 <div class="row pl-3">
-                                    <div class="col-lg-12 ">
+                                    <div class="col-12 ">
                                         <label style="font-family:myfont1;font-size:0.9em;font-weight: 800;color:#000;">รายละเอียด</label>
                                     </div>
                                 </div>
                                 <div class="row pl-2 pr-1">
-                                    <div class="col-lg-12 fontDetailPackage">
+                                    <div class="col-12 fontDetailPackage">
                                         <div class="input-container">
                                             <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
                                             <label class="input-field ">เลือกสนุบสนุนเกมได้ทั้งหมด 20 เกม/เดือน</label>
@@ -371,18 +335,18 @@
 
             <div class="modal-body font-rate-modal">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-12">
                     <iframe style="width:100%;height:385px;" src="https://www.youtube.com/embed/grOw65QnD7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
-                    <div class="col-lg-12 mb-2 pl-4 custom02">
+                    <div class="col-12 mb-2 pl-4 custom02">
                         <input type="radio" name="Approve" id="approve">
                         <label for="approve" style="color:#000;">อนุมัติ</label>
                     </div>
-                    <div class="col-lg-12 mb-2 pl-4 custom02">
+                    <div class="col-12 mb-2 pl-4 custom02">
                         <input type="radio" name="Approve" id="noneapprove">
                         <label for="noneapprove" style="color:#000;">ไม่ใอนุมัติ</label>
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-12">
                         <button type="button" class="btn-submit-modal-red">ยืนยัน</button>
                     </div>
                 </div>
@@ -403,10 +367,10 @@
 
             <div class="modal-body font-rate-modal">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-12">
                         <label class="status-approve2" >อนุมัติแล้ว</label>
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-12">
                     <iframe style="width:100%;height:385px;" src="https://www.youtube.com/embed/grOw65QnD7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     
@@ -428,10 +392,10 @@
 
             <div class="modal-body font-rate-modal">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-12">
                         <label class="status-none-approve2">ไม่ผ่านการอนุมัติ</label>
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-12">
                     <iframe style="width:100%;height:385px;" src="https://www.youtube.com/embed/grOw65QnD7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     
@@ -447,12 +411,12 @@
 <!-- พื้นหลัง -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_login"></div>
+        <div class="col-2 bgSidebar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 bg_login2"></div>
+        <div class="col-10 bgContent"></div>
     </div>
 </div>
 @endsection

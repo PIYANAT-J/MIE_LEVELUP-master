@@ -1,157 +1,79 @@
-@extends('layout.profile_navbar')
+@extends('layout.dev_navbar')
 @section('content')
-<div class="container-fluid">
-    <div class="row my-5"></div>
-    <div class="row my-2"></div>
-    <div class="row  mt-3">
+<div class="container-fluid" id="getActive" active="{{route('DevHistory')}}">
+    <div class="row py-5" style="background-color: #f5f5f5;"></div>
+    <div class="row  pt-3" style="background-color: #f5f5f5;">
+        @include('profile.sidebar.dev_sidebar')
 
-        <!-- sidebar -->
-        <div class="col-lg-3" style="background-color: #17202c;">
-            <div class="row">
-                <div class="col-lg-1"></div>
-                    @foreach($developer as $Dev)
-                        <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                            <div class="row mb-2">
-                                <div class="col-lg-4 text-right">
-                                    <img class="sidebar-pic" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" />
-                                </div>
-                                <div class="col-lg-8 sidebar_name pt-2">
-                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้พัฒนาระบบ</br>เป็นสมาชิก : </br>{{ Auth::user()->created_at }}</span>
-                                </div>
-                            </div>
-                            <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                                <div class="col-lg-12 text-center">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="btn-point pb-2">
-                                                <span class="font-point">พอยท์</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">0</span>
-                                                <i class="icon-Icon_Point"></i>
-                                            </label>
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="btn-coin pb-2 ">
-                                                <span class="font-point">เหรียญ</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">0</span>
-                                                <i class="icon-Icon_Coin"></i>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                <div class="col-lg-1"></div>
-                <a href="{{ route('DevProfile') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว</button></a>
-                <a href="{{ route('DevKyc') }}" style="width: 100%;"><button class="btn-sidebar"><span style="font-family: myfont1;font-size: 1em;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
-                    @if($userKyc->KYC_STATUS == null)
-                        <span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span>
-                    @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
-                        <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
-                    @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวตนแล้ว</span>
-                    @else
-                        <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
-                    @endif
-                </button></a>
-                <a href="{{ route('DevShelf') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
-                <a href="{{ route('DevHistory') }}" style="width: 100%;"><button class="btn-sidebar active"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
-                <a href="{{ route('DevUpload') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-upload-game menuIcon"></i>อัพโหลดเกม</button></a>
-                <a href="{{ route('DevWithdraw') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-withdraw menuIcon"></i>ถอนเงิน</button></a>
-                <a href="/develper_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
-                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</button></a> 
-            </div>
-        </div>
-        <!-- sidebar -->
-
-        <div class="col-lg-9" style="background-color: #f5f5f5;">
-            <div class="row mt-4" >
-                <div class="col-lg-1"></div>
-                <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-                    <div class="row">
-                        <div class="col-6 pb-2">
-                            <span class="font-profile1">ประวัติพอยท์</span>
-                        </div>
-                        <div class="col-6 text-right">
-                            <SELECT class="select2" size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT>
-                            <SELECT class="select2" size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT>
-                                <!-- <div class="col-4 mt-2 d-none" style="padding:0;"><SELECT  size="1" id ="day" name = "dd" ></SELECT></div> -->
-                        </div>
+        <div class="col-sm-12 col-md-12 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3  pb-4" style="background-color:#f5f5f5;">
+            <div style="background-color:#ffffff;border-radius: 8px;padding:20px;">
+                <div class="row">
+                    <div class="col-3 pb-2">
+                        <h1 class="fontHeader">ประวัติพอยท์</h1>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="row mt-2 ">
-                                <div class="col-lg-12" >
-                                    <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1em;color:#000;">
-                                        <div class="col-8">ประวัติ</div>
-                                        <div class="col-2 text-center">พอยท์</div>
-                                        <div class="col-2 text-center">วัน-เวลา</div>
-                                    </div>
+                    <div class="col-9 text-right">
+                        <SELECT class="SelectWh p" size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT>
+                        <SELECT class="SelectWh p" size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT>
+                            <!-- <div class="col-4 mt-2 d-none" style="padding:0;"><SELECT  size="1" id ="day" name = "dd" ></SELECT></div> -->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row mt-2 ">
+                            <div class="col-12" >
+                                <div class="row mx-0 py-2" style="background-color:#f2f2f2;color:#000;">
+                                    <div class="col-sm-7 col-md-9 col-lg-8 col-xl-8"><p style="margin:0;font-weight: 800;">ประวัติ</p></div>
+                                    <div class="col-sm-2 col-md-1 col-lg-2 col-xl-2 text-center "><p style="margin:0;font-weight: 800;">พอยท์</p></div>
+                                    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 text-center"><p style="margin:0;font-weight: 800;">วัน-เวลา</p></div>
                                 </div>
                             </div>
-                            <div class="row mt-2 row4">
-                                <div class="col-lg-12" >
-                                    <div class="row mx-0 py-2 line2" style="font-family:myfont1;font-size:1em;color:#000;">
-                                        <div class="col-8">
-                                        <span class="font-game-shelf2">อัพเดตโปรไฟล์</span>
-                                        </div>
-                                        <div class="col-2 text-center">
-                                            <span class="font-game-shelf2" style="color:#23c197;">+20</span>
-                                            <!-- <span class="font-game-shelf2" style="color:#ce0005;">-50</span>-50</span> -->
-                                        </div>
-                                        <div class="col-2 text-center"><span class="font-game-shelf2" style="font-size:0.8em;font-family:myfont1;color: #a8a8a8;">09:10 17/05/63</span></div>
+                        </div>
+                        <div class="row mt-2 row4">
+                            <div class="col-12" >
+                                <div class="row mx-0 py-2 line2">
+                                    <div class="col-sm-7 col-md-9 col-lg-8 col-xl-8">
+                                        <p style="color:#000;margin:0;">อัพเดตโปรไฟล์</p>
                                     </div>
-
-                                    <div class="row mx-0 py-2 line2" style="font-family:myfont1;font-size:1em;color:#000;">
-                                        <div class="col-8">
-                                        <span class="font-game-shelf2">อัพเดตโปรไฟล์</span>
-                                        </div>
-                                        <div class="col-2 text-center">
-                                            <span class="font-game-shelf2" style="color:#23c197;">+20</span>
-                                            <!-- <span class="font-game-shelf2" style="color:#ce0005;">-50</span>-50</span> -->
-                                        </div>
-                                        <div class="col-2 text-center"><span class="font-game-shelf2" style="font-size:0.8em;font-family:myfont1;color: #a8a8a8;">09:10 17/05/63</span></div>
+                                    <div class="col-sm-2 col-md-1 col-lg-2 col-xl-2 text-center">
+                                        <p style="margin:0;color:#23c197;font-weight:800;">+20</p>
+                                        <!-- <p style="margin:0;color:#ce0005;font-weight:800;">-50</p> -->
                                     </div>
-
-                                    <!-- <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                        <div class="col-8">
-                                        <span class="font-game-shelf" style="color:#000;font-family:myfont;">อัพเดตโปรไฟล์</span>
-                                        </div>
-                                        <div class="col-2 text-center">
-                                            <span class="font-game-shelf" style="color:#23c197;font-family:myfont;">+20</span>
-                                            <span class="font-game-shelf" style="color:#ce0005;font-family:myfont;">-50</span>
-                                        </div>
-                                        <div class="col-2 text-center"><span class="font-game-shelf">09:10 17/05/63</span></div>
+                                    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 text-center">
+                                        <h5 style="margin:0;color:#000;padding-top:5px;">09:10, 17/05/63</h5>
                                     </div>
-                                    <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                        <div class="col-8">
-                                        <span class="font-game-shelf" style="color:#000;font-family:myfont;">อัพเดตโปรไฟล์</span>
-                                        </div>
-                                        <div class="col-2 text-center">
-                                            <span class="font-game-shelf" style="color:#23c197;font-family:myfont;">+20</span>
-                                            <span class="font-game-shelf" style="color:#ce0005;font-family:myfont;">-50</span>
-                                        </div>
-                                        <div class="col-2 text-center"><span class="font-game-shelf">09:10 17/05/63</span></div>
-                                    </div>  -->
+                                </div>
+                                <div class="row mx-0 py-2 line2">
+                                    <div class="col-sm-7 col-md-9 col-lg-8 col-xl-8">
+                                        <p style="color:#000;margin:0;">แลกสินค้า</p>
+                                    </div>
+                                    <div class="col-sm-2 col-md-1 col-lg-2 col-xl-2 text-center">
+                                        <!-- <p style="margin:0;color:#23c197;font-weight:800;">+20</p> -->
+                                        <p style="margin:0;color:#ce0005;font-weight:800;">-50</p>
+                                    </div>
+                                    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 text-center">
+                                        <h5 style="margin:0;color:#000;padding-top:5px;">09:10, 17/05/63</h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-1"></div>
             </div>
         </div>
+        <div class="col-sm-12 col-md-12 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
     </div>
 </div>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_login"></div>
+        <div class="col-lg-4 col-xl-3 bgSidebar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 bg_login2"></div>
+        <div class="col-lg-8 col-xl-9 bgContent"></div>
     </div>
 </div>
 

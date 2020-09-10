@@ -1,112 +1,14 @@
 @extends('layout.profile_navbar')
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" id="getActive" active="{{ route('UserKyc') }}">
     <div class="row my-5"></div>
     <div class="row my-2"></div>
     <div class="row  mt-3">
-
-        <!-- sidebar -->
-        <div class="col-lg-4 col-xl-3 d-none d-lg-block d-xl-block" style="background-color: #17202c;">
-            <div class="row">
-                <div class="col-1"></div>
-                    @foreach($guest_user as $USER)
-                        <div class="col-10 my-3 pt-2 sidebar_bg2">
-                            <div class="row mb-2">
-                                <div class="col-4 text-right">
-                                    <img class="sidebar-pic" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
-                                </div>
-                                <div class="col-8">
-                                    <label class="pt-3">
-                                        <h5 style="font-weight:800;margin:0;color:#ffffff;">{{ Auth::user()->name }} {{ Auth::user()->surname }}</h5>
-                                        <h5 style="margin:0;color:#ffffff;">สถานะ : ผู้ใช้ทั่วไป</h5>
-                                        <h5 style="margin:0;color:#ffffff;">เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</h5>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                                <div class="col-12 text-center">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="btn-point pt-2">
-                                                <h1 class="fontPoint">พอยท์</h1>
-                                                <h2 class="fontPoint">100 <i class="icon-Icon_Point"></i></h2>
-                                            </label>
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="btn-point pt-2">
-                                                <h1 class="fontPoint">เหรียญ</h1>
-                                                <h2 class="fontPoint">100 <i class="icon-Icon_Coin"></i></h2>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                <div class="col-1"></div>
-
-                <a href="{{ route('Avatar') }}" style="width: 100%;">
-                    <button class="btn-sidebar">
-                        <p style="margin: 0;"><i class="icon-profile menuIcon"></i>ตัวละครของฉัน (Avatar)</p>
-                    </button>
-                </a>
-                <a href="{{ route('UserProfile') }}" style="width: 100%;">
-                    <button class="btn-sidebar">
-                        <p style="margin: 0;"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว</p>
-                    </button>
-                </a>
-                <a href="{{ route('UserKyc') }}" style="width: 100%;">
-                    <button class="btn-sidebar active">
-                        <label style="margin: 0;"><p style="padding:0px 8px 0px 5px;margin: 0;">KYC</p></label>
-                        <label style="margin: 0;"><p style="margin: 0;">ยืนยันตัวตน</p></label>
-                    @if($userKyc->KYC_STATUS == null)
-                        <label style="margin: 0;" class="status-kyc3 "><p style="margin: 0;">กรุณายืนยันตัวตน</p></label>
-                    @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
-                        <label style="margin: 0;" class="status-kyc"><p style="margin: 0;">รอการตรวจสอบ</p></label>
-                    @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <label style="margin: 0;" class="status-kyc2"><p style="margin: 0;">ยืนยันตัวตนแล้ว</p></label>
-                    @else
-                        <label style="margin: 0;" class="status-kyc4"><p style="margin: 0;">ไม่ผ่านการอนุมัติ</p></label>
-                    @endif
-                    </button>
-                </a>
-                <a href="{{ route('UserShelf') }}" style="width: 100%;">
-                    <button class="btn-sidebar">
-                        <p style="margin: 0;"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</p>
-                    </button>
-                </a>
-                <a href="{{ route('UserHistory') }}" style="width: 100%;">
-                    <button class="btn-sidebar">
-                        <p style="margin: 0;"><i class="icon-history menuIcon"></i>ประวัติพอยท์</p>
-                    </button>
-                </a>
-                <a href="{{ route('UserRank') }}" style="width: 100%;">
-                    <button class="btn-sidebar">
-                        <p style="margin: 0;"><i class="fa fa-star-o menuIcon"></i>อันดับผู้ใช้</p>
-                    </button>
-                </a>
-                <a href="{{ route('UserTopup') }}" style="width: 100%;">
-                    <button class="btn-sidebar">
-                        <p style="margin: 0;"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</p>
-                    </button>
-                </a>
-                <a href="/user_change_password" style="width: 100%;">
-                    <button class="btn-sidebar">
-                        <p style="margin: 0;"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</p>
-                    </button>
-                </a>
-                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <button class="btn-sidebar">
-                        <p style="margin: 0;"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</p>
-                    </button>
-                </a>   
-            </div>
-        </div>
-        <!-- sidebar -->
+        @include('profile.sidebar.user_sidebar')
 
         <div class="col-sm-1 col-md-1 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
         <div class="col-sm-10 col-md-10 col-lg-8 col-xl-9 pt-3  pb-4" style="background-color:#f5f5f5;">
-            <div style="background-color:#ffffff;border-radius: 8px;padding:20px">
+            <div style="background-color:#ffffff;border-radius: 8px;padding:20px;">
                 <div class="row">
                     <div class="col-12 pb-2 mb-1" style="border-bottom: 1px solid #f2f2f2;">
                         <h1 class="fontHeader">ยืนยันตัวตน (ถ้าอัพเดทโปรไฟล์จะได้ พอยท์เพิ่ม 100 พอยท์)</h1>
@@ -192,7 +94,7 @@
                                             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2" >
                                                 <label class="bgInput field-wrap">
                                                     <label><p class="fontHeadInput">เลขบัตรประจำตัวประชาชน</p></label> <br>
-                                                    <input name="GUEST_USERS_ID_CARD" class="input-login px-3"  minlength="13" maxlength="13" value="{{ $user->GUEST_USERS_ID_CARD }}" disabled></input>
+                                                    <input name="GUEST_USERS_ID_CARD" class="input1 p ml-2"  minlength="13" maxlength="13" value="{{ $user->GUEST_USERS_ID_CARD }}" disabled></input>
                                                 </label>
                                             </div>
                                             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"></div>
@@ -225,7 +127,7 @@
                                             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2" >
                                                 <label class="bgInput field-wrap">
                                                     <label><p class="fontHeadInput">เลขบัตรประจำตัวประชาชน</p></label> <br>
-                                                    <input name="GUEST_USERS_ID_CARD" class="input-login px-3"  minlength="13" maxlength="13" value="{{ $user->GUEST_USERS_ID_CARD }}" disabled></input>
+                                                    <input name="GUEST_USERS_ID_CARD" class="input1 p ml-2"  minlength="13" maxlength="13" value="{{ $user->GUEST_USERS_ID_CARD }}" disabled></input>
                                                 </label>
                                             </div>
                                             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"></div>
@@ -248,19 +150,19 @@
                                                     </div>
                                                 </div>
 
-                                                    <div class="my-3 line2">
-                                                        <label><h1 class="fontHeader">อัพโหลดรูปหลักฐานยืนยันตัวตน</h1></label>
-                                                        <label><h5 style="color: #0f0f0f;">(อัพโหลดได้ไม่เกิน 2 mb)</h5></label> 
-                                                    </div>
-
-                                                    <label id="upload" style="cursor:pointer;" class="font-kyc-upload">
-                                                        <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
-                                                        <label><h1 class="fontHeader">อัพโหลดรูปภาพ</h1></label>
-                                                    </label>
-                                                    <div id="thumb" class="thumb-kyc"><img src="home/Kyc/pic-kyc.png"></div>    
-                                                    <input id="file_upload" style="display:none" name="KYC_IMG" type="file" accept="image/* "/>
+                                                <div class="my-3 line2">
+                                                    <label><h1 class="fontHeader">อัพโหลดรูปหลักฐานยืนยันตัวตน</h1></label>
+                                                    <label><h5 style="color: #0f0f0f;">(อัพโหลดได้ไม่เกิน 2 mb)</h5></label> 
                                                 </div>
-                                                <div class="col-sm-4 col-md-4 col-lg-3 col-xl-2 mt-2">
+
+                                                <label id="upload" style="cursor:pointer;" class="font-kyc-upload">
+                                                    <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
+                                                    <label><h1 class="fontHeader">อัพโหลดรูปภาพ</h1></label>
+                                                </label>
+                                                <div id="thumb" class="thumb-kyc"><img src="home/Kyc/pic-kyc.png"></div>    
+                                                <input id="file_upload" style="display:none" name="KYC_IMG" type="file" accept="image/* "/>
+                                    
+                                                <div class="col-sm-12 col-md-12 col-lg-3 col-xl-2 mt-2" style="padding:0;">
                                                     <button name="submit" value="submit" type="submit" class="btn-submit">
                                                         <p style="margin:0;">ยืนยัน</p>
                                                         <input type="hidden" name="KYC_STATUS" value="รออนุมัติ">
@@ -274,9 +176,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            
-                            
-                            
                             @else
                             <!-- กรุณายืนยันตัวตน -->
                                 <div class="row">
@@ -285,7 +184,7 @@
                                             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2" >
                                                 <label class="bgInput field-wrap">
                                                     <label><p class="fontHeadInput">เลขบัตรประจำตัวประชาชน</p></label> <br>
-                                                    <input name="GUEST_USERS_ID_CARD" class="input-login px-3"  minlength="13" maxlength="13" value="{{ $user->GUEST_USERS_ID_CARD }}" disabled></input>
+                                                    <input name="GUEST_USERS_ID_CARD" class="input1 p ml-2"  minlength="13" maxlength="13" value="{{ $user->GUEST_USERS_ID_CARD }}" disabled></input>
                                                 </label>
                                             </div>
                                             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"></div>
@@ -311,15 +210,14 @@
                                                     <label><h5 style="color: #0f0f0f;">(อัพโหลดได้ไม่เกิน 2 mb)</h5></label> 
                                                 </div>
 
-                                                    <label id="upload" style="cursor:pointer;" class="font-kyc-upload">
-                                                        <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
-                                                        <label><h1 class="fontHeader">อัพโหลดรูปภาพ</h1></label>
-                                                    </label>
+                                                <label id="upload" style="cursor:pointer;" class="font-kyc-upload">
+                                                    <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
+                                                    <label><h1 class="fontHeader">อัพโหลดรูปภาพ</h1></label>
+                                                </label>
+                                                <div id="thumb" class="thumb-kyc"><img src="home/Kyc/pic-kyc.png"></div>    
+                                                <input id="file_upload" style="display:none" name="KYC_IMG" type="file" accept="image/* "/>
 
-                                                    <div id="thumb" class="thumb-kyc"><img src="home/Kyc/pic-kyc.png"></div>    
-                                                    <input id="file_upload" style="display:none" name="KYC_IMG" type="file" accept="image/* "/>
-                                                </div>
-                                                <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 mt-2">
+                                                <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2 mt-2" style="padding:0;">
                                                     <button name="submit" value="submit" type="submit" class="btn-submit">
                                                         <p style="margin:0;">ยืนยัน</p>
                                                         <input type="hidden" name="KYC_STATUS" value="รออนุมัติ">
@@ -341,7 +239,7 @@
                                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2" >
                                             <label class="bgInput field-wrap">
                                                 <label><p class="fontHeadInput">เลขบัตรประจำตัวประชาชน</p></label> <br>
-                                                <input name="GUEST_USERS_ID_CARD" class="input-login px-3"  minlength="13" maxlength="13" value="{{ $user->GUEST_USERS_ID_CARD }}" disabled></input>
+                                                <input name="GUEST_USERS_ID_CARD" class="input1 p ml-2"  minlength="13" maxlength="13" value="{{ $user->GUEST_USERS_ID_CARD }}" disabled></input>
                                             </label>
                                         </div>
                                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"></div>
