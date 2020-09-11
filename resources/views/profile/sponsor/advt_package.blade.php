@@ -122,7 +122,7 @@
                                         <div class="row">
                                             <div class="col-lg-12 text-center">
                                                 <label class="btnBuyPackage">
-                                                    <a href="{{ route('packagePay', ['id'=>encrypt($AllPackage->package_id)]) }}"><label style="font-family:myfont1;font-size:1em;color:#ffffff;cursor: pointer;">ซื้อเลย</label></a>
+                                                    <a href="{{ route('packagePay', ['id'=>encrypt($AllPackage->package_id), 'idT'=>encrypt('null')]) }}"><label style="font-family:myfont1;font-size:1em;color:#ffffff;cursor: pointer;">ซื้อเลย</label></a>
                                                 </label>
                                             </div>
                                         </div>
