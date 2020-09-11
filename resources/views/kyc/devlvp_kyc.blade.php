@@ -1,290 +1,251 @@
-@extends('layout.profile_navbar')
+@extends('layout.dev_navbar')
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" id="getActive" active="{{route('DevKyc')}}">
     <div class="row my-5"></div>
     <div class="row my-2"></div>
     <div class="row  mt-3">
+    @include('profile.sidebar.dev_sidebar')
 
-        <!-- sidebar -->
-        <div class="col-lg-3" style="background-color: #17202c;">
+    <div class="col-sm-1 col-md-1 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
+    <div class="col-sm-10 col-md-10 col-lg-8 col-xl-9 pt-3  pb-4" style="background-color:#f5f5f5;" >
+        <div style="background-color:#ffffff;border-radius: 8px;padding:20px;">
             <div class="row">
-                <div class="col-lg-1"></div>
-                    @foreach($developer as $Dev)
-                        <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                            <div class="row mb-2">
-                                <div class="col-lg-4 text-right">
-                                    <img class="sidebar-pic" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" />
-                                </div>
-                                <div class="col-lg-8 sidebar_name pt-2">
-                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้พัฒนาระบบ</br>เป็นสมาชิก : </br>{{ Auth::user()->created_at }}</span>
-                                </div>
-                            </div>
-                            <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                                <div class="col-lg-12 text-center">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="btn-point pb-2">
-                                                <span class="font-point">พอยท์</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">0</span>
-                                                <i class="icon-Icon_Point"></i>
-                                            </label>
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="btn-coin pb-2 ">
-                                                <span class="font-point">เหรียญ</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">0</span>
-                                                <i class="icon-Icon_Coin"></i>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                <div class="col-lg-1"></div>
-                <a href="{{ route('DevProfile') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว</button></a>
-                <a href="{{ route('DevKyc') }}" style="width: 100%;"><button class="btn-sidebar active"><span style="font-family: myfont1;font-size: 1em;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
-                    @if($userKyc->KYC_STATUS == null)
-                        <span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span>
-                    @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
-                        <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
-                    @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวต้นแล้ว</span>
-                    @else
-                        <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
-                    @endif
-                </button></a>
-                <a href="{{ route('DevShelf') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
-                <a href="{{ route('DevHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
-                <a href="{{ route('DevUpload') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-upload-game menuIcon"></i>อัพโหลดเกม</button></a>
-                <a href="{{ route('DevWithdraw') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-withdraw menuIcon"></i>ถอนเงิน</button></a>
-                <a href="/develper_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
-                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</button></a> 
+                <div class="col-12 pb-2 mb-1" style="border-bottom: 1px solid #f2f2f2;">
+                    <h1 class="fontHeader">ยืนยันตัวตน (ถ้าอัพเดทโปรไฟล์จะได้ พอยท์เพิ่ม 100 พอยท์)</h1>
+                    <h5 style="color: #666666;">จัดการข้อมูลส่วนตัวคุณของคุณเพื่อให้ใช้งานได้สะดวกขึ้น</h5>
+                </div>
             </div>
-        </div>
-        <!-- sidebar -->
-
-        <div class="col-lg-9" style="background-color:#f5f5f5;">
-            <div class="row my-4" >
-                <div class="col-lg-1"></div>
-                <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-                    <div class="row">
-                        <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                            <span class="font-profile1">ยืนยันตัวตน (ถ้าอัพเดทโปรไฟล์จะได้ พอยท์เพิ่ม 100 พอยท์) </br>
-                                <b style="font-family:myfont1;font-size: 0.8em;color: #666666;">จัดการข้อมูลส่วนตัวคุณของคุณเพื่อให้ใช้งานได้สะดวกขึ้น</b>
-                            </span>
-                        </div>
-                    </div>
-                    <form action="{{ route('CreateKyc') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @foreach($developer as $DEV)
-                            @if(Auth::user()->updateData == 'true')
-                                @if($userKyc->KYC_STATUS == 'รออนุมัติ')
+            <form action="{{ route('CreateKyc') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @foreach($developer as $DEV)
+                    @if(Auth::user()->updateData == 'true')
+                        @if($userKyc->KYC_STATUS == 'รออนุมัติ')
+                            <div class="row">
+                                <div class="col-12">
                                     <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="row">
-                                                <div class="col-lg-6 mt-2" >
-                                                    <label class="bgInput field-wrap">
-                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขบัตรประจำตัวประชาชน</label> <br>
-                                                            <input name="DEV_ID_CARD" class="input-login px-3" minlength="13" maxlength="13" value="{{ $DEV->DEV_ID_CARD }}" disabled></input>
-                                                    </label>
-                                                </div>
-                                                <div class="col-lg-6"></div>
-                                            </div>
-                                            <div class="row mt-2 ">
-                                                <div class="col-lg-12" >
-                                                    <div class="row mx-0 py-3" style="background-color: #fffcf4;">
-                                                        <div class="col-1"></div>
-                                                        <div class="col-lg-5 font-kyc">
-                                                            <span style="font-family:myfont;">วิธีการยืนยันตัวตน </span></br>
-                                                            1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่าน </br>
-                                                            พร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า </br>
-                                                            “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
-                                                            2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
-                                                            3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
-                                                            4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
-                                                        </div>
-                                                        <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2" >
+                                            <label class="bgInput field-wrap">
+                                                <p class="fontHeadInput">เลขบัตรประจำตัวประชาชน</p>
+                                                <input name="DEV_ID_CARD" class="input1 p ml-2" minlength="13" maxlength="13" value="{{ $DEV->DEV_ID_CARD }}" disabled></input>
+                                            </label>
                                         </div>
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"></div>
                                     </div>
-                                @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="row">
-                                                <div class="col-lg-6 mt-2" >
-                                                    <label class="bgInput field-wrap">
-                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขบัตรประจำตัวประชาชน</label> <br>
-                                                            <input name="DEV_ID_CARD" class="input-login px-3" minlength="13" maxlength="13" value="{{ $DEV->DEV_ID_CARD }}" disabled></input>
-                                                    </label>
-                                                </div>
-                                                <div class="col-lg-6"></div>
-                                            </div>
-                                            <div class="row mt-2 ">
-                                                <div class="col-lg-12" >
-                                                    <div class="row mx-0 py-3" style="background-color: #fffcf4;">
-                                                        <div class="col-1"></div>
-                                                        <div class="col-lg-5 font-kyc">
-                                                            <span style="font-family:myfont;">วิธีการยืนยันตัวตน </span></br>
-                                                            1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่าน </br>
-                                                            พร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า </br>
-                                                            “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
-                                                            2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
-                                                            3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
-                                                            4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
-                                                        </div>
-                                                        <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @elseif($userKyc->KYC_STATUS == 'ไม่อนุมัติ')
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="row">
-                                                <div class="col-lg-6 mt-2" >
-                                                    <label class="bgInput field-wrap">
-                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขบัตรประจำตัวประชาชน</label> <br>
-                                                            <input name="DEV_ID_CARD" class="input-login px-3" minlength="13" maxlength="13" value="{{ $DEV->DEV_ID_CARD }}" disabled></input>
-                                                    </label>
-                                                </div>
-                                                <div class="col-lg-6"></div>
-                                            </div>
-                                            <div class="row mt-2 ">
-                                                <div class="col-lg-12" >
-                                                    <div class="row mx-0 py-3" style="background-color: #fffcf4;">
-                                                        <div class="col-1"></div>
-                                                        <div class="col-lg-5 font-kyc">
-                                                            <span style="font-family:myfont;">วิธีการยืนยันตัวตน </span></br>
-                                                            1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่าน </br>
-                                                            พร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า </br>
-                                                            “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
-                                                            2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
-                                                            3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
-                                                            4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
-                                                            <b style="font-family:myfont;">หมายเหตุ : รายละเอียด</b>
-                                                        </div>
-                                                        <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
-                                                    </div>
-                                                        <div class="font-kyc2 my-3 line2"><span style="font-family:myfont;">อัพโหลดรูปหลักฐานยืนยันตัวตน</span>( อัพโหลดได้ไม่เกิน 2 mb ) </div>
-                                                    <div>
-                                                        <label id="upload" style="cursor:pointer;" class="font-kyc-upload"><img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />อัพโหลดรูปภาพ</label>
-                                                        <div id="thumb" class="thumb-kyc"><img src="home/Kyc/pic-kyc.png"></div>    
-                                                        <input id="file_upload" style="display:none" name="KYC_IMG" type="file" accept="image/* "/>
-                                                    </div>
-                                                    <div class="col-lg-12 mt-2">
-                                                        <button name="submit" value="submit" type="submit" class="btn-submit">ยืนยัน
-                                                            <input type="hidden" name="KYC_STATUS" value="รออนุมัติ">
-                                                            <input type="hidden" name="KYC_CREATE_DATE" value="{{ date('Y-m-d H:i:s') }}">
-                                                            <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                                                            <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-                                                            <input type="hidden" name="users_type" value="{{ Auth::user()->users_type }}">
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @else
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="row">
-                                                <div class="col-lg-6 mt-2" >
-                                                    <label class="bgInput field-wrap">
-                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขบัตรประจำตัวประชาชน</label> <br>
-                                                            <input name="DEV_ID_CARD" class="input-login px-3" minlength="13" maxlength="13" value="{{ $DEV->DEV_ID_CARD }}" disabled></input>
-                                                    </label>
-                                                </div>
-                                                <div class="col-lg-6"></div>
-                                            </div>
-                                            <div class="row mt-2 ">
-                                                <div class="col-lg-12" >
-                                                    <div class="row mx-0 py-3" style="background-color: #fffcf4;">
-                                                        <div class="col-1"></div>
-                                                        <div class="col-lg-5 font-kyc">
-                                                            <span style="font-family:myfont;">วิธีการยืนยันตัวตน </span></br>
-                                                            1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่าน </br>
-                                                            พร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า </br>
-                                                            “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
-                                                            2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
-                                                            3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
-                                                            4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
-                                                        </div>
-                                                        <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
-                                                    </div>
-                                                    <div class="font-kyc2 my-3 line2"><span style="font-family:myfont;">อัพโหลดรูปหลักฐานยืนยันตัวตน</span>( อัพโหลดได้ไม่เกิน 2 mb ) </div>
-                                                    <div>
-                                                        <label id="upload" style="cursor:pointer;" class="font-kyc-upload"><img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />อัพโหลดรูปภาพ</label>
-                                                        <div id="thumb" class="thumb-kyc"><img src="home/Kyc/pic-kyc.png"></div>    
-                                                        <input id="file_upload" style="display:none" name="KYC_IMG" type="file" accept="image/* "/>
-                                                    </div>
-                                                    <div class="col-lg-12 mt-2">
-                                                        <button name="submit" value="submit" type="submit" class="btn-submit">ยืนยัน
-                                                            <input type="hidden" name="KYC_STATUS" value="รออนุมัติ">
-                                                            <input type="hidden" name="KYC_CREATE_DATE" value="{{ date('Y-m-d H:i:s') }}">
-                                                            <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                                                            <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-                                                            <input type="hidden" name="users_type" value="{{ Auth::user()->users_type }}">
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                            @else
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="row">
-                                            <div class="col-lg-6 mt-2" >
-                                                <label class="bgInput field-wrap">
-                                                        <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขบัตรประจำตัวประชาชน</label> <br>
-                                                        <input name="DEV_ID_CARD" class="input-login px-3" minlength="13" maxlength="13" disabled></input>
-                                                </label>
-                                            </div>
-                                            <div class="col-lg-6"></div>
-                                        </div>
-                                        <div class="row mt-2 ">
-                                            <div class="col-lg-12" >
-                                                <div class="row mx-0 py-3" style="background-color: #fffcf4;">
-                                                    <div class="col-1"></div>
-                                                    <div class="col-lg-5 font-kyc">
-                                                        <span style="font-family:myfont;">วิธีการยืนยันตัวตน </span></br>
-                                                        1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่าน </br>
-                                                        พร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า </br>
-                                                        “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
+                                    <div class="row mt-2 ">
+                                        <div class="col-12" >
+                                            <div class="row mx-0 py-3" style="background-color: #fffcf4;">
+                                                <div class="col-lg-1 col-xl-1 d-none d-lg-block d-xl-block"></div>
+                                                <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                                                    <p style="margin:0;font-weight:800;color: #0f0f0f;">วิธีการยืนยันตัวตน </p>
+                                                    <p style="line-height:1.5;color: #0f0f0f;">
+                                                        1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่านพร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
                                                         2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
                                                         3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
                                                         4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
-                                                        <b style="font-family:myfont;">หมายเหตุ ** กรุณาอัพเดทข้อมูลส่วนตัว</b>
-                                                    </div>
-                                                    <div class="col-lg-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center">
+                                                    <img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            @endif
-                        @endforeach
-                    </form>
-                </div>
-                <div class="col-lg-1"></div>
-            </div>
+                            </div>
+                        @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2" >
+                                            <label class="bgInput field-wrap">
+                                                <p class="fontHeadInput">เลขบัตรประจำตัวประชาชน</p>
+                                                <input name="DEV_ID_CARD" class="input1 p ml-2" minlength="13" maxlength="13" value="{{ $DEV->DEV_ID_CARD }}" disabled></input>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"></div>
+                                    </div>
+                                    <div class="row mt-2 ">
+                                        <div class="col-12" >
+                                            <div class="row mx-0 py-3" style="background-color: #fffcf4;">
+                                                <div class="col-lg-1 col-xl-1 d-none d-lg-block d-xl-block"></div>
+                                                <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                                                    <p style="margin:0;font-weight:800;color: #0f0f0f;">วิธีการยืนยันตัวตน </p>
+                                                    <p style="line-height:1.5;color: #0f0f0f;">
+                                                        1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่าน พร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
+                                                        2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
+                                                        3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
+                                                        4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center">
+                                                    <img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @elseif($userKyc->KYC_STATUS == 'ไม่อนุมัติ')
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2" >
+                                            <label class="bgInput field-wrap">
+                                                <p class="fontHeadInput">เลขบัตรประจำตัวประชาชน</p>
+                                                <input name="DEV_ID_CARD" class="input1 p ml-2" minlength="13" maxlength="13" value="{{ $DEV->DEV_ID_CARD }}" disabled></input>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2"></div>
+                                    </div>
+                                    <div class="row mt-2 ">
+                                        <div class="col-12" >
+                                            <div class="row mx-0 py-3" style="background-color: #fffcf4;">
+                                                <div class="col-lg-1 col-xl-1 d-none d-lg-block d-xl-block"></div>
+                                                <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                                                    <p style="margin:0;font-weight:800;color: #0f0f0f;">วิธีการยืนยันตัวตน </p>
+                                                    <p style="line-height:1.5;color: #0f0f0f;">
+                                                        1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่าน พร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
+                                                        2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
+                                                        3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
+                                                        4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center">
+                                                    <img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" />
+                                                </div>
+                                            </div>
+
+                                            <div class="my-3 line2">
+                                                <label><h1 class="fontHeader">อัพโหลดรูปหลักฐานยืนยันตัวตน</h1></label>
+                                                <label><h5 style="color: #0f0f0f;">(อัพโหลดได้ไม่เกิน 2 mb)</h5></label> 
+                                            </div>
+                                            
+                                            <label id="upload" style="cursor:pointer;" class="font-kyc-upload">
+                                                <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
+                                                <label><h1 class="fontHeader">อัพโหลดรูปภาพ</h1></label>
+                                            </label>
+                                            <div id="thumb" class="thumb-kyc"><img src="home/Kyc/pic-kyc.png"></div>    
+                                            <input id="file_upload" style="display:none" name="KYC_IMG" type="file" accept="image/* "/>
+                                        
+                                            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-2 mt-2" style="padding:0;">
+                                                <button name="submit" value="submit" type="submit" class="btn-submit">
+                                                    <p style="margin:0;">ยืนยัน</p>
+                                                    <input type="hidden" name="KYC_STATUS" value="รออนุมัติ">
+                                                    <input type="hidden" name="KYC_CREATE_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                                                    <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                                    <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
+                                                    <input type="hidden" name="users_type" value="{{ Auth::user()->users_type }}">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @else
+                        <!-- กรุณายืนยันตัวตน -->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2" >
+                                            <label class="bgInput field-wrap">
+                                                <p class="fontHeadInput">เลขบัตรประจำตัวประชาชน</p>
+                                                <input name="DEV_ID_CARD" class="input1 p ml-2" minlength="13" maxlength="13" value="{{ $DEV->DEV_ID_CARD }}" disabled></input>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"></div>
+                                    </div>
+                                    <div class="row mt-2 ">
+                                        <div class="col-12" >
+                                            <div class="row mx-0 py-3" style="background-color: #fffcf4;">
+                                                <div class="col-lg-1 col-xl-1 d-none d-lg-block d-xl-block"></div>
+                                                <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                                                    <p style="margin:0;font-weight:800;color: #0f0f0f;">วิธีการยืนยันตัวตน </p>
+                                                    <p style="line-height:1.5;color: #0f0f0f;">
+                                                        1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่าน พร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
+                                                        2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
+                                                        3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
+                                                        4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
+                                            </div>
+
+                                            <div class="my-3 line2">
+                                                <label><h1 class="fontHeader">อัพโหลดรูปหลักฐานยืนยันตัวตน</h1></label>
+                                                <label><h5 style="color: #0f0f0f;">(อัพโหลดได้ไม่เกิน 2 mb)</h5></label> 
+                                            </div>
+
+                                            <label id="upload" style="cursor:pointer;" class="font-kyc-upload">
+                                                <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
+                                                <label><h1 class="fontHeader">อัพโหลดรูปภาพ</h1></label>
+                                            </label>
+                                            <div id="thumb" class="thumb-kyc"><img src="home/Kyc/pic-kyc.png"></div>    
+                                            <input id="file_upload" style="display:none" name="KYC_IMG" type="file" accept="image/* "/>
+
+                                            <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2 mt-2">
+                                                <button name="submit" value="submit" type="submit" class="btn-submit">
+                                                    <p style="margin:0;">ยืนยัน</p>
+                                                    <input type="hidden" name="KYC_STATUS" value="รออนุมัติ">
+                                                    <input type="hidden" name="KYC_CREATE_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                                                    <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                                    <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
+                                                    <input type="hidden" name="users_type" value="{{ Auth::user()->users_type }}">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @else
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2" >
+                                        <label class="bgInput field-wrap">
+                                                <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขบัตรประจำตัวประชาชน</label> <br>
+                                                <input name="DEV_ID_CARD" class="input1 p ml-2" minlength="13" maxlength="13" disabled></input>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"></div>
+                                </div>
+                                <div class="row mt-2 ">
+                                    <div class="col-12" >
+                                        <div class="row mx-0 py-3" style="background-color: #fffcf4;">
+                                            <div class="col-lg-1 col-xl-1 d-none d-lg-block d-xl-block"></div>
+                                            <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                                                <p style="margin:0;font-weight:800;color: #0f0f0f;">วิธีการยืนยันตัวตน </p>
+                                                <p style="line-height:1.5;color: #0f0f0f;">
+                                                    1. ใช้กระดาษ A4 จำนวน 1 แผ่น ถ่ายรูปท่าน </br>
+                                                    พร้อมบัตรประชาชน / หนังสือเดินทาง เขียนว่า
+                                                    “ใช้สำหรับสมัคร...” ที่ท่านต้องการ</br>
+                                                    2. ลงวันที่ ที่ท่านยืนยันตัวตน</br>
+                                                    3. เซ็นต์ กำกับ ด้วยลายมือของท่านเพื่อเป็นการยืนยัน</br>
+                                                    4. อัพโหลดรูปที่ถ่ายไว้ด้านล่าง</br>
+                                                </p>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center"><img class="kyc-pic2" src="{{asset('home/Kyc/kyc.png') }}" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            </form>
         </div>
     </div>
+    <div class="col-sm-1 col-md-1 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
 </div>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_login"></div>
+        <div class="col-lg-4 col-xl-3 bgSidebar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 bg_login2"></div>
+        <div class="col-lg-8 col-xl-9 bgContent"></div>
     </div>
 </div>
 @endsection

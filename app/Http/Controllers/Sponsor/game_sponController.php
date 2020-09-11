@@ -144,7 +144,7 @@ class game_sponController extends Controller
             // dd($data);
             Package::cartPayment($data);
             // dd("YES");
-            return redirect(route('packagePay', ['id'=>encrypt('list')]));
+            return redirect(route('packagePay', ['id'=>encrypt('list'), 'idT'=>encrypt('null')]));
         }
     }
 

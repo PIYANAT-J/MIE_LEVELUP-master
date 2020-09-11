@@ -1,252 +1,198 @@
-@extends('layout.profile_navbar')
+@extends('layout.dev_navbar')
 @section('content')
-<div class="container-fluid">
-    <div class="row my-5"></div>
-    <div class="row my-2"></div>
-    <div class="row  mt-3">
+<div class="container-fluid" id="getActive" active="{{route('DevShelf')}}">
+    <div class="row py-5" style="background-color: #f5f5f5;"></div>
+    <div class="row  pt-3" style="background-color: #f5f5f5;">
+    @include('profile.sidebar.dev_sidebar')
 
-        <!-- sidebar -->
-        <div class="col-lg-3" style="background-color: #17202c;">
-            <div class="row">
-                <div class="col-lg-1"></div>
-                    @foreach($developer as $Dev)
-                        <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                            <div class="row mb-2">
-                                <div class="col-lg-4 text-right">
-                                    <img class="sidebar-pic" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" />
-                                </div>
-                                <div class="col-lg-8 sidebar_name pt-2">
-                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้พัฒนาระบบ</br>เป็นสมาชิก : </br>{{ Auth::user()->created_at }}</span>
-                                </div>
-                            </div>
-                            <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                                <div class="col-lg-12 text-center">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="btn-point pb-2">
-                                                <span class="font-point">พอยท์</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">0</span>
-                                                <i class="icon-Icon_Point"></i>
-                                            </label>
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="btn-coin pb-2 ">
-                                                <span class="font-point">เหรียญ</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">0</span>
-                                                <i class="icon-Icon_Coin"></i>
-                                            </label>
-                                        </div>
-                                    </div>
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3 pb-4" style="background-color:#f5f5f5;">
+            <div style="background-color:#ffffff;border-radius: 8px;padding:20px;">
+                <div class="row">
+                    <div class="col-12 pb-2">
+                        <h1 class="fontHeader">ตู้เกม (เกมเชล)</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row mt-2 ">
+                            <div class="col-12" >
+                                <div class="row mx-0 py-2" style="background-color:#f2f2f2;color:#000;">
+                                    <div class="col-6 align-self-center"><p style="margin:0;font-weight: 800;">ชื่อเกม</p></div>
+                                    <div class="col-2 align-self-center text-center "><p style="margin:0;font-weight: 800;">ดาวน์โหลด</p></div>
+                                    <div class="col-2 text-center "><p style="margin:0;font-weight: 800;">วันที่อัพเดต</p></div>
+                                    <div class="col-2 text-center "><p style="margin:0;font-weight: 800;">อัพเดตเวอร์ชัน</p></div>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
-                <div class="col-lg-1"></div>
-                <a href="{{ route('DevProfile') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว</button></a>
-                <a href="{{ route('DevKyc') }}" style="width: 100%;"><button class="btn-sidebar"><span style="font-family: myfont1;font-size: 1em;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
-                    @if($userKyc->KYC_STATUS == null)
-                        <span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span>
-                    @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
-                        <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
-                    @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวตนแล้ว</span>
-                    @else
-                        <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
-                    @endif
-                </button></a>
-                <a href="{{ route('DevShelf') }}" style="width: 100%;"><button class="btn-sidebar active"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
-                <a href="{{ route('DevHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
-                <a href="{{ route('DevUpload') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-upload-game menuIcon"></i>อัพโหลดเกม</button></a>
-                <a href="{{ route('DevWithdraw') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-withdraw menuIcon"></i>ถอนเงิน</button></a>
-                <a href="/develper_change_password" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
-                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</button></a> 
-            </div>
-        </div>
-        <!-- sidebar -->
-
-        <div class="col-lg-9" style="background-color: #f5f5f5;">
-            <div class="row mt-4" >
-                <div class="col-lg-1"></div>
-                <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-                    <div class="row">
-                        <div class="col-lg-12 pb-2"><span class="font-profile1">ตู้เกม (เกมเชล)</span></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="row mt-2 ">
-                                <div class="col-lg-12" >
-                                    <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1em;color:#000;">
-                                        <div class="col-5">ชื่อเกม</div>
-                                        <div class="col-3 text-center ">จำนวนดาวน์โหลด</div>
-                                        <div class="col-2 text-center ">วันที่อัพเดต</div>
-                                        <div class="col-2 text-center ">อัพเดตเวอร์ชัน</div>
+                        <div class="row mt-2 row4">
+                            <div class="col-12" >
+                                <!-- <div class="row mx-0 py-2 line2 " style="font-family:myfont;font-size:1.2em;color:#000;">
+                                    <div class="col-5">
+                                        <div class="row">
+                                            <div class="col-4"><img class="shelf-pic" src="{{asset('section/picture_game/game3.png') }}" /></div>
+                                            <div class="col-8 font-game-shelf">
+                                                <div>
+                                                    <span style="font-family:myfont;color:#000;">Time Lie</span><label class="ml-2 px-1" style="color:#000;font-size:0.9em;background-color: #ffd629;border-radius: 6px;">รออนุมัติ</label></br>
+                                                    Online • Other</br>
+                                                    เวอร์ชั่น 1.03</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 text-center"><span class="font-game-shelf">155 ครั้ง</span></div>
+                                    <div class="col-2 text-center"><span class="font-game-shelf">16/05/63</span></div>
+                                    <div class="col-2 text-center">
+                                    <button class="btn-update-game" data-toggle="modal" data-target="#update-version">อัพเดต</button>
+                                    <button class="btn-update-cancel" >ยกเลิก</button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mt-2 row4">
-                                <div class="col-lg-12" >
-                                    <!-- <div class="row mx-0 py-2 line2 " style="font-family:myfont;font-size:1.2em;color:#000;">
-                                        <div class="col-5">
-                                            <div class="row">
-                                                <div class="col-4"><img class="shelf-pic" src="{{asset('section/picture_game/game3.png') }}" /></div>
-                                                <div class="col-8 font-game-shelf">
-                                                    <div>
-                                                        <span style="font-family:myfont;color:#000;">Time Lie</span><label class="ml-2 px-1" style="color:#000;font-size:0.9em;background-color: #ffd629;border-radius: 6px;">รออนุมัติ</label></br>
-                                                        Online • Other</br>
-                                                        เวอร์ชั่น 1.03</span>
-                                                    </div>
+                                <div class="row mx-0 py-2 line2 " style="font-family:myfont;font-size:1.2em;color:#000;">
+                                    <div class="col-5">
+                                        <div class="row">
+                                            <div class="col-4"><img class="shelf-pic" src="{{asset('section/picture_game/game3.png') }}" /></div>
+                                            <div class="col-8 font-game-shelf">
+                                                <div>
+                                                    <span style="font-family:myfont;color:#000;">Time Lie</span><label class="ml-2 px-1" style="color:#000;font-size:0.9em;background-color: #ffd629;border-radius: 6px;">รออนุมัติ</label></br>
+                                                    Online • Other</br>
+                                                    เวอร์ชั่น 1.03
+                                                    
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-3 text-center"><span class="font-game-shelf">155 ครั้ง</span></div>
-                                        <div class="col-2 text-center"><span class="font-game-shelf">16/05/63</span></div>
-                                        <div class="col-2 text-center">
-                                        <button class="btn-update-game" data-toggle="modal" data-target="#update-version">อัพเดต</button>
-                                        <button class="btn-update-cancel" >ยกเลิก</button>
                                         </div>
                                     </div>
-                                    <div class="row mx-0 py-2 line2 " style="font-family:myfont;font-size:1.2em;color:#000;">
-                                        <div class="col-5">
-                                            <div class="row">
-                                                <div class="col-4"><img class="shelf-pic" src="{{asset('section/picture_game/game3.png') }}" /></div>
-                                                <div class="col-8 font-game-shelf">
-                                                    <div>
-                                                        <span style="font-family:myfont;color:#000;">Time Lie</span><label class="ml-2 px-1" style="color:#000;font-size:0.9em;background-color: #ffd629;border-radius: 6px;">รออนุมัติ</label></br>
-                                                        Online • Other</br>
-                                                        เวอร์ชั่น 1.03
-                                                        
-                                                    </div>
+                                    <div class="col-3 text-center"><span class="font-game-shelf">155 ครั้ง</span></div>
+                                    <div class="col-2 text-center"><span class="font-game-shelf">16/05/63</span></div>
+                                    <div class="col-2 text-center">
+                                    <button class="btn-update-game" data-toggle="modal" data-target="#update-version">อัพเดต</button>
+                                    <button class="btn-update-cancel">ยกเลิก</button>
+                                    </div>
+                                </div>
+                                <div class="row mx-0 py-2 line2 " style="font-family:myfont;font-size:1.2em;color:#000;">
+                                    <div class="col-5">
+                                        <div class="row">
+                                            <div class="col-4"><img class="shelf-pic" src="{{asset('section/picture_game/game3.png') }}" /></div>
+                                            <div class="col-8 font-game-shelf">
+                                                <div>
+                                                    <span style="font-family:myfont;color:#000;">Time Lie</span><label class="ml-2 px-1" style="color:#000;font-size:0.9em;background-color: #ffd629;border-radius: 6px;">รออนุมัติ</label></br>
+                                                    Online • Other</br>
+                                                    เวอร์ชั่น 1.03
+                                                    
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-3 text-center"><span class="font-game-shelf">155 ครั้ง</span></div>
-                                        <div class="col-2 text-center"><span class="font-game-shelf">16/05/63</span></div>
-                                        <div class="col-2 text-center">
-                                        <button class="btn-update-game" data-toggle="modal" data-target="#update-version">อัพเดต</button>
-                                        <button class="btn-update-cancel">ยกเลิก</button>
                                         </div>
                                     </div>
-                                    <div class="row mx-0 py-2 line2 " style="font-family:myfont;font-size:1.2em;color:#000;">
-                                        <div class="col-5">
-                                            <div class="row">
-                                                <div class="col-4"><img class="shelf-pic" src="{{asset('section/picture_game/game3.png') }}" /></div>
-                                                <div class="col-8 font-game-shelf">
-                                                    <div>
-                                                        <span style="font-family:myfont;color:#000;">Time Lie</span><label class="ml-2 px-1" style="color:#000;font-size:0.9em;background-color: #ffd629;border-radius: 6px;">รออนุมัติ</label></br>
-                                                        Online • Other</br>
-                                                        เวอร์ชั่น 1.03
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-3 text-center"><span class="font-game-shelf">155 ครั้ง</span></div>
-                                        <div class="col-2 text-center"><span class="font-game-shelf">16/05/63</span></div>
-                                        <div class="col-2 text-center">
-                                        <button class="btn-update-game" data-toggle="modal" data-target="#update-version">อัพเดต</button>
-                                        <button class="btn-update-cancel">ยกเลิก</button>
-                                        </div>
-                                    </div> -->
-                                    @if(isset($game))
-                                        @foreach($game as $Game)
-                                            @if($Game->USER_ID == Auth::user()->id)
-                                                @if(isset($Game->GAME_IMG_PROFILE))
-                                                    <div class="row mx-0 py-2 line2 " style="font-family:myfont;font-size:1.2em;color:#000;">
-                                                        <div class="col-5">
-                                                            <div class="row">
-                                                                <div class="col-4"><img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" /></div>
-                                                                <div class="col-8 font-game-shelf">
-                                                                    <div>
-                                                                        <span style="font-family:myfont;color:#000;font-size:1em;">{{ $Game->GAME_NAME }}</span>
-                                                                        @if($Game->GAME_STATUS == 'รออนุมัติ')
-                                                                            <label class="ml-2 px-1" style="color:#000;font-size:0.7em;background-color: #ffd629;border-radius: 6px;">รออนุมัติ</label></br>
-                                                                        @elseif($Game->GAME_STATUS == 'อนุมัติ')
-                                                                            <label class="ml-2 px-1" style="color:#fff;font-size:0.7em;background-color: #23c197;border-radius: 6px;">อนุมัติ</label></br>
-                                                                        @else
-                                                                            <label class="ml-2 px-1" style="color:#fff;font-size:0.7em;background-color: #ce0005;border-radius: 6px;">ไม่อนุมัติ</label></br>
-                                                                        @endif
-                                                                        <label style="font-size:0.8em;">{{ $Game->RATED_B_L }} • Other</br>เวอร์ชั่น 1.03</label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <span class="font-game-shelf">
-                                                                @foreach($CDownload as $cdown)
-                                                                    @if($cdown->GAME_ID == $Game->GAME_ID && $cdown->GAME_ID != null)
-                                                                        @if($Game->GAME_ID == $cdown->GAME_ID)
-                                                                            {{ $cdown->downloads_count }} ครั้ง
-                                                                        @endif
-                                                                        @break
-                                                                    @else
-                                                                        0 ครั้ง
-                                                                        @break
-                                                                    @endif
-                                                                @endforeach
-                                                            </span>
-                                                        </div>
-                                                        <div class="col-2 text-center">
-                                                            <span class="font-game-shelf2" style="font-size:0.7em;font-family:myfont1;color: #a8a8a8;">
-                                                                @if($Game->GAME_EDIT_DATE == null)
-                                                                    {{ $Game->GAME_DATE }}
-                                                                @else
-                                                                    {{ $Game->GAME_EDIT_DATE }}
-                                                                @endif
-                                                            </span>
-                                                        </div>
-                                                        <div class="col-2 text-center">
+                                    <div class="col-3 text-center"><span class="font-game-shelf">155 ครั้ง</span></div>
+                                    <div class="col-2 text-center"><span class="font-game-shelf">16/05/63</span></div>
+                                    <div class="col-2 text-center">
+                                    <button class="btn-update-game" data-toggle="modal" data-target="#update-version">อัพเดต</button>
+                                    <button class="btn-update-cancel">ยกเลิก</button>
+                                    </div>
+                                </div> -->
+                                @if(isset($game))
+                                    @foreach($game as $Game)
+                                        @if($Game->USER_ID == Auth::user()->id)
+                                            @if(isset($Game->GAME_IMG_PROFILE))
+                                                <div class="row mx-0 py-2 line2 ">
+                                                    <div class="col-6 " style="padding-right:0;">
+                                                        <label><img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" /></label>
+                                                        <label style="padding-left:80px;">
+                                                            <label><p style="margin:0;font-weight:500;">{{ $Game->GAME_NAME }}</p></label>
                                                             @if($Game->GAME_STATUS == 'รออนุมัติ')
-                                                                <form action="{{ route('DevShelfUpdate') }}" method="POST" enctype="multipart/form-data">
-                                                                    @csrf
-                                                                    <button type="hidden" name="submit" value="submit" class="btn-update-cancel">ยกเลิก
-                                                                        <input type="hidden" name="GAME_ID" value="{{ $Game->GAME_ID }}">
-                                                                    </button>
-                                                                </form>
+                                                                <label class="ml-2" style="background-color: #ffd629;border-radius: 6px;padding:5px;margin:0;"><h5 style="margin:0;">รออนุมัติ</h5></label>
                                                             @elseif($Game->GAME_STATUS == 'อนุมัติ')
-                                                                <button class="btn-update-game" data-toggle="modal" data-target="#{{$Game->GAME_NAME}}">อัพเดต</button>
+                                                                <label class="ml-2" style="background-color: #23c197;border-radius: 6px;padding:5px;margin:0;"><h5 style="margin:0;">อนุมัติ</h5></label>
                                                             @else
-                                                                <button class="btn-update-game" data-toggle="modal" data-target="#update-version">อัพเดต</button>
+                                                                <label class="ml-2" style="background-color: #ce0005;border-radius: 6px;padding:5px;margin:0;"><h5 style="margin:0;">ไม่อนุมัติ</h5></label>
                                                             @endif
-                                                        </div>
+                                                            <p style="margin:0;">{{ $Game->RATED_B_L }} • Other</br>เวอร์ชั่น 1.03</p>
+                                                        </label>
                                                     </div>
-                                                @endif
+                                                    <div class="col-2 text-center">
+                                                        <p style="margin:0;">
+                                                            @foreach($CDownload as $cdown)
+                                                                @if($cdown->GAME_ID == $Game->GAME_ID && $cdown->GAME_ID != null)
+                                                                    @if($Game->GAME_ID == $cdown->GAME_ID)
+                                                                        {{ $cdown->downloads_count }} ครั้ง
+                                                                    @endif
+                                                                    @break
+                                                                @else
+                                                                    0 ครั้ง
+                                                                    @break
+                                                                @endif
+                                                            @endforeach
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-2 text-center">
+                                                        <h5 style="color:#a8a8a8;margin:0;">
+                                                            @if($Game->GAME_EDIT_DATE == null)
+                                                                {{ $Game->GAME_DATE }}
+                                                            @else
+                                                                {{ $Game->GAME_EDIT_DATE }}
+                                                            @endif
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-2 text-center">
+                                                        @if($Game->GAME_STATUS == 'รออนุมัติ')
+                                                            <form action="{{ route('DevShelfUpdate') }}" method="POST" enctype="multipart/form-data">
+                                                                @csrf
+                                                                <button type="hidden" name="submit" value="submit" class="btn-update-cancel">
+                                                                    <p style="margin:0;">ยกเลิก</p>
+                                                                    <input type="hidden" name="GAME_ID" value="{{ $Game->GAME_ID }}">
+                                                                </button>
+                                                            </form>
+                                                        @elseif($Game->GAME_STATUS == 'อนุมัติ')
+                                                            <button class="btn-update-game" data-toggle="modal" data-target="#{{$Game->GAME_NAME}}">
+                                                                <p style="margin:0;">อัพเดต</p>
+                                                            </button>
+                                                        @else
+                                                            <button class="btn-update-game" data-toggle="modal" data-target="#update-version">
+                                                                <p style="margin:0;">อัพเดต</p>
+                                                            </button>
+                                                        @endif
+                                                    </div>
+                                                </div>
                                             @endif
-                                        @endforeach
-                                    @endif
-                                </div>
+                                        @endif
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-1"></div>
             </div>
         </div>
+
     </div>
 </div>
+@if(isset($game))
 @foreach($game as $GameModal)
 <div class="modal fade" id="{{$GameModal->GAME_NAME}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog " role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
             <div class="modal-header">
-                <h4 style="color:#000;">อัพเดตเวอร์ชัน</h4>
-                <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
+                <h1 style="color:#000;margin:0;">อัพเดตเวอร์ชัน</h1>
+                <button type="button" class="close btn-closeModal" data-dismiss="modal">
+                    <i class="icon-close_modal" style="font-size: 15px;"></i>
+                </button>
             </div>
             <form action="{{ route('DevShelfUpdate') }}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="modal-body font-rate-modal">
                     <div class="row px-3 mb-2">
-                        <div class="col-lg-12 bg-bank ">
+                        <div class="col-12 bg-bank ">
                             <div class="row ">
                                 @if($Game->USER_ID == Auth::user()->id)
                                     @if(isset($GameModal->GAME_IMG_PROFILE))
-                                    <div class="col-3 my-2"><img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$GameModal->GAME_IMG_PROFILE)}}" /></div>
-                                    <div class="col-5 py-2">
-                                        <span style="font-family:myfont;font-size:1.1em;color:#000;line-height:5px;">{{ $GameModal->GAME_NAME }}</span></br>
-                                        <span style="color:#000;line-height:5px;font-family:myfont1;font-size:1em;">{{ $GameModal->RATED_B_L }} • Other</br>เวอร์ชั่น 1.03</span>
+                                    <div class="col-8 my-2">
+                                        <img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$GameModal->GAME_IMG_PROFILE)}}" />
+                                        <label class="align-self-center" style="padding-left:80px;">
+                                            <p style="color:#000;margin:0;">{{ $GameModal->GAME_NAME }}</p>
+                                            <p style="color:#000;margin:0;">{{ $GameModal->RATED_B_L }} • Other</br>เวอร์ชั่น 1.03</p>
+                                        </label>
                                     </div>
-                                    <div class="col-4 text-center py-4" >
-                                        <span style="color:#000;line-height:5px;font-family:myfont1;font-size:1em;">ขนาดไฟล์ปัจจุบัน</span></br>
-                                        <span style="color:#000;line-height:0px;font-family:myfont;font-size:2em;">{{ $GameModal->GAME_SIZE }}</span>
+                                    <div class="col-4 text-center align-self-center" >
+                                        <p style="color:#000;margin:0;">ขนาดไฟล์ปัจจุบัน</p>
+                                        <h4 style="color:#000;margin:0;font-weight:800;">{{ $GameModal->GAME_SIZE }}</h4>
                                     </div>
                                     @endif
                                 @endif
@@ -255,19 +201,20 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12 mb-2">
-                            <input type="text" class="form-control input-bank" placeholder="เวอร์ชันที่อัพเดต"></input>
+                            <input type="text" class="form-control input2 p" placeholder="เวอร์ชันที่อัพเดต"></input>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <input type="file" class="file" name="GAME_FILE" accept=".zip" require>
-                            <label class="label1 pl-2">เฉพาะไฟล์นามสกุล .zip เท่านั้น</label>
+                            <label class="pl-2 "><h5 style="margin:0;color:#b2b2b2;">เฉพาะไฟล์นามสกุล .zip เท่านั้น</h5></label>
                         </div>
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button name="submit" id="submit" type="submit" value="submit" class="btn-submit-modal" >บันทึก
+                    <button name="submit" id="submit" type="submit" value="submit" class="btn-submit" >
+                        <p style="margin:0;">บันทึก</p>
                         <input type="hidden" name="GAME_NAME" value="{{ $GameModal->GAME_NAME }}">
                         <!-- <input type="hidden" name="GAME_IMG_PROFILE" value="{{ $GameModal->GAME_IMG_PROFILE }}"> -->
                         <input type="hidden" name="GAME_DATE" value="{{ date('Y-m-d H:i:s') }}">
@@ -280,6 +227,7 @@
     </div>
 </div>
 @endforeach
+@endif
 
 <div class="container-fluid">
     <div class="row">

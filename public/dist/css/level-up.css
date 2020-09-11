@@ -908,18 +908,14 @@ overflow: hidden;
   text-align: center;
   background-color: #17202c;
   color: #fff;
-  font-family: myfont1;
-  font-size: 1em;
-  width: 10%;
   line-height: 80%;
+  height: 44px;
 }
 
 .td1{
   text-align: center;
   background-color: #fff;
   color: #000;
-  font-family: myfont1;
-  font-size: 1em;
   border-bottom: #dddddd solid 1px;
   max-width:100%;
   word-wrap: break-word;
@@ -1102,6 +1098,7 @@ overflow: hidden;
   border: 1px solid #17202c;
   background: #17202c;
   width: 100px;
+  padding: 5px;
   
   cursor: pointer;
 }
@@ -2455,8 +2452,19 @@ body {
   cursor: pointer;
   margin: 0 0 0 15px;
 }
+.fontCheckbox {
+  color: #383838;
+  cursor: pointer;
+  margin: 0 0 0 20px;
+}
 .fontChekboxCat {
   color: #ffffff;
+  word-wrap: break-word;
+  cursor: pointer;
+}
+
+.fontChekboxDr {
+  color: #000;
   word-wrap: break-word;
   cursor: pointer;
 }
@@ -3142,7 +3150,6 @@ margin: 30px auto;
 .input-update{
   width: 100%;
   height: 65px;
-  object-fit: contain;
   background-color: #f2f2f2;
   border-left: 5px solid #f2f2f2;
   border-top: none;
@@ -3150,9 +3157,6 @@ margin: 30px auto;
   border-right: none;
   text-align: left;
   padding-left: 10px;
-  margin: 5px 0px 5px 0px;
-  font-family: myfont;
-  font-size: 1.2em;
 }
 .input-update:hover{
   outline: none!important;
@@ -3223,7 +3227,7 @@ input.date{
 .btn-upload-pic:focus{
   outline: none!important;
 }
-
+/* 
 .des-pic{
   object-fit: contain;
   font-family: myfont;
@@ -3234,7 +3238,7 @@ input.date{
   line-height: 1.06;
   letter-spacing: normal;
   color: #b2b2b2;
-}
+} */
 .status-kyc{
   border-radius: 6px;
   background-color: #fc8800;
@@ -3271,7 +3275,9 @@ input.date{
   object-fit: cover;
   border-radius: 8px;
   border: solid 1px #707070;
-  background-color: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 10px;
 }
 /* .font-game-shelf{
   font-family: myfont1;
@@ -3298,14 +3304,10 @@ input.date{
 } */
 
 .btn-update-game {
-  width: 90%;
-  height: 40px;
-  object-fit: contain;
+  padding: 5px 15px;
   border-radius: 6px;
   border: solid 2px #17202c;
   color: #17202c;
-  font-family: myfont;
-  font-size: 0.9em;
   background-color: #fff;
 }
 
@@ -3313,14 +3315,10 @@ input.date{
   outline: none!important;
 }
 .btn-update-cancel {
-  width: 90%;
-  height: 40px;
-  object-fit: contain;
+  padding:5px 15px;
   border-radius: 6px;
   border: solid 2px #ce0005;
   color: #ce0005;
-  font-family: myfont;
-  font-size: 1em;
   background-color: #fff;
 }
 
@@ -3356,14 +3354,14 @@ input.date{
   background-color: #fff;
 }
 
-.select5{
+/* .select5{
   width: 130px;
   height: 35px;
   object-fit: contain;
   border-radius: 5px;
   border: solid 1px #f2f2f2;
   background-color: #f2f2f2;
-}
+} */
 
 .number-rank {
   object-fit: contain;
@@ -3422,14 +3420,20 @@ div.sticky {
 
 
 .custom02 input[type="radio"] {
-	display: none;
+  /* display: none; */
+  position: absolute;
+  z-index: 10;
+  margin-top: 5px;
+  left:-2px;
+  width: 50px;
+  opacity: 0;
+  cursor: pointer;
 }
 .custom02 label {
 	position: relative;
 	display: inline-block;
   padding: 0 0 0 25px;
   margin: 0;
-	cursor: pointer;
 }
 .custom02 label::before,
 .custom02 label::after {
@@ -3766,23 +3770,17 @@ input[type="checkbox"].switch_1{
 }
 
 .inputfile {
-    width: 0.1em;
-    height: 0.1em;
     opacity: 0;
     overflow: hidden;
     position: absolute;
     z-index: -1;
-    font-family: myfont;
     border-radius: 6px;
     color: #fff;
 }
 
 .inputfile + label {
     max-width: auto;
-    font-family: myfont;
-    font-size: 1.25rem;
     border-radius: 6px;
-    height: 55px;
     padding: 10px 10px ;
     margin: 0;
     /* 20px */
@@ -3865,33 +3863,31 @@ ul.thumb-Images li {
 }
 
 .img-close{
-  width: 30px;
+  width: 12px;
   height: auto;
   position: absolute;
-  top: -3px;
-  right: -3px;
+  top: 2.5px;
+  right: 3px;
   border-radius: 8px;
 }
 
 .img-wrap {
   position: relative;
   display: inline-block;
+  font-size: 15px;
 }
 
 
 .img-wrap .close {
   position: absolute;
-  width: 25px;
-  height: 25px;
-  top: 8px;
-  right: 9px;
+  width: 18px;
+  height: 18px;
+  top: 5px;
+  right: 5px;
   z-index: 8;
   background-color: #050505;
-  padding: 5px 2px 2px;
   color: #000;
-  font-weight: bolder;
   cursor: pointer;
-  font-size: 23px;
   line-height: 10px;
   border-radius: 50%;
   padding: 6px 0 0 6px;
@@ -3906,7 +3902,11 @@ ul.thumb-Images li {
 
 .FileNameCaptionStyle {
   font-family: myfont1;
-  font-size: 1.1em;
+  font-size: 14px;
+  width: 80px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .select-bank{
@@ -3944,8 +3944,6 @@ ul.thumb-Images li {
 }
 
 .topnav2 a{
-  font-family: myfont1;
-  font-size: 1em;
   color: #a8a8a8;
   background-color: #f5f5f5;
   border-bottom: 3px solid #f5f5f5;
@@ -3969,8 +3967,6 @@ ul.thumb-Images li {
 
 .status-wait-approve{
   background-color: #f6c7a5;
-  font-family: myfont1;
-  font-size: 0.9em;
   color: #f57120;
   width: 100%;
   border-radius: 4px;
@@ -3979,8 +3975,6 @@ ul.thumb-Images li {
 
 .status-approve{
   background-color: #e7f2e5;
-  font-family: myfont1;
-  font-size: 0.9em;
   color: #5fb156;
   width: 100%;
   border-radius: 4px;
@@ -3988,8 +3982,6 @@ ul.thumb-Images li {
 }
 .status-approve2{
   background-color: #e7f2e5;
-  font-family: myfont1;
-  font-size: 1em;
   color: #5fb156;
   width: 100%;
   border-radius: 4px;
@@ -4000,8 +3992,6 @@ ul.thumb-Images li {
 
 .status-none-approve{
   background-color: #edd0d5;
-  font-family: myfont1;
-  font-size: 0.9em;
   color:#ce0005;
   width: 100%;
   border-radius: 4px;
@@ -4010,8 +4000,6 @@ ul.thumb-Images li {
 
 .status-none-approve2{
   background-color: #edd0d5;
-  font-family: myfont1;
-  font-size: 0.9em;
   color:#ce0005;
   width: 100%;
   border-radius: 4px;
@@ -4039,8 +4027,6 @@ ul.thumb-Images li {
   background-color: #f2f2f2;
   border: 1px solid #f2f2f2;
   border-radius: 6px;
-  font-size:1em;
-  font-family: myfont1;
 }
 
 .input-disable:focus{
@@ -7328,10 +7314,8 @@ input[type="checkbox"].switch_2{
   background-color: #202433;
 }
 .bgT10ListBankingPay{
-  background-color: #ce0005;
-  font-family: myfont1;
-  font-size: 1em;
-  color: #fff;
+  background-color:#edd0d5;
+  color: #ce0005;
   border-radius: 6px;
   padding: 0 10px 0 10px;
   cursor: pointer;
@@ -7549,10 +7533,8 @@ input[type="checkbox"].switch_2{
 }
 
 .bgGreen{
-  background-color: #23c197;
-  font-family: myfont1;
-  font-size: 1em;
-  color: #fff;
+  background-color: #e7f2e5;
+  color: #5fb156;
   border-radius: 6px;
   padding: 0 10px 0 10px;
   cursor: pointer;
@@ -8068,7 +8050,7 @@ input[type="checkbox"].switch_2{
 
 .thumbAvatar {
   width:auto; 
-  height:20em; 
+  height:25em; 
   overflow: hidden;
   border: solid 5px #ffffff;
   border-radius:6px;}
@@ -8158,4 +8140,83 @@ input[type="checkbox"].switch_2{
   padding: 0;
   background-color: #f2f2f2;
   border: none;
+}
+
+.pCart{
+  position: absolute;
+  top: 5px0;
+  right: 10px;
+}
+
+.font-cart{
+  font-family: myfont1;
+  font-size:12px;
+  color: #fff;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 5px;
+  background-color: #ce0005;
+  padding: 5px;
+  border-radius: 50px;
+  line-height: 0.5;
+  
+}
+
+.btn-topup-wait{
+  padding: 5px;
+  background-color: #ffd549;
+  border-radius: 6px;
+  border: none;
+}
+
+.btn-topup-wait:focus{
+  outline: none;
+}
+
+/* checkbox admin */
+.checkboxAdmin input[type="checkbox"] {
+  display: none;
+}
+
+.checkboxAdmin label {
+  position: relative;
+  display: inline-block;
+  padding-left: 5px;
+}
+
+.checkboxAdmin label::before,
+.checkboxAdmin label::after {
+  position: absolute;
+  content: "";
+  display: inline-block;
+}
+
+.checkboxAdmin label::before{
+  height: 16px;
+  width: 16px;
+  border: 2px solid #ce0005;
+  left: 1px;
+  border-radius: 4px;
+  top: 3px;
+  cursor: pointer;
+}
+
+.checkboxAdmin label::after {
+  height: 5px;
+  width: 9px;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+  color: #ce0005;
+  transform: rotate(-45deg);
+  top: 7px;
+  cursor: pointer;
+}
+
+.checkboxAdmin input[type="checkbox"] + label::after {
+  content: none;
+}
+
+.checkboxAdmin input[type="checkbox"]:checked + label::after {
+  content: "";
 }
