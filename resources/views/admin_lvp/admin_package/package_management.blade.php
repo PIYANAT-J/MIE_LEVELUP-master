@@ -117,7 +117,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -125,6 +124,7 @@
             </div>
         </div>
     </div>
+</div>
 
 <div class="modal fade" id="AddPackage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
@@ -136,63 +136,67 @@
                 <div class="col-1"></div>
             </div>
 
-            <div class="modal-body">                        
-                <div class="row">
-                    <div class="col-12 pl-4">
-                        <p style="margin:0;">ข้อมูลแพ็กเกจ</p>
+            <div class="modal-body">   
+                <form action="{{route('addPackage')}}" method="post">
+                    @csrf                     
+                    <div class="row">
+                        <div class="col-12 pl-4">
+                            <p style="margin:0;">ข้อมูลแพ็กเกจ</p>
+                        </div>
+                        <div class="col-12">
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">ชื่อแพ็กเกจ</p>
+                                <input name="package_name" value="{{old('package_name')}}" type="text" class="input1 p ml-2" required autofocus>
+                            </label>
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">ราคาแพ็กเกจ</p>
+                                <input name="package_amount" value="{{old('package_amount')}}" type="text" class="input1 p ml-2" required autofocus>
+                            </label>
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">ระยะเวลา</p>
+                                <select class="MySelect p pl-2" type="text" name="package_season">
+                                    <option value="1">1 เดือน</option>
+                                    <option value="3">3 เดือน</option>
+                                    <option value="6">6 เดือน</option>
+                                    <option value="">1 ปี</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="col-12 pl-4 mt-2">
+                            <p style="margin:0;">รายละเอียดแพ็กเกจ</p>
+                        </div>
+                        <div class="col-12">
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">เลือกสนุบสนุนเกมได้ทั้งหมด/เกม</p>
+                                <input name="package_game" value="{{old('package_game')}}" class="input1 p ml-2" required autofocus>
+                            </label>
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">ความยาวโฆษณา</p>
+                                <select class="MySelect p pl-2" type="text" name="package_length">>
+                                    <option value="15">15 วินาที</option>
+                                    <option value="30">30 วินาที</option>
+                                    <option value="45">45 วินาที</option>
+                                    <option value="1">1 นาที</option>
+                                </select>
+                            </label>
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">จำนวนรอบโฆษณา</p>
+                                <input name="package_advt" value="{{old('package_advt')}}" class="input1 p ml-2" required autofocus>
+                            </label>
+                        </div>
                     </div>
-                    <div class="col-12">
-                        <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">ชื่อแพ็กเกจ</p>
-                            <input id="name" type="text" class="input1 p ml-2" required autofocus>
-                        </label>
-                        <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">ราคาแพ็กเกจ</p>
-                            <input id="name" type="text" class="input1 p ml-2" required autofocus>
-                        </label>
-                        <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">ระยะเวลา</p>
-                            <select class="MySelect p pl-2" type="text" name="text4">
-                                <option value="">1 เดือน</option>
-                                <option value="">3 เดือน</option>
-                                <option value="">6 เดือน</option>
-                                <option value="">1 ปี</option>
-                            </select>
-                        </label>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <button name="submit" value="submit" class="btn-submit-red">
+                                <p style="margin:0;">ยืนยัน</p>
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-12 pl-4 mt-2">
-                        <p style="margin:0;">รายละเอียดแพ็กเกจ</p>
-                    </div>
-                    <div class="col-12">
-                        <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">เลือกสนุบสนุนเกมได้ทั้งหมด/เกม</p>
-                            <input class="input1 p ml-2" required autofocus>
-                        </label>
-                        <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">ความยาวโฆษณา</p>
-                            <select class="MySelect p pl-2" type="text" name="text4">
-                                <option value="">15 วินาที</option>
-                                <option value="">30 วินาที</option>
-                                <option value="">45 วินาที</option>
-                                <option value="">1 นาที</option>
-                            </select>
-                        </label>
-                        <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">จำนวนรอบโฆษณา</p>
-                            <input class="input1 p ml-2" required autofocus>
-                        </label>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-12">
-                        <button type="button" class="btn-submit-red">
-                            <p style="margin:0;">ยืนยัน</p>
-                        </button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
 <div class="modal fade" id="EditPackage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
@@ -255,16 +259,17 @@
             </div>
         </div>
     </div>
+</div>   
 
-    <div class="modal fade" id="PackageDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="col-1"></div>
-                    <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">รายละเอียดแพ็กเกจโฆษณา</div>
-                    <button type="button" class="close btn-closeModal " data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
-                    <div class="col-1"></div>
-                </div>
+<div class="modal fade" id="PackageDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-1"></div>
+                <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">รายละเอียดแพ็กเกจโฆษณา</div>
+                <button type="button" class="close btn-closeModal " data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
+                <div class="col-1"></div>
+            </div>
 
             <div class="modal-body font-rate-modal">                        
                 <div class="row ">
@@ -336,8 +341,10 @@
             </div>
         </div>
     </div>
+</div>
 
-<div class="modal fade" id="pendingApprove" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach($advertising as $key=>$advertisingModal)
+<div class="modal fade" id="pendingApprove{{$advertisingModal->advertising_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -350,24 +357,30 @@
             <div class="modal-body font-rate-modal">
                 <div class="row">
                     <div class="col-12">
-                    <iframe style="width:100%;height:385px;" src="https://www.youtube.com/embed/grOw65QnD7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe style="width:100%;height:385px;" src="{{$advertisingModal->advertising_link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
-                    <div class="col-12 mb-2 pl-4 custom02">
-                        <input type="radio" name="Approve" id="approve">
-                        <label for="approve" style="color:#000;">อนุมัติ</label>
-                    </div>
-                    <div class="col-12 mb-2 pl-4 custom02">
-                        <input type="radio" name="Approve" id="noneapprove">
-                        <label for="noneapprove" style="color:#000;">ไม่ใอนุมัติ</label>
-                    </div>
-                    <div class="col-12">
-                        <button type="button" class="btn-submit-modal-red">ยืนยัน</button>
-                    </div>
+                    <form action="{{route('Advertising')}}" method="post">
+                        @csrf
+                        <div class="col-12 mb-2 pl-4 custom02">
+                            <input type="radio" name="advertising_status" id="approve{{$key}}" value="true">
+                            <label for="approve{{$key}}" style="color:#000;">อนุมัติ</label>
+                        </div>
+                        <div class="col-12 mb-2 pl-4 custom02">
+                            <input type="radio" name="advertising_status" id="noneapprove{{$key}}" value="false">
+                            <label for="noneapprove{{$key}}" style="color:#000;">ไม่ใอนุมัติ</label>
+                        </div>
+                        <div class="col-12">
+                            <button name="submit" value="submit" class="btn-submit-modal-red">ยืนยัน</button>
+                            <input type="hidden" name="advertising_id" value="{{$advertisingModal->advertising_id}}">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-<div class="modal fade" id="Approve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Approve{{$advertisingModal->advertising_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -383,24 +396,24 @@
                         <label class="status-approve2" >อนุมัติแล้ว</label>
                     </div>
                     <div class="col-12">
-                    <iframe style="width:100%;height:385px;" src="https://www.youtube.com/embed/grOw65QnD7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe style="width:100%;height:385px;" src="{{$advertisingModal->advertising_link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
         </div>
-            <div class="modal-body font-rate-modal">
-                <div class="row">
-                    <div class="col-12">
-                        <label class="status-none-approve2">ไม่ผ่านการอนุมัติ</label>
-                    </div>
-                    <div class="col-12">
-                    <iframe style="width:100%;height:385px;" src="https://www.youtube.com/embed/grOw65QnD7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
+        <!-- <div class="modal-body font-rate-modal">
+            <div class="row">
+                <div class="col-12">
+                    <label class="status-none-approve2">ไม่ผ่านการอนุมัติ</label>
+                </div>
+                <div class="col-12">
+                <iframe style="width:100%;height:385px;" src="https://www.youtube.com/embed/grOw65QnD7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
-        </div>
-    @endforeach
+        </div> -->
+    </div>
 </div>
+@endforeach
 
 
 <!-- พื้นหลัง -->
