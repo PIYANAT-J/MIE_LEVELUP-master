@@ -29,7 +29,7 @@ class CreateSponsorsTable extends Migration
             $table->string('ZIPCODE_ID')->collation('utf8_unicode_ci')->nullable();
             $table->integer('USER_ID')->nullable();
             $table->string('USER_EMAIL')->unique()->collation('utf8_unicode_ci');
-            $table->timestamp('DATE_CREATE');
+            $table->timestamp('DATE_CREATE')->nullable();
             $table->timestamp('DATE_MODIFY')->nullable();
         });
     }
