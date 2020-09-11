@@ -32,19 +32,59 @@
                     <div class="row mx-0" >
                         <div class="col-12">
                             <div class="tab-content">
-                                    <div id="topup1" class="tab-pane active">
-                                        <div class="row" >
-                                            <div class="col-1 py-3 th1 p">#</div>
-                                            <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
-                                            <div class="col-3 py-3 th1 p">ชื่อแพ็กเกจ</div>
-                                            <div class="col-2 py-3 th1 p">สถานะ</div>
-                                            <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
-                                            <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
+                                <div id="topup1" class="tab-pane active">
+                                    <div class="row" >
+                                        <div class="col-1 py-3 th1 p">#</div>
+                                        <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
+                                        <div class="col-3 py-3 th1 p">ชื่อแพ็กเกจ</div>
+                                        <div class="col-2 py-3 th1 p">สถานะ</div>
+                                        <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
+                                        <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
+                                    </div>
+                                    <div class="row row4"> 
+                                        <div class="col-lg-12">
+                                            <?php $i = 1; ?>
+                                            @foreach($transfer as $transferList)
+                                                <div class="row">
+                                                    <div class="col-1 py-1 td1 p">{{ $i }}</div>
+                                                    <div class="col-3 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
+                                                        @if(isset($transferList->packageBuy_name))
+                                                            <div class="col-3 py-1 td1 p">{{$transferList->packageBuy_name}}</div>
+                                                        @else
+                                                            <div class="col-3 py-1 td1 p">รายเกม</div>
+                                                        @endif
+                                                    <div class="col-2 py-1 td1 p">
+                                                        @if($transferList->transferStatus == "รอการอนุมัติ")
+                                                            <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$transferList->id}}">รอการตรวจสอบ</label>
+                                                        @elseif($transferList->transferStatus == "อนุมัติแล้ว")
+                                                            <label class="status-approve" data-toggle="modal" data-target="#Approve{{$transferList->id}}">อนุมัติแล้ว</label>
+                                                        @elseif($transferList->transferStatus == "ไม่อนุมัติ")
+                                                            <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1{{$transferList->id}}">ไม่ผ่านการอนุมัติ</label>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-1 py-1 td1 p">{{ $transferList->admin_name }}</div>
+                                                    <div class="col-2 py-1 td1 p">{{explode(' ',$transferList->confirm_at)[0]}}</div>
+                                                </div>
+                                                <?php $i = $i+1; ?>
+                                            @endforeach
                                         </div>
-                                        <div class="row row4"> 
-                                            <div class="col-lg-12">
-                                                <?php $i = 1; ?>
-                                                @foreach($transfer as $transferList)
+                                    </div>
+                                </div>
+                            
+                                <div id="topup2" class="tab-pane">
+                                    <div class="row" >
+                                        <div class="col-1 py-3 th1 p">#</div>
+                                        <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
+                                        <div class="col-3 py-3 th1 p">ชื่อแพ็กเกจ</div>
+                                        <div class="col-2 py-3 th1 p">สถานะ</div>
+                                        <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
+                                        <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
+                                    </div>
+                                    <div class="row row4"> 
+                                        <div class="col-lg-12">
+                                            <?php $i = 1; ?>
+                                            @foreach($transfer as $transferList)
+                                                @if($transferList->transferStatus == "รอการอนุมัติ")
                                                     <div class="row">
                                                         <div class="col-1 py-1 td1 p">{{ $i }}</div>
                                                         <div class="col-3 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
@@ -54,56 +94,14 @@
                                                                 <div class="col-3 py-1 td1 p">รายเกม</div>
                                                             @endif
                                                         <div class="col-2 py-1 td1 p">
-                                                            @if($transferList->transferStatus == "รอการอนุมัติ")
-                                                                <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$transferList->id}}">รอการตรวจสอบ</label>
-                                                            @elseif($transferList->transferStatus == "อนุมัติแล้ว")
-                                                                <label class="status-approve" data-toggle="modal" data-target="#Approve{{$transferList->id}}">อนุมัติแล้ว</label>
-                                                            @elseif($transferList->transferStatus == "ไม่อนุมัติ")
-                                                                <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1{{$transferList->id}}">ไม่ผ่านการอนุมัติ</label>
-                                                            @endif
+                                                            <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$transferList->id}}">รอการตรวจสอบ</label>
                                                         </div>
                                                         <div class="col-1 py-1 td1 p">{{ $transferList->admin_name }}</div>
                                                         <div class="col-2 py-1 td1 p">{{explode(' ',$transferList->confirm_at)[0]}}</div>
                                                     </div>
                                                     <?php $i = $i+1; ?>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                    <div id="topup2" class="tab-pane">
-                                        <div class="row" >
-                                            <div class="col-1 py-3 th1 p">#</div>
-                                            <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
-                                            <div class="col-3 py-3 th1 p">ชื่อแพ็กเกจ</div>
-                                            <div class="col-2 py-3 th1 p">สถานะ</div>
-                                            <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
-                                            <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
-                                        </div>
-                                        <div class="row row4"> 
-                                            <div class="col-lg-12">
-                                                <?php $i = 1; ?>
-                                                @foreach($transfer as $transferList)
-                                                    @if($transferList->transferStatus == "รอการอนุมัติ")
-                                                        <div class="row">
-                                                            <div class="col-1 py-1 td1 p">{{ $i }}</div>
-                                                            <div class="col-3 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
-                                                                @if(isset($transferList->packageBuy_name))
-                                                                    <div class="col-3 py-1 td1 p">{{$transferList->packageBuy_name}}</div>
-                                                                @else
-                                                                    <div class="col-3 py-1 td1 p">รายเกม</div>
-                                                                @endif
-                                                            <div class="col-2 py-1 td1 p">
-                                                                <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$transferList->id}}">รอการตรวจสอบ</label>
-                                                            </div>
-                                                            <div class="col-1 py-1 td1 p">{{ $transferList->admin_name }}</div>
-                                                            <div class="col-2 py-1 td1 p">{{explode(' ',$transferList->confirm_at)[0]}}</div>
-                                                        </div>
-                                                        <?php $i = $i+1; ?>
-                                                    @endif
-                                                @endforeach
-                                            </div>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -135,38 +133,37 @@
                                     </div>
                                 </div>
 
-                                    <div id="topup4" class="tab-pane">
-                                        <div class="row" >
-                                            <div class="col-1 py-3 th1 p">#</div>
-                                            <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
-                                            <div class="col-3 py-3 th1 p">ชื่อแพ็กเกจ</div>
-                                            <div class="col-2 py-3 th1 p">สถานะ</div>
-                                            <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
-                                            <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
-                                        </div>
-                                        <div class="row row4"> 
-                                            <div class="col-lg-12">
-                                            <?php $i = 1; ?>
-                                                @foreach($transfer as $transferList)
-                                                    @if($transferList->transferStatus == "อนุมัติแล้ว")
-                                                        <div class="row">
-                                                            <div class="col-1 py-1 td1 p">{{ $i }}</div>
-                                                            <div class="col-3 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
-                                                                @if(isset($transferList->packageBuy_name))
-                                                                    <div class="col-3 py-1 td1 p">{{$transferList->packageBuy_name}}</div>
-                                                                @else
-                                                                    <div class="col-3 py-1 td1 p">รายเกม</div>
-                                                                @endif
-                                                            <div class="col-2 py-1 td1 p">
-                                                                <label class="status-approve" data-toggle="modal" data-target="#Approve{{$transferList->id}}">อนุมัติแล้ว</label>
-                                                            </div>
-                                                            <div class="col-1 py-1 td1 p">{{ $transferList->admin_name }}</div>
-                                                            <div class="col-2 py-1 td1 p">{{explode(' ',$transferList->confirm_at)[0]}}</div>
+                                <div id="topup4" class="tab-pane">
+                                    <div class="row" >
+                                        <div class="col-1 py-3 th1 p">#</div>
+                                        <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
+                                        <div class="col-3 py-3 th1 p">ชื่อแพ็กเกจ</div>
+                                        <div class="col-2 py-3 th1 p">สถานะ</div>
+                                        <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
+                                        <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
+                                    </div>
+                                    <div class="row row4"> 
+                                        <div class="col-lg-12">
+                                        <?php $i = 1; ?>
+                                            @foreach($transfer as $transferList)
+                                                @if($transferList->transferStatus == "อนุมัติแล้ว")
+                                                    <div class="row">
+                                                        <div class="col-1 py-1 td1 p">{{ $i }}</div>
+                                                        <div class="col-3 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
+                                                            @if(isset($transferList->packageBuy_name))
+                                                                <div class="col-3 py-1 td1 p">{{$transferList->packageBuy_name}}</div>
+                                                            @else
+                                                                <div class="col-3 py-1 td1 p">รายเกม</div>
+                                                            @endif
+                                                        <div class="col-2 py-1 td1 p">
+                                                            <label class="status-approve" data-toggle="modal" data-target="#Approve{{$transferList->id}}">อนุมัติแล้ว</label>
                                                         </div>
-                                                        <?php $i = $i+1; ?>
-                                                    @endif
-                                                @endforeach
-                                            </div>
+                                                        <div class="col-1 py-1 td1 p">{{ $transferList->admin_name }}</div>
+                                                        <div class="col-2 py-1 td1 p">{{explode(' ',$transferList->confirm_at)[0]}}</div>
+                                                    </div>
+                                                    <?php $i = $i+1; ?>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -195,8 +192,16 @@
                     <div class="col-6">
                         <div class="row bgInput field-wrap my-1">
                             <div class="px-2 pt-1 ">
-                                <img class="mr-2" src="{{asset('home/logo/scb.svg') }}" />
-                                <label><p style="margin:0;color:#000;">ธนาคารไทยพาณิชย์</p></label>
+                                <img class="mr-2" src="{{asset('home/logo/'.$transferModal->transferฺBank_name.'.svg') }}" />
+                                    @if($transferModal->transferฺBank_name == "bangkok")
+                                        <label><p style="margin:0;color:#000;">ธนาคารกรุงเทพ</p></label>
+                                    @elseif($transferModal->transferฺBank_name == "ktc")
+                                        <label><p style="margin:0;color:#000;">ธนาคารกรุงไทย</p></label>
+                                    @elseif($transferModal->transferฺBank_name == "kbank")
+                                        <label><p style="margin:0;color:#000;">ธนาคารกสิกรไทย</p></label>
+                                    @elseif($transferModal->transferฺBank_name == "scb")
+                                        <label><p style="margin:0;color:#000;">ธนาคารไทยพาณิชย์</p></label>
+                                    @endif
                                 <label><h5 style="margin:0;color:#000;">(ธนาคารที่โอนเข้า)</h5></label>
                             </div>
                         </div>
@@ -209,13 +214,13 @@
                             <div class="col-6" style="padding-right:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">ยอดเงินที่ต้องชำระ</p>
-                                    <input type="text" class="input1 p pl-2"disabled>
+                                    <input type="text" value="{{$transferModal->transferAmount}}" class="input1 p pl-2"disabled>
                                 </label>
                             </div>
                             <div class="col-6" style="padding-left:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">ยอดเงินที่ชำระจริง</p>
-                                    <input type="text" class="input1 p pl-2" disabled>
+                                    <input type="text" value="{{$transferModal->transferAmount}}" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
                         </div>
@@ -223,13 +228,13 @@
                             <div class="col-6" style="padding-right:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">วันที่ชำระ</p>
-                                    <input type="text" class="input1 p pl-2" disabled>
+                                    <input type="text" value="{{explode(' ',$transferModal->update_at)[0]}}" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
                             <div class="col-6" style="padding-left:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">เวลาที่ชำระ</p>
-                                    <input type="text" class="input1 p pl-2" disabled>
+                                    <input type="text" value="{{explode(' ',$transferModal->update_at)[1]}}" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
                         </div>
@@ -239,31 +244,29 @@
                             @csrf
                             <div id="userKYC{{$key}}" class="custom02">
                                 <div data-toggle="modal">
-                                    <input type="radio" name="transferStatus" value="อนุมัติแล้ว" id="approve">
-                                    <label for="approve"><p style="color:#000;margin:0;">อนุมัติ</p></label>
+                                    <input type="radio" name="transferStatus" value="อนุมัติแล้ว" id="approve{{$key}}">
+                                    <label for="approve{{$key}}"><p style="color:#000;margin:0;">อนุมัติ</p></label>
                                 </div>
                                 <div>
-                                    <input type="radio" name="transferStatus" value="ไม่อนุมัติ" id="noneApprove">
-                                    <label for="noneApprove" ><p style="color:#000;margin:0;">ไม่อนุมัติ</p></label>
+                                    <input type="radio" name="transferStatus" value="ไม่อนุมัติ" id="noneApprove{{$key}}">
+                                    <label for="noneApprove{{$key}}" ><p style="color:#000;margin:0;">ไม่อนุมัติ</p></label>
                                 </div>
                                 <div class="noneApprovelist">
                                     <div for="noneApprovelabel"><p style="color:#000;margin:0;">หมายเหตุ</p></div>
-                                    <div name="noneApprovediv" form="userKYC">
+                                    <div name="noneApprovediv" form="userKYC{{$key}}">
                                         <textarea class="input1 p pl-2" placeholder="รายละเอียด" row="3"  require></textarea>
                                     </div>
                                 </div>
                             </div>
-                            <button name="submit" value="submit" class="btn-submit-red">
-                                <p style="margin:0;">ยืนยัน</p>
-                            </button>
-                            <input type="hidden" name="confirm_at">  
-                            <input type="hidden" name="id">
+                            <button name="submit" value="submit" class="btn-submit-red"><p style="margin:0;">ยืนยัน</p></button>
+                            <input type="hidden" name="transferInvoice" value="{{$transferModal->transferInvoice}}">
+                            <input type="hidden" name="id" value="{{$transferModal->id}}">
                         </form>
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-12 pb-1 text-center">
-                        <img style="width:70%;" src="{{asset('home/topup/01.jpg') }}" >
+                        <img style="width:70%;" src="{{asset('section/Transfer_Img/'.$transferModal->transferImg) }}" >
                     </div>
                 </div>
             </div>
@@ -286,8 +289,16 @@
                         <label class="status-approve2 p" style="text-align:center;">อนุมัติแล้ว</label>
                         <div class="row bgInput field-wrap my-1">
                             <div class="px-2 pt-1 ">
-                                <img class="mr-2" src="{{asset('home/logo/scb.svg') }}" />
-                                <label><p style="margin:0;color:#000;">ธนาคารไทยพาณิชย์</p></label>
+                                <img class="mr-2" src="{{asset('home/logo/'.$transferModal->transferฺBank_name.'.svg') }}" />
+                                    @if($transferModal->transferฺBank_name == "bangkok")
+                                        <label><p style="margin:0;color:#000;">ธนาคารกรุงเทพ</p></label>
+                                    @elseif($transferModal->transferฺBank_name == "ktc")
+                                        <label><p style="margin:0;color:#000;">ธนาคารกรุงไทย</p></label>
+                                    @elseif($transferModal->transferฺBank_name == "kbank")
+                                        <label><p style="margin:0;color:#000;">ธนาคารกสิกรไทย</p></label>
+                                    @elseif($transferModal->transferฺBank_name == "scb")
+                                        <label><p style="margin:0;color:#000;">ธนาคารไทยพาณิชย์</p></label>
+                                    @endif
                                 <label><h5 style="margin:0;color:#000;">(ธนาคารที่โอนเข้า)</h5></label>
                             </div>
                         </div>
@@ -300,13 +311,13 @@
                             <div class="col-6" style="padding-right:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">ยอดเงินที่ต้องชำระ</p>
-                                    <input type="text" class="input1 p pl-2"disabled>
+                                    <input type="text" value="{{$transferModal->transferAmount}}" class="input1 p pl-2"disabled>
                                 </label>
                             </div>
                             <div class="col-6" style="padding-left:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">ยอดเงินที่ชำระจริง</p>
-                                    <input type="text" class="input1 p pl-2" disabled>
+                                    <input type="text" value="{{$transferModal->transferAmount}}" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
                         </div>
@@ -314,13 +325,13 @@
                             <div class="col-6" style="padding-right:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">วันที่ชำระ</p>
-                                    <input type="text" class="input1 p pl-2" disabled>
+                                    <input type="text" value="{{explode(' ',$transferModal->update_at)[0]}}" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
                             <div class="col-6" style="padding-left:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">เวลาที่ชำระ</p>
-                                    <input type="text" class="input1 p pl-2" disabled>
+                                    <input type="text" value="{{explode(' ',$transferModal->update_at)[1]}}" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
                         </div>
@@ -328,7 +339,7 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-12 pb-1 text-center">
-                        <img style="width:70%;" src="{{asset('home/topup/01.jpg') }}" >
+                        <img style="width:70%;" src="{{asset('section/Transfer_Img/'.$transferModal->transferImg) }}" >
                     </div>
                 </div>
             </div>
@@ -351,8 +362,16 @@
                         <label class="status-approve2 p" style="text-align:center;">อนุมัติแล้ว</label>
                         <div class="row bgInput field-wrap my-1">
                             <div class="px-2 pt-1 ">
-                                <img class="mr-2" src="{{asset('home/logo/scb.svg') }}" />
-                                <label><p style="margin:0;color:#000;">ธนาคารไทยพาณิชย์</p></label>
+                                <img class="mr-2" src="{{asset('home/logo/'.$transferModal->transferฺBank_name.'.svg') }}" />
+                                    @if($transferModal->transferฺBank_name == "bangkok")
+                                        <label><p style="margin:0;color:#000;">ธนาคารกรุงเทพ</p></label>
+                                    @elseif($transferModal->transferฺBank_name == "ktc")
+                                        <label><p style="margin:0;color:#000;">ธนาคารกรุงไทย</p></label>
+                                    @elseif($transferModal->transferฺBank_name == "kbank")
+                                        <label><p style="margin:0;color:#000;">ธนาคารกสิกรไทย</p></label>
+                                    @elseif($transferModal->transferฺBank_name == "scb")
+                                        <label><p style="margin:0;color:#000;">ธนาคารไทยพาณิชย์</p></label>
+                                    @endif
                                 <label><h5 style="margin:0;color:#000;">(ธนาคารที่โอนเข้า)</h5></label>
                             </div>
                         </div>
@@ -365,13 +384,13 @@
                             <div class="col-6" style="padding-right:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">ยอดเงินที่ต้องชำระ</p>
-                                    <input type="text" class="input1 p pl-2"disabled>
+                                    <input type="text" value="{{$transferModal->transferAmount}}" class="input1 p pl-2"disabled>
                                 </label>
                             </div>
                             <div class="col-6" style="padding-left:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">ยอดเงินที่ชำระจริง</p>
-                                    <input type="text" class="input1 p pl-2" disabled>
+                                    <input type="text" value="{{$transferModal->transferAmount}}" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
                         </div>
@@ -379,13 +398,13 @@
                             <div class="col-6" style="padding-right:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">วันที่ชำระ</p>
-                                    <input type="text" class="input1 p pl-2" disabled>
+                                    <input type="text" value="{{explode(' ',$transferModal->update_at)[0]}}" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
                             <div class="col-6" style="padding-left:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">เวลาที่ชำระ</p>
-                                    <input type="text" class="input1 p pl-2" disabled>
+                                    <input type="text" value="{{explode(' ',$transferModal->update_at)[1]}}" class="input1 p pl-2" disabled>
                                 </label>
                             </div>
                         </div>
@@ -400,7 +419,7 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-12 pb-1 text-center">
-                        <img style="width:70%;" src="{{asset('home/topup/01.jpg') }}" >
+                        <img style="width:70%;" src="{{asset('section/Transfer_Img/'.$transferModal->transferImg) }}" >
                     </div>
                 </div>
             </div>

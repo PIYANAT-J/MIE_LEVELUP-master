@@ -32,125 +32,123 @@
                     <div class="row mx-0" >
                         <div class="col-12">
                             <div class="tab-content">
-                                
-                                    <div id="Allproduct" class="tab-pane active">
-                                        <div class="row" >
-                                            <div class="col-1 py-3 th1 p">#</div>
-                                            <div class="col-4 py-3 th1 p text-left">รายการสินค้า</div>
-                                            <div class="col-3 py-3 th1 p">ผู้สนับสนุน</div>
-                                            <div class="col-2 py-3 th1 p">สถานะ</div>
-                                            <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
+                                <div id="Allproduct" class="tab-pane active">
+                                    <div class="row" >
+                                        <div class="col-1 py-3 th1 p">#</div>
+                                        <div class="col-4 py-3 th1 p text-left">รายการสินค้า</div>
+                                        <div class="col-3 py-3 th1 p">ผู้สนับสนุน</div>
+                                        <div class="col-2 py-3 th1 p">สถานะ</div>
+                                        <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
+                                    </div>
+                                    <div class="row row4"> 
+                                        <div class="col-lg-12">
+                                            <?php $i = 1; ?>
+                                            @foreach($product as $productAll)
+                                                <div class="row">
+                                                    <div class="col-1 py-1 td1 p">{{$i}}</div>
+                                                    <div class="col-4 py-1 td1 p text-left">{{$productAll->product_name}}</div>
+                                                    <div class="col-3 py-1 td1 p">{{$productAll->name}} {{$productAll->surname}}</div>
+                                                    <div class="col-2 py-1 td1 p">
+                                                        @if($productAll->product_status == "รออนุมัติ")
+                                                            <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$productAll->product_id}}">รอการตรวจสอบ</label>
+                                                        @elseif($productAll->product_status == "อนุมัติ")
+                                                            <label class="status-approve" data-toggle="modal" data-target="#Approve{{$productAll->product_id}}">อนุมัติแล้ว</label>
+                                                        @else
+                                                            <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1{{$productAll->product_id}}">ไม่ผ่านการอนุมัติ</label>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-2 py-2 td1 p">{{$productAll->ADMIN_NAME}}</div>
+                                                </div>
+                                                <?php $i++; ?>
+                                            @endforeach
                                         </div>
-                                        <div class="row row4"> 
-                                            <div class="col-lg-12">
-                                                <?php $i = 1; ?>
-                                                @foreach($product as $productAll)
+                                    </div>
+                                </div>
+
+                                <div id="product2" class="tab-pane">
+                                    <div class="row" >
+                                        <div class="col-1 py-3 th1 p">#</div>
+                                        <div class="col-4 py-3 th1 p text-left">รายการสินค้า</div>
+                                        <div class="col-3 py-3 th1 p">ผู้สนับสนุน</div>
+                                        <div class="col-2 py-3 th1 p">สถานะ</div>
+                                        <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
+                                    </div>
+                                    <div class="row row4"> 
+                                        <div class="col-lg-12">
+                                            <?php $i = 1; ?>
+                                            @foreach($product as $productAll)
+                                                @if($productAll->product_status == "รออนุมัติ")
                                                     <div class="row">
                                                         <div class="col-1 py-1 td1 p">{{$i}}</div>
                                                         <div class="col-4 py-1 td1 p text-left">{{$productAll->product_name}}</div>
                                                         <div class="col-3 py-1 td1 p">{{$productAll->name}} {{$productAll->surname}}</div>
                                                         <div class="col-2 py-1 td1 p">
-                                                            @if($productAll->product_status == "รออนุมัติ")
-                                                                <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$productAll->product_id}}">รอการตรวจสอบ</label>
-                                                            @elseif($productAll->product_status == "อนุมัติ")
-                                                                <label class="status-approve" data-toggle="modal" data-target="#Approve{{$productAll->product_id}}">อนุมัติแล้ว</label>
-                                                            @else
-                                                                <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1{{$productAll->product_id}}">ไม่ผ่านการอนุมัติ</label>
-                                                            @endif
+                                                            <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$productAll->product_id}}">รอการตรวจสอบ</label>
                                                         </div>
                                                         <div class="col-2 py-2 td1 p">{{$productAll->ADMIN_NAME}}</div>
                                                     </div>
                                                     <?php $i++; ?>
-                                                @endforeach
-                                            </div>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div id="product2" class="tab-pane">
-                                        <div class="row" >
-                                            <div class="col-1 py-3 th1 p">#</div>
-                                            <div class="col-4 py-3 th1 p text-left">รายการสินค้า</div>
-                                            <div class="col-3 py-3 th1 p">ผู้สนับสนุน</div>
-                                            <div class="col-2 py-3 th1 p">สถานะ</div>
-                                            <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
-                                        </div>
-                                        <div class="row row4"> 
-                                            <div class="col-lg-12">
-                                                <?php $i = 1; ?>
-                                                @foreach($product as $productAll)
-                                                    @if($productAll->product_status == "รออนุมัติ")
-                                                        <div class="row">
-                                                            <div class="col-1 py-1 td1 p">{{$i}}</div>
-                                                            <div class="col-4 py-1 td1 p text-left">{{$productAll->product_name}}</div>
-                                                            <div class="col-3 py-1 td1 p">{{$productAll->name}} {{$productAll->surname}}</div>
-                                                            <div class="col-2 py-1 td1 p">
-                                                                <label class="status-wait-approve" data-toggle="modal" data-target="#pendingApprove{{$productAll->product_id}}">รอการตรวจสอบ</label>
-                                                            </div>
-                                                            <div class="col-2 py-2 td1 p">{{$productAll->ADMIN_NAME}}</div>
+                                <div id="product3" class="tab-pane">
+                                    <div class="row" >
+                                        <div class="col-1 py-3 th1 p">#</div>
+                                        <div class="col-4 py-3 th1 p text-left">รายการสินค้า</div>
+                                        <div class="col-3 py-3 th1 p">ผู้สนับสนุน</div>
+                                        <div class="col-2 py-3 th1 p">สถานะ</div>
+                                        <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
+                                    </div>
+                                    <div class="row row4"> 
+                                        <div class="col-lg-12">
+                                            @foreach($product as $productAll)
+                                                @if($productAll->product_status == "ไม่อนุมัติ")
+                                                    <div class="row">
+                                                        <div class="col-1 py-1 td1 p">{{$i}}</div>
+                                                        <div class="col-4 py-1 td1 p text-left">{{$productAll->product_name}}</div>
+                                                        <div class="col-3 py-1 td1 p">{{$productAll->name}} {{$productAll->surname}}</div>
+                                                        <div class="col-2 py-1 td1 p">
+                                                            <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1{{$productAll->product_id}}">ไม่ผ่านการอนุมัติ</label>
                                                         </div>
-                                                        <?php $i++; ?>
-                                                    @endif
-                                                @endforeach
-                                            </div>
+                                                        <div class="col-2 py-2 td1 p">{{$productAll->ADMIN_NAME}}</div>
+                                                    </div>
+                                                    <?php $i++; ?>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div id="product3" class="tab-pane">
-                                        <div class="row" >
-                                            <div class="col-1 py-3 th1 p">#</div>
-                                            <div class="col-4 py-3 th1 p text-left">รายการสินค้า</div>
-                                            <div class="col-3 py-3 th1 p">ผู้สนับสนุน</div>
-                                            <div class="col-2 py-3 th1 p">สถานะ</div>
-                                            <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
-                                        </div>
-                                        <div class="row row4"> 
-                                            <div class="col-lg-12">
-                                                @foreach($product as $productAll)
-                                                    @if($productAll->product_status == "ไม่อนุมัติ")
-                                                        <div class="row">
-                                                            <div class="col-1 py-1 td1 p">{{$i}}</div>
-                                                            <div class="col-4 py-1 td1 p text-left">{{$productAll->product_name}}</div>
-                                                            <div class="col-3 py-1 td1 p">{{$productAll->name}} {{$productAll->surname}}</div>
-                                                            <div class="col-2 py-1 td1 p">
-                                                                <label class="status-none-approve" data-toggle="modal" data-target="#noneApprove1{{$productAll->product_id}}">ไม่ผ่านการอนุมัติ</label>
-                                                            </div>
-                                                            <div class="col-2 py-2 td1 p">{{$productAll->ADMIN_NAME}}</div>
+                                <div id="product4" class="tab-pane">
+                                    <div class="row" >
+                                        <div class="col-1 py-3 th1 p">#</div>
+                                        <div class="col-4 py-3 th1 p text-left">รายการสินค้า</div>
+                                        <div class="col-3 py-3 th1 p">ผู้สนับสนุน</div>
+                                        <div class="col-2 py-3 th1 p">สถานะ</div>
+                                        <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
+                                    </div>
+                                    <div class="row row4"> 
+                                        <div class="col-lg-12">
+                                            @foreach($product as $productAll)
+                                                @if($productAll->product_status == "อนุมัติ")
+                                                    <div class="row">
+                                                        <div class="col-1 py-1 td1 p">{{$i}}</div>
+                                                        <div class="col-4 py-1 td1 p text-left">{{$productAll->product_name}}</div>
+                                                        <div class="col-3 py-1 td1 p">{{$productAll->name}} {{$productAll->surname}}</div>
+                                                        <div class="col-2 py-1 td1 p">
+                                                            <label class="status-approve" data-toggle="modal" data-target="#Approve{{$productAll->product_id}}">อนุมัติแล้ว</label>
                                                         </div>
-                                                        <?php $i++; ?>
-                                                    @endif
-                                                @endforeach
-                                            </div>
+                                                        <div class="col-2 py-2 td1 p">{{$productAll->ADMIN_NAME}}</div>
+                                                    </div>
+                                                    <?php $i++; ?>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
-
-                                    <div id="product4" class="tab-pane">
-                                        <div class="row" >
-                                            <div class="col-1 py-3 th1 p">#</div>
-                                            <div class="col-4 py-3 th1 p text-left">รายการสินค้า</div>
-                                            <div class="col-3 py-3 th1 p">ผู้สนับสนุน</div>
-                                            <div class="col-2 py-3 th1 p">สถานะ</div>
-                                            <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
-                                        </div>
-                                        <div class="row row4"> 
-                                            <div class="col-lg-12">
-                                                @foreach($product as $productAll)
-                                                    @if($productAll->product_status == "อนุมัติ")
-                                                        <div class="row">
-                                                            <div class="col-1 py-1 td1 p">{{$i}}</div>
-                                                            <div class="col-4 py-1 td1 p text-left">{{$productAll->product_name}}</div>
-                                                            <div class="col-3 py-1 td1 p">{{$productAll->name}} {{$productAll->surname}}</div>
-                                                            <div class="col-2 py-1 td1 p">
-                                                                <label class="status-approve" data-toggle="modal" data-target="#Approve{{$productAll->product_id}}">อนุมัติแล้ว</label>
-                                                            </div>
-                                                            <div class="col-2 py-2 td1 p">{{$productAll->ADMIN_NAME}}</div>
-                                                        </div>
-                                                        <?php $i++; ?>
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -176,54 +174,52 @@
                     <div class="col-12 pb-1">
                         <div class="row">
                             <div class="col-12 pb-1 text-center mb-2">
-                                <img class="imgProduct" src="{{asset('section/product/test.jpg') }}" >
+                                <img class="imgProduct" src="{{asset('section/product//product_img/'.$productModal->product_img) }}" >
                             </div>
                             <label class="bgInput field-wrap my-1">
                                 <p class="fontHeadInput">ชื่อสินค้า</p>
-                                <input type="text" class="input1 p ml-2" name="product_name" value="{{old('product_name')}}" readonly></input>
+                                <input type="text" class="input1 p ml-2" name="product_name" value="{{$productModal->product_name}}" readonly></input>
                             </label>
                             <div class="col-6" style="padding-left:0;padding-right:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">จำนวนสินค้า</p>
-                                    <input type="text" class="input1 p ml-2" name="product_amount" value="{{old('product_amount')}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly></input>
+                                    <input type="text" class="input1 p ml-2" name="product_amount" value="{{$productModal->product_amount}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly></input>
                                 </label>
                             </div>
                             <div class="col-6" style="padding-right:0;padding-left:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">จำนวน Point ที่ใช้แลก</p>
-                                    <input type="text" class="input1 p ml-2" name="product_point" value="{{old('product_point')}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly></input>
+                                    <input type="text" class="input1 p ml-2" name="product_point" value="{{$productModal->product_point}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly></input>
                                 </label>
                             </div>
                             <label class="bgInput field-wrap my-1" style="margin-bottom:0;">
                                 <p class="fontHeadInput">รายละเอียดสินค้า</p>
-                                <label class="input1 p ml-2" name="product_description" value="{{old('product_description')}}" style="line-height:120%;" row="3"></label><br>
+                                <label class="input1 p ml-2" name="product_description" value="{{$productModal->product_description}}" style="line-height:120%;" row="3"></label><br>
                             </label>
                             <span class="label2 ml-3" id="now_length"></span>
 
                             <label class="bgInput field-wrap my-1">
                                 <p class="fontHeadInput">วันหมดเขตการแลกสินค้า</p>
-                                <input type="text" class="input1 p ml-2" readonly></input>
+                                <input type="text" value="{{$productModal->product_deadline}}" class="input1 p ml-2" readonly></input>
                             </label>
                         </div>
-                        <div class="custom02 mb-2">
-                            <div>
-                                <input type="radio" name="Approve" value="อนุมัติแล้ว" id="approve">
-                                <label for="approve" style="color:#000;">
-                                    <p style="margin:0">อนุมัติ</p>
-                                </label>
+                        <form action="{{route('ApproveProduct')}}" method="post">
+                            @csrf
+                            <div class="custom02 mb-2">
+                                <div>
+                                    <input type="radio" name="Approve" value="อนุมัติ" id="approve{{$key}}">
+                                    <label for="approve{{$key}}" style="color:#000;">อนุมัติ</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="Approve" value="ไม่อนุมัติ" id="noneApprove{{$key}}">
+                                    <label for="noneApprove{{$key}}" style="color:#000;" for="nl">ไม่อนุมัติ</label>
+                                </div>
                             </div>
-                            <div>
-                                <input type="radio" name="Approve" value="ไม่อนุมัติ" id="noneApprove">
-                                <label for="noneApprove" style="color:#000;">
-                                    <p style="margin:0">ไม่อนุมัติ</p>
-                                </label>
+                            <div class="row">
+                                <button name="submit" value="submit" class="btn-submit-modal-red">ยืนยัน</button>
+                                <input type="hidden" name="product_id" value="{{$productModal->product_id}}">
                             </div>
-                        </div>
-                        <div class="row">
-                            <button name="submit" value="submit" class="btn-submit-red">
-                                <p style="margin:0">ยืนยัน</p>
-                            </button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -247,33 +243,33 @@
                         <div class="row"><label class="status-approve2" style="text-align:center;">อนุมัติแล้ว</label></div>
                         <div class="row">
                             <div class="col-12 pb-1 text-center mb-2">
-                                <img class="imgProduct" src="{{asset('section/product/test.jpg') }}" >
+                                <img class="imgProduct" src="{{asset('section/product//product_img/'.$productModal->product_img) }}" >
                             </div>
                             <label class="bgInput field-wrap my-1">
                                 <p class="fontHeadInput">ชื่อสินค้า</p>
-                                <input type="text" class="input1 p ml-2" name="product_name" value="{{old('product_name')}}" readonly></input>
+                                <input type="text" class="input1 p ml-2" name="product_name" value="{{$productModal->product_name}}" readonly></input>
                             </label>
                             <div class="col-6" style="padding-left:0;padding-right:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">จำนวนสินค้า</p>
-                                    <input type="text" class="input1 p ml-2" name="product_amount" value="{{old('product_amount')}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly></input>
+                                    <input type="text" class="input1 p ml-2" name="product_amount" value="{{$productModal->product_amount}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly></input>
                                 </label>
                             </div>
                             <div class="col-6" style="padding-right:0;padding-left:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">จำนวน Point ที่ใช้แลก</p>
-                                    <input type="text" class="input1 p ml-2" name="product_point" value="{{old('product_point')}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly></input>
+                                    <input type="text" class="input1 p ml-2" name="product_point" value="{{$productModal->product_point}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly></input>
                                 </label>
                             </div>
                             <label class="bgInput field-wrap my-1" style="margin-bottom:0;">
                                 <p class="fontHeadInput">รายละเอียดสินค้า</p>
-                                <label class="input1 p ml-2" name="product_description" value="{{old('product_description')}}" style="line-height:120%;" row="3"></label><br>
+                                <label class="input1 p ml-2" name="product_description" value="{{$productModal->product_description}}" style="line-height:120%;" row="3"></label><br>
                             </label>
                             <span class="label2 ml-3" id="now_length"></span>
 
                             <label class="bgInput field-wrap my-1">
                                 <p class="fontHeadInput">วันหมดเขตการแลกสินค้า</p>
-                                <input type="text" class="input1 p ml-2" readonly></input>
+                                <input type="text" class="input1 p ml-2" value="{{$productModal->product_deadline}}" readonly></input>
                             </label>
                         </div>
                     </div>
@@ -303,18 +299,18 @@
                             </div>
                             <label class="bgInput field-wrap my-1">
                                 <p class="fontHeadInput">ชื่อสินค้า</p>
-                                <input type="text" class="input1 p ml-2" name="product_name" value="{{old('product_name')}}" readonly></input>
+                                <input type="text" class="input1 p ml-2" name="product_name" value="{{$productModal->product_name}}" readonly></input>
                             </label>
                             <div class="col-6" style="padding-left:0;padding-right:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">จำนวนสินค้า</p>
-                                    <input type="text" class="input1 p ml-2" name="product_amount" value="{{old('product_amount')}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly></input>
+                                    <input type="text" class="input1 p ml-2" name="product_amount" value="{{$productModal->product_amount}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly></input>
                                 </label>
                             </div>
                             <div class="col-6" style="padding-right:0;padding-left:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">จำนวน Point ที่ใช้แลก</p>
-                                    <input type="text" class="input1 p ml-2" name="product_point" value="{{old('product_point')}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly></input>
+                                    <input type="text" class="input1 p ml-2" name="product_point" value="{{$productModal->product_point}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" readonly></input>
                                 </label>
                             </div>
                             <label class="bgInput field-wrap my-1" style="margin-bottom:0;">
@@ -325,7 +321,7 @@
 
                             <label class="bgInput field-wrap my-1">
                                 <p class="fontHeadInput">วันหมดเขตการแลกสินค้า</p>
-                                <input type="text" class="input1 p ml-2" readonly></input>
+                                <input type="text" class="input1 p ml-2" value="{{$productModal->product_deadline}}" readonly></input>
                             </label>
                         </div>
                     </div>
