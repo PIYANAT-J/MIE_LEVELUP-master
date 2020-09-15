@@ -1,8 +1,9 @@
 @extends('layout.sponsor_navbar')
 @section('content')
 <div class="container-fluid" id="getActive" active="{{ route('AdsSpon') }}">
-        <div class="row py-5" style="background-color: #f5f5f5;"></div>
-        <div class="row  py-3" style="background-color: #f5f5f5;">
+    <div class="row my-5"></div>
+    <div class="row my-2"></div>
+    <div class="row  mt-3">
         @include('profile.sidebar.sponsor_sidebar')
 
         <!-- <div class="col-sm-1 col-md-1 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div> -->
@@ -57,11 +58,11 @@
 
                 <div class="row row5">
                     <div class="col-12">
-                        <div class="row mx-0 mt-2 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1em;color:#000;">
-                            <div class="col-6 p" style="font-weight:800;">ชื่อโฆษณา</div>
-                            <div class="col-2 text-center p" style="font-weight:800;">โฆษณา</div>
-                            <div class="col-2 text-center p" style="font-weight:800;">สถานะ</div>
-                            <div class="col-2 text-center p" style="font-weight:800;">วัน-เวลา</div>
+                        <div class="row mx-0 py-2" style="background-color:#f2f2f2;color:#000;">
+                            <div class="col-6"><p style="font-weight:800;margin:0">ชื่อโฆษณา</p></div>
+                            <div class="col-2 text-center" ><p style="font-weight:800;margin:0;">โฆษณา</p></div>
+                            <div class="col-2 text-center" ><p style="font-weight:800;margin:0;">สถานะ</p></div>
+                            <div class="col-2 text-center" ><p style="font-weight:800;margin:0;">วัน-เวลา</p></div>
                         </div>
                         @foreach($advertising as $key=>$advt)
                             <div class="row mx-0 py-2 line2">
@@ -137,12 +138,12 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_login"></div>
+        <div class="col-lg-4 col-xl-3 bgSidebar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 bg_login2"></div>
+        <div class="col-lg-8 col-xl-9 bgContent"></div>
     </div>
 </div>
 @endsection

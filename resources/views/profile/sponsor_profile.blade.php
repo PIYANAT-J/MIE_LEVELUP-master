@@ -1,8 +1,9 @@
 @extends('layout.sponsor_navbar')
 @section('content')
 <div class="container-fluid" id="getActive" active="{{ route('SponsorProfile') }}">
-    <div class="row py-5" style="background-color: #f5f5f5;"></div>
-    <div class="row py-3" style="background-color: #f5f5f5;">
+    <div class="row my-5"></div>
+    <div class="row my-2"></div>
+    <div class="row  mt-3">
         @include('profile.sidebar.sponsor_sidebar')
 
         <div class="col-sm-1 col-md-1 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
@@ -257,6 +258,7 @@
         <div class="col-lg-8 col-xl-9 bgContent"></div>
     </div>
 </div>
+
 <style>
     .tt-dataset{
         background-color:#fff !important;
