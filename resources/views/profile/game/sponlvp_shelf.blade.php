@@ -126,11 +126,6 @@
                                                                         @else
                                                                             <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
                                                                         @endif
-                                                                        <!-- <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
-                                                                        <span class="font-game-shelf" style="font-size:0.7em;">{{$packageGameID->deadline}}</span> <br>
-                                                                        <span class="font-game-shelf" style="font-size:0.7em;">{{$dayIf}}</span> <br>
-                                                                        <span class="font-game-shelf" style="font-size:0.7em;">{{date("Y-m-d H:i")}}</span> <br>
-                                                                        <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span> -->
                                                                     </div>
                                                                 </div>
                                                             @endif
