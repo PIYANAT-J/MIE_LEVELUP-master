@@ -1,176 +1,166 @@
 @extends('layout.sponsor_navbar')
 @section('content')
 <div class="container-fluid" id="getActive" active="{{ route('SponShelf') }}">
-    <div class="row my-5"></div>
-    <div class="row my-2"></div>
-    <div class="row  mt-3">
+    <div class="row py-5"></div>
+    <div class="row py-2" style="background-color:#f5f5f5;"></div>
+    <div class="row ">
 
         @include('profile.sidebar.sponsor_sidebar')
 
-        <div class="col-lg-9" style="background-color:#f5f5f5;">
-            <div class="row mt-4" >
-                <div class="col-lg-1"></div>
-                <div class="col-lg-10 pb-2" style="padding-left:0;">
-                    <ul class="nav topnav2">
-                        <li><a class="nav-link active" data-toggle="tab" href="#budget">สนับสนุนเงิน</a></li>
-                        <li><a class="nav-link" data-toggle="tab" href="#product">สนับสนุนสินค้า</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-1"></div>
-            </div>
-            <div class="row mb-4" >
-                <div class="col-lg-1"></div>
-                <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-                    <div class="tab-content">
-                        <div id="budget" class="tab-pane active">
-                            <div class="row">
-                                <div class="col-lg-9 pb-2"> 
-                                    <span class="font-profile1">ตู้เกม (เกมเชล)</span>
-                                </div>
-                                <div class="col-lg-3 pb-2 pr-4"> 
-                                    <select class="select3" name="version-select" id="version-select">
-                                        <option value="all">ทั้งหมด</option>
-                                        <option value="game">รายเกม</option>
-                                        @foreach($allpackage as $Allpackage)
-                                        <option value="game_{{$Allpackage->package_id}}">{{$Allpackage->package_name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3 pb-4" style="background-color:#f5f5f5;">
+            <ul class="nav topnav2">
+                <li><a class="nav-link active p" data-toggle="tab" href="#budget">สนับสนุนเงิน</a></li>
+                <li><a class="nav-link p" data-toggle="tab" href="#product">สนับสนุนสินค้า</a></li>
+            </ul>
+            <div style="background-color:#ffffff;border-radius: 8px;padding:20px;">
+                <div class="tab-content">
+                    <div id="budget" class="tab-pane active">
+                        <div class="row">
+                            <div class="col-6 pb-2"> 
+                                <h1 class="fontHeader">ตู้เกม (เกมเชล)</h1>
                             </div>
-                            <div class="row mt-2 ">
-                                <div class="col-lg-12" >
-                                    <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont1;font-size:1em;color:#000;font-weight:800;">
-                                        <div class="col-6">ชื่อเกม</div>
-                                        <div class="col-2 text-center">แพ็กเกจ</div>
-                                        <div class="col-2 text-center">จำนวนที่เข้าถึง</div>
-                                        <div class="col-2 text-center">วันหมดแพ็กเกจ</div>
-                                    </div>
-                                    <div class="row row4" id="all">
-                                        <div class="col-lg-12">
-                                            @foreach($package as $gameSpon)
-                                                @if($gameSpon->packageBuy_gameSpon != null)
-                                                    <?php $packageGame = json_decode($gameSpon->packageBuy_gameSpon); ?>
-                                                    @foreach($game as $Game)
-                                                        @foreach($packageGame as $packageGameID)
-                                                            @if($packageGameID->gameid == $Game->GAME_ID)
-                                                                <?php
-                                                                    $start = explode("T",$packageGameID->start);
-                                                                    $deadline = explode("T",$packageGameID->deadline);
-                                                                    $dayIf = $deadline[0].' '.$deadline[1];
-                                                                ?>
-                                                                <div class="row mx-0 py-2 line2" data-eventtype="game_{{$Allpackage->package_id}}" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                                                    <div class="col-6">
-                                                                        <div class="row">
-                                                                            <div class="col-3"><img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" /></div>
-                                                                            <div class="col-9 font-game-shelf">
-                                                                                <div>
-                                                                                    <span style="font-family:myfont;color:#000;">{{$Game->GAME_NAME}}</span></br>
-                                                                                    {{$Game->RATED_B_L}} • Other</br>
-                                                                                    เวอร์ชั่น 1.03
-                                                                                </div>
-                                                                            </div>
+                            <div class="col-6 text-right"> 
+                                <select class="SelectWh p" name="version-select" id="version-select">
+                                    <option value="all">ทั้งหมด</option>
+                                    <option value="game">รายเกม</option>
+                                    @foreach($allpackage as $Allpackage)
+                                    <option value="game_{{$Allpackage->package_id}}">{{$Allpackage->package_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-2 ">
+                            <div class="col-12" >
+                                <div class="row mx-0 py-2" style="background-color:#f2f2f2;color:#000;font-weight:800;">
+                                    <div class="col-sm-3 col-md-6 col-lg-6 col-xl-6 align-self-center"><p style="font-weight:800;margin:0;">ชื่อเกม</p></div>
+                                    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 text-center align-self-center"><p style="font-weight:800;margin:0;">แพ็กเกจ</p></div>
+                                    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 text-center"><p style="font-weight:800;margin:0;">การเข้าถึง</p></div>
+                                    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 text-center"><p style="font-weight:800;margin:0;">วันหมดอายุ</p></div>
+                                </div>
+                                <div class="row row4" id="all">
+                                    <div class="col-12">
+                                        @foreach($package as $gameSpon)
+                                            @if($gameSpon->packageBuy_gameSpon != null)
+                                                <?php $packageGame = json_decode($gameSpon->packageBuy_gameSpon); ?>
+                                                @foreach($game as $Game)
+                                                    @foreach($packageGame as $packageGameID)
+                                                        @if($packageGameID->gameid == $Game->GAME_ID)
+                                                            <?php
+                                                                $start = explode("T",$packageGameID->start);
+                                                                $deadline = explode("T",$packageGameID->deadline);
+                                                                $dayIf = $deadline[0].' '.$deadline[1];
+                                                            ?>
+                                                            <div class="row mx-0 py-2 line2" data-eventtype="game_{{$Allpackage->package_id}}" style="font-family:myfont;font-size:1.2em;color:#000;">
+                                                                <div class="col-6">
+                                                                    <div class="row">
+                                                                        <div class="col-3"><img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" /></div>
+                                                                        <div class="col-9">
+                                                                            <p style="margin:0;font-weight:500;">{{$Game->GAME_NAME}}</p>
+                                                                            <p style="margin:0;">{{$Game->RATED_B_L}} • Other</p>
+                                                                            <p style="margin:0;">เวอร์ชั่น 1.03</p>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-2 text-center"><span class="font-game-shelf" style="color:#000;">แพ็กเกจ {{$gameSpon->packageBuy_name}}</span></div>
-                                                                    <div class="col-2 text-center"><span class="font-game-shelf">289</span></div>
-                                                                    <div class="col-2 text-center">
-                                                                        @if($dayIf <= date("Y-m-d H:i"))
-                                                                            <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
-                                                                            <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
-                                                                        @else
-                                                                            <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
-                                                                        @endif
-                                                                        <!-- <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
-                                                                        <span class="font-game-shelf" style="font-size:0.7em;">{{$packageGameID->deadline}}</span> <br>
-                                                                        <span class="font-game-shelf" style="font-size:0.7em;">{{$dayIf}}</span> <br>
-                                                                        <span class="font-game-shelf" style="font-size:0.7em;">{{date("Y-m-d H:i")}}</span> <br>
-                                                                        <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span> -->
-                                                                    </div>
                                                                 </div>
-                                                            @endif
-                                                        @endforeach
-                                                    @endforeach
-                                                @endif
-                                            @endforeach
-                                            @foreach($transeection as $transeectionID)
-                                                @if($transeectionID->transeection_gameSpon != null)
-                                                    <?php $transeectionGame = json_decode($transeectionID->transeection_gameSpon); ?>
-                                                    @foreach($game as $GameID)
-                                                        @foreach($transeectionGame as $transeectionGameID)
-                                                            @if($transeectionGameID->gameid == $GameID->GAME_ID)
-                                                                <?php
-                                                                    $start = explode("T",$transeectionGameID->start);
-                                                                    $deadline = explode("T",$transeectionGameID->deadline);
-                                                                    $dayIf = $deadline[0].' '.$deadline[1];
-                                                                    
-                                                                ?>
-                                                                <div class="row mx-0 py-2 line2" data-eventtype="game" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                                                    <div class="col-6">
-                                                                        <div class="row">
-                                                                            <div class="col-3"><img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$GameID->GAME_IMG_PROFILE)}}" /></div>
-                                                                            <div class="col-9 font-game-shelf">
-                                                                                <div>
-                                                                                    <span style="font-family:myfont;color:#000;">{{$GameID->GAME_NAME}}</span></br>
-                                                                                    {{$GameID->RATED_B_L}} • Other</br>
-                                                                                    เวอร์ชั่น 1.03
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-2 text-center"><span class="font-game-shelf" style="color:#000;">รายเกม</span></div>
-                                                                    <div class="col-2 text-center"><span class="font-game-shelf">289</span></div>
-                                                                    <div class="col-2 text-center">
-                                                                        @if($dayIf <= date("Y-m-d H:i"))
-                                                                            <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
-                                                                            <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
-                                                                        @else
-                                                                            <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
-                                                                        @endif
-                                                                        <!-- <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
-                                                                        <span class="font-game-shelf" style="font-size:0.7em;">{{$packageGameID->deadline}}</span> <br>
-                                                                        <span class="font-game-shelf" style="font-size:0.7em;">{{$dayIf}}</span> <br>
-                                                                        <span class="font-game-shelf" style="font-size:0.7em;">{{date("Y-m-d H:i")}}</span> <br>
-                                                                        <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span> -->
-                                                                    </div>
+                                                                <div class="col-2 text-center"><p style="margin:0;">แพ็กเกจ {{$gameSpon->packageBuy_name}}</p></div>
+                                                                <div class="col-2 text-center"><p style="margin:0;">289</p></div>
+                                                                <div class="col-2 text-center">
+                                                                    @if($dayIf <= date("Y-m-d H:i"))
+                                                                        <p style="margin:0;">{{$deadline[1]}}, {{$deadline[0]}}</p>
+                                                                        <p style="margin:0;">หมดอายุ</p>
+                                                                    @else
+                                                                        <p style="margin:0;">{{$deadline[1]}}, {{$deadline[0]}}</p>
+                                                                    @endif
+                                                                    <!-- <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
+                                                                    <span class="font-game-shelf" style="font-size:0.7em;">{{$packageGameID->deadline}}</span> <br>
+                                                                    <span class="font-game-shelf" style="font-size:0.7em;">{{$dayIf}}</span> <br>
+                                                                    <span class="font-game-shelf" style="font-size:0.7em;">{{date("Y-m-d H:i")}}</span> <br>
+                                                                    <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span> -->
                                                                 </div>
-                                                            @endif
-                                                        @endforeach
-                                                    @endforeach
-                                                @endif
-                                            @endforeach
-                                            <!-- <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                                <div class="col-6">
-                                                    <div class="row">
-                                                        <div class="col-3"><img class="shelf-pic" src="{{asset('section/picture_game/game3.png') }}" /></div>
-                                                        <div class="col-9 font-game-shelf">
-                                                            <div>
-                                                                <span style="font-family:myfont1;color:#000;font-weight:800;">Time Lie</span></br>
-                                                                Online • Other</br>
-                                                                เวอร์ชั่น 1.03
                                                             </div>
+                                                        @endif
+                                                    @endforeach
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+                                        @foreach($transeection as $transeectionID)
+                                            @if($transeectionID->transeection_gameSpon != null)
+                                                <?php $transeectionGame = json_decode($transeectionID->transeection_gameSpon); ?>
+                                                @foreach($game as $GameID)
+                                                    @foreach($transeectionGame as $transeectionGameID)
+                                                        @if($transeectionGameID->gameid == $GameID->GAME_ID)
+                                                            <?php
+                                                                $start = explode("T",$transeectionGameID->start);
+                                                                $deadline = explode("T",$transeectionGameID->deadline);
+                                                                $dayIf = $deadline[0].' '.$deadline[1];
+                                                                
+                                                            ?>
+                                                            <div class="row mx-0 py-2 line2" data-eventtype="game" style="color:#000;">
+                                                                <div class="col-6">
+                                                                    <div class="row">
+                                                                        <div class="col-3"><img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$GameID->GAME_IMG_PROFILE)}}" /></div>
+                                                                        <div class="col-9">
+                                                                            <div>
+                                                                                <p style="margin:0;">{{$GameID->GAME_NAME}}</p>
+                                                                                <p style="margin:0;">{{$GameID->RATED_B_L}} • Other</p>
+                                                                                <p style="margin:0;">เวอร์ชั่น 1.03</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-2 text-center"><p style="margin:0;">รายเกม</p></div>
+                                                                <div class="col-2 text-center"><p style="margin:0;">289</p></div>
+                                                                <div class="col-2 text-center">
+                                                                    @if($dayIf <= date("Y-m-d H:i"))
+                                                                        <p style="margin:0;">{{$deadline[1]}}, {{$deadline[0]}}</p>
+                                                                        <p style="margin:0;">หมดอายุ</p>
+                                                                    @else
+                                                                        <p style="margin:0;">{{$deadline[1]}}, {{$deadline[0]}}</p>
+                                                                    @endif
+                                                                    <!-- <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
+                                                                    <span class="font-game-shelf" style="font-size:0.7em;">{{$packageGameID->deadline}}</span> <br>
+                                                                    <span class="font-game-shelf" style="font-size:0.7em;">{{$dayIf}}</span> <br>
+                                                                    <span class="font-game-shelf" style="font-size:0.7em;">{{date("Y-m-d H:i")}}</span> <br>
+                                                                    <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span> -->
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+                                        <!-- <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
+                                            <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-3"><img class="shelf-pic" src="{{asset('section/picture_game/game3.png') }}" /></div>
+                                                    <div class="col-9 font-game-shelf">
+                                                        <div>
+                                                            <span style="font-family:myfont1;color:#000;font-weight:800;">Time Lie</span></br>
+                                                            Online • Other</br>
+                                                            เวอร์ชั่น 1.03
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2 text-center"><span class="font-game-shelf" style="color:#000;">แพ็กเกจ 1 </span></div>
-                                                <div class="col-2 text-center"><span class="font-game-shelf">289</span></div>
-                                                <div class="col-2 text-center">
-                                                    <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span> <br>
-                                                    <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
-                                                </div>
-                                            </div> -->
-                                        </div>
+                                            </div>
+                                            <div class="col-2 text-center"><span class="font-game-shelf" style="color:#000;">แพ็กเกจ 1 </span></div>
+                                            <div class="col-2 text-center"><span class="font-game-shelf">289</span></div>
+                                            <div class="col-2 text-center">
+                                                <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span> <br>
+                                                <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
+                                            </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
                         <div id="product" class="tab-pane">
                             <div class="row">
-                                <div class="col-lg-9 pb-2"> 
-                                    <span class="font-profile1">ตู้เกม (เกมเชล)</span>
+                                <div class="col-6 pb-2"> 
+                                    <h1 class="fontHeader">ตู้เกม (เกมเชล)</h1>
                                 </div>
-                                <div class="col-lg-3 pb-2 pr-4"> 
-                                    <select class="select3" name="" id="">
+                                <div class="col-6 text-right"> 
+                                    <select class="SelectWh p" name="" id="">
                                     <option value="">ทั้งหมด</option>
                                     <option value="">รออนุมัติ</option>
                                     <option value="">อนุมัติแล้ว</option>
@@ -179,43 +169,46 @@
                                 </div>
                             </div>
                             <div class="row mt-2 ">
-                                <div class="col-lg-12" >
-                                    <div class="row mx-0 py-2" style="background-color:#f2f2f2;font-family:myfont;font-size:1em;color:#000;">
-                                        <div class="col-6">ชื่อสินค้า</div>
-                                        <div class="col-2 text-center">สถานะ</div>
-                                        <div class="col-2 text-center">จำนวนที่แลก</div>
-                                        <div class="col-2 text-center">วันหมดเขต</div>
+                                <div class="col-12" >
+                                    <div class="row mx-0 py-2" style="background-color:#f2f2f2;color:#000;">
+                                        <div class="col-6"><p style="margin:0;font-weight:800;">ชื่อสินค้า</p></div>
+                                        <div class="col-2 text-center"><p style="margin:0;font-weight:800;">สถานะ</p></div>
+                                        <div class="col-2 text-center"><p style="margin:0;font-weight:800;">จำนวนที่แลก</p></div>
+                                        <div class="col-2 text-center"><p style="margin:0;font-weight:800;">วันหมดเขต</p></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row row4">
-                                <div class="col-lg-12">
+                                <div class="col-12">
                                     @if(isset($product))
                                         @foreach($product as $productAll)
-                                            <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
+                                            <div class="row mx-0 py-2 line2" style="color:#000;">
                                                 <div class="col-6">
                                                     <div class="row">
                                                         <div class="col-3"><img class="shelf-pic" src="{{asset('section/product//product_img/'.$productAll->product_img) }}" /></div>
-                                                        <div class="col-9 font-game-shelf">
+                                                        <div class="col-9">
                                                             <div>
-                                                                <span style="font-family:myfont;color:#000;">{{$productAll->product_name}}</span><br>
-                                                                คะแนนที่ใช้แลกสินค้า {{$productAll->product_point}} พอยท์
+                                                                <p style="margin:0;">{{$productAll->product_name}}</p>
+                                                                <p style="margin:0;">คะแนนที่ใช้แลกสินค้า {{$productAll->product_point}} พอยท์</p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-2 text-center">
                                                     @if($productAll->product_status == "รออนุมัติ")
-                                                        <span class="status-kyc3 px-2" style="font-size:0.8em;">รอการอนุมัติ</span>
+                                                        <span class="status-kyc3 px-2"><p style="margin:0;">รอการอนุมัติ</p></span>
                                                     @elseif($productAll->product_status == "อนุมัติ")
-                                                        <span class="status-kyc2 px-2" style="font-size:0.8em;">อนุมัติแล้ว</span>
+                                                        <span class="status-kyc2 px-2"><p style="margin:0;">อนุมัติแล้ว</p></span>
                                                     @elseif($productAll->product_status == "หมดอายุ")
-                                                        <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
+                                                        <span class="status-kyc4 px-2"><p style="margin:0;">หมดอายุ</p></span>
                                                     @endif
                                                 </div>
-                                                <div class="col-2 text-center"><span class="font-game-shelf"> <label style="color:#000;">0</label>/{{$productAll->product_amount}}</span></div>
+                                                <div class="col-2 text-center">
+                                                    <label><p style="margin:0;">0</p></label>
+                                                    <label><p style="margin:0;">/{{$productAll->product_amount}}</p></label>
+                                                </div>
                                                 <div class="col-2 text-right">
-                                                    <span class="font-game-shelf" style="font-size:0.7em;">{{$productAll->product_deadline}}</span> 
+                                                    <p style="margin:0;">{{$productAll->product_deadline}}</p> 
                                                 </div>
                                             </div>
                                         @endforeach
@@ -247,10 +240,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
                 </div>
-                <div class="col-lg-1"></div>
             </div>
         </div>
     </div>
@@ -258,12 +248,12 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_login"></div>
+        <div class="col-lg-4 col-xl-3 bgSidebar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 bg_login2"></div>
+        <div class="col-lg-8 col-xl-9 bgContent"></div>
     </div>
 </div>
 
