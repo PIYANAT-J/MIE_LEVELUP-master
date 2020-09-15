@@ -151,7 +151,7 @@
                                         @endif
                                     </label>
                                     <label style="padding: 0 0 0 60px">
-                                        <h1 style="color:#ffffff;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</br>สถานะ : ผู้ใช้ทั่วไป</h1>
+                                        <h1 style="color:#ffffff;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</br>สถานะ : ผู้พัฒนา</h1>
                                         <h5 style="color:#ffffff;font-size:12px">เป็นสมาชิก :{{ Auth::user()->created_at }}</h5>
                                     </label>
                                 </div>
