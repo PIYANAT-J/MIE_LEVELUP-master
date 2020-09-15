@@ -168,13 +168,13 @@ class GameController extends Controller
     public function gameDetail($gameId){
         if(isset(Auth::user()->id)){
             if(Auth::user()->users_type == 1){
-                $detailGame = DB::table('games')->where('GAME_ID', '=', decrypt($gameId))
+                $Detail = DB::table('games')->where('GAME_ID', '=', decrypt($gameId))
                             ->join('users', 'users.id', '=', 'games.USER_ID')
                             ->select('games.*', 'users.name','surname')
-                            ->first();
+                            ->get();
                 $FollowDetail = DB::table('follows')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
                 $Download = DB::table('downloads')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
-                // die('<pre>'. print_r($detailGame, 1));
+                // die('<pre>'. print_r($Detail, 1));
                 $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', decrypt($gameId))->get();
                 $Comment = DB::table('comments')->where([['comments.GAME_ID', '=', decrypt($gameId)],['comments.USER_ID', '=', Auth::user()->id]])
                             ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'comments.USER_EMAIL')
@@ -186,12 +186,12 @@ class GameController extends Controller
                             ->select('comments.*', 'guest_users.GUEST_USERS_IMG', 'users.name','surname')
                             ->get();
                 $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-                return view('game.game_detail', compact('detailGame', 'FollowDetail', 'Download', 'DownloadAll', 'Comment', 'CommentAll', 'guest_user'));
+                return view('game.game_detail', compact('Detail', 'FollowDetail', 'Download', 'DownloadAll', 'Comment', 'CommentAll', 'guest_user'));
             }elseif(Auth::user()->users_type == 2){
-                $detailGame = DB::table('games')->where('GAME_ID', '=', decrypt($gameId))
+                $Detail = DB::table('games')->where('GAME_ID', '=', decrypt($gameId))
                             ->join('users', 'users.id', '=', 'games.USER_ID')
                             ->select('games.*', 'users.name','surname')
-                            ->first();
+                            ->get();
                 $FollowDetail = DB::table('follows')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
                 $Download = DB::table('downloads')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
                 $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', decrypt($gameId))->get();
@@ -205,12 +205,12 @@ class GameController extends Controller
                             ->select('comments.*', 'guest_users.GUEST_USERS_IMG', 'users.name','surname')
                             ->get();
                 $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
-                return view('game.game_detail', compact('detailGame', 'FollowDetail', 'Download', 'DownloadAll', 'CommentAll', 'developer'));
+                return view('game.game_detail', compact('Detail', 'FollowDetail', 'Download', 'DownloadAll', 'CommentAll', 'developer'));
             }elseif(Auth::user()->users_type == 3){
-                $detailGame = DB::table('games')->where('GAME_ID', '=', decrypt($gameId))
+                $Detail = DB::table('games')->where('GAME_ID', '=', decrypt($gameId))
                             ->join('users', 'users.id', '=', 'games.USER_ID')
                             ->select('games.*', 'users.name','surname')
-                            ->first();
+                            ->get();
                 $FollowDetail = DB::table('follows')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
                 $Download = DB::table('downloads')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
                 $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', decrypt($gameId))->get();
@@ -225,14 +225,14 @@ class GameController extends Controller
                             ->get();
                 $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->first();
                 // $package = DB::table('my_package_buy')->where([['USER_EMAIL', Auth::user()->email], ['my_package_buy.packageBuy_status', 'true']])->get();
-                // dd($detailGame);
-                return view('game.game_detail', compact('detailGame', 'FollowDetail', 'Download', 'DownloadAll', 'CommentAll', 'sponsor'));
+                // dd($FollowDetail);
+                return view('game.game_detail', compact('Detail', 'FollowDetail', 'Download', 'DownloadAll', 'CommentAll', 'sponsor'));
             }
         }else{
-            $detailGame = DB::table('games')->where('GAME_ID', '=', decrypt($gameId))
+            $Detail = DB::table('games')->where('GAME_ID', '=', decrypt($gameId))
                         ->join('users', 'users.id', '=', 'games.USER_ID')
                         ->select('games.*', 'users.name','surname')
-                        ->first();
+                        ->get();
             $CommentAll = DB::table('comments')->where('comments.GAME_ID', '=', decrypt($gameId))
                             ->join('users', 'users.id', '=', 'comments.USER_ID')
                             ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'users.email')
@@ -240,7 +240,7 @@ class GameController extends Controller
                             ->get();
                             // die('<pre>'. print_r($CommentAll, 1));
             $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', decrypt($gameId))->get();
-            return view('game.game_detail', compact('detailGame', 'CommentAll', 'DownloadAll'));
+            return view('game.game_detail', compact('Detail', 'CommentAll', 'DownloadAll'));
         }
     }
 
