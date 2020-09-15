@@ -272,11 +272,12 @@ class AdminController extends Controller
             $package_game = $request->input('package_game');
             $package_length = $request->input('package_length');
             $package_advt = $request->input('package_advt');
+            $package_date_create = date('Y-m-d H:i:s');
             $USER_EMAIL = Auth::user()->email;
             $ADMIN_NAME = Auth::user()->name.' '.Auth::user()->surname; 
 
             $data = array("package_name"=>$package_name, "package_amount"=>$package_amount, "package_season"=>$package_season, "package_game"=>$package_game,
-                        "package_length"=>$package_length, "package_advt"=>$package_advt, "USER_EMAIL"=>$USER_EMAIL, "ADMIN_NAME"=>$ADMIN_NAME);
+                        "package_length"=>$package_length, "package_advt"=>$package_advt, "package_date_create"=>$package_date_create, "USER_EMAIL"=>$USER_EMAIL, "ADMIN_NAME"=>$ADMIN_NAME);
             // dd($data);
             Admin::addPackage($data);
         }
