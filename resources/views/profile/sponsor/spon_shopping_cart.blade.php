@@ -66,7 +66,7 @@
             </div>
             <div class="row mb-4" >
                 <div class="col-lg-1"></div>
-                <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
+                <div id="general-content" class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
                     <div class="row">
                         <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
                             <span class="font-profile1">ตระกร้าสินค้า</span>
@@ -125,7 +125,7 @@
                             <div class="row my-2">
                                 <div class="col-lg-12">
                                     <label class="checkbox-dark">
-                                        <input type="checkbox" id="checkbox_all" name="accept_01" onclick="toggle(this);">
+                                        <input type="checkbox" id="checkbox_all" onclick="toggle(this);">
                                         <label for="checkbox_all" class="pt-2 ml-2" style="font-family:myfont1;font-size:1em;font-weight:800;">เลือกทั้งหมด</label>
                                     </label>
                                 </div>
@@ -154,7 +154,6 @@
                             </form>
                         </div>
                     </div>
-                    
                 </div>
                 <div class="col-lg-1"></div>
             </div>
@@ -202,27 +201,65 @@
 </script>
 
 <script>
-    $(document).ready(function() {
-        $(":checkbox").change(function() {
-            var total = 0;
-            var closest = $(this).closest("div.row");
-            var countCheckedCheckboxes = $(":checkbox", closest).filter(':checked').length;
-            $('#count-checked').html(countCheckedCheckboxes);
-            console.log(countCheckedCheckboxes);
-            var favorite = [];
-            $.each($("input[name='accept_01']:checked"), function(){
-                favorite.push($(this).val());
-            });
-            $("input[name='accept_01']:checked").each(function() {
-                total += parseFloat($(this).attr('data-price')) || 0;
-            });
-            $('#total').html(total);
-            document.querySelector('input#sumTotal').value = total;
-            console.log(total);
-            document.querySelector('input#data-checked').value = favorite.join(", ");
-            console.log(favorite);
-        });
+    // $(document).ready(function() {
+    //     $(":checkbox").change(function() {
+    //         var total = 0;
+    //         var closest = $(this).closest("div.row");
+    //         var countCheckedCheckboxes = $(":checkbox", closest).filter(':checked').length;
+    //         $('#count-checked').html(countCheckedCheckboxes);
+    //         console.log(countCheckedCheckboxes);
+    //         var favorite = [];
+    //         $.each($("input[name='accept_01']:checked"), function(){
+    //             favorite.push($(this).val());
+    //         });
+    //         $("input[name='accept_01']:checked").each(function() {
+    //             total += parseFloat($(this).attr('data-price')) || 0;
+    //         });
+    //         $('#total').html("฿"+total);
+    //         document.querySelector('input#sumTotal').value = total;
+    //         console.log(total);
+    //         document.querySelector('input#data-checked').value = favorite.join(", ");
+    //         console.log(favorite);
+    //     });
+    // });
+
+function updateCounter() {
+    var total = 0;
+    var favorite = [];
+    var len = $("#general-content input[name='accept_01']:checked").length;
+    if(len>0){
+        $("#count-checked").text(len);
+    }else{
+        $("#count-checked").text('0');
+    }
+    $("#general-content input[name='accept_01']:checked").each(function() {
+        total += parseFloat($(this).attr('data-price')) || 0;
+        favorite.push($(this).val());
     });
+    $('#total').html("฿"+total);
+    document.querySelector('input#sumTotal').value = total;
+    // console.log(total);
+    document.querySelector('input#data-checked').value = favorite.join(", ");
+    // console.log(favorite);
+}
+
+$("#general-content input:checkbox").on("change", function() {
+	updateCounter();
+});
+
+$(function() {
+	$('#checkbox_all').change(function() {
+		var checkthis = $(this);
+		var checkboxes = $(this).parent().next('div.row').find("input[name='accept_01']");
+
+		if(checkthis.is(':checked')) {
+			checkboxes.attr('checked', true);
+		} else {
+			checkboxes.attr('checked', false);
+		}
+        updateCounter();
+	});
+})
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
