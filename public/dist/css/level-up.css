@@ -6595,9 +6595,7 @@ input[type="checkbox"].switch_2{
 }
 
 .fontAd1{
-  font-family: myfont1;
   font-weight: 600;
-  font-size: 1em;
   cursor: pointer;
 }
 
@@ -6607,16 +6605,14 @@ input[type="checkbox"].switch_2{
 }
 
 .addGamePackage{
-  font-family: myfont1;
-  font-size: 1em;
   color: #ffffff;
   background-color: #ce0005;
   border-radius: 6px;
   text-align: center;
-  width: 100%;
   margin: 0;
-  padding: 5px 0;
+  padding: 5px 10px;
   cursor: pointer;
+  float: right;
 }
 
 
@@ -6628,16 +6624,14 @@ input[type="checkbox"].switch_2{
 }
 
 .TimeGamePackage{
-  font-family: myfont1;
-  font-size: 0.9em;
   background-color: #ffffff;
   border: 1px solid #000;
   border-radius: 6px;
   text-align: center;
-  width: 100%;
   margin: 0;
-  padding: 5px 0;
+  padding: 5px 10px;
   cursor: pointer;
+  float: right;
 }
 
 .rowGamePackage{
@@ -6651,8 +6645,6 @@ input[type="checkbox"].switch_2{
   border: 1px solid #ce0005;
   border-radius: 6px;
   padding: 5px 10px;
-  font-family: myfont1;
-  font-weight: 1em;
   color: #ce0005;
   cursor: pointer;
 }
@@ -6799,12 +6791,14 @@ input[type="checkbox"].switch_2{
 /* checkbox-dark */
 .checkbox-dark input[type="checkbox"] {
   opacity: 0;
+  cursor: pointer;
 }
 
 .checkbox-dark label {
   position: relative;
   display: inline-block;
   padding-left: 5px;
+  cursor: pointer;
   
 }
 
@@ -6813,6 +6807,7 @@ input[type="checkbox"].switch_2{
   position: absolute;
   content: "";
   display: inline-block;
+  cursor: pointer;
 }
 
 .checkbox-dark label::before{
@@ -6823,6 +6818,7 @@ input[type="checkbox"].switch_2{
   border-radius: 4px;
   top: 12px;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .checkbox-dark label::after {
@@ -6834,6 +6830,7 @@ input[type="checkbox"].switch_2{
   transform: rotate(-45deg);
   left: -11px;
   top: 16px;
+  cursor: pointer;
 }
 
 .checkbox-dark input[type="checkbox"] + label::after {
@@ -6858,10 +6855,8 @@ input[type="checkbox"].switch_2{
 }
 .fontAddGame{
   padding: 8px 20px;
-  font-family: myfont1;
-  font-size: 1em;
-  font-weight: 900;
   cursor: pointer;
+  float: right;
 }
 
 
