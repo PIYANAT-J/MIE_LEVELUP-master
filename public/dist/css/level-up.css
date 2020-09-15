@@ -3499,6 +3499,15 @@ div.sticky {
   right:16px;
 }
 
+.fontWithdraw{
+  font-weight: 800;
+  color: #ce0005;
+  margin: 0;
+  position: absolute;
+  top: 5px;
+  right:16px;
+}
+
 .btn-submit-s{
   padding: 5px 15px;
   background-color: #17202c;
@@ -6515,7 +6524,7 @@ input[type="checkbox"].switch_2{
   background-color: #ffffff;
   border-radius: 6px;
   box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.16);
-  max-width: 260px;
+  width: 260px;
   padding: 5px;
   margin: 5px;
 }

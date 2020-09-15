@@ -124,7 +124,7 @@
                                                             <label><p style="color:#000;margin:0;">ธนาคารกสิกร</p></label>
                                                         </div>
                                                         <div class="col-6 text-right">
-                                                            <p class="font-bank1" style="color:#ce0005;">-{{ $withdrawList->withdrawAmount }} ฿</p>
+                                                            <p class="fontWithdraw">-{{ $withdrawList->withdrawAmount }} ฿</p>
                                                         </div> 
                                                     </div>
                                                     <div class="row">
@@ -153,7 +153,7 @@
                                                             <label><p style="color:#000;margin:0;">ธนาคารกสิกร</p></label>
                                                         </div>
                                                         <div class="col-6  text-right">
-                                                            <p class="font-bank1" style="color:#ce0005;">-{{ $withdrawList->withdrawAmount }} ฿</p>
+                                                            <p class="fontWithdraw">-{{ $withdrawList->withdrawAmount }} ฿</p>
                                                         </div> 
                                                     </div>
                                                     <div class="row" style="height:30px;">

@@ -1,312 +1,260 @@
 @extends('layout.sponsor_navbar')
 @section('content')
 <div class="container-fluid" id="getActive" active="{{ route('SponsorProfile') }}">
-    <div class="row my-5"></div>
-    <div class="row my-2"></div>
-    <div class="row  mt-3">
+    <div class="row py-5" style="background-color: #f5f5f5;"></div>
+    <div class="row py-3" style="background-color: #f5f5f5;">
         @include('profile.sidebar.sponsor_sidebar')
 
-        <!-- sidebar -->
-        <!-- <div class="col-lg-3" style="background-color: #17202c;">
-            <div class="row">
-                <div class="col-lg-1"></div>
-                    @foreach($sponsor as $spon)
-                        <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                            <div class="row mb-2">
-                                <div class="col-lg-4 text-right">
-                                    <img class="sidebar-pic" src="{{asset('home/imgProfile/'.$spon->SPON_IMG) }}" />
-                                </div>
-                                <div class="col-lg-8 sidebar_name pt-2">
-                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้สนับสนุน : บุคคลธรรมดา</br>เป็นสมาชิก : </br>{{ Auth::user()->created_at }}</span>
-                                </div>
-                            </div>
-                            <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                                <div class="col-lg-12 text-center">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="btn-point pb-2">
-                                                <span class="font-point">พอยท์</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">0</span>
-                                                <i class="icon-Icon_Point"></i>
-                                            </label>
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="btn-coin pb-2 ">
-                                                <span class="font-point">เหรียญ</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">0</span>
-                                                <i class="icon-Icon_Coin"></i>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                <div class="col-lg-1"></div>
-                <a href="{{ route('DevProfile') }}" style="width: 100%;"><button class="btn-sidebar active"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว </button></a>
-                <a href="{{ route('AdsSpon') }}" style="width: 100%;"><button class="btn-sidebar"><span style="font-family: myfont1;font-size: 1em;padding:0px 10px 0px 5px;">Ads</span>รายการโฆษณา</button></a>
-                <a href="{{ route('AdvtPackage') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-money menuIcon"></i>สนับสนุนเงินในเกม</button></a>
-                <a href="{{ route('ProductSupport') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-product menuIcon2"></i>สนับสนุนสินค้าในเกม</button></a>
-                <a href="{{ route('SponShelf') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
-                <a href="{{ route('DevHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
-                <a href="{{ route('SponsorTopup') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</button></a>
-                <a href="{{ route('SponsorChangePassword') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
-                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</button></a> 
-            </div>
-        </div> -->
-        <!-- sidebar -->
-
+        <div class="col-sm-1 col-md-1 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
         @foreach($sponsor as $spon)
             @if($spon->USER_EMAIL == Auth::user()->email)
-                <div class="col-lg-9" style="background-color:#f5f5f5;">
-                    <div class="row mt-4" >
-                        <div class="col-lg-1"></div>
-                        <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-                            <form action="{{ route('SponEditProfile') }}" method="POST" enctype="multipart/form-data" id="upDate">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                                        <span class="font-profile1">ข้อมูลส่วนตัว (ถ้าอัพเดทโปรไฟล์จะได้ พอยท์เพิ่ม 100 พอยท์ )</br>
-                                        <b style="font-family:myfont1;font-size: 0.8em;color: #666666;">จัดการข้อมูลส่วนตัวคุณของคุณเพื่อให้ใช้งานได้สะดวกขึ้น</b></span>
-                                    </div>
+                <div class="col-sm-10 col-md-10 col-lg-8 col-xl-9 pt-3 pb-4" style="background-color:#f5f5f5;">
+                    <div style="background-color:#ffffff;border-radius: 8px;padding:20px;">
+                        <form action="{{ route('SponEditProfile') }}" method="POST" enctype="multipart/form-data" id="upDate">
+                            @csrf
+                            <div class="row">
+                                <div class="col-12 pb-2" style="border-bottom: 1px solid #f2f2f2;">
+                                    <h1 class="fontHeader">ข้อมูลส่วนตัว (ถ้าอัพเดทโปรไฟล์จะได้ พอยท์เพิ่ม 100 พอยท์)</h1>
+                                    <h5 style="color: #666666;">จัดการข้อมูลส่วนตัวคุณของคุณเพื่อให้ใช้งานได้สะดวกขึ้น</h5>
                                 </div>
+                            </div>
 
-                                <!-- บุคคลธรรมดา -->
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                            <div class="col-lg-12 line1 mt-2" >
-                                                <label class="bgInput field-wrap">
-                                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขผู้เสียภาษีอากร</label> <br>
-                                                    <input name="taxID" class="input-login px-3" value="{{ $spon->taxID ?? old('taxID') }}"></input>
-                                                </label>
-                                                <label class="bgInput field-wrap">
-                                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อ</label> <br>
-                                                    <input name="name" class="input-login px-3" value="{{ Auth::user()->name }}"></input>
-                                                </label>
-                                                @error('name')
-                                                    <span class="text-danger font-error">กรุณากรอกชื่อ</span>
-                                                @enderror
-                                                <label class="bgInput field-wrap">
-                                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">นามสกุล</label> <br>
-                                                    <input name="surname" class="input-login px-3" value="{{ Auth::user()->surname }}"></input>
-                                                </label>
-                                                @error('surname')
-                                                    <span class="text-danger font-error">กรุณากรอกนามสกุล</span>
-                                                @enderror
-                                                <label class="bgInput field-wrap">
-                                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ที่อยู่</label> <br>
-                                                    <input name="SPON_ADDRESS" class="input-login px-3" value="{{ $spon->SPON_ADDRESS ?? old('SPON_ADDRESS') }}"></input>
-                                                </label>
-                                                @error('SPON_ADDRESS')
-                                                    <span class="text-danger font-error">กรุณากรอกที่อยู่</span>
-                                                @enderror
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="">
-                                                            <label class="bgInput field-wrap">
-                                                                <label class="fontHeadInput px-3" style="padding:0;">จังหวัด</label>
-                                                                <input class="input-login px-3" style="padding-top:12px;" type="text" name="province" value="{{ $spon->province }}">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <label class="bgInput field-wrap">
-                                                            <label class="fontHeadInput px-3">อำเภอ</label><br>
-                                                            <input class="input-login px-3" style="padding-top:12px;" type="text" name="amphure" value="{{ $spon->amphure }}">
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="">
-                                                            <label class="bgInput field-wrap">
-                                                                <label class="fontHeadInput px-3" style="padding:0;">ตำบล</label>
-                                                                <input class="input-login px-3" style="padding-top:12px;" type="text" name="district" value="{{ $spon->district }}">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <label class="bgInput field-wrap">
-                                                            <label class="fontHeadInput px-3">รหัสไปรษณีย์</label><br>
-                                                            <input class="input-login px-3" style="padding-top:12px;" type="text" name="ZIPCODE_ID" value="{{ $spon->ZIPCODE_ID }}">
-                                                        </label>
-                                                    </div>
+                            <!-- บุคคลธรรมดา -->
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                    <div class="row">
+                                        <div class="col-12 mt-2" >
+                                            <label class="bgInput field-wrap my-1">
+                                                <p class="fontHeadInput">เลขผู้เสียภาษีอากร</p>
+                                                <input name="taxID" class="input1 p ml-2" value="{{ $spon->taxID ?? old('taxID') }}"></input>
+                                            </label>
+                                            <label class="bgInput field-wrap my-1">
+                                                <p class="fontHeadInput">ชื่อ</p>
+                                                <input name="name" class="input1 p ml-2" value="{{ Auth::user()->name }}"></input>
+                                            </label>
+                                            @error('name')
+                                                <p style="color:#ce0005;">กรุณากรอกชื่อ</p>
+                                            @enderror
+                                            <label class="bgInput field-wrap my-1">
+                                                <p class="fontHeadInput">นามสกุล</p>
+                                                <input name="surname" class="input1 p ml-2" value="{{ Auth::user()->surname }}"></input>
+                                            </label>
+                                            @error('surname')
+                                                <p style="color:#ce0005;">กรุณากรอกนามสกุล</p>
+                                            @enderror
+                                            <label class="bgInput field-wrap my-1">
+                                                <p class="fontHeadInput">ที่อยู่</p>
+                                                <input name="SPON_ADDRESS" class="input1 p ml-2" value="{{ $spon->SPON_ADDRESS ?? old('SPON_ADDRESS') }}"></input>
+                                            </label>
+                                            @error('SPON_ADDRESS')
+                                                <p style="color:#ce0005;">กรุณากรอกที่อยู่</p>
+                                            @enderror
+                                            <div class="row">
+                                                <div class="col-6" style="padding-right:5px;">
+                                                    <label class="bgInput field-wrap my-1">
+                                                        <p class="fontHeadInput">จังหวัด</p>
+                                                        <input class="input1 p ml-2" style="padding-top:12px;" type="text" name="province" value="{{ $spon->province }}">
+                                                    </label>
                                                 </div>
-                                            
-                                                <label class="bgInput field-wrap">
-                                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">เบอร์โทรศัพท์</label> <br>
-                                                    <input name="SPON_TEL" type="text" class="input-login px-3"  data-toggle="tooltip" value="{{ $spon->SPON_TEL ?? old('SPON_TEL') }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
-                                                </label>
-                                                @error('SPON_TEL')
-                                                    <span class="text-danger font-error">กรุณากรอกเบอร์โทรศัพท์</span>
-                                                @enderror
-                                                <label class="bgInput field-wrap">
-                                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขบัตรประจำตัวประชาชน</label> <br>
-                                                    <input name="SPON_ID_CARD" type="text" class="input-login px-3"  value="{{ $spon->SPON_ID_CARD ?? old('SPON_ID_CARD') }}" minlength="13" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
-                                                </label>
-                                                @error('SPON_ID_CARD')
-                                                    <span class="text-danger font-error">เลขบัตรประจำตัวประชาชนไม่ถูกต้อง</span>
-                                                @enderror
-                                                <div class="row ">
-                                                    <div class="col-lg-12">
-                                                        <div class="row mx-0">
-                                                            <?php
-                                                                // $yyyy = substr($spon->DEV_BIRTHDAY,0,4);
-                                                                // $mm = substr($spon->DEV_BIRTHDAY,5,2);
-                                                                // $dd = substr($spon->DEV_BIRTHDAY,8,2);
-                                                            ?>
-                                                            <label class="bgInput field-wrap">
-                                                                <label class="fontHeadInput px-3 py-2" style="padding:0;">วัน เดือน ปีเกิด</label> <br>
-                                                                <label style="padding:0;"><SELECT  size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></label>
-                                                                <label style="padding:0;"><SELECT  size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></label>
-                                                                <label style="padding:0;"><SELECT  size="1" id ="day" name = "dd"></SELECT></label>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12 mt-2">
-                                                        <button name="submit" id="submit" value="submit" type="submit" class="btn-submit">ยืนยัน
-                                                            <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                                                            <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-                                                            <input type="hidden" name="DATE_MODIFY" value="{{ date('Y-m-d H:i:s') }}">
-                                                        </button>
+                                                <div class="col-6" style="padding-left:5px;">
+                                                    <label class="bgInput field-wrap my-1">
+                                                        <p class="fontHeadInput">อำเภอ</p>
+                                                        <input class="input1 p ml-2" style="padding-top:12px;" type="text" name="amphure" value="{{ $spon->amphure }}">
+                                                    </label>
+                                                </div>
+                                                <div class="col-6" style="padding-right:5px;">
+                                                    <label class="bgInput field-wrap my-1">
+                                                        <p class="fontHeadInput">ตำบล</p>
+                                                        <input class="input1 p ml-2" style="padding-top:12px;" type="text" name="district" value="{{ $spon->district }}">
+                                                    </label>
+                                                </div>
+                                                <div class="col-6" style="padding-left:5px;">
+                                                    <label class="bgInput field-wrap my-1">
+                                                        <p class="fontHeadInput">รหัสไปรษณีย์</p>
+                                                        <input class="input1 p ml-2" style="padding-top:12px;" type="text" name="ZIPCODE_ID" value="{{ $spon->ZIPCODE_ID }}">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        
+                                            <label class="bgInput field-wrap my-1">
+                                                <p class="fontHeadInput">เบอร์โทรศัพท์</p>
+                                                <input name="SPON_TEL" type="text" class="input1 p ml-2"  data-toggle="tooltip" value="{{ $spon->SPON_TEL ?? old('SPON_TEL') }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
+                                            </label>
+                                            @error('SPON_TEL')
+                                                <p style="color:#ce0005;">กรุณากรอกเบอร์โทรศัพท์</span>
+                                            @enderror
+                                            <label class="bgInput field-wrap my-1">
+                                                <p class="fontHeadInput">เลขบัตรประจำตัวประชาชน</p>
+                                                <input name="SPON_ID_CARD" type="text" class="input1 p ml-2"  value="{{ $spon->SPON_ID_CARD ?? old('SPON_ID_CARD') }}" minlength="13" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
+                                            </label>
+                                            @error('SPON_ID_CARD')
+                                                <p style="color:#ce0005;">เลขบัตรประจำตัวประชาชนไม่ถูกต้อง</p>
+                                            @enderror
+                                            <div class="row ">
+                                                <div class="col-lg-12">
+                                                    <div class="row mx-0">
+                                                        <?php
+                                                            // $yyyy = substr($spon->DEV_BIRTHDAY,0,4);
+                                                            // $mm = substr($spon->DEV_BIRTHDAY,5,2);
+                                                            // $dd = substr($spon->DEV_BIRTHDAY,8,2);
+                                                        ?>
+                                                        <label class="bgInput field-wrap my-1">
+                                                            <p class="fontHeadInput">วัน เดือน ปีเกิด</p>
+                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></label>
+                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></label>
+                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1" id ="day" name = "dd"></SELECT></label>
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group mt-5" align="center">
-                                            <div id="thumb" class="thumb-profile "><img src="{{asset('home/imgProfile/'.$spon->SPON_IMG)}}"></div>    
-                                            <input id="file_upload" style="display:none" name="SPON_IMG" type="file" multiple="true" accept="image/* "/>
-                                            <button id="upload" class="btn-upload-pic mt-2">เลือกรูป</button>
-                                            <div class="des-profile-pic mt-2">ขนาดไฟล์: สูงสุด 1 MB</div>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                    <div class="form-group mt-5" align="center">
+                                        <div id="thumb" class="thumb-profile "><img src="{{asset('home/imgProfile/'.$spon->SPON_IMG)}}"></div>    
+                                        <input id="file_upload" style="display:none" name="SPON_IMG" type="file" multiple="true" accept="image/* "/>
+                                        <button id="upload" class="btn-upload-pic mt-2">
+                                            <p style="margin:0;color:#ffffff;">เลือกรูป</p>
+                                        </button>
+                                        <div class=" mt-2">
+                                            <p style="margin:0;color:#b2b2b2;">ขนาดไฟล์: สูงสุด 1 MB</p>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2">
+                                    <button name="submit" id="submit" value="submit" type="submit" class="btn-submit">
+                                        <p style="margin:0;">ยืนยัน</p>
+                                        <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                        <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
+                                        <input type="hidden" name="DATE_MODIFY" value="{{ date('Y-m-d H:i:s') }}">
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
 
-                                <!-- นิติบุคคล -->
-                                <!-- <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                            <div class="col-lg-12 line1 mt-2" >
-                                                <label class="bgInput field-wrap">
-                                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขผู้เสียภาษีอาการ</label> <br>
-                                                    <input name="taxID" class="input-login px-3" ></input>
-                                                </label>
-                                                <label class="bgInput field-wrap">
-                                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ชื่อบริษัท</label> <br>
-                                                    <input name="CompanyName" class="input-login px-3" value="{{ Auth::user()->name }}"></input>
-                                                </label>
-                                                @error('CompanyName')
-                                                    <span class="text-danger font-error">กรุณากรอกชื่อบริษัท</span>
-                                                @enderror
-                                                <label class="bgInput field-wrap">
-                                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">ที่อยู่</label> <br>
-                                                    <input name="address" class="input-login px-3"></input>
-                                                </label>
-                                                @error('address')
-                                                    <span class="text-danger font-error">กรุณากรอกที่อยู่</span>
-                                                @enderror
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="">
-                                                            <label class="bgInput field-wrap">
-                                                                <label class="fontHeadInput px-3" style="padding:0;">จังหวัด</label>
-                                                                <select class="selectProvince" required="true" type="text" name="text4">
-                                                                    <option value="">ดึงจาก DB</option>
-                                                                    <option value="">ดึงจาก DB</option>
-                                                                    <option value="">ดึงจาก DB</option>
-                                                                    <option value="">ดึงจาก DB</option>
-                                                                </select>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <label class="bgInput field-wrap">
-                                                            <label class="fontHeadInput px-3">รหัสไปรษณีย์</label><br>
-                                                                <input class="text-box px-3" style="padding-top:12px;" required="true" type="text" name="zipcode">
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="">
-                                                            <label class="bgInput field-wrap">
-                                                                <label class="fontHeadInput px-3" style="padding:0;">ตำบล</label>
-                                                                <select class="selectProvince" required="true" type="text" name="text4">
-                                                                    <option value="">ดึงจาก DB</option>
-                                                                    <option value="">ดึงจาก DB</option>
-                                                                    <option value="">ดึงจาก DB</option>
-                                                                    <option value="">ดึงจาก DB</option>
-                                                                </select>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <label class="bgInput field-wrap">
-                                                            <label class="fontHeadInput px-3">อำเภอ</label><br>
-                                                                <select class="selectProvince" required="true" type="text" name="text4">
-                                                                    <option value="">ดึงจาก DB</option>
-                                                                    <option value="">ดึงจาก DB</option>
-                                                                    <option value="">ดึงจาก DB</option>
-                                                                    <option value="">ดึงจาก DB</option>
-                                                                </select>
+                            <!-- นิติบุคคล -->
+                            <!-- <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-12 line1 mt-2" >
+                                            <label class="bgInput field-wrap my-1">
+                                                <p class="fontHeadInput">เลขผู้เสียภาษีอาการ</p>
+                                                <input name="taxID" class="input1 p ml-2" ></input>
+                                            </label>
+                                            <label class="bgInput field-wrap my-1">
+                                                <p class="fontHeadInput">ชื่อบริษัท</p>
+                                                <input name="CompanyName" class="input1 p ml-2" value="{{ Auth::user()->name }}"></input>
+                                            </label>
+                                            @error('CompanyName')
+                                                <p style="color:#ce0005;">กรุณากรอกชื่อบริษัท</p>
+                                            @enderror
+                                            <label class="bgInput field-wrap my-1">
+                                                <p class="fontHeadInput">ที่อยู่</p>
+                                                <input name="address" class="input1 p ml-2"></input>
+                                            </label>
+                                            @error('address')
+                                                <p style="color:#ce0005;">กรุณากรอกที่อยู่</p>
+                                            @enderror
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="">
+                                                        <label class="bgInput field-wrap my-1">
+                                                            <label class="fontHeadInput px-3" style="padding:0;">จังหวัด</label>
+                                                            <select class="selectProvince" required="true" type="text" name="text4">
+                                                                <option value="">ดึงจาก DB</option>
+                                                                <option value="">ดึงจาก DB</option>
+                                                                <option value="">ดึงจาก DB</option>
+                                                                <option value="">ดึงจาก DB</option>
+                                                            </select>
                                                         </label>
                                                     </div>
                                                 </div>
-                                            
-                                                <label class="bgInput field-wrap">
-                                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">เบอร์โทรศัพท์</label> <br>
-                                                    <input name="SPON_TEL" type="text" class="input-login px-3"  data-toggle="tooltip" value="{{ $spon->SPON_TEL ?? old('SPON_TEL') }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
-                                                </label>
-                                                @error('SPON_TEL')
-                                                    <span class="text-danger font-error">กรุณากรอกเบอร์โทรศัพท์</span>
-                                                @enderror
-                                                <label class="bgInput field-wrap">
-                                                    <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขบัตรประจำตัวประชาชน</label> <br>
-                                                    <input name="SPON_ID_CARD" type="text" class="input-login px-3"  value="{{ $spon->SPON_ID_CARD ?? old('SPON_ID_CARD') }}" minlength="13" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
-                                                </label>
-                                                @error('SPON_ID_CARD')
-                                                    <span class="text-danger font-error">เลขบัตรประจำตัวประชาชนไม่ถูกต้อง</span>
-                                                @enderror
-                                                <div class="row ">
-                                                    <div class="col-lg-12"></div>
-                                                    <div class="col-lg-12 mt-2">
-                                                        <button name="submit" id="submit" value="submit" type="submit" class="btn-submit">ยืนยัน
-                                                            <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                                                            <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-                                                            <input type="hidden" name="DATE_MODIFY" value="{{ date('Y-m-d H:i:s') }}">
-                                                        </button>
+                                                <div class="col-lg-6">
+                                                    <label class="bgInput field-wrap my-1">
+                                                        <label class="fontHeadInput px-3">รหัสไปรษณีย์</label><br>
+                                                            <input class="text-box px-3" style="padding-top:12px;" required="true" type="text" name="zipcode">
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="">
+                                                        <label class="bgInput field-wrap my-1">
+                                                            <label class="fontHeadInput px-3" style="padding:0;">ตำบล</label>
+                                                            <select class="selectProvince" required="true" type="text" name="text4">
+                                                                <option value="">ดึงจาก DB</option>
+                                                                <option value="">ดึงจาก DB</option>
+                                                                <option value="">ดึงจาก DB</option>
+                                                                <option value="">ดึงจาก DB</option>
+                                                            </select>
+                                                        </label>
                                                     </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="bgInput field-wrap my-1">
+                                                        <label class="fontHeadInput px-3">อำเภอ</label><br>
+                                                            <select class="selectProvince" required="true" type="text" name="text4">
+                                                                <option value="">ดึงจาก DB</option>
+                                                                <option value="">ดึงจาก DB</option>
+                                                                <option value="">ดึงจาก DB</option>
+                                                                <option value="">ดึงจาก DB</option>
+                                                            </select>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        
+                                            <label class="bgInput field-wrap my-1">
+                                                <p class="fontHeadInput">เบอร์โทรศัพท์</p>
+                                                <input name="SPON_TEL" type="text" class="input1 p ml-2"  data-toggle="tooltip" value="{{ $spon->SPON_TEL ?? old('SPON_TEL') }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
+                                            </label>
+                                            @error('SPON_TEL')
+                                                <p style="color:#ce0005;">กรุณากรอกเบอร์โทรศัพท์</span>
+                                            @enderror
+                                            <label class="bgInput field-wrap my-1">
+                                                <p class="fontHeadInput">เลขบัตรประจำตัวประชาชน</p>
+                                                <input name="SPON_ID_CARD" type="text" class="input1 p ml-2"  value="{{ $spon->SPON_ID_CARD ?? old('SPON_ID_CARD') }}" minlength="13" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
+                                            </label>
+                                            @error('SPON_ID_CARD')
+                                                <p style="color:#ce0005;">เลขบัตรประจำตัวประชาชนไม่ถูกต้อง</span>
+                                            @enderror
+                                            <div class="row ">
+                                                <div class="col-lg-12"></div>
+                                                <div class="col-lg-12 mt-2">
+                                                    <button name="submit" id="submit" value="submit" type="submit" class="btn-submit">ยืนยัน
+                                                        <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                                        <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
+                                                        <input type="hidden" name="DATE_MODIFY" value="{{ date('Y-m-d H:i:s') }}">
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group mt-5" align="center">
-                                            <div id="thumb" class="thumb-profile "><img src="{{asset('home/imgProfile/'.$spon->SPON_IMG)}}"></div>    
-                                            <input id="file_upload" style="display:none" name="SPON_IMG" type="file" multiple="true" accept="image/* "/>
-                                            <button id="upload" class="btn-upload-pic mt-2">เลือกรูป</button>
-                                            <div class="des-profile-pic mt-2">ขนาดไฟล์: สูงสุด 1 MB</div>
-                                        </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mt-5" align="center">
+                                        <div id="thumb" class="thumb-profile "><img src="{{asset('home/imgProfile/'.$spon->SPON_IMG)}}"></div>    
+                                        <input id="file_upload" style="display:none" name="SPON_IMG" type="file" multiple="true" accept="image/* "/>
+                                        <button id="upload" class="btn-upload-pic mt-2">เลือกรูป</button>
+                                        <div class="des-profile-pic mt-2">ขนาดไฟล์: สูงสุด 1 MB</div>
                                     </div>
-                                </div> -->
+                                </div>
+                            </div> -->
 
-                        </div>
-                        <div class="col-lg-1"></div>
                     </div>
                 </div>
             @endif
         @endforeach
+        <div class="col-sm-1 col-md-1 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
     </div>
 </div>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_login"></div>
+        <div class="col-lg-4 col-xl-3 bgSidebar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 bg_login2"></div>
+        <div class="col-lg-8 col-xl-9 bgContent"></div>
     </div>
 </div>
 <style>
@@ -316,6 +264,8 @@
         border-bottom: 1px solid #000;
         height:300px;
         overflow:scroll;
+        overflow-x: hidden;
+        font-family:myfont1;
     }
     .tt-suggestion.tt-selectable:hover{
         background-color:#ddd !important;
