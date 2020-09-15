@@ -99,6 +99,7 @@
 
 @section('content')
 <div class="container-fluid">
+    @foreach($Detail as $detailGame)
         <div class="row" style="background-color: #202433;height:130px;"></div>
         <div class="row" style="background-color: #202433;">
             <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3">
@@ -330,6 +331,7 @@
             </div>
             <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
         </div>
+    @endforeach
 
     <div class="row pt-4" style="background-color: #141621;">
         <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>

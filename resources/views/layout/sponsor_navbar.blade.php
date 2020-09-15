@@ -23,6 +23,8 @@
         <link rel="stylesheet" href="{{ asset('icon/font_lvp.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap-select/dist/css/bootstrap-select.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap-select/dist/css/bootstrap-select.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('drawer/dist/css/bootstrap-drawer.css') }}">
+        <link rel="stylesheet" href="{{ asset('drawer/dist/css/bootstrap-drawer.min.css') }}">
         @yield('head')
 
     </head>
@@ -128,12 +130,87 @@
 
                     <div class="col-sm-8 col-md-8 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"></div>
                     <div class="col-sm-2 col-md-1 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">
-                        <a href="#" class="site-menu-toggle js-menu-toggle text-center">
-                            <span class="icon-menu h1 menu1 mr-2"></span>
+                        <a  class="site-menu-toggle js-menu-toggle text-center">
+                            <span class="icon-menu h1 menu1 mr-2" data-toggle="drawer" data-target="#drawer-1"></span>
                         </a>
                     </div>
                 </div>
             </header> 
+
+            <!-- Drawer -->
+            <div class="drawer drawer-right slide" tabindex="-1" role="dialog" aria-labelledby="drawer-1-title" aria-hidden="true" id="drawer-1">
+                    <div class="drawer-content drawer-content-scrollable" role="document">
+                        <div class="drawer-body" style="background:#000"  aria-label="Close">
+                            <span class="pCloseNavbar" data-dismiss="drawer">
+                                <img style="width:15px;" src="{{asset('icon/close-wh.svg')}}" >
+                            </span>
+
+                            <label class="pNavMobile">
+                                <div>
+                                    <label class="text-center">
+                                        @if(Auth::user()->users_type == '2')
+                                            @foreach($developer as $Dev)
+                                                <img class="navbar-pic" src="{{asset('home/imgProfile/'.$Dev->DEV_IMG) }}" />
+                                            @endforeach
+                                        @elseif(Auth::user()->users_type == '3')
+                                            @foreach($sponsor as $spon)
+                                                <img class="navbar-pic" src="{{asset('home/imgProfile/'.$spon->SPON_IMG) }}" />
+                                            @endforeach
+                                        @else
+                                            @foreach($guest_user as $USER)
+                                                <img class="navbar-pic" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
+                                            @endforeach
+                                        @endif
+                                    </label>
+                                    <label style="padding: 0 0 0 60px">
+                                        <h1 style="color:#ffffff;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</br>สถานะ : บุคคลธรรมดา</h1>
+                                        <h5 style="color:#ffffff;font-size:12px">เป็นสมาชิก :{{ Auth::user()->created_at }}</h5>
+                                    </label>
+                                    <a href="{{ route('SponShoppingCart') }}">
+                                        <img class="pCart" style="width:30px" src="{{asset('icon/shopping-cart.png') }}" />
+                                        <span class="font-cart">{{count($countCart)}}</span>
+                                    </a>
+                                </div>
+
+                                <div>
+                                    <label style="margin:0;">
+                                        <h1 style="color:#ffffff;">พอยท์</h1>
+                                    </label>
+                                    <label style="float: right;margin:0;">
+                                        <h1 style="color: #ffffff;margin:0;padding:5px 0 0 0;">1000000
+                                        <i class="icon-Icon_Point"></i></h1>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label style="margin:0;">
+                                        <h1 style="color:#ffffff;">เหรียญ</h1>
+                                    </label>
+                                    <label style="float: right;margin:0;padding:5px 0 0 0;">
+                                        <h1 style="color: #ffffff;margin:0;">100
+                                        <i class="icon-Icon_Coin"></i></h1>
+                                    </label>
+                                </div>
+
+                                <a href="{{ url('/') }}"><h1 class="navbarMobile">หน้าแรก</h1></a>
+                                <a href="{{ route('gameCategory') }}"><h1 class="navbarMobile">หมวดหมู่</h1></a>
+                                <a href="{{ route('FollowMe') }}"><h1 class="navbarMobile">การติดตามของฉัน</h1></a>
+                                <a href="{{ route('SponsorProfile') }}"><h1 class="navbarMobile">ข้อมูลส่วนตัว</h1></a>
+                                <a href="{{ route('AdsSpon') }}"><h1 class="navbarMobile">โฆษณา</h1></a>
+                                <a href="{{ route('AdvtPackage') }}"><h1 class="navbarMobile">สนับสนุนเงินในเกิม</h1></a>
+                                <a href="{{ route('ProductSupport') }}"><h1 class="navbarMobile">สนับสนุนสินค้าในเกม</h1></a>
+                                <a href="{{ route('SponShelf') }}"><h1 class="navbarMobile">ตู้เกม (เกมเชล)</h1></a>
+                                <a href="{{ route('SponsorChangePassword') }}"><h1 class="navbarMobile">เปลี่ยนรหัสผ่าน</h1></a>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <h1 class="navbarMobile">{{ __('ออกจากระบบ') }}</h1>
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </label>
+                        </div>
+                    </div>
+                </div>
             
             @yield('content')
             
@@ -212,7 +289,8 @@
         <script src="{{ asset('dist/js/isotope.pkgd.min.js') }}"></script>
         <script src="{{ asset('dist/js/main.js') }}"></script>
         <script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
-        <script src="{{ asset('dist/moment/dist/moment.js') }}"></script>
+        <script src="{{ asset('drawer/dist/js/bootstrap-drawer.js') }}"></script>
+        <script src="{{ asset('drawer/dist/js/bootstrap-drawer.min.js') }}"></script>
         @yield('script')
 
         <script>
