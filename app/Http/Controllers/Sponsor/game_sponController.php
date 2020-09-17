@@ -113,7 +113,7 @@ class game_sponController extends Controller
             // dd($data);
             Package::cartGame($data);
         }
-        return back()->with("success", "ทำรายการสำเร็จ");
+        return back()->with("successSpon", "ทำรายการสำเร็จ");
     }
 
     public function SponShoppingCart(){

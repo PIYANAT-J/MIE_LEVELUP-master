@@ -4,8 +4,7 @@
     <div class="row py-5"style="background-color:#f5f5f5;"></div>
     <div class="row ">
         @include('profile.sidebar.sponsor_sidebar')
-        
-
+      
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3 pb-4" style="background-color:#f5f5f5;">
             <div class="row mt-3">
                 <div class="col-12">
@@ -635,7 +634,7 @@
                                             <div class="row">
                                                 <div class="col-4" style="padding-right:0;">
                                                     <div class="redioRed">
-                                                        <input type="radio" name="changeAdd" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}" checked>
+                                                        <input type="radio" name="ibank" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}" checked>
                                                         <label for="KEY{{$key}}"><p style="margin:0;font-weight:800;">ชื่อ - นามสกุล<br>ที่อยู่</p></label>
                                                     </div>
                                                 </div>
@@ -658,7 +657,7 @@
                                             <div class="row">
                                                 <div class="col-4" style="padding-right:0;">
                                                     <div class="redioRed">
-                                                        <input type="radio" name="changeAdd" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}">
+                                                        <input type="radio" name="ibank" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}">
                                                         <label for="KEY{{$key}}"><p style="margin:0;font-weight:800;">ชื่อ - นามสกุล<br>ที่อยู่</p></label>
                                                     </div>
                                                 </div>

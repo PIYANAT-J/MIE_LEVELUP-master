@@ -16,7 +16,7 @@
                 </div>
             </div>
 
-            <div style="background-color:#ffffff;border-radius: 8px;padding:20px;">
+            <div id="general-content" style="background-color:#ffffff;border-radius: 8px;padding:20px;">
                 <div class="row">
                     <div class="col-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
                         <h1 style="margin:0;font-weight:800;">ตระกร้าสินค้า</h1>
@@ -25,7 +25,7 @@
                 
                 <div class="row rowGameShopping">
                     <div class="col-12" style="border-bottom: 1px solid #f2f2f2;">
-                        <div class="row mx-2 mt-3" style="border-bottom:1px solid #fff;">
+                        <div class="row mx-2 mt-3" style="border-bottom:1px solid #fff;height:200px;">
                             @foreach($countCart as $key=>$gameList)
                                 <div class="col-8" style="padding:0;">
                                     <div class="checkbox-dark pt-2">
@@ -70,8 +70,8 @@
                         <div class="row my-2">
                             <div class="col-12">
                                 <label class="checkbox-dark">
-                                    <input type="checkbox" id="checkbox_all" name="accept_01" onclick="toggle(this);">
-                                    <label for="checkbox_all" class="pt-2 ml-2">
+                                    <input type="checkbox" id="select_all" name="accept_all" onclick="toggle(this);">
+                                    <label for="select_all" class="pt-2 ml-2">
                                         <p style="font-weight:800;margin:0;">เลือกทั้งหมด</p></label>
                                 </label>
                             </div>
@@ -109,12 +109,12 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_login"></div>
+        <div class="col-lg-4 col-xl-3 bgSidebar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 bg_login2"></div>
+        <div class="col-lg-8 col-xl-9 bgContent"></div>
     </div>
 </div>
 
@@ -147,27 +147,77 @@
 </script>
 
 <script>
-    $(document).ready(function() {
-        $(":checkbox").change(function() {
-            var total = 0;
-            var closest = $(this).closest("div.row");
-            var countCheckedCheckboxes = $(":checkbox", closest).filter(':checked').length;
-            $('#count-checked').html(countCheckedCheckboxes);
-            console.log(countCheckedCheckboxes);
-            var favorite = [];
+    // $(document).ready(function() {
+    //     $(":checkbox").change(function() {
+    //         var total = 0;
+    //         var closest = $(this).closest("div.row");
+    //         var countCheckedCheckboxes = $(":checkbox", closest).filter(':checked').length;
+    //         $('#count-checked').html(countCheckedCheckboxes);
+    //         console.log(countCheckedCheckboxes);
+    //         var favorite = [];
+    //         $.each($("input[name='accept_01']:checked"), function(){
+    //             favorite.push($(this).val());
+    //         });
+    //         $("input[name='accept_01']:checked").each(function() {
+    //             total += parseFloat($(this).attr('data-price')) || 0;
+    //         });
+    //         $('#total').html("฿"+total);
+    //         document.querySelector('input#sumTotal').value = total;
+    //         console.log(total);
+    //         document.querySelector('input#data-checked').value = favorite.join(", ");
+    //         console.log(favorite);
+    //     });
+    // });
+    function updateCounter() {
+        var total = 0;
+        var favorite = [];
+        var len = $("#general-content input[name='accept_01']:checked").length;
+        if(len>0){
+            $("#count-checked").text(len);
             $.each($("input[name='accept_01']:checked"), function(){
                 favorite.push($(this).val());
             });
             $("input[name='accept_01']:checked").each(function() {
                 total += parseFloat($(this).attr('data-price')) || 0;
             });
-            $('#total').html(total);
+            $('#total').html("฿"+total);
             document.querySelector('input#sumTotal').value = total;
             console.log(total);
             document.querySelector('input#data-checked').value = favorite.join(", ");
             console.log(favorite);
-        });
+        }else{
+            $("#count-checked").text('0');
+            $.each($("input[name='accept_01']:checked"), function(){
+                favorite.push($(this).val());
+            });
+            $("input[name='accept_01']:checked").each(function() {
+                total += parseFloat($(this).attr('data-price')) || 0;
+            });
+            $('#total').html("฿0.00");
+            document.querySelector('input#sumTotal').value = total;
+            console.log(total);
+            document.querySelector('input#data-checked').value = favorite.join(", ");
+            console.log(favorite);
+        }
+    }
+    $("#general-content input:checkbox").on("change", function() {
+        updateCounter();
     });
+
+    $(function() {
+        $('#select_all').change(function() {
+            var checkthis = $(this);
+            var checkboxes = $(this).parent().next('#count-checked').find("input[name='accept_01']");
+
+            if(checkthis.is(':checked')) {
+                checkboxes.attr('checked', true);
+            } else {
+                checkboxes.attr('checked', false);
+            }
+            updateCounter();
+        });
+        
+    })
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>

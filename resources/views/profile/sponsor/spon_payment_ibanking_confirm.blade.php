@@ -53,7 +53,7 @@
                         <div class="row mt-3 py-2 " style="border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
                             <div class="col-12">
                                 <div class="row">
-                                    <div class="col-sm-2 col-md-3 col-lg-8 col-xl-8"></div>
+                                    <div class="col-sm-2 col-md-3 col-lg-8 col-xl-4"></div>
                                     <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 mt-2">
                                         <form action="{{route('cancalIbanking')}}" method="post">
                                             @csrf
