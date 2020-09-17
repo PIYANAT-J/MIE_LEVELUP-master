@@ -102,12 +102,12 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_login"></div>
+        <div class="col-lg-4 col-xl-3 bgSidebar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 bg_login2"></div>
+        <div class="col-lg-8 col-xl-9 bgContent"></div>
     </div>
 </div>
 

@@ -58,13 +58,15 @@ class AddressController extends Controller
             return back()->with("Delete", "ลบที่อยู่เรียบร้อย");
         }else{
             // dd($request);
-            DB::table('addresses')
-                    ->where([['addresses_status', 'true'], ['USER_EMAIL', Auth::user()->email]])
-                    ->update(['addresses_status'=>'false']);
             if($request->input('changeAddID') != null){
                 DB::table('addresses')
-                    ->where([['addresses_id', $request->input('changeAddID')], ['USER_EMAIL', Auth::user()->email]])
-                    ->update(['addresses_status'=>'true']);
+                    ->where([['addresses_status', 'true'], ['USER_EMAIL', Auth::user()->email]])
+                    ->update(['addresses_status'=>'false']);
+                if($request->input('changeAddID') != null){
+                    DB::table('addresses')
+                        ->where([['addresses_id', $request->input('changeAddID')], ['USER_EMAIL', Auth::user()->email]])
+                        ->update(['addresses_status'=>'true']);
+                }
             }
             return back();
         }

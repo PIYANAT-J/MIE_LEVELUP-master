@@ -1245,6 +1245,7 @@ input[type='text']:focus{
   background-color: #f2f2f2;
 }
 
+
  .inputWithIcon{
   position: relative;
 }
@@ -2253,20 +2254,18 @@ body {
 }
 
 .btn-cancel{
-  width: 150px;
-  height: 50px;
+  width: 100%;
   background-color: #a8a8a8;
   color: #fff;
-  font-family: myfont;
-  font-size: 1em;
   border-radius: 8px;
   border: none;
+  padding: 8px 0;
 }
 .btn-cancel:focus {
   outline: none!important;
 }
-.btn-submit{
 
+.btn-submit{
   width: 100%;
   background-color: #17202c;
   color: #fff;
@@ -2277,6 +2276,8 @@ body {
 .btn-submit:focus {
   outline: none!important;
 }
+
+
 
 .btn-submit-red{
   width: 100%;
@@ -3345,6 +3346,10 @@ input.date{
   padding: 10px;
 }
 
+.MySelect:focus{
+  outline: none;
+}
+
 .select4{
   width: 100%;
   height: 35px;
@@ -3488,6 +3493,13 @@ div.sticky {
   object-fit: contain;
   border-radius: 6px;
   background-color: #f2f2f2;
+}
+
+.bgWh{
+  padding: 20px 0;
+  width: 100%;
+  border-radius: 6px;
+  background-color: #fff;
 }
 
 .font-bank1{
@@ -3746,6 +3758,25 @@ input[type="checkbox"].switch_1{
   text-align: center;
   color: #23c197;
 }
+
+.input-otp2{
+  width: 40px;
+  margin: 5px;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #ce0005;
+  background-color:  #fff;
+  font-family: myfont;
+  font-size: 1.3em;
+  text-align: center;
+  color: #000;
+}
+.input-otp2:focus{
+  background-color: #fff !important;
+  outline: none;
+}
+
 .btn-submit-modal-red{ /*-*/
   width: 100%;
   height: 50px;
@@ -3761,14 +3792,10 @@ input[type="checkbox"].switch_1{
   outline: none!important;
 }
 
-.btn-submit-red2{
-  width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+/* .btn-submit-red2{
+  padding: 5px 10px;
   background-color: #ce0005;
   color: #fff;
-  font-family: myfont1;
-  font-size: 1em;
   border-radius: 8px;
   border: none;
   text-align: center;
@@ -3776,7 +3803,7 @@ input[type="checkbox"].switch_1{
 }
 .btn-submit-red2:focus {
   outline: none!important;
-}
+} */
 
 .inputfile {
     opacity: 0;
@@ -4019,12 +4046,11 @@ ul.thumb-Images li {
 
 .massagrbox1{
   background-color: #edd0d5;
-  font-family: myfont1;
-  font-size: 1rem;
   color:#ce0005;
   width: 100%;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 20px;
 }
 
 .bg-disabled{
@@ -5442,7 +5468,7 @@ input[type=number]
   vertical-align: text-top;
   cursor: pointer;
 }
-.font-address{
+/* .font-address{
   color: #000;
   font-family:myfont1;
   font-size:1em;
@@ -5452,19 +5478,12 @@ input[type=number]
   cursor: pointer;
   height: 100px;
 
-}
+} */
 
-.font-address2{
-  font-family:myfont1;
-  font-size:1em;
-  color:#000;
-  line-height:1.3;
-  width: 60%;
+/* .font-address2{
   word-wrap: break-word;
-  vertical-align: text-top;
-  cursor: pointer;
-  height: 100px;
-}
+  width: 60%;
+} */
 
 .font-payment-avatar2{
   font-family:myfont1;
@@ -5486,7 +5505,7 @@ input[type=number]
 }
 
 .bgPayment{
-  width: 190px;
+  width: 100%;
   height: 120px;
   background-color: #fafaff;
   border-radius: 6px;
@@ -5537,22 +5556,34 @@ input[type=number]
 }
 
 .fontLogoPosition{
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
   position: absolute;
-  top: 45%;
-  left: 30%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
-.fontLogoPosition2{
+/* .fontLogoPosition2{
+  text-align: center;
+  width: 100%;
   position: absolute;
-  top: 45%;
-  left: 15%;
-}
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+} */
 .fontdetailPosition{
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
   position: absolute;
-  top: 60%;
-  left: 27%;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
 }
 
-.fontdetailPosition2{
+
+/* .fontdetailPosition2{
   position: absolute;
   top: 65%;
   left: 25%;
@@ -5561,7 +5592,7 @@ input[type=number]
   position: absolute;
   top: 60%;
   left: 5%;
-}
+} */
 .selectGreenPosition{
   position: absolute;
   bottom: 5px;
@@ -6053,10 +6084,7 @@ button {
 
 .addT10wallet{
   background-color: #fafaff;
-  font-family: myfont1;
-  font-size: 1em;
-  font-weight: 800;
-  height: 45px;
+  padding: 10px 0;
   width: 100%;
   text-align: center;
   border: none;
@@ -6067,17 +6095,18 @@ button {
   outline: none;
 }
 
-.fontcode{
+/* .fontcode{
   font-weight: myfont;
   font-weight: 700;
   font-size: 1.3em;
   color: #455160;
   cursor: pointer;
-}
+} */
 .fontcodeposition{
   position: absolute;
-  top: 25%;
-  left: 5%;
+  top: 40%;
+  left: 30%;
+  transform: translate(-40%, -30%);
 }
 .bgcode{
   width: 100%;
@@ -6197,10 +6226,6 @@ button {
   padding: 0 10px 0 10px;
 }
 
-
-.btnReset{
-  font-family: myfont;
-}
 
 
 .field-wrap {
@@ -6371,13 +6396,13 @@ button {
   right: 25px;
 }
 
-.pTrashAvatar{
+/* .pTrashAvatar{
   position: absolute;
   z-index: 5;
   top: 5px;
   right: 20px;
   cursor: pointer;
-}
+} */
 
 .font-VisaCredit{
   font-family:myfont1;
@@ -6852,6 +6877,7 @@ input[type="checkbox"].switch_2{
   padding-right: 10px;
   border-radius: 6px;
   color: #ffffff;
+  border: none;
 }
 .fontAddGame{
   padding: 8px 20px;
@@ -6974,39 +7000,53 @@ input[type="checkbox"].switch_2{
   right: 15px;
 }
 
-.plabelimg{
-  display: inline-block;
-  vertical-align: top; 
-  position: relative;
+.plabelimg2{
+  position: absolute;
+  top: 15px;
+  left: 5px;
 }
-.labelimg{
+
+.labelimg2{
   width: 5.5em;
   height: 5.5em;
   border: 1px solid #000;
   border-radius: 6px;
   object-fit: cover;
+  position: absolute;
+  top: 5px;
+  left: 5px;
 }
 
-.labelFont{
-  font-family: myfont1;
-  font-size: 1em;
-  color: #000;
-  line-height: 0.5;
-  display: inline-block;
-  vertical-align: top; 
-  position: relative;
-  text-align: left;
-  word-wrap: break-word;
-}
-  
-.bglabelFont{
-  background: #ffffff;
+.pImg{
+  width: 5.5em;
   height: 5.5em;
+  border: 1px solid #000;
   border-radius: 6px;
-  border: none;
-  width: 65%;
-  
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 30px;
 }
+
+.pFont{
+  position: absolute;
+  top: 0;
+  left: 130px;
+}
+  
+.pFont2{
+  position: absolute;
+  top: 5px;
+  left: 110px;
+}
+
+.pFont3{
+  position: absolute;
+  top: 5px;
+  left: 70px;
+}
+
+
 
 /* .fontPriceAds1{
   object-fit: contain;
@@ -7028,8 +7068,6 @@ input[type="checkbox"].switch_2{
 }
 
 .fontAdsPayment{
-  font-family:myfont1;
-  font-size:1em;
   font-weight: 800;
   line-height:1.5;
   vertical-align: text-top;
@@ -7037,38 +7075,28 @@ input[type="checkbox"].switch_2{
 }
 
 .fontAdsPayment2{
-  font-family:myfont1;
-  font-size:1em;
   line-height:1.5;
   vertical-align: text-top;
-  cursor: pointer;
 }
 
 .fontAdsPayment3{
-  font-family:myfont1;
-  font-size:1em;
+  width: 90%;
   line-height:1.5;
-  width: 70%;
   word-wrap: break-word;
   vertical-align: text-top;
-  cursor: pointer;
 }
 
-.fontAdsPayment4{
-  font-family:myfont1;
-  font-size:1em;
-  line-height:1.5;
+/* .fontAdsPayment4{
   vertical-align: text-top;
   cursor: pointer;
   color:#a0a0a0;
-  font-size:0.9em
 }
 
 .pfontAds3{
   position: absolute;
-  top: 60%;
+  top: 65%;
   left: 2%;
-}
+} */
 
 .BorderGreenSelectPayment{
   width:100%;
@@ -7092,11 +7120,8 @@ input[type="checkbox"].switch_2{
 }
 
 .inputSponPayment2{
-  width: 65%;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
-  font-family: myfont1;
-  font-size: 1em;
   border: none;
   padding: 3px 10px;
   background-color: #fafaff;
@@ -7109,18 +7134,16 @@ input[type="checkbox"].switch_2{
 
 
 .select-code2{
-  font-family: myfont1;
-  font-size: 1em;
   background-color: #17202c;
   color: #FFFFFF;
   border: none;
   cursor: pointer;
 }
 
-.fontAdsPayment5{
+/* .fontAdsPayment5{
   font-family: myfont1;
   font-size: 1.1em;
-}
+} */
 
 .modalGrey{
   background: #f7f7f7;
@@ -7192,8 +7215,6 @@ input[type="checkbox"].switch_2{
   z-index: 5;
   top: 11px;
   left: 70px;
-  font-family:myfont1;
-  font-size:1em;
   color:#414141;
   cursor: pointer;
   margin: 0;
@@ -7215,20 +7236,6 @@ input[type="checkbox"].switch_2{
   margin: 0;
 }
 
-.submitModalRed{
-  width: 100%;
-  height: 50px;
-  background-color: #ce0005;
-  color: #fff;
-  font-family: myfont1;
-  font-size: 1.1em;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
-.submitModalRed:focus {
-  outline: none!important;
-}
 #bank,#sBank{
   display: none;
 }
@@ -7258,7 +7265,7 @@ input[type="checkbox"].switch_2{
   background: #ce0005;
 }
 
-#codeBox1,#codeBox2,#codeBox3,#codeBox4,#codeBox5,#codeBox6{
+/* #codeBox1,#codeBox2,#codeBox3,#codeBox4,#codeBox5,#codeBox6{
   width: 40px;
   height: 40px;
   padding: 0;
@@ -7273,7 +7280,7 @@ input[type="checkbox"].switch_2{
 }
 #codeBox1,#codeBox2,#codeBox3,#codeBox4,#codeBox5,#codeBox6, :focus{
   outline: none;
-}
+} */
 
 .bgOTP{
   background-color: #fff;
@@ -7283,11 +7290,8 @@ input[type="checkbox"].switch_2{
 
 .submitModalWh{
   width: 100%;
-  height: 50px;
+  padding: 10px 20px;
   background-color: #ffffff;
-  color: #ce0005;
-  font-family: myfont1;
-  font-size: 1.1em;
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -7297,10 +7301,7 @@ input[type="checkbox"].switch_2{
 }
 
 .inputSponPayment3{
-  width: 80%;
   border-radius: 6px;
-  font-family: myfont1;
-  font-size: 1em;
   background-color: #fafaff;
   padding: 6px 10px;
   border: none;
@@ -7334,8 +7335,6 @@ input[type="checkbox"].switch_2{
 .addBank{
   background-color: #171f2b;
   color: #ffffff;
-  font-family: myfont1;
-  font-size: 1em;
   padding: 8px 10px;
   border-radius: 6px;
   width: 100%;
@@ -7382,8 +7381,6 @@ input[type="checkbox"].switch_2{
 }
 
 .fontCopy{
-  font-family: myfont1;
-  font-size: 1em;
   font-weight: 800;
   color: #ce0005;
   position: absolute;
@@ -7393,8 +7390,6 @@ input[type="checkbox"].switch_2{
 }
 
 .fontGreen{
-  font-family: myfont1;
-  font-size: 1em;
   font-weight: 800;
   color: #23c197;
   position: absolute;
@@ -7408,15 +7403,12 @@ input[type="checkbox"].switch_2{
   z-index: 5;
   top: 11px;
   left: 30px;
-  font-family:myfont1;
-  font-size:1em;
-  color:#414141;
+  color:#000;
   cursor: pointer;
   margin: 0;
 }
 
 .accordions {
-  font-family: myfont1;
   width: 100%;
   color: #000;
 }
@@ -7473,11 +7465,11 @@ input[type="checkbox"].switch_2{
 }
 
 
-.font-payment3{
+/* .font-payment3{
   font-family: myfont1;
   font-size: 1em;
   font-weight: 700;
-}
+} */
 
 .btn-submit-drak2{
   padding: 10px 30px 10px 30px;
@@ -7495,11 +7487,9 @@ input[type="checkbox"].switch_2{
 }
 
 .btn-submit-red3{
-  padding: 10px 20px 10px 20px;
+  padding: 8px 10px;
   background-color: #ce0005;
   color: #fff;
-  font-family: myfont1;
-  font-size: 1em;
   border-radius: 8px;
   border: none;
   text-align: center;
@@ -7510,11 +7500,9 @@ input[type="checkbox"].switch_2{
 }
 
 .btn-submit-wh{
-  padding: 10px 20px 10px 20px;
+  padding: 8px 10px;
   background-color: #ffffff;
   color: #ce0005;
-  font-family: myfont1;
-  font-size: 1em;
   border-radius: 8px;
   border: 1px solid #ce0005;
   text-align: center;
@@ -7561,8 +7549,6 @@ input[type="checkbox"].switch_2{
 
 .bgOrange{
   background-color: #fc8800;
-  font-family: myfont1;
-  font-size: 1em;
   color: #fff;
   border-radius: 6px;
   padding: 0 10px 0 10px;
@@ -8140,12 +8126,37 @@ input[type="checkbox"].switch_2{
 .btnNone:focus{
   outline: none;
 }
+
+.btnNone2{
+  background-color: #fff;
+  border: none;
+  border-radius: 0 6px 0 0;
+}
+.btnNone2:focus{
+  outline: none;
+}
+
+
 .input3{
   padding: 0;
   background-color: #f2f2f2;
   border: none;
 }
 
+.input3:focus{
+  outline: none;
+}
+
+.input4{
+  padding: 0;
+  background-color: #fff;
+  border: none;
+}
+
+.input4:focus{
+  background-color: #fff !important;
+  outline: none;
+}
 .pCart{
   position: absolute;
   top: 5px0;
