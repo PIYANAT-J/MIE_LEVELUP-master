@@ -36,14 +36,14 @@
                         <div class="col-12">
                             <div class="row mx-2 mt-3" style="border-bottom:1px solid #f2f2f2;">  
                                 <div class="col-9" style="padding:0;">
-                                    <label class="plabelimg">
+                                    <label class="plabelimg2">
                                         <img src="{{asset('icon/money2.svg') }}" />
                                     </label> 
-                                    <label class="labelFont bglabelFont ml-2 pt-3">
-                                        <p style="font-weight: 700;margin:0;">{{$allPackage->package_name}}</p></br>
+                                    <div class="pFont3">
+                                        <p style="font-weight: 700;margin:0;">{{$allPackage->package_name}}</p>
                                         <label class="p" style="color: #23c197;">{{$allPackage->package_season}} เดือน</label>
                                         <label class="p" style="color: #23c197;">จำนวน {{$allPackage->package_game}} เกม </label>
-                                    </label>
+                                    </div>
                                 </div>
 
                                 <div class="col-3">

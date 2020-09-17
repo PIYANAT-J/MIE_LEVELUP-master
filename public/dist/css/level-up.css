@@ -7040,6 +7040,14 @@ input[type="checkbox"].switch_2{
   left: 110px;
 }
 
+.pFont3{
+  position: absolute;
+  top: 5px;
+  left: 70px;
+}
+
+
+
 /* .fontPriceAds1{
   object-fit: contain;
   font-family: myfont1;
