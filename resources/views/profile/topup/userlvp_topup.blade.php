@@ -481,7 +481,7 @@
                     </div>
                 </div>
                 <div class="row px-3">
-                    <div class="col-lg-12 py-3 bgGrey text-center ">
+                    <div class="col-12 py-3 bgGrey text-center ">
                         <div>
                             <input class="input-otp" id="Box1" type="text" maxlength="1" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)" require/>
                             <input class="input-otp" id="Box2" type="text" maxlength="1" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)" require/>
