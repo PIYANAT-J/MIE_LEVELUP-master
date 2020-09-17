@@ -1254,11 +1254,11 @@ function showSlides(n) {
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-@if( Session::has('success'))
+@if( Session::has('successSpon'))
     <script type="text/javascript">
         $(document).ready(function() {
             Swal.fire({
-                title: '{{ Session::get('success') }}',
+                title: '{{ Session::get('successSpon') }}',
                 icon: 'success',
                 footer:
                 '<a class="linkAd" href="{{ route('SponShoppingCart') }}">' +

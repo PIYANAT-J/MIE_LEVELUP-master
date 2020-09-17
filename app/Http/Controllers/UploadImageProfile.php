@@ -599,18 +599,20 @@ class UploadImageProfile extends Controller
                     // Insert && Update
                     $value = Sponsors::InsertAndUpdateData($data);
 
-                    $address = new Address();
-                    $address->addresses = $SPON_ADDRESS;
-                    $address->province = $province;
-                    $address->amphure = $amphure;
-                    $address->district = $district;
-                    $address->zipcode = $ZIPCODE_ID;
-                    $address->USER_ID = Auth::user()->id;
-                    $address->USER_EMAIL = Auth::user()->email;
-                    // $address->DATE_CREATE = date('Y-m-d H:i:s');
-                    // dd($address);
-                    $address->save();
-
+                    $count = DB::table('addresses')->where('USER_EMAIL', Auth::user()->email)->get();
+                    if($count->count() == 0){
+                        $address = new Address();
+                        $address->addresses = $SPON_ADDRESS;
+                        $address->province = $province;
+                        $address->amphure = $amphure;
+                        $address->district = $district;
+                        $address->zipcode = $ZIPCODE_ID;
+                        $address->USER_ID = Auth::user()->id;
+                        $address->USER_EMAIL = Auth::user()->email;
+                        // $address->DATE_CREATE = date('Y-m-d H:i:s');
+                        // dd($address);
+                        $address->save();
+                    }
                     if($value){
                         Session::flash('message','Insert successfully.');
                     }else{
