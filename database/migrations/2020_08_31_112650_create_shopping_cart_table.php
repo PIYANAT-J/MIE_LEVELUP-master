@@ -15,13 +15,10 @@ class CreateShoppingCartTable extends Migration
     {
         Schema::create('shopping_cart', function (Blueprint $table) {
             $table->bigIncrements('shopping_cart_id');
-            $table->integer('shopping_cart_item');
+            $table->integer('shopping_cart_amount');
             $table->double('shopping_cart_price', 15, 4)->default(0);
-            $table->integer('shopping_cart_number');
-            // $table->string('shopping_cart_package')->collation('utf8_unicode_ci')->nullable();
-            // $table->date('shopping_cart_start');
-            // $table->date('shopping_cart_deadline');
             $table->set('shopping_cart_status', ['true', 'false'])->collation('utf8_unicode_ci')->default('false');
+            $table->integer('item_id');
             $table->integer('USER_ID');
             $table->string('USER_EMAIL')->collation('utf8_unicode_ci');
             $table->timestamps();
