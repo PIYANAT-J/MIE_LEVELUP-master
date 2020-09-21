@@ -1268,12 +1268,12 @@
 <!-- พื้นหลัง -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-4 col-xl-3 bgSidebar"></div>
+        <div class="col-lg-4 col-xl-3 bg_avatar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-8 col-xl-9 bgContent"></div>
+        <div class="col-lg-8 col-xl-9 bg_avatar2"></div>
     </div>
 </div>
 
