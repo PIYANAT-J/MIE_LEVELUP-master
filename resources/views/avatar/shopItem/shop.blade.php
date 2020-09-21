@@ -1,148 +1,69 @@
 @extends('layout.avatar_navbar')
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" id="getActive" active="{{ route('Avatar') }}">
     <div class="row my-5"></div>
-    <div class="row my-2"></div>
     <div class="row  mt-3">
- 
-        <!-- sidebar -->
-        <div class="col-lg-3" style="background-color: #000;">
-            <div class="row">
-                <div class="col-lg-1"></div>
-                @if(Auth::user()->updateData == 'true')
-                    @foreach($guest_user as $USER)
-                        <div class="col-lg-10 mb-3 pb-2" style="background-color: #000;">
-                            <div class="row mb-2">
-                                <div class="col-lg-4 text-right pr-2">
-                                    <img class="sidebar-pic2" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
-                                </div>
-                                <div class="col-lg-8 sidebar_name pt-2">
-                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
-                                </div>
-                            </div>
-                            <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                                <div class="col-lg-12 text-center">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="btn-point2 pb-2">
-                                                <span class="font-point">พอยท์</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Point"></i>
-                                            </label>
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="btn-coin2 pb-2 ">
-                                                <span class="font-point">เหรียญ</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Coin"></i>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
-                    <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                        <div class="row mb-2">
-                            <div class="col-5 text-right pr-2">
-                                <img class="sidebar-pic" src="{{asset('home/imgProfile/No_Img.jpg') }}" />
-                            </div>
-                            <div class="col-7 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้ใช้ทั่วไป</br>เป็นสมาชิก : {{ Auth::user()->created_at }}</span>
-                            </div>
-                        </div>
-                        <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                                <div class="col-lg-12 text-center">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="btn-point2 pb-2">
-                                                <span class="font-point">พอยท์</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Point"></i>
-                                            </label>
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="btn-coin2 pb-2 ">
-                                                <span class="font-point">เหรียญ</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Coin"></i>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                @endif
-                <div class="col-lg-1"></div>
-                <a href="{{ route('Avatar') }}" style="width: 100%;"><button class="btn-sidebar2 active"><i class="icon-profile menuIcon"></i>ตัวละครของฉัน (Avatar)</button></a>
-                <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว</button></a>
-                <a href="{{ route('UserKyc') }}" style="width: 100%;"><button class="btn-sidebar2"><span style="font-family: myfont1;font-size: 1em;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
-                    @if($userKyc->KYC_STATUS == null)
-                        <span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span>
-                    @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
-                        <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
-                    @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวตนแล้ว</span>
-                    @else
-                        <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
-                    @endif
-                </button></a>
-                <a href="{{ route('UserShelf') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
-                <a href="{{ route('UserHistory') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
-                <a href="{{ route('UserRank') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="fa fa-star-o menuIcon"></i>อันดับผู้ใช้</button></a>
-                <a href="{{ route('UserTopup') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</button></a>
-                <a href="/user_change_password" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
-                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar2"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</button></a>
-            </div>
-        </div>
-        <!-- sidebar -->
+    @include('profile.sidebar.avatar_sidebar')
+
         <!-- shop -->
         @if(Auth::user()->updateData == 'true')
             @foreach($guest_user as $USER)
                 @if($USER->USER_ID == Auth::user()->id)
-                        <div class="col-lg-9" style="background-color:#141621; ">
-                            <div class="row mt-4 px-4" >
-                                <div class="col-6 " style="color:#fff;">
-                                    <a href="/avatar"class="avatar-link active"> Avatar</a>
-                                    <a class="avatar-link" style="margin: 0 8px;"> > </a>
-                                    <a href="/shop" class="avatar-link" style="font-size:1em;">ตลาดซื้อขาย</a>
+                        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3  pb-4" style="background-color: #141621;">
+                            <div class="row mt-4" >
+                                <div class="col-sm-4 col-md-6 col-lg-6 col-xl-8 pt-2">
+                                    <label>
+                                        <a href="/avatar"class="avatar-link active">
+                                            <h1 style="margin:0;">Avatar</h1>
+                                        </a>
+                                    </label>
+                                    <label>
+                                        <h1 style="margin: 0;" class="avatar-link"> > </h1>
+                                    </label>
+                                    <label>
+                                        <a href="/shop" class="avatar-link">
+                                            <h1 style="margin:0;">ตลาดซื้อขาย</h1>
+                                        </a>
+                                    </label>
                                 </div>
-                                <div class="col-6 text-right">
-                                    <a href="/simulator_trade"><label class="bg-shop">
-                                        <div style="font-family:myfont1;font-size:1em;color:#fff;">Simulator Trade</div> 
-                                    </label></a>
-                                    <a href="/sale"><label class="labelshop bg-shop">
-                                        <div style="font-family:myfont1;font-size:1em;color:#fff;"><img style="width:1em;margin-right:10px;" src="{{asset('icon/shopping-bag.svg') }}"/>ประกาศขาย</div> 
-                                    </label></a>
+                                <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2 text-right" style="padding:0;">
+                                    <a href="/simulator_trade">
+                                        <label class="bg-shop">
+                                            <p style="color:#fff;margin:0;">Simulator Trade</p> 
+                                        </label>
+                                    </a>
+                                </div>
+                                <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                                    <a href="/sale">
+                                        <label class="bg-shop3">
+                                            <img class="iconShop2" src="{{asset('icon/shopping-bag.svg') }}"/>
+                                            <p style="color:#fff;margin:0;">ประกาศขาย</p>
+                                        </label>
+                                    </a>
                                 </div>
                             </div>
                             
                             <div class="row px-4">
-                                <div class="col-lg-12">
+                                <div class="col-12 mb-3" style="height:200px;">
                                     <div class="owl-carousel" id="owl-demo1">
-                                        <div class="item" >
-                                            <img class="bg-shop1" src="{{asset('home/avatar/bg.png') }}">
-                                            <img class="img-shop1" src="{{asset('home/avatar/man/other/crown/c02.png') }}">
-                                            <span class="font-head-shop1">RARE ITEM</span>
-                                            <span class="font-detail-shop1">ไอเทมพิเศษ หายาก มากที่สุดในตอนนี้รีบคว้ามามาครอบครองเลย</span>
-                                            <label class="btn-shop1" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                        <div class="item" style="height:200px;">
+                                            <img class="bgShopAvatar" src="{{asset('home/avatar/bg.png') }}">
+                                            <label class="bgItemShop ">
+                                                <h6 style="margin:0;font-weight:900;color:#fff;">RARE ITEM</h6>
+                                                <p style="margin:0;color:#fff;width:200px">ไอเทมพิเศษ หายาก มากที่สุดในตอนนี้รีบคว้ามามาครอบครองเลย</p>
+                                                <button class="btn-shop1 p" data-toggle="modal" data-target="#shop">ซื้อเลย</button>
+                                                <img class="img-shop1" src="{{asset('home/avatar/man/other/crown/c02.png') }}">
+                                            </label>
                                         </div>
 
-                                        <div class="item" >
-                                            <img class="bg-shop1" src="{{asset('home/avatar/bg.png') }}">
-                                            <img class="img-shop1" src="{{asset('home/avatar/man/weapon/sword/s01.svg') }}">
-                                            <span class="font-head-shop1">RARE ITEM</span>
-                                            <span class="font-detail-shop1">ไอเทมพิเศษ หายาก มากที่สุดในตอนนี้รีบคว้ามามาครอบครองเลย</span>
-                                            <label class="btn-shop1" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                        </div>
-
-                                        <div class="item" >
-                                            <img class="bg-shop1" src="{{asset('home/avatar/bg.png') }}">
-                                            <img class="img-shop1" src="{{asset('home/avatar/man/weapon/sword/s02.svg') }}">
-                                            <span class="font-head-shop1">RARE ITEM</span>
-                                            <span class="font-detail-shop1">ไอเทมพิเศษ หายาก มากที่สุดในตอนนี้รีบคว้ามามาครอบครองเลย</span>
-                                            <label class="btn-shop1" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                        <div class="item" style="height:200px;">
+                                            <img class="bgShopAvatar" src="{{asset('home/avatar/bg.png') }}">
+                                            <label class="bgItemShop ">
+                                                <h6 style="margin:0;font-weight:900;color:#fff;">RARE ITEM</h6>
+                                                <p style="margin:0;color:#fff;width:200px">ไอเทมพิเศษ หายาก มากที่สุดในตอนนี้รีบคว้ามามาครอบครองเลย</p>
+                                                <button class="btn-shop1 p" data-toggle="modal" data-target="#shop">ซื้อเลย</button>
+                                                <img class="img-shop1" src="{{asset('home/avatar/man/other/crown/c02.png') }}">
+                                            </label>
                                         </div>
                                     </div>
                                     <div class="btns">
@@ -153,59 +74,96 @@
                             </div>
 
                             <div class="row mx-4 pt-4 mb-3 pb-3" style="background-color: #202433;border-radius: 6px;">
-                                <div class="col-lg-12">
-                                    <div class="row px-4" style="height:190px">
-                                        <div class="col-lg-12" style="font-family:myfont1;color:#fff;font-size:1.2em;font-weight:800;">แนะนำ</div>
-                                        <div class="col-lg-12">
+                                <div class="col-12">
+                                    <div class="row px-4 mt-3" style="height:150px">
+                                    <!-- แนะนำ -->
+                                        <div class="col-12"><h1 style="color:#fff;font-weight:800;">แนะนำ</h1></div>
+                                        <div class="col-12" style="height: 120px;">
                                             <div class="owl-carousel" id="owl-demo2">
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
-                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_5.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/other/crown/c02.png') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">5</span>
-                                                    <span class="font-price font-price-position">฿9,000.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿11,400.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                                </div>
 
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
+                                                <div class="item" style="height: 120px;">
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_1.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/clothes/c05.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">10</span>
-                                                    <span class="font-price font-price-position">฿1,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿1,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/crown/c02.png') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
                                                 </div>
 
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
+                                                <div class="item" style="height: 120px;">
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_2.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/weapon/sword/s03.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">3</span>
-                                                    <span class="font-price font-price-position">฿11,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿12,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/clothes/c05.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
                                                 </div>
 
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
+                                                <div class="item" style="height: 120px;">
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_3.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/other/armor/a01.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">3</span>
-                                                    <span class="font-price font-price-position">฿22,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿18,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/weapon/sword/s03.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
                                                 </div>
-                                                
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
+
+                                                <div class="item" style="height: 120px;">
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_4.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/weapon/sword/s02.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">3</span>
-                                                    <span class="font-price font-price-position">฿32,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿38,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/armor/a01.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
+                                                </div>
+
+                                                <div class="item" style="height: 120px;">
+                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_5.jpg') }}" />
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/weapon/sword/s02.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
                                                 </div>
                                             </div>
                                             <div class="btns">
@@ -215,60 +173,95 @@
                                         </div>
                                     </div>
 
-                                    <div class="row px-4" style="height:190px">
-                                        <div class="col-lg-12" style="font-family:myfont1;color:#fff;font-size:1.2em;font-weight:800;">ศรีษะ</div>
-                                        <div class="col-lg-12">
+                                    <!-- ศรีษะ -->
+                                    <div class="row px-4 mt-3" style="height:150px">
+                                        <div class="col-12"><h1 style="color:#fff;font-weight:800;">ศรีษะ</h1></div>
+                                        <div class="col-12" style="height:120px;">
                                             <div class="owl-carousel" id="owl-demo3">
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
+                                                <div class="item" style="height: 120px;">
+                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_6.jpg') }}" />
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/woman/hair/h01.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
+                                                </div>
+
+                                                <div class="item" style="height: 120px;">
+                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_7.jpg') }}" />
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/woman/hair/h02.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
+                                                </div>
+
+                                                <div class="item" style="height: 120px;">
+                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_8.jpg') }}" />
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/woman/hair/h03.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
+                                                </div>
+
+                                                <div class="item" style="height: 120px;">
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_1.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/woman/hair/h01.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">5</span>
-                                                    <span class="font-price font-price-position">฿9,000.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿11,400.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/hair/h01.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
                                                 </div>
 
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
+                                                <div class="item" style="height: 120px;">
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_2.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/woman/hair/h02.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">10</span>
-                                                    <span class="font-price font-price-position">฿1,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿1,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/hair/h02.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
                                                 </div>
-
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
-                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_3.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/woman/hair/h03.svg') }}" data-toggle="popover" data-placement="bottom"> 
-                                                    <span class="font-shop2">3</span>
-                                                    <span class="font-price font-price-position">฿11,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿12,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                                </div>
-
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
-                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_4.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/hair/h01.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">3</span>
-                                                    <span class="font-price font-price-position">฿22,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿18,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                                </div>
-                                                
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
-                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_5.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/hair/h02.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">3</span>
-                                                    <span class="font-price font-price-position">฿22,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿18,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position">ซื้อเลย</label>
-                                                </div>
-                                                
                                             </div>
                                             <div class="btns">
                                                 <div class="shop-next3"><img class="middle" style="width:1em" src="{{asset('icon/next.svg') }}" /></div>
@@ -277,60 +270,95 @@
                                         </div>
                                     </div>
 
-                                    <div class="row px-4" style="height:190px">
-                                        <div class="col-lg-12" style="font-family:myfont1;color:#fff;font-size:1.2em;font-weight:800;">เสื้อผ้า</div>
-                                        <div class="col-lg-12">
+                                    <!-- เสื้อผ้า -->
+                                    <div class="row px-4 mt-3" style="height:150px">
+                                        <div class="col-12"><h1 style="color:#fff;font-weight:800;">เสื้อผ้า</h1></div>
+                                        <div class="col-12" style="height:120px;">
                                             <div class="owl-carousel" id="owl-demo4">
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
-                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_8.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/clothes/c08.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">5</span>
-                                                    <span class="font-price font-price-position">฿9,000.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿11,400.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                                </div>
-
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
-                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_7.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/clothes/c06.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">10</span>
-                                                    <span class="font-price font-price-position">฿1,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿1,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                                </div>
-
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
-                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_3.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/clothes/c07.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">3</span>
-                                                    <span class="font-price font-price-position">฿11,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿12,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                                </div>
-
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
-                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_5.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/clothes/c05.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">3</span>
-                                                    <span class="font-price font-price-position">฿22,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿18,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                                </div>
-                                                
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
+                                                <div class="item" style="height: 120px;">
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_2.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/woman/clothes/c04.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">3</span>
-                                                    <span class="font-price font-price-position">฿22,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿18,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/clothes/c05.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
                                                 </div>
-                                                
+
+                                                <div class="item" style="height: 120px;">
+                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_3.jpg') }}" />
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/clothes/c06.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
+                                                </div>
+
+                                                <div class="item" style="height: 120px;">
+                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_4.jpg') }}" />
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/clothes/c07.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
+                                                </div>
+
+                                                <div class="item" style="height: 120px;">
+                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_5.jpg') }}" />
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/clothes/c05.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
+                                                </div>
+
+                                                <div class="item" style="height: 120px;">
+                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_6.jpg') }}" />
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/woman/clothes/c04.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
+                                                </div>
                                             </div>
                                             <div class="btns">
                                                 <div class="shop-next4"><img class="middle" style="width:1em" src="{{asset('icon/next.svg') }}" /></div>
@@ -339,60 +367,95 @@
                                         </div>
                                     </div>
 
-                                    <div class="row px-4" style="height:190px">
-                                        <div class="col-lg-12" style="font-family:myfont1;color:#fff;font-size:1.2em;font-weight:800;">อาวุธ</div>
-                                        <div class="col-lg-12">
+                                    <!-- อาวุธ -->
+                                    <div class="row px-4 mt-3" style="height:150px">
+                                        <div class="col-12"><h1 style="color:#fff;font-weight:800;">อาวุธ</h1></div>
+                                        <div class="col-12" style="height:120px;">
                                             <div class="owl-carousel" id="owl-demo5">
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
-                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_1.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/weapon/sword/s01.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">5</span>
-                                                    <span class="font-price font-price-position">฿9,000.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿11,400.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                                </div>
-
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
-                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_7.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/weapon/sword/s02.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">10</span>
-                                                    <span class="font-price font-price-position">฿1,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿1,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                                </div>
-
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
-                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_5.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/weapon/sword/s03.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">3</span>
-                                                    <span class="font-price font-price-position">฿11,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿12,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                                </div>
-
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
-                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_3.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/weapon/sword/s04.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">3</span>
-                                                    <span class="font-price font-price-position">฿22,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿18,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                                </div>
-                                                
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
+                                                <div class="item" style="height: 120px;">
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_8.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/woman/weapon/sword/s04.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">3</span>
-                                                    <span class="font-price font-price-position">฿22,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿18,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/weapon/sword/s01.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
                                                 </div>
-                                                
+
+                                                <div class="item" style="height: 120px;">
+                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_7.jpg') }}" />
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/weapon/sword/s02.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
+                                                </div>
+
+                                                <div class="item" style="height: 120px;">
+                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_6.jpg') }}" />
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/weapon/sword/s03.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
+                                                </div>
+
+                                                <div class="item" style="height: 120px;">
+                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_5.jpg') }}" />
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/weapon/sword/s04.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
+                                                </div>
+
+                                                <div class="item" style="height: 120px;">
+                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_4.jpg') }}" />
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/woman/weapon/sword/s04.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
+                                                </div>
                                             </div>
                                             <div class="btns">
                                                 <div class="shop-next5"><img class="middle" style="width:1em" src="{{asset('icon/next.svg') }}" /></div>
@@ -401,60 +464,96 @@
                                         </div>
                                     </div>
 
-                                    <div class="row px-4" style="height:190px">
-                                        <div class="col-lg-12" style="font-family:myfont1;color:#fff;font-size:1.2em;font-weight:800;">ไอเทมพิเศษ</div>
-                                        <div class="col-lg-12">
+                                    <!-- ไอเทมพิเศษ -->
+                                    <div class="row px-4 mt-3" style="height:150px">
+                                        <div class="col-12"><h1 style="color:#fff;font-weight:800;">ไอเทมพิเศษ</h1></div>
+                                        <div class="col-12" style="height:120px;">
                                             <div class="owl-carousel" id="owl-demo6">
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
-                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_2.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/other/armor/a01.svg') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">5</span>
-                                                    <span class="font-price font-price-position">฿9,000.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿11,400.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                                </div>
 
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
+                                                <div class="item" style="height: 120px;">
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_4.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/other/crown/c03.png') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">10</span>
-                                                    <span class="font-price font-price-position">฿1,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿1,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/armor/a01.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
                                                 </div>
 
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
+                                                <div class="item" style="height: 120px;">
+                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_5.jpg') }}" />
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/crown/c03.png') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
+                                                </div>
+
+                                                <div class="item" style="height: 120px;">
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_6.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/other/crown/c02.png') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">3</span>
-                                                    <span class="font-price font-price-position">฿11,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿12,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/crown/c02.png') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
                                                 </div>
 
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
-                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_8.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/man/other/glove/g01.png') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">3</span>
-                                                    <span class="font-price font-price-position">฿22,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿18,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                                </div>
-                                                
-                                                <div class="item">
-                                                    <label class="bg-shop2"></label>
+                                                <div class="item" style="height: 120px;">
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_7.jpg') }}" />
-                                                    <img class="img-saleItem" src="{{asset('home/avatar/woman/other/crown/c01.png') }}" data-toggle="popover" data-placement="bottom">
-                                                    <span class="font-shop2">3</span>
-                                                    <span class="font-price font-price-position">฿22,500.00</span>
-                                                    <span class="font-price2 font-price2-position"><b style="color: #b2b2b2;text-decoration:line-through;">฿18,700.00 </b> (-37%)</span>
-                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/glove/g01.png') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
                                                 </div>
-                                                
+
+                                                <div class="item" style="height: 120px;">
+                                                    <img class="img-ownerItem" src="{{asset('dist/images/person_8.jpg') }}" />
+                                                    <label class="bg-shop2">
+                                                        <label class="img-saleItem">
+                                                            <img style="width:100%" src="{{asset('home/avatar/woman/other/crown/c01.png') }}" data-toggle="popover" data-placement="bottom">
+                                                        </label>
+                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-price-position p">฿9,000.00</span>
+                                                        <span>
+                                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
+                                                                ฿11,400.00
+                                                            </h5>
+                                                        </span>
+                                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
+                                                    </label>
+                                                </div>
                                             </div>
                                             <div class="btns">
                                                 <div class="shop-next6"><img class="middle" style="width:1em" src="{{asset('icon/next.svg') }}" /></div>
@@ -530,18 +629,18 @@
 </div>
 
 <div class="modal fade" id="shop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title"  style="color: #000;font-family:myfont;font-size:1.2em;" id="exampleModalLabel">ไอเทม</h4>
+                <h1 class="modal-title"  style="font-weight:800;" id="exampleModalLabel">ไอเทม</h1>
                 <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
             </div>
             
-            <div class="modal-body font-rate-modal">
+            <div class="modal-body">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-12">
                         <img class="img-ownerItem-modal" src="{{asset('dist/images/person_5.jpg') }}" />
-                        <span class="name-modal-shop ml-1"> ชื่อ-นามสกุล</span>
+                        <span class="name-modal-shop ml-1 p"> ชื่อ-นามสกุล</span>
                     </div>
                 </div>
                 <div class="row my-2 mx-1">
@@ -552,22 +651,22 @@
                     </div>
                     <div class="col-5">
                         <div class="mt-2">
-                            <span class="font-modal-shop"><b>มงกุฏ</b></br> ระดับ 3 สามารถเห็น Signal Rank 5-10 ได้ เลือกลงทุนได้ 5 Signal</span>
+                            <span class="font-modal-shop p"><b>มงกุฏ</b></br> ระดับ 3 สามารถเห็น Signal Rank 5-10 ได้ เลือกลงทุนได้ 5 Signal</span>
                         </div>
                     </div>
 
                     <div class="col-2 my-3">
                         <div class="quantity-block ">
                             <button class="quantity-arrow-minus"> - </button>
-                            <input class="quantity-num" type="number" value="1" min="1"  />
+                            <input class="quantity-num h5" type="number" value="1" min="1" readonly />
                             <button class="quantity-arrow-plus"> + </button>
                         </div>
                     </div>
 
                     <div class="col-3 my-3">
                         <span class="font-price-modal" style="line-height:1.2; display:block;text-align:right;">
-                            <b class="font-price-modal2">฿9,000.00</b></br>
-                            <b class="mr-2" style="color: font-size: 1em; color:#b2b2b2;text-decoration:line-through;">฿11,400 </b> (-37%)
+                            <h4 style="margin:0;color:#ce0005;font-weight:800;">฿9,000.00</h4>
+                            <p class="mr-2"><a style="color:#b2b2b2;text-decoration:line-through;">฿11,400 </a> (-37%)</p>
                         </span>
                     </div>
                 </div>
@@ -575,11 +674,14 @@
 
             <div class="modal-footer">
                 <div class="col-3">
-                    <button class="btn-cancel" data-dismiss="modal">ยกเลิก</button>
+                    <button class="btn-cancel" data-dismiss="modal">
+                        <p style="margin:0;">ยกเลิก</p>
+                    </button>
                 </div>
                 <div class="col-6"></div>
                 <div class="col-3">
-                    <button class="btn-submit-modal-red">ใส่ตระกร้า
+                    <button class="btn-submit-red">
+                        <p style="margin:0;">ใส่ตระกร้า</p>
                         <input type="hidden" name="createAccount" value="{{ date('Y-m-d H:i:s') }}">
                         <input type="hidden" name="submit" value="submit">
                     </button>
@@ -591,12 +693,12 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_avatar"></div>
+        <div class="col-lg-4 col-xl-3 bg_avatar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 bg_avatar2"></div>
+        <div class="col-lg-8 col-xl-9 bg_avatar2"></div>
     </div>
 </div>
 
@@ -648,19 +750,15 @@ $(document).ready(function(){
                 items:1,
                 nav:false
             },
-            600:{
+            576:{
                 items:1,
                 nav:false
             },
-            730:{
+            768:{
                 items:1,
                 nav:false
             },
-            980:{
-                items:1,
-                nav:false
-            },
-            1000:{
+            922:{
                 items:1,
                 nav:false
             },
@@ -668,7 +766,7 @@ $(document).ready(function(){
                 items:1,
                 nav:false
             },
-            1600:{
+            1360:{
                 items:1,
                 nav:false
             },
@@ -678,7 +776,7 @@ $(document).ready(function(){
                 loop:true
             },
             1920:{
-                items:1,
+                items:2,
                 nav:false,
                 loop:true
             }
@@ -710,30 +808,25 @@ $(document).ready(function(){
                 items:1,
                 nav:false
             },
-            600:{
-                items:1.8,
-                nav:false
-            },
-            700:{
+            576:{
                 items:2,
                 nav:false
             },
-            980:{
+            768:{
                 items:3,
                 nav:false
             },
-            1000:{
-                items:3.5,
-                nav:false,
-                loop:true
+            922:{
+                items:2,
+                nav:false
             },
             1280:{
-                items:4,
+                items:3,
                 nav:false,
                 loop:true
             },
-            1600:{
-                items:5,
+            1360:{
+                items:4,
                 nav:false,
                 loop:true
             },
@@ -776,30 +869,25 @@ $(document).ready(function(){
                 items:1,
                 nav:false
             },
-            600:{
-                items:1.8,
-                nav:false
-            },
-            700:{
+            576:{
                 items:2,
                 nav:false
             },
-            980:{
+            768:{
                 items:3,
                 nav:false
             },
-            1000:{
-                items:3.5,
-                nav:false,
-                loop:true
+            922:{
+                items:2,
+                nav:false
             },
             1280:{
-                items:4,
+                items:3,
                 nav:false,
                 loop:true
             },
-            1600:{
-                items:5,
+            1360:{
+                items:4,
                 nav:false,
                 loop:true
             },
@@ -841,30 +929,25 @@ $(document).ready(function(){
                 items:1,
                 nav:false
             },
-            600:{
-                items:1.8,
-                nav:false
-            },
-            700:{
+            576:{
                 items:2,
                 nav:false
             },
-            980:{
+            768:{
                 items:3,
                 nav:false
             },
-            1000:{
-                items:3.5,
-                nav:false,
-                loop:true
+            922:{
+                items:2,
+                nav:false
             },
             1280:{
-                items:4,
+                items:3,
                 nav:false,
                 loop:true
             },
-            1600:{
-                items:5,
+            1360:{
+                items:4,
                 nav:false,
                 loop:true
             },
@@ -906,30 +989,25 @@ $(document).ready(function(){
                 items:1,
                 nav:false
             },
-            600:{
-                items:1.8,
-                nav:false
-            },
-            700:{
+            576:{
                 items:2,
                 nav:false
             },
-            980:{
+            768:{
                 items:3,
                 nav:false
             },
-            1000:{
-                items:3.5,
-                nav:false,
-                loop:true
+            922:{
+                items:2,
+                nav:false
             },
             1280:{
-                items:4,
+                items:3,
                 nav:false,
                 loop:true
             },
-            1600:{
-                items:5,
+            1360:{
+                items:4,
                 nav:false,
                 loop:true
             },
@@ -971,30 +1049,25 @@ $(document).ready(function(){
                 items:1,
                 nav:false
             },
-            600:{
-                items:1.8,
-                nav:false
-            },
-            700:{
+            576:{
                 items:2,
                 nav:false
             },
-            980:{
+            768:{
                 items:3,
                 nav:false
             },
-            1000:{
-                items:3.5,
-                nav:false,
-                loop:true
+            922:{
+                items:2,
+                nav:false
             },
             1280:{
-                items:4,
+                items:3,
                 nav:false,
                 loop:true
             },
-            1600:{
-                items:5,
+            1360:{
+                items:4,
                 nav:false,
                 loop:true
             },

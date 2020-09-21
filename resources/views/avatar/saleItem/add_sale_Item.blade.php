@@ -1,195 +1,126 @@
 @extends('layout.avatar_navbar')
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" id="getActive" active="{{ route('Avatar') }}">
     <div class="row my-5"></div>
-    <div class="row my-2"></div>
     <div class="row  mt-3">
+    @include('profile.sidebar.avatar_sidebar')
  
-        <!-- sidebar -->
-        <div class="col-lg-3" style="background-color: #000;">
-            <div class="row">
-                <div class="col-lg-1"></div>
-                @if(Auth::user()->updateData == 'true')
-                    @foreach($guest_user as $USER)
-                        <div class="col-lg-10 mb-3 pb-2" style="background-color: #000;">
-                            <div class="row mb-2">
-                                <div class="col-lg-4 text-right pr-2">
-                                    <img class="sidebar-pic2" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
-                                </div>
-                                <div class="col-lg-8 sidebar_name pt-2">
-                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
-                                </div>
-                            </div>
-                            <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                                <div class="col-lg-12 text-center">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="btn-point2 pb-2">
-                                                <span class="font-point">พอยท์</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Point"></i>
-                                            </label>
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="btn-coin2 pb-2 ">
-                                                <span class="font-point">เหรียญ</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Coin"></i>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
-                    <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                        <div class="row mb-2">
-                            <div class="col-5 text-right pr-2">
-                                <img class="sidebar-pic" src="{{asset('home/imgProfile/No_Img.jpg') }}" />
-                            </div>
-                            <div class="col-7 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้ใช้ทั่วไป</br>เป็นสมาชิก : {{ Auth::user()->created_at }}</span>
-                            </div>
-                        </div>
-                        <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                                <div class="col-lg-12 text-center">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="btn-point2 pb-2">
-                                                <span class="font-point">พอยท์</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Point"></i>
-                                            </label>
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="btn-coin2 pb-2 ">
-                                                <span class="font-point">เหรียญ</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Coin"></i>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                @endif
-                <div class="col-lg-1"></div>
-                <a href="{{ route('Avatar') }}" style="width: 100%;"><button class="btn-sidebar2 active"><i class="icon-profile menuIcon"></i>ตัวละครของฉัน (Avatar)</button></a>
-                <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว</button></a>
-                <a href="{{ route('UserKyc') }}" style="width: 100%;"><button class="btn-sidebar2"><span style="font-family: myfont1;font-size: 1em;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
-                    @if($userKyc->KYC_STATUS == null)
-                        <span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span>
-                    @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
-                        <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
-                    @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวตนแล้ว</span>
-                    @else
-                        <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
-                    @endif
-                </button></a>
-                <a href="{{ route('UserShelf') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
-                <a href="{{ route('UserHistory') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
-                <a href="{{ route('UserRank') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="fa fa-star-o menuIcon"></i>อันดับผู้ใช้</button></a>
-                <a href="{{ route('UserTopup') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</button></a>
-                <a href="/user_change_password" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
-                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar2"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</button></a>
-            </div>
-        </div>
-        <!-- sidebar -->
-        <!-- shop -->
         @if(Auth::user()->updateData == 'true')
             @foreach($guest_user as $USER)
                 @if($USER->USER_ID == Auth::user()->id)
-                        <div class="col-lg-9" style="background-color:#141621; ">
-                            <div class="row mt-4 px-4" >
-                                <div class="col-6 " style="color:#fff;">
-                                    <a href="/avatar"class="avatar-link active"> Avatar</a>
-                                    <a class="avatar-link" style="margin: 0 8px;"> > </a>
-                                    <a href="/shop" class="avatar-link active" style="font-size:1em;">ตลาดซื้อขาย</a>
-                                    <a class="avatar-link" style="margin: 0 8px;"> > </a>
-                                    <a href="/sale" class="avatar-link active" style="font-size:1em;">ขายไอเทม</a>
-                                    <a class="avatar-link" style="margin: 0 8px;"> > </a>
-                                    <a href="/add_sale_item" class="avatar-link" style="font-size:1em;">เพิ่มไอเทมขาย</a>
+                        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3  pb-4" style="background-color:#141621; ">
+                            <div class="row mt-4" >
+                                <div class="col-sm-8 col-md-9 col-lg-9 col-xl-10 pt-2">
+                                    <label>
+                                        <a href="/avatar"class="avatar-link active">
+                                            <h1 style="margin:0;">Avatar</h1>
+                                        </a>
+                                    </label>
+                                    <label>
+                                        <h1 style="margin: 0;" class="avatar-link"> > </h1>
+                                    </label>
+                                    <label>
+                                        <a href="/shop" class="avatar-link active">
+                                            <h1 style="margin:0;">ตลาดซื้อขาย</h1>
+                                        </a>
+                                    </label>
+                                    <label>
+                                        <h1 style="margin: 0;" class="avatar-link"> > </h1>
+                                    </label>
+                                    <label>
+                                        <a href="/sale" class="avatar-link active">
+                                            <h1 style="margin:0;">ขายไอเทม</h1>
+                                        </a>
+                                    </label>
+                                    <label>
+                                        <h1 style="margin: 0;" class="avatar-link"> > </h1>
+                                    </label>
+                                    <label>
+                                        <a href="/add_sale_item" class="avatar-link">
+                                            <h1 style="margin:0;">เพิ่มไอเทมขาย</h1>
+                                        </a>
+                                    </label>
                                 </div>
-                                <div class="col-6 text-right">
-                                    <a href="/simulator_trade"><label class="bg-shop">
-                                        <div style="font-family:myfont1;font-size:1em;color:#fff;">Simulator Trade</div> 
-                                    </label></a>
+                                <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2 text-right">
+                                    <a href="/simulator_trade">
+                                        <label class="bg-shop">
+                                            <p style="color:#fff;margin:0;">Simulator Trade</p> 
+                                        </label>
+                                    </a>
                                 </div>
                             </div>
 
-                            <div class="row mx-2 mb-4 mt-2">
-                                <div class="col-lg-6">
+                            <div class="row mb-4 mt-2">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 mb-2">
                                     <div class="row mb-3">
                                         <div class="col-lg-12">
                                             <ul class="nav">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active itemAvatar3" data-toggle="tab" href="#head2">ศรีษะ</a>
+                                                    <a class="nav-link active itemAvatar3 p" data-toggle="tab" href="#head2">ศรีษะ</a>
                                                 </li>
                                                 <li class="nav-item mx-2">
-                                                    <a class="nav-link itemAvatar3" data-toggle="tab" href="#clothes2">เสื้อผ้า</a>
+                                                    <a class="nav-link itemAvatar3 p" data-toggle="tab" href="#clothes2">เสื้อผ้า</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link itemAvatar3" data-toggle="tab" href="#weapon2">อาวุธ</a>
+                                                    <a class="nav-link itemAvatar3 p" data-toggle="tab" href="#weapon2">อาวุธ</a>
                                                 </li>
                                                 <li class="nav-item mx-2">
-                                                    <a class="nav-link itemAvatar3" data-toggle="tab" href="#other2">ไอเทมพิเศษ</a>
+                                                    <a class="nav-link itemAvatar3 p" data-toggle="tab" href="#other2">ไอเทมพิเศษ</a>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div> 
                                     <div class="row mx-0 pb-3" style="background-color:#202433;border-radius: 6px;">
-                                        <div class="col-lg-12">
+                                        <div class="col-12">
                                         <div class="tab-content">
                                                 <div id="head2" class="container tab-pane active">
                                                     <div class="row mt-2 row6">
-                                                        <div class="col-lg-12"> 
+                                                        <div class="col-12" style="padding-left:0;"> 
                                                             <div class="row">
-                                                                <span class="fontItem ml-4">ทรงผม</span>
-                                                                <div class="col-lg-12">
+                                                                <div class="col-12" >
+                                                                    <p style="margin:0;color:#fff;">ทรงผม</p>
                                                                     <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/hair/h01.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                                     </label>
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/hair/h02.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                                     </label>
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/hair/h03.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                                     </label>
                                                                 </div>    
                                                             </div>
 
                                                             <div class="row">
-                                                                <span class="fontItem ml-4">สีตา</span>
-                                                                <div class="col-lg-12">
+                                                                <div class="col-12">
+                                                                    <p style="margin:0;color:#fff;">สีตา</p>
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/eyes/e01.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                                     </label>
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/eyes/e02.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                                     </label>
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/eyes/e03.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                                     </label>
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/eyes/e04.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                                     </label>
                                                                 </div>    
                                                             </div>
                                                             <div class="row">
-                                                                <span class="fontItem ml-4" >แว่นตา</span>
+                                                                <p style="margin:0;color:#fff;">แว่นตา</p>
                                                                 <div class="col-lg-12">
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/glasses/g01.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                                     </label>
                                                                 </div>    
                                                             </div>
@@ -207,35 +138,35 @@
 
                                                 <div id="clothes2" class="container tab-pane">
                                                     <div class="row mt-2 row6" style="background-color:#202433;border-radius: 6px;">
-                                                        <div class="col-lg-12"> 
+                                                        <div class="col-12"> 
                                                             <div class="row">
-                                                                <span class="fontItem ml-4">ชุดไปเวท</span>
-                                                                <div class="col-lg-12">
+                                                                <div class="col-12">
+                                                                    <p style="margin:0;color:#fff;">ชุดไปรเวท</p>
                                                                     <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/clothes/c01.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                                     </label>
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/clothes/c02.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                                     </label>
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/clothes/c03.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                                     </label>
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/clothes/c04.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                                     </label>
                                                                 </div>    
                                                             </div>
 
                                                             <div class="row">
-                                                                <span class="fontItem ml-4">ชุดซุปเปอร์ฮีโร่</span>
-                                                                <div class="col-lg-12">
+                                                                <div class="col-12">
+                                                                    <p style="margin:0;color:#fff;">ชุดซุปเปอร์ฮีโร่</p>
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/clothes/c05.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                                     </label>
                                                                 </div>    
                                                             </div>
@@ -245,51 +176,51 @@
 
                                                 <div id="weapon2" class="container tab-pane">
                                                     <div class="row mt-2 row6" style="background-color:#202433;border-radius: 6px;">
-                                                        <div class="col-lg-12"> 
+                                                        <div class="col-12"> 
                                                             <div class="row">
-                                                                <span class="fontItem ml-4">ดาบ</span>
-                                                                <div class="col-lg-12">
+                                                                <div class="col-12">
+                                                                    <p style="margin:0;color:#fff;">ดาบ</p>
                                                                     <label class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/weapon/sword/s01.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/weapon/sword/s02.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/weapon/sword/s03.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                 </div>    
                                                             </div>
 
                                                             <div class="row">
-                                                                <span class="fontItem ml-4">คฑา</span>
-                                                                <div class="col-lg-12">
+                                                                <div class="col-12">
+                                                                    <p style="margin:0;color:#fff;">คฑา</p>
                                                                     <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/weapon/wand/w01.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                 </div>    
                                                             </div>
 
                                                             <div class="row">
-                                                                <span class="fontItem ml-4">ปืน</span>
-                                                                <div class="col-lg-12">
+                                                                <div class="col-12">
+                                                                    <p style="margin:0;color:#fff;">ปืน</p>
                                                                     <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/weapon/gun/g01.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                 </div>    
                                                             </div>
 
                                                             <div class="row">
-                                                                <span class="fontItem ml-4">ธนู</span>
-                                                                <div class="col-lg-12">
+                                                                <div class="col-12">
+                                                                    <p style="margin:0;color:#fff;">ธนู</p>
                                                                     <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/weapon/archer/a01.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                 </div>    
                                                             </div>
@@ -300,21 +231,21 @@
 
                                                 <div id="other2" class="container tab-pane">
                                                     <div class="row mt-2 row6" style="background-color:#202433;border-radius: 6px;">
-                                                        <div class="col-lg-12"> 
+                                                        <div class="col-12"> 
                                                             <div class="row">
-                                                                <span class="fontItem ml-4">มงกุฏ/หมวก</span>
-                                                                <div class="col-lg-12">
+                                                                <div class="col-12">
+                                                                    <p style="margin:0;color:#fff;">มงกุฏ/หมวก</p>
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/other/crown/c01.png') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/other/crown/c02.png') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/other/crown/c03.png') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                 </div>    
                                                             </div>
@@ -329,39 +260,39 @@
                                                             </div> -->
 
                                                             <div class="row">
-                                                                <span class="fontItem ml-4">ถุงมือ</span>
-                                                                <div class="col-lg-12">
+                                                                <div class="col-12">
+                                                                    <p style="margin:0;color:#fff;">ถุงมือ</p>
                                                                     <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/other/glove/g01.png') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                 </div>    
                                                             </div>
 
                                                             <div class="row">
-                                                                <span class="fontItem ml-4">เสื้อเกราะ</span>
-                                                                <div class="col-lg-12">
+                                                                <div class="col-12">
+                                                                    <p style="margin:0;color:#fff;">เสื้อเกราะ</p>
                                                                     <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/other/armor/a01.svg') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                 </div>    
                                                             </div>
 
                                                             <div class="row">
-                                                                <span class="fontItem ml-4">รองเท้า</span>
-                                                                <div class="col-lg-12">
+                                                                <div class="col-12">
+                                                                    <p style="margin:0;color:#fff;">รองเท้า</p>
                                                                     <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/other/shoes/s01.png') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                     <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/other/shoes/s02.png') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                     <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                                         <img class="picture" src="{{asset('home/avatar/woman/other/shoes/s03.png') }}" />
-                                                                        <span class="font-sale2">1</span>
+                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                 </div>    
                                                             </div>
@@ -373,44 +304,50 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6" style="background-color:#202433;border-radius: 6px;">
-                                    <div class="row mx-0" >
-                                        <div class="col-lg-12">
-                                            <div class="font-sale1">รายละเอียด</div>
-                                        </div>
-                                    </div>
-                                    <div class="row mx-0" >
-                                        <div class="col-3">
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                <img class="picture2" src="{{asset('home/avatar/man/other/crown/c03.png') }}" />
-                                                <span class="font-sale2">1</span>
-                                            </label>
-                                        </div>
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6" >
+                                    <div class="row mx-0" style="background-color:#202433;border-radius: 6px;">
+                                        <div class="col-12 mt-2">
+                                            <div class="font-sale1"><p style="margin:0">รายละเอียด</p></div>
+                                            
+                                            <div class="row" >
+                                                <div class="col-3">
+                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                                        <img class="picture2" src="{{asset('home/avatar/man/other/crown/c03.png') }}" />
+                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
+                                                    </label>
+                                                </div>
 
-                                        <div class="col-3 text-center" style="padding:0;margin-top:28px;">
-                                            <div class="quantity-block2 ">
-                                                <button class="quantity-arrow-minus2"> - </button>
-                                                <input class="quantity-num2" type="number" value="1" min="1"  />
-                                                <button class="quantity-arrow-plus2"> + </button>
+                                                <div class="col-3 text-center" style="padding:0;margin-top:28px;">
+                                                    <div class="quantity-block2 ">
+                                                        <button class="quantity-arrow-minus2"> - </button>
+                                                        <input class="quantity-num2 h5" type="number" value="1" min="1"  />
+                                                        <button class="quantity-arrow-plus2"> + </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-5 ">
+                                                    <label class="labelInputAvatar my-4">
+                                                        <span class="symbol1"><h4 style="margin:0">฿</h4></span>
+                                                        <input type="text" class="input-avatar h6" placeholder="ตั้งราคาไอเทม">
+                                                    </label>
+                                                </div>
+                                                <div class="col-1 my-4 py-1 text-center" style="padding:0;">
+                                                    <img style="width:50%;cursor:pointer;" src="{{asset('icon/trash.svg') }}" />
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="col-5 ">
-                                            <label class="labelInputAvatar my-4">
-                                                <span class="symbol1">฿</span>
-                                                <input type="text" class="input-avatar" placeholder="ตั้งราคาไอเทม">
-                                            </label>
-                                        </div>
-                                        <div class="col-1 my-4 py-1 text-center" style="padding:0;">
-                                            <img style="width:50%;cursor:pointer;" src="{{asset('icon/trash.svg') }}" />
-                                        </div>
-                                    </div>
-                                    <div class="row mx-0" >
-                                        <div class="col-6 mt-5">
-                                            <button type="reset" class="itemAvatar4">ยกเลิก</button>
-                                        </div>
-                                        <div class="col-6 mt-5 text-right">
-                                            <button type="submit" class="btn-avatar">เปิดการขาย</button>
+                                            <div class="row mx-0 pb-4" >
+                                                <div class="col-6 mt-5">
+                                                    <button class="itemAvatar4">
+                                                        <p style="margin:0;color:#000;font-weight:800;">ยกเลิกการขาย</p>
+                                                    </button>
+                                                </div>
+                                                <div class="col-6 mt-5 text-right">
+                                                    <button type="submit" class="btn-avatar">
+                                                        <p style="margin:0;color:#000;font-weight:800;">เปิดการขาย</p>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -482,12 +419,12 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_avatar"></div>
+        <div class="col-lg-4 col-xl-3 bg_avatar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 bg_avatar2"></div>
+        <div class="col-lg-8 col-xl-9 bg_avatar2"></div>
     </div>
 </div>
 
@@ -514,7 +451,7 @@ $(document).ready(function(){
   $('[data-toggle="popover"]').popover({
     trigger : 'hover',
     html : true,
-    content : '<div class="media">คำอธิบาย</div>'
+    content : '<div class="media popover">คำอธิบาย</div>'
     }); 
 });
 </script>
