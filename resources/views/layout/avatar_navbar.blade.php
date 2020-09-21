@@ -307,5 +307,14 @@
         <script src="{{ asset('drawer/dist/js/bootstrap-drawer.js') }}"></script>
         <script src="{{ asset('drawer/dist/js/bootstrap-drawer.min.js') }}"></script>
         @yield('script')
+
+        <script>
+            $(document).ready(function(){
+            //    alert('read'); 
+                var attrActive = $('#getActive').attr('active');
+                console.log(attrActive);
+                $('#navActive a[href="'+attrActive+'"] button').addClass('active');
+            });
+        </script>
     </body>
 </html>

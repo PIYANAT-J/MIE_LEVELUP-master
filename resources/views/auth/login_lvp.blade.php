@@ -7,15 +7,18 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="col-1"></div>
-                <div class="col-10 text-center" style="font-family:myfont1;;font-size:1.2em;color:#383838;">แจ้งเตือน</div>
+                <div class="col-10 text-center">
+                    <h1 style="font-weight:800;color:#383838;margin:0;">แจ้งเตือน</h1>
+                </div>
                     <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
                 <div class="col-1"></div>
             </div>
 
-            <div class="modal-body font-rate-modal">
+            <div class="modal-body">
                 <div class="row px-3">
-                    <div class="col-lg-12 pb-1">
-                        <div class="row"><label class="massagrbox1" style="text-align:center;">{{ Session::get('email') }}</label></div>
+                    <div class="col-12 pb-1">
+                        <div class="row"><label class="massagrbox1" style="text-align:center;">
+                        <p style="margin:10px;">{{ Session::get('email') }}</p></label></div>
                         <!-- <div class="row bg-disabled mb-2 py-2">
                             <div class="col-3"><input type="text" id="modal" value="modal" class="input-disable" disabled></input></div>
                             <div class="col-9 text-right">
@@ -23,7 +26,7 @@
                         </div> -->
                     </div>
                 </div>
-                <button type="button" class="btn-submit-modal-red d-none">ยืนยัน</button>
+                <button type="button" class="btn-submit-red d-none">ยืนยัน</button>
             </div>
         </div>
     </div>
