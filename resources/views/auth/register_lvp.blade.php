@@ -2,52 +2,55 @@
 @section('content')
 
 <div class="modal fade" id="Users" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title"  style="color:#383838;font-family:myfont;font-size:1em;" id="exampleModalLabel">ข้อกำหนดและเงื่อนไข</h4>
+        <h1 class="modal-title"  style="color:#383838;font-weight:800;margin:0;" id="exampleModalLabel">ข้อกำหนดและเงื่อนไข</h1>
         <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size:0.7em;"></i></button>
       </div>
       <div class="modal-body font-rate-modal">
         เงื่อนไขผู้ใช้ทั่วไป
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn-cancal" data-dismiss="modal">ปิด</button>
-      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn-cancal" data-dismiss="modal">
+            <p style="margin:0;">ปิด</p></button>
+      </div> -->
     </div>
   </div>
 </div>
 
 <div class="modal fade" id="Develop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title"  style="color: #383838;font-family:myfont;font-size:1em;" id="exampleModalLabel">ข้อกำหนดและเงื่อนไข</h4>
+        <h1 class="modal-title"  style="color:#383838;font-weight:800;margin:0;" id="exampleModalLabel">ข้อกำหนดและเงื่อนไข</h1>
         <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 0.7em;"></i></button>
       </div>
       <div class="modal-body font-rate-modal">
         เงื่อนไขผู้พัฒนาระบบ
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn-cancal" data-dismiss="modal">ปิด</button>
-      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn-cancal" data-dismiss="modal">
+            <p style="margin:0;">ปิด</p></button>
+      </div> -->
     </div>
   </div>
 </div>
 
 <div class="modal fade" id="Sponsor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title"  style="color: #383838;font-family:myfont;font-size:1em;" id="exampleModalLabel">ข้อกำหนดและเงื่อนไข</h4>
+      <h1 class="modal-title"  style="color:#383838;font-weight:800;margin:0;" id="exampleModalLabel">ข้อกำหนดและเงื่อนไข</h1>
         <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 0.7em;"></i></button>
       </div>
       <div class="modal-body font-rate-modal">
         เงื่อนไขผู้สนับสนุน
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn-cancal" data-dismiss="modal">ปิด</button>
-      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn-cancal" data-dismiss="modal">
+            <p style="margin:0;">ปิด</p></button>
+      </div> -->
     </div>
   </div>
 </div>

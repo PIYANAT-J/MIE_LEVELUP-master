@@ -1,120 +1,37 @@
 @extends('layout.avatar_navbar')
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" id="getActive" active="{{ route('Avatar') }}">
     <div class="row my-5"></div>
-    <div class="row my-2"></div>
     <div class="row  mt-3">
+    @include('profile.sidebar.avatar_sidebar')
 
-        <!-- sidebar -->
-        <div class="col-lg-3" style="background-color: #000;">
-            <div class="row">
-                <div class="col-lg-1"></div>
-                @if(Auth::user()->updateData == 'true')
-                    @foreach($guest_user as $USER)
-                        <div class="col-lg-10 mb-3 pb-2" style="background-color: #000;">
-                            <div class="row mb-2">
-                                <div class="col-lg-4 text-right pr-2">
-                                    <img class="sidebar-pic2" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
-                                </div>
-                                <div class="col-lg-8 sidebar_name pt-2">
-                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
-                                </div>
-                            </div>
-                            <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                                <div class="col-lg-12 text-center">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="btn-point2 pb-2">
-                                                <span class="font-point">พอยท์</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Point"></i>
-                                            </label>
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="btn-coin2 pb-2 ">
-                                                <span class="font-point">เหรียญ</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Coin"></i>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
-                    <div class="col-lg-10 my-3 pt-2">
-                        <div class="row mb-2">
-                            <div class="col-5 text-right pr-2">
-                                <img class="sidebar-pic" src="{{asset('home/imgProfile/No_Img.jpg') }}" />
-                            </div>
-                            <div class="col-7 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้ใช้ทั่วไป</br>เป็นสมาชิก : {{ Auth::user()->created_at }}</span>
-                            </div>
-                        </div>
-                        <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                                <div class="col-lg-12 text-center">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="btn-point2 pb-2">
-                                                <span class="font-point">พอยท์</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Point"></i>
-                                            </label>
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="btn-coin2 pb-2 ">
-                                                <span class="font-point">เหรียญ</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Coin"></i>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                @endif
-                <div class="col-lg-1"></div>
-                <a href="{{ route('Avatar') }}" style="width: 100%;"><button class="btn-sidebar2 active"><i class="icon-profile menuIcon"></i>ตัวละครของฉัน (Avatar)</button></a>
-                <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว</button></a>
-                <a href="{{ route('UserKyc') }}" style="width: 100%;"><button class="btn-sidebar2"><span style="font-family: myfont1;font-size: 1em;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
-                    @if($userKyc->KYC_STATUS == null)
-                        <span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span>
-                    @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
-                        <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
-                    @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวตนแล้ว</span>
-                    @else
-                        <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
-                    @endif
-                </button></a>
-                <a href="{{ route('UserShelf') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
-                <a href="{{ route('UserHistory') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
-                <a href="{{ route('UserRank') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="fa fa-star-o menuIcon"></i>อันดับผู้ใช้</button></a>
-                <a href="{{ route('UserTopup') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</button></a>
-                <a href="/user_change_password" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
-                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar2"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</button></a>
-            </div>
-        </div>
-        <!-- sidebar -->
-        <div class="col-lg-9" style="background-color:#141621; ">
-            <div class="row mt-4 px-4" >
-                <div class="col-lg-6 " style="font-family:myfont1;color:#fff;font-size:1.2em;font-weight:800;">Avatar</div>
-                <div class="col-lg-6 text-right">
-                    <a href="/simulator_trade"><label class="bg-shop">
-                        <div style="font-family:myfont1;font-size:1em;color:#fff;">Simulator Trade</div> 
-                    </label></a>
-                    <a href="shop"><label class="bg-shop">
-                        <div style="font-family:myfont1;font-size:1em;color:#fff;"><img class="iconShop" src="{{asset('icon/shop.png') }}"/>ตลาดซื้อขาย</div> 
-                    </label></a>
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3  pb-4" style="background-color:#141621;">
+            <div class="row mt-4" >
+                <div class="col-sm-4 col-md-6 col-lg-6 col-xl-8 pt-2">
+                    <h1 style="color:#fff;">Avatar</h1>
+                </div>
+                <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2 text-right" style="padding:0;">
+                    <a href="/simulator_trade">
+                        <label class="bg-shop">
+                            <p style="color:#fff;margin:0;">Simulator Trade</p> 
+                        </label>
+                    </a>
+                </div>
+                <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                    <a href="/shop">
+                        <label class="bg-shop3">
+                            <img class="iconShop2" src="{{asset('icon/shop.png') }}"/>
+                            <p style="color:#fff;margin:0;">ตลาดซื้อขาย</p> 
+                        </label>
+                    </a>
                 </div>
             </div>
 
             <!-- เลือกเพศ -->
 
-            <div id="gender" class="custom01 px-4">
-                <div class="row">
-                    <div class="col-1">
+            <div id="gender" class="redioRedAvatar">
+                <div class="row pl-3">
+                    <div>
                         <input type="radio" name="gender2" value="man" id="man">
                         <label for="man" style="font-family:myfont1;color:#fff;font-size:1em;">ชาย</label>
                     </div>
@@ -126,37 +43,38 @@
             </div>
 
             <!-- ตัวละครชาย -->
-            <div class="row mx-4 manlist">
-                <div class="col-lg-4 mt-2">
-                    <div class="row" style="background-color:#202433;border-radius: 6px;">
-                        <div class="col-1"></div>
-                        <div class="col-10 py-3">
+            <div class="row manlist px-3">
+                <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 mt-2 mb-3">
+                    <div class="row">
+                        <div class="col-12 py-3">
                             <div class="text-right">
                                 <div class="item">
-                                    <img class="center"  style="height:415px;" src="{{asset('home/avatar/character/man.png') }}" />
+                                    <img class="center"  style="width:100%;" src="{{asset('home/avatar/character/man.png') }}" />
                                 </div>
-                                <img class="mt-4" style="width:15%" src="{{asset('home/avatar/icon/reset.svg') }}" />
+                                <img class="mt-3" style="width:30px" src="{{asset('home/avatar/icon/reset.svg') }}" />
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
 
                 <!-- ไอเทม -->
-                <div class="col-lg-8 mt-2">
-                    <div class="row ml-2">
-                        <div class="col-lg-12">
+                <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9">
+                    <div class="row">
+                        <div class="col-12">
                             <ul class="nav">
                                 <li class="nav-item">
-                                    <a class="nav-link active itemAvatar" data-toggle="tab" href="#head">ศรีษะ</a>
+                                    <a class="nav-link active itemAvatar p" data-toggle="tab" href="#head">ศรีษะ</a>
                                 </li>
                                 <li class="nav-item mx-2">
-                                    <a class="nav-link itemAvatar" data-toggle="tab" href="#clothes">เสื้อผ้า</a>
+                                    <a class="nav-link itemAvatar p" data-toggle="tab" href="#clothes">เสื้อผ้า</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link itemAvatar" data-toggle="tab" href="#weapon">อาวุธ</a>
+                                    <a class="nav-link itemAvatar p" data-toggle="tab" href="#weapon">อาวุธ</a>
                                 </li>
                                 <li class="nav-item mx-2">
-                                    <a class="nav-link itemAvatar" data-toggle="tab" href="#other">ไอเทมพิเศษ</a>
+                                    <a class="nav-link itemAvatar p" data-toggle="tab" href="#other">ไอเทมพิเศษ</a>
                                 </li>
                             </ul>
                         </div>
@@ -164,55 +82,55 @@
 
                     <div class="tab-content">
                         <div id="head" class="container tab-pane active">
-                            <div class="row ml-0 mt-4 row6" style="background-color:#202433;border-radius: 6px;">
-                                <div class="col-lg-12"> 
+                            <div class="row mt-4 row6" style="background-color:#202433;border-radius: 6px;">
+                                <div class="col-12 mb-2"> 
                                     <div class="row">
-                                        <span class="fontItem ml-4 mt-2">ทรงผม</span>
-                                        <div class="col-lg-12">                                                                            
-                                            <label class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">ทรงผม</span>
+                                        <div class="col-12">                                                                            
+                                            <button class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/hair/h01.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/hair/h02.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/hair/h03.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/hair/h04.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/hair/h05.svg') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
                                     <div class="row">
-                                        <span class="fontItem ml-4">สีตา</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">สีตา</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/eyes/e01.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/eyes/e02.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/eyes/e03.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/eyes/e04.svg') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
                                     <div class="row">
-                                        <span class="fontItem ml-4">แว่นตา</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">แว่นตา</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/glasses/g01.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/glasses/g01.svg') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
                                 </div>
@@ -220,35 +138,35 @@
                         </div>
 
                         <div id="clothes" class="container tab-pane">
-                            <div class="row ml-0 mt-4 row6" style="background-color:#202433;border-radius: 6px;">
-                                <div class="col-lg-12"> 
+                            <div class="row mt-4 row6" style="background-color:#202433;border-radius: 6px;">
+                                <div class="col-12 mb-2"> 
                                     <div class="row">
-                                        <span class="fontItem ml-4 mt-2">ชุดไปเวท</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">ชุดไปเวท</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/clothes/c01.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/clothes/c02.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/clothes/c03.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/clothes/c04.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/clothes/c.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
                                     <div class="row">
-                                        <span class="fontItem ml-4">ชุดซุปเปอร์ฮีโร่</span>
-                                        <div class="col-lg-12">
-                                        <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">ชุดซุปเปอร์ฮีโร่</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/clothes/c.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
                                 </div>
@@ -257,49 +175,49 @@
 
                         <div id="weapon" class="container tab-pane">
                             <div class="row ml-0 mt-4 row6" style="background-color:#202433;border-radius: 6px;">
-                                <div class="col-lg-12"> 
+                                <div class="col-12 mb-2"> 
                                     <div class="row">
-                                        <span class="fontItem ml-4 mt-2">ดาบ</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">ดาบ</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/weapon/sword/s01.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/weapon/sword/s02.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/weapon/sword/s03.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/weapon/sword/s.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
                                     <div class="row">
-                                        <span class="fontItem ml-4">คฑา</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">คฑา</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/weapon/wand/w.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
                                     <div class="row">
-                                        <span class="fontItem ml-4">ปืน</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">ปืน</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/weapon/gun/g.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
                                     <div class="row">
-                                        <span class="fontItem ml-4">ธนู</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">ธนู</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/weapon/archer/a.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
@@ -309,43 +227,43 @@
 
                         <div id="other" class="container tab-pane">
                             <div class="row ml-0 mt-4 row6" style="background-color:#202433;border-radius: 6px;">
-                                <div class="col-lg-12"> 
+                                <div class="col-12 pb-2"> 
                                     <div class="row">
-                                        <span class="fontItem ml-4 mt-2">มงกุฏ/หมวก</span>
+                                        <span class="fontItem ml-4 mt-2 p">มงกุฏ/หมวก</span>
                                         <div class="col-lg-12">
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/other/crown/c01.png') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/other/crown/c.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
                                     <div class="row">
-                                        <span class="fontItem ml-4">ถุงมือ</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">ถุงมือ</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/other/glove/g.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
                                     <div class="row">
-                                        <span class="fontItem ml-4">เสื้อเกราะ</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">เสื้อเกราะ</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/other/armor/a.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
                                     <div class="row">
-                                        <span class="fontItem ml-4">รองเท้า</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">รองเท้า</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/other/shoes/s.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
                                 </div>
@@ -356,37 +274,38 @@
             </div>
 
             <!-- ตัวละครหญิง -->
-            <div class="row mx-4 womanlist">
-                <div class="col-lg-4 mt-2">
-                    <div class="row" style="background-color:#202433;border-radius: 6px;">
-                        <div class="col-1"></div>
-                        <div class="col-10 py-3">
+            <div class="row womanlist px-3">
+                <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 mt-2 mb-3">
+                    <div class="row">
+                        <div class="col-12 py-3">
                             <div class="text-right">
                                 <div class="item">
-                                    <img class="center"  style="width:13.5em;" src="{{asset('home/avatar/character/woman.png') }}" />
+                                    <img class="center"  style="width:100%;" src="{{asset('home/avatar/character/woman.png') }}" />
                                 </div>
-                                <img class="mt-4" style="width:15%" src="{{asset('home/avatar/icon/reset.svg') }}" />
+                                <img class="mt-3" style="width:30px" src="{{asset('home/avatar/icon/reset.svg') }}" />
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
 
                 <!-- ไอเทม -->
-                <div class="col-lg-8 mt-2">
-                    <div class="row ml-2">
-                        <div class="col-lg-12">
+                <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9">
+                    <div class="row">
+                        <div class="col-12">
                             <ul class="nav">
                                 <li class="nav-item">
-                                    <a class="nav-link active itemAvatar" data-toggle="tab" href="#head2">ศรีษะ</a>
+                                    <a class="nav-link active itemAvatar p" data-toggle="tab" href="#head2">ศรีษะ</a>
                                 </li>
                                 <li class="nav-item mx-2">
-                                    <a class="nav-link itemAvatar" data-toggle="tab" href="#clothes2">เสื้อผ้า</a>
+                                    <a class="nav-link itemAvatar p" data-toggle="tab" href="#clothes2">เสื้อผ้า</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link itemAvatar" data-toggle="tab" href="#weapon2">อาวุธ</a>
+                                    <a class="nav-link itemAvatar p" data-toggle="tab" href="#weapon2">อาวุธ</a>
                                 </li>
                                 <li class="nav-item mx-2">
-                                    <a class="nav-link itemAvatar" data-toggle="tab" href="#other2">ไอเทมพิเศษ</a>
+                                    <a class="nav-link itemAvatar p" data-toggle="tab" href="#other2">ไอเทมพิเศษ</a>
                                 </li>
                             </ul>
                         </div>
@@ -394,58 +313,58 @@
 
                     <div class="tab-content">
                         <div id="head2" class="container tab-pane active">
-                            <div class="row ml-0 mt-4 row6" style="background-color:#202433;border-radius: 6px;">
-                                <div class="col-lg-12"> 
+                            <div class="row mt-4 row6" style="background-color:#202433;border-radius: 6px;">
+                                <div class="col-12 mb-2"> 
                                     <div class="row">
-                                        <span class="fontItem ml-4 mt-2">ทรงผม</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">ทรงผม</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/hair/h01.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <buttonl class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/hair/h02.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/hair/h03.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/hair/h.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
                                     <div class="row">
-                                        <span class="fontItem ml-4">สีตา</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">สีตา</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/eyes/e01.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/eyes/e02.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/eyes/e03.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/eyes/e04.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/eyes/e.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
                                     <div class="row">
-                                        <span class="fontItem ml-4" >แว่นตา</span>
+                                        <span class="fontItem ml-4 mt-2 p" >แว่นตา</span>
                                         <div class="col-lg-12">
-                                            <label class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
+                                            <button class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/glasses/g01.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/glasses/g01.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/glasses/g.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
                                 </div>
@@ -453,35 +372,35 @@
                         </div>
 
                         <div id="clothes2" class="container tab-pane">
-                            <div class="row ml-0 mt-4 row6" style="background-color:#202433;border-radius: 6px;">
-                                <div class="col-lg-12"> 
+                            <div class="row mt-4 row6" style="background-color:#202433;border-radius: 6px;">
+                                <div class="col-12 mb-12"> 
                                     <div class="row">
-                                        <span class="fontItem ml-4 mt-2">ชุดไปเวท</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">ชุดไปเวท</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/clothes/c01.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/clothes/c02.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/clothes/c03.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/clothes/c04.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/clothes/c.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
                                     <div class="row">
-                                        <span class="fontItem ml-4">ชุดซุปเปอร์ฮีโร่</span>
-                                        <div class="col-lg-12">
-                                        <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">ชุดซุปเปอร์ฮีโร่</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/clothes/c.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
                                 </div>
@@ -490,95 +409,94 @@
 
                         <div id="weapon2" class="container tab-pane">
                             <div class="row ml-0 mt-4 row6" style="background-color:#202433;border-radius: 6px;">
-                                <div class="col-lg-12"> 
+                                <div class="col-12 mb-12"> 
                                     <div class="row">
-                                        <span class="fontItem ml-4 mt-2">ดาบ</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">ดาบ</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/weapon/sword/s01.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/weapon/sword/s02.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/weapon/sword/s03.svg') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/weapon/sword/s.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
                                     <div class="row">
-                                        <span class="fontItem ml-4">คฑา</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">คฑา</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/weapon/wand/w.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
                                     <div class="row">
-                                        <span class="fontItem ml-4">ปืน</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">ปืน</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/weapon/gun/g.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
                                     <div class="row">
-                                        <span class="fontItem ml-4">ธนู</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">ธนู</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/weapon/archer/a.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
-
                                 </div>
                             </div>
                         </div>
 
                         <div id="other2" class="container tab-pane">
-                            <div class="row ml-0 mt-4 row6" style="background-color:#202433;border-radius: 6px;">
-                                <div class="col-lg-12"> 
+                            <div class="row mt-4 row6" style="background-color:#202433;border-radius: 6px;">
+                                <div class="col-12 mb-2"> 
                                     <div class="row">
-                                        <span class="fontItem ml-4 mt-2">มงกุฏ/หมวก</span>
+                                        <span class="fontItem ml-4 mt-2 p">มงกุฏ/หมวก</span>
                                         <div class="col-lg-12">
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/other/crown/c01.png') }}" />
-                                            </label>
-                                            <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/other/crown/c.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
                                     <div class="row">
-                                        <span class="fontItem ml-4">ถุงมือ</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">ถุงมือ</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/other/glove/g.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
                                     <div class="row">
-                                        <span class="fontItem ml-4">เสื้อเกราะ</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">เสื้อเกราะ</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/other/armor/a.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
 
                                     <div class="row">
-                                        <span class="fontItem ml-4">รองเท้า</span>
-                                        <div class="col-lg-12">
-                                            <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
+                                        <span class="fontItem ml-4 mt-2 p">รองเท้า</span>
+                                        <div class="col-12">
+                                            <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/woman/other/shoes/s.png') }}" />
-                                            </label>
+                                            </button>
                                         </div>    
                                     </div>
                                 </div>
@@ -589,18 +507,21 @@
             </div>
 
             <div class="row my-4">
-                <div class="col-lg-11 text-right">
-                    <button type="submit" class="btn-avatar">บันทึก</button>
+                <div class="col-12 text-right pr-5">
+                    <button type="submit" class="btn-avatar">
+                        <p style="margin:0;font-weight:800;">บันทึก</p>
+                    </button>
                 </div>
-                <div class="col-lg-1"></div>
             </div>
 
             <div class="row">
-                <div class="col-lg-12" style="font-family:myfont1;color:#fff;font-size:1.2em;font-weight:800;">มินิเกม</div>
+                <div class="col-12">
+                    <h1 style="color:#fff;margin:0;">มินิเกม</h1>
+                </div>
             </div>
 
             <div class="row mb-3">
-                <div class="col-lg-12">
+                <div class="col-12">
                     <div class="owl-carousel" id="owl-demo1">
                         <div class="item">
                             <img class="minigame-img" src="{{asset('section/picture_game/game.png') }}">
@@ -654,15 +575,14 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_avatar"></div>
+        <div class="col-lg-4 col-xl-3 bg_avatar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 bg_avatar2"></div>
+        <div class="col-lg-8 col-xl-9 bg_avatar2"></div>
     </div>
 </div>
-
 @endsection
 
 @section('script')
@@ -713,27 +633,21 @@ function() {
         responsiveClass:true,
         responsive:{
             0:{
-                items:2
+                items:1
             },
-            600:{
-                items:3
-            },
-            700:{
-                items:3
-            },
-            760:{
+            576:{
                 items:4
             },
-            980:{
-                items:4
+            768:{
+                items:5
             },
-            1000:{
+            1199:{
                 items:5
             },
             1280:{
-                items:5
+                items:6
             },
-            1600:{
+            1360:{
                 items:7
             },
             1680 :{
