@@ -8283,3 +8283,7 @@ input[type="checkbox"].switch_2{
   top: -10px;
   right: 10px;
 }
+
+.test1.active{
+  outline: 3px solid #ce0005;
+}
