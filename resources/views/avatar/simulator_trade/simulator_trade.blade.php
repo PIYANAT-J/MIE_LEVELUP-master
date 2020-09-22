@@ -1,151 +1,74 @@
 @extends('layout.avatar_navbar')
 @section('content')
 
-<div class="container-fluid">
+<div class="container-fluid" id="getActive" active="/simulator_trade">
     <div class="row my-5"></div>
     <div class="row my-2"></div>
     <div class="row  mt-3">
- 
-        <!-- sidebar -->
-        <div class="col-lg-3" style="background-color: #141621;">
-            <div class="row">
-                <div class="col-lg-1"></div>
-                @if(Auth::user()->updateData == 'true')
-                    @foreach($guest_user as $USER)
-                        <div class="col-lg-10 mb-3 pb-2">
-                            <div class="row mb-3 pb-2 pt-4" style="background-color: #fff;border-radius: 6px;box-shadow: 0 5px 0 0 #c3c3c3;">
-                                <div class="col-lg-4 text-right pr-2">
-                                    <img class="sidebar-pic2" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
-                                </div>
-                                <div class="col-lg-8 sidebar_name2 pt-3">
-                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="item my-4">
-                                        <img class="center"  style="width:50%;" src="{{asset('home/avatar/character/man.png') }}" />
-                                    </div>
-                                    <a href="shop"><label class="btn-buyItem middle2">ซื้อไอเทม</label></a>
-                                </div>
-                                  
-                            </div>
+        <div class="col-sm-2 col-md-3 d-inline-block d-lg-none d-xl-none" style="background-color:#141621;"></div>
+        @include('profile.sidebar.simulator_sidebar')
+        <div class="col-sm-2 col-md-3 d-inline-block d-lg-none d-xl-none" style="background-color:#141621;"></div>
 
-                            <div class="row mb-2 py-2" style="background-color: #fff;border-radius: 6px;box-shadow: 0 5px 0 0 #c3c3c3;">
-                                <div class="col-lg-12 px-5 my-3">
-                                    <label class="font-sim1"><b>$20,000.00</b><br>STARTING PRICE </label>
-                                </div>
-                                <div class="col-lg-12 px-5">
-                                    <label class="font-sim1"><b>$35000.45</b><b style="color:#0ce63e;"> (+5%)</b><br>PERIOD CHANGE</label>
-                                </div>
-                            </div>
-
-                            <div class="row mt-3">
-                                <div class="col-lg-12" style="padding:0px">
-                                    <a href="/simulator_trade">
-                                        <label class="bg-simulate active py-2"> 
-                                            <div class="row">
-                                                <div class="col-lg-9"><label class="pfontSim">Simulator Trade</label></div>
-                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
-                                            </div>
-                                        </label>
-                                    </a>
-
-                                    <a href="/my_trade">
-                                        <label class="bg-simulate py-2 mt-2"> 
-                                            <div class="row">
-                                                <div class="col-lg-9"><label class="pfontSim">การซื้อขายของฉัน</label></div>
-                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
-                                            </div>
-                                        </label>
-                                    </a>
-
-                                    <a href="/ranking_trade">
-                                        <label class="bg-simulate py-2 mt-2"> 
-                                            <div class="row">
-                                                <div class="col-lg-9"><label class="pfontSim">Ranking</label></div>
-                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
-                                            </div>
-                                        </label>
-                                    </a>
-                                    <a href="/real_investors">
-                                        <label class="bg-simulate py-2 mt-2"> 
-                                            <div class="row">
-                                                <div class="col-lg-9"><label class="pfontSim">นักลงทุนจริง</label></div>
-                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
-                                            </div>
-                                        </label>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
-                    <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                        <div class="row mb-2">
-                            <div class="col-lg-4 text-right">
-                                <img class="sidebar-pic" src="{{asset('home/imgProfile/No_Img.jpg') }}" />
-                            </div>
-                            <div class="col-lg-8 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-                <div class="col-lg-1"></div>
-            </div>
-        </div>
-        <!-- sidebar -->
-        <!-- update profile -->
-        <div class="col-lg-9" style="background-color:#141621; ">
-            <div class="row px-4 mt-4" >
-                <div class="col-12 " style="font-family:myfont;color:#fff;font-size:1.3em;">Simulator Trade
-                    <label class="inputWithIcon3">
+        <div class="col-sm-12 co-md-12 col-lg-9 col-xl-9" style="background-color:#141621;">
+            <div class="row mt-4" >
+                <div class="col-12">
+                    <h1 style="margin:0;color:#fff;font-weight:800;">Simulator Trade</h1>
+                    <!-- <label class="inputWithIcon3">
                         <input style="font-family:myfont1;" class="search_btn4" type="text" placeholder="ค้นหา Symbol" aria-label="Search">
                         <i class="icon-search" aria-hidden="true" style="font-size:18px"></i>
-                    </label>
+                    </label> -->
                 </div>
             </div>
-            <div class="row pl-4" >
-                <div class="col-lg-8">
-                    <button class="btn-sim2">SET</button>
-                    <button class="btn-sim2">SET50</button>
-                    <button class="btn-sim2">SET100</button>
-                    <button class="btn-sim2">sSET</button>
-                    <button class="btn-sim2">SETCLMV</button>
-                    <br><button class="btn-sim2" id="randomizeData">Randomize Data</button>
-                    <button class="btn-sim2" id="addDataset">Add Dataset</button>
-                    <button class="btn-sim2" id="removeDataset">Remove Dataset</button>
-                    <button class="btn-sim2" id="addData">Add Data</button>
+            <div class="row" >
+                <div class="col-12">
+                    <button class="btn-sim2"><p style="margin:0;">SET</p></button>
+                    <button class="btn-sim2"><p style="margin:0;">SET50</p></button>
+                    <button class="btn-sim2"><p style="margin:0;">SET100</p></button>
+                    <button class="btn-sim2"><p style="margin:0;">sSET</p></button>
+                    <button class="btn-sim2"><p style="margin:0;">SETCLMV</p></button>
+                    <br>
+                    <button class="btn-sim2" id="randomizeData"><p style="margin:0;">Randomize Data</p></button>
+                    <button class="btn-sim2" id="addDataset"><p style="margin:0;">Add Dataset</p></button>
+                    <button class="btn-sim2" id="removeDataset"><p style="margin:0;">Remove Dataset</p></button>
+                    <button class="btn-sim2" id="addData"><p style="margin:0;">Add Data</p></button>
                     <div class="row mt-2">
-                        <div class="col-lg-12">
+                        <div class="col-12">
                             <!-- <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade1.png') }}" /></div> -->
                             <div class="chart">
                                 <!-- <img class="bgchart pl-2" style="width:100%;"  src="{{asset('home/simulator/Simulator_trade2.png') }}" /> -->
                                 <div class="row my-1 px-2">
-                                    <div class="col-6"><label style="font-family:myfont1;font-size:1em;color:#fff;line-height:0;">9 Jun 2020 17:15:29</label></div>
+                                    <div class="col-6"><p style="color:#fff;margin:0">9 Jun 2020 17:15:29</p></div>
                                     <div class="col-6 text-right">
-                                    <label style="font-family:myfont1;font-size:1em;color:#fff;line-height:0;">SET :</label>
-                                    <!-- <label style="font-family:myfont1;font-size:1em;color:#ce0005;line-height:0;cursor:pointer">Closed</label> -->
-                                    <label style="font-family:myfont1;font-size:1em;color:#0ce63e;line-height:0;cursor:pointer">Open</label>
+                                    <p style="color:#fff;margin:0">SET :
+                                    <!-- <a style="color:#ce0005;cursor:pointer">Closed</a> -->
+                                        <a style="color:#0ce63e;cursor:pointer">Open</a>
+                                    </p>
                                     </div>
                                 </div>
                                 <div class="row px-4">
-                                    <div class="col-6 " style="border-bottom:1px solid #373a41;padding-left:0;"><label style="font-family:myfont;font-size:1.5em;color:#fff;line-height:0;">SET : {{$trade1->name}}</label></div>
-                                    <div class="col-6 text-right" style="border-bottom:1px solid #373a41;padding-right:0;"><label style="font-family:myfont;font-size:1.5em;color:#0ce63e;line-height:0;"> <img style="width:10px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}">1,444.63 (+5.97%)</label></div>
+                                    <div class="col-6 pb-2" style="border-bottom:1px solid #373a41;padding-left:0;">
+                                        <h4 style="color:#fff;margin:0;font-weight:800;">SET : {{$trade1->name}}</h4>
+                                    </div>
+                                    <div class="col-6 text-right" style="border-bottom:1px solid #373a41;padding-right:0;">
+                                        <h4 style="color:#0ce63e;margin:0;font-weight:800;">
+                                            <img style="width:15px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}">1,444.63 (+5.97%)
+                                        </h4>
+                                    </div>
                                     <!-- <div class="col-6 text-right" style="border-bottom:1px solid #373a41;padding-right:0;"><label style="font-family:myfont;font-size:1.5em;color:#ce0005;line-height:0;"><img style="width:10px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}">1,444.63 (+5.97%)</label></div> -->
                                 </div>
                                 <div class="row mt-1 px-2">
                                     <div class="col-6">
-                                        <label style="font-family:myfont1;font-size:0.9em;color:#fff;line-height:0;">Hign :</label>
-                                        <label style="font-family:myfont1;font-size:0.9em;color:#0ce63e;line-height:0;">1,448.13 (+9.47)</label> <br>
-                                        <label style="font-family:myfont1;font-size:0.9em;color:#fff;line-height:0;">Low :</label>
-                                        <label style="font-family:myfont1;font-size:0.9em;color:#ce0005;line-height:0;">1,400.13 (-37.67)</label>
+                                        <label><h5 style="margin:0;color:#fff;">Hign :</h5></label>
+                                        <label><h5 style="margin:0;color:#0ce63e;">1,448.13 (+9.47)</h5></label> <br>
+                                        <label><h5 style="margin:0;color:#fff;">Low :</h5></label>
+                                        <label><h5 style="margin:0;color:#ce0005;">1,400.13 (-37.67)</h5></label>
                                     </div>
 
                                     <div class="col-6 text-right">
-                                        <label style="font-family:myfont1;font-size:0.9em;color:#455160;line-height:0;">Val (M) :</label>
-                                        <label style="font-family:myfont1;font-size:0.9em;color:#fff;line-height:0;">115,559.91</label> <br>
-                                        <label style="font-family:myfont1;font-size:0.9em;color:#455160;line-height:0;">Vol(K) :</label>
-                                        <label style="font-family:myfont1;font-size:0.9em;color:#fff;line-height:0;">26,699,932</label>
+                                        <label><h5 style="margin:0;color:#455160;"> (M) :</h5></label>
+                                        <label><h5 style="margin:0;color:#fff;">115,559.91</h5></label> <br>
+                                        <label><h5 style="margin:0;color:#455160;">Vol(K) :</h5></label>
+                                        <label><h5 style="margin:0;color:#fff;">26,699,932</h5></label>
                                     </div>
                                 </div>
 
@@ -154,165 +77,218 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-4 mb-3">
-                        <div class="col-lg-12">
+                    <div class="row mt-3 mb-3">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-8 mb-3">
                             <!-- <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade3.png') }}" /></div> -->
                             <div class="chart">
                                 <div class="row mx-2 my-2">
-                                    <div class="col-lg-3 bgdetail">
-                                        <label class="detail-rank py-2 my-2">ตารางรวม SET</label>
+                                    <div class="col-3 bgdetail">
+                                        <label class="detail-rank py-2 my-2"><p style="margin:0;">ตารางรวม SET</p></label>
                                     </div>
-                                    <div class="col-lg-3 bgdetail">
-                                        <label class="detail-rank py-2 my-2">ล่าสุด</label>
+                                    <div class="col-3 bgdetail">
+                                        <label class="detail-rank py-2 my-2"><p style="margin:0;">ล่าสุด</p></label>
                                     </div>
-                                    <div class="col-lg-3 bgdetail">
-                                        <label class="detail-rank py-2 my-2">เปลี่ยนแปลง</label>
+                                    <div class="col-3 bgdetail">
+                                        <label class="detail-rank py-2 my-2"><p style="margin:0;">เปลี่ยนแปลง</p></label>
                                     </div>
-                                    <div class="col-lg-3 bgdetail">
-                                        <label class="detail-rank py-2 my-2">มูลค่า (ลบ.)</label>
-                                    </div>
-                                </div>
-
-                                <div class="row mx-2 ">
-                                    <div class="col-lg-3">
-                                        <label class="detailTable my-2">SET</label>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <label class="detailTableGreen my-2"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}">1,444.63</label>
-                                        <!-- <label class="detailTableRed my-2"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}">1,444.63</label> -->
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <label class="detailTableGreen my-2">+5.97</label>
-                                        <!-- <label class="detailTableRed my-2">+5.97</label> -->
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <label class="detail-rank my-2">52,568.36</label>
+                                    <div class="col-3 bgdetail">
+                                        <label class="detail-rank py-2 my-2"><p style="margin:0;">มูลค่า (ลบ.)</p></label>
                                     </div>
                                 </div>
 
                                 <div class="row mx-2 ">
-                                    <div class="col-lg-3">
-                                        <label class="detailTable my-2">SET50</label>
+                                    <div class="col-3">
+                                        <label class="detailTable my-1"><p style="margin:0;">SET</p></label>
                                     </div>
-                                    <div class="col-lg-3">
-                                        <label class="detailTableGreen my-2"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}">968.29</label>
-                                        <!-- <label class="detailTableRed my-2"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}">968.29</label> -->
+                                    <div class="col-3">
+                                        <label class="detailTableGreen my-1">
+                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}"></label>
+                                            <label><p style="margin:0;">1,444.63</p></label>
+                                        </label>
+                                        <!-- <label class="detailTableRed my-1">
+                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}"></label>
+                                            <label><p style="margin:0;">1,444.63</p></label>
+                                        </label>-->
                                     </div>
-                                    <div class="col-lg-3">
-                                        <label class="detailTableGreen my-2">+3.17</label>
-                                        <!-- <label class="detailTableRed my-2">+3.17</label> -->
+                                    <div class="col-3">
+                                        <label class="detailTableGreen my-1">
+                                            <p style="margin:0;">+5.97</p>
+                                        </label>
+                                        <!-- <label class="detailTableRed my-1"><p style="margin:0;">+5.97</p></label> -->
                                     </div>
-                                    <div class="col-lg-3">
-                                        <label class="detail-rank my-2">31,866.95</label>
-                                    </div>
-                                </div>
-
-                                <div class="row mx-2 ">
-                                    <div class="col-lg-3">
-                                        <label class="detailTable my-2">SET100</label>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <label class="detailTableGreen my-2"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}">2,134.03</label>
-                                        <!-- <label class="detailTableRed my-2"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}">2,134.03</label> -->
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <label class="detailTableGreen my-2">+9.08</label>
-                                        <!-- <label class="detailTableRed my-2"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}">9.08</label> -->
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <label class="detail-rank my-2">40,500.04</label>
+                                    <div class="col-3">
+                                        <label class="detail-rank my-1">
+                                            <p style="margin:0;">52,568.36</p>
+                                        </label>
                                     </div>
                                 </div>
 
                                 <div class="row mx-2 ">
-                                    <div class="col-lg-3">
-                                        <label class="detailTable my-2">sSET</label>
+                                    <div class="col-3">
+                                        <label class="detailTable my-1">
+                                            <p style="margin:0;">SET50</p>
+                                        </label>
                                     </div>
-                                    <div class="col-lg-3">
-                                        <!-- <label class="detailTableGreen my-2"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}">629.46</label> -->
-                                        <label class="detailTableRed my-2"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}">629.46</label>
+                                    <div class="col-3">
+                                        <label class="detailTableGreen my-1">
+                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}"></label>
+                                            <label><p style="margin:0;">968.29</p></label>
+                                        </label>
+                                        <!-- <label class="detailTableRed my-1">
+                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}"></label>
+                                            <label><p style="margin:0;">968.29</p></label>
+                                        </label>-->
                                     </div>
-                                    <div class="col-lg-3">
+                                    <div class="col-3">
+                                        <label class="detailTableGreen my-1"><p style="margin:0;">+3.17</p></label>
+                                        <!-- <label class="detailTableRed my-1"><p style="margin:0;">+3.17</p></label> -->
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="detail-rank my-1"><p style="margin:0;">31,866.95</p></label>
+                                    </div>
+                                </div>
+
+                                <div class="row mx-2 ">
+                                    <div class="col-3">
+                                        <label class="detailTable my-1"><p style="margin:0;">SET100</p></label>
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="detailTableGreen my-1">
+                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}"></label>
+                                            <label><p style="margin:0;">2,134.03</p></label>
+                                        </label>
+                                        <!-- <label class="detailTableRed my-1">
+                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}"></label>
+                                            <label><p style="margin:0;">2,134.03</p></label> 
+                                        </label>-->
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="detailTableGreen my-2"><p style="margin:0;">+9.08</p></label>
+                                        <!-- <label class="detailTableRed my-1"><p style="margin:0;">+3.17</p></label> -->
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="detail-rank my-2"><p style="margin:0;">40,500.04</p></label>
+                                    </div>
+                                </div>
+
+                                <div class="row mx-2 ">
+                                    <div class="col-3">
+                                        <label class="detailTable my-2"><p style="margin:0;">sSET</p></label>
+                                    </div>
+                                    <div class="col-3">
+                                        <!-- <label class="detailTableGreen my-1">
+                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}"></label>
+                                            <label><p style="margin:0;">649.02</p></label>
+                                        </label>-->
+                                        <label class="detailTableRed my-1">
+                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}"></label>
+                                            <label><p style="margin:0;">649.02</p></label>
+                                        </label>
+                                    </div>
+                                    <div class="col-3">
                                         <!-- <label class="detailTableGreen my-2">-2.24</label> -->
-                                        <label class="detailTableRed my-2">-2.24</label>
+                                        <label class="detailTableRed my-2"><p style="margin:0;">-2.24</p></label>
                                     </div>
-                                    <div class="col-lg-3">
-                                        <label class="detail-rank my-2">2,234.72</label>
+                                    <div class="col-3">
+                                        <label class="detail-rank my-2"><p style="margin:0;">2,234.72</p></label>
                                     </div>
                                 </div>
 
                                 <div class="row mx-2 ">
-                                    <div class="col-lg-3">
-                                        <label class="detailTable my-2">SETCLMV</label>
+                                    <div class="col-3">
+                                        <label class="detailTable my-2"><p style="margin:0;">SETCLMV</p></label>
                                     </div>
-                                    <div class="col-lg-3">
-                                        <label class="detailTableGreen my-2"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}">953.12</label>
-                                        <!-- <label class="detailTableRed my-2"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}">953.12</label> -->
+                                    <div class="col-3">
+                                       <label class="detailTableGreen my-1">
+                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}"></label>
+                                            <label><p style="margin:0;">1,212</p></label>
+                                        </label>
+                                        <!-- <label class="detailTableRed my-1">
+                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}"></label>
+                                            <label><p style="margin:0;">1,212</p></label>
+                                        </label> -->
                                     </div>
-                                    <div class="col-lg-3">
-                                        <label class="detailTableGreen my-2">+2.09</label>
-                                        <!-- <label class="detailTableRed my-2">+2.09</label> -->
+                                    <div class="col-3">
+                                        <label class="detailTableGreen my-2"><p style="margin:0;">+2.09</p></label>
+                                        <!-- <label class="detailTableRed my-2"><p style="margin:0;">+2.09<p></label> -->
                                     </div>
-                                    <div class="col-lg-3">
-                                        <label class="detail-rank my-2">15,982.05</label>
+                                    <div class="col-3">
+                                        <label class="detail-rank my-2"><p style="margin:0;">15,982.05</p></label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <label class="mr-1" style="font-family:myfont;color:#fff;font-size:1.5em;">Ranking</label>
-                            <label class="btn-sim3">SET</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="row pr-5">
-                                <div class="col-12" style="border-bottom:1px #a0a0a0 solid;">
+
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="mr-1"><h4 style="margin:0;color:#fff;font-weight:800;">Ranking</h4></label>
+                                    <label class="btn-sim3"><p style="margin:0;">SET</p></label>
+                                </div>
+                            </div>
+                            <div class="row pr-3">
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-12" style="border-bottom:1px #a0a0a0 solid;">
                                     <span class="number-rank1">1</span>
                                     <div><img class="sidebar-pic3" src="{{asset('dist/images/person_1.jpg') }}" /></div>
-                                    <label class="detail-rank middle3">หนึ่ง ร่ำรวยมาก <br> <span style="color:#0ce63e;">+20,556,600$ (20%)</span></label>
+                                    <div class="detail-rank middle3">
+                                        <p style="margin:0;">
+                                            ชื่อ-นามสกุล <br> 
+                                            <a style="color:#0ce63e;">+20,556,600$ (20%)</a>
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row pr-5">
-                                <div class="col-12" style="border-bottom:1px #a0a0a0 solid;">
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-12" style="border-bottom:1px #a0a0a0 solid;">
                                     <span class="number-rank2">2</span>
                                     <div><img class="sidebar-pic3" src="{{asset('dist/images/person_6.jpg') }}" /></div>
-                                    <label class="detail-rank middle3">สอง รวยจริงจริง <br> <span style="color:#0ce63e;">+20,556,600$ (20%)</span></label>
+                                    <div class="detail-rank middle3">
+                                        <p style="margin:0;">
+                                            ชื่อ-นามสกุล <br> 
+                                            <a style="color:#0ce63e;">+20,556,600$ (20%)</a>
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row pr-5">
-                                <div class="col-12" style="border-bottom:1px #a0a0a0 solid;">
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-12" style="border-bottom:1px #a0a0a0 solid;">
                                     <span class="number-rank2">3</span>
                                     <div><img class="sidebar-pic3" src="{{asset('dist/images/person_2.jpg') }}" /></div>
-                                    <label class="detail-rank middle3">สาม รวยจริงจริง <br> <span style="color:#0ce63e;">+20,556,600$ (20%)</span></label>
+                                    <div class="detail-rank middle3">
+                                        <p style="margin:0;">
+                                            ชื่อ-นามสกุล <br> 
+                                            <a style="color:#0ce63e;">+20,556,600$ (20%)</a>
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row pr-5">
-                                <div class="col-12" style="border-bottom:1px #a0a0a0 solid;">
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-12" style="border-bottom:1px #a0a0a0 solid;">
                                     <span class="number-rank2">4</span>
                                     <div><img class="sidebar-pic3" src="{{asset('dist/images/person_3.jpg') }}" /></div>
-                                    <label class="detail-rank middle3">นาย สี่ รวยจริงจริง<br> <span style="color:#0ce63e;">+20,556,600$ (20%)</span></label>
+                                    <div class="detail-rank middle3">
+                                        <p style="margin:0;">
+                                            ชื่อ-นามสกุล <br> 
+                                            <a style="color:#0ce63e;">+20,556,600$ (20%)</a>
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row pr-5">
-                                <div class="col-12" style="border-bottom:1px #a0a0a0 solid;">
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-12" style="border-bottom:1px #a0a0a0 solid;">
                                     <span class="number-rank2">5</span>
                                     <div><img class="sidebar-pic3" src="{{asset('dist/images/person_4.jpg') }}" /></div>
-                                    <label class="detail-rank middle3">ห้า รวยจริงจริง<br> <span style="color:#0ce63e;">+20,556,600$ (20%)</span></label>
+                                    <div class="detail-rank middle3">
+                                        <p style="margin:0;">
+                                            ชื่อ-นามสกุล <br> 
+                                            <a style="color:#0ce63e;">+20,556,600$ (20%)</a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="row pr-5">
-                                <div class="col-lg-12 mt-2">
-                                    <a href="/ranking_trade"><label class="btn-buyItem2">ดูทั้งหมด</label></a>
+                            <div class="row pr-3">
+                                <div class="col-12 mt-2">
+                                    <a href="/ranking_trade">
+                                        <label class="btn-buyItem2">
+                                            <p style="margin:0;font-weight: 800;">ดูทั้งหมด</p>
+                                        </label>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -325,12 +301,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_avatar3"></div>
-    </div>
-</div>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-9 bg_avatar2"></div>
+        <div class="col-12 bg_avatar3"></div>
     </div>
 </div>
 
