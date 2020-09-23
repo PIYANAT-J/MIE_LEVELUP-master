@@ -162,7 +162,7 @@
                                 <img id="downImg" src="{{asset('icon/down1.svg')}}">
                             </button> -->
 
-                            <label class="accordion-arrow" style="cursor:pointer;" onclick="openTab('GAME_NAME{{$game->GAME_ID}}');">
+                            <label class="accordion-arrow arrowShowContent2" style="cursor:pointer;" onclick="openTab('GAME_NAME{{$game->GAME_ID}}');">
                                 <i class="icon-dropdown-wh"></i>
                             </label>
                             <!-- <button id="down" class="down2 btn btn-dark" data-toggle="collapse"data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><img id="downImg" src="{{asset('icon/down1.svg')}}"></button> -->
@@ -428,7 +428,7 @@
                                                     <label style="margin:0;"><p style="margin:0;">{{ $gameMe->RATED_B_L }} • Online</p></label>
                                                 </div>
 
-                                                <label class="accordion-arrow" style="cursor:pointer;" onclick="openTab('GAME_NAME2{{$gameMe->GAME_ID}}');">
+                                                <label class="accordion-arrow arrowShowContent2" style="cursor:pointer;" onclick="openTab('GAME_NAME2{{$gameMe->GAME_ID}}');">
                                                     <i class="icon-dropdown-wh"></i>
                                                 </label>
                                                 <!-- <div class="down2"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
@@ -600,7 +600,7 @@
                             </div>
                             <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
                             <!-- <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#{{ $gameHot->GAME_NAME }}4  " aria-expanded="false" aria-controls="collapseExample"><img id="downImg6" src="{{asset('icon/down1.svg')}}"></button> -->
-                            <label class="accordion-arrow" style="cursor:pointer;" onclick="openTab('GAME_NAME4{{$gameHot->GAME_ID}}');">
+                            <label class="accordion-arrow arrowShowContent" style="cursor:pointer;" onclick="openTab('GAME_NAME4{{$gameHot->GAME_ID}}');">
                                 <i class="icon-dropdown-wh"></i>
                             </label>
                         </span>
@@ -764,7 +764,7 @@
                         <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
                         <!-- <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#{{ $gameNew->GAME_NAME }}6  " aria-expanded="false" aria-controls="collapseExample"><img id="downImg6" src="{{asset('icon/down1.svg')}}"></button> -->
                         
-                        <label class="accordion-arrow" style="cursor:pointer;" onclick="openTab('GAME_NAME6{{$gameNew->GAME_ID}}');">
+                        <label class="accordion-arrow arrowShowContent" style="cursor:pointer;" onclick="openTab('GAME_NAME6{{$gameNew->GAME_ID}}');">
                             <i class="icon-dropdown-wh"></i>
                         </label>
                     </span>
@@ -1184,6 +1184,57 @@ function openTab(tabName) {
   }
   document.getElementById(tabName).style.display = "block";
 }
+</script>
+<style>
+    .desc.active{
+        display:block!important;
+        z-index: 7;
+        position: absolute;
+        top: 0%;
+        right: 0%;
+        padding: 10px;
+        margin: 0;
+        border-radius: 8px;
+        width: 100%;
+        height: 310px;
+        overflow: hidden;
+        object-fit: contain;
+        background: #000;
+        opacity: 80%;
+    }
+    .desc2.active{
+        display:block!important;
+        z-index: 7;
+        position: absolute;
+        top: 0%;
+        right: 0%;
+        padding: 10px;
+        margin: 0;
+        border-radius: 8px;
+        width: 100%;
+        height: 220px;
+        overflow: hidden;
+        object-fit: contain;
+        background: #000;
+        opacity: 80%;
+    }
+</style>
+<script>
+    $('.arrowShowContent').on('click',function(){
+        // console.log('click');
+        $('.desc').removeClass('active');
+        $('.desc2').removeClass('active');
+        $(this).parents('.desc').addClass('active');
+    });
+</script>
+
+<script>
+    $('.arrowShowContent2').on('click',function(){
+        // console.log('click');
+        $('.desc').removeClass('active');
+        $('.desc2').removeClass('active');
+        $(this).parents('.desc2').addClass('active');
+    });
 </script>
 
     <!-- <script>

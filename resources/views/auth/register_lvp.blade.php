@@ -57,7 +57,7 @@
 
 <div class="container-fluid">
     <div class="row" >
-        <div class="col-lg-6 col-xl-6 d-none d-lg-block d-xl-block bgLogindark">
+        <div class="col-xl-6 d-none d-lg-block d-xl-block bgLogindark">
             <div class="center-div text-center" style="background-color: #17202c;">
                 <img style="width:25%;" src="{{asset('home/logo/logo_lvp.svg') }}" />
                 <img class="my-3" style="max-width:100%;" src="{{asset('home/images/img_login.svg') }}" />
@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 bgLoginwh">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 bgLoginwh">
             <div class="center-div3">
                 <div class="row">
                     <div class="col-6">

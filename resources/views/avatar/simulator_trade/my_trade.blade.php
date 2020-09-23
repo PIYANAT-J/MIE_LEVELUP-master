@@ -1,286 +1,238 @@
 @extends('layout.avatar_navbar')
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" id="getActive" active="/my_trade">
     <div class="row my-5"></div>
     <div class="row my-2"></div>
     <div class="row  mt-3">
+        <div class="col-sm-2 col-md-3 d-inline-block d-lg-none d-xl-none" style="background-color:#141621;"></div>
+        @include('profile.sidebar.simulator_sidebar')
+        <div class="col-sm-2 col-md-3 d-inline-block d-lg-none d-xl-none" style="background-color:#141621;"></div>
+
  
-        <!-- sidebar -->
-        <div class="col-lg-3" style="background-color: #141621;">
-            <div class="row">
-                <div class="col-lg-1"></div>
-                @if(Auth::user()->updateData == 'true')
-                    @foreach($guest_user as $USER)
-                        <div class="col-lg-10 mb-3 pb-2">
-                            <div class="row mb-3 pb-2 pt-4" style="background-color: #fff;border-radius: 6px;box-shadow: 0 5px 0 0 #c3c3c3;">
-                                <div class="col-lg-4 text-right pr-2">
-                                    <img class="sidebar-pic2" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
-                                </div>
-                                <div class="col-lg-8 sidebar_name2 pt-3">
-                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="item my-4">
-                                        <img class="center"  style="width:50%;" src="{{asset('home/avatar/character/man.png') }}" />
-                                    </div>
-                                    <a href="shop"><label class="btn-buyItem middle2">ซื้อไอเทม</label></a>
-                                </div>
-                                  
-                            </div>
-
-                            <div class="row mb-2 py-2" style="background-color: #fff;border-radius: 6px;box-shadow: 0 5px 0 0 #c3c3c3;">
-                                <div class="col-lg-12 px-5 my-3">
-                                    <label class="font-sim1"><b>$20,000.00</b><br>STARTING PRICE </label>
-                                </div>
-                                <div class="col-lg-12 px-5">
-                                    <label class="font-sim1"><b>$35000.45</b><b style="color:#0ce63e;"> (+5%)</b><br>PERIOD CHANGE</label>
-                                </div>
-                            </div>
-
-                            <div class="row mt-3">
-                                <div class="col-lg-12" style="padding:0px">
-                                    <a href="/simulator_trade">
-                                        <label class="bg-simulate py-2"> 
-                                            <div class="row">
-                                                <div class="col-lg-9"><label class="pfontSim">Simulator Trade</label></div>
-                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
-                                            </div>
-                                        </label>
-                                    </a>
-
-                                    <a href="/my_trade">
-                                        <label class="bg-simulate active py-2 mt-2"> 
-                                            <div class="row">
-                                                <div class="col-lg-9"><label class="pfontSim">การซื้อขายของฉัน</label></div>
-                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
-                                            </div>
-                                        </label>
-                                    </a>
-
-                                    <a href="/ranking_trade">
-                                        <label class="bg-simulate py-2 mt-2"> 
-                                            <div class="row">
-                                                <div class="col-lg-9"><label class="pfontSim">Ranking</label></div>
-                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
-                                            </div>
-                                        </label>
-                                    </a>
-
-                                    <a href="/real_investors">
-                                        <label class="bg-simulate py-2 mt-2"> 
-                                            <div class="row">
-                                                <div class="col-lg-9"><label class="pfontSim">นักลงทุนจริง</label></div>
-                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
-                                            </div>
-                                        </label>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
-                    <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                        <div class="row mb-2">
-                            <div class="col-lg-4 text-right">
-                                <img class="sidebar-pic" src="{{asset('home/imgProfile/No_Img.jpg') }}" />
-                            </div>
-                            <div class="col-lg-8 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-                <div class="col-lg-1"></div>
-            </div>
-        </div>
-        <!-- sidebar -->
-        <!-- update profile -->
         @if(Auth::user()->updateData == 'true')
             @foreach($guest_user as $USER)
                 @if($USER->USER_ID == Auth::user()->id)
-                        <div class="col-lg-9" style="background-color:#141621; ">
-                            <div class="row px-4 mt-4" >
+                        <div class="col-sm-12 co-md-12 col-lg-9 col-xl-9" style="background-color:#141621; ">
+                            <div class="row mt-4" >
                                 <div class="col-12">
-                                    <label style="color:#fff;line-height:1">
-                                        <label style="font-family:myfont;font-size:1.3em;">Simulator Trade</label><br>
-                                        <label style="font-family:myfont1;font-size:1em;">การซื้อขายหลักทรัพย์ ของฉัน</label>
+                                    <label style="color:#fff;">
+                                        <h1 style="margin:0;color:#fff;font-weight:800;">Simulator Trade</h1>
+                                        <p style="margin:0;">การซื้อขายหลักทรัพย์ ของฉัน</p>
                                     </label>
                                 </div>
                             </div>
-                            <div class="row pl-4" >
-                                <div class="col-lg-8">
+                            <div class="row" >
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-8">
                                     <div class="row mb-3">
-                                        <div class="col-lg-12">
+                                        <div class="col-12">
                                             <!-- <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade3.png') }}" /></div> -->
                                             <div class="chart">
                                                 <div class="row mx-2 my-2">
-                                                    <div class="col-lg-4 bgdetail">
-                                                        <label class="detail-rank py-2 my-2">Symbol</label>
+                                                    <div class="col-4 bgdetail">
+                                                        <label class="detail-rank py-2 my-2"><p style="margin:0;">Symbol</p></label>
                                                     </div>
-                                                    <div class="col-lg-2 bgdetail">
-                                                        <label class="detail-rank py-2 my-2">Avail Vol</label>
+                                                    <div class="col-2 bgdetail">
+                                                        <label class="detail-rank py-2 my-2"><p style="margin:0;">Avail Vol</p></label>
                                                     </div>
-                                                    <div class="col-lg-2 bgdetail">
-                                                        <label class="detail-rank py-2 my-2">Avg</label>
+                                                    <div class="col-2 bgdetail">
+                                                        <label class="detail-rank py-2 my-2"><p style="margin:0;">Avg</p></label>
                                                     </div>
-                                                    <div class="col-lg-2 bgdetail">
-                                                        <label class="detail-rank py-2 my-2">Market</label>
+                                                    <div class="col-2 bgdetail">
+                                                        <label class="detail-rank py-2 my-2"><p style="margin:0;">Market</p></label>
                                                     </div>
-                                                    <div class="col-lg-2 bgdetail">
-                                                        <label class="detail-rank py-2 my-2">%U.PL</label>
+                                                    <div class="col-2 bgdetail">
+                                                        <label class="detail-rank py-2 my-2"><p style="margin:0;">%U.PL</p></label>
                                                     </div>
                                                 </div>
 
                                                 <div class="row mx-2 ">
-                                                    <div class="col-lg-4">
-                                                        <a href="my_trade_detail"><label class="detailTable my-2" style="cursor:pointer;">RS</label></a>
+                                                    <div class="col-4">
+                                                        <a href="my_trade_detail">
+                                                            <label class="detailTable my-2" style="cursor:pointer;">
+                                                            <p style="margin:0;">RS</p>
+                                                            </label>
+                                                        </a>
                                                     </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">10,300</label>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">10,300</p></label>
                                                     </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">30.55</label>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">30.55</p></label>
                                                     </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">12.7</label>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">12.7</p></label>
                                                     </div>
-                                                    <div class="col-lg-2">
-                                                        <!-- <label class="detailTableGreen my-2">+58.48</label> -->
-                                                        <label class="detailTableRed my-2">-58.48</label>
-                                                        <!-- <label class="detail-rank my-2">12.7</label> -->
+                                                    <div class="col-2">
+                                                        <!-- <label class="detailTableGreen my-2"><p style="margin:0;">+58.48</p></label> -->
+                                                        <label class="detailTableRed my-2"><p style="margin:0;">-58.48</p></label>
+                                                        <!-- <label class="detail-rank my-2"><p style="margin:0;">12.7</p></label> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mx-2 ">
+                                                    <div class="col-4">
+                                                        <a href="#">
+                                                            <label class="detailTable my-2" style="cursor:pointer;">
+                                                                <p style="margin:0;">ADVANCE</p>
+                                                            </label>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">5,400</p></label>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">27.68</p></label>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">34.67</p></label>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <label class="detailTableGreen my-2"><p style="margin:0;">+5.67</p></label>
+                                                        <!-- <label class="detailTableRed my-2"><p style="margin:0;">-58.48</p></label> -->
+                                                        <!-- <label class="detail-rank my-2"><p style="margin:0;">12.7</p></label> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mx-2 ">
+                                                    <div class="col-4">
+                                                        <a href="#">
+                                                            <label class="detailTable my-2" style="cursor:pointer;">
+                                                                <p style="margin:0;">DTEC</p>
+                                                            </label>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">2,500</p></label>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">134.89</p></label>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">134.89</p></label>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <!-- <label class="detailTableGreen my-2"><p style="margin:0;">+5.67</p></label> -->
+                                                        <!-- <label class="detailTableRed my-2"><p style="margin:0;">-58.48</p></label> -->
+                                                        <label class="detail-rank my-2"><p style="margin:0;">0</p></label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mx-2 ">
+                                                    <div class="col-4">
+                                                    <a href="#">
+                                                        <label class="detailTable my-2" style="cursor:pointer;">
+                                                            <p style="margin:0;">BBL</p>
+                                                        </label>
+                                                    </a>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">100,000</p></label>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">33.77</p></label>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">23.56</p></label>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <label class="detailTableGreen my-2"><p style="margin:0;">+10.56</p></label>
+                                                        <!-- <label class="detailTableRed my-2"><p style="margin:0;">-58.48</p></label> -->
+                                                        <!-- <label class="detail-rank my-2"><p style="margin:0;">0</p></label> -->
                                                     </div>
                                                 </div>
                                                 <div class="row mx-2 ">
-                                                    <div class="col-lg-4">
-                                                        <a href="#"><label class="detailTable my-2" style="cursor:pointer;">ADVANCE</label></a>
+                                                    <div class="col-4">
+                                                        <a href="#">
+                                                            <label class="detailTable my-2" style="cursor:pointer;">
+                                                                <p style="margin:0;">SCB</p>
+                                                            </label>
+                                                        </a>
                                                     </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">5,400</label>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">1,000</p></label>
                                                     </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">27.68</label>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">34.78</p></label>
                                                     </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">34.67</label>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">56.89</p></label>
                                                     </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detailTableGreen my-2">+5.67</label>
-                                                        <!-- <label class="detailTableRed my-2">-58.48</label> -->
-                                                        <!-- <label class="detail-rank my-2">12.7</label> -->
+                                                    <div class="col-2">
+                                                        <label class="detailTableGreen my-2"><p style="margin:0;">+23.56</p></label>
+                                                        <!-- <label class="detailTableRed my-2"><p style="margin:0;">-58.48</p></label> -->
+                                                        <!-- <label class="detail-rank my-2"><p style="margin:0;">0</p></label> -->
                                                     </div>
                                                 </div>
+
                                                 <div class="row mx-2 ">
-                                                    <div class="col-lg-4">
-                                                        <a href="#"><label class="detailTable my-2" style="cursor:pointer;">DTEC</label></a>
+                                                    <div class="col-4">
+                                                        <a href="#">
+                                                            <label class="detailTable my-2" style="cursor:pointer;">
+                                                                <p style="margin:0;">SCG</p>
+                                                            </label>
+                                                        </a>
                                                     </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">2,500</label>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">2,900</p></label>
                                                     </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">134.89</label>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">123.55</p></label>
                                                     </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">134.89</label>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">150.56</p></label>
                                                     </div>
-                                                    <div class="col-lg-2">
-                                                        <!-- <label class="detailTableGreen my-2">+5.67</label> -->
-                                                        <!-- <label class="detailTableRed my-2">-58.48</label> -->
-                                                        <label class="detail-rank my-2">0</label>
+                                                    <div class="col-2">
+                                                        <label class="detailTableGreen my-2"><p style="margin:0;">+24.67</p></label>
+                                                        <!-- <label class="detailTableRed my-2"><p style="margin:0;">-58.48</p></label> -->
+                                                        <!-- <label class="detail-rank my-2"><p style="margin:0;">0</p></label> -->
                                                     </div>
                                                 </div>
+
                                                 <div class="row mx-2 ">
-                                                    <div class="col-lg-4">
-                                                    <a href="#"><label class="detailTable my-2" style="cursor:pointer;">BBL</label></a>
+                                                    <div class="col-4">
+                                                        <a href="#">
+                                                            <label class="detailTable my-2" style="cursor:pointer;">
+                                                                <p style="margin:0;">PPT</p>
+                                                            </label>
+                                                        </a>
                                                     </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">100,000</label>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">3,000</p></label>
                                                     </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">33.77</label>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">234.67</p></label>
                                                     </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">23.56</label>
+                                                    <div class="col-2">
+                                                        <label class="detail-rank my-2"><p style="margin:0;">234.67</p></label>
                                                     </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detailTableGreen my-2">+10.56</label>
-                                                        <!-- <label class="detailTableRed my-2">-58.48</label> -->
-                                                        <!-- <label class="detail-rank my-2">0</label> -->
-                                                    </div>
-                                                </div>
-                                                <div class="row mx-2 ">
-                                                    <div class="col-lg-4">
-                                                        <a href="#"><label class="detailTable my-2" style="cursor:pointer;">SCB</label></a>
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">1,000</label>
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">34.78</label>
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">56.89</label>
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detailTableGreen my-2">+23.56</label>
-                                                        <!-- <label class="detailTableRed my-2">-58.48</label> -->
-                                                        <!-- <label class="detail-rank my-2">0</label> -->
+                                                    <div class="col-2">
+                                                        <!-- <label class="detailTableGreen my-2"><p style="margin:0;">+24.67</p></label> -->
+                                                        <!-- <label class="detailTableRed my-2"><p style="margin:0;">-58.48</p></label> -->
+                                                        <label class="detail-rank my-2"><p style="margin:0;">0</p></label>
                                                     </div>
                                                 </div>
-                                                <div class="row mx-2 ">
-                                                    <div class="col-lg-4">
-                                                        <a href="#"><label class="detailTable my-2" style="cursor:pointer;">SCG</label></a>
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">2,900</label>
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">123.55</label>
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">150.56</label>
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detailTableGreen my-2">+24.67</label>
-                                                        <!-- <label class="detailTableRed my-2">-58.48</label> -->
-                                                        <!-- <label class="detail-rank my-2">0</label> -->
-                                                    </div>
-                                                </div>
-                                                <div class="row mx-2 ">
-                                                    <div class="col-lg-4">
-                                                        <a href="#"><label class="detailTable my-2" style="cursor:pointer;">PPT</label></a>
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">3,000</label>
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">234.67</label>
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <label class="detail-rank my-2">234.67</label>
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <!-- <label class="detailTableGreen my-2">+24.67</label> -->
-                                                        <!-- <label class="detailTableRed my-2">-58.48</label> -->
-                                                        <label class="detail-rank my-2">0</label>
-                                                    </div>
-                                                </div>
+
                                                 <div class="row mx-2 mt-3 py-2" style="border-top:1px solid #dddddd">
-                                                    <div class="col-lg-6">
-                                                        <label class="detailTable my-2">Total</label>
+                                                    <div class="col-6">
+                                                        <label class="detailTable my-2">
+                                                            <p style="margin:0;">Total</p>
+                                                        </label>
                                                     </div>
-                                                    <div class="col-lg-6 text-right">
-                                                        <label class="detailTableGreen my-2 pr-2">+198.78 %</label>
+                                                    <div class="col-6 text-right">
+                                                        <label class="detailTableGreen my-2 pr-2">
+                                                            <p style="margin:0;">+198.78 %</p>
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <label class="mr-1" style="font-family:myfont;color:#fff;font-size:1.5em;">Ranking</label>
-                                            <select class="select-trade">
+                                            <label class="mr-1"><h4 style="margin:0;color:#fff;font-weight:800;">Ranking</h4></label></label>
+                                            <select class="select-trade p">
                                                 <option select>SET</option>
                                                 <option>SET50</option>
                                                 <option>SET100</option>
@@ -289,53 +241,70 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="row pr-5">
-                                                <div class="col-12" style="border-bottom:1px #a0a0a0 solid;">
-                                                    <span class="number-rank1">1</span>
-                                                    <div><img class="sidebar-pic3" src="{{asset('dist/images/person_1.jpg') }}" /></div>
-                                                    <label class="detail-rank middle3">หนึ่ง ร่ำรวยมาก <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
-                                                </div>
-                                            </div>
 
-                                            <div class="row pr-5">
-                                                <div class="col-12" style="border-bottom:1px #a0a0a0 solid;">
-                                                    <span class="number-rank2">2</span>
-                                                    <div><img class="sidebar-pic3" src="{{asset('dist/images/person_6.jpg') }}" /></div>
-                                                    <label class="detail-rank middle3">สอง รวยจริงจริง <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
-                                                </div>
+                                    <div class="row pr-3">
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-12" style="border-bottom:1px #a0a0a0 solid;">
+                                            <span class="number-rank1">1</span>
+                                            <div><img class="sidebar-pic3" src="{{asset('dist/images/person_1.jpg') }}" /></div>
+                                            <div class="detail-rank middle3">
+                                                <p style="margin:0;">
+                                                    ชื่อ-นามสกุล <br> 
+                                                    <a style="color:#0ce63e;">+20,556,600$ (20%)</a>
+                                                </p>
                                             </div>
+                                        </div>
 
-                                            <div class="row pr-5">
-                                                <div class="col-12" style="border-bottom:1px #a0a0a0 solid;">
-                                                    <span class="number-rank2">3</span>
-                                                    <div><img class="sidebar-pic3" src="{{asset('dist/images/person_2.jpg') }}" /></div>
-                                                    <label class="detail-rank middle3">สาม รวยจริงจริง <br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
-                                                </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-12" style="border-bottom:1px #a0a0a0 solid;">
+                                            <span class="number-rank2">2</span>
+                                            <div><img class="sidebar-pic3" src="{{asset('dist/images/person_6.jpg') }}" /></div>
+                                            <div class="detail-rank middle3">
+                                                <p style="margin:0;">
+                                                    ชื่อ-นามสกุล <br> 
+                                                    <a style="color:#0ce63e;">+20,556,600$ (20%)</a>
+                                                </p>
                                             </div>
+                                        </div>
 
-                                            <div class="row pr-5">
-                                                <div class="col-12" style="border-bottom:1px #a0a0a0 solid;">
-                                                    <span class="number-rank2">4</span>
-                                                    <div><img class="sidebar-pic3" src="{{asset('dist/images/person_3.jpg') }}" /></div>
-                                                    <label class="detail-rank middle3">นาย สี่ รวยจริงจริง<br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
-                                                </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-12" style="border-bottom:1px #a0a0a0 solid;">
+                                            <span class="number-rank2">3</span>
+                                            <div><img class="sidebar-pic3" src="{{asset('dist/images/person_2.jpg') }}" /></div>
+                                            <div class="detail-rank middle3">
+                                                <p style="margin:0;">
+                                                    ชื่อ-นามสกุล <br> 
+                                                    <a style="color:#0ce63e;">+20,556,600$ (20%)</a>
+                                                </p>
                                             </div>
+                                        </div>
 
-                                            <div class="row pr-5">
-                                                <div class="col-12" style="border-bottom:1px #a0a0a0 solid;">
-                                                    <span class="number-rank2">5</span>
-                                                    <div><img class="sidebar-pic3" src="{{asset('dist/images/person_4.jpg') }}" /></div>
-                                                    <label class="detail-rank middle3">ห้า รวยจริงจริง<br> <span style="color:#0ce63e;">+ 20,556,600 $ (20%)</span></label>
-                                                </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-12" style="border-bottom:1px #a0a0a0 solid;">
+                                            <span class="number-rank2">4</span>
+                                            <div><img class="sidebar-pic3" src="{{asset('dist/images/person_3.jpg') }}" /></div>
+                                            <div class="detail-rank middle3">
+                                                <p style="margin:0;">
+                                                    ชื่อ-นามสกุล <br> 
+                                                    <a style="color:#0ce63e;">+20,556,600$ (20%)</a>
+                                                </p>
                                             </div>
+                                        </div>
 
-                                            <div class="row pr-5">
-                                                <div class="col-lg-12 mt-2">
-                                                    <a href="/ranking_trade"><label class="btn-buyItem2">ดูทั้งหมด</label></a>
-                                                </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-12" style="border-bottom:1px #a0a0a0 solid;">
+                                            <span class="number-rank2">5</span>
+                                            <div><img class="sidebar-pic3" src="{{asset('dist/images/person_4.jpg') }}" /></div>
+                                            <div class="detail-rank middle3">
+                                                <p style="margin:0;">
+                                                    ชื่อ-นามสกุล <br> 
+                                                    <a style="color:#0ce63e;">+20,556,600$ (20%)</a>
+                                                </p>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="row pr-3">
+                                        <div class="col-12 mt-2">
+                                            <a href="/ranking_trade">
+                                                <label class="btn-buyItem2">
+                                                    <p style="margin:0;font-weight: 800;">ดูทั้งหมด</p>
+                                                </label>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
