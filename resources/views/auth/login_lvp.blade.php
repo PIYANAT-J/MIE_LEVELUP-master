@@ -34,14 +34,14 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-6 col-xl-6 d-none d-lg-block d-xl-block bgLogindark">
+        <div class="col-xl-6 d-none  d-xl-block bgLogindark">
             <div class="center-div text-center">
                 <img style="width:25%;" src="{{asset('home/logo/logo_lvp.svg') }}" />
                 <img class="my-3" style="max-width:100%;" src="{{asset('home/images/img_login.svg') }}" />
                 <h6 style="color:#fff;font-weight:800;">ยินดีต้อนรับ , Level Up</h6>
             </div>
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 bgLoginwh">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 bgLoginwh">
            <div class="center-div2">
                 <div class="row">
                     <div class="col-6">
@@ -123,15 +123,17 @@
                         
                         <div class="col-12 text-center">
                             <a href="{{ route('login-google') }}">
-                                <button class="btnRed">
+                                <button class="btn-none">
                                     <!-- <i class="icon-FBLogo" style=" margin-right:10px;"></i> -->
-                                    <p style="margin:0;font-weight: 800;">เข้าสู่ระบบด้วย Gmail</p>
+                                    <!-- <p style="margin:0;font-weight: 800;">เข้าสู่ระบบด้วย Gmail</p> -->
+                                    <img style="width:30px;" src="{{asset('home/logo/google-icon.svg') }}">
                                 </button>
                             </a>
                             <a href="{{ route('login-facebook') }}">
-                                <button class="btnBlue">
-                                    <i class="icon-FBLogo" style=" margin-right:10px;"></i>
-                                    <labal class="p" style="margin:0;font-weight: 800;font-color: #fff !important;">เข้าสู่ระบบด้วย Facebook</labal>
+                                <button class="btn-none ml-3">
+                                    <!-- <i class="icon-FBLogo" style=" margin-right:10px;"></i>
+                                    <labal class="p" style="margin:0;font-weight: 800;font-color: #fff !important;">เข้าสู่ระบบด้วย Facebook</labal> -->
+                                    <img style="width:32px;" src="{{asset('home/logo/facebook.svg') }}">
                                 </button>
                             </a>
                         </div>

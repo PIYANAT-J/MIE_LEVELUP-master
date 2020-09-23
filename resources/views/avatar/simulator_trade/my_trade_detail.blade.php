@@ -1,236 +1,165 @@
 @extends('layout.avatar_navbar')
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" id="getActive" active="/my_trade">
     <div class="row my-5"></div>
     <div class="row my-2"></div>
     <div class="row  mt-3">
- 
-        <!-- sidebar -->
-        <div class="col-lg-3" style="background-color: #141621;">
-            <div class="row">
-                <div class="col-lg-1"></div>
-                @if(Auth::user()->updateData == 'true')
-                    @foreach($guest_user as $USER)
-                        <div class="col-lg-10 mb-3 pb-2">
-                            <div class="row mb-3 pb-2 pt-4" style="background-color: #fff;border-radius: 6px;box-shadow: 0 5px 0 0 #c3c3c3;">
-                                <div class="col-lg-4 text-right pr-2">
-                                    <img class="sidebar-pic2" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
-                                </div>
-                                <div class="col-lg-8 sidebar_name2 pt-3">
-                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="item my-4">
-                                        <img class="center"  style="width:50%;" src="{{asset('home/avatar/character/man.png') }}" />
-                                    </div>
-                                    <a href="shop"><label class="btn-buyItem middle2">ซื้อไอเทม</label></a>
-                                </div>
-                                  
-                            </div>
+        <div class="col-sm-2 col-md-3 d-inline-block d-lg-none d-xl-none" style="background-color:#141621;"></div>
+        @include('profile.sidebar.simulator_sidebar')
+        <div class="col-sm-2 col-md-3 d-inline-block d-lg-none d-xl-none" style="background-color:#141621;"></div>
 
-                            <div class="row mb-2 py-2" style="background-color: #fff;border-radius: 6px;box-shadow: 0 5px 0 0 #c3c3c3;">
-                                <div class="col-lg-12 px-5 my-3">
-                                    <label class="font-sim1"><b>$20,000.00</b><br>STARTING PRICE </label>
-                                </div>
-                                <div class="col-lg-12 px-5">
-                                    <label class="font-sim1"><b>$35000.45</b><b style="color:#0ce63e;"> (+5%)</b><br>PERIOD CHANGE</label>
-                                </div>
-                            </div>
-
-                            <div class="row mt-3">
-                                <div class="col-lg-12" style="padding:0px">
-                                    <a href="/simulator_trade">
-                                        <label class="bg-simulate py-2"> 
-                                            <div class="row">
-                                                <div class="col-lg-9"><label class="pfontSim">Simulator Trade</label></div>
-                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
-                                            </div>
-                                        </label>
-                                    </a>
-
-                                    <a href="/my_trade">
-                                        <label class="bg-simulate active py-2 mt-2"> 
-                                            <div class="row">
-                                                <div class="col-lg-9"><label class="pfontSim">การซื้อขายของฉัน</label></div>
-                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
-                                            </div>
-                                        </label>
-                                    </a>
-
-                                    <a href="/ranking_trade">
-                                        <label class="bg-simulate py-2 mt-2"> 
-                                            <div class="row">
-                                                <div class="col-lg-9"><label class="pfontSim">Ranking</label></div>
-                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
-                                            </div>
-                                        </label>
-                                    </a>
-
-                                    <a href="/real_investors">
-                                        <label class="bg-simulate py-2 mt-2"> 
-                                            <div class="row">
-                                                <div class="col-lg-9"><label class="pfontSim">นักลงทุนจริง</label></div>
-                                                <div class="col-lg-3 text-center"><i class="fa fa-angle-right" style="font-size:40px;" aria-hidden="true"></i></div>
-                                            </div>
-                                        </label>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
-                    <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                        <div class="row mb-2">
-                            <div class="col-lg-4 text-right">
-                                <img class="sidebar-pic" src="{{asset('home/imgProfile/No_Img.jpg') }}" />
-                            </div>
-                            <div class="col-lg-8 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-                <div class="col-lg-1"></div>
-            </div>
-        </div>
-        <!-- sidebar -->
-        <!-- update profile -->
         @if(Auth::user()->updateData == 'true')
             @foreach($guest_user as $USER)
                 @if($USER->USER_ID == Auth::user()->id)
-                        <div class="col-lg-9" style="background-color:#141621; ">
-                            <div class="row px-4 mt-4" >
+                        <div class="col-sm-12 co-md-12 col-lg-9 col-xl-9" style="background-color:#141621; ">
+                            <div class="row mt-4" >
                                 <div class="col-12">
-                                    <label style="color:#fff;line-height:1">
-                                        <label style="font-family:myfont;font-size:1.3em;">Simulator Trade</label><br>
-                                        <a href="/my_trade"><label class="simulatorLink active">การซื้อขายหลักทรัพย์ ของฉัน</label></a> 
-                                        <label class="simulatorLink"> > </label>
-                                        <label class="simulatorLink"> RS </label>
+                                    <label style="color:#fff;">
+                                        <h1 style="margin:0;color:#fff;font-weight:800;">Simulator Trade</h1>
+                                        <a href="/my_trade">
+                                            <label class="simulatorLink active">
+                                                <p style="margin:0;">การซื้อขายหลักทรัพย์ ของฉัน</p>
+                                            </label>
+                                        </a> 
+                                        <label class="simulatorLink"><p style="margin:0;"> > </p></label>
+                                        <label class="simulatorLink"><p style="margin:0;"> RS </p></label>
                                     </label>
                                 </div>
                             </div>
-                            <div class="row pl-4" >
-                                <div class="col-lg-7">
-                                    <div class="row mb-3">
-                                        <div class="col-lg-12">
-                                            <!-- <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade3.png') }}" /></div> -->
-                                            <div class="chart">
-                                                <div class="row mx-2 my-2">
-                                                    <div class="col-lg-6 bgdetail">
-                                                        <label class="detail-rank py-2 my-2">Price</label>
-                                                    </div>
-                                                    <div class="col-lg-6 bgdetail text-right py-2">
-                                                        <label style="font-family:myfont1;font-size:1em;color:#fff;line-height:0;">Last : 12.5 Change :</label>
-                                                        <label style="font-family:myfont1;font-size:1em;color:#0ce63e;line-height:0;cursor:pointer">+5 %</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mx-2 ">
-                                                    <div class="col-lg-12">
-                                                        <canvas class="pr-2" id="myChart" height="150"></canvas>
-                                                    </div>
-                                                </div>
-
-                                                <!-- <div class="row mx-2 my-2">
-                                                    <div class="col-lg-6 bgdetail">
-                                                        <label class="detail-rank py-2 my-2">Acc. Value (‘000 Baht) </label>
-                                                    </div>
-                                                    <div class="col-lg-6 bgdetail text-right py-2">
-                                                        <label style="font-family:myfont1;font-size:1em;color:#fff;line-height:0;">22,345.12</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row mx-2 ">
-                                                    <div class="col-lg-12">
-                                                        <canvas class="pr-2" id="myChart2" height="150"></canvas>
-                                                    </div>
-                                                </div> -->
+                            <div class="row " >
+                                <div class="col-12">
+                                    <!-- <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade3.png') }}" /></div> -->
+                                    <div class="chart mb-3">
+                                        <div class="row mx-2 my-2">
+                                            <div class="col-6 bgdetail">
+                                                <label class="detail-rank pt-2"><p style="margin:0;">Price</p></label>
+                                            </div>
+                                            <div class="col-6 bgdetail text-right pt-2">
+                                                <p style="margin:0;color:#fff;">Last : 12.5 Change :<a style="color:#0ce63e;">+5 %</a></p>
                                             </div>
                                         </div>
+
+                                        <div class="row mx-2 ">
+                                            <div class="col-12">
+                                                <canvas class="pr-2" id="myChart" height="200px"></canvas>
+                                            </div>
+                                        </div>
+
+                                        <!-- <div class="row mx-2 my-2">
+                                            <div class="col-lg-6 bgdetail">
+                                                <label class="detail-rank py-2 my-2">Acc. Value (‘000 Baht) </label>
+                                            </div>
+                                            <div class="col-lg-6 bgdetail text-right py-2">
+                                                <label style="font-family:myfont1;font-size:1em;color:#fff;line-height:0;">22,345.12</label>
+                                            </div>
+                                        </div>
+                                        <div class="row mx-2 ">
+                                            <div class="col-lg-12">
+                                                <canvas class="pr-2" id="myChart2" height="150"></canvas>
+                                            </div>
+                                        </div> -->
                                     </div>
                                 </div>
-                                <div class="col-lg-5">
-                                    <div class="row chart mr-1 pt-3 pb-2">
-                                        <div class="col-7 font-trade-detail ml-1">
-                                            <label style="font-size:2em;">RS</label><br>
-                                            <label>RS PUBLIC COMPANY LIMITED </label>
-                                        </div> 
-                                        <div class="col-4 font-trade-detail2">
-                                        <label style="font-size:2em;">12.70</label><br>
-                                            <label>+0.20 (+1.60%)</label>
-                                        </div>
-                                    </div>
 
-                                    <div class="row mt-3 mr-1">
-                                        <div class="col-lg-12 bgdetail">
-                                            <label class="detail-rank pt-2">ราคาวันนี้</label>
+                                <div class="col-12">
+                                    <div class="chart ">
+                                        <div class="row pt-3 ">
+                                            <div class="col-10 font-trade-detail text-right">
+                                                <h4 style="margin:0;font-size:800;">RS<h4>
+                                                <p style="margin:0;">RS PUBLIC COMPANY LIMITED </p>
+                                            </div> 
+                                            <div class="col-2 font-trade-detail2">
+                                                <h4 style="margin:0;font-size:800;">12.70</h4>
+                                                <p style="margin:0;">+0.20 (+1.60%)</p>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="row mt-3 mr-1 detail-rank2">
-                                        <div class="col-3">
-                                            <label>Volume</label>
+                                        <div class="row mx-2 my-2 mt-3 ">
+                                            <div class="col-12 bgdetail">
+                                                <label class="detail-rank pt-2"><p style="margin:0;">ราคาวันนี้</p></label>
+                                            </div>
                                         </div>
-                                        <div class="col-3">
-                                            <label>18,869,600</label>
+
+                                        <div class="row mt-3 mx-2 detail-rank2">
+                                            <div class="col-3">
+                                                <p style="margin:0;">Volume</p>
+                                            </div>
+                                            <div class="col-3">
+                                                <p style="margin:0;">18,869,600</p>
+                                            </div>
+                                            <div class="col-3">
+                                                <p style="margin:0;">Average</p>
+                                            </div>
+                                            <div class="col-3">
+                                                <p style="margin:0;color:#0ce63e;">12.86</p>
+                                            </div>
                                         </div>
-                                        <div class="col-3">
-                                            <label>Average</label>
+
+                                        <div class="row mx-2 detail-rank2">
+                                            <div class="col-3">
+                                                <p style="margin:0;">High</p>
+                                            </div>
+                                            <div class="col-3">
+                                                <p style="margin:0;color:#0ce63e;">13.20</p>
+                                            </div>
+                                            <div class="col-3">
+                                                <p style="margin:0;">Value(K)</p>
+                                            </div>
+                                            <div class="col-3">
+                                                <p style="margin:0;">242,587</p>
+                                            </div>
                                         </div>
-                                        <div class="col-3">
-                                            <label style="color:#0ce63e;">12.86</label>
+
+                                        <div class="row mx-2 detail-rank2">
+                                            <div class="col-3">
+                                                <p style="margin:0;">Low</p>
+                                            </div>
+                                            <div class="col-3">
+                                                <p style="margin:0;color:#e6b926;">12.50</p>
+                                            </div>
+                                            <div class="col-3">
+                                                <p style="margin:0;">Ceiling</p>
+                                            </div>
+                                            <div class="col-3">
+                                                <p style="margin:0;color:#0ce63e;">14.60</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row mr-1 detail-rank2">
-                                        <div class="col-3">
-                                            <label>High</label>
+
+                                        <div class="row mx-2 detail-rank2">
+                                            <div class="col-3">
+                                                <p style="margin:0;">Close</p>
+                                            </div>
+                                            <div class="col-3">
+                                                <p style="margin:0;color:#0ce63e;">12.70</p>
+                                            </div>
+                                            <div class="col-3">
+                                                <p style="margin:0;">Floor</p>
+                                            </div>
+                                            <div class="col-3">
+                                                <p style="margin:0;color:#0ce63e;">10.80</p>
+                                            </div>
                                         </div>
-                                        <div class="col-3">
-                                            <label style="color:#0ce63e;">13.20</label>
+
+                                        <div class="row mx-2" style="border-bottom: 1px solid #dddddd;">
+                                            <div class="col-12">
+                                                <label class="detail-rank2">
+                                                    <p style="margin:0;"> * ข้อมูลล่าสุด 10 มิ.ย. 2563 14:00:00</p>
+                                                </label>
+                                            </div>
                                         </div>
-                                        <div class="col-3">
-                                            <label>Value(K)</label>
-                                        </div>
-                                        <div class="col-3">
-                                            <label>242,587</label>
-                                        </div>
-                                    </div>
-                                    <div class="row mr-1 detail-rank2">
-                                        <div class="col-3">
-                                            <label>Low</label>
-                                        </div>
-                                        <div class="col-3">
-                                            <label style="color:#e6b926;">12.50</label>
-                                        </div>
-                                        <div class="col-3">
-                                            <label>Ceiling</label>
-                                        </div>
-                                        <div class="col-3">
-                                            <label style="color:#0ce63e;">14.60</label>
-                                        </div>
-                                    </div>
-                                    <div class="row mr-1 detail-rank2">
-                                        <div class="col-3">
-                                            <label>Close</label>
-                                        </div>
-                                        <div class="col-3">
-                                            <label style="color:#0ce63e;">12.70</label>
-                                        </div>
-                                        <div class="col-3">
-                                            <label>Floor</label>
-                                        </div>
-                                        <div class="col-3">
-                                            <label style="color:#0ce63e;">10.80</label>
-                                        </div>
-                                    </div>
-                                    <div class="row pb-3 mr-1" style="border-bottom: 1px solid #dddddd;">
-                                        <div class="col-lg-12">
-                                            <label class="detail-rank2"> * ข้อมูลล่าสุด 10 มิ.ย. 2563 14:00:00</label>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-lg-12 text-center">
-                                            <a><label class="btnBuy">ซื้อ</label></a>
-                                            <a><label class="btnSell">ขาย</label></a>
+                                        <div class="row mt-2">
+                                            <div class="col-12 text-center">
+                                                <a>
+                                                    <label class="btnBuy">
+                                                        <p style="margin:0;">ซื้อ</p>
+                                                    </label>
+                                                </a>
+                                                <a>
+                                                    <label class="btnSell">
+                                                        <p style="margin:0;">ขาย</p>
+                                                    </label>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

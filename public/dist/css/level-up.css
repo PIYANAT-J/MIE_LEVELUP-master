@@ -3042,6 +3042,18 @@ margin: 30px auto;
   right: 5px;
 }
 
+.sidebar-sim{
+  border: solid 3px #ce0005;
+  border-radius: 50px;
+  width: 4em;
+  height:4em; 
+  object-fit: cover;
+  box-shadow: 0 0 12px 0 rgba(244, 0, 0, 0.84);
+  position: absolute;
+  top: 0;
+  right: 5px;
+}
+
 .sidebar_name{ /**/
   font-family: myfont1;
   font-size: 1vw;
@@ -5609,36 +5621,37 @@ input[type=number]
   margin: auto;
 }
 
-.bg-simulate{
+.bg-simulator{
   background-color: #fff;
   border-radius: 6px;
   box-shadow: 0 5px 0 0 #c3c3c3;
   width: 100%;
-  font-family: myfont1;
-  font-size:1.2em;
   color: rgba(0, 0, 0, 0.5);
   cursor: pointer;
   object-fit: contain;
+  border: none;
+  padding: 15px 10px;
 }
 
-.bg-simulate.active{
+.bg-simulator.active{
   background-color: #e6b926;
   box-shadow: 0 5px 0 0 #574302;
   color: rgba(0, 0, 0, 1);
 }
 
-.pfontSim{
+.bg-simulator:focus{
+  outline: none;
+}
+
+/* .pfontSim{
   position: absolute;
   top: 8px;
   left: 30px;
   cursor: pointer;
-}
+} */
 
 .font-sim1{
-  font-family:myfont1;
-  font-size:1.1em;
   color:#000;
-  line-height:1.1;
   background-color: #fff;
 }
 
@@ -5675,8 +5688,6 @@ input[type=number]
   background-color: #202433;
   text-align: center;
   color: #fff;
-  font-size: 1em;
-  font-family: myfont1;
   margin-top: 10px;
   padding: 5px 20px;
 }
@@ -5692,8 +5703,6 @@ input[type=number]
 }
 
 .btn-sim3{
-  font-family: myfont;
-  font-size: 1em;
   color: #000;
   background-color: #fff;
   border-radius: 6px;
@@ -5722,23 +5731,17 @@ input[type=number]
 }
 
 .detail-rank{
-  font-family: myfont1;
-  font-size: 1em;
   color: #fff;
-  line-height: 1;
 }
 
 .detail-rank2{
-  font-family: myfont1;
-  font-size: 0.9em;
   color: #fff;
-  line-height: 1;
 }
 
 .middle3{
   z-index: 8;
   position: absolute;
-  top: 35px;
+  top: 25px;
   left: 120px;
 }
 
@@ -5758,10 +5761,7 @@ input[type=number]
   box-shadow: 0 0 4px 0 rgba(230, 185, 41, 0.76);
   border: solid 2px #e6b926;
   background-color: rgba(230, 185, 41, 0.7);
-  font-family: myfont1;
-  font-weight: 800;
   padding: 5px 0;
-  font-size: 1em;
   text-align: center;
   color: #000;
   cursor: pointer;
@@ -5796,8 +5796,6 @@ input[type=number]
 .select-trade{
   width: 100px;
   height: 40px;
-  font-family: myfont;
-  font-size: 1em;
   border: none!important;
   padding: 0 3px;
   background-color: #fff;
@@ -5860,6 +5858,9 @@ input[type=number]
   height:4em; 
   object-fit: cover;
   box-shadow: 0 0 12px 0 rgba(255, 255, 255, 0.84);
+  position: absolute;
+  top: 8px;
+  left: 10px;
 }
 
 .font-avatar-rank{
@@ -5891,9 +5892,6 @@ input[type=number]
 }
 
 .btn-view{
-  font-family: myfont1;
-  font-weight: 800;
-  font-size: 1em;
   background-color: #fff;
   color: #000;
   border: none;
@@ -5910,9 +5908,6 @@ input[type=number]
 }
 
 .btn-viewlock{
-  font-family: myfont1;
-  font-weight: 800;
-  font-size: 1em;
   background-color: #455160;
   color: #000;
   border: none;
@@ -6315,24 +6310,15 @@ button {
 }
 
 .detailTable{
-  font-family: myfont1;
-  font-size: 1em;
   color: #0b98ff;
-  line-height: 1;
 }
 
 .detailTableGreen{
-  font-family: myfont1;
-  font-size: 1em;
   color: #0ce63e;
-  line-height: 1;
 }
 
 .detailTableRed{
-  font-family: myfont1;
-  font-size: 1em;
   color: #ce0005;
-  line-height: 1;
 }
 
 .VisaCredit{
@@ -6482,9 +6468,8 @@ input[type="checkbox"].switch_2{
 }
 
 .simulatorLink{
-  font-family:myfont1;
-  font-size:1em;
   cursor: pointer;
+  color: #fff;
 }
 
 .simulatorLink.active{
@@ -6493,16 +6478,10 @@ input[type="checkbox"].switch_2{
 }
 
 .font-trade-detail{
-  font-family: myfont1;
-  font-size: 0.9em;
-  line-height: 0.8;
   color:#fff;
 }
 
 .font-trade-detail2{
-  font-family: myfont1;
-  font-size: 0.9em;
-  line-height: 0.8;
   color:#0ce63e;
 }
 
@@ -6511,7 +6490,7 @@ input[type="checkbox"].switch_2{
     border-radius: 6px;
     box-shadow: 0 0 12px 0 rgba(255, 255, 255, 0.66);
     background-color: #ffffff;
-    padding: 10px 40px;
+    padding: 8px 40px;
     cursor: pointer;
 }
 
@@ -6520,7 +6499,7 @@ input[type="checkbox"].switch_2{
   border-radius: 6px;
   box-shadow: 0 0 12px 0 rgba(255, 255, 255, 0.66);
   background-color: #5bf89d;
-  padding: 10px 40px;
+  padding: 8px 40px;
   cursor: pointer;
 }
 
@@ -8296,4 +8275,15 @@ input[type="checkbox"].switch_2{
   font-family: myfont1;
   font-size: 15px;
   color: #fff;
+}
+
+.arrowMenu{
+  font-size: 45px;
+  position: absolute;
+  top: -10px;
+  right: 10px;
+}
+
+.test1.active{
+  outline: 3px solid #ce0005;
 }
