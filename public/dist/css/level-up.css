@@ -4493,7 +4493,7 @@ outline: none!important;
   /* height: 100%!important; */
 }
 
-.center {
+.center1 {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -8287,3 +8287,40 @@ input[type="checkbox"].switch_2{
 .test1.active{
   outline: 3px solid #ce0005;
 }
+
+.headManImg{
+  z-index: 2;
+  position: relative;
+  width: 100%;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+
+.clothesManImg{
+  z-index: 1;
+  position: relative;
+  width: 80%;
+  top: -8%;
+  left: 10%;
+  transform: translate(0,0);
+}
+
+/* .eyesManImg{
+  z-index: 3;
+  position: absolute;
+  width: 88%;
+  top: 1.5%;
+  left: 6%;
+  transform: translate(0,0);
+} */
+
+.clotheswomanImg{
+  z-index: 1;
+  position: relative;
+  width: 80%;
+  top: -8.1%;
+  left: 10%;
+  transform: translate(0,0);
+}
+

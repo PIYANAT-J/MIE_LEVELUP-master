@@ -45,17 +45,11 @@
             <!-- ตัวละครชาย -->
             <div class="row manlist px-3">
                 <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
-                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 mt-2 mb-3">
-                    <div class="row">
-                        <div class="col-12 py-3">
-                            <div class="text-right">
-                                <div class="item">
-                                    <img class="center"  style="width:100%;" src="{{asset('home/avatar/character/man.png') }}" />
-                                </div>
-                                <img class="mt-3" style="width:30px" src="{{asset('home/avatar/icon/reset.svg') }}" />
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 pt-2 pb-3">
+                    <!-- <img class="center1"  style="width:100%;opacity: 0;" src="{{asset('home/avatar/character/man.png') }}" /> -->
+                    <img id="headMan" class="headManImg" src="{{asset('home/avatar/character/head/man/AW_Character_V2-37.png') }}" />
+                    <img id="clothesMan" class="clothesManImg" src="{{asset('home/avatar/character/clothes/man/AW_Character_V2-79.png') }}" />
+                    <img class="mt-5" style="width:30px;" src="{{asset('home/avatar/icon/reset.svg') }}" />
                 </div>
                 <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
 
@@ -87,20 +81,11 @@
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">ทรงผม</span>
                                         <div class="col-12">                                                                            
-                                            <button class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('headMan').src='home/avatar/character/head/man/AW_Character_V2-37.png'">
                                                 <img class="picture" src="{{asset('home/avatar/man/hair/h01.svg') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('headMan').src='home/avatar/character/head/man/AW_Character_V2-38.png'">
                                                 <img class="picture" src="{{asset('home/avatar/man/hair/h02.svg') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                <img class="picture" src="{{asset('home/avatar/man/hair/h03.svg') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                <img class="picture" src="{{asset('home/avatar/man/hair/h04.svg') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                <img class="picture" src="{{asset('home/avatar/man/hair/h05.svg') }}" />
                                             </button>
                                         </div>    
                                     </div>
@@ -108,7 +93,7 @@
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">สีตา</span>
                                         <div class="col-12">
-                                            <button class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/eyes/e01.svg') }}" />
                                             </button>
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
@@ -143,21 +128,21 @@
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">ชุดไปเวท</span>
                                         <div class="col-12">
-                                            <button class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesMan').src='home/avatar/character/clothes/man/AW_Character_V2-79.png'">
                                                 <img class="picture" src="{{asset('home/avatar/man/clothes/c01.svg') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesMan').src='home/avatar/character/clothes/man/AW_Character_V2-80.png'">
                                                 <img class="picture" src="{{asset('home/avatar/man/clothes/c02.svg') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            <!-- <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesMan').src='home/avatar/character/clothes/man/AW_Character_V2-81.png'">
                                                 <img class="picture" src="{{asset('home/avatar/man/clothes/c03.svg') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesMan').src='home/avatar/character/clothes/man/AW_Character_V2-82.png'">
                                                 <img class="picture" src="{{asset('home/avatar/man/clothes/c04.svg') }}" />
                                             </button>
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                                 <img class="picture" src="{{asset('home/avatar/man/clothes/c.png') }}" />
-                                            </button>
+                                            </button> -->
                                         </div>    
                                     </div>
 
@@ -277,16 +262,11 @@
             <div class="row womanlist px-3">
                 <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
                 <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 mt-2 mb-3">
-                    <div class="row">
-                        <div class="col-12 py-3">
-                            <div class="text-right">
-                                <div class="item">
-                                    <img class="center"  style="width:100%;" src="{{asset('home/avatar/character/woman.png') }}" />
-                                </div>
-                                <img class="mt-3" style="width:30px" src="{{asset('home/avatar/icon/reset.svg') }}" />
-                            </div>
-                        </div>
-                    </div>
+                    <!-- <img class="center1"  style="width:100%;" src="{{asset('home/avatar/character/woman.png') }}" /> -->
+                    <img id="headWoman" class="headManImg" src="{{asset('home/avatar/character/head/woman/AW_Character_V2-02.png') }}" />
+                    <img id="clothesWoman" class="clotheswomanImg" src="{{asset('home/avatar/character/clothes/woman/AW_Character_V2-73.png') }}" />
+                    <img class="mt-5" style="width:30px" src="{{asset('home/avatar/icon/reset.svg') }}" />
+                            
                 </div>
                 <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
 
@@ -318,17 +298,14 @@
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">ทรงผม</span>
                                         <div class="col-12">
-                                            <button class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('headWoman').src='home/avatar/character/head/woman/AW_Character_V2-02.png'">
                                                 <img class="picture" src="{{asset('home/avatar/woman/hair/h01.svg') }}" />
                                             </button>
-                                            <buttonl class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('headWoman').src='home/avatar/character/head/woman/AW_Character_V2-03.png'">
                                                 <img class="picture" src="{{asset('home/avatar/woman/hair/h02.svg') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('headWoman').src='home/avatar/character/head/woman/AW_Character_V2-01.png'">
                                                 <img class="picture" src="{{asset('home/avatar/woman/hair/h03.svg') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                <img class="picture" src="{{asset('home/avatar/woman/hair/h.png') }}" />
                                             </button>
                                         </div>    
                                     </div>
@@ -377,20 +354,11 @@
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">ชุดไปเวท</span>
                                         <div class="col-12">
-                                            <button class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesWoman').src='home/avatar/character/clothes/woman/AW_Character_V2-73.png'">
                                                 <img class="picture" src="{{asset('home/avatar/woman/clothes/c01.svg') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesWoman').src='home/avatar/character/clothes/woman/AW_Character_V2-74.png'">
                                                 <img class="picture" src="{{asset('home/avatar/woman/clothes/c02.svg') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                <img class="picture" src="{{asset('home/avatar/woman/clothes/c03.svg') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                <img class="picture" src="{{asset('home/avatar/woman/clothes/c04.svg') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                <img class="picture" src="{{asset('home/avatar/woman/clothes/c.png') }}" />
                                             </button>
                                         </div>    
                                     </div>
