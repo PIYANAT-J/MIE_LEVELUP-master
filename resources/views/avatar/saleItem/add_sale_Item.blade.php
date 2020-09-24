@@ -29,7 +29,7 @@
                                     </label>
                                     <label>
                                         <a href="/sale" class="avatar-link active">
-                                            <h1 style="margin:0;">ขายไอเทม</h1>
+                                            <h1 style="margin:0;">ไอเทมวางขาย</h1>
                                         </a>
                                     </label>
                                     <label>
@@ -72,56 +72,55 @@
                                     </div> 
                                     <div class="row mx-0 pb-3" style="background-color:#202433;border-radius: 6px;">
                                         <div class="col-12">
-                                        <div class="tab-content">
+                                            <div class="tab-content">
                                                 <div id="head2" class="container tab-pane active">
                                                     <div class="row mt-2 row6">
                                                         <div class="col-12" style="padding-left:0;"> 
                                                             <div class="row">
                                                                 <div class="col-12" >
                                                                     <p style="margin:0;color:#fff;">ทรงผม</p>
-                                                                    <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/hair/h01.svg') }}" />
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/hair/man/hair_man_01.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/hair/man/hair_man_01.png') }}" />
                                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                                    </label>
-                                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/hair/h02.svg') }}" />
+                                                                    </button>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/hair/man/hair_man_02.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/hair/man/hair_man_02.png') }}" />
                                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                                    </label>
-                                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/hair/h03.svg') }}" />
-                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                                    </label>
+                                                                    </button>
                                                                 </div>    
                                                             </div>
 
                                                             <div class="row">
                                                                 <div class="col-12">
                                                                     <p style="margin:0;color:#fff;">สีตา</p>
-                                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/eyes/e01.svg') }}" />
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/eyes/man/shop/eyes_man_01.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/eyes/man/shop/eyes_man_01.png') }}" />
                                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                                    </label>
-                                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/eyes/e02.svg') }}" />
+                                                                    </button>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/eyes/man/shop/eyes_man_02.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/eyes/man/shop/eyes_man_02.png') }}" />
                                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                                    </label>
-                                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/eyes/e03.svg') }}" />
+                                                                    </button>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/eyes/man/shop/eyes_man_03.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/eyes/man/shop/eyes_man_03.png') }}" />
                                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                                    </label>
-                                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/eyes/e04.svg') }}" />
+                                                                    </button>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/eyes/man/shop/eyes_man_04.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/eyes/man/shop/eyes_man_04.png') }}" />
                                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                                    </label>
+                                                                    </button>
                                                                 </div>    
                                                             </div>
+
                                                             <div class="row">
-                                                                <p style="margin:0;color:#fff;">แว่นตา</p>
-                                                                <div class="col-lg-12">
-                                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/glasses/g01.svg') }}" />
-                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                                    </label>
+                                                                <div class="col-12">
+                                                                    <p style="margin:0;color:#fff;">แว่นตา</p>
+                                                                    <button class="labelItem bgItem active" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/glasses/glasses_01.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/glasses/glasses_01.png') }}" />
+                                                                    </button>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/glasses/glasses_02.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/glasses/glasses_02.png') }}" />
+                                                                    </button>
                                                                 </div>    
                                                             </div>
                                                             <!-- <div class="row">
@@ -138,36 +137,31 @@
 
                                                 <div id="clothes2" class="container tab-pane">
                                                     <div class="row mt-2 row6" style="background-color:#202433;border-radius: 6px;">
-                                                        <div class="col-12"> 
+                                                        <div class="col-12" style="padding-left:0;"> 
                                                             <div class="row">
                                                                 <div class="col-12">
                                                                     <p style="margin:0;color:#fff;">ชุดไปรเวท</p>
-                                                                    <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/clothes/c01.svg') }}" />
-                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                                    </label>
-                                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/clothes/c02.svg') }}" />
-                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                                    </label>
-                                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/clothes/c03.svg') }}" />
-                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                                    </label>
-                                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/clothes/c04.svg') }}" />
-                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                                    </label>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/clothes_man_01.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/clothes/man/clothes_man_01.png') }}" />
+                                                                    </button>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/clothes_man_02.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/clothes/man/clothes_man_02.png') }}" />
+                                                                    </button>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/clothes_man_03.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/clothes/man/clothes_man_03.png') }}" />
+                                                                    </button>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/clothes_man_04.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/clothes/man/clothes_man_04.png') }}" />
+                                                                    </button>
                                                                 </div>    
                                                             </div>
 
                                                             <div class="row">
                                                                 <div class="col-12">
                                                                     <p style="margin:0;color:#fff;">ชุดซุปเปอร์ฮีโร่</p>
-                                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/clothes/c05.svg') }}" />
-                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                                    </label>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/hero/hero_man_03.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/clothes/man/hero/hero_man_03.png') }}" />
+                                                                    </button>
                                                                 </div>    
                                                             </div>
                                                         </div>
@@ -176,26 +170,26 @@
 
                                                 <div id="weapon2" class="container tab-pane">
                                                     <div class="row mt-2 row6" style="background-color:#202433;border-radius: 6px;">
-                                                        <div class="col-12"> 
+                                                        <div class="col-12" style="padding-left:0;"> 
                                                             <div class="row">
                                                                 <div class="col-12">
                                                                     <p style="margin:0;color:#fff;">ดาบ</p>
-                                                                    <label class="labelItem bgItem active" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/weapon/sword/s01.svg') }}" />
-                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
-                                                                    </label>
-                                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/weapon/sword/s02.svg') }}" />
-                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
-                                                                    </label>
-                                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/weapon/sword/s03.svg') }}" />
-                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
-                                                                    </label>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/weapon/sword_01.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/weapon/sword_01.png') }}" />
+                                                                    </button>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/weapon/sword_02.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/weapon/sword_02.png') }}" />
+                                                                    </button>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/weapon/sword_03.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/weapon/sword_03.png') }}" />
+                                                                    </button>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/weapon/sword_04.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/weapon/sword_04.png') }}" />
+                                                                    </button>
                                                                 </div>    
                                                             </div>
 
-                                                            <div class="row">
+                                                            <!-- <div class="row">
                                                                 <div class="col-12">
                                                                     <p style="margin:0;color:#fff;">คฑา</p>
                                                                     <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
@@ -203,9 +197,9 @@
                                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                 </div>    
-                                                            </div>
+                                                            </div> -->
 
-                                                            <div class="row">
+                                                            <!-- <div class="row">
                                                                 <div class="col-12">
                                                                     <p style="margin:0;color:#fff;">ปืน</p>
                                                                     <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
@@ -213,9 +207,9 @@
                                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                 </div>    
-                                                            </div>
+                                                            </div> -->
 
-                                                            <div class="row">
+                                                            <!-- <div class="row">
                                                                 <div class="col-12">
                                                                     <p style="margin:0;color:#fff;">ธนู</p>
                                                                     <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
@@ -223,7 +217,7 @@
                                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                 </div>    
-                                                            </div>
+                                                            </div> -->
 
                                                         </div>
                                                     </div>
@@ -231,55 +225,41 @@
 
                                                 <div id="other2" class="container tab-pane">
                                                     <div class="row mt-2 row6" style="background-color:#202433;border-radius: 6px;">
-                                                        <div class="col-12"> 
+                                                        <div class="col-12" style="padding-left:0;"> 
                                                             <div class="row">
                                                                 <div class="col-12">
                                                                     <p style="margin:0;color:#fff;">มงกุฏ/หมวก</p>
-                                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/other/crown/c01.png') }}" />
-                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
-                                                                    </label>
-                                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/other/crown/c02.png') }}" />
-                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
-                                                                    </label>
-                                                                    <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/other/crown/c03.png') }}" />
-                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
-                                                                    </label>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/crown_01.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/other/crown_01.png') }}" />
+                                                                    </button>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/crown_02.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/other/crown_02.png') }}" />
+                                                                    </button>
+                                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/crown_03.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/other/crown_03.png') }}" />
+                                                                    </button>
                                                                 </div>    
                                                             </div>
-
-                                                            <!-- <div class="row">
-                                                                <span class="fontItem ml-4">หมวก</span>
-                                                                <div class="col-lg-12">
-                                                                    <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/other/hat/h.png') }}" />
-                                                                    </label>
-                                                                </div>    
-                                                            </div> -->
 
                                                             <div class="row">
                                                                 <div class="col-12">
                                                                     <p style="margin:0;color:#fff;">ถุงมือ</p>
-                                                                    <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/other/glove/g01.png') }}" />
-                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
-                                                                    </label>
+                                                                    <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/gloves_01.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/other/gloves_01.png') }}" />
+                                                                    </button>
                                                                 </div>    
                                                             </div>
 
                                                             <div class="row">
                                                                 <div class="col-12">
                                                                     <p style="margin:0;color:#fff;">เสื้อเกราะ</p>
-                                                                    <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
-                                                                        <img class="picture" src="{{asset('home/avatar/woman/other/armor/a01.svg') }}" />
-                                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
-                                                                    </label>
+                                                                    <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/armor_01.png'">
+                                                                        <img class="picture" src="{{asset('home/avatar/other/armor_01.png') }}" />
+                                                                    </button>
                                                                 </div>    
                                                             </div>
 
-                                                            <div class="row">
+                                                            <!-- <div class="row">
                                                                 <div class="col-12">
                                                                     <p style="margin:0;color:#fff;">รองเท้า</p>
                                                                     <label class="labelItem bgItem " data-toggle="popover" data-placement="bottom">
@@ -295,7 +275,7 @@
                                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>    
                                                                     </label>
                                                                 </div>    
-                                                            </div>
+                                                            </div> -->
 
                                                         </div>
                                                     </div>
@@ -312,8 +292,7 @@
                                             <div class="row" >
                                                 <div class="col-3">
                                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
-                                                        <img class="picture2" src="{{asset('home/avatar/man/other/crown/c03.png') }}" />
-                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
+                                                        <img id="saleItem" class="picture2" src="{{asset('home/avatar/icon/sale.png') }}" />
                                                     </label>
                                                 </div>
 
@@ -451,7 +430,7 @@ $(document).ready(function(){
   $('[data-toggle="popover"]').popover({
     trigger : 'hover',
     html : true,
-    content : '<div class="media popover">คำอธิบาย</div>'
+    content : '<div class="mediaPopover popover1">ตัวอย่างนี้เป็นการกำหนดให้ข้อความตัดอัตโนมัติเมื่อยาวเกินกว่าขอบเขตการแสดงผล โดยใช้ css ในการตัดด้วยคำสั่ง overflow</div>'
     }); 
 });
 </script>

@@ -52,7 +52,7 @@
                                                 <h6 style="margin:0;font-weight:900;color:#fff;">RARE ITEM</h6>
                                                 <p style="margin:0;color:#fff;width:200px">ไอเทมพิเศษ หายาก มากที่สุดในตอนนี้รีบคว้ามามาครอบครองเลย</p>
                                                 <button class="btn-shop1 p" data-toggle="modal" data-target="#shop">ซื้อเลย</button>
-                                                <img class="img-shop1" src="{{asset('home/avatar/man/other/crown/c02.png') }}">
+                                                <img class="img-shop1" src="{{asset('home/avatar/other/crown_02.png') }}">
                                             </label>
                                         </div>
 
@@ -62,7 +62,7 @@
                                                 <h6 style="margin:0;font-weight:900;color:#fff;">RARE ITEM</h6>
                                                 <p style="margin:0;color:#fff;width:200px">ไอเทมพิเศษ หายาก มากที่สุดในตอนนี้รีบคว้ามามาครอบครองเลย</p>
                                                 <button class="btn-shop1 p" data-toggle="modal" data-target="#shop">ซื้อเลย</button>
-                                                <img class="img-shop1" src="{{asset('home/avatar/man/other/crown/c02.png') }}">
+                                                <img class="img-shop1" src="{{asset('home/avatar/other/crown_03.png') }}">
                                             </label>
                                         </div>
                                     </div>
@@ -85,9 +85,9 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_1.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/crown/c02.png') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/other/crown_02.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
-                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-shop2"><h5 style="margin:0;">1</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
                                                         <span>
                                                             <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
@@ -102,9 +102,9 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_2.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/clothes/c05.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/man/hero/hero_man_03.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
-                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-shop2"><h5 style="margin:0;">2</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
                                                         <span>
                                                             <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
@@ -119,9 +119,9 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_3.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/weapon/sword/s03.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/other/crown_03.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
-                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-shop2"><h5 style="margin:0;">3</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
                                                         <span>
                                                             <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
@@ -136,9 +136,9 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_4.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/armor/a01.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/man/hero/hero_man_04.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
-                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-shop2"><h5 style="margin:0;">4</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
                                                         <span>
                                                             <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
@@ -153,7 +153,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_5.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/weapon/sword/s02.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/other/armor_01.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -182,7 +182,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_6.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/woman/hair/h01.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/hair/man/hair_man_01.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -199,7 +199,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_7.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/woman/hair/h02.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/hair/woman/hair_woman_01.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -216,7 +216,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_8.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/woman/hair/h03.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/hair/woman/hair_woman_02.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -233,7 +233,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_1.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/hair/h01.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/hair/woman/hair_woman_03.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -250,7 +250,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_2.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/hair/h02.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/hair/man/hair_man_02.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -279,7 +279,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_2.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/clothes/c05.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/man/clothes_man_05.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -296,7 +296,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_3.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/clothes/c06.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/man/clothes_man_04.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -313,7 +313,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_4.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/clothes/c07.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/man/clothes_man_03.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -330,7 +330,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_5.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/clothes/c05.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/man/clothes_man_02.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -347,9 +347,9 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_6.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/woman/clothes/c04.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/man/hero/hero_man_04.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
-                                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
+                                                        <span class="font-shop2"><h5 style="margin:0;">3</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
                                                         <span>
                                                             <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
@@ -376,7 +376,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_8.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/weapon/sword/s01.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/weapon/sword_01.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -393,7 +393,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_7.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/weapon/sword/s02.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/weapon/sword_02.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -410,7 +410,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_6.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/weapon/sword/s03.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/weapon/sword_03.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -427,7 +427,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_5.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/weapon/sword/s04.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/weapon/sword_04.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -444,7 +444,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_4.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/woman/weapon/sword/s04.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/weapon/sword_01.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -474,7 +474,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_4.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/armor/a01.svg') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/other/armor_01.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -491,7 +491,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_5.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/crown/c03.png') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/other/crown_01.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -508,7 +508,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_6.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/crown/c02.png') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/other/crown_02.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -525,7 +525,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_7.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/glove/g01.png') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/other/gloves_01.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>
@@ -542,7 +542,7 @@
                                                     <img class="img-ownerItem" src="{{asset('dist/images/person_8.jpg') }}" />
                                                     <label class="bg-shop2">
                                                         <label class="img-saleItem">
-                                                            <img style="width:100%" src="{{asset('home/avatar/woman/other/crown/c01.png') }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/other/crown_03.png') }}" data-toggle="popover" data-placement="bottom">
                                                         </label>
                                                         <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
                                                         <span class="font-price-position p">฿9,000.00</span>

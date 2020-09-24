@@ -50,7 +50,7 @@
                                                                 <label for="checkbox_01" ></label>
                                                             </label>
                                                             <label class="labelItem2 bgItem">
-                                                                <img class="picture2" src="{{asset('home/avatar/man/other/crown/c01.png') }}" />
+                                                                <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" />
                                                             </label> 
                                                             <label class="font-sale4 bgItem2 mt-2 ml-2">
                                                                 <p style="font-weight: 700;margin:0;">มงกุฏ ระดับ 1 </p>
@@ -102,7 +102,7 @@
                                                 <div class="col-12">
                                                     <span style="font-family:myfont1;font-size:1.1em;color:#fff;">
                                                         <label><h1 style="margin:0;font-weight:800;color:#fff;">รวมค่าสินค้า ( 3 รายการ )</h1></label>
-                                                        <label><h4 style="color:#ce0005;margin:0;font-weight:800;">฿15,000.00</h4></label>
+                                                        <label><h4 style="color:#ce0005;margin:0;font-weight:800;">฿1,000.00</h4></label>
                                                     </span>
                                                 </div>
                                             </div>
