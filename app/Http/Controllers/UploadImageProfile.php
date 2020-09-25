@@ -94,19 +94,6 @@ class UploadImageProfile extends Controller
         }
     }
 
-
-    public function Avatar(){
-        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        return view('avatar.avatar', compact('guest_user', 'userKyc'));
-    }
-
-    public function Shop(){
-        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        return view('avatar.shopItem.shop', compact('guest_user', 'userKyc'));
-    }
-
     public function Sale(){
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
@@ -117,12 +104,6 @@ class UploadImageProfile extends Controller
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
         return view('avatar.saleItem.add_sale_item', compact('guest_user', 'userKyc'));
-    }
-
-    public function ShoppingCart(){
-        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        return view('avatar.shopItem.shopping_cart', compact('guest_user', 'userKyc'));
     }
 
     public function Payment(){
