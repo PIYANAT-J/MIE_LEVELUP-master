@@ -1082,6 +1082,14 @@ overflow: hidden;
 }
 .thumb-topup img {height:100%; width:100%; margin:0 auto;}
 
+
+.thumb-topup2{
+  width:100px;
+  height:auto;
+  border: solid 5px #dddddd;
+}
+.thumb-topup2 img {height:100%; width:100%; margin:0 auto;}
+
 .kyc-pic{
   width: 100%;
   height: auto;
