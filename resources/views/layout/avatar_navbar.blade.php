@@ -64,7 +64,7 @@
                     <div class="col-lg-4 col-xl-3 d-none d-lg-block d-xl-block text-right home">
                         <nav class="site-navigation position-relative" role="navigation">
                             <ul class="site-menu main-menu js-clone-nav" style="margin-top:50px;padding-left:0;">
-                            @guest
+                                @guest
                                     <img style="padding:0px 0px 0px 20px;" src="{{asset('/icon/sign_in.svg') }}"/>
                                     <label class="sign_in" style="font-family:myfont;font-size:0.7em; padding: 0px 0px 0px 0px;">
                                         <a href="{{ route('login-levelUp') }}">{{ __('เข้าสู่ระบบ') }}</a>
@@ -78,9 +78,9 @@
                             </ul>
                                 @else
                                 <li class="labelWithImg">
-                                    <a href="/shopping_cart">
+                                    <a href="{{ route('ShoppingCart') }}">
                                         <img style="width:2em" src="{{asset('icon/shopping-cart.png') }}" />
-                                        <span class="font-shop">3</span>
+                                        <span class="font-shop">{{count($shopping)}}</span>
                                     </a>
                                 </li>
                                 
