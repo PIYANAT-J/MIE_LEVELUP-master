@@ -108,7 +108,7 @@
                                         </label>
                                         <label class="bgInput field-wrap my-1">
                                             <p class="fontHeadInput">ธนาคารทีโอน</p>
-                                            <select class="MySelect p pl-2" type="text" name="text4">
+                                            <select class="MySelect p pl-2" type="text" name="text4" style="width:97.2%">
                                                 <option value="">ธนาคารกรุงเทพ</option>
                                                 <option value="">ธนาคารกสิกรไทย</option>
                                                 <option value="">ธนาคารกรุงไทย</option>
@@ -137,17 +137,17 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                            <!-- <a href="{{ route('SponsorPayment') }}"><label class="btn-submit-drak2">ยืนยัน</label></a>transferNote -->
-                                            <button class="btn-submit" name="submit" value="submit">
-                                                <p style="margin:0;">ยืนยัน</p>
-                                            </button>
-                                            <input type="hidden" name="id" value="{{$transfer->id}}">
-                                            @if(isset($package))
-                                                <input type="hidden" name="package_id" value="{{$package->package_id}}">
-                                            @else
-                                                <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
-                                            @endif
-                                        </div>
+                                        <!-- <a href="{{ route('SponsorPayment') }}"><label class="btn-submit-drak2">ยืนยัน</label></a>transferNote -->
+                                        <button class="btn-submit" name="submit" value="submit">
+                                            <p style="margin:0;">ยืนยัน</p>
+                                        </button>
+                                        <input type="hidden" name="id" value="{{$transfer->id}}">
+                                        @if(isset($package))
+                                            <input type="hidden" name="package_id" value="{{$package->package_id}}">
+                                        @else
+                                            <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
+                                        @endif
+                                    </div>
                                 </div>
                             </form>
                         </div>

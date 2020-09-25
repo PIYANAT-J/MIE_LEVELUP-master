@@ -29,7 +29,7 @@
                                     </label>
                                     <label>
                                         <a href="/sale" class="avatar-link">
-                                        <h1 style="margin:0;">ขายไอเทม</h1>
+                                        <h1 style="margin:0;">ไอเทมวางขาย</h1>
                                     </label>
                                 </div>
                                 <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2 text-right" style="padding:0;">
@@ -57,12 +57,12 @@
                                                 <div class="col-12">
                                                     <p style="margin:0;color:#fff;">ทรงผม</p>
                                                     <label class="labelItem bgItem">
-                                                        <img class="picture2" src="{{asset('home/avatar/woman/hair/h01.svg') }}" />
+                                                        <img class="picture2" src="{{asset('home/avatar/hair/woman/hair_woman_01.png') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                         <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span>
                                                     </label>
                                                     <label class="labelItem bgItem">
-                                                        <img class="picture2" src="{{asset('home/avatar/woman/hair/h02.svg') }}" />
+                                                        <img class="picture2" src="{{asset('home/avatar/hair/woman/hair_woman_03.png') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                         <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
                                                     </label>
@@ -74,12 +74,12 @@
                                                 <div class="col-12">
                                                     <p style="margin:0;color:#fff;">สีตา</p>
                                                     <label class="labelItem bgItem">
-                                                        <img class="picture2" src="{{asset('home/avatar/woman/eyes/e01.svg') }}" />
+                                                        <img class="picture2" src="{{asset('home/avatar/eyes/woman/shop/eyes_woman_03.png') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                         <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
                                                     </label>
                                                     <label class="labelItem bgItem">
-                                                        <img class="picture2" src="{{asset('home/avatar/woman/eyes/e01.svg') }}" />
+                                                        <img class="picture2" src="{{asset('home/avatar/eyes/woman/shop/eyes_woman_02.png') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                         <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
                                                     </label>
@@ -91,7 +91,7 @@
                                                 <div class="col-12">
                                                     <p style="margin:0;color:#fff;">แว่นตา</p>
                                                     <label class="labelItem bgItem">
-                                                        <img class="picture2" src="{{asset('home/avatar/woman/glasses/g01.svg') }}" />
+                                                        <img class="picture2" src="{{asset('home/avatar/glasses/glasses_02.png') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                         <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
                                                     </label>
@@ -103,12 +103,12 @@
                                                 <div class="col-12">
                                                     <p style="margin:0;color:#fff;">ชุดไปรเวท</p>
                                                     <label class="labelItem bgItem">
-                                                        <img class="picture2" src="{{asset('home/avatar/woman/clothes/c01.svg') }}" />
+                                                        <img class="picture2" src="{{asset('home/avatar/clothes/woman/clothes_woman_01.png') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                         <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
                                                     </label>
                                                     <label class="labelItem bgItem">
-                                                        <img class="picture2" src="{{asset('home/avatar/woman/clothes/c02.svg') }}" />
+                                                        <img class="picture2" src="{{asset('home/avatar/clothes/woman/clothes_woman_02.png') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                         <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
                                                     </label>
@@ -120,7 +120,7 @@
                                                 <div class="col-12">
                                                     <p style="margin:0;color:#fff;">ชุดซุปเปอร์ฮีโร่</p>
                                                     <label class="labelItem bgItem">
-                                                        <img class="picture2" src="{{asset('home/avatar/woman/clothes/c05.svg') }}" />
+                                                        <img class="picture2" src="{{asset('home/avatar/clothes/woman/hero/hero_woman_01.png') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                         <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
                                                     </label>
@@ -132,12 +132,12 @@
                                                 <div class="col-12">
                                                     <p style="margin:0;color:#fff;">ดาบ</p>
                                                     <label class="labelItem bgItem">
-                                                        <img class="picture2" src="{{asset('home/avatar/woman/weapon/sword/s01.svg') }}" />
+                                                        <img class="picture2" src="{{asset('home/avatar/weapon/sword_03.png') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                         <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
                                                     </label>
                                                     <label class="labelItem bgItem">
-                                                        <img class="picture2" src="{{asset('home/avatar/woman/weapon/sword/s02.svg') }}" />
+                                                        <img class="picture2" src="{{asset('home/avatar/weapon/sword_04.png') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                         <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
                                                     </label>
@@ -145,53 +145,53 @@
                                             </div>
 
                                             <!-- คฑา-->
-                                            <div class="row">
+                                            <!-- <div class="row">
                                                 <div class="col-12">
                                                     <p style="margin:0;color:#fff;">คฑา</p>
                                                     <label class="labelItem bgItem">
                                                         <img class="picture2" src="{{asset('home/avatar/woman/weapon/wand/w01.svg') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                        <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
+                                                        <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span>
                                                     </label>
                                                 </div> 
-                                            </div>
+                                            </div> -->
 
                                             <!-- ปืน-->
-                                            <div class="row">
+                                            <!-- <div class="row">
                                                 <<div class="col-12">
                                                     <p style="margin:0;color:#fff;">ปืน</p>
                                                     <label class="labelItem bgItem">
                                                         <img class="picture2" src="{{asset('home/avatar/woman/weapon/gun/g01.svg') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                        <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
+                                                        <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span>
                                                     </label>
                                                 </div> 
-                                            </div>
+                                            </div> -->
 
                                             <!-- ธนู-->
-                                            <div class="row">
+                                            <!-- <div class="row">
                                                 <div class="col-12">
                                                     <p style="margin:0;color:#fff;">ธนู</p>
                                                     <label class="labelItem bgItem">
                                                         <img class="picture2" src="{{asset('home/avatar/woman/weapon/archer/a01.svg') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                        <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
+                                                        <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span>
                                                     </label>
                                                 </div> 
-                                            </div>
+                                            </div> -->
 
                                             <!-- มงกุฏ/หมวก -->
                                             <div class="row">
                                                 <div class="col-12">
                                                     <p style="margin:0;color:#fff;">มงกุฏ/หมวก</p>
                                                     <label class="labelItem bgItem active">
-                                                        <img class="picture2" src="{{asset('home/avatar/man/other/crown/c01.png') }}" />
+                                                        <img class="picture2" src="{{asset('home/avatar/other/crown_02.png') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                         <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
                                                     </label>
-                                                    <label class="labelItem bgItem active">
-                                                        <img class="picture2" src="{{asset('home/avatar/man/other/crown/c02.png') }}" />
-                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
+                                                    <label class="labelItem bgItem">
+                                                        <img class="picture2" src="{{asset('home/avatar/other/crown_03.png') }}" />
+                                                        <span class="font-sale2"><h5 style="margin:0;">3</h5></span>
                                                         <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
                                                     </label>
                                                 </div> 
@@ -200,9 +200,9 @@
                                             <!-- ถุงมือ -->
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p style="margin:0;color:#fff;">มงกุฏ/หมวก</p>
+                                                    <p style="margin:0;color:#fff;">ถุงมือ</p>
                                                     <label class="labelItem bgItem">
-                                                        <img class="picture2" src="{{asset('home/avatar/woman/other/glove/g01.png') }}" />
+                                                        <img class="picture2" src="{{asset('home/avatar/other/gloves_01.png') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                         <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
                                                     </label>
@@ -214,7 +214,7 @@
                                                 <div class="col-12">
                                                     <p style="margin:0;color:#fff;">เสื้อเกราะ</p>
                                                     <label class="labelItem bgItem">
-                                                        <img class="picture2" src="{{asset('home/avatar/woman/other/armor/a01.svg') }}" />
+                                                        <img class="picture2" src="{{asset('home/avatar/other/armor_01.png') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
                                                         <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
                                                     </label>
@@ -222,26 +222,16 @@
                                             </div>
 
                                             <!-- รองเท้า -->
-                                            <div class="row">
+                                            <!-- <div class="row">
                                                 <div class="col-12">
                                                     <p style="margin:0;color:#fff;">รองเท้า</p>
                                                     <label class="labelItem bgItem">
                                                         <img class="picture2" src="{{asset('home/avatar/woman/other/shoes/s01.png') }}" />
                                                         <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                        <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
-                                                    </label>
-                                                    <label class="labelItem bgItem">
-                                                        <img class="picture2" src="{{asset('home/avatar/woman/other/shoes/s02.png') }}" />
-                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                        <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
-                                                    </label>
-                                                    <label class="labelItem bgItem">
-                                                        <img class="picture2" src="{{asset('home/avatar/woman/other/shoes/s03.png') }}" />
-                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                        <!-- <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span> -->
+                                                        <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span>
                                                     </label>
                                                 </div> 
-                                            </div>
+                                            </div> -->
 
                                         </div>
                                     </div>
@@ -256,8 +246,7 @@
                                     <div class="row mx-0" >    
                                         <div class="col-12" style="padding:0;">
                                             <label class="labelItem bgItem">
-                                                <img class="picture2" src="{{asset('home/avatar/man/other/crown/c01.png') }}" />
-                                                <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
+                                                <img id="crownMan" class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" />
                                             </label> 
                                             <label class="font-sale4 bgItem2 mt-2 ml-2">
                                                 <p style="font-weight: 700;margin:0;">มงกุฏ ระดับ 1 </p>

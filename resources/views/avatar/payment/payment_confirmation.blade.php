@@ -1,143 +1,78 @@
 @extends('layout.avatar_navbar')
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" id="getActive" active="{{ route('Avatar') }}">
     <div class="row my-5"></div>
-    <div class="row my-2"></div>
     <div class="row  mt-3">
- 
-        <!-- sidebar -->
-        <div class="col-lg-3" style="background-color: #000;">
-            <div class="row">
-                <div class="col-lg-1"></div>
-                @if(Auth::user()->updateData == 'true')
-                    @foreach($guest_user as $USER)
-                        <div class="col-lg-10 mb-3 pb-2" style="background-color: #000;">
-                            <div class="row mb-2">
-                                <div class="col-lg-4 text-right pr-2">
-                                    <img class="sidebar-pic2" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
-                                </div>
-                                <div class="col-lg-8 sidebar_name pt-2">
-                                    <span><b style="font-family: myfont;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>สถานะ : ผู้ใช้ทั่วไป</br>เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</span>
-                                </div>
-                            </div>
-                            <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                                <div class="col-lg-12 text-center">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="btn-point2 pb-2">
-                                                <span class="font-point">พอยท์</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Point"></i>
-                                            </label>
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="btn-coin2 pb-2 ">
-                                                <span class="font-point">เหรียญ</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Coin"></i>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
-                    <div class="col-lg-10 my-3 pt-2 sidebar_bg2">
-                        <div class="row mb-2">
-                            <div class="col-5 text-right pr-2">
-                                <img class="sidebar-pic" src="{{asset('home/imgProfile/No_Img.jpg') }}" />
-                            </div>
-                            <div class="col-7 sidebar_name pt-2">
-                                <span><b style="font-family: myfont;font-size: 1.1em;">{{ Auth::user()->name }}-{{ Auth::user()->surname }}</b></br>ผู้ใช้ทั่วไป</br>เป็นสมาชิก : {{ Auth::user()->created_at }}</span>
-                            </div>
-                        </div>
-                        <div class="row mt-3" style=" border-top: 1px solid #2d3d50;">
-                                <div class="col-lg-12 text-center">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="btn-point2 pb-2">
-                                                <span class="font-point">พอยท์</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Point"></i>
-                                            </label>
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="btn-coin2 pb-2 ">
-                                                <span class="font-point">เหรียญ</span></br>
-                                                <span style="font-family:myfont;font-size: 1.5em;line-height: 0.2;color: #ffffff;">100</span>
-                                                <i class="icon-Icon_Coin"></i>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                @endif
-                <div class="col-lg-1"></div>
-                <a href="{{ route('Avatar') }}" style="width: 100%;"><button class="btn-sidebar2 active"><i class="icon-profile menuIcon"></i>ตัวละครของฉัน (Avatar)</button></a>
-                <a href="{{ route('UserProfile') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว</button></a>
-                <a href="{{ route('UserKyc') }}" style="width: 100%;"><button class="btn-sidebar2"><span style="font-family: myfont1;font-size: 1em;padding:0px 10px 0px 5px;">KYC</span>ยืนยันตัวตน
-                    @if($userKyc->KYC_STATUS == null)
-                        <span class="status-kyc3 ml-2 px-2">กรุณายืนยันตัวตน</span>
-                    @elseif($userKyc->KYC_STATUS == 'รออนุมัติ')
-                        <span class="status-kyc ml-2 px-2">รอการตรวจสอบ</span>
-                    @elseif($userKyc->KYC_STATUS == 'อนุมัติ')
-                        <span class="status-kyc2 ml-2 px-2">ยืนยันตัวตนแล้ว</span>
-                    @else
-                        <span class="status-kyc4 ml-2 px-2">ไม่ผ่านการอนุมัติ</span>
-                    @endif
-                </button></a>
-                <a href="{{ route('UserShelf') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</button></a>
-                <a href="{{ route('UserHistory') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
-                <a href="{{ route('UserRank') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="fa fa-star-o menuIcon"></i>อันดับผู้ใช้</button></a>
-                <a href="{{ route('UserTopup') }}" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</button></a>
-                <a href="/user_change_password" style="width: 100%;"><button class="btn-sidebar2"><i class="icon-change-pass menuIcon"></i>เปลี่ยนรหัสผ่าน</button></a>
-                <a href="{{ route('logout') }}" style="width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><button class="btn-sidebar2"><i class="icon-logout menuIcon" ></i>ออกจากระบบ</button></a>
-            </div>
-        </div>
-        <!-- sidebar -->
+    @include('profile.sidebar.avatar_sidebar')
  
         @if(Auth::user()->updateData == 'true')
             @foreach($guest_user as $USER)
                 @if($USER->USER_ID == Auth::user()->id)
-                        <div class="col-lg-9" style="background-color:#141621; ">
-                            <div class="row mt-4 px-4" >
-                                <div class="col-12 " style="color:#fff;">
-                                    <a href="/avatar"class="avatar-link active"> Avatar</a>
-                                    <a class="avatar-link" style="margin: 0 8px;"> > </a>
-                                    <a href="/shopping_cart" class="avatar-link active" style="font-size:1em;">ตะกร้าสินค้า</a>
-                                    <a class="avatar-link" style="margin: 0 8px;"> > </a>
-                                    <a href="/payment" class="avatar-link active" style="font-size:1em;">ชำระเงิน</a>
-                                    <a class="avatar-link" style="margin: 0 8px;"> > </a>
-                                    <a href="/payment_confirmation" class="avatar-link" style="font-size:1em;">ยืนยันการชำระเงิน</a>
+                        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3 pb-4" style="background-color:#141621; ">
+                            <div class="row mt-4" >
+                                <div class="col-12 pt-2 " style="color:#fff;">
+                                    <label>
+                                        <a href="/avatar"class="avatar-link active">
+                                            <h1 style="margin:0;">Avatar</h1>
+                                        </a>
+                                    </label>
+                                    <label>
+                                        <h1 style="margin: 0;" class="avatar-link"> > </h1>
+                                    </label>
+                                    <label>
+                                        <a href="/shopping_cart" class="avatar-link active">
+                                            <h1 style="margin:0;">ตะกร้าสินค้า</h1>
+                                        </a>
+                                    </label>
+                                    <label>
+                                        <h1 style="margin: 0;" class="avatar-link"> > </h1>
+                                    </label>
+                                    <label>
+                                        <a href="/payment" class="avatar-link active">
+                                            <h1 style="margin:0;">ชำระเงิน</h1>
+                                        </a>
+                                    </label>
+                                    <label>
+                                        <h1 style="margin: 0;" class="avatar-link"> > </h1>
+                                    </label>
+                                    <label>
+                                        <a href="/payment_confirmation" class="avatar-link" >
+                                            <h1 style="margin:0;">ยืนยันการชำระเงิน</h1>
+                                        </a>
+                                    </label>
                                 </div>
                             </div>
 
-                            <div class="row mx-2 mb-4 mt-2">
-                                <div class="col-lg-12"> 
+                            <div class="row mb-4 mt-2">
+                                <div class="col-12"> 
                                     <div class="row mx-0" style="background-color:#202433;border-radius: 6px;">
-                                        <div class="col-lg-12 mt-1">
+                                        <div class="col-12 mt-1">
                                             <div class="row mx-2 py-3" style="font-family:myfont1;font-size:1em;color:#fff;border-bottom:1px solid #fff;font-weight:800;">ยืนยันการชำระเงิน</div>
-                                            <div class="row mx-2 py-3" style="border-bottom:1px solid #455160">
-                                                <div class="col-6 font-payment2">จำนวนเงินที่ต้องชำระ</div>
-                                                <div class="col-6 text-right font-price" style="font-size:1.8em;">฿ 6,000</div>
+                                            <div class="row mx-2" style="border-bottom:1px solid #455160">
+                                                <div class="col-6 font-payment2 py-3 "><p style="margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></div>
+                                                <div class="col-6 text-right font-price align-self-center"><h4 style="margin:0;font-weight:800;color:#ce0005;">฿1,000</h4></div>
                                             </div>
 
                                             <div class="row mx-2 py-3" style="border-bottom:1px solid #455160">
-                                                <div class="col-6 font-payment2">ช่องทางการชำระเงิน</div>
-                                                <div class="col-6 text-right font-payment2">T10 Wallet ชื่อบัญชี สมหญิง รักดี</div>
+                                                <div class="col-6 font-payment2"><p style="margin:0;font-weight:800;">ช่องทางการชำระเงิน</p></div>
+                                                <div class="col-6 text-right font-payment2"><p style="margin:0;">T10 Wallet ชื่อบัญชี สมหญิง รักดี</p></div>
                                             </div>
                                             
                                             <div class="row mt-3 py-2 " style="background-color:#000;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
                                                 <div class="col-lg-12">
                                                     <div class="row mt-3">
                                                         <div class="col-lg-8"></div>
-                                                        <div class="col-lg-2 text-right">
-                                                            <a><label class="btn-submit-payment">ยกเลิก</label></a>
+                                                        <div class="col-lg-2">
+                                                            <label class="btn-cancel">
+                                                                <p style="margin:0;">ยกเลิก</p>
+                                                            </label>
                                                         </div>
-                                                        <div class="col-lg-2 text-right">
-                                                            <a href="/successful_payment"><label class="btn-submit-red2">ยืนยัน</label></a>
+                                                        <div class="col-lg-2">
+                                                            <a href="/successful_payment">
+                                                                <button class="btn-submit-red">
+                                                                    <p style="margin:0;color:#fff;">ยืนยัน</p>
+                                                                </buton>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>

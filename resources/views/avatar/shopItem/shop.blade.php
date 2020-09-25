@@ -112,7 +112,6 @@
                                         <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
                                     </label>
                                 </div>
-
                             </div>
                             <div class="btns">
                                 <div class="shop-next2"><img class="middle" style="width:1em" src="{{asset('icon/next.svg') }}" /></div>
@@ -206,7 +205,6 @@
                                         </div>
                                     @endif
                                 @endforeach
-
                             </div>
                             <div class="btns">
                                 <div class="shop-next4"><img class="middle" style="width:1em" src="{{asset('icon/next.svg') }}" /></div>
@@ -261,7 +259,6 @@
                                         </div>
                                     @endif
                                 @endforeach
-
                             </div>
                             <div class="btns">
                                 <div class="shop-next5"><img class="middle" style="width:1em" src="{{asset('icon/next.svg') }}" /></div>
