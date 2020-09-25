@@ -55,7 +55,7 @@
                                                     <div class="row mt-3 pb-2" style="border-bottom:1px solid rgb(255, 255, 255,0.3);">  
                                                         <div class="col-8 pl-2" style="padding:0;">
                                                             <label class="labelItem2 bgItem">
-                                                                <img class="picture2" src="{{asset('home/avatar/man/other/crown/c01.png') }}" />
+                                                                <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" />
                                                             </label> 
                                                             <label class="font-sale4 mt-2 ml-2">
                                                                 <p style="font-weight: 700;margin:0;">มงกุฏ ระดับ 1 </p>
@@ -406,7 +406,7 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-6 text-right font-payment2 pt-2"><p style="margin:0;">รวมราคาทั้งสิ้น</p></div>
-                                                                <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ 6,000</h4></div>
+                                                                <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿1,000</h4></div>
                                                             </div>
                                                         </div>
                                                     </div>
