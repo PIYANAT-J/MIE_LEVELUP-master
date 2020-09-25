@@ -124,7 +124,7 @@
                                                                 <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
                                                                 <label><p style="font-weight:800;margin:0;color:#fff;">อัพโหลดรูปภาพ</p></label>
                                                             </label>
-                                                            <div id="thumb" class="thumb-topup"><img src="{{asset('home/topup/pic-topup.png') }}"/></div>    
+                                                            <div id="thumb" class="thumb-topup2"><img src="{{asset('home/topup/pic-topup.png') }}"/></div>    
                                                             <input id="file_upload" style="display:none" name="transferImg" type="file" multiple="true" accept="image/* " require/>
                                                         </div>
                                                     </div>

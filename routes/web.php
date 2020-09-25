@@ -119,12 +119,13 @@ Route::get('/avatar_management', 'AdminController@AvatarManagement')->name('Avat
 
 Route::view('/admin_change_password', 'profile.password.adminlvp_change_password');
 
-Route::get('/avatar', 'UploadImageProfile@Avatar')->name('Avatar');
+Route::get('/avatar', 'Avatar\avatarController@Avatar')->name('Avatar');
 
-Route::get('/shop', 'UploadImageProfile@Shop')->name('Shop');
+Route::get('/shop', 'Avatar\marketItemController@Shop')->name('Shop');
+Route::post('/shop/add_ShoppingCart', 'Avatar\marketItemController@add_ShoppingCart')->name('addShoppingCart');
 Route::get('/sale', 'UploadImageProfile@Sale')->name('Sale');
 Route::get('/add_sale_item', 'UploadImageProfile@AddSaleItem')->name('AddSaleItem');
-Route::get('/shopping_cart', 'UploadImageProfile@ShoppingCart')->name('ShoppingCart');
+Route::get('/shopping_cart', 'Avatar\marketItemController@ShoppingCart')->name('ShoppingCart');
 Route::get('/payment', 'UploadImageProfile@Payment')->name('Payment');
 Route::get('/payment_confirmation', 'UploadImageProfile@PaymentConfirmation')->name('PaymentConfirmation');
 Route::get('/payment_transfer', 'UploadImageProfile@PaymentTransfer')->name('PaymentTransfer');
