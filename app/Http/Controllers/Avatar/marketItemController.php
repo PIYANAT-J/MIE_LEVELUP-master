@@ -196,10 +196,19 @@ class marketItemController extends Controller
         }
     }
 
-    public function successfulPayment(){
+    public function successfulPayment($invoice = null){
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        $shopping = DB::table('shopping_cart')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('avatar.payment.successful_payment', compact('guest_user', 'userKyc', 'shopping'));
+        $address = DB::table('addresses')->where('USER_EMAIL', Auth::user()->email)->get();
+        $shopping = DB::table('shopping_cart')->where([['shopping_cart.USER_EMAIL', Auth::user()->email], ['shopping_cart.shopping_cart_status', 'true']])
+                        ->join('market_items', 'market_items.item_id', 'shopping_cart.item_id')
+                        ->get();
+        $transeection = DB::table('transeection_buy_items')->where([['USER_EMAIL', Auth::user()->email], ['transeection_status', 'true']])->orderBy('transeection_id', 'desc')->first();
+        // dd($transeection);
+        // dd(json_decode($transeection->transeection_items));
+        if(count($address) != 0){
+            return view('avatar.payment.successful_payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address', 'invoice'));
+        }
+        return view('avatar.payment.successful_payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'invoice'));
     }
 }

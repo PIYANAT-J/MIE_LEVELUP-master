@@ -48,64 +48,164 @@
                                     <div class="col-12 text-center mt-3">
                                         <img style="width:40px;" src="{{asset('icon/select_green.svg')}}" alt=""> <br>
                                         <p class="mt-3" style="color:#fff;font-weight:800;margin:0;">ชำระเงินเรียบร้อยแล้ว</p>
-                                        <p style="color:#a8a8a8;margin:0">หมายเลขคำสั่งซื้อ 7483246834</p>
+                                        <p style="color:#a8a8a8;margin:0">หมายเลขคำสั่งซื้อ {{decrypt($invoice)}}</p>
                                     </div>
                                 </div>
 
-                                <div class="row mx-2 mt-5">  
-                                    <div class="col-7" style="padding:0;">
+                                <!-- <div class="row mx-2 mt-5">  -->
+                                    <?php 
+                                        $transee = json_decode($transeection->transeection_items);
+                                        $itemlist = array();
+                                        $itemamount = array();
+                                        $itemprice = array();
+                                        $i = 0;
+                                        foreach($transee as $transeeList){
+                                            $itemlist[] = $transeeList->item_id;
+                                            $itemamount[] = $transeeList->item_amount;
+                                            $itemprice[] = $transeeList->item_price;
+                                        }
+                                        // dd($itemamount[0]);
+                                    ?>
+                                    @foreach($shopping as $shoppingList)
+                                        @if(in_array($shoppingList->item_id, $itemlist))
+                                            <div class="row mx-2">
+                                                <div class="col-7" style="padding:0;">
+                                                    <label class="labelItem bgItem">
+                                                        <!-- <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" /> -->
+                                                        @if($shoppingList->item_type == "clothes")
+                                                            @if($shoppingList->item_gender == "woman")
+                                                                @if($shoppingList->item_other == "hero")
+                                                                    <img class="picture2" src="{{asset('home/avatar/clothes/woman/hero/'.$shoppingList->item_img) }}">
+                                                                @else
+                                                                    <img class="picture2" src="{{asset('home/avatar/clothes/woman/'.$shoppingList->item_img) }}">
+                                                                @endif
+                                                            @elseif($shoppingList->item_gender == "man")
+                                                                @if($shoppingList->item_other == "hero")
+                                                                    <img class="picture2" src="{{asset('home/avatar/clothes/man/hero/'.$shoppingList->item_img) }}">
+                                                                @else
+                                                                    <img class="picture2" src="{{asset('home/avatar/clothes/man/'.$shoppingList->item_img) }}">
+                                                                @endif
+                                                            @endif
+                                                        @elseif($shoppingList->item_type == "eyes")
+                                                            @if($shoppingList->item_gender == "woman")
+                                                                @if($shoppingList->item_other == "hero")
+                                                                    <img class="picture2" src="{{asset('home/avatar/eyes/woman/hero/'.$shoppingList->item_img) }}">
+                                                                @else
+                                                                    <img class="picture2" src="{{asset('home/avatar/eyes/woman/'.$shoppingList->item_img) }}">
+                                                                @endif
+                                                            @elseif($shoppingList->item_gender == "man")
+                                                                @if($shoppingList->item_other == "hero")
+                                                                    <img class="picture2" src="{{asset('home/avatar/eyes/man/hero/'.$shoppingList->item_img) }}">
+                                                                @else
+                                                                    <img class="picture2" src="{{asset('home/avatar/eyes/man/'.$shoppingList->item_img) }}">
+                                                                @endif
+                                                            @endif
+                                                        @elseif($shoppingList->item_type == "glasses")
+                                                            <img class="picture2" src="{{asset('home/avatar/glasses/'.$shoppingList->item_img) }}">
+                                                        @elseif($shoppingList->item_type == "hair")
+                                                            @if($shoppingList->item_gender == "woman")
+                                                                @if($shoppingList->item_other == "hero")
+                                                                    <img class="picture2" src="{{asset('home/avatar/hair/woman/hero/'.$shoppingList->item_img) }}">
+                                                                @else
+                                                                    <img class="picture2" src="{{asset('home/avatar/hair/woman/'.$shoppingList->item_img) }}">
+                                                                @endif
+                                                            @elseif($shoppingList->item_gender == "man")
+                                                                @if($shoppingList->item_other == "hero")
+                                                                    <img class="picture2" src="{{asset('home/avatar/hair/man/hero/'.$shoppingList->item_img) }}">
+                                                                @else
+                                                                    <img class="picture2" src="{{asset('home/avatar/hair/man/'.$shoppingList->item_img) }}">
+                                                                @endif
+                                                            @endif
+                                                        @elseif($shoppingList->item_type == "other")
+                                                            <img class="picture2" src="{{asset('home/avatar/other/'.$shoppingList->item_img) }}">
+                                                        @elseif($shoppingList->item_type == "weapon")
+                                                            <img class="picture2" src="{{asset('home/avatar/weapon/'.$shoppingList->item_img) }}">
+                                                        @endif
+                                                    </label> 
+                                                    <label class="font-sale4 bgItem2 mt-2 ml-2">
+                                                        <p style="margin:0;"> <a style="font-weight: 700;">{{$shoppingList->item_name}} ระดับ {{$shoppingList->item_level}} </a></br>
+                                                        {{$shoppingList->item_description}}</br>
+                                                        เลือกลงทุนได้ 3 Signal</p>
+                                                    </label>
+                                                </div>
+
+                                                <div class="col-2 my-4 text-center" style="padding:0;">
+                                                    <p style="margin:0;color:#fff;">{{$itemamount[$i]}} ชิ้น</p>
+                                                </div>
+
+                                                <div class="col-3 my-3">
+                                                    <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
+                                                        <h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{$itemprice[$i]}}</h4>
+                                                        <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-{{$shoppingList->item_discount}}%)</p>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            {{$i++}}
+                                        @endif
+                                    @endforeach
+                                    {{-- <div class="col-7" style="padding:0;">
                                         <label class="labelItem bgItem">
                                             <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" />
                                         </label> 
                                         <label class="font-sale4 bgItem2 mt-2 ml-2">
-                                            <p style="margin:0;"> <a style="font-weight: 700;">มงกุฏ ระดับ 1 </a></br>
-                                            สามารถเห็น Signal Rank 100-150 ได้</br>
+                                            <p style="margin:0;"> <a style="font-weight: 700;">{{$shoppingList->item_name}} ระดับ {{$shoppingList->item_level}} </a></br>
+                                            {{$shoppingList->item_description}}</br>
                                             เลือกลงทุนได้ 3 Signal</p>
                                         </label>
                                     </div>
 
                                     <div class="col-2 my-4 text-center" style="padding:0;">
-                                        <p style="margin:0;color:#fff;">1 ชิ้น</p>
+                                        <p style="margin:0;color:#fff;">{{$itemamount[$i]}} ชิ้น</p>
                                     </div>
 
                                     <div class="col-3 my-3">
                                         <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
-                                            <h4 style="margin:0;font-weight:800;color:#ce0005;">฿1,000.00</h4>
-                                            <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-37%)</p>
+                                            <h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{$itemprice[$i]}}</h4>
+                                            <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-{{$shoppingList->item_discount}}%)</p>
                                         </span>
-                                    </div>
-                                </div>
+                                    </div> --}}
+                                <!-- </div> -->
 
                                 <div class="row mt-3 py-2" style="background-color:#191b29;">
                                     <div class="col-lg-12">
-                                    <div class="row ml-2">
+                                        <div class="row ml-2">
                                             <p style="font-weight:800;margin:0;color:#fff;">ที่อยู่ในการออกใบเสร็จ</p>
                                         </div>
-                                        <div class="row ml-2 mt-2">
-                                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
-                                                <label class="font-payment-avatar">
-                                                    <p style="margin:0;font-weight: 800;">ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</p>
-                                                </label>
-                                                <label class="font-payment-avatar2 ml-2">
-                                                    <p style="margin:0;">สมหญิง รักดี (5-1005-00148-76-6)<br>(+66) 081-441-9585</p>
-                                                </label>
-                                            </div>
-                                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
-                                                <label class="font-payment-avatar">
-                                                    <p style="margin:0;font-weight: 800;">ที่อยู่</p>
-                                                </label>
-                                                <label class="font-payment-avatar3 ml-2">
-                                                    <p style="margin:0;">52/2 ซ.เจริญนคร 78 ถนน เจริญนคร บุคคโลเขตธนบุรี กรุงเทพมหานคร 10600
-                                                    </p>
-                                                </label>
-                                            </div>
-                                        </div>
+                                        @if(isset($address))
+                                            @foreach($address as $addressOn)
+                                                @if($addressOn->addresses_status == "true")
+                                                    <div class="row ml-2 mt-2">
+                                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
+                                                            <label class="font-payment-avatar">
+                                                                <p style="margin:0;font-weight: 800;">ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</p>
+                                                            </label>
+                                                            <label class="font-payment-avatar2 ml-2">
+                                                                <p style="margin:0;">{{Auth::user()->name}} {{Auth::user()->surname}} (5-1005-00148-76-6)
+                                                                    @foreach($guest_user as $user)
+                                                                        <br>(+66) {{$user->GUEST_USERS_TEL}}
+                                                                    @endforeach
+                                                                </p>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
+                                                            <label class="font-payment-avatar">
+                                                                <p style="margin:0;font-weight: 800;">ที่อยู่</p>
+                                                            </label>
+                                                            <label class="font-payment-avatar3 ml-2">
+                                                                <p style="margin:0;">{{$addressOn->addresses}} {{$addressOn->district}} {{$addressOn->amphure}} {{$addressOn->province}} {{$addressOn->zipcode}}
+                                                                </p>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </div>
 
                                 <div class="row" style="border-bottom:1px solid #455160">
                                     <div class="col-6 font-payment2 py-3 "><p style="margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></div>
-                                    <div class="col-6 text-right font-price align-self-center"><h4 style="margin:0;font-weight:800;color:#ce0005;">฿ 1,000</h4></div>
+                                    <div class="col-6 text-right font-price align-self-center"><h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{$transeection->transeection_price}}</h4></div>
                                 </div>
 
                                 <div class="row py-3" style="border-bottom:1px solid #455160">
@@ -118,7 +218,7 @@
                                         <div class="row mx-1 mt-3">
                                             <div class="col-10"></div>
                                             <div class="col-2 text-right" style="padding:0;">
-                                                <a href="avatar">
+                                                <a href="{{route('Avatar')}}">
                                                     <button type="button" class="btn-submit">
                                                         <p style="margin:0;">ปิด</p>
                                                     </button>

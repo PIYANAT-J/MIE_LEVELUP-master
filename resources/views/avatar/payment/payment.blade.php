@@ -133,7 +133,7 @@
                                                 <div class="col-3 align-self-center">
                                                     <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
                                                         <h4 style="margin:0;font-weight:800;">฿{{$itemprice[$i]}}</h4>
-                                                        <p class="mr-2" style="margin:0;color:#ce0005;"><a style="color: #b2b2b2;text-decoration:line-through;">฿3,400 </a> (-37%)<p>
+                                                        <p class="mr-2" style="margin:0;color:#ce0005;"><a style="color: #b2b2b2;text-decoration:line-through;">฿3,400 </a> (-{{$shoppingList->item_discount}}%)<p>
                                                     </span>
                                                 </div>
                                             </div>
