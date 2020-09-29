@@ -329,7 +329,7 @@
                                             <p class="ml-3" style="margin:0;font-weight:800;color:#fff;">บัญชี</p>
                                             <div class="col-12 mt-1">
                                                 <div class="checkbox01 ">
-                                                    <div class="row">
+                                                    <div class="row radio-ibank">
                                                         <div class="col-12 mb-2">
                                                             <input type="radio" name="ibank" value="bangkok" id="bank01">
                                                             <label for="bank01"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
@@ -394,7 +394,7 @@
                                             <p class="ml-3" style="margin:0;font-weight:800;color:#fff;">บัญชี</p>
                                             <div class="col-12 mt-1">
                                                 <div class="checkbox01 ">
-                                                    <div class="row">
+                                                    <div class="row radio-ibank">
                                                         <div class="col-12 mb-2">
                                                             <input type="radio" name="ibank" value="bangkok" id="bank05">
                                                             <label for="bank05"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
@@ -451,15 +451,49 @@
                                         <div class="row row200">
                                             <div class="col-12 ">
                                                 <label class="ml-2 bgT10ListBanking2">
-                                                    <a href="{{ route('PaymentTransfer') }}">
+                                                    {{-- <a href="{{ route('PaymentTransfer') }}">
                                                         <label class="bgT10ListBankingPay"><p style="margin:0;">ชำระเงิน</p></label>
                                                     </a>
-                                                    <label class="bgOrange"><p style="margin:0;">รออนุมัติ</p></label>
+                                                    <label class="bgOrange"><p style="margin:0;">รออนุมัติ</p></label> --}}
                                                     {{-- <a href="{{ route('SuccessfulPayment') }}"> --}}
-                                                        <label class="bgGreen"><p style="margin:0;">อนุมัติแล้ว</p></label>
+                                                        <!-- <label class="bgGreen"><p style="margin:0;">อนุมัติแล้ว</p></label> -->
                                                     <!-- </a> -->
-                                                    <label><p style="margin:0;color:#fff;"> ฿6000 ธนาคารกรุงเทพ</p></label>
-                                                    <label><p style="margin:0;color:#ce0005;"> ควรชำระก่อน 10/10/20</p></label> 
+                                                    <!-- <label><p style="margin:0;color:#fff;"> ฿6000 ธนาคารกรุงเทพ</p></label>
+                                                    <label><p style="margin:0;color:#ce0005;"> ควรชำระก่อน 10/10/20</p></label> -->
+                                                    @if(isset($transfer))
+                                                        @if($transfer != null)
+                                                            @if($transfer->transferStatus == "ยืนยันการโอน")
+                                                                    <a href="{{ route('PaymentTransfer', ['invoice' => encrypt($transeection->transeection_invoice)]) }}">
+                                                                        <label class="bgT10ListBankingPay"><p style="margin:0;">ชำระเงิน</p></label>
+                                                                    </a>
+                                                                    <label>
+                                                                        <p style="margin:0;color:#fff;"> ฿{{$transeection->transeection_price}}
+                                                                            @if($transfer->transferฺBank_name == "bangkok")
+                                                                                ธนาคารกรุงเทพ
+                                                                            @elseif($transfer->transferฺBank_name == "ktc")
+                                                                                ธนาคารกรุงไทย
+                                                                            @elseif($transfer->transferฺBank_name == "kbank")
+                                                                                ธนาคารกสิกรไทย
+                                                                            @elseif($transfer->transferฺBank_name == "scb")
+                                                                                ธนาคารไทยพาณิชย์
+                                                                            @endif
+                                                                        </p>
+                                                                    </label>
+                                                                <?php
+                                                                    $start = explode("-",$transfer->create_at);
+                                                                    $deadline = explode(" ",$start[2]);
+                                                                    $deadline1 = $deadline[0] + 1;
+                                                                ?>
+                                                                <label><h5 style="margin:0;color:#ce0005;"> ควรชำระก่อน {{$start[0]}}/{{$start[1]}}/{{$deadline1}} {{$deadline[1]}}</h5></label> 
+                                                            @elseif($transfer->transferStatus == "รอการอนุมัติ")
+                                                                <label class="bgOrange"><p style="margin:0;">รออนุมัติ</p></label>
+                                                            @elseif($transfer->transferStatus == "อนุมัติแล้ว")
+                                                                {{-- <a href="{{ route('SuccessfulPayment') }}"> --}}
+                                                                    <label class="bgGreen p">อนุมัติแล้ว</label>
+                                                                <!-- </a> -->
+                                                            @endif
+                                                        @endif
+                                                    @endif
                                                 </label>
                                             </div>
                                         </div>
@@ -524,11 +558,11 @@
                                             @endif
                                         </div>
                                         <div class="col-lg-2 text-center" id="Transfer">
-                                            <!-- <a href="{{ route('PaymentTransfer') }}">
+                                            {{-- <a href="{{ route('PaymentTransfer') }}">
                                                 <label class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p></label>
-                                            </a> -->
+                                            </a> --}}
                                             @if($transeection->transeection_invoice == null)
-                                                <form action="" method="POST">
+                                                <form action="{{route('itemTransfer')}}" method="POST">
                                                     @csrf
                                                     <button class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p>
                                                         <input type="hidden" name="transferAmount" value="{{$transeection->transeection_price}}">
@@ -574,10 +608,10 @@
                                 @if(isset($address))
                                     @foreach($address as $key=>$addressAll)
                                         @if($addressAll->addresses_status == "true")
-                                            <div class="row">
+                                            <div class="row radio-address">
                                                 <div class="col-4" style="padding-right:0;">
                                                     <label class="redioRed">
-                                                        <input type="radio" name="ibank" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}" checked>
+                                                        <input type="radio" name="address" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}" checked>
                                                         <label for="KEY{{$key}}"><p style="margin:0;font-weight:800;">ชื่อ - นามสกุล<br>ที่อยู่</p></label>
                                                     </label>
                                                 </div>
@@ -595,10 +629,10 @@
                                                 </div>
                                             </div>
                                         @else
-                                            <div class="row">
+                                            <div class="row radio-address">
                                                 <div class="col-4" style="padding-right:0;">
                                                     <label class="redioRed">
-                                                        <input type="radio" name="ibank" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}">
+                                                        <input type="radio" name="address" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}">
                                                         <label for="KEY{{$key}}"><p style="margin:0;font-weight:800;">ชื่อ - นามสกุล<br>ที่อยู่</p></label>
                                                     </label>
                                                 </div>
@@ -1583,14 +1617,25 @@ document.execCommand('copy');
 
 <script>
     $(document).ready(function() {
-        $(":radio").change(function() {
-            var closest = $(this).closest("div.row");
+        $(".radio-ibank").change(function() {
+            var closest = $(this).closest("div.row.radio-ibank");
             var creditTransfer = document.querySelector('input[name="ibank"]:checked').value
             var moneyTransfer = creditTransfer
             document.querySelector('input#data-checked').value = moneyTransfer
             document.querySelector('input#data-bank').value = moneyTransfer
-            document.querySelector('input#change-add').value = moneyTransfer
             console.log(moneyTransfer);
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $(".radio-address").change(function() {
+            var closest = $(this).closest("div.row.radio-address");
+            var address = $(this).parents('#address').find('input[name="address"]:checked').val();
+            var addressSelect = address
+            document.querySelector('input#change-add').value = addressSelect
+            console.log(address);
         });
     });
 </script>

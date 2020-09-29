@@ -279,7 +279,7 @@
                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
                             <p class="ml-2" style="margin:0;font-weight:800;">บัญชี</p>
                             <div class="redioRed">
-                                <div class="row pl-2">
+                                <div class="row pl-2 radio-ibank">
                                     <div class="col-12 my-2">
                                         <input type="radio" name="ibank" value="bangkok" id="bank01">
                                         <label for="bank01"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
@@ -335,7 +335,7 @@
                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
                             <p class="ml-2" style="margin:0;font-weight:800;">บัญชี</p>
                             <div class="redioRed">
-                                <div class="row">
+                                <div class="row radio-ibank">
                                     <div class="col-12 my-2">
                                         <input type="radio" name="ibank" value="bangkok" id="bank05">
                                         <label for="bank05"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
@@ -631,10 +631,10 @@
                                 <div class="col-12">
                                     @foreach($address as $key=>$addressAll)
                                         @if($addressAll->addresses_status == "true")
-                                            <div class="row">
+                                            <div class="row radio-address">
                                                 <div class="col-4" style="padding-right:0;">
                                                     <div class="redioRed">
-                                                        <input type="radio" name="ibank" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}" checked>
+                                                        <input type="radio" name="address" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}" checked>
                                                         <label for="KEY{{$key}}"><p style="margin:0;font-weight:800;">ชื่อ - นามสกุล<br>ที่อยู่</p></label>
                                                     </div>
                                                 </div>
@@ -654,10 +654,10 @@
                                                 </div>
                                             </div>
                                         @else
-                                            <div class="row">
+                                            <div class="row radio-address">
                                                 <div class="col-4" style="padding-right:0;">
                                                     <div class="redioRed">
-                                                        <input type="radio" name="ibank" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}">
+                                                        <input type="radio" name="address" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}">
                                                         <label for="KEY{{$key}}"><p style="margin:0;font-weight:800;">ชื่อ - นามสกุล<br>ที่อยู่</p></label>
                                                     </div>
                                                 </div>
@@ -1601,27 +1601,27 @@ $(document).ready(function(){
 });
 </script>
 
-<!-- <script>
-    document.querySelector('input[name="ibank"]').addEventListener('keyup', (event)=>{
-        var creditTransfer = document.querySelector('input[name="ibank"]').value
-        var moneyTransfer = creditTransfer
-        document.querySelector('input#bangkok').value = moneyTransfer
-        document.querySelector('input#ktc').value = moneyTransfer
-        document.querySelector('input#kbank').value = moneyTransfer
-        document.querySelector('input#scb').value = moneyTransfer
-        console.log(moneyTransfer);
-    })
-</script> -->
 <script>
     $(document).ready(function() {
-        $(":radio").change(function() {
-            var closest = $(this).closest("div.row");
+        $(".radio-ibank").change(function() {
+            var closest = $(this).closest("div.row.radio-ibank");
             var creditTransfer = document.querySelector('input[name="ibank"]:checked').value
             var moneyTransfer = creditTransfer
             document.querySelector('input#data-checked').value = moneyTransfer
             document.querySelector('input#data-bank').value = moneyTransfer
-            document.querySelector('input#change-add').value = moneyTransfer
-            console.log(creditTransfer);
+            console.log(moneyTransfer);
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $(".radio-address").change(function() {
+            var closest = $(this).closest("div.row.radio-address");
+            var address = $(this).parents('#address').find('input[name="address"]:checked').val();
+            var addressSelect = address
+            document.querySelector('input#change-add').value = addressSelect
+            console.log(address);
         });
     });
 </script>

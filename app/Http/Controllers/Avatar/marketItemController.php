@@ -13,6 +13,7 @@ use DNS2D;
 
 use App\QrPayment;
 use App\Market_item;
+use App\transferPayment;
 use App\Transeection_buyItem;
 
 class marketItemController extends Controller
@@ -48,9 +49,13 @@ class marketItemController extends Controller
                         ->join('market_items', 'market_items.item_id', 'shopping_cart.item_id')
                         ->get();
         $transeection = DB::table('transeection_buy_items')->where([['USER_EMAIL', Auth::user()->email], ['transeection_status', 'false']])->orderBy('transeection_id', 'desc')->first();
-        // dd(count($address));
+        // dd($transeection);
         // dd(json_decode($transeection->transeection_items));
         if(count($address) != 0){
+            if($transeection->transeection_invoice != null){
+                $transfer = DB::table('transfer_payments')->where('transferInvoice', $transeection->transeection_invoice)->first();
+                return view('avatar.payment.payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address', 'transfer'));
+            }
             return view('avatar.payment.payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address'));
         }
         return view('avatar.payment.payment', compact('guest_user', 'userKyc', 'shopping', 'transeection'));
@@ -136,11 +141,6 @@ class marketItemController extends Controller
         $transeection_invoice = $qrcode->invoice;
         $transeection_type = "qr";
 
-        // $transeection = Transeection_buyItem::where('transeection_id', $request->input('transeection_id'));
-        // $transeection->transeection_invoice = $qrcode->invoice;
-        // $transeection->transeection_type = "qr";
-        // $transeection->save();
-
         $data = array("transeection_id"=>$request->input('transeection_id'), "transeection_invoice"=>$transeection_invoice, "transeection_type"=>$transeection_type);
         Transeection_buyItem::cartPaymentUpdate($data);
 
@@ -182,17 +182,10 @@ class marketItemController extends Controller
             $qrpayment->status = "99";
             $qrpayment->save();
 
-            // if($request->input('package_id') != null){
-            //     $data = $request->input('invoice');
-                // Package::deletePackage($data);
-
-            //     return redirect(route('AdvtPackage'));
-            // }else{
             $data = $request->input('invoice');
             DB::table('transeection_buy_items')->where('transeection_invoice', $data)->delete();
 
             return redirect(route('ShoppingCart'));
-            // }
         }
     }
 
@@ -210,5 +203,79 @@ class marketItemController extends Controller
             return view('avatar.payment.successful_payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address', 'invoice'));
         }
         return view('avatar.payment.successful_payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'invoice'));
+    }
+
+    public function itemTransferPayment(Request $req){
+        if($req->input('submit') != null){
+            // dd($req);
+            if($req->has('transferImg')){
+                // dd("อีกนิสเดียว");
+                $uploadImg = $req->file('transferImg');
+                $img_name = 'Transfer_Img_'.time().'.'.$uploadImg->getClientOriginalExtension();
+                $pathImg = public_path('section/Transfer_Img');
+                $uploadImg->move($pathImg, $img_name);
+
+                $transferNote = $req->input('transferNote');
+                $transferStatus = "รอการอนุมัติ";
+                $transferImg = $img_name;
+                $user_id = Auth::user()->id;
+                $user_email = Auth::user()->email;
+                $id = $req->input('id');
+                $update_at = $req->input('date').' '.$req->input('time');
+                // $update_at = date('Y-m-d H:i:s');
+                // dd($update_at);
+                $package_id = $req->input('package_id');
+
+                if($transferImg != "" && $transferStatus != "" && $id != ""){
+                    $data = array("transferNote"=>$transferNote, "transferStatus"=>$transferStatus, "transferImg"=>$transferImg, "user_id"=>$user_id, 
+                                "user_email"=>$user_email, "id"=>$id, "update_at"=>$update_at);
+                    
+                    transferPayment::updateTransfer($data);
+                }
+                return redirect(route('Payment'));
+
+            }else{
+                // dd($req);
+                $transferAmount = $req->input('transferAmount');
+                $transferฺBank_name = $req->input('transferฺBank_name');
+                $transferStatus = "ยืนยันการโอน";
+                $user_id = Auth::user()->id;
+                $user_email = Auth::user()->email;
+
+                $i = DB::table('transfer_payments')->select(DB::raw('count(*) as i'))
+                        ->where('user_id', $user_id)
+                        ->groupBy('user_id')
+                        ->value('i');
+                $sumi = $i+1;
+                $invoice = $transferฺBank_name.$sumi;
+                $transferInvoice = $transferฺBank_name.time().$user_id;
+                $create_at = date('Y-m-d H:i:s');
+
+                if($transferAmount != "" && $transferฺBank_name != ""){
+                    $data = array("transferAmount"=>$transferAmount, "transferฺBank_name"=>$transferฺBank_name, "transferStatus"=>$transferStatus, 
+                                "user_id"=>$user_id, "user_email"=>$user_email, "invoice"=>$invoice, "transferInvoice"=>$transferInvoice, "create_at"=>$create_at);
+                    // dd($data);
+                    transferPayment::insertTransfer($data);
+                }
+
+                $transeection = DB::table('transeection_buy_items')->where([['transeection_id', $req->input('transeection_id')]])->first();
+                $transeection_invoice = $transferInvoice;
+                $transeection_type = "Transfer";
+
+                $data = array("transeection_id"=>$req->input('transeection_id'), "transeection_invoice"=>$transeection_invoice, "transeection_type"=>$transeection_type);
+                Transeection_buyItem::cartPaymentUpdate($data);
+
+                return redirect(route('PaymentTransfer', ['invoice' => encrypt($transferInvoice)]));
+            }
+        }
+    }
+
+    public function paymentTransfer($invoice = null){
+        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
+        $transfer = DB::table('transfer_payments')->where('transferInvoice', decrypt($invoice))->first();
+        $transeection = DB::table('transeection_buy_items')->where('transeection_invoice', decrypt($invoice))->first();
+        return view('avatar.payment.payment_transfer', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'transfer'));
     }
 }
