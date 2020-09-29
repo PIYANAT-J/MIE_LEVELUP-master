@@ -3,503 +3,556 @@
 <div class="container-fluid" id="getActive" active="{{ route('Avatar') }}">
     <div class="row my-5"></div>
     <div class="row  mt-3">
-    @include('profile.sidebar.avatar_sidebar')
+        @include('profile.sidebar.avatar_sidebar')
 
-        @if(Auth::user()->updateData == 'true')
-            @foreach($guest_user as $USER)
-                @if($USER->USER_ID == Auth::user()->id)
-                        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3 pb-4" style="background-color:#141621; ">
-                            <div class="row mt-4" >
-                                <div class="col-sm-8 col-md-9 col-lg-9 col-xl-10 pt-2">
-                                    <label>
-                                        <a href="/avatar"class="avatar-link active">
-                                            <h1 style="margin:0;">Avatar</h1>
-                                        </a>
-                                    </label>
-                                    <label>
-                                        <h1 style="margin: 0;" class="avatar-link"> > </h1>
-                                    </label>
-                                    <label>
-                                        <a href="/shopping_cart" class="avatar-link active">
-                                            <h1 style="margin:0;">ตะกร้าสินค้า</h1>
-                                        </a>
-                                    </label>
-                                    <label>
-                                        <h1 style="margin: 0;" class="avatar-link"> > </h1>
-                                    </label>
-                                    <label>
-                                        <a href="/payment" class="avatar-link">
-                                            <h1 style="margin:0;">ชำระเงิน</h1>
-                                        </a>
-                                    </label>
-                                </div>
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3 pb-4" style="background-color:#141621; ">
+            <div class="row mt-4" >
+                <div class="col-sm-8 col-md-9 col-lg-9 col-xl-10 pt-2">
+                    <label>
+                        <a href="/avatar"class="avatar-link active">
+                            <h1 style="margin:0;">Avatar</h1>
+                        </a>
+                    </label>
+                    <label>
+                        <h1 style="margin: 0;" class="avatar-link"> > </h1>
+                    </label>
+                    <label>
+                        <a href="/shopping_cart" class="avatar-link active">
+                            <h1 style="margin:0;">ตะกร้าสินค้า</h1>
+                        </a>
+                    </label>
+                    <label>
+                        <h1 style="margin: 0;" class="avatar-link"> > </h1>
+                    </label>
+                    <label>
+                        <a href="/payment" class="avatar-link">
+                            <h1 style="margin:0;">ชำระเงิน</h1>
+                        </a>
+                    </label>
+                </div>
 
-                                <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2 text-right">
-                                    <a href="/simulator_trade">
-                                        <label class="bg-shop">
-                                            <p style="color:#fff;margin:0;">Simulator Trade</p> 
-                                        </label>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="row mb-4 mt-2">
-                                <div class="col-12"> 
-                                    <div class="row mx-0" style="background-color:#202433;border-radius: 6px;">
-                                        <div class="col-12 mt-1">
-                                            <div class="row py-3" style="border-bottom:1px solid #fff;">
-                                                <h1 class="ml-3" style="margin:0;font-weight:800;color:#fff;">ชำระเงิน</h1>
-                                            </div>
-                                            <div class="row row8">
-                                                <div class="col-12">
-                                                    <div class="row mt-3 pb-2" style="border-bottom:1px solid rgb(255, 255, 255,0.3);">  
-                                                        <div class="col-8 pl-2" style="padding:0;">
-                                                            <label class="labelItem2 bgItem">
-                                                                <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" />
-                                                            </label> 
-                                                            <label class="font-sale4 mt-2 ml-2">
-                                                                <p style="font-weight: 700;margin:0;">มงกุฏ ระดับ 1 </p>
-                                                                <p style="margin:0;">สามารถเห็น Signal Rank 100-150 ได้</p>
-                                                                <p style="margin:0;">เลือกลงทุนได้ 3 Signal</p>
-                                                            </label>
-                                                        </div>
-
-                                                        <div class="col-1 text-center align-self-center" style="padding:0;">
-                                                            <p style="color:#ffffff">1 ชิ้น</p>
-                                                        </div>
-
-                                                        <div class="col-3 align-self-center">
-                                                            <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
-                                                                <h4 style="margin:0;font-weight:800;">฿1,000.00</h4>
-                                                                <p class="mr-2" style="margin:0;color:#ce0005;"><a style="color: #b2b2b2;text-decoration:line-through;">฿3,400 </a> (-37%)<p>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-3 py-2" style="background-color:#191b29;">
-                                                <div class="col-12">
-                                                    <div class="row ml-2">
-                                                        <p style="font-weight:800;margin:0;color:#fff;">ที่อยู่ในการออกใบเสร็จ</p>
-                                                        <p class="ml-2" style="color:#ce0005;cursor:pointer;border-bottom:1px solid #ce0005;height:1.2em;" data-toggle="modal" data-target="#address">เปลี่ยน</p>
-                                                    </div>
-                                                    <div class="row ml-2">
-                                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
-                                                            <label class="font-payment-avatar">
-                                                                <p style="margin:0;font-weight: 800;">ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</p>
-                                                            </label>
-                                                            <label class="font-payment-avatar2 ml-2">
-                                                                <p style="margin:0;">สมหญิง รักดี (5-1005-00148-76-6)<br>(+66) 081-441-9585</p>
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
-                                                            <label class="font-payment-avatar">
-                                                                <p style="margin:0;font-weight: 800;">ที่อยู่</p>
-                                                            </label>
-                                                            <label class="font-payment-avatar3 ml-2">
-                                                                <p style="margin:0;">52/2 ซ.เจริญนคร 78 ถนน เจริญนคร บุคคโลเขตธนบุรี กรุงเทพมหานคร 10600
-                                                                    <a style="color:#0ce63e;">(ที่อยู่หลัก)</a>
-                                                                </p>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-2">
-                                                <div class="col-12">
-                                                    <div class="row">
-                                                        <p style="margin:0;font-weight:800;">วิธีชำระเงิน</p>
-                                                    </div>
-                                                    <div class="row " >
-                                                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                            <label  class="bgPaymentAvatar labellogo" onClick="myFunction()">
-                                                                <img class="logoT10" src="{{asset('home/logo/t10.svg') }}" >
-                                                                <label class="fontLogoPosition" style="color:#0b0e17;"><p style="margin:0;font-weight:800;">T10 วอลเล็ท</p></label>
-                                                                <label class="fontdetailPosition"><h5 style="color:#a0a0a0;">ฟรีค่าธรรมเนียม</h5></label>
-                                                                <div id="first">
-                                                                    <label class="bordergreen">
-                                                                    <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
-                                                                    </label>
-                                                                </div>
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                            <label  class="bgPaymentAvatar labellogo" onClick="myFunction2()">
-                                                                <img class="center logoT10" src="{{asset('home/logo/credit-icon.svg') }}" >
-                                                                <label class="fontLogoPosition"><p style="margin:0;font-weight:800;">บัตรเครดิต/บัตรเดบิต</p></label>
-                                                                <img class="fontdetailPosition" style="height:20px;" src="{{asset('home/logo/security-grey.svg') }}" >
-                                                                <div id="second">
-                                                                    <label class="bordergreen">
-                                                                    <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
-                                                                    </label>
-                                                                </div>
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                            <label  class="bgPaymentAvatar labellogo" onClick="myFunction3()">
-                                                                <img class="center logoT10" src="{{asset('home/logo/mobile-icon.svg') }}" >
-                                                                <label class="fontLogoPosition"><p style="margin:0;font-weight:800;">โมบายแบงค์กิ้ง</p></label>
-                                                                <label class="fontdetailPosition"><h5 style="color:#a0a0a0;">รอยืนยัน 45 นาที </h5></label>
-                                                                <div id="third">
-                                                                    <label class="bordergreen">
-                                                                    <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
-                                                                    </label>
-                                                                </div>
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                            <label  class="bgPaymentAvatar labellogo" onClick="myFunction4()">
-                                                                <img class="center logoT10" src="{{asset('home/logo/bank-icon.svg') }}" >
-                                                                <label class="fontLogoPosition"><p style="margin:0;font-weight:800;">โอนเงินธนาคาร</p></label>
-                                                                <label class="fontdetailPosition"><h5 style="color:#a0a0a0;">รอยืนยัน 45 นาที หลังชำระเงิน</h5></label>
-                                                                <div id="four">
-                                                                    <label class="bordergreen">
-                                                                    <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
-                                                                    </label>
-                                                                </div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div id="first1">
-                                                <div class="row my-3 px-1 fade-in">
-                                                    <div class="col-12 mb-3">
-                                                        <button class="addT10wallet"><p style="margin:0;font-weight: 800;">+ เพิ่มบัญชี T10 วอลเล็ท</p></button>
-                                                    </div>
-                                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                                        <p class="ml-2 " style="font-weight:800;margin:0;color:#fff;">เหรียญ T10 ที่ใช้ได้</p>
-                                                        <div class="input-group mb-3 mt-1">
-                                                            <input class="inputT10Avatar p pl-3" value="200 บาท" type="text"  aria-describedby="basic-addon2" readonly>
-                                                            <div class="input-group-append">
-                                                                <span class="input-group-text select-code p" id="basic-addon2" data-toggle="modal" data-target="#T10Topup">เติมเงิน</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                                        <p class="ml-2" style="font-weight:800;margin:0;color:#fff;">คูปอง / ส่วนลดของฉัน</p>
-                                                        <div class="input-group mb-3 mt-1">
-                                                            <input class="inputT10Avatar p" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
-                                                            <div class="input-group-append">
-                                                                <span class="input-group-text select-code p" id="basic-addon2" data-toggle="modal" data-target="#code">เลือกโค้ดส่วนลด</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <p class="ml-2" style="font-weight:800;margin:0;color:#fff;">รายการรอชำระ</p>
-                                                        <div class="row pl-2 row200">
-                                                            <div class="col-12 pl-2">
-                                                                <label class="ml-2 bgT10ListBanking2">
-                                                                    <label class="bgT10ListBankingPay" data-toggle="modal" data-target="#VisaCredit3"><p style="margin:0;">ชำระเงิน</p></label>
-                                                                    <label><p style="color:#ffffff;margin:0;">฿100 ธนาคารกรุงเทพ</p></label>
-                                                                    <label><p style="color:#ce0005;margin:0;"> ควรชำระก่อน 10/10/20</p></label> 
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div id="second1">
-                                                <div class="row my-3 px-1 fade-in">
-                                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                                        <div class="row" style="border-right:1px solid #455160;">
-                                                            <div class="col-12">
-                                                                <p class="ml-2" style="font-weight:800;margin:0;color:#fff;">บัญชี</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row " style="border-right:1px solid #455160;">
-                                                            <div class="col-12 redioGreenAvatar mt-1">
-                                                                <input type="radio" name="VisaCredit" value="visa" id="visa" />
-                                                                <label for="visa" class="VisaCredit">
-                                                                    <img class="pVisaCredit" style="height:25px;" src="{{asset('home/logo/visa1.svg')}}" >
-                                                                    <label for="visa" class="pBankAvatar"><p style="color:#414141;margin:0;">ธนาคารไทยพาณิชย์ *1234</p></label>
-                                                                </label>
-                                                            </div>
-                                                            <div class="col-12 redioGreenAvatar">
-                                                                <input type="radio" name="VisaCredit" value="credit" id="credit" />
-                                                                <label for="credit" class="VisaCredit">
-                                                                    <img class="pVisaCredit" style="height:25px;" src="{{asset('home/logo/credit.svg')}}" >
-                                                                    <label for="credit" class="pBankAvatar"><p style="color:#414141;margin:0;">ธนาคารไทยพาณิชย์ *1234</p></label>
-                                                                </label>
-                                                            </div>
-                                                            <div class="col-12 px-3 mt-2">
-                                                                <label class="addBank px-2" data-toggle="modal" data-target="#VisaCredit2"><p style="margin:0;">เพิ่มบัตรเครดิต / เดบิต</p></label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                                        <p class="ml-2" style="font-weight:800;margin:0;color:#fff;">คูปอง / ส่วนลดของฉัน</p>
-                                                        <div class="input-group mb-3 mt-1">
-                                                            <input class="inputT10Avatar p" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
-                                                            <div class="input-group-append">
-                                                                <span class="input-group-text select-code p" id="basic-addon2" data-toggle="modal" data-target="#code">เลือกโค้ดส่วนลด</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div id="third1">
-                                                <div class="row my-3 px-1 fade-in">
-                                                    <div class="ol-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                                        <div class="row" style="border-right:1px solid #455160;">
-                                                            <p class="ml-3" style="margin:0;font-weight:800;color:#fff;">บัญชี</p>
-                                                            <div class="col-12 mt-1">
-                                                                <div class="checkbox01 ">
-                                                                    <div class="row">
-                                                                        <div class="col-12 mb-2">
-                                                                            <input type="radio" name="bank" value="bank01" id="bank01">
-                                                                            <label for="bank01"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
-                                                                            <span class="ml-2 p" style="color:#fff;">ธนาคารกรุงเทพ</span>
-                                                                        </div>
-                                                                        <div class="col-12 mb-2">
-                                                                            <input type="radio" name="bank" value="bank02" id="bank02">
-                                                                            <label for="bank02"><img src="{{asset('home/logo/ktc.svg')}}" ></label>
-                                                                            <span class="ml-2 p" style="color:#fff;">ธนาคารกรุงไทย</span>
-                                                                        </div>
-                                                                        <div class="col-12 mb-2">
-                                                                            <input type="radio" name="bank" value="bank03" id="bank03">
-                                                                            <label for="bank03"><img src="{{asset('home/logo/kbank.svg')}}" ></label>
-                                                                            <span class="ml-2 p" style="color:#fff;">ธนาคารกสิกรไทย</span>
-                                                                        </div>
-                                                                        <div class="col-12 mb-2">
-                                                                            <input type="radio" name="bank" value="bank02" id="bank04">
-                                                                            <label for="bank04"><img src="{{asset('home/logo/scb.svg')}}" ></label>
-                                                                            <span class="ml-2 p" style="color:#fff;">ธนาคารไทยพาณิชย์</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="ml-3" style="margin:0;font-weight:800;color:#fff;">คูปอง / ส่วนลดของฉัน</p>
-                                                            <div class="col-12">
-                                                                <div class="input-group mb-3 mt-1">
-                                                                    <input class="inputT10Avatar p" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
-                                                                    <div class="input-group-append">
-                                                                        <span class="input-group-text select-code p" id="basic-addon2" data-toggle="modal" data-target="#code">เลือกโค้ดส่วนลด</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                            <p class="ml-2" style="margin:0;font-weight:800;color:#fff;">ชำระเงินอย่างไร</p>
-                                                            <p style="margin:0;color:#fff;">
-                                                                1. ล็อกอินเข้าระบบ K Plus <br>
-                                                                2. เลือกเมนู “จ่ายบิล” <br>
-                                                                3. เลือก “รายการใหม่” <br>
-                                                                4. เลือก “บิลอื่น” <br>
-                                                                5. เลือก “บริษัท” เป็น “123 เซอร์วิส” <br>
-                                                                6. ใส่ เลขที่อ้างอิง ใน “รหัสลูกค้า” <br>
-                                                                7. ใส่หมายเลขโทรศัพท์มือถือใน “รหัสใบสั่งซื้อ”<br>
-                                                                8. ใส่จำนวนเงิน <br>
-                                                                9. กด “จ่ายบิล” <br> 
-                                                                10. ตรวจสอบความถูกต้อง และกด “ยืนยัน” <br>
-                                                            </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div id="four1">
-                                                <div class="row my-3 px-1 fade-in">
-                                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                                        <div class="row" style="border-right:1px solid #455160;">
-                                                            <p class="ml-3" style="margin:0;font-weight:800;color:#fff;">บัญชี</p>
-                                                            <div class="col-12 mt-1">
-                                                                <div class="checkbox01 ">
-                                                                    <div class="row">
-                                                                        <div class="col-12 mb-2">
-                                                                            <input type="radio" name="bank" value="bank01" id="bank01">
-                                                                            <label for="bank01"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
-                                                                            <span class="ml-2 p" style="color:#fff;">ธนาคารกรุงเทพ</span>
-                                                                        </div>
-                                                                        <div class="col-12 mb-2">
-                                                                            <input type="radio" name="bank" value="bank02" id="bank02">
-                                                                            <label for="bank02"><img src="{{asset('home/logo/ktc.svg')}}" ></label>
-                                                                            <span class="ml-2 p" style="color:#fff;">ธนาคารกรุงไทย</span>
-                                                                        </div>
-                                                                        <div class="col-12 mb-2">
-                                                                            <input type="radio" name="bank" value="bank03" id="bank03">
-                                                                            <label for="bank03"><img src="{{asset('home/logo/kbank.svg')}}" ></label>
-                                                                            <span class="ml-2 p" style="color:#fff;">ธนาคารกสิกรไทย</span>
-                                                                        </div>
-                                                                        <div class="col-12 mb-2">
-                                                                            <input type="radio" name="bank" value="bank02" id="bank04">
-                                                                            <label for="bank04"><img src="{{asset('home/logo/scb.svg')}}" ></label>
-                                                                            <span class="ml-2 p" style="color:#fff;">ธนาคารไทยพาณิชย์</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="ml-3" style="margin:0;font-weight:800;color:#fff;">คูปอง / ส่วนลดของฉัน</p>
-                                                            <div class="col-12">
-                                                                <div class="input-group mb-3 mt-1">
-                                                                    <input class="inputT10Avatar p" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
-                                                                    <div class="input-group-append">
-                                                                        <span class="input-group-text select-code p" id="basic-addon2" data-toggle="modal" data-target="#code">เลือกโค้ดส่วนลด</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <p class="ml-2" style="margin:0;font-weight:800;color:#fff;">ชำระเงินอย่างไร</p>
-                                                                <p style="margin:0;color:#fff;">
-                                                                    1. เลือกจ่ายบิล / ชำระค่าบริการ <br>
-                                                                    2. เลือกอื่นๆ > รหัสบริษัท > ระบุรหัสบริษัท > ออมทรัพย์<br>
-                                                                    3. ใส่รหัสบริษัท 12345<br>
-                                                                    4. ระบุหมายเลขอ้างอิงการชำระเงินสำหรับ “REF1”<br>
-                                                                    5. ระบุหมายเลขโทรศัพท์มือถือ สำหรับ “REF2”<br>
-                                                                    6. ระบุยอดเงิน<br>
-                                                                    7. หมายเหตุ : ค่าธรรมเนียมขึ้นกับธนาคา หรือ ผู้ให้บริการ<br>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <p style="margin:0;font-weight:800;color:#fff;">รายการรอการแจ้งโอน</p>
-                                                        <div class="row row200">
-                                                            <div class="col-12 ">
-                                                                <label class="ml-2 bgT10ListBanking2">
-                                                                    <a href="{{ route('PaymentTransfer') }}">
-                                                                        <label class="bgT10ListBankingPay"><p style="margin:0;">ชำระเงิน</p></label>
-                                                                    </a>
-                                                                    <label class="bgOrange"><p style="margin:0;">รออนุมัติ</p></label>
-                                                                    <a href="{{ route('SuccessfulPayment') }}">
-                                                                        <label class="bgGreen"><p style="margin:0;">อนุมัติแล้ว</p></label>
-                                                                    </a>
-                                                                    <label><p style="margin:0;color:#fff;"> ฿6000 ธนาคารกรุงเทพ</p></label>
-                                                                    <label><p style="margin:0;color:#ce0005;"> ควรชำระก่อน 10/10/20</p></label> 
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="row mt-3 py-2 " style="background-color:#000;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
-                                                <div class="col-12">
-                                                    <div class="row mx-4">
-                                                        <div class="col-lg-6"></div>
-                                                        <div class="col-lg-6">
-                                                            <div class="row">
-                                                                <div class="col-6 text-right font-payment2"><p style="margin:0;">ยอดรวมสินค้า</p></div>
-                                                                <div class="col-6 text-right font-payment2"><p style="margin:0;">฿ 6,000</p></div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-6 text-right font-payment2"><p style="margin:0;">ส่วนลด</p></div>
-                                                                <div class="col-6 text-right font-payment2"><p style="margin:0;">-</p></div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-6 text-right font-payment2 pt-2"><p style="margin:0;">รวมราคาทั้งสิ้น</p></div>
-                                                                <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿1,000</h4></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mt-3 mx-3" >
-                                                        <div class="col-lg-10"></div>
-                                                        <div class="col-lg-2 text-center" id="T10">
-                                                            <a href="{{ route('PaymentConfirmation') }}">
-                                                                <label class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p></label>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-lg-2 text-center" id="VisaCredit">
-                                                            <a href="{{ route('PaymentConfirmation') }}">
-                                                                <label class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p></label>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-lg-2 text-center" id="iBanking">
-                                                            <a href="{{ route('PaymentConfirmation') }}">
-                                                                <label class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p></label>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-lg-2 text-center" id="Transfer">
-                                                            <a href="{{ route('PaymentTransfer') }}">
-                                                                <label class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p></label>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                @endif
-            @endforeach
-        @else
-            <div class="col-lg-9" style="background-color:#f5f5f5;">
-                <div class="row mt-4" >
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-10 py-3" style="background-color:#ffffff;border-radius: 8px;">
-                        <div class="row">
-                            <div class="col-lg-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
-                                <span class="font-profile1">ข้อมูลส่วนตัว (ถ้าอัพเดทโปรไฟล์จะได้ พอยท์เพิ่ม 100 พอยท์ )</br><b style="font-size: 18px;color: #666666;">จัดการข้อมูลส่วนตัวคุณของคุณเพื่อให้ใช้งานได้สะดวกขึ้น</b></span>
-                            </div>
-                        </div>
-                        <form action="{{ route('EditProfile') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="row">
-                                        <div class="col-lg-12 line1 mt-2" >
-                                            <input name="name" class="input-update" value="{{ Auth::user()->name }}" placeholder="ชื่อ" require></input>
-                                            <input name="surname" class="input-update" value="{{ Auth::user()->surname }}" placeholder="นามสกุล" require></input>
-                                            <input name="GUEST_USERS_TEL" type="text" class="input-update"  placeholder="เบอร์โทร" data-toggle="tooltip" value="{{ old('GUEST_USERS_TEL') }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" maxlength="10"></input>
-                                            <input name="GUEST_USERS_ID_CARD" type="text" class="input-update"  placeholder="บัตรประจำตัวประชาชน" value="{{ old('GUEST_USERS_ID_CARD') }}" minlength="13" maxlength="13" title="กรุณากรอกข้อมูลให้ครบถ้วน" require></input>
-                                            
-                                            <div class="row ">
-                                                <div class="col-lg-12">
-                                                    <div class="row mx-0">
-                                                    <!-- <input id="GUEST_USERS_BIRTHDAY" name="GUEST_USERS_BIRTHDAY" type="text" class="form-control textbox1 " placeholder="YYYY-MM-DD" value="{{ old('GUEST_USERS_BIRTHDAY') }}" title=""> -->
-                                                        <div class="col-4 mt-2" style="padding:0;"><SELECT  size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></div>
-                                                        <div class="col-4 mt-2" style="padding:0;"><SELECT  size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></div>
-                                                        <div class="col-4 mt-2" style="padding:0;"><SELECT  size="1" id ="day" name = "dd" ></SELECT></div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 mt-2">
-                                                    <button name="submit" id="submit" type="submit" value="submit" class="btn-submit">ยืนยัน
-                                                        <!-- <input name="submit" id="submit" type="hidden"> -->
-                                                        <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                                                        <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-                                                        <input type="hidden" name="DATE_CREATE" value="{{ date('Y-m-d H:i:s') }}">
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group mt-5" align="center">
-                                        <div id="thumb" class="thumb-profile "><img src="home/imgProfile/pic-profile.png"></div>    
-                                        <input id="file_upload" style="display:none" name="GUEST_USERS_IMG" type="file" multiple="true" accept="image/* "/>
-                                        <button id="upload" class="btn-upload-pic mt-2">เลือกรูป</button>
-                                        <div class="des-profile-pic mt-2">ขนาดไฟล์: สูงสุด 1 MB</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-lg-1"></div>
+                <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2 text-right">
+                    <a href="/simulator_trade">
+                        <label class="bg-shop">
+                            <p style="color:#fff;margin:0;">Simulator Trade</p> 
+                        </label>
+                    </a>
                 </div>
             </div>
-        @endif
+
+            <div class="row mb-4 mt-2">
+                <div class="col-12"> 
+                    <div class="row mx-0" style="background-color:#202433;border-radius: 6px;">
+                        <div class="col-12 mt-1">
+                            <div class="row py-3" style="border-bottom:1px solid #fff;">
+                                <h1 class="ml-3" style="margin:0;font-weight:800;color:#fff;">ชำระเงิน</h1>
+                            </div>
+                            
+                            <div class="row row8">
+                                <div class="col-12">
+                                    <?php 
+                                        $transee = json_decode($transeection->transeection_items);
+                                        $itemlist = array();
+                                        $itemamount = array();
+                                        $itemprice = array();
+                                        $i = 0;
+                                        foreach($transee as $transeeList){
+                                            $itemlist[] = $transeeList->item_id;
+                                            $itemamount[] = $transeeList->item_amount;
+                                            $itemprice[] = $transeeList->item_price;
+                                        }
+                                        // dd($itemamount[0]);
+                                    ?>
+                                    @foreach($shopping as $shoppingList)
+                                        @if(in_array($shoppingList->item_id, $itemlist))
+                                            <div class="row mt-3 pb-2" style="border-bottom:1px solid rgb(255, 255, 255,0.3);"> 
+                                                <div class="col-8 pl-2" style="padding:0;">
+                                                    <label class="labelItem2 bgItem">
+                                                        <!-- <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" /> -->
+                                                        @if($shoppingList->item_type == "clothes")
+                                                            @if($shoppingList->item_gender == "woman")
+                                                                @if($shoppingList->item_other == "hero")
+                                                                    <img class="picture2" src="{{asset('home/avatar/clothes/woman/hero/'.$shoppingList->item_img) }}">
+                                                                @else
+                                                                    <img class="picture2" src="{{asset('home/avatar/clothes/woman/'.$shoppingList->item_img) }}">
+                                                                @endif
+                                                            @elseif($shoppingList->item_gender == "man")
+                                                                @if($shoppingList->item_other == "hero")
+                                                                    <img class="picture2" src="{{asset('home/avatar/clothes/man/hero/'.$shoppingList->item_img) }}">
+                                                                @else
+                                                                    <img class="picture2" src="{{asset('home/avatar/clothes/man/'.$shoppingList->item_img) }}">
+                                                                @endif
+                                                            @endif
+                                                        @elseif($shoppingList->item_type == "eyes")
+                                                            @if($shoppingList->item_gender == "woman")
+                                                                @if($shoppingList->item_other == "hero")
+                                                                    <img class="picture2" src="{{asset('home/avatar/eyes/woman/hero/'.$shoppingList->item_img) }}">
+                                                                @else
+                                                                    <img class="picture2" src="{{asset('home/avatar/eyes/woman/'.$shoppingList->item_img) }}">
+                                                                @endif
+                                                            @elseif($shoppingList->item_gender == "man")
+                                                                @if($shoppingList->item_other == "hero")
+                                                                    <img class="picture2" src="{{asset('home/avatar/eyes/man/hero/'.$shoppingList->item_img) }}">
+                                                                @else
+                                                                    <img class="picture2" src="{{asset('home/avatar/eyes/man/'.$shoppingList->item_img) }}">
+                                                                @endif
+                                                            @endif
+                                                        @elseif($shoppingList->item_type == "glasses")
+                                                            <img class="picture2" src="{{asset('home/avatar/glasses/'.$shoppingList->item_img) }}">
+                                                        @elseif($shoppingList->item_type == "hair")
+                                                            @if($shoppingList->item_gender == "woman")
+                                                                @if($shoppingList->item_other == "hero")
+                                                                    <img class="picture2" src="{{asset('home/avatar/hair/woman/hero/'.$shoppingList->item_img) }}">
+                                                                @else
+                                                                    <img class="picture2" src="{{asset('home/avatar/hair/woman/'.$shoppingList->item_img) }}">
+                                                                @endif
+                                                            @elseif($shoppingList->item_gender == "man")
+                                                                @if($shoppingList->item_other == "hero")
+                                                                    <img class="picture2" src="{{asset('home/avatar/hair/man/hero/'.$shoppingList->item_img) }}">
+                                                                @else
+                                                                    <img class="picture2" src="{{asset('home/avatar/hair/man/'.$shoppingList->item_img) }}">
+                                                                @endif
+                                                            @endif
+                                                        @elseif($shoppingList->item_type == "other")
+                                                            <img class="picture2" src="{{asset('home/avatar/other/'.$shoppingList->item_img) }}">
+                                                        @elseif($shoppingList->item_type == "weapon")
+                                                            <img class="picture2" src="{{asset('home/avatar/weapon/'.$shoppingList->item_img) }}">
+                                                        @endif
+                                                    </label> 
+                                                    <label class="font-sale4 mt-2 ml-2">
+                                                        <p style="font-weight: 700;margin:0;">{{$shoppingList->item_name}} ระดับ {{$shoppingList->item_level}} </p>
+                                                        <p style="margin:0;">{{$shoppingList->item_description}}</p>
+                                                        <p style="margin:0;">เลือกลงทุนได้ 3 Signal</p>
+                                                    </label>
+                                                </div>
+
+                                                <div class="col-1 text-center align-self-center" style="padding:0;">
+                                                    <p style="color:#ffffff">{{$itemamount[$i]}} ชิ้น</p>
+                                                </div>
+
+                                                <div class="col-3 align-self-center">
+                                                    <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
+                                                        <h4 style="margin:0;font-weight:800;">฿{{$itemprice[$i]}}</h4>
+                                                        <p class="mr-2" style="margin:0;color:#ce0005;"><a style="color: #b2b2b2;text-decoration:line-through;">฿3,400 </a> (-37%)<p>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            {{$i++}}
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            <div class="row mt-3 py-2" style="background-color:#191b29;">
+                                <div class="col-12">
+                                    <div class="row ml-2">
+                                        <p style="font-weight:800;margin:0;color:#fff;">ที่อยู่ในการออกใบเสร็จ</p>
+                                        <p class="ml-2" style="color:#ce0005;cursor:pointer;border-bottom:1px solid #ce0005;height:1.2em;" data-toggle="modal" data-target="#address">เปลี่ยน</p>
+                                    </div>
+                                    @if(isset($address))
+                                        @foreach($address as $addressOn)
+                                            @if($addressOn->addresses_status == "true")
+                                                <div class="row ml-2">
+                                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
+                                                        <label class="font-payment-avatar">
+                                                            <p style="margin:0;font-weight: 800;">ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</p>
+                                                        </label>
+                                                        <label class="font-payment-avatar2 ml-2">
+                                                            <p style="margin:0;">{{Auth::user()->name}} {{Auth::user()->surname}} (5-1005-00148-76-6)
+                                                                @foreach($guest_user as $user)
+                                                                    <br>(+66) {{$user->GUEST_USERS_TEL}}
+                                                                @endforeach
+                                                            </p>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
+                                                        <label class="font-payment-avatar">
+                                                            <p style="margin:0;font-weight: 800;">ที่อยู่</p>
+                                                        </label>
+                                                        <label class="font-payment-avatar3 ml-2">
+                                                            <p style="margin:0;">{{$addressOn->addresses}} {{$addressOn->district}} {{$addressOn->amphure}} {{$addressOn->province}} {{$addressOn->zipcode}}
+                                                                <br><a style="color:#0ce63e;">(ที่อยู่หลัก)</a>
+                                                            </p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        <p>กรุณาเพิ่มที่อยู่</p>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <p style="margin:0;font-weight:800;">วิธีชำระเงิน</p>
+                                    </div>
+                                    <div class="row " >
+                                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                            <label  class="bgPaymentAvatar labellogo" onClick="myFunction()">
+                                                <img class="logoT10" src="{{asset('home/logo/t10.svg') }}" >
+                                                <label class="fontLogoPosition" style="color:#0b0e17;"><p style="margin:0;font-weight:800;">T10 วอลเล็ท</p></label>
+                                                <label class="fontdetailPosition"><h5 style="color:#a0a0a0;">ฟรีค่าธรรมเนียม</h5></label>
+                                                <div id="first">
+                                                    <label class="bordergreen">
+                                                    <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
+                                                    </label>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                            <label  class="bgPaymentAvatar labellogo" onClick="myFunction2()">
+                                                <img class="center logoT10" src="{{asset('home/logo/credit-icon.svg') }}" >
+                                                <label class="fontLogoPosition"><p style="margin:0;font-weight:800;">บัตรเครดิต/บัตรเดบิต</p></label>
+                                                <img class="fontdetailPosition" style="height:20px;" src="{{asset('home/logo/security-grey.svg') }}" >
+                                                <div id="second">
+                                                    <label class="bordergreen">
+                                                    <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
+                                                    </label>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                            <label  class="bgPaymentAvatar labellogo" onClick="myFunction3()">
+                                                <img class="center logoT10" src="{{asset('home/logo/mobile-icon.svg') }}" >
+                                                <label class="fontLogoPosition"><p style="margin:0;font-weight:800;">โมบายแบงค์กิ้ง</p></label>
+                                                <label class="fontdetailPosition"><h5 style="color:#a0a0a0;">รอยืนยัน 45 นาที </h5></label>
+                                                <div id="third">
+                                                    <label class="bordergreen">
+                                                    <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
+                                                    </label>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                            <label  class="bgPaymentAvatar labellogo" onClick="myFunction4()">
+                                                <img class="center logoT10" src="{{asset('home/logo/bank-icon.svg') }}" >
+                                                <label class="fontLogoPosition"><p style="margin:0;font-weight:800;">โอนเงินธนาคาร</p></label>
+                                                <label class="fontdetailPosition"><h5 style="color:#a0a0a0;">รอยืนยัน 45 นาที หลังชำระเงิน</h5></label>
+                                                <div id="four">
+                                                    <label class="bordergreen">
+                                                    <img class="selectGreenPosition" src="{{asset('icon/select_green.svg') }}" >
+                                                    </label>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="first1">
+                                <div class="row my-3 px-1 fade-in">
+                                    <div class="col-12 mb-3">
+                                        <button class="addT10wallet"><p style="margin:0;font-weight: 800;">+ เพิ่มบัญชี T10 วอลเล็ท</p></button>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                        <p class="ml-2 " style="font-weight:800;margin:0;color:#fff;">เหรียญ T10 ที่ใช้ได้</p>
+                                        <div class="input-group mb-3 mt-1">
+                                            <input class="inputT10Avatar p pl-3" value="200 บาท" type="text"  aria-describedby="basic-addon2" readonly>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text select-code p" id="basic-addon2" data-toggle="modal" data-target="#T10Topup">เติมเงิน</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                        <p class="ml-2" style="font-weight:800;margin:0;color:#fff;">คูปอง / ส่วนลดของฉัน</p>
+                                        <div class="input-group mb-3 mt-1">
+                                            <input class="inputT10Avatar p" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text select-code p" id="basic-addon2" data-toggle="modal" data-target="#code">เลือกโค้ดส่วนลด</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="ml-2" style="font-weight:800;margin:0;color:#fff;">รายการรอชำระ</p>
+                                        <div class="row pl-2 row200">
+                                            <div class="col-12 pl-2">
+                                                <label class="ml-2 bgT10ListBanking2">
+                                                    <label class="bgT10ListBankingPay" data-toggle="modal" data-target="#VisaCredit3"><p style="margin:0;">ชำระเงิน</p></label>
+                                                    <label><p style="color:#ffffff;margin:0;">฿100 ธนาคารกรุงเทพ</p></label>
+                                                    <label><p style="color:#ce0005;margin:0;"> ควรชำระก่อน 10/10/20</p></label> 
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="second1">
+                                <div class="row my-3 px-1 fade-in">
+                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                        <div class="row" style="border-right:1px solid #455160;">
+                                            <div class="col-12">
+                                                <p class="ml-2" style="font-weight:800;margin:0;color:#fff;">บัญชี</p>
+                                            </div>
+                                        </div>
+                                        <div class="row " style="border-right:1px solid #455160;">
+                                            <div class="col-12 redioGreenAvatar mt-1">
+                                                <input type="radio" name="VisaCredit" value="visa" id="visa" />
+                                                <label for="visa" class="VisaCredit">
+                                                    <img class="pVisaCredit" style="height:25px;" src="{{asset('home/logo/visa1.svg')}}" >
+                                                    <label for="visa" class="pBankAvatar"><p style="color:#414141;margin:0;">ธนาคารไทยพาณิชย์ *1234</p></label>
+                                                </label>
+                                            </div>
+                                            <div class="col-12 redioGreenAvatar">
+                                                <input type="radio" name="VisaCredit" value="credit" id="credit" />
+                                                <label for="credit" class="VisaCredit">
+                                                    <img class="pVisaCredit" style="height:25px;" src="{{asset('home/logo/credit.svg')}}" >
+                                                    <label for="credit" class="pBankAvatar"><p style="color:#414141;margin:0;">ธนาคารไทยพาณิชย์ *1234</p></label>
+                                                </label>
+                                            </div>
+                                            <div class="col-12 px-3 mt-2">
+                                                <label class="addBank px-2" data-toggle="modal" data-target="#VisaCredit2"><p style="margin:0;">เพิ่มบัตรเครดิต / เดบิต</p></label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                        <p class="ml-2" style="font-weight:800;margin:0;color:#fff;">คูปอง / ส่วนลดของฉัน</p>
+                                        <div class="input-group mb-3 mt-1">
+                                            <input class="inputT10Avatar p" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text select-code p" id="basic-addon2" data-toggle="modal" data-target="#code">เลือกโค้ดส่วนลด</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="third1">
+                                <div class="row my-3 px-1 fade-in">
+                                    <div class="ol-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                        <div class="row" style="border-right:1px solid #455160;">
+                                            <p class="ml-3" style="margin:0;font-weight:800;color:#fff;">บัญชี</p>
+                                            <div class="col-12 mt-1">
+                                                <div class="checkbox01 ">
+                                                    <div class="row">
+                                                        <div class="col-12 mb-2">
+                                                            <input type="radio" name="ibank" value="bangkok" id="bank01">
+                                                            <label for="bank01"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
+                                                            <span class="ml-2 p" style="color:#fff;">ธนาคารกรุงเทพ</span>
+                                                        </div>
+                                                        <div class="col-12 mb-2">
+                                                            <input type="radio" name="ibank" value="ktc" id="bank02">
+                                                            <label for="bank02"><img src="{{asset('home/logo/ktc.svg')}}" ></label>
+                                                            <span class="ml-2 p" style="color:#fff;">ธนาคารกรุงไทย</span>
+                                                        </div>
+                                                        <div class="col-12 mb-2">
+                                                            <input type="radio" name="ibank" value="kbank" id="bank03">
+                                                            <label for="bank03"><img src="{{asset('home/logo/kbank.svg')}}" ></label>
+                                                            <span class="ml-2 p" style="color:#fff;">ธนาคารกสิกรไทย</span>
+                                                        </div>
+                                                        <div class="col-12 mb-2">
+                                                            <input type="radio" name="ibank" value="scb" id="bank04">
+                                                            <label for="bank04"><img src="{{asset('home/logo/scb.svg')}}" ></label>
+                                                            <span class="ml-2 p" style="color:#fff;">ธนาคารไทยพาณิชย์</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="ml-3" style="margin:0;font-weight:800;color:#fff;">คูปอง / ส่วนลดของฉัน</p>
+                                            <div class="col-12">
+                                                <div class="input-group mb-3 mt-1">
+                                                    <input class="inputT10Avatar p" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text select-code p" id="basic-addon2" data-toggle="modal" data-target="#code">เลือกโค้ดส่วนลด</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                        <div class="row">
+                                            <div class="col-12">
+                                            <p class="ml-2" style="margin:0;font-weight:800;color:#fff;">ชำระเงินอย่างไร</p>
+                                            <p style="margin:0;color:#fff;">
+                                                1. ล็อกอินเข้าระบบ K Plus <br>
+                                                2. เลือกเมนู “จ่ายบิล” <br>
+                                                3. เลือก “รายการใหม่” <br>
+                                                4. เลือก “บิลอื่น” <br>
+                                                5. เลือก “บริษัท” เป็น “123 เซอร์วิส” <br>
+                                                6. ใส่ เลขที่อ้างอิง ใน “รหัสลูกค้า” <br>
+                                                7. ใส่หมายเลขโทรศัพท์มือถือใน “รหัสใบสั่งซื้อ”<br>
+                                                8. ใส่จำนวนเงิน <br>
+                                                9. กด “จ่ายบิล” <br> 
+                                                10. ตรวจสอบความถูกต้อง และกด “ยืนยัน” <br>
+                                            </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="four1">
+                                <div class="row my-3 px-1 fade-in">
+                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                        <div class="row" style="border-right:1px solid #455160;">
+                                            <p class="ml-3" style="margin:0;font-weight:800;color:#fff;">บัญชี</p>
+                                            <div class="col-12 mt-1">
+                                                <div class="checkbox01 ">
+                                                    <div class="row">
+                                                        <div class="col-12 mb-2">
+                                                            <input type="radio" name="ibank" value="bangkok" id="bank05">
+                                                            <label for="bank05"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
+                                                            <span class="ml-2 p" style="color:#fff;">ธนาคารกรุงเทพ</span>
+                                                        </div>
+                                                        <div class="col-12 mb-2">
+                                                            <input type="radio" name="ibank" value="ktc" id="bank06">
+                                                            <label for="bank06"><img src="{{asset('home/logo/ktc.svg')}}" ></label>
+                                                            <span class="ml-2 p" style="color:#fff;">ธนาคารกรุงไทย</span>
+                                                        </div>
+                                                        <div class="col-12 mb-2">
+                                                            <input type="radio" name="ibank" value="kbank" id="bank07">
+                                                            <label for="bank07"><img src="{{asset('home/logo/kbank.svg')}}" ></label>
+                                                            <span class="ml-2 p" style="color:#fff;">ธนาคารกสิกรไทย</span>
+                                                        </div>
+                                                        <div class="col-12 mb-2">
+                                                            <input type="radio" name="ibank" value="scb" id="bank08">
+                                                            <label for="bank08"><img src="{{asset('home/logo/scb.svg')}}" ></label>
+                                                            <span class="ml-2 p" style="color:#fff;">ธนาคารไทยพาณิชย์</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="ml-3" style="margin:0;font-weight:800;color:#fff;">คูปอง / ส่วนลดของฉัน</p>
+                                            <div class="col-12">
+                                                <div class="input-group mb-3 mt-1">
+                                                    <input class="inputT10Avatar p" type="text" placeholder="ใส่โค้ดส่วนลด" aria-describedby="basic-addon2" readonly>
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text select-code p" id="basic-addon2" data-toggle="modal" data-target="#code">เลือกโค้ดส่วนลด</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <p class="ml-2" style="margin:0;font-weight:800;color:#fff;">ชำระเงินอย่างไร</p>
+                                                <p style="margin:0;color:#fff;">
+                                                    1. เลือกจ่ายบิล / ชำระค่าบริการ <br>
+                                                    2. เลือกอื่นๆ > รหัสบริษัท > ระบุรหัสบริษัท > ออมทรัพย์<br>
+                                                    3. ใส่รหัสบริษัท 12345<br>
+                                                    4. ระบุหมายเลขอ้างอิงการชำระเงินสำหรับ “REF1”<br>
+                                                    5. ระบุหมายเลขโทรศัพท์มือถือ สำหรับ “REF2”<br>
+                                                    6. ระบุยอดเงิน<br>
+                                                    7. หมายเหตุ : ค่าธรรมเนียมขึ้นกับธนาคา หรือ ผู้ให้บริการ<br>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <p style="margin:0;font-weight:800;color:#fff;">รายการรอการแจ้งโอน</p>
+                                        <div class="row row200">
+                                            <div class="col-12 ">
+                                                <label class="ml-2 bgT10ListBanking2">
+                                                    <a href="{{ route('PaymentTransfer') }}">
+                                                        <label class="bgT10ListBankingPay"><p style="margin:0;">ชำระเงิน</p></label>
+                                                    </a>
+                                                    <label class="bgOrange"><p style="margin:0;">รออนุมัติ</p></label>
+                                                    {{-- <a href="{{ route('SuccessfulPayment') }}"> --}}
+                                                        <label class="bgGreen"><p style="margin:0;">อนุมัติแล้ว</p></label>
+                                                    <!-- </a> -->
+                                                    <label><p style="margin:0;color:#fff;"> ฿6000 ธนาคารกรุงเทพ</p></label>
+                                                    <label><p style="margin:0;color:#ce0005;"> ควรชำระก่อน 10/10/20</p></label> 
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row mt-3 py-2 " style="background-color:#000;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
+                                <div class="col-12">
+                                    <div class="row mx-4">
+                                        <div class="col-lg-6"></div>
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="col-6 text-right font-payment2"><p style="margin:0;">ยอดรวมสินค้า</p></div>
+                                                <div class="col-6 text-right font-payment2"><p style="margin:0;">฿{{$transeection->transeection_price}}</p></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6 text-right font-payment2"><p style="margin:0;">ส่วนลด</p></div>
+                                                <div class="col-6 text-right font-payment2"><p style="margin:0;">-</p></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6 text-right font-payment2 pt-2"><p style="margin:0;">รวมราคาทั้งสิ้น</p></div>
+                                                <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿{{$transeection->transeection_price}}</h4></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3 mx-3" >
+                                        <div class="col-lg-10"></div>
+                                        <div class="col-lg-2 text-center" id="T10">
+                                            {{-- <a href="{{ route('PaymentConfirmation') }}">
+                                                <label class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p></label>
+                                            </a> --}}
+                                        </div>
+                                        <div class="col-lg-2 text-center" id="VisaCredit">
+                                            {{-- <a href="{{ route('PaymentConfirmation') }}">
+                                                <label class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p></label>
+                                            </a> --}}
+                                        </div>
+                                        <div class="col-lg-2 text-center" id="iBanking">
+                                            {{-- <a href="{{ route('PaymentConfirmation') }}">
+                                                <label class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p></label>
+                                            </a> --}}
+                                            @if($transeection->transeection_invoice == null)
+                                                <form action="{{route('Itemibanking')}}" method="POST">
+                                                    @csrf
+                                                    <button class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p>
+                                                        <input type="hidden" name="amount" value="{{$transeection->transeection_price}}" >
+                                                        <input type="hidden" name="bank_name" id="data-checked">
+                                                        <input type="hidden" name="paymentType" value="QrCode">
+                                                        <input type="hidden" name="note" id="note" value="no">
+                                                        <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
+                                                        <input type="hidden" id="submit" name="submit" value="submit">
+                                                    </button>
+                                                </form>
+                                            @else
+                                                @if($transeection->transeection_status == 'false')
+                                                    <button class="btn-cancel" style="cursor:default">
+                                                        <p style="margin:0">รอการชำระเงิน</p>
+                                                    </button>
+                                                @endif
+                                            @endif
+                                        </div>
+                                        <div class="col-lg-2 text-center" id="Transfer">
+                                            <!-- <a href="{{ route('PaymentTransfer') }}">
+                                                <label class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p></label>
+                                            </a> -->
+                                            @if($transeection->transeection_invoice == null)
+                                                <form action="" method="POST">
+                                                    @csrf
+                                                    <button class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p>
+                                                        <input type="hidden" name="transferAmount" value="{{$transeection->transeection_price}}">
+                                                        <input type="hidden" name="transferฺBank_name" id="data-bank">
+                                                        <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
+                                                        <input type="hidden" id="submit" name="submit" value="submit">
+                                                    </button>
+                                                </form>
+                                            @else
+                                                @if($transeection->transeection_status == 'false')
+                                                    <button class="btn-cancel" style="cursor:default">
+                                                        <p style="margin:0">รอการชำระเงิน</p>
+                                                    </button>
+                                                @endif
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 <!-- เลือกที่อยู่ -->
 <div class="modal fade" id="address" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -512,51 +565,81 @@
                 <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 14px;"></i></button>
             </div>
 
-            <div class="modal-body">
-                <div class="col-12" style="padding:0;">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-4" style="padding-right:0;">
-                                    <label class="redioRed">
-                                        <input type="radio" name="select1" value="01" id="01">
-                                        <label for="01"><p style="margin:0;font-weight:800;">ชื่อ - นามสกุล<br>ที่อยู่</p></label>
-                                    </label>
-                                </div>
-                                <div class="col-7" style="padding-right:0;">
-                                    <p style="margin:0;">
-                                        สมหญิง รักดี <a style="color:#ce0005;font-weight: 700;">(ที่อยู่หลัก)</a><br>
-                                        52/2 ซ.เจริญนคร 78 ถนน เจริญนคร บุคคโลเขตธนบุรี จังหวัดกรุงเทพมหานคร 10600
-                                    </p>
-                                </div>
-                                <div class="col-1 text-center" style="padding:0;">
-                                    <button class="btnTrash">
-                                        <img style="width:20px;" src="{{asset('icon/trash.svg')}}" >
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-12">
-                                    <button class="bgAddress"  data-dismiss="modal" data-toggle="modal" data-target="#address2">
-                                        <p style="margin:0;font-weight:800;">+ เพิ่มที่อยู่</p>
-                                    </button>
+            <form action="{{route('DeleteAddress')}}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <div class="col-12" style="padding:0;">
+                        <div class="row">
+                            <div class="col-12">
+                                @if(isset($address))
+                                    @foreach($address as $key=>$addressAll)
+                                        @if($addressAll->addresses_status == "true")
+                                            <div class="row">
+                                                <div class="col-4" style="padding-right:0;">
+                                                    <label class="redioRed">
+                                                        <input type="radio" name="ibank" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}" checked>
+                                                        <label for="KEY{{$key}}"><p style="margin:0;font-weight:800;">ชื่อ - นามสกุล<br>ที่อยู่</p></label>
+                                                    </label>
+                                                </div>
+                                                <div class="col-7" style="padding-right:0;">
+                                                    <p style="margin:0;">
+                                                        {{Auth::user()->name}} {{Auth::user()->surname}} <a style="color:#ce0005;font-weight: 700;">(ที่อยู่หลัก)</a><br>
+                                                        {{$addressAll->addresses}} แขวง{{$addressAll->district}} เขต{{$addressAll->amphure}} จังหวัด{{$addressAll->province}} {{$addressAll->zipcode}}
+                                                    </p>
+                                                </div>
+                                                <div class="col-1 text-center" style="padding:0;">
+                                                    <button class="btnTrash" name="deleteAddress" value="deleteAddress">
+                                                        <img style="width:20px;" src="{{asset('icon/trash.svg')}}" >
+                                                        <input type="hidden" name="addresses_id" value="{{$addressAll->addresses_id}}">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class="row">
+                                                <div class="col-4" style="padding-right:0;">
+                                                    <label class="redioRed">
+                                                        <input type="radio" name="ibank" value="{{$addressAll->addresses_id}}" id="KEY{{$key}}">
+                                                        <label for="KEY{{$key}}"><p style="margin:0;font-weight:800;">ชื่อ - นามสกุล<br>ที่อยู่</p></label>
+                                                    </label>
+                                                </div>
+                                                <div class="col-7" style="padding-right:0;">
+                                                    <p style="margin:0;">
+                                                        {{Auth::user()->name}} {{Auth::user()->surname}}<br>
+                                                        {{$addressAll->addresses}} แขวง{{$addressAll->district}} เขต{{$addressAll->amphure}} จังหวัด{{$addressAll->province}} {{$addressAll->zipcode}}
+                                                    </p>
+                                                </div>
+                                                <div class="col-1 text-center" style="padding:0;">
+                                                    <button class="btnTrash" name="deleteAddress" value="deleteAddress">
+                                                        <img style="width:20px;" src="{{asset('icon/trash.svg')}}" >
+                                                        <input type="hidden" name="addresses_id" value="{{$addressAll->addresses_id}}">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button class="bgAddress"  data-dismiss="modal" data-toggle="modal" data-target="#address2">
+                                            <p style="margin:0;font-weight:800;">+ เพิ่มที่อยู่</p>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="modal-footer">
-                <!-- <button type="button" class="btn-submit">
-                    <p style="margin:0;">ยกเลิก</p>
-                </button> -->
-                <button class="btn-submit-red" name="changeAddress" value="changeAddress">
-                    <p style="margin:0;">ยืนยัน</p>
-                    <input type="hidden" name="changeAddID" id="change-add">
-                </button>
-            </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn-submit">
+                        <p style="margin:0;">ยกเลิก</p>
+                    </button> -->
+                    <button class="btn-submit-red" name="changeAddress" value="changeAddress">
+                        <p style="margin:0;">ยืนยัน</p>
+                        <input type="hidden" name="changeAddID" id="change-add">
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -574,74 +657,74 @@
                 <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 14px;"></i></button>
             </div>
 
-            <div class="modal-body" style="padding-bottom:0;">
-                <div class="col-lg-12" >
-                    <div class="row">
-                        <div class="col-12">
-                            <label class="bgInput field-wrap my-1">
-                                <p class="fontHeadInput">ชื่อบริษัท/ชื่อ-นามสกุล</p>
-                                <input name="name" class="input1 p ml-2" value="{{ Auth::user()->name }} {{ Auth::user()->surname }}" readonly></input>
-                            </label>
-                        </div>
+            <form action="{{route('AddAddress')}}" method="POST" enctype="multipart/form-data" id="upDate">
+                @csrf
+                <div class="modal-body font-rate-modal" style="padding-bottom:0;">
+                    <div class="col-12" >
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">ชื่อบริษัท/ชื่อ-นามสกุล</p>
+                                    <input name="name" class="input1 p ml-2" value="{{ Auth::user()->name }} {{ Auth::user()->surname }}" readonly></input>
+                                </label>
+                            </div>
 
-                        <div class="col-12">
-                            <label class="bgInput field-wrap my-1">
-                                <p class="fontHeadInput">เลขผู้เสียภาษีอาการ</p>
-                                <input name="name" class="input1 p ml-2"></input>
-                            </label>
-                        </div>
+                            <div class="col-12">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">เลขผู้เสียภาษีอาการ</p>
+                                    <input name="taxID" class="input1 p ml-2" value="{{old('taxID')}}"></input>
+                                </label>
+                            </div>
 
-                        <div class="col-12">
-                            <label class="bgInput field-wrap my-1">
-                                <p class="fontHeadInput">ที่อยู่ผู้เสียภาษีอากร </p>
-                                <input name="name" class="input1 p ml-2"></input>
-                            </label>
-                        </div>
-
-                        <div class="col-6" style="padding-right:5px;">
-                            <div class="">
+                            <div class="col-12">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">ที่อยู่ผู้เสียภาษีอากร </p>
+                                    <input name="addresses" class="input1 p ml-2"></input>
+                                </label>
+                            </div>
+                            <div class="col-6" style="padding-right:5px;">
                                 <label class="bgInput field-wrap my-1">
                                     <p class="fontHeadInput">จังหวัด</p>
                                     <input class="input1 p ml-2" type="text" name="province">
                                 </label>
                             </div>
-                        </div>
-                        <div class="col-6" style="padding-left:5px;">
-                            <label class="bgInput field-wrap my-1">
-                                <p class="fontHeadInput">อำเภอ</p>
-                                <input class="input1 p ml-2" type="text" name="amphure">
-                            </label>
-                        </div>
-                        <div class="col-6" style="padding-right:5px;">
-                            <label class="bgInput field-wrap my-1">
-                                <p class="fontHeadInput">ตำบล</p>
-                                <input class="input1 p ml-2" type="text" name="district">
-                            </label>
-                        </div>
-                        <div class="col-6" style="padding-left:5px;">
-                            <label class="bgInput field-wrap my-1">
-                                <p class="fontHeadInput">รหัสไปรษณีย์</p>
-                                <input class="input1 p ml-2" type="text" name="zipcode">
-                            </label>
-                        </div>
-                        <div class="checkbox-red ml-3 mt-2">
-                            <input type="checkbox" id="checkbox_01" name="accept_01">
-                            <label for="checkbox_01">
-                                <p style="margin:0 0 0 15px;font-weight:800;">ที่อยู่หลัก<p>
-                            </label>
+                            <div class="col-6" style="padding-left:5px;">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">อำเภอ</p>
+                                    <input class="input1 p ml-2" type="text" name="amphure">
+                                </label>
+                            </div>
+                            <div class="col-6" style="padding-right:5px;">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">ตำบล</p>
+                                    <input class="input1 p ml-2" type="text" name="district">
+                                </label>
+                            </div>
+                            <div class="col-6" style="padding-left:5px;">
+                                <label class="bgInput field-wrap my-1">
+                                    <p class="fontHeadInput">รหัสไปรษณีย์</p>
+                                    <input class="input1 p ml-2" type="text" name="zipcode">
+                                </label>
+                            </div>
+                            <div class="checkbox-red ml-3 mt-2">
+                                <input type="checkbox" id="checkbox_01" name="accept_01">
+                                <label for="checkbox_01">
+                                    <p class="fontCheckbox" style="margin:0 0 0 15px;font-weight:800;">ที่อยู่หลัก</p>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn-submit">
-                    <p style="margin:0;">ยกเลิก</p>
-                </button>
-                <button class="btn-submit-red" name="submit" value="submit">
-                    <p style="margin:0;">ยืนยัน</p>
-                </button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-submit">
+                        <p style="margin:0;">ยกเลิก</p>
+                    </button>
+                    <button class="btn-submit-red" name="submit" value="submit">
+                        <p style="margin:0;">ยืนยัน</p>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -1314,6 +1397,37 @@
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/js/uikit.min.js"></script>
+<script src="{{ asset('filter/dependencies/zip.js/zip.js') }}"></script>
+<script src="{{ asset('filter/dependencies/JQL.min.js') }}"></script>
+<script src="{{ asset('filter/dependencies/typeahead.bundle.js') }}"></script>
+<script src="{{ asset('filter/dist/jquery.Thailand.min.js') }}"></script>
+<script>
+    $.Thailand({
+        database: 'filter/database/db.json',
+        $district: $('#upDate [name="district"]'),
+        $amphoe: $('#upDate [name="amphure"]'),
+        $province: $('#upDate [name="province"]'),
+        $zipcode: $('#upDate [name="zipcode"]'),
+        onDataFill: function(data) {
+            console.info('Data Filled', data);
+        },
+        
+    });
+    $('#upDate [name="district"]').change(function() {
+        console.log('ตำบล', this.value);
+    });
+    $('#upDate [name="amphure"]').change(function() {
+        console.log('อำเภอ', this.value);
+    });
+    $('#upDate [name="province"]').change(function() {
+        console.log('จังหวัด', this.value);
+    });
+    $('#upDate [name="zipcode"]').change(function() {
+        console.log('รหัสไปรษณีย์', this.value);
+    });
+</script>
+
 <script>
     const myFunction = () => {
     document.getElementById("first").style.display ='block';
@@ -1466,4 +1580,50 @@ document.execCommand('copy');
 
 }
 </script>
+
+<script>
+    $(document).ready(function() {
+        $(":radio").change(function() {
+            var closest = $(this).closest("div.row");
+            var creditTransfer = document.querySelector('input[name="ibank"]:checked').value
+            var moneyTransfer = creditTransfer
+            document.querySelector('input#data-checked').value = moneyTransfer
+            document.querySelector('input#data-bank').value = moneyTransfer
+            document.querySelector('input#change-add').value = moneyTransfer
+            console.log(moneyTransfer);
+        });
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+@if( Session::has('success'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            Swal.fire({
+                // position: 'top-end',
+                icon: 'success',
+                title: '{{ Session::get('success') }}',
+                // title: 'Oops...',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        });
+    </script>
+@endif
+
+@if( Session::has('Delete'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#address').modal();
+            Swal.fire({
+                // position: 'top-end',
+                icon: 'success',
+                title: '{{ Session::get('Delete') }}',
+                // title: 'Oops...',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        });
+    </script>
+@endif
 @endsection

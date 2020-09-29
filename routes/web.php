@@ -126,10 +126,13 @@ Route::post('/shop/add_ShoppingCart', 'Avatar\marketItemController@add_ShoppingC
 Route::get('/sale', 'UploadImageProfile@Sale')->name('Sale');
 Route::get('/add_sale_item', 'UploadImageProfile@AddSaleItem')->name('AddSaleItem');
 Route::get('/shopping_cart', 'Avatar\marketItemController@ShoppingCart')->name('ShoppingCart');
-Route::get('/payment', 'UploadImageProfile@Payment')->name('Payment');
-Route::get('/payment_confirmation', 'UploadImageProfile@PaymentConfirmation')->name('PaymentConfirmation');
+Route::post('/shopping_cart/payment','Avatar\marketItemController@ShoppingCartPayment')->name('shoppingCartPayment');
+Route::get('/payment', 'Avatar\marketItemController@Payment')->name('Payment');
+Route::post('/payment/qrCode', 'Avatar\marketItemController@itemibanking')->name('Itemibanking');
+Route::get('/payment_confirmation/{invoice}', 'Avatar\marketItemController@paymentConfirmation')->name('PaymentConfirmation');
+Route::post('/payment_confirmation/cancal', 'Avatar\marketItemController@cancalibanking_item')->name('cancalItem');
 Route::get('/payment_transfer', 'UploadImageProfile@PaymentTransfer')->name('PaymentTransfer');
-Route::get('/successful_payment', 'UploadImageProfile@SuccessfulPayment')->name('SuccessfulPayment');
+Route::get('/successful_payment/{invoice}', 'Avatar\marketItemController@successfulPayment')->name('SuccessfulPayment');
 
 //trading
 Route::get('/simulator_trade', 'simulatorTrade\tradeController@SimulatorTrade')->name('SimulatorTrade');

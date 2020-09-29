@@ -19,12 +19,13 @@ class CreateMarketItemsTable extends Migration
             $table->double('item_price', 15, 4)->default(0);
             $table->double('item_discount', 10, 2)->default(0);
             $table->string('item_img')->collation('utf8_unicode_ci');
-            $table->set('item_gender', ['man', 'woman'])->collation('utf8_unicode_ci');
+            $table->set('item_gender', ['man', 'woman', 'all'])->collation('utf8_unicode_ci');
             $table->set('item_type', ['clothes', 'eyes', 'glasses', 'hair', 'other', 'weapon'])->collation('utf8_unicode_ci');
-            $table->set('item_other', ['armor', 'crown', 'glove', 'hat', 'shoes'])->collation('utf8_unicode_ci')->nullable();
+            $table->set('item_other', ['armor', 'crown', 'glove', 'hat', 'shoes', 'sword', 'hero'])->collation('utf8_unicode_ci')->nullable();
             $table->text('item_description')->collation('utf8_unicode_ci')->nullable();
             $table->integer('item_level')->default(1);
             $table->integer('item_amount')->default(1);
+            $table->integer('item_amount_discount')->default(0);
             $table->set('item_status', ['true', 'false'])->collation('utf8_unicode_ci')->default('true');
             $table->integer('USER_ID');
             $table->string('USER_EMAIL')->collation('utf8_unicode_ci');
