@@ -124,6 +124,8 @@ class Callback_scbController extends Controller
                                     // $market->save();
 
                                     DB::table('shopping_cart')->where('shopping_cart_id', $shopping_id[$i])->update(['shopping_cart_status'=>"true"]);
+
+                                    Transeection_buyItem::where([['transeection_type', $transeection_item->transeection_type], ['transeection_status', 'false'], ['USER_EMAIL', $transeection_item->USER_EMAIL]])->delete();
                                     $i++;
                                 }
                             }
