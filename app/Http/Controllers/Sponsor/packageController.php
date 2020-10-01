@@ -225,7 +225,6 @@ class packageController extends Controller
 
     public function sponTransferPayment(Request $req){
         if($req->input('submit') != null){
-            // dd($req);
             if($req->has('transferImg')){
                 $uploadImg = $req->file('transferImg');
                 $img_name = 'Transfer_Img_'.time().'.'.$uploadImg->getClientOriginalExtension();
