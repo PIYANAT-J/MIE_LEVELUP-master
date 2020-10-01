@@ -97,40 +97,15 @@ class UploadImageProfile extends Controller
     public function Sale(){
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        return view('avatar.saleItem.sale_item', compact('guest_user', 'userKyc'));
+        $shopping = DB::table('shopping_cart')->where('USER_EMAIL', Auth::user()->email)->get();
+        return view('avatar.saleItem.sale_item', compact('guest_user', 'userKyc', 'shopping'));
     }
 
     public function AddSaleItem(){
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        return view('avatar.saleItem.add_sale_item', compact('guest_user', 'userKyc'));
-    }
-
-    public function Payment(){
-        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
         $shopping = DB::table('shopping_cart')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('avatar.payment.payment', compact('guest_user', 'userKyc', 'shopping'));
-    }
-
-    public function PaymentConfirmation(){
-        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        $shopping = DB::table('shopping_cart')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('avatar.payment.payment_confirmation', compact('guest_user', 'userKyc', 'shopping'));
-    }
-    public function PaymentTransfer(){
-        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        $shopping = DB::table('shopping_cart')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('avatar.payment.payment_transfer', compact('guest_user', 'userKyc', 'shopping'));
-    }
-
-    public function SuccessfulPayment(){
-        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        $shopping = DB::table('shopping_cart')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('avatar.payment.successful_payment', compact('guest_user', 'userKyc', 'shopping'));
+        return view('avatar.saleItem.add_sale_item', compact('guest_user', 'userKyc', 'shopping'));
     }
 
     public function indexSpon(){
