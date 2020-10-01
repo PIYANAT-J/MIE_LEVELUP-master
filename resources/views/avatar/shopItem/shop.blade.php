@@ -133,9 +133,9 @@
                                             <label class="bg-shop2">
                                                 <label class="img-saleItem">
                                                     @if($Itme->item_gender == "woman")
-                                                        <img style="width:100%" src="{{asset('home/avatar/woman/hair/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
+                                                        <img style="width:100%" src="{{asset('home/avatar/hair/woman/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
                                                     @else
-                                                        <img style="width:100%" src="{{asset('home/avatar/man/hair/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
+                                                        <img style="width:100%" src="{{asset('home/avatar/hair/man/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
                                                     @endif
                                                 </label>
                                                 <span class="font-shop2"><h5 style="margin:0;">{{$Itme->item_level}}</h5></span>
@@ -145,7 +145,7 @@
                                                         ฿11,400.00
                                                     </h5>
                                                 </span>
-                                                <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}">ซื้อเลย</label>
+                                                <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
                                             </label>
                                         </div>
                                     @endif
@@ -164,22 +164,6 @@
                         <div class="col-12"><h1 style="color:#fff;font-weight:800;">เสื้อผ้า</h1></div>
                         <div class="col-12" style="height:120px;">
                             <div class="owl-carousel" id="owl-demo4">
-                                <!-- <div class="item" style="height: 120px;">
-                                    <img class="img-ownerItem" src="{{asset('dist/images/person_2.jpg') }}" />
-                                    <label class="bg-shop2">
-                                        <label class="img-saleItem">
-                                            <img style="width:100%" src="{{asset('home/avatar/man/clothes/c05.svg') }}" data-toggle="popover" data-placement="bottom">
-                                        </label>
-                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
-                                        <span class="font-price-position p">฿9,000.00</span>
-                                        <span>
-                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
-                                                ฿11,400.00
-                                            </h5>
-                                        </span>
-                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                    </label>
-                                </div> -->
 
                                 @foreach($marketItem as $Itme)
                                     @if($Itme->item_type == "clothes")
@@ -188,9 +172,17 @@
                                             <label class="bg-shop2">
                                                 <label class="img-saleItem">
                                                     @if($Itme->item_gender == "woman")
-                                                        <img style="width:100%" src="{{asset('home/avatar/woman/clothes/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
+                                                        @if($Itme->item_other == "hero")
+                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/woman/hero/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
+                                                        @else
+                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/woman/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
+                                                        @endif
                                                     @else
-                                                        <img style="width:100%" src="{{asset('home/avatar/man/clothes/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
+                                                        @if($Itme->item_other == "hero")
+                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/man/hero/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
+                                                        @else
+                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/man/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
+                                                        @endif
                                                     @endif
                                                 </label>
                                                 <span class="font-shop2"><h5 style="margin:0;">{{$Itme->item_level}}</h5></span>
@@ -200,11 +192,12 @@
                                                         ฿11,400.00
                                                     </h5>
                                                 </span>
-                                                <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}">ซื้อเลย</label>
+                                                <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
                                             </label>
                                         </div>
                                     @endif
                                 @endforeach
+
                             </div>
                             <div class="btns">
                                 <div class="shop-next4"><img class="middle" style="width:1em" src="{{asset('icon/next.svg') }}" /></div>
@@ -218,22 +211,6 @@
                         <div class="col-12"><h1 style="color:#fff;font-weight:800;">อาวุธ</h1></div>
                         <div class="col-12" style="height:120px;">
                             <div class="owl-carousel" id="owl-demo5">
-                                <!-- <div class="item" style="height: 120px;">
-                                    <img class="img-ownerItem" src="{{asset('dist/images/person_8.jpg') }}" />
-                                    <label class="bg-shop2">
-                                        <label class="img-saleItem">
-                                            <img style="width:100%" src="{{asset('home/avatar/man/weapon/sword/s01.svg') }}" data-toggle="popover" data-placement="bottom">
-                                        </label>
-                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
-                                        <span class="font-price-position p">฿9,000.00</span>
-                                        <span>
-                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
-                                                ฿11,400.00
-                                            </h5>
-                                        </span>
-                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                    </label>
-                                </div> -->
 
                                 @foreach($marketItem as $Itme)
                                     @if($Itme->item_type == "weapon")
@@ -241,11 +218,7 @@
                                             <img class="img-ownerItem" src="{{asset('home/imgProfile/'.$Itme->GUEST_USERS_IMG) }}" />
                                             <label class="bg-shop2">
                                                 <label class="img-saleItem">
-                                                    @if($Itme->item_gender == "woman")
-                                                        <img style="width:100%" src="{{asset('home/avatar/woman/weapon/sword/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
-                                                    @else
-                                                        <img style="width:100%" src="{{asset('home/avatar/man/weapon/sword/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
-                                                    @endif
+                                                    <img style="width:100%" src="{{asset('home/avatar/weapon/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
                                                 </label>
                                                 <span class="font-shop2"><h5 style="margin:0;">{{$Itme->item_level}}</h5></span>
                                                 <span class="font-price-position p">฿{{$Itme->item_price}}</span>
@@ -254,11 +227,12 @@
                                                         ฿11,400.00
                                                     </h5>
                                                 </span>
-                                                <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}">ซื้อเลย</label>
+                                                <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
                                             </label>
                                         </div>
                                     @endif
                                 @endforeach
+
                             </div>
                             <div class="btns">
                                 <div class="shop-next5"><img class="middle" style="width:1em" src="{{asset('icon/next.svg') }}" /></div>
@@ -273,54 +247,13 @@
                         <div class="col-12" style="height:120px;">
                             <div class="owl-carousel" id="owl-demo6">
 
-                                <!-- <div class="item" style="height: 120px;">
-                                    <img class="img-ownerItem" src="{{asset('dist/images/person_4.jpg') }}" />
-                                    <label class="bg-shop2">
-                                        <label class="img-saleItem">
-                                            <img style="width:100%" src="{{asset('home/avatar/man/other/armor/a01.svg') }}" data-toggle="popover" data-placement="bottom">
-                                        </label>
-                                        <span class="font-shop2"><h5 style="margin:0;">5</h5></span>
-                                        <span class="font-price-position p">฿9,000.00</span>
-                                        <span>
-                                            <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
-                                                ฿11,400.00
-                                            </h5>
-                                        </span>
-                                        <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop">ซื้อเลย</label>
-                                    </label>
-                                </div> -->
-
                                 @foreach($marketItem as $Itme)
                                     @if($Itme->item_type == "other")
                                         <div class="item" style="height: 120px;">
                                             <img class="img-ownerItem" src="{{asset('home/imgProfile/'.$Itme->GUEST_USERS_IMG) }}" />
                                             <label class="bg-shop2">
                                                 <label class="img-saleItem">
-                                                    @if($Itme->item_gender == "woman")
-                                                        @if($Itme->item_other == "armor")
-                                                            <img style="width:100%" src="{{asset('home/avatar/woman/other/armor/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
-                                                        @elseif($Itme->item_other == "crown")
-                                                            <img style="width:100%" src="{{asset('home/avatar/woman/other/crown/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
-                                                        @elseif($Itme->item_other == "glove")
-                                                            <img style="width:100%" src="{{asset('home/avatar/woman/other/glove/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
-                                                        @elseif($Itme->item_other == "hat")
-                                                            <img style="width:100%" src="{{asset('home/avatar/woman/other/hat/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
-                                                        @elseif($Itme->item_other == "shoes")
-                                                            <img style="width:100%" src="{{asset('home/avatar/woman/other/shoes/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
-                                                        @endif
-                                                    @else
-                                                        @if($Itme->item_other == "armor")
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/armor/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
-                                                        @elseif($Itme->item_other == "crown")
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/crown/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
-                                                        @elseif($Itme->item_other == "glove")
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/glove/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
-                                                        @elseif($Itme->item_other == "hat")
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/hat/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
-                                                        @elseif($Itme->item_other == "shoes")
-                                                            <img style="width:100%" src="{{asset('home/avatar/man/other/shoes/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
-                                                        @endif
-                                                    @endif
+                                                    <img style="width:100%" src="{{asset('home/avatar/other/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
                                                 </label>
                                                 <span class="font-shop2"><h5 style="margin:0;">{{$Itme->item_level}}</h5></span>
                                                 <span class="font-price-position p">฿{{$Itme->item_price}}</span>
@@ -329,7 +262,7 @@
                                                         ฿11,400.00
                                                     </h5>
                                                 </span>
-                                                <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}">ซื้อเลย</label>
+                                                <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
                                             </label>
                                         </div>
                                     @endif
@@ -369,52 +302,55 @@
                         <div class="row my-2 mx-1">
                             <div class="col-2">
                                 <div class="bg-modal-shop item-modal-shop">
-                                    @if($itemModal->item_type == "other")
+                                    @if($itemModal->item_type == "clothes")
                                         @if($itemModal->item_gender == "woman")
-                                            @if($itemModal->item_other == "armor")
-                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/woman/other/armor/'.$itemModal->item_img) }}">
-                                            @elseif($itemModal->item_other == "crown")
-                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/woman/other/crown/'.$itemModal->item_img) }}">
-                                            @elseif($itemModal->item_other == "glove")
-                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/woman/other/glove/'.$itemModal->item_img) }}">
-                                            @elseif($itemModal->item_other == "hat")
-                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/woman/other/hat/'.$itemModal->item_img) }}">
-                                            @elseif($itemModal->item_other == "shoes")
-                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/woman/other/shoes/'.$itemModal->item_img) }}">
+                                            @if($itemModal->item_other == "hero")
+                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/clothes/woman/hero/'.$itemModal->item_img) }}">
+                                            @else
+                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/clothes/woman/'.$itemModal->item_img) }}">
                                             @endif
-                                        @else
-                                            @if($itemModal->item_other == "armor")
-                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/man/other/armor/'.$itemModal->item_img) }}">
-                                            @elseif($itemModal->item_other == "crown")
-                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/man/other/crown/'.$itemModal->item_img) }}">
-                                            @elseif($itemModal->item_other == "glove")
-                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/man/other/glove/'.$itemModal->item_img) }}">
-                                            @elseif($itemModal->item_other == "hat")
-                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/man/other/hat/'.$itemModal->item_img) }}">
-                                            @elseif($itemModal->item_other == "shoes")
-                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/man/other/shoes/'.$itemModal->item_img) }}">
+                                        @elseif($itemModal->item_gender == "man")
+                                            @if($itemModal->item_other == "hero")
+                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/clothes/man/hero/'.$itemModal->item_img) }}">
+                                            @else
+                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/clothes/man/'.$itemModal->item_img) }}">
                                             @endif
                                         @endif
-                                    @elseif($itemModal->item_type == "weapon")
+                                    @elseif($itemModal->item_type == "eyes")
                                         @if($itemModal->item_gender == "woman")
-                                            <img class="middle" style="width:80%" src="{{asset('home/avatar/woman/weapon/sword/'.$itemModal->item_img) }}">
-                                        @else
-                                            <img class="middle" style="width:80%" src="{{asset('home/avatar/man/weapon/sword/'.$itemModal->item_img) }}">
+                                            @if($itemModal->item_other == "hero")
+                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/eyes/woman/hero/'.$itemModal->item_img) }}">
+                                            @else
+                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/eyes/woman/'.$itemModal->item_img) }}">
+                                            @endif
+                                        @elseif($itemModal->item_gender == "man")
+                                            @if($itemModal->item_other == "hero")
+                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/eyes/man/hero/'.$itemModal->item_img) }}">
+                                            @else
+                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/eyes/man/'.$itemModal->item_img) }}">
+                                            @endif
                                         @endif
-                                    @elseif($itemModal->item_type == "clothes")
-                                        @if($itemModal->item_gender == "woman")
-                                            <img class="middle" style="width:80%" src="{{asset('home/avatar/woman/clothes/'.$itemModal->item_img) }}">
-                                        @else
-                                            <img class="middle" style="width:80%" src="{{asset('home/avatar/man/clothes/'.$itemModal->item_img) }}">
-                                        @endif
+                                    @elseif($itemModal->item_type == "glasses")
+                                        <img class="middle" style="width:80%" src="{{asset('home/avatar/glasses/'.$itemModal->item_img) }}">
                                     @elseif($itemModal->item_type == "hair")
                                         @if($itemModal->item_gender == "woman")
-                                            <img class="middle" style="width:80%" src="{{asset('home/avatar/woman/hair/'.$itemModal->item_img) }}">
-                                        @else
-                                            <img class="middle" style="width:80%" src="{{asset('home/avatar/man/hair/'.$itemModal->item_img) }}">
+                                            @if($itemModal->item_other == "hero")
+                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/hair/woman/hero/'.$itemModal->item_img) }}">
+                                            @else
+                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/hair/woman/'.$itemModal->item_img) }}">
+                                            @endif
+                                        @elseif($itemModal->item_gender == "man")
+                                            @if($itemModal->item_other == "hero")
+                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/hair/man/hero/'.$itemModal->item_img) }}">
+                                            @else
+                                                <img class="middle" style="width:80%" src="{{asset('home/avatar/hair/man/'.$itemModal->item_img) }}">
+                                            @endif
                                         @endif
+                                    @elseif($itemModal->item_type == "other")
+                                        <img class="middle" style="width:80%" src="{{asset('home/avatar/other/'.$itemModal->item_img) }}">
+                                    @elseif($itemModal->item_type == "weapon")
+                                        <img class="middle" style="width:80%" src="{{asset('home/avatar/weapon/'.$itemModal->item_img) }}">
                                     @endif
-                                    <!-- <img class="middle" style="width:80%;" src="{{asset('home/avatar/woman/other/crown/c02.png') }}" > -->
                                 </div>
                             </div>
                             <div class="col-5">
@@ -463,7 +399,6 @@
         </div>
     </div>
 @endforeach
-<input type="hidden" name="key" value="{{$key}}">
 
 <div class="container-fluid">
     <div class="row">
@@ -869,75 +804,51 @@ $(document).ready(function(){
     });
 </script>
 
-<!-- <script>
+<script>
 $(function() {
     (function quantityProducts() {
         var $quantityArrowMinus = $(".quantity-arrow-minus");
         var $quantityArrowPlus = $(".quantity-arrow-plus");
-        var $quantityNum = $(".quantity-num");
-        // var price = document.getElementById("price").value;
         $quantityArrowMinus.click(quantityMinus);
         $quantityArrowPlus.click(quantityPlus);
 
-        // console.log(price);
-        // var sumprice;
         function quantityMinus() {
-            if ($quantityNum.val() > 1) {
-                $quantityNum.val(+$quantityNum.val() - 1);
-
-                // sumprice = sumprice-price;
-                document.querySelector('input#amountItem').value = $quantityNum.val()
-                // $('#total').html("฿"+sumprice);
-                // document.querySelector('input#sumprice').value = sumprice
-                console.log($quantityNum.val());
-                // console.log(sumprice)
+            $quantityNum = $(this).parent().find('.quantity-num').val();
+            if($quantityNum > 1){
+                $quantityNum = (+$quantityNum - 1);
+                $(this).parent().find('.quantity-num').val($quantityNum);
+                $(this).parents('form').find('input[name="amountItem"]').val($quantityNum);
+                dataprice = $(this).parent().find('.quantity-num').attr('dataprice');
+                sum = (+dataprice)*$quantityNum;
+                $(this).parents('form').find('.total span').text(sum);
+                $(this).parents('form').find('input[name="sumprice"]').val(sum);
+                console.log($quantityNum);
+                console.log(sum);
             }
         }
         function quantityPlus() {
-            $quantityNum.val(+$quantityNum.val() + 1);
-            
-            // sumprice = price*$quantityNum.val();
-            document.querySelector('input#amountItem').value = $quantityNum.val()
-            // $('#total').html("฿"+sumprice);
-            // document.querySelector('input#sumprice').value = sumprice
-            console.log($quantityNum.val());
-            // console.log(sumprice)
+            $quantityNum = $(this).parent().find('.quantity-num').val();
+            $max = $(this).parent().find('.quantity-num').attr('max');
+            if($quantityNum < (+$max)){
+                $quantityNum = (+$quantityNum + 1);
+                $(this).parent().find('.quantity-num').val($quantityNum);
+                $(this).parents('form').find('input[name="amountItem"]').val($quantityNum);
+                dataprice = $(this).parent().find('.quantity-num').attr('dataprice');
+                sum = (+dataprice)*$quantityNum;
+                $(this).parents('form').find('.total span').text(sum);
+                $(this).parents('form').find('input[name="sumprice"]').val(sum);
+                console.log($quantityNum);
+                console.log(sum);
+            }
         }
-        document.querySelector('input#amountItem').value = $quantityNum.val()
-        console.log($quantityNum.val());
-        // console.log(price)
-        // console.log(max)
-
+        $('.btn-shop2.btn-shop-position').on('click', function(){
+            var id = $(this).data('target');
+            var price = $(this).data('price');
+            var amount = $(this).data('amount');
+            $(id).find('input[name="sumprice"]').val(price);
+            $(id).find('input[name="amountItem"]').val(amount);
+        })
     })();
 });
-</script> -->
-
-<script>
-    $('.quantity-arrow-plus').on('click', function(){
-        val = $(this).parent().find('.quantity-num').val();
-        val = (+val + 1);
-        $(this).parent().find('.quantity-num').val(val);
-        $(this).parents('form').find('input[name="amountItem"]').val(val);
-        dataprice = $(this).parent().find('.quantity-num').attr('dataprice');
-        sum = (+dataprice)*val;
-        $(this).parents('form').find('.total span').text(sum);
-        $(this).parents('form').find('input[name="sumprice"]').val(sum);
-        console.log(val);
-        console.log(sum);
-    })
-    $('.quantity-arrow-minus').on('click', function(){
-        val = $(this).parent().find('.quantity-num').val();
-        if(val > 1){
-            val = (+val - 1);
-            $(this).parent().find('.quantity-num').val(val);
-            $(this).parents('form').find('input[name="amountItem"]').val(val);
-            dataprice = $(this).parent().find('.quantity-num').attr('dataprice');
-            sum = sum-(+dataprice);
-            $(this).parents('form').find('.total span').text(sum);
-            $(this).parents('form').find('input[name="sumprice"]').val(sum);
-            console.log(val);
-            console.log(sum);
-        }
-    })
 </script>
 @endsection

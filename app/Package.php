@@ -64,9 +64,9 @@ class Package extends Model
             ->update($data);
     }
 
-    public static function transeectionPaymentDelete($data){
+    public static function transeectionPaymentDelete($dataDelete){
         DB::table('transeection_sponshopping')
-            ->where([['transeection_type', $data['transeection_type']], ['USER_ID', $data['USER_ID']], ['transeection_status', 'false']])
+            ->where([['transeection_type', $dataDelete['transeection_type']], ['USER_ID', $dataDelete['USER_ID']], ['transeection_status', 'false']])
             ->delete();
     }
 }
