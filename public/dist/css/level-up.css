@@ -8296,7 +8296,34 @@ input[type="checkbox"].switch_2{
 .headManImg{
   z-index: 2;
   position: absolute;
-  width: 200px;
+  width:150px;
+  /* background-color: #ce0005; */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: translateY(-55%);
+}
+
+
+.hairManImg{
+  z-index: 3;
+  position: absolute;
+  width:200px;
+  /* background-color: #ce0005; */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: translateY(-60%);
+}
+
+.hairwomanImg{
+  z-index: 3;
+  position: absolute;
+  width:200px;
   /* background-color: #ce0005; */
   top: 0;
   left: 0;
@@ -8329,15 +8356,40 @@ input[type="checkbox"].switch_2{
 }
 
 .eyesManImg{
-  z-index: 3;
+  z-index: 4;
   position: absolute;
-  width: 200px;
+  width: 120px;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   margin: auto;
-  transform: translateY(-40%);
+  transform: translateY(-180%);
+}
+
+.eyesWomanImg{
+  z-index: 4;
+  position: absolute;
+  width: 110px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: translateY(-190%);
+}
+
+.eyesManImg2{
+  z-index: 100;
+  /* background-color: aqua; */
+  position: absolute;
+  width: 128.124px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: translateY(-174%);
 }
 
 /* .clothesWomanImg{
@@ -8363,7 +8415,7 @@ input[type="checkbox"].switch_2{
 }
 
 .glassesManImg{
-  z-index: 4;
+  z-index: 5;
   position: absolute;
   width: 135px;
   top: 0;
@@ -8371,7 +8423,7 @@ input[type="checkbox"].switch_2{
   right: 0;
   bottom: 0;
   margin: auto;
-  transform: translateY(-160%);
+  transform: translateY(-155%);
 }
 .glassesWomanImg{
   z-index: 4;
@@ -8382,7 +8434,7 @@ input[type="checkbox"].switch_2{
   right: 0;
   bottom: 0;
   margin: auto;
-  transform: translateY(-155%);
+  transform: translateY(-148%);
 }
 
 .noneItem{
@@ -8452,3 +8504,50 @@ input[type="checkbox"].switch_2{
   margin: auto;
 }
 
+.crownManImg{
+  z-index: 5;
+  position: absolute;
+  width:110px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: translateY(-260%);
+}
+
+.glovesWomanImg{
+  z-index: 5;
+  position: absolute;
+  width:142px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: translateY(120%);
+}
+
+.glovesManImg{
+  z-index: 5;
+  position: absolute;
+  width:142px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: translateY(122%);
+}
+
+.armorWomanImg{
+  z-index: 4;
+  position: absolute;
+  width:142px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: translateY(45%);
+}

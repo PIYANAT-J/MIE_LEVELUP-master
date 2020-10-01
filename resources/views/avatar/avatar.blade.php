@@ -46,22 +46,15 @@
             <div class="row manlist px-3" >
                 <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
                 <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 pt-2 pb-3" style="height:530px">
-                    <!-- <img class="center1"  style="height:400px;opacity: 0;" src="{{asset('home/avatar/man.png') }}" /> -->
-                    <img id="headMan" class="headManImg" src="{{asset('home/avatar/head/man/head_man_01.png') }}" />
+                    <img id="headMan" class="headManImg" src="{{asset('home/avatar/head/head_man.png') }}" />
+                    <img id="hairMan" class="hairManImg" src="{{asset('home/avatar/hair/man/hair_man_01.png') }}" />
+                    <img id="eyesMan" class="eyesManImg" src="{{asset('home/avatar/eyes/man/eyes_man_01.png') }}" />
+                    <img id="glassesMan" class="glassesManImg" src="{{asset('home/avatar/glasses/noneImg.png') }}" />
+                    <img id="crownMan" class="crownManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
                     <img id="clothesMan" class="clothesManImg" src="{{asset('home/avatar/clothes/man/clothes_man_01.png') }}" />
-                    <img id="eyesMan" class="eyesManImg" src="{{asset('home/avatar/eyes/man/eyes_man_01') }}" />
-                    <img id="glassesMan" class="glassesManImg" src="{{asset('home/avatar/glasses/glasses_00.png') }}" />
-                    <img id="weaponMan" class="weaponManImg" src="{{asset('home/avatar/weapon/sword_00.png') }}" />
-                    <label class="crown">
-                        <img id="crownMan" class="otherImg" src="{{asset('home/avatar/other/crown_00.png') }}" />
-                    </label>
-                    <label class="gloves">
-                        <img id="glovesMan" class="otherImg" src="{{asset('home/avatar/other/gloves_00.png') }}" />
-                    </label>
-                    <label class="armor">
-                        <img id="armorMan" class="otherImg" src="{{asset('home/avatar/other/armor_00.png') }}" />
-                    </label>
-                    <!-- <img class="mt-5" style="width:30px;" src="{{asset('home/avatar/icon/reset.svg') }}" /> -->
+                    <img id="weaponMan" class="weaponManImg" src="{{asset('home/avatar/weapon/noneImg.png') }}" />
+                    <img id="glovesMan" class="glovesManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                    <img id="armorMan" class="armorWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
                 </div>
                 <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
 
@@ -94,11 +87,14 @@
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">ทรงผม</span>
                                         <div class="col-12">                                                                            
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('headMan').src='home/avatar/head/man/head_man_01.png'">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('hairMan').src='home/avatar/hair/man/hair_man_01.png'">
                                                 <img class="picture" src="{{asset('home/avatar/hair/man/hair_man_01.png') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('headMan').src='home/avatar/head/man/head_man_02.png'">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('hairMan').src='home/avatar/hair/man/hair_man_02.png'">
                                                 <img class="picture" src="{{asset('home/avatar/hair/man/hair_man_02.png') }}" />
+                                            </button>
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('hairMan').src='home/avatar/hair/man/hair_man_03.png'">
+                                                <img class="picture" src="{{asset('home/avatar/hair/man/hair_man_03.png') }}" />
                                             </button>
                                         </div>    
                                     </div>
@@ -107,16 +103,16 @@
                                         <span class="fontItem ml-4 mt-2 p">สีตา</span>
                                         <div class="col-12">
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesMan').src='home/avatar/eyes/man/eyes_man_01.png'">
-                                                <img class="picture" src="{{asset('home/avatar/eyes/man/shop/eyes_man_01.png') }}" />
+                                                <img class="picture" src="{{asset('home/avatar/eyes/man/eyes_man_01.png') }}" />
                                             </button>
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesMan').src='home/avatar/eyes/man/eyes_man_02.png'">
-                                                <img class="picture" src="{{asset('home/avatar/eyes/man/shop/eyes_man_02.png') }}" />
+                                                <img class="picture" src="{{asset('home/avatar/eyes/man/eyes_man_02.png') }}" />
                                             </button>
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesMan').src='home/avatar/eyes/man/eyes_man_03.png'">
-                                                <img class="picture" src="{{asset('home/avatar/eyes/man/shop/eyes_man_03.png') }}" />
+                                                <img class="picture" src="{{asset('home/avatar/eyes/man/eyes_man_03.png') }}" />
                                             </button>
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesMan').src='home/avatar/eyes/man/eyes_man_04.png'">
-                                                <img class="picture" src="{{asset('home/avatar/eyes/man/shop/eyes_man_04.png') }}" />
+                                                <img class="picture" src="{{asset('home/avatar/eyes/man/eyes_man_04.png') }}" />
                                             </button>
                                         </div>    
                                     </div>
@@ -130,7 +126,7 @@
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesMan').src='home/avatar/glasses/glasses_02.png'">
                                                 <img class="picture" src="{{asset('home/avatar/glasses/glasses_02.png') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesMan').src='home/avatar/glasses/glasses_00.png'">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesMan').src='home/avatar/glasses/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -151,29 +147,23 @@
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesMan').src='home/avatar/clothes/man/clothes_man_02.png'">
                                                 <img class="picture" src="{{asset('home/avatar/clothes/man/clothes_man_02.png') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesMan').src='home/avatar/clothes/man/clothes_man_03.png'">
-                                                <img class="picture" src="{{asset('home/avatar/clothes/man/clothes_man_03.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesMan').src='home/avatar/clothes/man/clothes_man_04.png'">
-                                                <img class="picture" src="{{asset('home/avatar/clothes/man/clothes_man_04.png') }}" />
-                                            </button>
                                         </div>    
                                     </div>
 
-                                    <div class="row">
+                                    <!-- <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">ชุดซุปเปอร์ฮีโร่</span>
                                         <div class="col-12">
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesMan').src='home/avatar/clothes/man/hero/hero_man_03.png'">
                                                 <img class="picture" src="{{asset('home/avatar/clothes/man/hero/hero_man_03.png') }}" />
                                             </button>
                                         </div>    
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
 
                         <div id="weapon" class="container tab-pane">
-                            <div class="row ml-0 mt-4 row6" style="background-color:#202433;border-radius: 6px;">
+                            <div class="row mt-4 row6" style="background-color:#202433;border-radius: 6px;">
                                 <div class="col-12 mb-2"> 
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">ดาบ</span>
@@ -190,7 +180,7 @@
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/sword_04.png'">
                                                 <img class="picture" src="{{asset('home/avatar/weapon/sword_04.png') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/weapon_00.png'">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -227,7 +217,7 @@
                         </div>
 
                         <div id="other" class="container tab-pane">
-                            <div class="row ml-0 mt-4 row6" style="background-color:#202433;border-radius: 6px;">
+                            <div class="row mt-4 row6" style="background-color:#202433;border-radius: 6px;">
                                 <div class="col-12 pb-2"> 
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">มงกุฏ/หมวก</span>
@@ -241,7 +231,7 @@
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownMan').src='home/avatar/other/crown_03.png'">
                                                 <img class="picture" src="{{asset('home/avatar/other/crown_03.png') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownMan').src='home/avatar/other/crown_00.png'">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownMan').src='home/avatar/other/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -253,7 +243,7 @@
                                             <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesMan').src='home/avatar/other/gloves_01.png'">
                                                 <img class="picture" src="{{asset('home/avatar/other/gloves_01.png') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesMan').src='home/avatar/other/gloves_00.png'">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesMan').src='home/avatar/other/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -265,7 +255,7 @@
                                             <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorMan').src='home/avatar/other/armor_01.png'">
                                                 <img class="picture" src="{{asset('home/avatar/other/armor_01.png') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorMan').src='home/avatar/other/armor_00.png'">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorMan').src='home/avatar/other/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -291,20 +281,15 @@
                 <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
                 <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 pt-2 pb-3" style="height:530px">
                     <!-- <img class="center1"  style="height:400px;opacity: 0;" src="{{asset('home/avatar/character/woman.png') }}" /> -->
-                    <img id="headWoman" class="headManImg" src="{{asset('home/avatar/head/woman/head_woman_01.png') }}" />
-                    <img id="clothesWoman" class="clothesWomanImg" src="{{asset('home/avatar/clothes/woman/clothes_woman_01.png') }}" />
-                    <img id="eyesWoman" class="eyesManImg" src="{{asset('home/avatar/eyes/woman/eyes_woman_01') }}" />
+                    <img id="headWoman" class="headManImg" src="{{asset('home/avatar/head/head_woman.png') }}" />
+                    <img id="hairwoman" class="hairwomanImg" src="{{asset('home/avatar/hair/woman/hair_woman_01.png') }}" />
+                    <img id="eyesWoman" class="eyesWomanImg" src="{{asset('home/avatar/eyes/woman/eyes_woman_01.png') }}" />
                     <img id="glassesWoman" class="glassesWomanImg" src="{{asset('home/avatar/glasses/none.png') }}" />
-                    <img id="weaponWoman" class="weaponManImg" src="{{asset('home/avatar/weapon/sword_00.png') }}" />
-                    <label class="crown">
-                        <img id="crownWoman" class="otherImg" src="{{asset('home/avatar/other/crown_00.png') }}" />
-                    </label>
-                    <label class="gloves">
-                        <img id="glovesWoman" class="otherImg" src="{{asset('home/avatar/other/gloves_00.png') }}" />
-                    </label>
-                    <label class="armor">
-                        <img id="armorWoman" class="otherImg" src="{{asset('home/avatar/other/armor_00.png') }}" />
-                    </label>
+                    <img id="crownWoman" class="crownManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                    <img id="clothesWoman" class="clothesWomanImg" src="{{asset('home/avatar/clothes/woman/clothes_woman_01.png') }}" />
+                    <img id="weaponWoman" class="weaponManImg" src="{{asset('home/avatar/weapon/noneImg.png') }}" />
+                    <img id="glovesWoman" class="glovesWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                    <img id="armorWoman" class="armorWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
                     <!-- <img class="mt-5" style="width:30px" src="{{asset('home/avatar/icon/reset.svg') }}" /> -->
                 </div>
                 <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
@@ -337,13 +322,13 @@
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">ทรงผม</span>
                                         <div class="col-12">
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('headWoman').src='home/avatar/head/woman/head_woman_01.png'">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('hairwoman').src='home/avatar/hair/woman/hair_woman_01.png'">
                                                 <img class="picture" src="{{asset('home/avatar/hair/woman/hair_woman_01.png') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('headWoman').src='home/avatar/head/woman/head_woman_02.png'">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('hairwoman').src='home/avatar/hair/woman/hair_woman_02.png'">
                                                 <img class="picture" src="{{asset('home/avatar/hair/woman/hair_woman_02.png') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('headWoman').src='home/avatar/head/woman/head_woman_03.png'">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('hairwoman').src='home/avatar/hair/woman/hair_woman_03.png'">
                                                 <img class="picture" src="{{asset('home/avatar/hair/woman/hair_woman_03.png') }}" />
                                             </button>
                                         </div>    
@@ -353,17 +338,20 @@
                                         <span class="fontItem ml-4 mt-2 p">สีตา</span>
                                         <div class="col-12">
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesWoman').src='home/avatar/eyes/woman/eyes_woman_01.png'">
-                                                <img class="picture" src="{{asset('home/avatar/eyes/woman/shop/eyes_woman_01.png') }}" />
+                                                <img class="picture" src="{{asset('home/avatar/eyes/woman/eyes_woman_01.png') }}" />
                                             </button>
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesWoman').src='home/avatar/eyes/woman/eyes_woman_02.png'">
-                                                <img class="picture" src="{{asset('home/avatar/eyes/woman/shop/eyes_woman_02.png') }}" />
+                                                <img class="picture" src="{{asset('home/avatar/eyes/woman/eyes_woman_02.png') }}" />
                                             </button>
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesWoman').src='home/avatar/eyes/woman/eyes_woman_03.png'">
-                                                <img class="picture" src="{{asset('home/avatar/eyes/woman/shop/eyes_woman_03.png') }}" />
+                                                <img class="picture" src="{{asset('home/avatar/eyes/woman/eyes_woman_03.png') }}" />
                                             </button>
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesWoman').src='home/avatar/eyes/woman/eyes_woman_04.png'">
-                                                <img class="picture" src="{{asset('home/avatar/eyes/woman/shop/eyes_woman_04.png') }}" />
+                                                <img class="picture" src="{{asset('home/avatar/eyes/woman/eyes_woman_04.png') }}" />
                                             </button>
+                                             <!-- <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesWoman2').src='home/avatar/eyes/woman/eyes_woman_05.png'">
+                                                <img class="picture" src="{{asset('home/avatar/eyes/woman/eyes_woman_05.png') }}" /> 
+                                            </button>-->
                                         </div>    
                                     </div>
                                     <div class="row">
@@ -375,7 +363,7 @@
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesWoman').src='home/avatar/glasses/glasses_02.png'">
                                                 <img class="picture" src="{{asset('home/avatar/glasses/glasses_02.png') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesWoman').src='home/avatar/glasses/glasses_00.png'">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesWoman').src='home/avatar/glasses/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -399,14 +387,14 @@
                                         </div>    
                                     </div>
 
-                                    <div class="row">
+                                    <!-- <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">ชุดซุปเปอร์ฮีโร่</span>
                                         <div class="col-12">
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesWoman').src='home/avatar/clothes/woman/hero/hero_woman_01.png'">
                                                 <img class="picture" src="{{asset('home/avatar/clothes/woman/hero/hero_woman_01.png') }}" />
                                             </button>
                                         </div>    
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -429,7 +417,7 @@
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponWoman').src='home/avatar/weapon/sword_04.png'">
                                                 <img class="picture" src="{{asset('home/avatar/weapon/sword_04.png') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponWoman').src='home/avatar/weapon/weapon_00.png'">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponWoman').src='home/avatar/weapon/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -480,7 +468,7 @@
                                             <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownWoman').src='home/avatar/other/crown_03.png'">
                                                 <img class="picture" src="{{asset('home/avatar/other/crown_03.png') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownWoman').src='home/avatar/other/crown_00.png'">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownWoman').src='home/avatar/other/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -492,7 +480,7 @@
                                             <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesWoman').src='home/avatar/other/gloves_01.png'">
                                                 <img class="picture" src="{{asset('home/avatar/other/gloves_01.png') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesWoman').src='home/avatar/other/gloves_00.png'">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesWoman').src='home/avatar/other/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -504,7 +492,7 @@
                                             <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorWoman').src='home/avatar/other/armor_01.png'">
                                                 <img class="picture" src="{{asset('home/avatar/other/armor_01.png') }}" />
                                             </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorWoman').src='home/avatar/other/armor_00.png'">
+                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorWoman').src='home/avatar/other/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
