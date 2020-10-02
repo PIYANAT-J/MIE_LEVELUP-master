@@ -233,10 +233,10 @@ class AdminController extends Controller
                                 $shopping_id[] = $transeeList->shopping_id;
                             }
                             for($i=0;$i<count($transee);$i++){
-                                $my_item = My_item::where('item_id', $itemlist[$i])->first();
+                                $my_item = My_item::where([['item_id', $itemlist[$i]],['USER_EMAIL', $transeection_item->USER_EMAIL]])->first();
+                                $item = Market_item::where('item_id', $itemlist[$i])->first();
                                 if($my_item == null){
                                     // dd("yes");
-                                    $item = Market_item::where('item_id', $itemlist[$i])->first();
                                     $my_item = new My_item();
                                     $my_item->my_item_name = $item->item_name;
                                     $my_item->my_item_img = $item->item_img;
@@ -251,8 +251,8 @@ class AdminController extends Controller
                                     $my_item->USER_EMAIL = $transeection_item->USER_EMAIL;
                                     $my_item->save();
                                 }else{
-                                    $my_item_amount_discount = $my_item->my_item_amount_discount + $itemamount[$i];
-                                    My_item::where('item_id', $itemlist[$i])->update(array('my_item_amount_discount' => $my_item_amount_discount));
+                                    $my_item_amount = $my_item->my_item_amount + $itemamount[$i];
+                                    My_item::where('item_id', $itemlist[$i])->update(array('my_item_amount' => $my_item_amount));
                                 }
                                 $sumamount = $item->item_amount_discount + $itemamount[$i];
                                 Market_item::where('item_id', $item->item_id)->update(array('item_amount_discount' => $sumamount));
