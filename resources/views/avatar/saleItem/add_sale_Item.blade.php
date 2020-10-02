@@ -75,86 +75,74 @@
                                         <div class="col-12" style="padding-left:0;"> 
                                             <div class="row">
                                                 <div class="col-12" >
-                                                    <p style="margin:0;color:#fff;">ทรงผม</p>
-                                                    @foreach($item as $key=>$allItem)
-                                                        @if($allItem->my_item_type == "hair")
-                                                            @if($allItem->my_item_gender == "man")
-                                                                <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/hair/man/{{$allItem->my_item_img}}'">
-                                                                    <img class="picture" src="{{asset('home/avatar/hair/man/'.$allItem->my_item_img) }}" />
-                                                                    <span class="font-sale2"><h5 style="margin:0;">{{$allItem->my_item_level}}</h5></span>
-                                                                </button>
-                                                            @else
-                                                                <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/hair/woman/{{$allItem->my_item_img}}'">
-                                                                    <img class="picture" src="{{asset('home/avatar/hair/woman/'.$allItem->my_item_img) }}" />
-                                                                    <span class="font-sale2"><h5 style="margin:0;">{{$allItem->my_item_level}}</h5></span>
-                                                                </button>
-                                                            @endif
+                                                    <!-- <p style="margin:0;color:#fff;">ทรงผม</p> -->
+                                                    @foreach($item as $key=>$text)
+                                                        @if($text->my_item_type == "hair")
+                                                            <p style="margin:0;color:#fff;">ทรงผม</p>
+                                                            @foreach($item as $key=>$allItem)
+                                                                    @if($allItem->my_item_type == "hair" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
+                                                                        @if($allItem->my_item_gender == "man")
+                                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/hair/man/{{$allItem->my_item_img}}'">
+                                                                                <img class="picture" src="{{asset('home/avatar/hair/man/'.$allItem->my_item_img) }}" />
+                                                                                <span class="font-sale2"><h5 style="margin:0;">{{$allItem->my_item_level}}</h5></span>
+                                                                            </button>
+                                                                        @else
+                                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/hair/woman/{{$allItem->my_item_img}}'">
+                                                                                <img class="picture" src="{{asset('home/avatar/hair/woman/'.$allItem->my_item_img) }}" />
+                                                                                <span class="font-sale2"><h5 style="margin:0;">{{$allItem->my_item_level}}</h5></span>
+                                                                            </button>
+                                                                        @endif
+                                                                    @endif
+                                                            @endforeach
+                                                            @break
                                                         @endif
                                                     @endforeach
-                                                    <!-- <button class="labelItem bgItem" value="1" data-amount="2" data-max="5" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/hair/man/hair_man_01.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/hair/man/hair_man_01.png') }}" />
-                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                    </button>
-                                                    <button class="labelItem bgItem" value="2" data-amount="1" data-max="3" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/hair/man/hair_man_02.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/hair/man/hair_man_02.png') }}" />
-                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                    </button> -->
                                                 </div>    
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p style="margin:0;color:#fff;">สีตา</p>
-                                                    @foreach($item as $key=>$allItem)
-                                                        @if($allItem->my_item_type == "eyes")
-                                                            @if($allItem->my_item_gender == "man")
-                                                                <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/eyes/man/{{$allItem->my_item_img}}'">
-                                                                    <img class="picture" src="{{asset('home/avatar/eyes/man/'.$allItem->my_item_img) }}" />
-                                                                    <span class="font-sale2"><h5 style="margin:0;">{{$allItem->my_item_level}}</h5></span>
-                                                                </button>
-                                                            @else
-                                                                <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/eyes/woman/{{$allItem->my_item_img}}'">
-                                                                    <img class="picture" src="{{asset('home/avatar/eyes/woman/'.$allItem->my_item_img) }}" />
-                                                                    <span class="font-sale2"><h5 style="margin:0;">{{$allItem->my_item_level}}</h5></span>
-                                                                </button>
-                                                            @endif
+                                                    <!-- <p style="margin:0;color:#fff;">สีตา</p> -->
+                                                    @foreach($item as $key=>$text)
+                                                        @if($text->my_item_type == "eyes")
+                                                            <p style="margin:0;color:#fff;">สีตา</p>
+                                                            @foreach($item as $key=>$allItem)
+                                                                @if($allItem->my_item_type == "eyes" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
+                                                                    @if($allItem->my_item_gender == "man")
+                                                                        <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/eyes/man/{{$allItem->my_item_img}}'">
+                                                                            <img class="picture" src="{{asset('home/avatar/eyes/man/'.$allItem->my_item_img) }}" />
+                                                                            <span class="font-sale2"><h5 style="margin:0;">{{$allItem->my_item_level}}</h5></span>
+                                                                        </button>
+                                                                    @else
+                                                                        <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/eyes/woman/{{$allItem->my_item_img}}'">
+                                                                            <img class="picture" src="{{asset('home/avatar/eyes/woman/'.$allItem->my_item_img) }}" />
+                                                                            <span class="font-sale2"><h5 style="margin:0;">{{$allItem->my_item_level}}</h5></span>
+                                                                        </button>
+                                                                    @endif
+                                                                @endif
+                                                            @endforeach
+                                                            @break
                                                         @endif
                                                     @endforeach
-                                                    <!-- <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/eyes/man/shop/eyes_man_01.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/eyes/man/shop/eyes_man_01.png') }}" />
-                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                    </button>
-                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/eyes/man/shop/eyes_man_02.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/eyes/man/shop/eyes_man_02.png') }}" />
-                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                    </button>
-                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/eyes/man/shop/eyes_man_03.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/eyes/man/shop/eyes_man_03.png') }}" />
-                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                    </button>
-                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/eyes/man/shop/eyes_man_04.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/eyes/man/shop/eyes_man_04.png') }}" />
-                                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                                    </button> -->
                                                 </div>    
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p style="margin:0;color:#fff;">แว่นตา</p>
-                                                    @foreach($item as $key=>$allItem)
-                                                        @if($allItem->my_item_type == "glasses")
-                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/glasses/{{$allItem->my_item_img}}'">
-                                                                <img class="picture" src="{{asset('home/avatar/glasses/'.$allItem->my_item_img) }}" />
-                                                            </button>
+                                                    <!-- <p style="margin:0;color:#fff;">แว่นตา</p> -->
+                                                    @foreach($item as $key=>$text)
+                                                        @if($text->my_item_type == "glasses")
+                                                            <p style="margin:0;color:#fff;">แว่นตา</p>
+                                                            @foreach($item as $key=>$allItem)
+                                                                @if($allItem->my_item_type == "glasses" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
+                                                                    <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/glasses/{{$allItem->my_item_img}}'">
+                                                                        <img class="picture" src="{{asset('home/avatar/glasses/'.$allItem->my_item_img) }}" />
+                                                                    </button>
+                                                                @endif
+                                                            @endforeach
+                                                            @break
                                                         @endif
                                                     @endforeach
-                                                    <!-- <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/glasses/glasses_01.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/glasses/glasses_01.png') }}" />
-                                                    </button>
-                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/glasses/glasses_02.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/glasses/glasses_02.png') }}" />
-                                                    </button> -->
                                                 </div>    
                                             </div>
                                             <!-- <div class="row">
@@ -174,62 +162,61 @@
                                         <div class="col-12" style="padding-left:0;"> 
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p style="margin:0;color:#fff;">ชุดไปรเวท</p>
-                                                    @foreach($item as $key=>$allItem)
-                                                        @if($allItem->my_item_type == "clothes")
-                                                            @if($allItem->my_item_gender == "man")
-                                                                @if($allItem->my_item_other != "hero")
-                                                                    <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/{{$allItem->my_item_img}}'">
-                                                                        <img class="picture" src="{{asset('home/avatar/clothes/man/'.$allItem->my_item_img) }}" />
-                                                                    </button>
-                                                                @endif
-                                                            @else
-                                                                @if($allItem->my_item_other != "hero")
-                                                                    <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/woman/{{$allItem->my_item_img}}'">
-                                                                        <img class="picture" src="{{asset('home/avatar/clothes/woman/'.$allItem->my_item_img) }}" />
-                                                                    </button>
-                                                                @endif
+                                                    <!-- <p style="margin:0;color:#fff;">ชุดไปรเวท</p> -->
+                                                    @foreach($item as $key=>$text)
+                                                        @if($text->my_item_type == "clothes")
+                                                            @if($text->my_item_other != "hero")
+                                                                <p style="margin:0;color:#fff;">ชุดไปรเวท</p>
+                                                                @foreach($item as $key=>$allItem)
+                                                                    @if($allItem->my_item_type == "clothes" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
+                                                                        @if($allItem->my_item_gender == "man")
+                                                                            @if($allItem->my_item_other != "hero")
+                                                                                <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/{{$allItem->my_item_img}}'">
+                                                                                    <img class="picture" src="{{asset('home/avatar/clothes/man/'.$allItem->my_item_img) }}" />
+                                                                                </button>
+                                                                            @endif
+                                                                        @else
+                                                                            @if($allItem->my_item_other != "hero")
+                                                                                <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/woman/{{$allItem->my_item_img}}'">
+                                                                                    <img class="picture" src="{{asset('home/avatar/clothes/woman/'.$allItem->my_item_img) }}" />
+                                                                                </button>
+                                                                            @endif
+                                                                        @endif
+                                                                    @endif
+                                                                @endforeach
+                                                                @break
                                                             @endif
                                                         @endif
                                                     @endforeach
-                                                    <!-- <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/clothes_man_01.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/clothes/man/clothes_man_01.png') }}" />
-                                                    </button>
-                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/clothes_man_02.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/clothes/man/clothes_man_02.png') }}" />
-                                                    </button>
-                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/clothes_man_03.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/clothes/man/clothes_man_03.png') }}" />
-                                                    </button>
-                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/clothes_man_04.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/clothes/man/clothes_man_04.png') }}" />
-                                                    </button> -->
                                                 </div>    
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p style="margin:0;color:#fff;">ชุดซุปเปอร์ฮีโร่</p>
-                                                    @foreach($item as $key=>$allItem)
-                                                        @if($allItem->my_item_type == "clothes")
-                                                            @if($allItem->my_item_gender == "man")
-                                                                @if($allItem->my_item_other == "hero")
-                                                                    <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/hero/{{$allItem->my_item_img}}'">
-                                                                        <img class="picture" src="{{asset('home/avatar/clothes/man/hero/'.$allItem->my_item_img) }}" />
-                                                                    </button>
+                                                    <!-- <p style="margin:0;color:#fff;">ชุดซุปเปอร์ฮีโร่</p> -->
+                                                    @foreach($item as $key=>$text)
+                                                        @if($text->my_item_type == "clothes")
+                                                            <p style="margin:0;color:#fff;">ชุดซุปเปอร์ฮีโร่</p>
+                                                            @foreach($item as $key=>$allItem)
+                                                                @if($allItem->my_item_type == "clothes" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
+                                                                    @if($allItem->my_item_gender == "man")
+                                                                        @if($allItem->my_item_other == "hero")
+                                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/hero/{{$allItem->my_item_img}}'">
+                                                                                <img class="picture" src="{{asset('home/avatar/clothes/man/hero/'.$allItem->my_item_img) }}" />
+                                                                            </button>
+                                                                        @endif
+                                                                    @else
+                                                                        @if($allItem->my_item_other == "hero")
+                                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/woman/hero/{{$allItem->my_item_img}}'">
+                                                                                <img class="picture" src="{{asset('home/avatar/clothes/woman/hero/'.$allItem->my_item_img) }}" />
+                                                                            </button>
+                                                                        @endif
+                                                                    @endif
                                                                 @endif
-                                                            @else
-                                                                @if($allItem->my_item_other == "hero")
-                                                                    <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/woman/hero/{{$allItem->my_item_img}}'">
-                                                                        <img class="picture" src="{{asset('home/avatar/clothes/woman/hero/'.$allItem->my_item_img) }}" />
-                                                                    </button>
-                                                                @endif
-                                                            @endif
+                                                            @endforeach
+                                                            @break
                                                         @endif
                                                     @endforeach
-                                                    <!-- <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/hero/hero_man_03.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/clothes/man/hero/hero_man_03.png') }}" />
-                                                    </button> -->
                                                 </div>    
                                             </div>
                                         </div>
@@ -241,26 +228,20 @@
                                         <div class="col-12" style="padding-left:0;"> 
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p style="margin:0;color:#fff;">ดาบ</p>
-                                                    @foreach($item as $key=>$allItem)
-                                                        @if($allItem->my_item_type == "weapon")
-                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/weapon/{{$allItem->my_item_img}}'">
-                                                                <img class="picture" src="{{asset('home/avatar/weapon/'.$allItem->my_item_img) }}" />
-                                                            </button>
+                                                    <!-- <p style="margin:0;color:#fff;">ดาบ</p> -->
+                                                    @foreach($item as $key=>$text)
+                                                        @if($text->my_item_type == "weapon")
+                                                            <p style="margin:0;color:#fff;">ดาบ</p>
+                                                            @foreach($item as $key=>$allItem)
+                                                                @if($allItem->my_item_type == "weapon" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
+                                                                    <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/weapon/{{$allItem->my_item_img}}'">
+                                                                        <img class="picture" src="{{asset('home/avatar/weapon/'.$allItem->my_item_img) }}" />
+                                                                    </button>
+                                                                @endif
+                                                            @endforeach
+                                                            @break
                                                         @endif
                                                     @endforeach
-                                                    <!-- <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/weapon/sword_01.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/weapon/sword_01.png') }}" />
-                                                    </button>
-                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/weapon/sword_02.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/weapon/sword_02.png') }}" />
-                                                    </button>
-                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/weapon/sword_03.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/weapon/sword_03.png') }}" />
-                                                    </button>
-                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/weapon/sword_04.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/weapon/sword_04.png') }}" />
-                                                    </button> -->
                                                 </div>    
                                             </div>
 
@@ -303,63 +284,66 @@
                                         <div class="col-12" style="padding-left:0;"> 
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p style="margin:0;color:#fff;">มงกุฏ/หมวก</p>
-                                                    @foreach($item as $key=>$allItem)
-                                                        @if($allItem->my_item_type == "other")
-                                                            @if($allItem->my_item_other == "crown")
-                                                                @if($allItem->my_item_amount_discount != $allItem->my_item_amount)
-                                                                    <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/{{$allItem->my_item_img}}'">
-                                                                        <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
-                                                                    </button>
+                                                    <!-- <p style="margin:0;color:#fff;">มงกุฏ/หมวก</p> -->
+                                                    @foreach($item as $key=>$text)
+                                                        @if($text->my_item_other == "crown")
+                                                            <p style="margin:0;color:#fff;">มงกุฏ/หมวก</p>
+                                                            @foreach($item as $key=>$allItem)
+                                                                @if($allItem->my_item_type == "other" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
+                                                                    @if($allItem->my_item_other == "crown")
+                                                                        @if($allItem->my_item_amount_discount != $allItem->my_item_amount)
+                                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/{{$allItem->my_item_img}}'">
+                                                                                <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
+                                                                            </button>
+                                                                        @endif
+                                                                    @endif
                                                                 @endif
-                                                            @endif
+                                                            @endforeach
+                                                            @break
                                                         @endif
                                                     @endforeach
-                                                    <!-- <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/crown_01.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/other/crown_01.png') }}" />
-                                                    </button>
-                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/crown_02.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/other/crown_02.png') }}" />
-                                                    </button>
-                                                    <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/crown_03.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/other/crown_03.png') }}" />
-                                                    </button> -->
                                                 </div>    
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p style="margin:0;color:#fff;">ถุงมือ</p>
-                                                    @foreach($item as $key=>$allItem)
-                                                        @if($allItem->my_item_type == "other")
-                                                            @if($allItem->my_item_other == "gloves")
-                                                                <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/{{$allItem->my_item_img}}'">
-                                                                    <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
-                                                                </button>
-                                                            @endif
+                                                    <!-- <p style="margin:0;color:#fff;">ถุงมือ</p> -->
+                                                    @foreach($item as $key=>$text)
+                                                        @if($text->my_item_other == "gloves")
+                                                            <p style="margin:0;color:#fff;">ถุงมือ</p>
+                                                            @foreach($item as $key=>$allItem)
+                                                                @if($allItem->my_item_type == "other" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
+                                                                    @if($allItem->my_item_other == "gloves")
+                                                                        <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/{{$allItem->my_item_img}}'">
+                                                                            <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
+                                                                        </button>
+                                                                    @endif
+                                                                @endif
+                                                            @endforeach
+                                                            @break
                                                         @endif
                                                     @endforeach
-                                                    <!-- <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/gloves_01.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/other/gloves_01.png') }}" />
-                                                    </button> -->
                                                 </div>    
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p style="margin:0;color:#fff;">เสื้อเกราะ</p>
-                                                    @foreach($item as $key=>$allItem)
-                                                        @if($allItem->my_item_type == "other")
-                                                            @if($allItem->my_item_other == "armor")
-                                                                <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/{{$allItem->my_item_img}}'">
-                                                                    <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
-                                                                </button>
-                                                            @endif
+                                                    <!-- <p style="margin:0;color:#fff;">เสื้อเกราะ</p> -->
+                                                    @foreach($item as $key=>$text)
+                                                        @if($text->my_item_other == "armor")
+                                                            <p style="margin:0;color:#fff;">เสื้อเกราะ</p>
+                                                            @foreach($item as $key=>$allItem)
+                                                                @if($allItem->my_item_type == "other" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
+                                                                    @if($allItem->my_item_other == "armor")
+                                                                        <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/{{$allItem->my_item_img}}'">
+                                                                            <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
+                                                                        </button>
+                                                                    @endif
+                                                                @endif
+                                                            @endforeach
+                                                            @break
                                                         @endif
                                                     @endforeach
-                                                    <!-- <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/armor_01.png'">
-                                                        <img class="picture" src="{{asset('home/avatar/other/armor_01.png') }}" />
-                                                    </button> -->
                                                 </div>    
                                             </div>
 
@@ -472,6 +456,23 @@
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+@if( Session::has('success'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // $('#address').modal();
+            Swal.fire({
+                // position: 'top-end',
+                icon: 'success',
+                title: '{{ Session::get('success') }}',
+                // title: 'Oops...',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        });
+    </script>
+@endif
+
 <script>
 $(document).ready(function(){
   $('[data-toggle="popover"]').popover({
@@ -513,7 +514,11 @@ $(document).ready(function(){
             $('.labelItem.bgItem').on('click', function(){
                 var item_id = $(this).val();
                 var amount = $(this).data('amount');
+                var discount = $(this).data('discount');
                 $max = $(this).data('max');
+
+                $max = $max - discount;
+                console.log($max);
 
                 $('input[name="num2"]').val(1);
                 $('input[name="item_id"]').val(item_id);

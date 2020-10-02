@@ -20,6 +20,7 @@ class saleItemController extends Controller
         $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
         // $item = My_item::where([['USER_EMAIL', Auth::user()->email], ['my_item_status', 'false']])->get();
         $marketItem = Market_item::where([['USER_EMAIL', Auth::user()->email]])->get();
+        // dd($marketItem);
         return view('avatar.saleItem.sale_item', compact('guest_user', 'userKyc', 'shopping', 'marketItem'));
     }
 
@@ -28,67 +29,35 @@ class saleItemController extends Controller
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
         $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
         $item = My_item::where([['USER_EMAIL', Auth::user()->email], ['my_item_status', 'false']])->get();
-        // foreach($item as $itemModal){
-        //     if($itemModal->item_type == "clothes"){
-        //         if($itemModal->item_gender == "woman"){
-        //             if($itemModal->item_other == "hero"){
-        //             }else{
-        //             }
-        //         }elseif($itemModal->item_gender == "man"){
-        //             if($itemModal->item_other == "hero"){
-        //             }else{
-        //             }
-        //         }
-        //     }elseif($itemModal->item_type == "eyes"){
-        //         if($itemModal->item_gender == "woman"){
-        //             if($itemModal->item_other == "hero"){
-        //             }else{
-        //             }
-        //         }elseif($itemModal->item_gender == "man"){
-        //             if($itemModal->item_other == "hero"){
-        //             }else{
-        //             }
-        //         }
-        //     }elseif($itemModal->item_type == "glasses"){
-        //     }elseif($itemModal->item_type == "hair"){
-        //         if($itemModal->item_gender == "woman"){
-        //             if($itemModal->item_other == "hero"){
-        //             }else{
-        //             }
-        //         }elseif($itemModal->item_gender == "man"){
-        //             if($itemModal->item_other == "hero"){
-        //             }else{
-        //             }
-        //         }
-        //     }elseif($itemModal->item_type == "other"){
-        //     }elseif($itemModal->item_type == "weapon"){
-        //     }
-        // }
-        // dd($item);
         return view('avatar.saleItem.add_sale_item', compact('guest_user', 'userKyc', 'shopping', 'item'));
     }
 
     public function add_saleItem(Request $request){
         if($request->input('submit') == "sale_Item"){
-            dd($request);
-            $marketItem = Market_item::where([['item_id', $request->input('item_id')]])->get();
-            if(count($marketItem) > 0){
-                dd(count($marketItem));
+            // dd($request);
+            $my_item = My_item::where([['item_id', $request->input('item_id')], ['USER_EMAIL', Auth::user()->email]])->first();
+            $marketItem = Market_item::where([['item_id', $request->input('item_id')]])->first();
+            if($marketItem != null){
+                // dd($marketItem);
                 $add_market = new Market_item();
                 $add_market->item_name = $marketItem->item_name;
                 $add_market->item_price = $request->input('price');
-                $add_market->item_img = $marketItem->item_name;
-                $add_market->item_gender = $marketItem->item_name;
-                $add_market->item_type = $marketItem->item_name;
-                $add_market->item_other = $marketItem->item_name;
-                $add_market->item_description = $marketItem->item_name;
-                $add_market->item_level = $marketItem->item_name;
+                $add_market->item_img = $marketItem->item_img;
+                $add_market->item_gender = $marketItem->item_gender;
+                $add_market->item_type = $marketItem->item_type;
+                $add_market->item_other = $marketItem->item_other;
+                $add_market->item_description = $marketItem->item_description;
+                $add_market->item_level = $marketItem->item_level;
                 $add_market->item_amount = $request->input('amount');
                 $add_market->USER_ID = Auth::user()->id;
                 $add_market->USER_EMAIL = Auth::user()->email;
+
+                $sumamount = $my_item->my_item_amount_discount + $request->input('amount');
+                My_item::where([['item_id', $request->input('item_id')], ['USER_EMAIL', Auth::user()->email]])->update(array("my_item_amount_discount" => $sumamount));
+                // dd($add_market);
                 $add_market->save();
             }
-            
+            return back()->with("success","ประกาศขายเรียบร้อย");
         }
     }
 }
