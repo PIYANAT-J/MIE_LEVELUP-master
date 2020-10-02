@@ -307,9 +307,11 @@
                                                     @foreach($item as $key=>$allItem)
                                                         @if($allItem->my_item_type == "other")
                                                             @if($allItem->my_item_other == "crown")
-                                                                <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/{{$allItem->my_item_img}}'">
-                                                                    <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
-                                                                </button>
+                                                                @if($allItem->my_item_amount_discount != $allItem->my_item_amount)
+                                                                    <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/{{$allItem->my_item_img}}'">
+                                                                        <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
+                                                                    </button>
+                                                                @endif
                                                             @endif
                                                         @endif
                                                     @endforeach

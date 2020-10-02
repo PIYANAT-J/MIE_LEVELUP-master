@@ -100,9 +100,12 @@ class Callback_scbController extends Controller
                                 $itemamount[] = $transeeList->item_amount;
                                 $shopping_id[] = $transeeList->shopping_id;
                             }
-                            $all_item = Market_item::all();
-                            foreach($all_item as $item){
-                                if(in_array($item->item_id, $itemlist)){
+                            // dd($transee);
+                            for($i=0;$i<count($transee);$i++){
+                                $my_item = My_item::where('item_id', $itemlist[$i])->first();
+                                if($my_item == null){
+                                    // dd("yes");
+                                    $item = Market_item::where('item_id', $itemlist[$i])->first();
                                     $my_item = new My_item();
                                     $my_item->my_item_name = $item->item_name;
                                     $my_item->my_item_img = $item->item_img;
@@ -116,18 +119,19 @@ class Callback_scbController extends Controller
                                     $my_item->USER_ID = $transeection_item->USER_ID;
                                     $my_item->USER_EMAIL = $transeection_item->USER_EMAIL;
                                     $my_item->save();
-
-                                    $sumamount = $item->item_amount_discount + $itemamount[$i];
-
-                                    Market_item::where('item_id', $item->item_id)->update(array('item_amount_discount' => $sumamount));
-                                    // $market->item_amount_discount = $itemamount[$i];
-                                    // $market->save();
-
-                                    DB::table('shopping_cart')->where('shopping_cart_id', $shopping_id[$i])->update(['shopping_cart_status'=>"true"]);
-
-                                    Transeection_buyItem::where([['transeection_type', $transeection_item->transeection_type], ['transeection_status', 'false'], ['USER_EMAIL', $transeection_item->USER_EMAIL]])->delete();
-                                    $i++;
+                                }else{
+                                    $my_item_amount_discount = $my_item->my_item_amount_discount + $itemamount[$i];
+                                    My_item::where('item_id', $itemlist[$i])->update(array('my_item_amount_discount' => $my_item_amount_discount));
                                 }
+                                $sumamount = $item->item_amount_discount + $itemamount[$i];
+                                Market_item::where('item_id', $item->item_id)->update(array('item_amount_discount' => $sumamount));
+                                // $market->item_amount_discount = $itemamount[$i];
+                                // $market->save();
+
+                                DB::table('shopping_cart')->where('shopping_cart_id', $shopping_id[$i])->update(['shopping_cart_status'=>"true"]);
+
+                                Transeection_buyItem::where([['transeection_type', $transeection_item->transeection_type], ['transeection_status', 'false'], ['USER_EMAIL', $transeection_item->USER_EMAIL]])->delete();
+
                             }
                         }
                     }

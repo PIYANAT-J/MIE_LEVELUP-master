@@ -116,7 +116,7 @@
 
                                             <div class="col-sm-11 col-md-2 col-lg-11 col-xl-3 align-self-center" style="padding:0;">
                                                 <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
-                                                    <h4 class="total" style="margin:0;font-weight:800;">฿<span>{{$shoppingLits->shopping_cart_price}}</span></h4>
+                                                    <h4 class="total" style="margin:0;font-weight:800;">฿<span>{{number_format($shoppingLits->shopping_cart_price)}}</span></h4>
                                                     <p class="mr-2" style="margin:0;color:#ce0005;"><a style="color: #b2b2b2;text-decoration:line-through;">฿3,400 </a> (-{{$shoppingLits->item_discount}}%)<p>
                                                 </span>
                                             </div>
@@ -279,7 +279,7 @@
                         allamount.push($(this).parents('.data-div').find('.quantity-num').val());
                         allshopp.push($(this).attr('data-shop'));
                     });
-                    $('.sumtotal span').html(total);
+                    $('.sumtotal span').html(new Intl.NumberFormat().format(total));
                     document.querySelector('input#sumTotal').value = total;
                     document.querySelector('input#allTotal').value = alltotal.join(", ");
                     document.querySelector('input#allamount').value = allamount.join(", ");
