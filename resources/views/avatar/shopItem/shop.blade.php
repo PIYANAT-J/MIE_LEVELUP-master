@@ -820,7 +820,7 @@ $(function() {
                 $(this).parents('form').find('input[name="amountItem"]').val($quantityNum);
                 dataprice = $(this).parent().find('.quantity-num').attr('dataprice');
                 sum = (+dataprice)*$quantityNum;
-                $(this).parents('form').find('.total span').text(sum);
+                $(this).parents('form').find('.total span').text(new Intl.NumberFormat().format(sum));
                 $(this).parents('form').find('input[name="sumprice"]').val(sum);
                 console.log($quantityNum);
                 console.log(sum);
@@ -835,7 +835,7 @@ $(function() {
                 $(this).parents('form').find('input[name="amountItem"]').val($quantityNum);
                 dataprice = $(this).parent().find('.quantity-num').attr('dataprice');
                 sum = (+dataprice)*$quantityNum;
-                $(this).parents('form').find('.total span').text(sum);
+                $(this).parents('form').find('.total span').text(new Intl.NumberFormat().format(sum));
                 $(this).parents('form').find('input[name="sumprice"]').val(sum);
                 console.log($quantityNum);
                 console.log(sum);

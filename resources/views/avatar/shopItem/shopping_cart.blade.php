@@ -122,9 +122,13 @@
                                             </div>
 
                                             <div class="col-1 my-4 text-center" style="padding:0;">
-                                                <button class="btn-none">
-                                                    <img style="width:100%;cursor:pointer;" src="{{asset('icon/trash2.svg') }}" />
-                                                </button>
+                                                <form action="{{route('addShoppingCart')}}" method="post">
+                                                    @csrf
+                                                    <button class="btn-none" name="Delete" value="Delete">
+                                                        <img style="width:100%;cursor:pointer;" src="{{asset('icon/trash2.svg') }}" />
+                                                        <input type="hidden" name="shopping_cart_id" value="{{$shoppingLits->shopping_cart_id}}">
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     @endforeach
@@ -235,7 +239,7 @@
                     // $(this).parents('form').find('input[name="amountItem"]').val($quantityNum);
                     dataprice = $(this).parent().find('.quantity-num').attr('dataprice');
                     sum = (+dataprice)*$quantityNum;
-                    $(this).parents('.data-div').find('.total span').text(sum);
+                    $(this).parents('.data-div').find('.total span').text(new Intl.NumberFormat().format(sum));
                     // $(this).parents('form').find('input[name="sumprice"]').val(sum);
                     $(this).parents('.data-div').find('input[name="accept_01"]').attr('data-price', sum);
                     console.log(dataprice);
@@ -253,7 +257,7 @@
                     // $(this).parents('form').find('input[name="amountItem"]').val($quantityNum);
                     dataprice = $(this).parent().find('.quantity-num').attr('dataprice');
                     sum = (+dataprice)*$quantityNum;
-                    $(this).parents('.data-div').find('.total span').text(sum);
+                    $(this).parents('.data-div').find('.total span').text(new Intl.NumberFormat().format(sum));
                     // $(this).parents('form').find('input[name="sumprice"]').val(sum);
                     $(this).parents('.data-div').find('input[name="accept_01"]').attr('data-price', sum);
                     console.log(dataprice);
@@ -335,4 +339,21 @@
         })();
     });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+@if( Session::has('delete'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // $('#address').modal();
+            Swal.fire({
+                // position: 'top-end',
+                icon: 'success',
+                title: '{{ Session::get('delete') }}',
+                // title: 'Oops...',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        });
+    </script>
+@endif
 @endsection
