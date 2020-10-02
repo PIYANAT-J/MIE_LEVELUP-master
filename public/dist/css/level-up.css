@@ -5614,6 +5614,7 @@ input[type=number]
   left: 0;
   right: 0%;
   margin: auto;
+  z-index:10;
 }
 
 .bg-simulator{
