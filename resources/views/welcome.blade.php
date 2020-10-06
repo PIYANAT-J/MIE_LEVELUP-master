@@ -926,6 +926,10 @@ $(document).ready(function() {
         navText : ["<i class='icon-prev'></i>","<i class='icon-next'></i>"],
         responsiveClass:true,
         responsive:{
+            320:{
+                items:1,
+                nav:false
+            },
             576:{
                 items:1.7,
                 nav:false
@@ -965,6 +969,10 @@ $(document).ready(function() {
         navText : ["<i class='icon-prev'></i>","<i class='icon-next'></i>"],
         responsiveClass:true,
         responsive:{
+            320:{
+                items:1,
+                nav:false
+            },
             576:{
                 items:1.7,
                 nav:false
@@ -1007,6 +1015,10 @@ $(document).ready(function() {
         navText : ["<i class='icon-prev'></i>","<i class='icon-next'></i>"],
         responsiveClass:true,
         responsive:{
+            320:{
+                items:1.3,
+                nav:false
+            },
             576:{
                 items:2,
                 nav:false
@@ -1049,6 +1061,10 @@ $(document).ready(function() {
         navText : ["<i class='icon-prev'></i>","<i class='icon-next'></i>"],
         responsiveClass:true,
         responsive:{
+            320:{
+                items:1.3,
+                nav:false
+            },
             576:{
                 items:2,
                 nav:false
@@ -1088,46 +1104,33 @@ $(document).ready(function() {
         navText : ["<i class='icon-prev'></i>","<i class='icon-next'></i>"],
         responsiveClass:true,
         responsive:{
-            0:{
+            320:{
+                items:1.3,
+                nav:false
+            },
+            576:{
                 items:2,
                 nav:false
             },
-            600:{
+            768:{
                 items:3,
-                nav:true
+                nav:false
             },
-            730:{
-                items:3.3,
+            992:{
+                items:4,
                 nav:true
-            },
-            980:{
-                items:4.3,
-                nav:true
-            },
-            1000:{
-                items:5,
-                nav:true,
-                loop:false
             },
             1280:{
+                items:5,
+                nav:true
+            },
+            1360:{
                 items:6,
-                nav:true,
-                loop:false
-            },
-            1600:{
-                items:7,
-                nav:true,
-                loop:false
-            },
-            1680 :{
-                items:7.3,
-                nav:true,
-                loop:false
+                nav:true
             },
             1920:{
-                items:8.4,
-                nav:true,
-                loop:false
+                items:8,
+                nav:true
             }
         }
     })

@@ -17,11 +17,11 @@
                     <div class="col-12">
                         <div class="row mt-2 ">
                             <div class="col-12" >
-                                <div class="row mx-0 py-2" style="background-color:#f2f2f2;color:#000;">
+                                <div class="row d-flex align-items-center py-2" style="background-color:#f2f2f2;color:#000;">
                                     <div class="col-6"><p style="margin:0;font-weight: 800;">ชื่อเกม</p></div>
-                                    <div class="col-2 text-center"><p style="margin:0;font-weight: 800;">เล่นสะสม</p></div>
-                                    <div class="col-2 text-center"><p style="margin:0;font-weight: 800;">เล่นล่าสุด</p></div>
-                                    <div class="col-2 text-center"><p style="margin:0;font-weight: 800;">อัพเดต</p></div>
+                                    <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center"><p style="margin:0;font-weight: 800;">เล่นสะสม</p></div>
+                                    <div class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block d-md-block text-center"><p style="margin:0;font-weight: 800;">เล่นล่าสุด</p></div>
+                                    <div class="col-3 col-md-2 col-lg-2 col-xl-2  text-center"><p style="margin:0;font-weight: 800;">อัพเดต</p></div>
                                 </div>
                             </div>
                         </div>
@@ -29,22 +29,22 @@
                             <div class="col-12" >
                                 @if(isset($game))
                                     @foreach($game as $Game)
-                                                <div class="row mx-0 py-2 line2">
+                                                <div class="row line2">
                                                     <div class="col-6">
                                                         <div class="row">
-                                                            <div class="col-3">
+                                                            <div class="col-lg-4 col-xl-3 d-none d-lg-block d-xl-block mb-2">
                                                                 <img class="shelf-pic" src="{{ asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE) }}" />
                                                             </div>
-                                                            <div class="col-9" style="color:#000;">
+                                                            <div class="col-12 col-lg-8 col-xl-9" style="color:#000;">
                                                                 <p style="margin:0;font-weight:500;">{{ $Game->GAME_NAME }}</p>
-                                                                <p style="margin:0;">{{ $Game->RATED_B_L }} • Other</p>
+                                                                <p class="d-none d-lg-block d-xl-block" style="margin:0;">{{ $Game->RATED_B_L }} • Other</p>
                                                                 <p style="margin:0;">เวอร์ชั่น 1.03</p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-2 text-center" style="color:#000;"><p style="margin:0;">5 ชั่วโมง</p></div>
-                                                    <div class="col-2 text-center" style="color:#000;"><p style="margin:0;">16/05/63</p></div>
-                                                    <div class="col-2 text-center" style="color:#000;">
+                                                    <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center" style="color:#000;"><p style="margin:0;">5 ชั่วโมง</p></div>
+                                                    <div class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block d-md-block" style="color:#000;"><p style="margin:0;">16/05/63</p></div>
+                                                    <div class="col-3 col-md-2 col-lg-2 col-xl-2  text-center" style="color:#000;">
                                                         <p style="margin:0;">ล่าสุด</p>
                                                     <!-- <button class="btn-update-game">อัพเดต</button> -->
                                                     </div>
