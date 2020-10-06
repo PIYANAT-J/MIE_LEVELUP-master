@@ -135,7 +135,7 @@
 
                                                 <div class="col-3 my-3">
                                                     <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
-                                                        <h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{$itemprice[$i]}}</h4>
+                                                        <h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{number_format($itemprice[$i])}}</h4>
                                                         <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-{{$shoppingList->item_discount}}%)</p>
                                                     </span>
                                                 </div>
@@ -160,7 +160,7 @@
 
                                     <div class="col-3 my-3">
                                         <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
-                                            <h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{$itemprice[$i]}}</h4>
+                                            <h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{number_format($itemprice[$i])}}</h4>
                                             <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-{{$shoppingList->item_discount}}%)</p>
                                         </span>
                                     </div> --}}
@@ -205,7 +205,7 @@
 
                                 <div class="row" style="border-bottom:1px solid #455160">
                                     <div class="col-6 font-payment2 py-3 "><p style="margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></div>
-                                    <div class="col-6 text-right font-price align-self-center"><h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{$transeection->transeection_price}}</h4></div>
+                                    <div class="col-6 text-right font-price align-self-center"><h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{number_format($transeection->transeection_price)}}</h4></div>
                                 </div>
 
                                 <div class="row py-3" style="border-bottom:1px solid #455160">

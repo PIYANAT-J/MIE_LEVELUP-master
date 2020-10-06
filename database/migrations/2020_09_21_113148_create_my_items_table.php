@@ -23,6 +23,7 @@ class CreateMyItemsTable extends Migration
             $table->text('my_item_description')->collation('utf8_unicode_ci')->nullable();
             $table->integer('my_item_level')->default(1);
             $table->integer('my_item_amount')->default(1);
+            $table->integer('my_item_amount_discount')->default(0);
             $table->integer('item_id')->collation('utf8_unicode_ci')->nullable();
             $table->set('my_item_status', ['true', 'false'])->collation('utf8_unicode_ci')->default('false');
             $table->integer('USER_ID');

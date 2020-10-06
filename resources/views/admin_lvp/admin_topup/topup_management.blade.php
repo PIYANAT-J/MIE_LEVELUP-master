@@ -322,6 +322,7 @@
                             </button>
                             <input type="hidden" name="confirm_at" value="{{ date('Y-m-d H:i:s') }}">  
                             <input type="hidden" name="id" value="{{ $transferModal->id }}">
+                            <input type="hidden" name="transferInvoice" value="{{ $transferModal->transferInvoice }}">
                         </form>
                     </div>
                 </div>
