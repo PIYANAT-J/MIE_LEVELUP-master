@@ -41,7 +41,7 @@
                 <h6 style="color:#fff;font-weight:800;">ยินดีต้อนรับ , Level Up</h6>
             </div>
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 bgLoginwh">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 bgLoginwh">
            <div class="center-div2">
                 <div class="row">
                     <div class="col-6">
@@ -113,7 +113,7 @@
                             </div>
                             <div class="row mb-2">
                                 <div class="col-12">
-                                    <button type="submit" name="button" id="submit" value="{{ __('เข้าสู่ระบบ') }}" class="btn-login-2 p">เข้าสู่ระบบ</button>
+                                    <button type="submit" name="button" id="submit" value="{{ __('เข้าสู่ระบบ') }}" class="btn-login-2 "><p style="margin:0;">เข้าสู่ระบบ</p></button>
                                 </div>
                             </div>
                         </form>
@@ -121,7 +121,7 @@
                             <strong>Login With Facebook</strong>
                         </a> -->
                         
-                        <div class="col-12 text-center">
+                        <div class="col-12 text-center mb-3">
                             <a href="{{ route('login-google') }}">
                                 <button class="btn-none">
                                     <!-- <i class="icon-FBLogo" style=" margin-right:10px;"></i> -->

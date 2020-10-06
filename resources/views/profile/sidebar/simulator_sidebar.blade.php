@@ -13,9 +13,31 @@
                             <h5 style="margin:0;">สถานะ : ผู้ใช้ทั่วไป</h5>
                             <h5 style="margin:0;">เป็นสมาชิก : <br> {{ Auth::user()->created_at }}</h5>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12" style="height:530px">
+                            <!-- ชาย -->
+                            <!-- <div class="item my-4">
+                                <img id="headMan" class="headManImg" src="{{asset('home/avatar/head/head_man.png') }}" />
+                                <img id="hairMan" class="hairManImg" src="{{asset('home/avatar/hair/man/hair_man_01.png') }}" />
+                                <img id="eyesMan" class="eyesManImg" src="{{asset('home/avatar/eyes/man/eyes_man_01.png') }}" />
+                                <img id="glassesMan" class="glassesManImg" src="{{asset('home/avatar/glasses/noneImg.png') }}" />
+                                <img id="crownMan" class="crownManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                <img id="clothesMan" class="clothesManImg" src="{{asset('home/avatar/clothes/man/clothes_man_01.png') }}" />
+                                <img id="weaponMan" class="weaponManImg" src="{{asset('home/avatar/weapon/noneImg.png') }}" />
+                                <img id="glovesMan" class="glovesManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                <img id="armorMan" class="armorWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                            </div> -->
+
+                            <!-- หญิง -->
                             <div class="item my-4">
-                                <img class="center"  style="width:50%;" src="{{asset('home/avatar/character/man.png') }}" />
+                                <img id="headWoman" class="headManImg" src="{{asset('home/avatar/head/head_woman.png') }}" />
+                                <img id="hairwoman" class="hairwomanImg" src="{{asset('home/avatar/hair/woman/hair_woman_01.png') }}" />
+                                <img id="eyesWoman" class="eyesWomanImg" src="{{asset('home/avatar/eyes/woman/eyes_woman_01.png') }}" />
+                                <img id="glassesWoman" class="glassesWomanImg" src="{{asset('home/avatar/glasses/none.png') }}" />
+                                <img id="crownWoman" class="crownManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                <img id="clothesWoman" class="clothesWomanImg" src="{{asset('home/avatar/clothes/woman/clothes_woman_01.png') }}" />
+                                <img id="weaponWoman" class="weaponManImg" src="{{asset('home/avatar/weapon/noneImg.png') }}" />
+                                <img id="glovesWoman" class="glovesWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                <img id="armorWoman" class="armorWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
                             </div>
                             <a href="shop">
                                 <label class="btn-buyItem middle2">

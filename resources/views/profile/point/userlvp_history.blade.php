@@ -9,10 +9,10 @@
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3  pb-4" style="background-color:#f5f5f5;">
             <div style="background-color:#ffffff;border-radius: 8px;padding:20px;">  
                 <div class="row">
-                    <div class="col-3 pb-2">
-                        <h1 class="fontHeader">ประวัติพอยท์</<h1>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 pb-2">
+                        <h1 class="fontHeader">ประวัติพอยท์</h1>
                     </div>
-                    <div class="col-9 text-right">
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-right">
                         <SELECT class="SelectWh p" size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT>
                         <SELECT class="SelectWh p" size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT>
                             <!-- <div class="col-4 mt-2 d-none" style="padding:0;"><SELECT  size="1" id ="day" name = "dd" ></SELECT></div> -->
@@ -23,36 +23,36 @@
                     <div class="col-12">
                         <div class="row mt-2 ">
                             <div class="col-12" >
-                                <div class="row mx-0 py-2" style="background-color:#f2f2f2;color:#000;">
-                                    <div class="col-sm-7 col-md-9 col-lg-8 col-xl-8"><p style="margin:0;font-weight: 800;">ประวัติ</p></div>
-                                    <div class="col-sm-2 col-md-1 col-lg-2 col-xl-2 text-center "><p style="margin:0;font-weight: 800;">พอยท์</p></div>
-                                    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 text-center"><p style="margin:0;font-weight: 800;">วัน-เวลา</p></div>
+                                <div class="row py-2 d-flex align-items-center" style="background-color:#f2f2f2;color:#000;">
+                                    <div class="col-7 col-sm-7 col-md-9 col-lg-8 col-xl-8"><p style="margin:0;font-weight: 800;">ประวัติ</p></div>
+                                    <div class="col-2 col-sm-2 col-md-1 col-lg-2 col-xl-2 text-center "><p style="margin:0;font-weight: 800;">พอยท์</p></div>
+                                    <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2 text-center"><p style="margin:0;font-weight: 800;">วัน-เวลา</p></div>
                                 </div>
                             </div>
                         </div>
                         <div class="row mt-2 row4">
                             <div class="col-12" >
-                                <div class="row mx-0 py-2 line2">
-                                    <div class="col-sm-7 col-md-9 col-lg-8 col-xl-8">
+                                <div class="row d-flex align-items-center line2">
+                                    <div class="col-7 col-sm-7 col-md-9 col-lg-8 col-xl-8">
                                         <p style="color:#000;margin:0;">อัพเดตโปรไฟล์</p>
                                     </div>
-                                    <div class="col-sm-2 col-md-1 col-lg-2 col-xl-2 text-center">
+                                    <div class="col-2 col-sm-2 col-md-1 col-lg-2 col-xl-2 text-center">
                                         <p style="margin:0;color:#23c197;font-weight:800;">+20</p>
                                         <!-- <p style="margin:0;color:#ce0005;font-weight:800;">-50</p> -->
                                     </div>
-                                    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 text-center">
+                                    <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2 text-center mb-2">
                                         <h5 style="margin:0;color:#000;padding-top:5px;">09:10, 17/05/63</h5>
                                     </div>
                                 </div>
-                                <div class="row mx-0 py-2 line2">
-                                    <div class="col-sm-7 col-md-9 col-lg-8 col-xl-8">
+                                <div class="row d-flex align-items-center line2">
+                                    <div class="col-7 col-sm-7 col-md-9 col-lg-8 col-xl-8">
                                         <p style="color:#000;margin:0;">แลกสินค้า</p>
                                     </div>
-                                    <div class="col-sm-2 col-md-1 col-lg-2 col-xl-2 text-center">
+                                    <div class="col-2 col-sm-2 col-md-1 col-lg-2 col-xl-2 text-center">
                                         <!-- <p style="margin:0;color:#23c197;font-weight:800;">+20</p> -->
                                         <p style="margin:0;color:#ce0005;font-weight:800;">-50</p>
                                     </div>
-                                    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 text-center">
+                                    <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2 text-center mb-2">
                                         <h5 style="margin:0;color:#000;padding-top:5px;">09:10, 17/05/63</h5>
                                     </div>
                                 </div>
