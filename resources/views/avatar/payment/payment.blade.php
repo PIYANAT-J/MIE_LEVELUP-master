@@ -132,7 +132,7 @@
 
                                                 <div class="col-3 align-self-center">
                                                     <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
-                                                        <h4 style="margin:0;font-weight:800;">฿{{$itemprice[$i]}}</h4>
+                                                        <h4 style="margin:0;font-weight:800;">฿{{number_format($itemprice[$i])}}</h4>
                                                         <p class="mr-2" style="margin:0;color:#ce0005;"><a style="color: #b2b2b2;text-decoration:line-through;">฿3,400 </a> (-{{$shoppingList->item_discount}}%)<p>
                                                     </span>
                                                 </div>
@@ -509,7 +509,7 @@
                                         <div class="col-lg-6">
                                             <div class="row">
                                                 <div class="col-6 text-right font-payment2"><p style="margin:0;">ยอดรวมสินค้า</p></div>
-                                                <div class="col-6 text-right font-payment2"><p style="margin:0;">฿{{$transeection->transeection_price}}</p></div>
+                                                <div class="col-6 text-right font-payment2"><p style="margin:0;">฿{{number_format($transeection->transeection_price)}}</p></div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-6 text-right font-payment2"><p style="margin:0;">ส่วนลด</p></div>
@@ -517,7 +517,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-6 text-right font-payment2 pt-2"><p style="margin:0;">รวมราคาทั้งสิ้น</p></div>
-                                                <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿{{$transeection->transeection_price}}</h4></div>
+                                                <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿{{number_format($transeection->transeection_price)}}</h4></div>
                                             </div>
                                         </div>
                                     </div>

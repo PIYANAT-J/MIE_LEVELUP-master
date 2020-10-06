@@ -123,8 +123,11 @@ Route::get('/avatar', 'Avatar\avatarController@Avatar')->name('Avatar');
 
 Route::get('/shop', 'Avatar\marketItemController@Shop')->name('Shop');
 Route::post('/shop/add_ShoppingCart', 'Avatar\marketItemController@add_ShoppingCart')->name('addShoppingCart');
-Route::get('/sale', 'UploadImageProfile@Sale')->name('Sale');
-Route::get('/add_sale_item', 'UploadImageProfile@AddSaleItem')->name('AddSaleItem');
+
+Route::get('/sale', 'Avatar\saleItemController@Sale')->name('Sale');
+Route::get('/add_sale_item', 'Avatar\saleItemController@AddSaleItem')->name('AddSaleItem');
+Route::post('/add_sale_item/saleItem', 'Avatar\saleItemController@add_saleItem')->name('Add_SaleItem');
+
 Route::get('/shopping_cart', 'Avatar\marketItemController@ShoppingCart')->name('ShoppingCart');
 Route::post('/shopping_cart/payment','Avatar\marketItemController@ShoppingCartPayment')->name('shoppingCartPayment');
 Route::get('/payment', 'Avatar\marketItemController@Payment')->name('Payment');

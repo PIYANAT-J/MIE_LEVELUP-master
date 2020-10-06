@@ -139,7 +139,7 @@
                                                     @endif
                                                 </label>
                                                 <span class="font-shop2"><h5 style="margin:0;">{{$Itme->item_level}}</h5></span>
-                                                <span class="font-price-position p">฿{{$Itme->item_price}}</span>
+                                                <span class="font-price-position p">฿{{number_format($Itme->item_price)}}</span>
                                                 <span>
                                                     <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
                                                         ฿11,400.00
@@ -186,7 +186,7 @@
                                                     @endif
                                                 </label>
                                                 <span class="font-shop2"><h5 style="margin:0;">{{$Itme->item_level}}</h5></span>
-                                                <span class="font-price-position p">฿{{$Itme->item_price}}</span>
+                                                <span class="font-price-position p">฿{{number_format($Itme->item_price)}}</span>
                                                 <span>
                                                     <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
                                                         ฿11,400.00
@@ -221,7 +221,7 @@
                                                     <img style="width:100%" src="{{asset('home/avatar/weapon/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
                                                 </label>
                                                 <span class="font-shop2"><h5 style="margin:0;">{{$Itme->item_level}}</h5></span>
-                                                <span class="font-price-position p">฿{{$Itme->item_price}}</span>
+                                                <span class="font-price-position p">฿{{number_format($Itme->item_price)}}</span>
                                                 <span>
                                                     <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
                                                         ฿11,400.00
@@ -256,7 +256,7 @@
                                                     <img style="width:100%" src="{{asset('home/avatar/other/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
                                                 </label>
                                                 <span class="font-shop2"><h5 style="margin:0;">{{$Itme->item_level}}</h5></span>
-                                                <span class="font-price-position p">฿{{$Itme->item_price}}</span>
+                                                <span class="font-price-position p">฿{{number_format($Itme->item_price)}}</span>
                                                 <span>
                                                     <h5 class="font-price2-position" style="margin:0;color: #b2b2b2;text-decoration:line-through;">
                                                         ฿11,400.00
@@ -369,7 +369,7 @@
 
                             <div class="col-3 my-3">
                                 <span class="font-price-modal" style="line-height:1.2; display:block;text-align:right;">
-                                    <h4 class="total" style="margin:0;color:#ce0005;font-weight:800;">฿<span>{{$itemModal->item_price}}</span></h4>
+                                    <h4 class="total" style="margin:0;color:#ce0005;font-weight:800;">฿<span>{{number_format($itemModal->item_price)}}</span></h4>
                                     <p class="mr-2"><a style="color:#b2b2b2;text-decoration:line-through;">฿11,400 </a> (-{{$itemModal->item_discount}}%)</p>
                                     <!-- <input type="hidden" id="price" name="price" value="{{$itemModal->item_price}}"> -->
                                 </span>
@@ -820,7 +820,7 @@ $(function() {
                 $(this).parents('form').find('input[name="amountItem"]').val($quantityNum);
                 dataprice = $(this).parent().find('.quantity-num').attr('dataprice');
                 sum = (+dataprice)*$quantityNum;
-                $(this).parents('form').find('.total span').text(sum);
+                $(this).parents('form').find('.total span').text(new Intl.NumberFormat().format(sum));
                 $(this).parents('form').find('input[name="sumprice"]').val(sum);
                 console.log($quantityNum);
                 console.log(sum);
@@ -835,7 +835,7 @@ $(function() {
                 $(this).parents('form').find('input[name="amountItem"]').val($quantityNum);
                 dataprice = $(this).parent().find('.quantity-num').attr('dataprice');
                 sum = (+dataprice)*$quantityNum;
-                $(this).parents('form').find('.total span').text(sum);
+                $(this).parents('form').find('.total span').text(new Intl.NumberFormat().format(sum));
                 $(this).parents('form').find('input[name="sumprice"]').val(sum);
                 console.log($quantityNum);
                 console.log(sum);

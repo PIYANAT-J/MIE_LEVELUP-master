@@ -73,6 +73,10 @@ class marketItemController extends Controller
             Market_item::shopping_cart($data);
 
             return back();
+        }elseif($request->input('Delete') != null){
+            // dd($request);
+            DB::table('shopping_cart')->where('shopping_cart_id', $request->input('shopping_cart_id'))->delete();
+            return back()->with("delete", "ลบเรียบร้อยแล้ว");
         }
     }
 
