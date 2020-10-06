@@ -26,7 +26,9 @@ class Guest_user extends Model
         $value = DB::table('guest_users')->where('USER_EMAIL', $data['USER_EMAIL'])->get();
         if($value->count() == 0){
             DB::table('guest_users')->insert($data);
-            DB::table('kycs')->insert($data);
+
+            $dataKyc = array('USER_EMAIL'=>$data['USER_EMAIL']);
+            DB::table('kycs')->insert($dataKyc);
             return 1;
         }else{
             // die('<pre>'. print_r($data, 1));
