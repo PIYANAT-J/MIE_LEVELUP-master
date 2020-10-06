@@ -39,7 +39,7 @@
 
             <header class="site-navbar2 py-2 site-navbar-target" role="banner">
                 <div class="row align-items-center">
-                    <div class="col-sm-2 col-md-2 col-lg-1 col-xl-1 text-right">
+                    <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1 text-right">
                         <a href="{{ url('/') }}"><img class="img_logo" src="{{asset('home/logo/logo_lvp.svg') }}" ></a>
                     </div>
 
@@ -118,10 +118,10 @@
                         </nav>
                     </div>
 
-                    <div class="col-sm-8 col-md-8 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"></div>
-                    <div class="col-sm-2 col-md-1 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">   
+                    <div class="col-7 col-sm-8 col-md-8 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"></div>
+                    <div class="col-2 col-sm-2 col-md-1 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">   
                         <a  class="site-menu-toggle js-menu-toggle text-center">
-                            <span class="icon-menu h1 menu1 mr-2" data-toggle="drawer" data-target="#drawer-1"></span>
+                            <span class="icon-menu h6 menu1 mr-2" data-toggle="drawer" data-target="#drawer-1"></span>
                         </a>
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                 <!-- Drawer -->
                 <div class="drawer drawer-right slide" tabindex="-1" role="dialog" aria-labelledby="drawer-1-title" aria-hidden="true" id="drawer-1">
                     <div class="drawer-content drawer-content-scrollable" role="document">
-                        <div class="drawer-body" style="background:#000"  aria-label="Close">
+                        <div class="drawer-body" style="background:#000;"  aria-label="Close">
                             <span class="pCloseNavbar" data-dismiss="drawer">
                                 <img style="width:15px;" src="{{asset('icon/close-wh.svg')}}" >
                             </span>

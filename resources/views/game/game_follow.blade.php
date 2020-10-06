@@ -6,12 +6,12 @@
         <div class="col-lg-1 col-xl-1"></div>
         <div class="col-sm col-md col-lg-11 col-xl-11 pt-3 pb-2">
         <label><h4 class="font-category mr-3">กำลังติดตาม</h4></label>
-            <button class="btn-total-category p" data-toggle="collapse" data-target="#demo">ประเภทเกม</button>
+            <button class="btn-total-category" data-toggle="collapse" data-target="#demo"><p style="margin:0;">ประเภทเกม</p></button>
         </div>
 
         <div id="demo" class="collapse row3 bg1" style="background-color: #202433;">
             <div class="row mx-5 mt-3" >
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_1">
                         <label for="checkbox_1">
@@ -19,7 +19,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_2">
                         <label for="checkbox_2">
@@ -27,7 +27,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_3">
                         <label for="checkbox_3">
@@ -35,7 +35,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_4">
                         <label for="checkbox_4">
@@ -43,7 +43,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_5">
                         <label for="checkbox_5">
@@ -51,7 +51,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_6">
                         <label for="checkbox_6">
@@ -59,7 +59,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_7">
                         <label for="checkbox_7">
@@ -67,7 +67,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_8">
                         <label for="checkbox_8">
@@ -75,7 +75,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_9">
                         <label for="checkbox_9">
@@ -83,7 +83,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_10">
                         <label for="checkbox_10">
@@ -91,7 +91,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_11">
                         <label for="checkbox_11">
@@ -99,7 +99,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_12">
                         <label for="checkbox_12">
@@ -108,7 +108,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_13">
                         <label for="checkbox_13">
@@ -116,7 +116,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_14">
                         <label for="checkbox_14">
@@ -124,7 +124,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_15">
                         <label for="checkbox_15">
@@ -133,7 +133,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_16">
                         <label for="checkbox_16">
@@ -141,7 +141,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_17">
                         <label for="checkbox_17">
@@ -149,7 +149,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_18">
                         <label for="checkbox_18">
@@ -157,7 +157,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_19">
                         <label for="checkbox_19">
@@ -165,7 +165,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_20">
                         <label for="checkbox_20">
@@ -173,7 +173,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_21">
                         <label for="checkbox_21">
@@ -181,7 +181,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_22">
                         <label for="checkbox_22">
@@ -189,7 +189,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_23">
                         <label for="checkbox_23">
@@ -197,7 +197,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_24">
                         <label for="checkbox_24">
@@ -205,7 +205,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_25">
                         <label for="checkbox_25">
@@ -213,7 +213,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_26">
                         <label for="checkbox_26">
@@ -221,7 +221,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_27">
                         <label for="checkbox_27">
@@ -229,7 +229,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
                         <input type="checkbox" id="checkbox_28">
                         <label for="checkbox_28">
@@ -240,8 +240,8 @@
             </div>
             
             <div class="mx-5 text-right mb-3">
-                <button class="btn-cancal-category p mr-2" data-toggle="collapse" data-target="#demo">ยกเลิก</button>
-                <button class="btn-search-category p mr-2">ค้นหา</button>
+                <button class="btn-cancal-category mr-2" data-toggle="collapse" data-target="#demo"><p style="margin:0;">ยกเลิก</p></button>
+                <button class="btn-search-category mr-2"><p style="margin:0;">ค้นหา</p></button>
             </div>
         </div>
     </div>

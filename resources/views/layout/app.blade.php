@@ -36,7 +36,7 @@
 
             <header class="site-navbar py-3 js-sticky-header site-navbar-target" role="banner">
                 <div class="row align-items-center">
-                    <div class="col-sm-2 col-md-2 col-lg-1 col-xl-1 text-right">
+                    <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1 text-right">
                         <a href="{{ url('/') }}"><img class="img_logo" src="{{asset('home/logo/logo_lvp.svg') }}" ></a>
                     </div>
 
@@ -133,10 +133,10 @@
                     </div> 
                     
 
-                    <div class="col-sm-8 col-md-8 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"></div>
-                    <div class="col-sm-2 col-md-1 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">
+                    <div class="col-7 col-sm-8 col-md-8 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"></div>
+                    <div class="col-2 col-sm-2 col-md-1 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">
                         <a href="#" class="site-menu-toggle js-menu-toggle text-center">
-                            <span class="icon-menu h1 menu1 mr-2"></span>
+                            <span class="icon-menu h6 menu1 mr-2"></span>
                         </a>
                     </div>
                 </div>
@@ -191,7 +191,7 @@
 
             <footer class="container-fluid bg_footer">
                 <div class="row pt-3 pb-2 pl-4">
-                    <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8" >
+                    <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8" >
                         <div>
                             <p class="fontCopyrightFooter">
                                 <script>document.write(new Date().getFullYear());</script> 

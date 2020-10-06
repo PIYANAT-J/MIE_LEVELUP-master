@@ -203,7 +203,7 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2" >
                                         <label class="bgInput field-wrap">
-                                                <label class="fontHeadInput px-3 py-2" style="padding:0;">เลขบัตรประจำตัวประชาชน</label> <br>
+                                                <label class="fontHeadInput px-3 py-2 p" style="padding:0;">เลขบัตรประจำตัวประชาชน</label> <br>
                                                 <input name="DEV_ID_CARD" class="input1 p ml-2" minlength="13" maxlength="13" disabled></input>
                                         </label>
                                     </div>

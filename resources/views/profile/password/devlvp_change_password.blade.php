@@ -1,4 +1,4 @@
-@extends('layout.profile_navbar')
+@extends('layout.dev_navbar')
 @section('content')
 <div class="container-fluid" id="getActive" active="/develper_change_password">
     <div class="row py-5" style="background-color: #f5f5f5;"></div>

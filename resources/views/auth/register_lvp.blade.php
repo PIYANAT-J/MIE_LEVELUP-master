@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 bgLoginwh">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 bgLoginwh">
             <div class="center-div3">
                 <div class="row">
                     <div class="col-6">
@@ -85,16 +85,22 @@
                 </div>
 
                 <div class="row mt-2">
-                    <div class="col-lg-12">
+                    <div class="col-12">
                         <ul class="nav topnav">
                             <li class="nav-item">
-                                <a class="nav-link active" style="border-radius: 6px 0 0 0;" data-toggle="tab" href="#users"><p style="margin:0;font-weight: 800;">ผู้ใช้ทั่วไป</p></a>
+                                <a class="nav-link active" style="border-radius: 6px 0 0 0;" data-toggle="tab" href="#users">
+                                    <p style="margin:0;">ผู้ใช้ทั่วไป</p>
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#delopers"><p style="margin:0;font-weight: 800;">ผู้พัฒนาระบบ</p></a>
+                                <a class="nav-link" data-toggle="tab" href="#delopers">
+                                    <p style="margin:0;">ผู้พัฒนาระบบ</p>
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" style="border-radius: 0 6px 0 0;" data-toggle="tab" href="#sponsers"><p style="margin:0;font-weight: 800;">ผู้สนับสนุน</p></a>
+                                <a class="nav-link" style="border-radius: 0 6px 0 0;" data-toggle="tab" href="#sponsers">
+                                    <p style="margin:0;">ผู้สนับสนุน</p>
+                                </a>
                             </li>
                         </ul>
 
@@ -191,14 +197,14 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12 text-center">
-                                        <button name="submit" class="btnRed">
-                                            <p style="margin:0;font-weight: 800;">สมัครสมาชิก</p>
+                                    <div class="col-12 d-flex justify-content-center" style="padding:0">
+                                        <button name="submit" class="btnRed mb-2 mr-2">
+                                            <p style="margin:0;">สมัครสมาชิก</p>
                                             <input type="hidden" name="users_type" value="1">
                                         </button>
-                                        <button class="btnBlue">
-                                            <i class="icon-FBLogo" style=" margin-right:10px;"></i>
-                                            <a class="p" style="margin:0;font-weight: 800;">สมัครผ่าน Facebook</a>
+                                        <button class="btnBlue mb-2">
+                                            <label><i class="icon-FBLogo" style=" margin-right:10px;"></i></label>
+                                            <label style="padding:0;"><p style="margin:0;">สมัครผ่าน Facebook</p></label>
                                         </button>
                                     </div>
                                 </form>
@@ -284,14 +290,14 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12 text-center">
-                                        <button name="submit" class="btnRed">
-                                            <p style="margin:0;font-weight: 800;">สมัครสมาชิก</p>
+                                    <div class="col-12 d-flex justify-content-center" style="padding:0">
+                                        <button name="submit" class="btnRed mb-2 mr-2" style="padding:0">
+                                            <p style="margin:0;padding: 10px;">สมัครสมาชิก</p>
                                             <input type="hidden" name="users_type" value="2">
                                         </button>
-                                        <button class="btnBlue">
-                                            <i class="icon-FBLogo" style=" margin-right:10px;"></i>
-                                            <a class="p" style="margin:0;font-weight: 800;">สมัครผ่าน Facebook</a>
+                                        <button class="btnBlue mb-2">
+                                            <label><i class="icon-FBLogo" style=" margin-right:10px;"></i></label>
+                                            <label style="padding:0;"><p style="margin:0;">สมัครผ่าน Facebook</p></label>
                                         </button>
                                     </div>
                                 </form>
@@ -415,14 +421,14 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-12 text-center mb-2">
-                                                <button name="submit" class="btnRed">
-                                                    <p style="margin:0;font-weight: 800;">สมัครสมาชิก</p>
+                                            <div class="col-12 d-flex justify-content-center mb-2" style="padding:0">
+                                                <button name="submit" class="btnRed mb-2 mr-2">
+                                                    <p style="margin:0;">สมัครสมาชิก</p>
                                                     <input type="hidden" name="users_type" value="3">
                                                 </button>
-                                                <button class="btnBlue">
-                                                    <i class="icon-FBLogo" style=" margin-right:10px;"></i>
-                                                    <a class="p" style="margin:0;font-weight: 800;">สมัครผ่าน Facebook</a>
+                                                <button class="btnBlue mb-2">
+                                                    <label><i class="icon-FBLogo" style=" margin-right:10px;"></i></label>
+                                                    <label style="padding:0;"><p style="margin:0;">สมัครผ่าน Facebook</p></label>
                                                 </button>
                                             </div>
                                         </form>
@@ -499,14 +505,14 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-12 text-center">
-                                                <button name="submit" class="btnRed">
-                                                    <p style="margin:0;font-weight: 800;">สมัครสมาชิก</p>
+                                            <div class="col-12 d-flex justify-content-center mb-2" style="padding:0">
+                                                <button name="submit" class="btnRed mb-2 mr-2">
+                                                    <p style="margin:0;">สมัครสมาชิก</p>
                                                     <input type="hidden" name="users_type" value="3">
                                                 </button>
-                                                <button class="btnBlue">
-                                                    <i class="icon-FBLogo" style=" margin-right:10px;"></i>
-                                                    <a class="p" style="margin:0;font-weight: 800;">สมัครผ่าน Facebook</a>
+                                                <button class="btnBlue mb-2">
+                                                    <label><i class="icon-FBLogo" style=" margin-right:10px;"></i></label>
+                                                    <label style="padding:0;"><p style="margin:0;">สมัครผ่าน Facebook</p></label>
                                                 </button>
                                             </div>
                                         </form>

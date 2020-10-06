@@ -416,8 +416,8 @@
         <div class="modal-content ">
             <div class="modal-header">
                 <div class="row">
-                    <div class="col-sm-8 col-md-8 col-lg-6 col-xl-6"><img class="mr-2 img-visa" src="{{asset('home/logo/visa3.png') }}" ></div>
-                    <div class="col-sm-4 col-md-4 col-lg-6 col-xl-6 text-right"><img class="mr-2 img-scurity" src="{{asset('home/logo/security.svg') }}" ></div>
+                    <div class="col-6 col-sm-8 col-md-8 col-lg-6 col-xl-6"><img class="mr-2 img-visa" src="{{asset('home/logo/visa3.png') }}" ></div>
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-6 col-xl-6 text-right"><img class="mr-2 img-scurity" src="{{asset('home/logo/security.svg') }}" ></div>
                 </div>
                 <button type="button" class="close btn-closeModal" data-dismiss="modal">
                     <i class="icon-close_modal" style="font-size: 15px;"></i>
@@ -440,7 +440,7 @@
                     <div class="col-6 mb-2" style="padding-left:0;">
                         <input type="text" class="input2 p pl-2" placeholder="วันหมดอายุ" require></input>
                     </div>
-                    <div class="col-10 mb-2 ">
+                    <div class="col-9 mb-2 ">
                         <div class="pl-2" style="color:#000;">
                             <p style="font-weight:800;margin:0;">บันทึกบัตรไว้ใช้ในภายหลัง</p>
                             <p style="margin:0;">ข้อมูลบัตรของท่านจะถูกเก็บรักษาไว้อย่างปลอดภัย</p>
@@ -549,8 +549,8 @@
                                 <label><img class="mr-2" style="weight:100px;" src="{{asset('home/logo/bangkok.svg') }}"/></label>
                                 <label><h1 style="color:#000;font-weight:800;">ธนาคารกรุงเทพ</h1></label>
                                 <h1 style="color:#000;font-weight:800;">000-0000-0000</h1>
-                                <label><p style="color:#000;">จำนวนเงินที่ต้องชำระ</p></label>
-                                <label><input class="input2 ml-3 p text-center" type="number" id="bangkokM" readonly></label>
+                                <label><p style="color:#000;margin:0">จำนวนเงินที่ต้องชำระ</p></label>
+                                <label><input class="input2 p text-center" type="number" id="bangkokM" readonly></label>
                                 <p style="margin:0;"> กรุณาทำการชำระเงินภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกโดยอัตโนมัติ</p>
                                 <p style="color:#ce0005;margin:0;">*รอการยืนยันภายใน 48 ชั่วโมง</p>
                             </div>
@@ -595,8 +595,8 @@
                                 <label><img class="mr-2" style="weight:100px;" src="{{asset('home/logo/ktc.svg') }}"/></label>
                                 <label><h1 style="color:#000;font-weight:800;">ธนาคารกรุงไทย</h1></label>
                                 <h1 style="color:#000;font-weight:800;">000-0000-0000</h1>
-                                <label><p style="color:#000;">จำนวนเงินที่ต้องชำระ</p></label>
-                                <label><input class="input2 ml-3 p text-center" type="number" id="ktcM" readonly></label>
+                                <label><p style="color:#000;margin:0">จำนวนเงินที่ต้องชำระ</p></label>
+                                <label><input class="input2 p text-center" type="number" id="ktcM" readonly></label>
                                 <p style="margin:0;"> กรุณาทำการชำระเงินภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกโดยอัตโนมัติ</p>
                                 <p style="color:#ce0005;margin:0;">*รอการยืนยันภายใน 48 ชั่วโมง</p>
                             </div>
@@ -639,8 +639,8 @@
                                 <label><img class="mr-2" style="weight:100px;" src="{{asset('home/logo/kbank.svg') }}"/></label>
                                 <label><h1 style="color:#000;font-weight:800;">ธนาคารกสิกรไทย</h1></label>
                                 <h1 style="color:#000;font-weight:800;">000-0000-0000</h1>
-                                <label><p style="color:#000;">จำนวนเงินที่ต้องชำระ</p></label>
-                                <label><input class="input2 ml-3 p text-center" type="number" id="kbankM" readonly></label>
+                                <label><p style="color:#000;margin:0">จำนวนเงินที่ต้องชำระ</p></label>
+                                <label><input class="input2 p text-center" type="number" id="kbankM" readonly></label>
                                 <p style="margin:0;"> กรุณาทำการชำระเงินภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกโดยอัตโนมัติ</p>
                                 <p style="color:#ce0005;margin:0;">*รอการยืนยันภายใน 48 ชั่วโมง</p>
                             </div>
@@ -683,8 +683,8 @@
                                 <label><img class="mr-2" style="weight:100px;" src="{{asset('home/logo/scb.svg') }}"/></label>
                                 <label><h1 style="color:#000;font-weight:800;">ธนาคารไทยพาณิชย์</h1></label>
                                 <h1 style="color:#000;font-weight:800;">000-0000-0000</h1>
-                                <label><p style="color:#000;">จำนวนเงินที่ต้องชำระ</p></label>
-                                <label><input class="input2 ml-3 p text-center" type="number" id="scbM" readonly></label>
+                                <label><p style="color:#000;margin:0;">จำนวนเงินที่ต้องชำระ</p></label>
+                                <label><input class="input2 p text-center" type="number" id="scbM" readonly></label>
                                 <p style="margin:0;"> กรุณาทำการชำระเงินภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกโดยอัตโนมัติ</p>
                                 <p style="color:#ce0005;margin:0;">*รอการยืนยันภายใน 48 ชั่วโมง</p>
                             </div>
