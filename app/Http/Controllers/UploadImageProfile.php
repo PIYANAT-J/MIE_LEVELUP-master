@@ -94,20 +94,6 @@ class UploadImageProfile extends Controller
         }
     }
 
-    public function Sale(){
-        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        $shopping = DB::table('shopping_cart')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('avatar.saleItem.sale_item', compact('guest_user', 'userKyc', 'shopping'));
-    }
-
-    public function AddSaleItem(){
-        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        $shopping = DB::table('shopping_cart')->where('USER_EMAIL', Auth::user()->email)->get();
-        return view('avatar.saleItem.add_sale_item', compact('guest_user', 'userKyc', 'shopping'));
-    }
-
     public function indexSpon(){
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
         $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
