@@ -195,7 +195,19 @@ class RegisterController extends Controller
     public function create(array $dataR){
         // die('<per>'.print_r($dataR,1));
         if($dataR['users_type'] == 1){
-            $data = array("USER_EMAIL"=>$dataR['email']);
+            $data = array("USER_EMAIL"=>$dataR['email'],"AVATAR"=>'[
+                {
+                    "gender":"man",
+                    "hair": "hair_man_01.png",
+                    "eyes": "eyes_man_01.png",
+                    "glasses": "null",
+                    "clothes": "clothes_man_01.png",
+                    "hero": "null",
+                    "weapon": "null",
+                    "other": "null"
+                }
+            ]');
+            // dd($data);
             $value = Guest_user::InsertAndUpdateData($data);
             return User::create([
                 'name' => $dataR['name'],

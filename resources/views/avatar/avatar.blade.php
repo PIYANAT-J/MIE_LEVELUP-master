@@ -43,7 +43,7 @@
             </div>
 
             <!-- ตัวละครชาย -->
-            <div class="row manlist px-3" >
+            <div class="row manlist px-3">
                 <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
                 <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 pt-2 pb-3" style="height:530px">
                     <img id="headMan" class="headManImg" src="{{asset('home/avatar/head/head_man.png') }}" />
@@ -86,47 +86,45 @@
                                 <div class="col-12 mb-2"> 
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">ทรงผม</span>
-                                        <div class="col-12">                                                                            
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('hairMan').src='home/avatar/hair/man/hair_man_01.png'">
-                                                <img class="picture" src="{{asset('home/avatar/hair/man/hair_man_01.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('hairMan').src='home/avatar/hair/man/hair_man_02.png'">
-                                                <img class="picture" src="{{asset('home/avatar/hair/man/hair_man_02.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('hairMan').src='home/avatar/hair/man/hair_man_03.png'">
-                                                <img class="picture" src="{{asset('home/avatar/hair/man/hair_man_03.png') }}" />
-                                            </button>
+                                        <div class="col-12">
+                                            @foreach($default as $defaultItem)
+                                                @if($defaultItem->default_type == "hair")
+                                                    @if($defaultItem->default_gender == "man")
+                                                        <button class="labelItem bgItem hair" data-hair="home/avatar/hair/man/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('hairMan').src='home/avatar/hair/man/{{$defaultItem->default_img}}'">
+                                                            <img class="picture" src="{{asset('home/avatar/hair/man/'.$defaultItem->default_img) }}" />
+                                                        </button>
+                                                    @endif
+                                                @endif
+                                            @endforeach
                                         </div>    
                                     </div>
 
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">สีตา</span>
                                         <div class="col-12">
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesMan').src='home/avatar/eyes/man/eyes_man_01.png'">
-                                                <img class="picture" src="{{asset('home/avatar/eyes/man/eyes_man_01.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesMan').src='home/avatar/eyes/man/eyes_man_02.png'">
-                                                <img class="picture" src="{{asset('home/avatar/eyes/man/eyes_man_02.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesMan').src='home/avatar/eyes/man/eyes_man_03.png'">
-                                                <img class="picture" src="{{asset('home/avatar/eyes/man/eyes_man_03.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesMan').src='home/avatar/eyes/man/eyes_man_04.png'">
-                                                <img class="picture" src="{{asset('home/avatar/eyes/man/eyes_man_04.png') }}" />
-                                            </button>
+                                            @foreach($default as $defaultItem)
+                                                @if($defaultItem->default_type == "eyes")
+                                                    @if($defaultItem->default_gender == "man")
+                                                        <button class="labelItem bgItem eyes" data-eyes="home/avatar/eyes/man/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesMan').src='home/avatar/eyes/man/{{$defaultItem->default_img}}'">
+                                                            <img class="picture" src="{{asset('home/avatar/eyes/man/'.$defaultItem->default_img) }}" />
+                                                        </button>
+                                                    @endif
+                                                @endif
+                                            @endforeach
                                         </div>    
                                     </div>
 
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">แว่นตา</span>
                                         <div class="col-12">
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesMan').src='home/avatar/glasses/glasses_01.png'">
-                                                <img class="picture" src="{{asset('home/avatar/glasses/glasses_01.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesMan').src='home/avatar/glasses/glasses_02.png'">
-                                                <img class="picture" src="{{asset('home/avatar/glasses/glasses_02.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesMan').src='home/avatar/glasses/noneImg.png'">
+                                            @foreach($default as $defaultItem)
+                                                @if($defaultItem->default_type == "glasses")
+                                                    <button class="labelItem bgItem glasses" data-glasses="home/avatar/glasses/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesMan').src='home/avatar/glasses/{{$defaultItem->default_img}}'">
+                                                        <img class="picture" src="{{asset('home/avatar/glasses/'.$defaultItem->default_img) }}" />
+                                                    </button>
+                                                @endif
+                                            @endforeach
+                                            <button class="labelItem bgItem glasses" data-glasses="home/avatar/glasses/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesMan').src='home/avatar/glasses/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -141,12 +139,17 @@
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">ชุดไปเวท</span>
                                         <div class="col-12">
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesMan').src='home/avatar/clothes/man/clothes_man_01.png'">
-                                                <img class="picture" src="{{asset('home/avatar/clothes/man/clothes_man_01.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesMan').src='home/avatar/clothes/man/clothes_man_02.png'">
-                                                <img class="picture" src="{{asset('home/avatar/clothes/man/clothes_man_02.png') }}" />
-                                            </button>
+                                            @foreach($default as $defaultItem)
+                                                @if($defaultItem->default_type == "clothes")
+                                                    @if($defaultItem->default_gender == "man")
+                                                        @if($defaultItem->default_other != "hero")
+                                                            <button class="labelItem bgItem clothes" data-clothes="home/avatar/clothes/man/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesMan').src='home/avatar/clothes/man/{{$defaultItem->default_img}}'">
+                                                                <img class="picture" src="{{asset('home/avatar/clothes/man/'.$defaultItem->default_img) }}" />
+                                                            </button>
+                                                        @endif
+                                                    @endif
+                                                @endif
+                                            @endforeach
                                         </div>    
                                     </div>
 
@@ -158,6 +161,27 @@
                                             </button>
                                         </div>    
                                     </div> -->
+                                    <div class="row">
+                                        @foreach($item as $text)
+                                            @if($text->my_item_type == "clothes")
+                                                <span class="fontItem ml-4 mt-2 p">ชุดซุปเปอร์ฮีโร่</span>
+                                                <div class="col-12">
+                                                    @foreach($item as $allItem)
+                                                        @if($allItem->my_item_type == "clothes")
+                                                            @if($allItem->my_item_gender == "man")
+                                                                @if($allItem->my_item_other == "hero")
+                                                                    <button class="labelItem bgItem clothes" data-clothes="home/avatar/clothes/man/hero/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesMan').src='home/avatar/clothes/man/hero/{{$allItem->my_item_img}}'">
+                                                                        <img class="picture" src="{{asset('home/avatar/clothes/man/hero/'.$allItem->my_item_img) }}" />
+                                                                    </button>
+                                                                @endif
+                                                            @endif
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                                @break
+                                            @endif
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -168,19 +192,21 @@
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">ดาบ</span>
                                         <div class="col-12">
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/sword_01.png'">
-                                                <img class="picture" src="{{asset('home/avatar/weapon/sword_01.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/sword_02.png'">
-                                                <img class="picture" src="{{asset('home/avatar/weapon/sword_02.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/sword_03.png'">
-                                                <img class="picture" src="{{asset('home/avatar/weapon/sword_03.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/sword_04.png'">
-                                                <img class="picture" src="{{asset('home/avatar/weapon/sword_04.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/noneImg.png'">
+                                            @foreach($default as $defaultItem)
+                                                @if($defaultItem->default_type == "weapon")
+                                                    <button class="labelItem bgItem weapon" data-weapon="home/avatar/weapon/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/{{$defaultItem->default_img}}'">
+                                                        <img class="picture" src="{{asset('home/avatar/weapon/'.$defaultItem->default_img) }}" />
+                                                    </button>
+                                                @endif
+                                            @endforeach
+                                            @foreach($item as $allItem)
+                                                @if($allItem->my_item_type == "weapon")
+                                                    <button class="labelItem bgItem weapon" data-weapon="home/avatar/weapon/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/{{$allItem->my_item_img}}'">
+                                                        <img class="picture" src="{{asset('home/avatar/weapon/'.$allItem->my_item_img) }}" />
+                                                    </button>
+                                                @endif
+                                            @endforeach
+                                            <button class="labelItem bgItem weapon" data-weapon="home/avatar/weapon/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -222,16 +248,25 @@
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">มงกุฏ/หมวก</span>
                                         <div class="col-lg-12">
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownMan').src='home/avatar/other/crown_01.png'">
-                                                <img class="picture" src="{{asset('home/avatar/other/crown_01.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownMan').src='home/avatar/other/crown_02.png'">
-                                                <img class="picture" src="{{asset('home/avatar/other/crown_02.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownMan').src='home/avatar/other/crown_03.png'">
-                                                <img class="picture" src="{{asset('home/avatar/other/crown_03.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownMan').src='home/avatar/other/noneImg.png'">
+                                            @foreach($default as $defaultItem)
+                                                @if($defaultItem->default_type == "other")
+                                                    @if($defaultItem->default_other == "crown")
+                                                        <button class="labelItem bgItem" id="crown" data-crown="home/avatar/other/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownMan').src='home/avatar/other/{{$defaultItem->default_img}}'">
+                                                            <img class="picture" src="{{asset('home/avatar/other/'.$defaultItem->default_img) }}" />
+                                                        </button>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                            @foreach($item as $allItem)
+                                                @if($allItem->my_item_type == "other")
+                                                    @if($allItem->my_item_other == "crown")
+                                                        <button class="labelItem bgItem" id="crown" data-crown="home/avatar/other/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownMan').src='home/avatar/other/{{$allItem->my_item_img}}'">
+                                                            <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
+                                                        </button>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                            <button class="labelItem bgItem" id="crown" data-crown="home/avatar/other/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownMan').src='home/avatar/other/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -240,10 +275,25 @@
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">ถุงมือ</span>
                                         <div class="col-12">
-                                            <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesMan').src='home/avatar/other/gloves_01.png'">
-                                                <img class="picture" src="{{asset('home/avatar/other/gloves_01.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesMan').src='home/avatar/other/noneImg.png'">
+                                            @foreach($default as $defaultItem)
+                                                @if($defaultItem->default_type == "other")
+                                                    @if($defaultItem->default_other == "gloves")
+                                                        <button class="labelItem bgItem" id="gloves" data-gloves="home/avatar/other/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesMan').src='home/avatar/other/{{$defaultItem->default_img}}'">
+                                                            <img class="picture" src="{{asset('home/avatar/other/'.$defaultItem->default_img) }}" />
+                                                        </button>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                            @foreach($item as $allItem)
+                                                @if($allItem->my_item_type == "other")
+                                                    @if($allItem->my_item_other == "gloves")
+                                                        <button class="labelItem bgItem" id="gloves" data-gloves="home/avatar/other/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesMan').src='home/avatar/other/{{$allItem->my_item_img}}'">
+                                                            <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
+                                                        </button>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                            <button class="labelItem bgItem" id="gloves" data-gloves="home/avatar/other/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesMan').src='home/avatar/other/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -252,10 +302,28 @@
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">เสื้อเกราะ</span>
                                         <div class="col-12">
-                                            <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorMan').src='home/avatar/other/armor_01.png'">
+                                            @foreach($default as $defaultItem)
+                                                @if($defaultItem->default_type == "other")
+                                                    @if($defaultItem->default_other == "armor")
+                                                        <button class="labelItem bgItem" id="armor" data-armor="home/avatar/other/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorMan').src='home/avatar/other/{{$defaultItem->default_img}}'">
+                                                            <img class="picture" src="{{asset('home/avatar/other/'.$defaultItem->default_img) }}" />
+                                                        </button>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                            @foreach($item as $allItem)
+                                                @if($allItem->my_item_type == "other")
+                                                    @if($allItem->my_item_other == "armor")
+                                                        <button class="labelItem bgItem" id="armor" data-armor="home/avatar/other/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorMan').src='home/avatar/other/{{$allItem->my_item_img}}'">
+                                                            <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
+                                                        </button>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                            <!-- <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorMan').src='home/avatar/other/armor_01.png'">
                                                 <img class="picture" src="{{asset('home/avatar/other/armor_01.png') }}" />
-                                            </button>
-                                            <button class="labelItem bgItem" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorMan').src='home/avatar/other/noneImg.png'">
+                                            </button> -->
+                                            <button class="labelItem bgItem" id="armor" data-armor="home/avatar/other/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorMan').src='home/avatar/other/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -520,6 +588,14 @@
                     </label>
                     <button type="submit" class="btn-avatar">
                         <p style="margin:0;font-weight:800;">บันทึก</p>
+                        <input type="hidden" name="hair">
+                        <input type="hidden" name="eyes">
+                        <input type="hidden" name="glasses">
+                        <input type="hidden" name="clothes">
+                        <input type="hidden" name="weapon">
+                        <input type="hidden" name="crown">
+                        <input type="hidden" name="gloves">
+                        <input type="hidden" name="armor">
                     </button>
                 </div>
             </div>
@@ -678,5 +754,48 @@ function() {
     });
     
     });
+</script>
+
+<script>
+    $('.labelItem.bgItem.hair').on('click', function(){
+        var hair = $(this).data('hair');
+        $('input[name="hair"]').val(hair);
+        console.log(hair);
+    })
+    $('.labelItem.bgItem.eyes').on('click', function(){
+        var eyes = $(this).data('eyes');
+        $('input[name="eyes"]').val(eyes);
+        console.log(eyes);
+    })
+    $('.labelItem.bgItem.glasses').on('click', function(){
+        var glasses = $(this).data('glasses');
+        $('input[name="glasses"]').val(glasses);
+        console.log(glasses);
+    })
+    $('.labelItem.bgItem.clothes').on('click', function(){
+        var clothes = $(this).data('clothes');
+        $('input[name="clothes"]').val(clothes);
+        console.log(clothes);
+    })
+    $('.labelItem.bgItem.weapon').on('click', function(){
+        var weapon = $(this).data('weapon');
+        $('input[name="weapon"]').val(weapon);
+        console.log(weapon);
+    })
+    $('#crown').on('click', function(){
+        var crown = $(this).data('crown');
+        $('input[name="crown"]').val(crown);
+        console.log(crown);
+    })
+    $('#gloves').on('click', function(){
+        var gloves = $(this).data('gloves');
+        $('input[name="gloves"]').val(gloves);
+        console.log(gloves);
+    })
+    $('#armor').on('click', function(){
+        var armor = $(this).data('armor');
+        $('input[name="armor"]').val(armor);
+        console.log(armor);
+    })
 </script>
 @endsection
