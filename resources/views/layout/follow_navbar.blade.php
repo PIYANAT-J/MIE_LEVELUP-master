@@ -26,9 +26,9 @@
 
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
         <div id="app" class="site-wrap active">
-            <div class="site-mobile-menu site-navbar-target" style="margin-top: -45px;">
+            <div class="site-mobile-menu site-navbar-target">
                 <div class="site-mobile-menu-header">
-                    <div class="site-mobile-menu-close pt-3">
+                    <div class="site-mobile-menu-close mt-3">
                         <span class="icon-close2 js-menu-toggle"></span>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
 
             <header class="site-navbar2 py-2 site-navbar-target" role="banner">
                 <div class="row align-items-center">
-                    <div class="col-sm-2 col-md-2 col-lg-1 col-xl-1 text-right">
+                    <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1 text-right">
                         <a href="{{ url('/') }}"><img class="img_logo" src="{{asset('home/logo/logo_lvp.svg') }}" ></a>
                     </div>
 
@@ -132,10 +132,10 @@
                     </div> 
                     
 
-                    <div class="col-sm-8 col-md-8 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"></div>
-                    <div class="col-sm-2 col-md-1 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">
-                        <a href="#" class="site-menu-toggle js-menu-toggle text-center">
-                            <span class="icon-menu h1 menu1 mr-2"></span>
+                    <div class="col-7 col-sm-8 col-md-8 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"></div>
+                    <div class="col-2 col-sm-2 col-md-1 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">
+                        <a href="#" class="site-menu-toggle js-menu-toggle">
+                            <span class="icon-menu h6 menu1 mr-2"></span>
                         </a>
                     </div>
                 </div>

@@ -16,11 +16,11 @@
                     <div class="col-12">
                         <div class="row mt-2 ">
                             <div class="col-12" >
-                                <div class="row mx-0 py-2" style="background-color:#f2f2f2;color:#000;">
+                                <div class="row py-2" style="background-color:#f2f2f2;color:#000;">
                                     <div class="col-6 align-self-center"><p style="margin:0;font-weight: 800;">ชื่อเกม</p></div>
-                                    <div class="col-2 align-self-center text-center "><p style="margin:0;font-weight: 800;">ดาวน์โหลด</p></div>
-                                    <div class="col-2 text-center "><p style="margin:0;font-weight: 800;">วันที่อัพเดต</p></div>
-                                    <div class="col-2 text-center "><p style="margin:0;font-weight: 800;">อัพเดตเวอร์ชัน</p></div>
+                                    <div class="col-3 col-md-2 col-lg-2 col-xl-2 align-self-center text-center "><p style="margin:0;font-weight: 800;">ดาวน์โหลด</p></div>
+                                    <div class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block d-md-block text-center "><p style="margin:0;font-weight: 800;">วันที่อัพเดต</p></div>
+                                    <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center"><p style="margin:0;font-weight: 800;">อัพเดต</p></div>
                                 </div>
                             </div>
                         </div>
@@ -92,22 +92,26 @@
                                     @foreach($game as $Game)
                                         @if($Game->USER_ID == Auth::user()->id)
                                             @if(isset($Game->GAME_IMG_PROFILE))
-                                                <div class="row mx-0 py-2 line2 ">
-                                                    <div class="col-6 " style="padding-right:0;">
-                                                        <label><img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" /></label>
-                                                        <label style="padding-left:80px;">
-                                                            <label><p style="margin:0;font-weight:500;">{{ $Game->GAME_NAME }}</p></label>
-                                                            @if($Game->GAME_STATUS == 'รออนุมัติ')
-                                                                <label class="ml-2" style="background-color: #ffd629;border-radius: 6px;padding:5px;margin:0;"><h5 style="margin:0;">รออนุมัติ</h5></label>
-                                                            @elseif($Game->GAME_STATUS == 'อนุมัติ')
-                                                                <label class="ml-2" style="background-color: #23c197;border-radius: 6px;padding:5px;margin:0;"><h5 style="margin:0;">อนุมัติ</h5></label>
-                                                            @else
-                                                                <label class="ml-2" style="background-color: #ce0005;border-radius: 6px;padding:5px;margin:0;"><h5 style="margin:0;">ไม่อนุมัติ</h5></label>
-                                                            @endif
-                                                            <p style="margin:0;">{{ $Game->RATED_B_L }} • Other</br>เวอร์ชั่น 1.03</p>
-                                                        </label>
+                                                <div class="row line2 ">
+                                                    <div class="col-6">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-xl-3 d-none d-lg-block d-xl-block mb-2">
+                                                                <img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" />
+                                                            </div>
+                                                            <div class="col-12 col-lg-8 col-xl-9" style="color:#000;">
+                                                                <label><p style="margin:0;font-weight:500;">{{ $Game->GAME_NAME }}</p></label>
+                                                                @if($Game->GAME_STATUS == 'รออนุมัติ')
+                                                                    <label class="ml-2" style="background-color: #ffd629;border-radius: 6px;padding:5px;margin:0;"><h5 style="margin:0;">รออนุมัติ</h5></label>
+                                                                @elseif($Game->GAME_STATUS == 'อนุมัติ')
+                                                                    <label class="ml-2" style="background-color: #23c197;border-radius: 6px;padding:5px;margin:0;"><h5 style="margin:0;">อนุมัติ</h5></label>
+                                                                @else
+                                                                    <label class="ml-2" style="background-color: #ce0005;border-radius: 6px;padding:5px;margin:0;"><h5 style="margin:0;">ไม่อนุมัติ</h5></label>
+                                                                @endif
+                                                                <p class="d-none d-lg-block d-xl-block" style="margin:0;">{{ $Game->RATED_B_L }} • Other</br>เวอร์ชั่น 1.03</p>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-2 text-center">
+                                                    <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center text-center">
                                                         <p style="margin:0;">
                                                             @foreach($CDownload as $cdown)
                                                                 @if($cdown->GAME_ID == $Game->GAME_ID && $cdown->GAME_ID != null)
@@ -122,7 +126,7 @@
                                                             @endforeach
                                                         </p>
                                                     </div>
-                                                    <div class="col-2 text-center">
+                                                    <div class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block d-md-block text-center">
                                                         <h5 style="color:#a8a8a8;margin:0;">
                                                             @if($Game->GAME_EDIT_DATE == null)
                                                                 {{ $Game->GAME_DATE }}
@@ -131,7 +135,7 @@
                                                             @endif
                                                         </h5>
                                                     </div>
-                                                    <div class="col-2 text-center">
+                                                    <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center mb-2">
                                                         @if($Game->GAME_STATUS == 'รออนุมัติ')
                                                             <form action="{{ route('DevShelfUpdate') }}" method="POST" enctype="multipart/form-data">
                                                                 @csrf
@@ -231,12 +235,12 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_login"></div>
+        <div class="col-lg-4 col-xl-3 bgSidebar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 bg_login2"></div>
+        <div class="col-lg-8 col-xl-9 bgContent"></div>
     </div>
 </div>
 
