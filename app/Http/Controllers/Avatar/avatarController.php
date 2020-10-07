@@ -27,4 +27,37 @@ class avatarController extends Controller
         // dd($avatar);
         return view('avatar.avatar', compact('guest_user', 'avatar', 'userKyc', 'shopping', 'default', 'item', 'avatar'));
     }
+
+    public function addAvatar(Request $request){
+        if($request->input('submit') != null){
+            // dd($request);
+            $avatar = [];
+            if($request->input('genderchecked') == 'man'){
+                array_push($avatar, ([
+                    'eyes' => $request->input('manEyes'),
+                    'hair' => $request->input('manHair'),
+                    'armor' => $request->input('manArmor'),
+                    'crown' => $request->input('manCrown'),
+                    'gender' => $request->input('genderchecked'),
+                    'gloves' => $request->input('manGloves'),
+                    'weapon' => $request->input('manWeapon'),
+                    'clothes' => $request->input('manClothes'),
+                    'glasses' => $request->input('manGlasses')
+                ]));
+            }else{
+                array_push($avatar, ([
+                    'eyes' => $request->input('womanEyes'),
+                    'hair' => $request->input('womanHair'),
+                    'armor' => $request->input('womanArmor'),
+                    'crown' => $request->input('womanCrown'),
+                    'gender' => $request->input('genderchecked'),
+                    'gloves' => $request->input('womanGloves'),
+                    'weapon' => $request->input('womanWeapon'),
+                    'clothes' => $request->input('womanClothes'),
+                    'glasses' => $request->input('womanGlasses')
+                ]));
+            }
+            dd($avatar);
+        }
+    }
 }

@@ -31,22 +31,86 @@
 
             <div id="gender" class="redioRedAvatar">
                 <div class="row pl-3">
-                    <div>
-                        <input type="radio" name="gender2" value="man" id="man">
-                        <label for="man" style="font-family:myfont1;color:#fff;font-size:1em;">ชาย</label>
-                    </div>
-                    <div class="col-1">
-                        <input type="radio" name="gender2" value="woman" id="women">
-                        <label for="women" style="font-family:myfont1;color:#fff;font-size:1em;">หญิง</label>
-                    </div>
+                @foreach($avatar as $avatarRadio)
+                    @if($avatarRadio->gender == "")
+                        <div>
+                            <input type="radio" name="gender2" value="man" id="man" checked>
+                            <label for="man" style="font-family:myfont1;color:#fff;font-size:1em;">ชาย</label>
+                        </div>
+                        <div class="col-1">
+                            <input type="radio" name="gender2" value="woman" id="women">
+                            <label for="women" style="font-family:myfont1;color:#fff;font-size:1em;">หญิง</label>
+                        </div>
+                    @elseif($avatarRadio->gender == "man")
+                        <div>
+                            <input type="radio" name="gender2" value="man" id="man1" checked>
+                            <label for="man1" style="font-family:myfont1;color:#fff;font-size:1em;">ชาย</label>
+                        </div>
+                    @elseif($avatarRadio->gender == "woman")
+                        <div>
+                            <input type="radio" name="gender2" value="woman" id="women2" checked>
+                            <label for="women2" style="font-family:myfont1;color:#fff;font-size:1em;">หญิง</label>
+                        </div>
+                    @endif
+                @endforeach
                 </div>
             </div>
 
             <!-- ตัวละครชาย -->
-            <div class="row manlist px-3">
+            <div class="row avatar px-3">
                 <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
-                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 pt-2 pb-3" style="height:530px">
-                    <img id="headMan" class="headManImg" src="{{asset('home/avatar/head/head_man.png') }}" />
+                <!-- <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 pt-2 pb-3" style="height:530px"> -->
+                    @foreach($avatar as $avatar)
+                        @if($avatar->gender == "man")
+                            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 pt-2 pb-3 manlist" style="height:530px">
+                                <img id="headMan" class="headManImg" src="{{asset('home/avatar/head/head_man.png')}}"/>
+                                <img id="hairMan" class="hairManImg" src="{{asset($avatar->hair)}}"/>
+                                <img id="eyesMan" class="eyesManImg" src="{{asset($avatar->eyes)}}"/>
+                                <img id="glassesMan" class="glassesManImg" src="{{asset($avatar->glasses)}}"/>
+                                <img id="crownMan" class="crownManImg" src="{{asset($avatar->crown)}}"/>
+                                <img id="clothesMan" class="clothesManImg" src="{{asset($avatar->clothes)}}"/>
+                                <img id="weaponMan" class="weaponManImg" src="{{asset($avatar->weapon)}}"/>
+                                <img id="glovesMan" class="glovesManImg" src="{{asset($avatar->gloves)}}"/>
+                                <img id="armorMan" class="armorWomanImg" src="{{asset($avatar->armor)}}"/>
+                            </div>
+                        @elseif($avatar->gender == "woman")
+                            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 pt-2 pb-3 womanlist" style="height:530px">
+                                <img id="headWoman" class="headManImg" src="{{asset('home/avatar/head/head_woman.png') }}" />
+                                <img id="hairwoman" class="hairwomanImg" src="{{asset($avatar->hair)}}"/>
+                                <img id="eyesWoman" class="eyesWomanImg" src="{{asset($avatar->eyes)}}"/>
+                                <img id="glassesWoman" class="glassesWomanImg" src="{{asset($avatar->glasses)}}"/>
+                                <img id="crownWoman" class="crownManImg" src="{{asset($avatar->crown)}}"/>
+                                <img id="clothesWoman" class="clothesWomanImg" src="{{asset($avatar->clothes)}}"/>
+                                <img id="weaponWoman" class="weaponManImg" src="{{asset($avatar->weapon)}}"/>
+                                <img id="glovesWoman" class="glovesWomanImg" src="{{asset($avatar->gloves)}}"/>
+                                <img id="armorWoman" class="armorWomanImg" src="{{asset($avatar->armor)}}"/>
+                            </div>
+                        @else
+                            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 pt-2 pb-3 womanlist" style="height:530px">
+                                <img id="headWoman" class="headManImg" src="{{asset('home/avatar/head/head_woman.png') }}" />
+                                <img id="hairwoman" class="hairwomanImg" src="{{asset('home/avatar/hair/woman/hair_woman_01.png') }}" />
+                                <img id="eyesWoman" class="eyesWomanImg" src="{{asset('home/avatar/eyes/woman/eyes_woman_01.png') }}" />
+                                <img id="glassesWoman" class="glassesWomanImg" src="{{asset('home/avatar/glasses/none.png') }}" />
+                                <img id="crownWoman" class="crownManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                <img id="clothesWoman" class="clothesWomanImg" src="{{asset('home/avatar/clothes/woman/clothes_woman_01.png') }}" />
+                                <img id="weaponWoman" class="weaponManImg" src="{{asset('home/avatar/weapon/noneImg.png') }}" />
+                                <img id="glovesWoman" class="glovesWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                <img id="armorWoman" class="armorWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                            </div>
+                            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 pt-2 pb-3 manlist" style="height:530px">
+                                <img id="headMan" class="headManImg" src="{{asset('home/avatar/head/head_man.png') }}" />
+                                <img id="hairMan" class="hairManImg" src="{{asset('home/avatar/hair/man/hair_man_01.png') }}" />
+                                <img id="eyesMan" class="eyesManImg" src="{{asset('home/avatar/eyes/man/eyes_man_01.png') }}" />
+                                <img id="glassesMan" class="glassesManImg" src="{{asset('home/avatar/glasses/noneImg.png') }}" />
+                                <img id="crownMan" class="crownManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                <img id="clothesMan" class="clothesManImg" src="{{asset('home/avatar/clothes/man/clothes_man_01.png') }}" />
+                                <img id="weaponMan" class="weaponManImg" src="{{asset('home/avatar/weapon/noneImg.png') }}" />
+                                <img id="glovesMan" class="glovesManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                <img id="armorMan" class="armorWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                            </div>
+                        @endif
+                    @endforeach
+                    <!-- <img id="headMan" class="headManImg" src="{{asset('home/avatar/head/head_man.png') }}" />
                     <img id="hairMan" class="hairManImg" src="{{asset('home/avatar/hair/man/hair_man_01.png') }}" />
                     <img id="eyesMan" class="eyesManImg" src="{{asset('home/avatar/eyes/man/eyes_man_01.png') }}" />
                     <img id="glassesMan" class="glassesManImg" src="{{asset('home/avatar/glasses/noneImg.png') }}" />
@@ -54,8 +118,8 @@
                     <img id="clothesMan" class="clothesManImg" src="{{asset('home/avatar/clothes/man/clothes_man_01.png') }}" />
                     <img id="weaponMan" class="weaponManImg" src="{{asset('home/avatar/weapon/noneImg.png') }}" />
                     <img id="glovesMan" class="glovesManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
-                    <img id="armorMan" class="armorWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
-                </div>
+                    <img id="armorMan" class="armorWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" /> -->
+                <!-- </div> -->
                 <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
 
                 <!-- ไอเทม -->
@@ -90,8 +154,12 @@
                                             @foreach($default as $defaultItem)
                                                 @if($defaultItem->default_type == "hair")
                                                     @if($defaultItem->default_gender == "man")
-                                                        <button class="labelItem bgItem hair" data-hair="home/avatar/hair/man/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('hairMan').src='home/avatar/hair/man/{{$defaultItem->default_img}}'">
+                                                        <button class="labelItem bgItem hairItem manlist" data-hair="home/avatar/hair/man/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('hairMan').src='home/avatar/hair/man/{{$defaultItem->default_img}}'">
                                                             <img class="picture" src="{{asset('home/avatar/hair/man/'.$defaultItem->default_img) }}" />
+                                                        </button>
+                                                    @elseif($defaultItem->default_gender == "woman")
+                                                        <button class="labelItem bgItem hairItem womanlist" data-hair="home/avatar/hair/woman/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('hairwoman').src='home/avatar/hair/woman/{{$defaultItem->default_img}}'">
+                                                            <img class="picture" src="{{asset('home/avatar/hair/woman/'.$defaultItem->default_img) }}" />
                                                         </button>
                                                     @endif
                                                 @endif
@@ -105,8 +173,12 @@
                                             @foreach($default as $defaultItem)
                                                 @if($defaultItem->default_type == "eyes")
                                                     @if($defaultItem->default_gender == "man")
-                                                        <button class="labelItem bgItem eyes" data-eyes="home/avatar/eyes/man/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesMan').src='home/avatar/eyes/man/{{$defaultItem->default_img}}'">
+                                                        <button class="labelItem bgItem eyesItem manlist" data-eyes="home/avatar/eyes/man/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesMan').src='home/avatar/eyes/man/{{$defaultItem->default_img}}'">
                                                             <img class="picture" src="{{asset('home/avatar/eyes/man/'.$defaultItem->default_img) }}" />
+                                                        </button>
+                                                    @elseif($defaultItem->default_gender == "woman")
+                                                        <button class="labelItem bgItem eyesItem womanlist" data-eyes="home/avatar/eyes/woman/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('eyesWoman').src='home/avatar/eyes/woman/{{$defaultItem->default_img}}'">
+                                                            <img class="picture" src="{{asset('home/avatar/eyes/woman/'.$defaultItem->default_img) }}" />
                                                         </button>
                                                     @endif
                                                 @endif
@@ -119,12 +191,18 @@
                                         <div class="col-12">
                                             @foreach($default as $defaultItem)
                                                 @if($defaultItem->default_type == "glasses")
-                                                    <button class="labelItem bgItem glasses" data-glasses="home/avatar/glasses/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesMan').src='home/avatar/glasses/{{$defaultItem->default_img}}'">
+                                                    <button class="labelItem bgItem glassesItem manlist" data-glasses="home/avatar/glasses/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesMan').src='home/avatar/glasses/{{$defaultItem->default_img}}'">
+                                                        <img class="picture" src="{{asset('home/avatar/glasses/'.$defaultItem->default_img) }}" />
+                                                    </button>
+                                                    <button class="labelItem bgItem glassesItem womanlist" data-glasses="home/avatar/glasses/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesWoman').src='home/avatar/glasses/{{$defaultItem->default_img}}'">
                                                         <img class="picture" src="{{asset('home/avatar/glasses/'.$defaultItem->default_img) }}" />
                                                     </button>
                                                 @endif
                                             @endforeach
-                                            <button class="labelItem bgItem glasses" data-glasses="home/avatar/glasses/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesMan').src='home/avatar/glasses/noneImg.png'">
+                                            <button class="labelItem bgItem glassesItem manlist" data-glasses="home/avatar/glasses/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesMan').src='home/avatar/glasses/noneImg.png'">
+                                                <h4 class="noneItem">ไม่ใส่</h4>
+                                            </button>
+                                            <button class="labelItem bgItem glassesItem womanlist" data-glasses="home/avatar/glasses/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glassesWoman').src='home/avatar/glasses/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -143,8 +221,14 @@
                                                 @if($defaultItem->default_type == "clothes")
                                                     @if($defaultItem->default_gender == "man")
                                                         @if($defaultItem->default_other != "hero")
-                                                            <button class="labelItem bgItem clothes" data-clothes="home/avatar/clothes/man/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesMan').src='home/avatar/clothes/man/{{$defaultItem->default_img}}'">
+                                                            <button class="labelItem bgItem clothesItem manlist" data-clothes="home/avatar/clothes/man/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesMan').src='home/avatar/clothes/man/{{$defaultItem->default_img}}'">
                                                                 <img class="picture" src="{{asset('home/avatar/clothes/man/'.$defaultItem->default_img) }}" />
+                                                            </button>
+                                                        @endif
+                                                    @elseif($defaultItem->default_gender == "woman")
+                                                        @if($defaultItem->default_other != "hero")
+                                                            <button class="labelItem bgItem clothesItem womanlist" data-clothes="home/avatar/clothes/woman/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesWoman').src='home/avatar/clothes/woman/{{$defaultItem->default_img}}'">
+                                                                <img class="picture" src="{{asset('home/avatar/clothes/woman/'.$defaultItem->default_img) }}" />
                                                             </button>
                                                         @endif
                                                     @endif
@@ -170,8 +254,14 @@
                                                         @if($allItem->my_item_type == "clothes")
                                                             @if($allItem->my_item_gender == "man")
                                                                 @if($allItem->my_item_other == "hero")
-                                                                    <button class="labelItem bgItem clothes" data-clothes="home/avatar/clothes/man/hero/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesMan').src='home/avatar/clothes/man/hero/{{$allItem->my_item_img}}'">
+                                                                    <button class="labelItem bgItem clothesItem manlist" data-clothes="home/avatar/clothes/man/hero/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesMan').src='home/avatar/clothes/man/hero/{{$allItem->my_item_img}}'">
                                                                         <img class="picture" src="{{asset('home/avatar/clothes/man/hero/'.$allItem->my_item_img) }}" />
+                                                                    </button>
+                                                                @endif
+                                                            @elseif($defaultItem->default_gender == "woman")
+                                                                @if($defaultItem->default_other == "hero")
+                                                                    <button class="labelItem bgItem clothesItem womanlist" data-clothes="home/avatar/clothes/woman/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('clothesWoman').src='home/avatar/clothes/woman/{{$allItem->my_item_img}}'">
+                                                                        <img class="picture" src="{{asset('home/avatar/clothes/woman/'.$allItem->my_item_img) }}" />
                                                                     </button>
                                                                 @endif
                                                             @endif
@@ -194,19 +284,28 @@
                                         <div class="col-12">
                                             @foreach($default as $defaultItem)
                                                 @if($defaultItem->default_type == "weapon")
-                                                    <button class="labelItem bgItem weapon" data-weapon="home/avatar/weapon/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/{{$defaultItem->default_img}}'">
+                                                    <button class="labelItem bgItem weaponItem manlist" data-weapon="home/avatar/weapon/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/{{$defaultItem->default_img}}'">
+                                                        <img class="picture" src="{{asset('home/avatar/weapon/'.$defaultItem->default_img) }}" />
+                                                    </button>
+                                                    <button class="labelItem bgItem weaponItem womanlist" data-weapon="home/avatar/weapon/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponWoman').src='home/avatar/weapon/{{$defaultItem->default_img}}'">
                                                         <img class="picture" src="{{asset('home/avatar/weapon/'.$defaultItem->default_img) }}" />
                                                     </button>
                                                 @endif
                                             @endforeach
                                             @foreach($item as $allItem)
                                                 @if($allItem->my_item_type == "weapon")
-                                                    <button class="labelItem bgItem weapon" data-weapon="home/avatar/weapon/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/{{$allItem->my_item_img}}'">
+                                                    <button class="labelItem bgItem weaponItem manlist" data-weapon="home/avatar/weapon/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/{{$allItem->my_item_img}}'">
+                                                        <img class="picture" src="{{asset('home/avatar/weapon/'.$allItem->my_item_img) }}" />
+                                                    </button>
+                                                    <button class="labelItem bgItem weaponItem womanlist" data-weapon="home/avatar/weapon/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponWoman').src='home/avatar/weapon/{{$allItem->my_item_img}}'">
                                                         <img class="picture" src="{{asset('home/avatar/weapon/'.$allItem->my_item_img) }}" />
                                                     </button>
                                                 @endif
                                             @endforeach
-                                            <button class="labelItem bgItem weapon" data-weapon="home/avatar/weapon/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/noneImg.png'">
+                                            <button class="labelItem bgItem weaponItem manlist" data-weapon="home/avatar/weapon/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponMan').src='home/avatar/weapon/noneImg.png'">
+                                                <h4 class="noneItem">ไม่ใส่</h4>
+                                            </button>
+                                            <button class="labelItem bgItem weaponItem womanlist" data-weapon="home/avatar/weapon/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('weaponWoman').src='home/avatar/weapon/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -251,7 +350,10 @@
                                             @foreach($default as $defaultItem)
                                                 @if($defaultItem->default_type == "other")
                                                     @if($defaultItem->default_other == "crown")
-                                                        <button class="labelItem bgItem" id="crown" data-crown="home/avatar/other/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownMan').src='home/avatar/other/{{$defaultItem->default_img}}'">
+                                                        <button class="labelItem bgItem crownItem manlist" data-crown="home/avatar/other/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownMan').src='home/avatar/other/{{$defaultItem->default_img}}'">
+                                                            <img class="picture" src="{{asset('home/avatar/other/'.$defaultItem->default_img) }}" />
+                                                        </button>
+                                                        <button class="labelItem bgItem crownItem womanlist" data-crown="home/avatar/other/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownWoman').src='home/avatar/other/{{$defaultItem->default_img}}'">
                                                             <img class="picture" src="{{asset('home/avatar/other/'.$defaultItem->default_img) }}" />
                                                         </button>
                                                     @endif
@@ -260,13 +362,19 @@
                                             @foreach($item as $allItem)
                                                 @if($allItem->my_item_type == "other")
                                                     @if($allItem->my_item_other == "crown")
-                                                        <button class="labelItem bgItem" id="crown" data-crown="home/avatar/other/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownMan').src='home/avatar/other/{{$allItem->my_item_img}}'">
+                                                        <button class="labelItem bgItem crownItem manlist" data-crown="home/avatar/other/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownMan').src='home/avatar/other/{{$allItem->my_item_img}}'">
+                                                            <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
+                                                        </button>
+                                                        <button class="labelItem bgItem crownItem womanlist" data-crown="home/avatar/other/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownWoman').src='home/avatar/other/{{$allItem->my_item_img}}'">
                                                             <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
                                                         </button>
                                                     @endif
                                                 @endif
                                             @endforeach
-                                            <button class="labelItem bgItem" id="crown" data-crown="home/avatar/other/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownMan').src='home/avatar/other/noneImg.png'">
+                                            <button class="labelItem bgItem crownItem manlist" data-crown="home/avatar/other/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownMan').src='home/avatar/other/noneImg.png'">
+                                                <h4 class="noneItem">ไม่ใส่</h4>
+                                            </button>
+                                            <button class="labelItem bgItem crownItem womanlist" data-crown="home/avatar/other/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('crownWoman').src='home/avatar/other/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -278,7 +386,10 @@
                                             @foreach($default as $defaultItem)
                                                 @if($defaultItem->default_type == "other")
                                                     @if($defaultItem->default_other == "gloves")
-                                                        <button class="labelItem bgItem" id="gloves" data-gloves="home/avatar/other/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesMan').src='home/avatar/other/{{$defaultItem->default_img}}'">
+                                                        <button class="labelItem bgItem glovesItem manlist" data-gloves="home/avatar/other/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesMan').src='home/avatar/other/{{$defaultItem->default_img}}'">
+                                                            <img class="picture" src="{{asset('home/avatar/other/'.$defaultItem->default_img) }}" />
+                                                        </button>
+                                                        <button class="labelItem bgItem glovesItem womanlist" data-gloves="home/avatar/other/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesWoman').src='home/avatar/other/{{$defaultItem->default_img}}'">
                                                             <img class="picture" src="{{asset('home/avatar/other/'.$defaultItem->default_img) }}" />
                                                         </button>
                                                     @endif
@@ -287,13 +398,19 @@
                                             @foreach($item as $allItem)
                                                 @if($allItem->my_item_type == "other")
                                                     @if($allItem->my_item_other == "gloves")
-                                                        <button class="labelItem bgItem" id="gloves" data-gloves="home/avatar/other/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesMan').src='home/avatar/other/{{$allItem->my_item_img}}'">
+                                                        <button class="labelItem bgItem glovesItem manlist" data-gloves="home/avatar/other/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesMan').src='home/avatar/other/{{$allItem->my_item_img}}'">
+                                                            <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
+                                                        </button>
+                                                        <button class="labelItem bgItem glovesItem womanlist" data-gloves="home/avatar/other/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesWoman').src='home/avatar/other/{{$allItem->my_item_img}}'">
                                                             <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
                                                         </button>
                                                     @endif
                                                 @endif
                                             @endforeach
-                                            <button class="labelItem bgItem" id="gloves" data-gloves="home/avatar/other/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesMan').src='home/avatar/other/noneImg.png'">
+                                            <button class="labelItem bgItem glovesItem manlist" data-gloves="home/avatar/other/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesMan').src='home/avatar/other/noneImg.png'">
+                                                <h4 class="noneItem">ไม่ใส่</h4>
+                                            </button>
+                                            <button class="labelItem bgItem glovesItem womanlist" data-gloves="home/avatar/other/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('glovesWoman').src='home/avatar/other/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -305,7 +422,10 @@
                                             @foreach($default as $defaultItem)
                                                 @if($defaultItem->default_type == "other")
                                                     @if($defaultItem->default_other == "armor")
-                                                        <button class="labelItem bgItem" id="armor" data-armor="home/avatar/other/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorMan').src='home/avatar/other/{{$defaultItem->default_img}}'">
+                                                        <button class="labelItem bgItem armorItem manlist" data-armor="home/avatar/other/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorMan').src='home/avatar/other/{{$defaultItem->default_img}}'">
+                                                            <img class="picture" src="{{asset('home/avatar/other/'.$defaultItem->default_img) }}" />
+                                                        </button>
+                                                        <button class="labelItem bgItem armorItem womanlist" data-armor="home/avatar/other/{{$defaultItem->default_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorWoman').src='home/avatar/other/{{$defaultItem->default_img}}'">
                                                             <img class="picture" src="{{asset('home/avatar/other/'.$defaultItem->default_img) }}" />
                                                         </button>
                                                     @endif
@@ -314,16 +434,19 @@
                                             @foreach($item as $allItem)
                                                 @if($allItem->my_item_type == "other")
                                                     @if($allItem->my_item_other == "armor")
-                                                        <button class="labelItem bgItem" id="armor" data-armor="home/avatar/other/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorMan').src='home/avatar/other/{{$allItem->my_item_img}}'">
+                                                        <button class="labelItem bgItem armorItem manlist" data-armor="home/avatar/other/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorMan').src='home/avatar/other/{{$allItem->my_item_img}}'">
+                                                            <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
+                                                        </button>
+                                                        <button class="labelItem bgItem armorItem womanlist" data-armor="home/avatar/other/{{$allItem->my_item_img}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorWoman').src='home/avatar/other/{{$allItem->my_item_img}}'">
                                                             <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
                                                         </button>
                                                     @endif
                                                 @endif
                                             @endforeach
-                                            <!-- <button class="labelItem bgItem " data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorMan').src='home/avatar/other/armor_01.png'">
-                                                <img class="picture" src="{{asset('home/avatar/other/armor_01.png') }}" />
-                                            </button> -->
-                                            <button class="labelItem bgItem" id="armor" data-armor="home/avatar/other/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorMan').src='home/avatar/other/noneImg.png'">
+                                            <button class="labelItem bgItem armorItem manlist" data-armor="home/avatar/other/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorMan').src='home/avatar/other/noneImg.png'">
+                                                <h4 class="noneItem">ไม่ใส่</h4>
+                                            </button>
+                                            <button class="labelItem bgItem armorItem womanlist" data-armor="home/avatar/other/noneImg.png" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('armorWoman').src='home/avatar/other/noneImg.png'">
                                                 <h4 class="noneItem">ไม่ใส่</h4>
                                             </button>
                                         </div>    
@@ -345,7 +468,7 @@
             </div>
 
             <!-- ตัวละครหญิง -->
-            <div class="row womanlist px-3">
+            {{-- <div class="row px-3">
                 <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
                 <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 pt-2 pb-3" style="height:530px">
                     <!-- <img class="center1"  style="height:400px;opacity: 0;" src="{{asset('home/avatar/character/woman.png') }}" /> -->
@@ -579,24 +702,35 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="row my-4">
                 <div class="col-12 text-right pr-5">
                     <label class="btnBuy">
                         <p style="margin:0;font-weight:800;">คืนค่า</p>
                     </label>
-                    <button type="submit" class="btn-avatar">
-                        <p style="margin:0;font-weight:800;">บันทึก</p>
-                        <input type="hidden" name="hair">
-                        <input type="hidden" name="eyes">
-                        <input type="hidden" name="glasses">
-                        <input type="hidden" name="clothes">
-                        <input type="hidden" name="weapon">
-                        <input type="hidden" name="crown">
-                        <input type="hidden" name="gloves">
-                        <input type="hidden" name="armor">
-                    </button>
+                    <!-- <button class="btnBuy" type="reset"><p style="margin:0;font-weight:800;">คืนค่า</p></button> -->
+                    <form action="{{route('setAvatar')}}" method="post">
+                        @csrf
+                        <button name="submit" value="submit" class="btn-avatar"><p style="margin:0;font-weight:800;">บันทึก</p></button>
+                        <input type="hidden" name="genderchecked">
+                        <input type="hidden" name="manHair">
+                        <input type="hidden" name="manEyes">
+                        <input type="hidden" name="manGlasses">
+                        <input type="hidden" name="manClothes">
+                        <input type="hidden" name="manWeapon">
+                        <input type="hidden" name="manCrown">
+                        <input type="hidden" name="manGloves">
+                        <input type="hidden" name="manArmor">
+                        <input type="hidden" name="womanHair">
+                        <input type="hidden" name="womanEyes">
+                        <input type="hidden" name="womanGlasses">
+                        <input type="hidden" name="womanClothes">
+                        <input type="hidden" name="womanWeapon">
+                        <input type="hidden" name="womanCrown">
+                        <input type="hidden" name="womanGloves">
+                        <input type="hidden" name="womanArmor">
+                    </form>
                 </div>
             </div>
 
@@ -690,23 +824,154 @@
 
 <script>
 $(document).ready(function() {
-  $('.manlist').show();
-  $('.womanlist').hide();
-  $('input:radio[name="gender2"]').change(
-function() {
-	if ($(this).is(':checked') && $(this).val() == 'man')
-	{
-    $('.manlist').show();
-    $('.womanlist').hide();
-		}
-   else {
-    $('.womanlist').show();
-    $('.manlist').hide();
-   }
-	}
-);
-}
-);
+    var gender2 = $('input:radio[name="gender2"]:checked').val();
+    if($('input:radio[name="gender2"]:checked').val() == 'woman'){
+        $('.manlist').hide();
+        $('.womanlist').show();
+        getWoman();
+    }else{
+        $('.manlist').show();
+        $('.womanlist').hide();
+        getMan();
+    }
+    $('input[name="genderchecked"]').val(gender2);
+    // console.log($('input:radio[name="gender2"]:checked').val());
+    // $('.manlist').show();
+    // $('.womanlist').hide();
+    $('input:radio[name="gender2"]').change(
+        function() {
+            if ($(this).is(':checked') && $(this).val() == 'man'){
+                $('.manlist').show();
+                $('.womanlist').hide();
+                $('input[name="genderchecked"]').val($(this).val());
+                
+                getMan();
+            } else {
+                $('.womanlist').show();
+                $('.manlist').hide();
+                $('input[name="genderchecked"]').val($(this).val());
+                
+                getWoman();
+            }
+        }
+    );
+
+    function getMan(){
+        $('.labelItem.bgItem.hairItem.manlist').on('click', function(){
+            var hair = $(this).data('hair');
+            $('input[name="manHair"]').val(hair);
+            
+        })
+        $('.labelItem.bgItem.eyesItem.manlist').on('click', function(){
+            var eyes = $(this).data('eyes');
+            $('input[name="manEyes"]').val(eyes);
+            
+        })
+        $('.labelItem.bgItem.glassesItem.manlist').on('click', function(){
+            var glasses = $(this).data('glasses');
+            $('input[name="manGlasses"]').val(glasses);
+            
+        })
+        $('.labelItem.bgItem.clothesItem.manlist').on('click', function(){
+            var clothes = $(this).data('clothes');
+            $('input[name="manClothes"]').val(clothes);
+            
+        })
+        $('.labelItem.bgItem.weaponItem.manlist').on('click', function(){
+            var weapon = $(this).data('weapon');
+            $('input[name="manWeapon"]').val(weapon);
+            
+        })
+        $('.labelItem.bgItem.crownItem.manlist').on('click', function(){
+            var crown = $(this).data('crown');
+            $('input[name="manCrown"]').val(crown);
+            
+        })
+        $('.labelItem.bgItem.glovesItem.manlist').on('click', function(){
+            var gloves = $(this).data('gloves');
+            $('input[name="manGloves"]').val(gloves);
+            
+        })
+        $('.labelItem.bgItem.armorItem.manlist').on('click', function(){
+            var armor = $(this).data('armor');
+            $('input[name="manArmor"]').val(armor);
+            
+        })
+        var hairMan = $('#hairMan').attr('src').split("home/avatar");
+        $('input[name="manHair"]').val('home/avatar'+hairMan[1]);
+        var eyesMan = $('#eyesMan').attr('src').split("home/avatar");
+        $('input[name="manEyes"]').val('home/avatar'+eyesMan[1]);
+        var glassesMan = $('#glassesMan').attr('src').split("home/avatar");
+        $('input[name="manGlasses"]').val('home/avatar'+glassesMan[1]);
+        var clothesMan = $('#clothesMan').attr('src').split("home/avatar");
+        $('input[name="manClothes"]').val('home/avatar'+clothesMan[1]);
+        var weaponMan = $('#weaponMan').attr('src').split("home/avatar");
+        $('input[name="manWeapon"]').val('home/avatar'+weaponMan[1]);
+        var crownMan = $('#crownMan').attr('src').split("home/avatar");
+        $('input[name="manCrown"]').val('home/avatar'+crownMan[1]);
+        var glovesMan = $('#glovesMan').attr('src').split("home/avatar");
+        $('input[name="manGloves"]').val('home/avatar'+glovesMan[1]);
+        var armorMan = $('#armorMan').attr('src').split("home/avatar");
+        $('input[name="manArmor"]').val('home/avatar'+armorMan[1]);
+    }
+
+    function getWoman(){
+        $('.labelItem.bgItem.hairItem.womanlist').on('click', function(){
+            var hair = $(this).data('hair');
+            $('input[name="womanHair"]').val(hair);
+            
+        })
+        $('.labelItem.bgItem.eyesItem.womanlist').on('click', function(){
+            var eyes = $(this).data('eyes');
+            $('input[name="womanEyes"]').val(eyes);
+            
+        })
+        $('.labelItem.bgItem.glassesItem.womanlist').on('click', function(){
+            var glasses = $(this).data('glasses');
+            $('input[name="womanGlasses"]').val(glasses);
+            
+        })
+        $('.labelItem.bgItem.clothesItem.womanlist').on('click', function(){
+            var clothes = $(this).data('clothes');
+            $('input[name="womanClothes"]').val(clothes);
+            
+        })
+        $('.labelItem.bgItem.weaponItem.womanlist').on('click', function(){
+            var weapon = $(this).data('weapon');
+            $('input[name="womanWeapon"]').val(weapon);
+            
+        })
+        $('.labelItem.bgItem.crownItem.womanlist').on('click', function(){
+            var crown = $(this).data('crown');
+            $('input[name="womanCrown"]').val(crown);
+            
+        })
+        $('.labelItem.bgItem.glovesItem.womanlist').on('click', function(){
+            var gloves = $(this).data('gloves');
+            $('input[name="womanGloves"]').val(gloves);
+        })
+        $('.labelItem.bgItem.armorItem.womanlist').on('click', function(){
+            var armor = $(this).data('armor');
+            $('input[name="womanArmor"]').val(armor);
+        })
+        var hairWoman = $('#hairwoman').attr('src').split("home/avatar");
+        $('input[name="womanHair"]').val('home/avatar'+hairWoman[1]);
+        var eyesWoman = $('#eyesWoman').attr('src').split("home/avatar");
+        $('input[name="womanEyes"]').val('home/avatar'+eyesWoman[1]);
+        var glassesWoman = $('#glassesWoman').attr('src').split("home/avatar");
+        $('input[name="womanGlasses"]').val('home/avatar'+glassesWoman[1]);
+        var clothesWoman = $('#clothesWoman').attr('src').split("home/avatar");
+        $('input[name="womanClothes"]').val('home/avatar'+clothesWoman[1]);
+        var weaponWoman = $('#weaponWoman').attr('src').split("home/avatar");
+        $('input[name="womanWeapon"]').val('home/avatar'+weaponWoman[1]);
+        var crownWoman = $('#crownWoman').attr('src').split("home/avatar");
+        $('input[name="womanCrown"]').val('home/avatar'+crownWoman[1]);
+        var glovesWoman = $('#glovesWoman').attr('src').split("home/avatar");
+        $('input[name="womanGloves"]').val('home/avatar'+glovesWoman[1]);
+        var armorWoman = $('#armorWoman').attr('src').split("home/avatar");
+        $('input[name="womanArmor"]').val('home/avatar'+armorWoman[1]);
+    }
+});
 </script>
 
 <script>
@@ -754,48 +1019,5 @@ function() {
     });
     
     });
-</script>
-
-<script>
-    $('.labelItem.bgItem.hair').on('click', function(){
-        var hair = $(this).data('hair');
-        $('input[name="hair"]').val(hair);
-        console.log(hair);
-    })
-    $('.labelItem.bgItem.eyes').on('click', function(){
-        var eyes = $(this).data('eyes');
-        $('input[name="eyes"]').val(eyes);
-        console.log(eyes);
-    })
-    $('.labelItem.bgItem.glasses').on('click', function(){
-        var glasses = $(this).data('glasses');
-        $('input[name="glasses"]').val(glasses);
-        console.log(glasses);
-    })
-    $('.labelItem.bgItem.clothes').on('click', function(){
-        var clothes = $(this).data('clothes');
-        $('input[name="clothes"]').val(clothes);
-        console.log(clothes);
-    })
-    $('.labelItem.bgItem.weapon').on('click', function(){
-        var weapon = $(this).data('weapon');
-        $('input[name="weapon"]').val(weapon);
-        console.log(weapon);
-    })
-    $('#crown').on('click', function(){
-        var crown = $(this).data('crown');
-        $('input[name="crown"]').val(crown);
-        console.log(crown);
-    })
-    $('#gloves').on('click', function(){
-        var gloves = $(this).data('gloves');
-        $('input[name="gloves"]').val(gloves);
-        console.log(gloves);
-    })
-    $('#armor').on('click', function(){
-        var armor = $(this).data('armor');
-        $('input[name="armor"]').val(armor);
-        console.log(armor);
-    })
 </script>
 @endsection
