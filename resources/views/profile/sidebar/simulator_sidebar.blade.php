@@ -58,7 +58,7 @@
                                         <img id="hairwoman" class="hairwomanImg" src="{{asset($avatar->hair)}}"/>
                                         <img id="eyesWoman" class="eyesWomanImg" src="{{asset($avatar->eyes)}}"/>
                                         <img id="glassesWoman" class="glassesWomanImg" src="{{asset($avatar->glasses)}}"/>
-                                        <img id="crownWoman" class="crownManImg" src="{{asset($avatar->crown)}}"/>
+                                        <img id="crownWoman" class="crownWomanImg" src="{{asset($avatar->crown)}}"/>
                                         <img id="clothesWoman" class="clothesWomanImg" src="{{asset($avatar->clothes)}}"/>
                                         <img id="weaponWoman" class="weaponManImg" src="{{asset($avatar->weapon)}}"/>
                                         <img id="glovesWoman" class="glovesWomanImg" src="{{asset($avatar->gloves)}}"/>

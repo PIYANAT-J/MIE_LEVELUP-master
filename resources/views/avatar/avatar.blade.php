@@ -79,7 +79,7 @@
                                 <img id="hairwoman" class="hairwomanImg" src="{{asset($avatar->hair)}}"/>
                                 <img id="eyesWoman" class="eyesWomanImg" src="{{asset($avatar->eyes)}}"/>
                                 <img id="glassesWoman" class="glassesWomanImg" src="{{asset($avatar->glasses)}}"/>
-                                <img id="crownWoman" class="crownManImg" src="{{asset($avatar->crown)}}"/>
+                                <img id="crownWoman" class="crownWomanImg" src="{{asset($avatar->crown)}}"/>
                                 <img id="clothesWoman" class="clothesWomanImg" src="{{asset($avatar->clothes)}}"/>
                                 <img id="weaponWoman" class="weaponManImg" src="{{asset($avatar->weapon)}}"/>
                                 <img id="glovesWoman" class="glovesWomanImg" src="{{asset($avatar->gloves)}}"/>
@@ -91,7 +91,7 @@
                                 <img id="hairwoman" class="hairwomanImg" src="{{asset('home/avatar/hair/woman/hair_woman_01.png') }}" />
                                 <img id="eyesWoman" class="eyesWomanImg" src="{{asset('home/avatar/eyes/woman/eyes_woman_01.png') }}" />
                                 <img id="glassesWoman" class="glassesWomanImg" src="{{asset('home/avatar/glasses/none.png') }}" />
-                                <img id="crownWoman" class="crownManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                <img id="crownWoman" class="crownWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
                                 <img id="clothesWoman" class="clothesWomanImg" src="{{asset('home/avatar/clothes/woman/clothes_woman_01.png') }}" />
                                 <img id="weaponWoman" class="weaponManImg" src="{{asset('home/avatar/weapon/noneImg.png') }}" />
                                 <img id="glovesWoman" class="glovesWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
