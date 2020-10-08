@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 
+use App\Guest_user;
 use App\Default_item;
 use App\My_item;
 
@@ -57,7 +58,9 @@ class avatarController extends Controller
                     'glasses' => $request->input('womanGlasses')
                 ]));
             }
-            dd($avatar);
+            // dd($avatar);
+            DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->update(array('AVATAR' => $avatar));
+            return back()->with("success", "บันทึกตัวละครเรียบร้อย");
         }
     }
 }

@@ -197,15 +197,15 @@ class RegisterController extends Controller
         if($dataR['users_type'] == 1){
             $data = array("USER_EMAIL"=>$dataR['email'],"AVATAR"=>'[
                 {
-                    "eyes": "home/avatar/eyes/man/eyes_man_01.png",
-                    "hair": "home/avatar/hair/man/hair_man_01.png",
-                    "armor": "home/avatar/other/noneImg.png",
-                    "crown": "home/avatar/other/noneImg.png",
+                    "eyes": "",
+                    "hair": "",
+                    "armor": "",
+                    "crown": "",
                     "gender": "",
-                    "gloves": "home/avatar/other/noneImg.png",
-                    "weapon": "home/avatar/weapon/noneImg.png",
-                    "clothes": "home/avatar/clothes/man/clothes_man_01.png",
-                    "glasses": "home/avatar/glasses/noneImg.png"
+                    "gloves": "",
+                    "weapon": "",
+                    "clothes": "",
+                    "glasses": ""
                 }
             ]');
             // dd($data);
