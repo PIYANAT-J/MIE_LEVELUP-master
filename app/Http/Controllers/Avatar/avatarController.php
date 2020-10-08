@@ -20,12 +20,9 @@ class avatarController extends Controller
         $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
         $default = Default_item::all();
         $item = My_item::where([['USER_EMAIL', Auth::user()->email]])->get();
-        // dd($default);
         foreach($guest_user as $defaultAvatar){
-            // dd(json_decode($defaultAvatar->AVATAR));
             $avatar = json_decode($defaultAvatar->AVATAR);
         }
-        // dd($avatar);
         return view('avatar.avatar', compact('guest_user', 'avatar', 'userKyc', 'shopping', 'default', 'item', 'avatar'));
     }
 

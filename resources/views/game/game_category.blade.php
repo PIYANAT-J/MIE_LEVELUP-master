@@ -3,14 +3,14 @@
 @section('style')
 <style>
     .filterDiv {
-    /* float: left; */
-    /* background-color: #2196F3; */
-    /* color: #ffffff; */
-    /* width: 100%;
-    line-height: 100px; */
-    /* text-align: center; */
-    /* margin: 2px; */
-    display: none;
+        /* float: left;
+        background-color: #2196F3;
+        color: #ffffff;
+        width: 100%;
+        line-height: 100px;
+        text-align: center;
+        margin: 2px; */
+        display: none;
     }
 
     .show {
@@ -18,8 +18,8 @@
     }
 
     /* .container {
-    margin-top: 20px;
-    overflow: hidden;
+        margin-top: 20px;
+        overflow: hidden;
     } */
 </style>
 @endsection
@@ -368,7 +368,7 @@
                         </div>
                     @else
                         @if(in_array($game->GAME_ID, $arrayFollowsGame))
-                            <div class="filterDiv follow hot col-sm-6 col-md-4 col-lg-3 col-xl-2" style="padding:5px;">
+                            <div class="filterDiv follow col-sm-6 col-md-4 col-lg-3 col-xl-2" style="padding:5px;">
                                 <a href="{{ route('GameDetail', ['id'=>encrypt($game->GAME_ID)]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
                                 <span class="desc">
                                     <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
@@ -461,16 +461,16 @@ $('.mySelect').selectpicker();
     element.className = arr1.join(" ");
     }
 
-// Add active class to the current button (highlight it)
-    var btnContainer = document.getElementById("filters");
-    var btns = btnContainer.getElementsByClassName("btn");
-    for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function(){
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
-    });
-    }
+    // Add active class to the current button (highlight it)
+    // var btnContainer = document.getElementById("filters");
+    // var btns = btnContainer.getElementsByClassName("btn-game-category");
+    // for (var i = 0; i < btns.length; i++) {
+    //     btns[i].addEventListener("click", function(){
+    //         var current = document.getElementsByClassName("active");
+    //         current[0].className = current[0].className.replace(" active", "");
+    //         this.className += " active";
+    //     });
+    // }
 </script>
 
 @endsection
