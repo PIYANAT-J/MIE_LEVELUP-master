@@ -5,7 +5,7 @@
     <div class="row ">
         @include('profile.sidebar.sponsor_sidebar')
 
-        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3 pb-4" style="background-color:#f5f5f5;">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3 pb-4" style="background-color:#f5f5f5;">
             <div class="row mt-3 ">
                 <div class="col-12 ">
                     <a href="{{ route('AdvtPackage') }}">
@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7">
                         <label class="bgMyPackage2">
                             <div class="row">
                                 <div class="col-lg-12 mt-2" style="line-height:0.7;">
@@ -35,7 +35,7 @@
                             </div>
                         </label>
                         <label class="bgInput field-wrap">
-                            <label class="fontHeadInput px-3 py-2" style="padding:0;">ลิงค์โฆษณา</label> <br>
+                            <label class="fontHeadInput px-3 py-2 p" style="padding:0;">ลิงค์โฆษณา</label> <br>
                             <!-- <input name="name" class="input-login px-3"></input> -->
                             <select class="MySelect p pl-2" name="" id="">เลือกโฆษณา
                             <option value="">ดึงจาก DB</option>
@@ -53,7 +53,7 @@
                             <label class="addGamePackage p">+ เพิ่มเกม</label></a>
                             </div>
                         </div>
-                        <div class="rowGamePackage">
+                        <!-- <div class="rowGamePackage"> -->
                             <!-- <div class="row mt-2 mx-1 " style="border-bottom: 1px solid #f2f2f2;">
                                 <div class="col-lg-9 mb-2" style="padding:0;">
                                     <label class="labelItem">
@@ -66,6 +66,7 @@
                                 </div>
                             </div> -->
                             <!-- <p>{{$package->packageBuy_gameSpon}}</p> -->
+                            <div class="rowGamePackage">
                             @if($packageGame != null)
                                 @foreach($packageGame as $gameSpon)
                                     @foreach($game as $Game)
@@ -74,26 +75,31 @@
                                                 $start = explode("T",$gameSpon->start);
                                                 $deadline = explode("T",$gameSpon->deadline);
                                             ?>
-                                            <div class="row mt-2 mx-1 " style="border-bottom: 1px solid #f2f2f2;">
-                                                <div class="col-12 mb-2" style="padding:0;">
-                                                    <label class="labelItem">
+                                            
+                                                <div class="row mt-2 mx-1 " style="border-bottom: 1px solid #f2f2f2;">
+                                                    <div class="col-4 col-sm-2 col-md-2 col-lg-4 col-xl-3 mb-2 text-center" style="padding:0;">
                                                         <img class="ImgGamePackage" src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" />
-                                                    </label> 
-                                                    <label class="p"> 
-                                                        <label style="color:#000;font-weight:800;">{{$Game->GAME_NAME}}</label><br> 
-                                                        {{$Game->RATED_B_L}} • Online <br> เวอร์ชั่น 1.03
-                                                    </label>
-                                                    <label class="TimeGamePackage p"> {{$start[1]}} - {{$deadline[1]}}</label>
+                                                    </div> 
+                                                    <div class="col-8 col-sm-7 col-md-7 col-lg-6 col-xl-6 mb-2" style="padding:0;">
+                                                        <label class="p"> 
+                                                            <label style="color:#000;font-weight:800;">{{$Game->GAME_NAME}}</label><br> 
+                                                            {{$Game->RATED_B_L}} • Online <br> เวอร์ชั่น 1.03
+                                                        </label>
+                                                    </div> 
+                                                    <div class="col-12 col-sm-3 col-md-3 col-lg-2 col-xl-3 mb-2" style="padding:0;">
+                                                        <label class="TimeGamePackage p"> {{$start[1]}} - {{$deadline[1]}}</label>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            
                                         @endif
                                     @endforeach
                                 @endforeach
                             @endif
-                        </div>
+                            </div>
+                        <!-- </div> -->
                     </div>
 
-                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
                         <div class="row">
                             <div class="col-12 pb-2"> 
                                 <p style="margin:0;font-weight:800;">ข้อกำหนดของการสนับสนุนเงินในเกม</p>
