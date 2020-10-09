@@ -60,56 +60,29 @@
                                     <div class="col-lg-12">
                                         <div class="row mt-3">
                                             <div class="col-lg-8"></div>
+                                            <div class="col-lg-2"></div>
                                             <div class="col-lg-2">
-                                                <!-- <label class="btn-cancel">
-                                                    <p style="margin:0;">ยกเลิก</p>
-                                                </label> -->
                                                 <form action="{{route('cancalItem')}}" method="post">
                                                     @csrf
                                                     <button class="btn-cancel">
                                                         <p style="margin:0;">ยกเลิก</p>
                                                     </button>
                                                     <input type="hidden" name="invoice" value="{{$qrpayment->invoice}}">
-                                                    <!-- <label class="btn-submit-payment">ยกเลิก</label> -->
                                                 </form>
                                             </div>
-                                            <div class="col-lg-2">
-                                                <!-- <a href="/successful_payment">
-                                                    <button class="btn-submit-red">
-                                                        <p style="margin:0;color:#fff;">ยืนยัน</p>
-                                                    </buton>
-                                                </a> -->
-                                                <form action="{{route('cancalItem')}}" method="post">
+                                            <!-- <div class="col-lg-2"> -->
+                                                <!-- <form action="{{route('cancalItem')}}" method="post">
                                                     @csrf
                                                     <button class="btn-submit-red" name="submit" value="submit">
                                                         <p style="margin:0;color:#fff;">ยืนยัน</p>
                                                         <input type="hidden" name="invoice" value="{{$qrpayment->invoice}}">
                                                     </button>
-                                                </form>
-                                            </div>
+                                                </form> -->
+                                            <!-- </div> -->
                                         </div>
                                     </div>
                                 </div>
                             @endif
-                            <!-- <div class="row mt-3 py-2 " style="background-color:#000;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
-                                <div class="col-lg-12">
-                                    <div class="row mt-3">
-                                        <div class="col-lg-8"></div>
-                                        <div class="col-lg-2">
-                                            <label class="btn-cancel">
-                                                <p style="margin:0;">ยกเลิก</p>
-                                            </label>
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <a href="/successful_payment">
-                                                <button class="btn-submit-red">
-                                                    <p style="margin:0;color:#fff;">ยืนยัน</p>
-                                                </buton>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -162,4 +135,34 @@
         });
     </script>
 @endif
+
+<script>
+    $(document).ready(function(e) {
+        invoice = "{{$qrpayment->invoice}}";
+        console.log(invoice);
+        submit = "submit";
+        console.log(submit);
+        setInterval(function(){
+            $.ajax({
+                url: "{{route('cancalItem')}}",
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    invoice:invoice,
+                    submit:submit,
+                },
+                success: function(response) {
+                    if(response.success){
+                        console.log(response.success)
+                        window.location.href = response.route;
+                    }else{
+                        console.log(response.false)
+                        // window.location.href = response.route;
+                    }
+                },
+                error: function() {}
+            });
+        }, 2000);
+    });
+</script>
 @endsection

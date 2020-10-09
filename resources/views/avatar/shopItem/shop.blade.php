@@ -145,7 +145,11 @@
                                                         ฿11,400.00
                                                     </h5>
                                                 </span>
-                                                <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
+                                                @if($Itme->item_amount_discount >= $Itme->item_amount)
+                                                    <label class="btn-shop2 btn-shop-position">สินค้าหมด</label>
+                                                @else
+                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
+                                                @endif
                                             </label>
                                         </div>
                                         <?php $i++; ?>
@@ -193,7 +197,11 @@
                                                         ฿11,400.00
                                                     </h5>
                                                 </span>
-                                                <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
+                                                @if($Itme->item_amount_discount >= $Itme->item_amount)
+                                                    <label class="btn-shop2 btn-shop-position">สินค้าหมด</label>
+                                                @else
+                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
+                                                @endif
                                             </label>
                                         </div>
                                     @endif
@@ -228,7 +236,11 @@
                                                         ฿11,400.00
                                                     </h5>
                                                 </span>
-                                                <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
+                                                @if($Itme->item_amount_discount >= $Itme->item_amount)
+                                                    <label class="btn-shop2 btn-shop-position">สินค้าหมด</label>
+                                                @else
+                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
+                                                @endif
                                             </label>
                                         </div>
                                     @endif
@@ -263,7 +275,11 @@
                                                         ฿11,400.00
                                                     </h5>
                                                 </span>
-                                                <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
+                                                @if($Itme->item_amount_discount >= $Itme->item_amount)
+                                                    <label class="btn-shop2 btn-shop-position">สินค้าหมด</label>
+                                                @else
+                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
+                                                @endif
                                             </label>
                                         </div>
                                     @endif
