@@ -6,7 +6,40 @@
   h4,.h4{font-size: 20px;}
   h5,.h5{font-size: 12px;}
   h6,.h6{font-size: 24px;}
-  
+
+  .columnPackage  {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .columnPackage2  {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .columnAdGame {
+    width: 50%;
+    padding: 5px;
+  }
+
+  .custom-check-elem{
+    width: 42%;
+  }
+
+  .custom-check-elem2{
+    width: 42%;
+  }
+
+  .columnGameCat {
+    width: 50%;
+    padding: 5px;
+  }
+
+  .blockBtnCat{
+    width: 45%;
+    padding: 20px;
+
+  }
  }
 
  /* S */
@@ -18,6 +51,40 @@
   h4,.h4{font-size: 22px;}
   h5,.h5{font-size: 12px;}
   h6,.h6{font-size: 20px;}
+
+  .columnPackage  {
+    width: 33.33%;
+    padding: 5px;
+  }
+
+  .columnPackage2  {
+    width: 50%;
+    padding: 5px;
+  }
+
+  .columnAdGame {
+    width: 33.33%;
+    padding: 5px;
+  }
+
+  .custom-check-elem{
+    width: 29.5%;
+  }
+
+  .custom-check-elem2{
+    width: 29.5%;
+  }
+
+  .columnGameCat {
+    width: 33.33%;
+    padding: 5px;
+  }
+
+  .blockBtnCat{
+    width: 30.5%;
+    padding: 20px;
+
+  }
  }
 
  /* MD */
@@ -29,6 +96,40 @@
   h4,.h4{font-size: 20px;}
   h5,.h5{font-size: 12px;}
   h6,.h6{font-size: 26px;}
+
+  .columnPackage  {
+    width: 33.33%;
+    padding: 5px;
+  }
+
+  .columnPackage2  {
+    width: 33.33%;
+    padding: 5px;
+  }
+
+  .columnAdGame {
+    width: 25%;
+    padding: 5px;
+  }
+
+  .custom-check-elem{
+    width: 22.5%;
+  }
+
+  .custom-check-elem2{
+    width: 22.5%;
+  }
+
+  .columnGameCat {
+    width: 25%;
+    padding: 5px;
+  }
+
+  .blockBtnCat{
+    width: 22.5%;
+    padding: 20px;
+
+  }
  }
 
  /* LG */
@@ -40,6 +141,40 @@
   h4,.h4{font-size: 22px;}
   h5,.h5{font-size: 12px;}
   h6,.h6{font-size: 28px;}
+
+  .columnPackage  {
+    width: 33.33%;
+    padding: 5px;
+  }
+
+  .columnPackage2  {
+    width:33.33%;
+    padding: 5px;
+  }
+
+  .columnAdGame {
+    width: 25%;
+    padding: 5px;
+  }
+
+  .custom-check-elem{
+    width: 22%;
+  }
+
+  .custom-check-elem2{
+    width: 22%;
+  }
+
+  .columnGameCat {
+    width: 20%;
+    padding: 5px;
+  }
+
+  .blockBtnCat{
+    width: 17.9%;
+    padding: 20px;
+
+  }
  }
 
  /* XL */
@@ -51,6 +186,40 @@
   h4,.h4{font-size: 24px;}
   h5,.h5{font-size: 14px;}
   h6,.h6{font-size: 30px;}
+
+  .columnPackage  {
+    width: 20%;
+    padding: 5px;
+  }
+
+  .columnPackage2  {
+    width:25%;
+    padding: 5px;
+  }
+  .columnAdGame {
+    width:16.66%;
+    padding: 5px;
+  }
+
+  .custom-check-elem{
+    width: 15%;
+  }
+
+  .custom-check-elem2{
+    width: 15%;
+  }
+
+  .columnGameCat {
+    width: 16.67%;
+    padding: 5px;
+  }
+
+  .blockBtnCat{
+    width: 15.2%;
+    padding: 20px;
+
+  }
+
  }
 
  /* HD */
@@ -62,6 +231,39 @@
   h4,.h4{font-size: 24px;}
   h5,.h5{font-size: 16px;}
   h6,.h6{font-size: 32px;}
+  
+  .columnPackage  {
+    width: 16.66%;
+    padding: 5px;
+  }
+
+  .columnPackage2  {
+    width:20%;
+    padding: 5px;
+  }
+  .columnAdGame {
+    width:12.5%;
+    padding: 5px;
+  }
+
+  .custom-check-elem{
+    width: 11.5%;
+  }
+
+  .custom-check-elem2{
+    width: 11.5%;
+  }
+
+  .columnGameCat {
+    width:12.5%;
+    padding: 5px;
+  }
+
+  .blockBtnCat{
+    width: 11.4%;
+    padding: 20px;
+
+  }
  }
  
  p,h1, h2, h3, h4, h5,h6,
@@ -2199,13 +2401,26 @@ body {
 }
 
 .btn-closeModal{
-  background-color: #fff;
+  /* background-color: #fff; */
   border: none;
 }
 
 .btn-closeModal{
   outline: none!important;
 }
+
+.btn-closeModal-body{
+  /* background-color: #fff; */
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.btn-closeModal-body{
+  outline: none!important;
+}
+
 
 .img-modal{
   width: 6em;
@@ -2276,6 +2491,19 @@ body {
   outline: none!important;
 }
 
+.btn-cancel-s{
+  background-color: #a8a8a8;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  padding: 8px 10px;
+  text-align: center;
+  cursor: pointer;
+}
+.btn-cancel-s:focus {
+  outline: none!important;
+}
+
 .btn-submit{
   width: 100%;
   background-color: #17202c;
@@ -2302,6 +2530,20 @@ body {
 .btn-submit-red:focus {
   outline: none!important;
 }
+
+.btn-submit-red-s{
+  background-color: #ce0005;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+.btn-submit-red-s:focus {
+  outline: none!important;
+}
+
+
 
 .rating {
 	cursor: pointer;
@@ -2631,7 +2873,7 @@ body {
   background-color:#141621;
   border: none;
   border-radius: 8px;
-  padding:15px 20px 10px 20px;
+  padding:15px 0 10px 0;
 }
 .btn-reset:focus{
   outline: none!important;
@@ -2682,10 +2924,38 @@ body {
   outline: none!important;
 }
 
+.rowCat{
+  height: 500px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
 .row4{
   height: 500px;
   overflow: scroll;
   overflow-x: hidden;
+}
+
+/* width */
+.row4::-webkit-scrollbar {
+  width: 4px;
+  
+}
+
+/* Track */
+.row4::-webkit-scrollbar-track {
+  background: #ffff; 
+}
+ 
+/* Handle */
+.row4::-webkit-scrollbar-thumb {
+  background: #adadad;
+  /* border-radius: 25px;  */
+}
+
+/* Handle on hover */
+.row4::-webkit-scrollbar-thumb:hover {
+  background: #adadad; 
 }
 
 
@@ -3577,6 +3847,28 @@ div.sticky {
   overflow-x: hidden;
 }
 
+/* width */
+.row5::-webkit-scrollbar {
+  width: 4px;
+  
+}
+
+/* Track */
+.row5::-webkit-scrollbar-track {
+  background: #ffff; 
+}
+ 
+/* Handle */
+.row5::-webkit-scrollbar-thumb {
+  background: #adadad;
+  /* border-radius: 25px;  */
+}
+
+/* Handle on hover */
+.row5::-webkit-scrollbar-thumb:hover {
+  background: #adadad; 
+}
+
 .btn-submit-modal{
   width: 100%;
   height: 50px;
@@ -3803,7 +4095,7 @@ input[type="checkbox"].switch_1{
 }
 
 .input-otp2{
-  width: 40px;
+  width: 35px;
   margin: 5px;
   border-top: 1px solid #fff;
   border-left: 1px solid #fff;
@@ -5464,6 +5756,28 @@ input[type=number]
   overflow-x: hidden;
 }
 
+/* width */
+.row8::-webkit-scrollbar {
+  width: 4px;
+  
+}
+
+/* Track */
+.row8::-webkit-scrollbar-track {
+  background: #ffff; 
+}
+ 
+/* Handle */
+.row8::-webkit-scrollbar-thumb {
+  background: #adadad;
+  /* border-radius: 25px;  */
+}
+
+/* Handle on hover */
+.row8::-webkit-scrollbar-thumb:hover {
+  background: #adadad; 
+}
+
 .font-payment-avatar{
   color:#fff;
   line-height:1.5;
@@ -6509,11 +6823,12 @@ input[type="checkbox"].switch_2{
 
 .bgPackage{
   background-color: #ffffff;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.16);
-  width: 250px;
+  width: 100%;
   padding: 5px;
-  margin: 5px;
+  /* margin: 5px; */
+  border-radius: 6px;
 }
 
 
@@ -6521,7 +6836,8 @@ input[type="checkbox"].switch_2{
   background-color: #ce0005;
   border-radius: 6px;
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 10px 20px ;
+  height: 40px;
 }
 
 .fontDetailPackage{
@@ -6536,6 +6852,7 @@ input[type="checkbox"].switch_2{
 .bgMyPackage{
   background-color: #1f2a37;
   border-radius: 6px;
+  width: 100%; /*new*/
   padding: 10px 20px;
 }
 .bgMyPackage2{
@@ -6548,9 +6865,10 @@ input[type="checkbox"].switch_2{
 .bgManagePackage{
   background-color: #ffffff;
   border-radius: 6px;
-  padding: 5px 10px 0 10px;
+  padding: 5px 10px ;
   margin-top: 10px;
   cursor: pointer;
+  text-align: center;
 }
 
 .input-container {
@@ -6619,6 +6937,7 @@ input[type="checkbox"].switch_2{
   padding: 5px 10px;
   cursor: pointer;
   float: right;
+  width: 100%;
 }
 
 .rowGamePackage{
@@ -6626,6 +6945,29 @@ input[type="checkbox"].switch_2{
   overflow: scroll;
   overflow-x: hidden;
 }
+
+/* width */
+.rowGamePackage::-webkit-scrollbar {
+  width: 4px;
+  
+}
+
+/* Track */
+.rowGamePackage::-webkit-scrollbar-track {
+  background: #ffffff; 
+}
+ 
+/* Handle */
+.rowGamePackage::-webkit-scrollbar-thumb {
+  background: #adadad;
+  /* border-radius: 25px;  */
+}
+
+/* Handle on hover */
+.rowGamePackage::-webkit-scrollbar-thumb:hover {
+  background: #adadad; 
+}
+
 
 .typeGamePackage{
   background-color: #fff;
@@ -6643,13 +6985,13 @@ input[type="checkbox"].switch_2{
 
 .bgGameSpon{
   background-color: #c9c9c9;
-  width: 140px;
+  width: 100%;
   height: 200px;
   object-fit: cover;
   border-radius: 6px;
 }
 
-.custom-check { margin:0; }
+.custom-check { margin:0;}
 
 /* VISUALLY HIDE THE ORIGINAL CHECKBOX/RADIOBUTTON */
 .custom-check input[type=checkbox] {
@@ -6657,41 +6999,39 @@ input[type="checkbox"].switch_2{
     height: 1px;
     padding: 0;
     border: 0;
-    margin: -1px;
     clip: rect(0,0,0,0);
     overflow: hidden;
     position: absolute;
 }
 
-.custom-check-elem, .custom-check-label {
-    cursor: pointer;
-    vertical-align: middle;
-    color: #ffffff;
+.custom-check-label {
+  color: #ffffff;
+  width: 100%;
+  height: 200px;
+  cursor: pointer;
 }
 
-/* CUSTOM CHECKBOX */
 .custom-check-elem { 
-    /* display: inline-block; */
-    /* position: relative; */
-    position: absolute;
-    margin-right: 4px;
-    border-radius: 6px;
-    width: 140px;
-    height: 200px;
+  position: absolute;
+  z-index: 5;
+  border-radius: 6px;
+  height: 200px;
+  cursor: pointer;
+  margin: 0;
 }
 
 /* CUSTOM CHECKBOX*/
 .custom-check-elem:before {
     content: "\2713";
+    color: #FFFFFF;
     display: none;
     position: absolute;
-    top: 7px;
+    top:7px;
     right: 7px;
     width: 25px;
     height: 25px;
     background-color: #23c197;
     border-radius: 50%;
-    font-family: myfont;
     font-size: 1em;
     line-height: 1.5;
     font-weight: bold;
@@ -6722,22 +7062,23 @@ input[type="checkbox"].switch_2{
 }
 
 .custom-check-label2 {
-    cursor: pointer;
     vertical-align: middle;
     color: #ffffff;
     cursor: default;
     opacity: 55%;
+    width: 100%;
+    height: 200px;
+    cursor: default;
 }
 
 /* CUSTOM CHECKBOX */
-.custom-check-elem2 { 
-    /* display: inline-block; */
+.custom-check-elem2 {
+    display: inline-block;
     /* position: relative; */
     position: absolute;
     z-index: 5;
     margin-right: 4px;
     border-radius: 6px;
-    width: 140px;
     height: 200px;
     cursor: default;
 }
@@ -6754,7 +7095,6 @@ input[type="checkbox"].switch_2{
     height: 25px;
     background-color: #a8a8a8;
     border-radius: 50%;
-    font-family: myfont;
     font-size: 1em;
     line-height: 1.5;
     font-weight: bold;
@@ -6770,10 +7110,32 @@ input[type="checkbox"].switch_2{
 .custom-radio-input2.checked + .custom-radio-elem2:before { display: block; }
 
 .rowGamePackage2{
-  height:850px;
   overflow: scroll;
   overflow-x: hidden;
 }
+
+/* width */
+.rowGamePackage2::-webkit-scrollbar {
+  width: 4px;
+  
+}
+
+/* Track */
+.rowGamePackage2::-webkit-scrollbar-track {
+  background: #ffffff; 
+}
+ 
+/* Handle */
+.rowGamePackage2::-webkit-scrollbar-thumb {
+  background: #adadad;
+  /* border-radius: 25px;  */
+}
+
+/* Handle on hover */
+.rowGamePackage2::-webkit-scrollbar-thumb:hover {
+  background: #adadad; 
+}
+
 
 /* checkbox-dark */
 .checkbox-dark input[type="checkbox"] {
@@ -6827,6 +7189,113 @@ input[type="checkbox"].switch_2{
 .checkbox-dark input[type="checkbox"]:checked + label::after {
   content: "";
 }
+
+.checkbox-dark input[type="checkbox"] {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkbox-dark label {
+  position: relative;
+  display: inline-block;
+  padding-left: 5px;
+  cursor: pointer;
+  
+}
+
+.checkbox-dark label::before,
+.checkbox-dark label::after {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  cursor: pointer;
+}
+
+.checkbox-dark label::before{
+  height: 16px;
+  width: 16px;
+  border: 1px solid #000;
+  left: -15px;
+  border-radius: 4px;
+  top: 12px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.checkbox-dark label::after {
+  height: 5px;
+  width: 9px;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+  color: #000;
+  transform: rotate(-45deg);
+  left: -11px;
+  top: 16px;
+  cursor: pointer;
+}
+
+.checkbox-dark input[type="checkbox"] + label::after {
+  content: none;
+}
+
+.checkbox-dark input[type="checkbox"]:checked + label::after {
+  content: "";
+}
+
+/* ------------ */
+
+.checkbox-dark2 input[type="checkbox"] {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkbox-dark2 label {
+  position: relative;
+  display: inline-block;
+  padding-left: 5px;
+  cursor: pointer;
+  
+}
+
+.checkbox-dark2 label::before,
+.checkbox-dark2 label::after {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  cursor: pointer;
+}
+
+.checkbox-dark2 label::before{
+  height: 16px;
+  width: 16px;
+  border: 1px solid #000;
+  left: -4px;
+  border-radius: 4px;
+  top: 0;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.checkbox-dark2 label::after {
+  height: 5px;
+  width: 9px;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+  color: #000;
+  transform: rotate(-45deg);
+  left: 0;
+  top: 4px;
+  cursor: pointer;
+}
+
+.checkbox-dark2 input[type="checkbox"] + label::after {
+  content: none;
+}
+
+.checkbox-dark2 input[type="checkbox"]:checked + label::after {
+  content: "";
+}
+/* ---------------- */
 .btnGrey{
   background-color: #f2f2f2;
   padding-right: 10px;
@@ -6964,7 +7433,7 @@ input[type="checkbox"].switch_2{
 
 .plabelimg2{
   position: absolute;
-  top: 15px;
+  top: 0;
   left: 5px;
 }
 
@@ -6985,26 +7454,26 @@ input[type="checkbox"].switch_2{
   border: 1px solid #000;
   border-radius: 6px;
   object-fit: cover;
-  position: absolute;
+  /* position: absolute;
   top: 0;
-  left: 30px;
+  left: 30px; */
 }
 
 .pFont{
-  position: absolute;
+  /* position: absolute;
   top: 0;
-  left: 130px;
+  left: 130px; */
 }
   
 .pFont2{
-  position: absolute;
+  /* position: absolute;
   top: 5px;
-  left: 110px;
+  left: 110px; */
 }
 
 .pFont3{
   position: absolute;
-  top: 5px;
+  top: 0;
   left: 70px;
 }
 
@@ -7027,6 +7496,28 @@ input[type="checkbox"].switch_2{
   height: 500px;
   overflow: scroll;
   overflow-x: hidden;
+}
+
+/* width */
+.rowGameShopping::-webkit-scrollbar {
+  width: 4px;
+  
+}
+
+/* Track */
+.rowGameShopping::-webkit-scrollbar-track {
+  background: #ffffff; 
+}
+ 
+/* Handle */
+.rowGameShopping::-webkit-scrollbar-thumb {
+  background: #adadad;
+  /* border-radius: 25px;  */
+}
+
+/* Handle on hover */
+.rowGameShopping::-webkit-scrollbar-thumb:hover {
+  background: #adadad; 
 }
 
 .fontAdsPayment{
@@ -7087,6 +7578,7 @@ input[type="checkbox"].switch_2{
   border: none;
   padding: 3px 10px;
   background-color: #fafaff;
+  width: 60%;
 }
 .inputSponPayment2:focus{
   background-color: #fafaff !important;
@@ -7135,16 +7627,15 @@ input[type="checkbox"].switch_2{
   font-weight: 800;
   font-size: 1.2em;
   color: #000;
-  width: 90%;
+  width: 70%;
 }
 .inputAmountT10pay:focus{
   outline: none!important;
 }
 
 .bgAmountT10payInner{
-  width: 94%;
+  width: 100%;
   border-radius: 6px;
-  margin: 15px;
   object-fit: contain;
   background-color: #f2f2f2;
   border: none;
@@ -7267,6 +7758,7 @@ input[type="checkbox"].switch_2{
   background-color: #fafaff;
   padding: 6px 10px;
   border: none;
+  width: 60%;
 }
 .inputSponPayment3focus{
   background-color: #fafaff !important;
@@ -7274,7 +7766,7 @@ input[type="checkbox"].switch_2{
 }
 
 .bgT10ListBanking{
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 }
 
 .bgT10ListBanking2{
@@ -7284,14 +7776,46 @@ input[type="checkbox"].switch_2{
   background-color:#edd0d5;
   color: #ce0005;
   border-radius: 6px;
-  padding: 0 10px 0 10px;
+  width: 100%;
   cursor: pointer;
+  text-align: center;
+}
+
+.bgTransfer{
+  background-color:#edd0d5;
+  color: #ce0005;
+  border-radius: 6px;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
 }
 
 .row200{
   height: 100px;
   overflow: scroll;
   overflow-x: hidden;
+}
+
+/* width */
+.row200::-webkit-scrollbar {
+  width: 4px;
+  
+}
+
+/* Track */
+.row200::-webkit-scrollbar-track {
+  background: #ffffff; 
+}
+ 
+/* Handle */
+.row200::-webkit-scrollbar-thumb {
+  background: #adadad;
+  /* border-radius: 25px;  */
+}
+
+/* Handle on hover */
+.row200::-webkit-scrollbar-thumb:hover {
+  background: #adadad; 
 }
 
 .addBank{
@@ -7490,8 +8014,9 @@ input[type="checkbox"].switch_2{
   background-color: #e7f2e5;
   color: #5fb156;
   border-radius: 6px;
-  padding: 0 10px 0 10px;
   cursor: pointer;
+  width: 100%;
+  text-align: center;
 }
 
 .inputT10Avatar{
@@ -7509,8 +8034,9 @@ input[type="checkbox"].switch_2{
   background-color: #fc8800;
   color: #fff;
   border-radius: 6px;
-  padding: 0 10px 0 10px;
   cursor: pointer;
+  width: 100%;
+  text-align: center;
 }
 
 .iconShop{
@@ -7699,7 +8225,7 @@ input[type="checkbox"].switch_2{
 .btnFollowCat{ /**/
   border-radius: 6px;
   background-color:#fff;
-  z-index:5;
+  z-index:100;
   cursor: pointer;
   position: absolute;
   top: 10px;
@@ -7764,28 +8290,30 @@ input[type="checkbox"].switch_2{
   content: "";
 }
 
-.pImgRateDetail{
+/* .pImgRateDetail{
   position: absolute;
   top: 10px;
   left: 20px;
-}
+} */
 
-.pFontRateDetail{
+/* .pFontRateDetail{
   position: absolute;
   top: 15px;
   left: 80px;
-}
+} */
 
 .btnFollowDetail{ /**/
+  /* margin-left: 10px; */
+  margin-bottom: 5px;
   width: 150px;
   height: 35px;
   border-radius: 6px;
   background-color:#fff;
   cursor: pointer;
   border: none;
-  position: absolute;
+  /* position: absolute;
   top: 10px;
-  right: 20px;
+  right: 20px; */
   text-align: center;
 }
 .btnFollowDetail:focus{
@@ -7802,15 +8330,17 @@ input[type="checkbox"].switch_2{
 }
 
 .btnDownloadDetail{ /**/
+  /* margin-left: 10px; */
+  margin-bottom: 5px;
   width: 150px;
   height: 35px;
   border-radius: 6px;
   background-color:#fff;
   cursor: pointer;
   border: none;
-  position: absolute;
+  /* position: absolute;
   top: 50px;
-  right: 20px;
+  right: 20px; */
   text-align: center;
 }
 .btnDownloadDetail:focus{
@@ -7818,15 +8348,17 @@ input[type="checkbox"].switch_2{
 }
 
 .btnFollowingDetail{ /**/
+  /* margin-left: 10px; */
+  margin-bottom: 5px;
   width: 150px;
   height: 35px;
   border-radius: 6px;
   background-color:#ce0005;
   cursor: pointer;
   border: none;
-  position: absolute;
+  /* position: absolute;
   top: 10px;
-  right: 20px;
+  right: 20px; */
   text-align: center;
 }
 .btnFollowingDetail:focus{
@@ -7843,15 +8375,16 @@ input[type="checkbox"].switch_2{
 }
 
 .btnDownloaded{ /**/
+  margin-left: 10px;
   width: 150px;
   height: 35px;
   border-radius: 6px;
   background-color:#ce0005;
   cursor: pointer;
   border: none;
-  position: absolute;
+  /* position: absolute;
   top: 50px;
-  right: 20px;
+  right: 20px; */
   text-align: center;
 }
 .btnDownloaded:focus{
@@ -7859,15 +8392,16 @@ input[type="checkbox"].switch_2{
 }
 
 .btnDownloadDetail2{ /**/
+  margin-left: 10px;
   width: 150px;
   height: 35px;
   border-radius: 6px;
   background-color:#fff;
   cursor: pointer;
   border: none;
-  position: absolute;
+  /* position: absolute;
   top: 50px;
-  right: 20px;
+  right: 20px; */
   text-align: center;
 }
 .btnDownloadDetail2:focus{
@@ -7876,15 +8410,16 @@ input[type="checkbox"].switch_2{
 
 
 .btnUpdateDetail{
+  margin-left: 10px;
   width: 150px;
   height: 35px;
   border-radius: 6px;
   background-color:#fff;
   cursor: pointer;
   border: none;
-  position: absolute;
+  /* position: absolute;
   top: 50px;
-  right: 20px;
+  right: 20px; */
   text-align: center;
 }
 .btnUpdateDetail:focus {
@@ -7892,15 +8427,17 @@ input[type="checkbox"].switch_2{
 }
 
 .btnSupportDetail{
+  /* margin-left: 10px; */ m
+  margin-bottom: 5px;
   width: 150px;
   height: 35px;
   border-radius: 6px;
   background-color:#fff;
   cursor: pointer;
   border: none;
-  position: absolute;
+  /* position: absolute;
   top: 50px;
-  right: 20px;
+  right: 20px; */
   text-align: center;
 }
 .btnSupportDetail:focus {
@@ -7913,6 +8450,7 @@ input[type="checkbox"].switch_2{
   border: 1px solid #141621;
   border-radius: 6px;
   padding:8px;
+  margin-bottom: 5px;
 }
 
 .btnTotalComment:focus{
@@ -7981,8 +8519,31 @@ input[type="checkbox"].switch_2{
   overflow-y: scroll;
   overflow-x: hidden;
   padding-bottom: 10px;
-  padding-right: 10px;
+  /* padding-right: 10px; */
 }
+
+/* width */
+.pNavMobile::-webkit-scrollbar {
+  width: 4px;
+  
+}
+
+/* Track */
+.pNavMobile::-webkit-scrollbar-track {
+  background: #000; 
+}
+ 
+/* Handle */
+.pNavMobile::-webkit-scrollbar-thumb {
+  background: #000;
+  /* border-radius: 25px;  */
+}
+
+/* Handle on hover */
+.pNavMobile::-webkit-scrollbar-thumb:hover {
+  background: #000; 
+}
+
 
 .navbar-pic{
   border: solid 3px #ffffff;
@@ -8530,6 +9091,18 @@ input[type="checkbox"].switch_2{
   transform: translateY(-250%);
 }
 
+.crownWomanImg{
+  z-index: 5;
+  position: absolute;
+  width:110px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: translateY(-240%);
+}
+
 .glovesWomanImg{
   z-index: 5;
   position: absolute;
@@ -8565,6 +9138,7 @@ input[type="checkbox"].switch_2{
   margin: auto;
   transform: translateY(45%);
 }
+
 .crownWomanImg{
   z-index: 5;
   position: absolute;

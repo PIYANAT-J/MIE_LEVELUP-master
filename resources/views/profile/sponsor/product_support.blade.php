@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="col-6" style="padding-left:5px">
                                     <label class="bgInput field-wrap my-1" >
-                                        <p class="fontHeadInput">จำนวน Point ที่ใช้แลก</p>
+                                        <p class="fontHeadInput">จำนวน Point ที่ใช้</p>
                                         <input type="text" class="input1 p ml-2" name="product_point" value="{{old('product_point')}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" require></input>
                                     </label>
                                 </div>
@@ -157,10 +157,10 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="col-1"></div>
-                <div class="col-10 text-center" style="font-family:myfont1;;font-size:1.2em;color:#000;">แจ้งเตือน</div>
-                    <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
-                <div class="col-1"></div>
+                <div class="col-12 text-center" style="font-family:myfont1;color:#000;">แจ้งเตือน</div>
+                <button type="button" class="close btn-closeModal-header" data-dismiss="modal">
+                    <i class="icon-close_modal" style="font-size: 14px;"></i>
+                </button>
             </div>
 
             <div class="modal-body font-rate-modal">

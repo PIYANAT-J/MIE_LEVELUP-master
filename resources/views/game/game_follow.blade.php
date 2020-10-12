@@ -287,7 +287,7 @@
                             <option>1 ดาว</option>
                         </select>
                     </div>
-                    <button class="btn-reset p">
+                    <button class="btn-reset p ml-3">
                         <i class="icon-update_version"></i>
                         <span style="text-decoration: underline;">รีเซ็ท</span>
                     </button>
@@ -299,14 +299,14 @@
 
     <div class="row" style="background-color: #141621;margin:0;">
         <div class="col-lg-1 col-xl-1"></div>
-        <div class="col-sm col-md col-lg-10 col-xl-10 row4 ">
+        <div class="col-sm col-md col-lg-10 col-xl-10 rowCat ">
             <div class="row py-3">
 
                 @foreach($Games as $gameMe)
                     @if($Follows->count() > 0)
                         @foreach($Follows as $followMe)
                             @if($gameMe->GAME_ID == $followMe->GAME_ID)
-                                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2" style="padding:5px;">
+                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
                                     <a href="{{ route('GameDetail', ['id'=>encrypt($gameMe->GAME_ID)]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$gameMe->GAME_IMG_PROFILE) }}" /></a>
                                     <span class="desc">
                                         <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">

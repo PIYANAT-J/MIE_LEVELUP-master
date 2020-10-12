@@ -273,17 +273,17 @@
         
         <div class="col-lg-1 col-xl-1"></div>
         <div class="col-sm col-md col-lg-11 col-xl-11 mb-3" id="filters">
-            <button class="btn-game-category" onclick="filterSelection('hot')">
+            <button class="btn-game-category mb-1" onclick="filterSelection('hot')">
                 <h1 style="color: #fff;font-weight:800;">เกมยอดนิยม</h1>
                 <h1 style="color: #b1b7bc;margin:0;">{{ $Games->count() }} เกม</h1>
             </button>
             @auth
-            <button class="btn-game-category" onclick="filterSelection('follow')">
+            <button class="btn-game-category mb-1" onclick="filterSelection('follow')">
                 <h1 style="color: #fff;font-weight:800;">กำลังติดตาม</h1>
                 <h1 style="color: #b1b7bc;margin:0;">{{ $Follows->count() }} เกม</h1>
             </button>
             @endauth
-            <button class="btn-game-category " onclick="filterSelection('news')">
+            <button class="btn-game-category mb-1" onclick="filterSelection('news')">
                 <h1 style="color: #fff;font-weight:800;">เกมใหม่</h1>
                 <h1 style="color: #b1b7bc;margin:0;">{{ $Games->count() }} เกม</h1>
             </button>
@@ -344,8 +344,8 @@
 
     <div class="row" style="background-color: #141621;">
         <div class="col-lg-1 col-xl-1"></div>
-        <div class="col-sm col-md col-lg-10 col-xl-10 row4 ">
-            <div class="row py-3">
+        <div class="col-sm col-md col-lg-10 col-xl-10 rowCat ">
+            <div class="row">
                 <?php $arrayFollowsGame = array(); ?>
                 @if(isset($Follows) && $Follows != null)
                     @foreach($Follows as $follow)
@@ -354,7 +354,7 @@
                 @endif
                 @foreach($Games as $game)
                     @guest
-                        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2" style="padding:5px;">
+                        <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
                             <a href="{{ route('login-levelUp') }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
                             <span class="desc">
                                 <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:1em;">กำลังติดตาม</b></button > -->
@@ -368,7 +368,7 @@
                         </div>
                     @else
                         @if(in_array($game->GAME_ID, $arrayFollowsGame))
-                            <div class="filterDiv follow col-sm-6 col-md-4 col-lg-3 col-xl-2" style="padding:5px;">
+                            <div class="filterDiv follow hot col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
                                 <a href="{{ route('GameDetail', ['id'=>encrypt($game->GAME_ID)]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
                                 <span class="desc">
                                     <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
@@ -383,8 +383,10 @@
                                 </span>
                             </div>
                         @else
-                            <div class="filterDiv hot col-sm-6 col-md-4 col-lg-3 col-xl-2" style="padding:5px;">
-                                <a href="{{ route('GameDetail', ['id'=>encrypt($game->GAME_ID)]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
+                            <div class="filterDiv hot col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
+                                <a href="{{ route('GameDetail', ['id'=>encrypt($game->GAME_ID)]) }}">
+                                    <img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" />
+                                </a>
                                 <span class="desc">
                                     <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
                                         @csrf

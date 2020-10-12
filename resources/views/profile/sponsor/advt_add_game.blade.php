@@ -33,17 +33,17 @@
 
                 <div class="row">
                     <div class="col-12 pt-3 pb-2">
-                        <button class="typeGamePackage p" data-toggle="collapse" data-target="#demo">ประเภทเกม</button>
-                        <button class="typeGamePackage p">เกมยอดนิยม</button>
-                        <button class="typeGamePackage p">กำลังติดตาม</button>
-                        <button class="typeGamePackage p">เกมใหม่</button>
+                        <button class="typeGamePackage p mb-1" data-toggle="collapse" data-target="#demo">ประเภทเกม</button>
+                        <button class="typeGamePackage p mb-1">เกมยอดนิยม</button>
+                        <button class="typeGamePackage p mb-1">กำลังติดตาม</button>
+                        <button class="typeGamePackage p mb-1">เกมใหม่</button>
                     </div>
                 </div>
 
                 <div class="row" >
                     <div id="demo" class="collapse row3 " style="background-color: #f5f5f5;">
-                        <div class="row pl-4 pr-3 mt-3" >
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                        <div class="row pl-4  mt-3" >
+                            <div class=" col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_1">
                                     <label for="checkbox_1">
@@ -51,7 +51,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_2">
                                     <label for="checkbox_2">
@@ -59,7 +59,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_3">
                                     <label for="checkbox_3">
@@ -67,7 +67,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_4">
                                     <label for="checkbox_4">
@@ -75,7 +75,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_5">
                                     <label for="checkbox_5">
@@ -83,7 +83,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_6">
                                     <label for="checkbox_6">
@@ -91,7 +91,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_7">
                                     <label for="checkbox_7">
@@ -99,7 +99,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_8">
                                     <label for="checkbox_8">
@@ -107,7 +107,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_9">
                                     <label for="checkbox_9">
@@ -115,7 +115,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_10">
                                     <label for="checkbox_10">
@@ -123,7 +123,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_11">
                                     <label for="checkbox_11">
@@ -131,7 +131,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_12">
                                     <label for="checkbox_12">
@@ -140,7 +140,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_13">
                                     <label for="checkbox_13">
@@ -148,7 +148,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_14">
                                     <label for="checkbox_14">
@@ -156,7 +156,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_15">
                                     <label for="checkbox_15">
@@ -165,7 +165,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_16">
                                     <label for="checkbox_16">
@@ -173,7 +173,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_17">
                                     <label for="checkbox_17">
@@ -181,7 +181,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_18">
                                     <label for="checkbox_18">
@@ -189,7 +189,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_19">
                                     <label for="checkbox_19">
@@ -197,7 +197,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_20">
                                     <label for="checkbox_20">
@@ -205,7 +205,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_21">
                                     <label for="checkbox_21">
@@ -213,7 +213,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_22">
                                     <label for="checkbox_22">
@@ -221,7 +221,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_23">
                                     <label for="checkbox_23">
@@ -229,7 +229,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_24">
                                     <label for="checkbox_24">
@@ -237,7 +237,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_25">
                                     <label for="checkbox_25">
@@ -245,7 +245,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_26">
                                     <label for="checkbox_26">
@@ -253,7 +253,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_27">
                                     <label for="checkbox_27">
@@ -261,7 +261,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-lg-1" style="padding:0;">
                                 <div class="checkbox-red">
                                     <input type="checkbox" id="checkbox_28">
                                     <label for="checkbox_28">
@@ -302,8 +302,7 @@
                     </div>
                 </div>
 
-                <div class="row mr-3 rowGamePackage2">
-                    <div class="col-lg-12">
+                <div class="row ">
                         <?php $arrayGame = array(); ?>
                         @if($packageGame != null)
                             @foreach($packageGame as $gameSpon)
@@ -312,25 +311,21 @@
                         @endif
                         @foreach($game as $gameCustom)
                             @if(in_array($gameCustom->GAME_ID, $arrayGame))
-                                <label>
-                                    <div class="custom-check2">
-                                        <input class="custom-check-input2 checked" id="someCheck{{$gameCustom->GAME_ID}}" name="someCheck" type="checkbox" />
-                                        <label class="custom-check-elem2" for="someCheck{{$gameCustom->GAME_ID}}"></label>
-                                        <label class="custom-check-label2 " for="someCheck{{$gameCustom->GAME_ID}}">
-                                            <img class="bgGameSpon" src="{{asset('section/File_game/Profile_game/'.$gameCustom->GAME_IMG_PROFILE)}}">
-                                        </label>
-                                    </div>
-                                </label>
+                                <div class="custom-check2 columnAdGame">
+                                    <input class="custom-check-input2 checked" id="someCheck{{$gameCustom->GAME_ID}}" name="someCheck" type="checkbox" />
+                                    <label class="custom-check-elem2" for="someCheck{{$gameCustom->GAME_ID}}"></label>
+                                    <label class="custom-check-label2 " for="someCheck{{$gameCustom->GAME_ID}}">
+                                        <img class="bgGameSpon" src="{{asset('section/File_game/Profile_game/'.$gameCustom->GAME_IMG_PROFILE)}}">
+                                    </label>
+                                </div>
                             @else
-                                <label>
-                                    <div class="custom-check">
-                                        <input class="custom-check-input" id="someCheck{{$gameCustom->GAME_ID}}" name="someCheck" value="{{$gameCustom->GAME_ID}}" type="checkbox" />
-                                        <label class="custom-check-elem" for="someCheck{{$gameCustom->GAME_ID}}"></label>
-                                        <label class="custom-check-label " for="someCheck{{$gameCustom->GAME_ID}}">
-                                            <img class="bgGameSpon" src="{{asset('section/File_game/Profile_game/'.$gameCustom->GAME_IMG_PROFILE)}}">
-                                        </label>
-                                    </div>
-                                </label>
+                                <div class="custom-check columnAdGame" >
+                                    <input class="custom-check-input" id="someCheck{{$gameCustom->GAME_ID}}" name="someCheck" value="{{$gameCustom->GAME_ID}}" type="checkbox" />
+                                    <label class="custom-check-elem " for="someCheck{{$gameCustom->GAME_ID}}"></label>
+                                    <label class="custom-check-label " for="someCheck{{$gameCustom->GAME_ID}}">
+                                        <img class="bgGameSpon" src="{{asset('section/File_game/Profile_game/'.$gameCustom->GAME_IMG_PROFILE)}}">
+                                    </label>
+                                </div>
                             @endif
                         @endforeach
                         <!-- <label >
@@ -349,9 +344,7 @@
                                 </label>
                             </div>
                         </label> -->
-                    </div>
                 </div>
-                
             </div>
         </div>
     </div>
@@ -381,7 +374,7 @@
                             @for($i=0;$i < count($countGame);$i++)
                                 @foreach($game as $key=>$gameModal)
                                     @if($countGame[$i] == $gameModal->GAME_ID)
-                                        <div class="col-5 pl-2" style="padding:0;">
+                                        <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-4 pl-2" style="padding:0;">
                                             <label class="containerhover1">
                                                 <img class="imagehover1" src="{{asset('section/File_game/Profile_game/'.$gameModal->GAME_IMG_PROFILE)}}" />
                                                 <label class="middlehover1">
@@ -395,7 +388,7 @@
                                             </label>
                                         </div>
                                         <input type="hidden" name="game_id{{$key}}" value="{{$gameModal->GAME_ID}}">
-                                        <div class="col-7">
+                                        <div class="col-7 col-sm-7 col-md-7 col-lg-7 col-xl-8">
                                             <label>
                                                 <p class="pl-1" style="font-weight:900;margin:0;">เริ่มต้น</p>
                                                 <input class="input2 p pl-2" type="datetime-local" id="dateStart{{$key}}" name="dateStart{{$key}}" value="{{old('dateStart')}}" class="timepicker" />

@@ -58,19 +58,19 @@
 
                 <div class="row row5">
                     <div class="col-12">
-                        <div class="row mx-0 py-2" style="background-color:#f2f2f2;color:#000;">
+                        <div class="row d-flex align-items-center py-2" style="background-color:#f2f2f2;color:#000;">
                             <div class="col-6"><p style="font-weight:800;margin:0">ชื่อโฆษณา</p></div>
-                            <div class="col-2 text-center" ><p style="font-weight:800;margin:0;">โฆษณา</p></div>
-                            <div class="col-2 text-center" ><p style="font-weight:800;margin:0;">สถานะ</p></div>
-                            <div class="col-2 text-center" ><p style="font-weight:800;margin:0;">วัน-เวลา</p></div>
+                            <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center" ><p style="font-weight:800;margin:0;">โฆษณา</p></div>
+                            <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center" ><p style="font-weight:800;margin:0;">สถานะ</p></div>
+                            <div class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block d-md-block text-center" ><p style="font-weight:800;margin:0;">วัน-เวลา</p></div>
                         </div>
                         @foreach($advertising as $key=>$advt)
-                            <div class="row mx-0 py-2 line2">
+                            <div class="row line2">
                                 <div class="col-6 p">{{$advt->advertising_name}}</div>
-                                <div class="col-2 text-center">
+                                <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center">
                                     <div class="py-1 p" style="cursor:pointer;text-decoration: underline;color:#0061fc;"data-toggle="modal" data-target="#Ads{{$key}}">โฆษณา</div>
                                 </div>
-                                <div class="col-2 text-center">
+                                <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center">
                                     @if($advt->advertising_status == "รออนุมัติ")
                                         <label class="ml-2 px-1 p" style="color:#000;background-color: #ffd629;border-radius: 6px;margin:0;">รออนุมัติ</label></br>
                                     @elseif($advt->advertising_status == "true")
@@ -83,7 +83,7 @@
                                     <!-- <label class="ml-2 px-1 p" style="color:#fff;background-color: #ce0005;border-radius: 6px;margin:0;">ไม่อนุมัติ</label></br> -->
                                 </div>
                                 <?php $dateTime = explode(" ", $advt->advertising_create); ?>
-                                <div class="col-2 text-center"><h5 style="margin:0;">{{$dateTime[1]}}, {{$dateTime[0]}}</h5></div>
+                                <div class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block d-md-block text-center"><h5 style="margin:0;">{{$dateTime[1]}}, {{$dateTime[0]}}</h5></div>
                             </div>
 
                             <div class="modal fade" id="Ads{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -121,7 +121,7 @@
             <div class="modal-header">
                 <div class="col-1"></div>
                 <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">โฆษณา</div>
-                <button type="button" class="close btn-closeModal ml-3" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
+                <button type="button" class="close btn-closeModal- ml-3" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
                 <div class="col-1"></div>
             </div>
 
