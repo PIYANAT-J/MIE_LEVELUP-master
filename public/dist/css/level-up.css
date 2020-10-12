@@ -5053,6 +5053,19 @@ outline: none!important;
 .btn-avatar2:focus{
   outline: none!important;
 }
+
+.btn-avatar{
+  color: #000;
+  padding: 8px 30px;
+  border-radius: 6px;
+  box-shadow: 0 0 12px 0 #5bf89d;
+  background-color: #5bf89d;
+  border: none;
+}
+
+.btn-avatar:focus{
+  outline: none!important;
+}
  
 .minigame-img {
   border-radius: 8px;
