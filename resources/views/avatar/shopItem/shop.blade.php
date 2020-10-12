@@ -8,7 +8,7 @@
         <!-- shop -->
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3  pb-4" style="background-color: #141621;">
             <div class="row mt-4" >
-                <div class="col-sm-4 col-md-6 col-lg-6 col-xl-8 pt-2">
+                <div class="col-12 col-sm-4 col-md-6 col-lg-6 col-xl-8 pt-2">
                     <label>
                         <a href="/avatar"class="avatar-link active">
                             <h1 style="margin:0;">Avatar</h1>
@@ -23,14 +23,14 @@
                         </a>
                     </label>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2 text-right" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 text-right" style="padding:0;">
                     <a href="/simulator_trade">
                         <label class="bg-shop">
                             <p style="color:#fff;margin:0;">Simulator Trade</p> 
                         </label>
                     </a>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                     <a href="/sale">
                         <label class="bg-shop3">
                             <img class="iconShop2" src="{{asset('icon/shopping-bag.svg') }}"/>
@@ -40,7 +40,7 @@
                 </div>
             </div>
             
-            <div class="row px-4">
+            <div class="row paddingShop1" >
                 <div class="col-12 mb-3" style="height:200px;">
                     <div class="owl-carousel" id="owl-demo1">
                         <div class="item" style="height:200px;">
@@ -49,7 +49,7 @@
                                 <h6 style="margin:0;font-weight:900;color:#fff;">RARE ITEM</h6>
                                 <p style="margin:0;color:#fff;width:200px">ไอเทมพิเศษ หายาก มากที่สุดในตอนนี้รีบคว้ามามาครอบครองเลย</p>
                                 <button class="btn-shop1 p" data-toggle="modal" data-target="#shop">ซื้อเลย</button>
-                                <img class="img-shop1" src="{{asset('home/avatar/man/other/crown/c02.png') }}">
+                                <img class="img-shop1" src="{{asset('home/avatar/other/crown_01.png') }}">
                             </label>
                         </div>
 
@@ -59,7 +59,7 @@
                                 <h6 style="margin:0;font-weight:900;color:#fff;">RARE ITEM</h6>
                                 <p style="margin:0;color:#fff;width:200px">ไอเทมพิเศษ หายาก มากที่สุดในตอนนี้รีบคว้ามามาครอบครองเลย</p>
                                 <button class="btn-shop1 p" data-toggle="modal" data-target="#shop">ซื้อเลย</button>
-                                <img class="img-shop1" src="{{asset('home/avatar/man/other/crown/c02.png') }}">
+                                <img class="img-shop1" src="{{asset('home/avatar/other/crown_01.png') }}">
                             </label>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                 </div>
             </div>
 
-            <div class="row mx-4 pt-4 mb-3 pb-3" style="background-color: #202433;border-radius: 6px;">
+            <div class="row marginShop pt-4 mb-3 pb-3" style="background-color: #202433;border-radius: 6px;">
                 <div class="col-12">
 
                     <!-- แนะนำ -->
@@ -466,7 +466,7 @@
         // navText : ["<i class='icon-prev'></i>","<i class='icon-next'></i>"],
         responsiveClass:true,
         responsive:{
-            0:{
+            320:{
                 items:1,
                 nav:false
             },
