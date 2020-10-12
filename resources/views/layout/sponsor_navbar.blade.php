@@ -197,7 +197,7 @@
                                 <a href="{{ route('FollowMe') }}"><h1 class="navbarMobile">การติดตามของฉัน</h1></a>
                                 <a href="{{ route('SponsorProfile') }}"><h1 class="navbarMobile">ข้อมูลส่วนตัว</h1></a>
                                 <a href="{{ route('AdsSpon') }}"><h1 class="navbarMobile">โฆษณา</h1></a>
-                                <a href="{{ route('AdvtPackage') }}"><h1 class="navbarMobile">สนับสนุนเงินในเกิม</h1></a>
+                                <a href="{{ route('AdvtPackage') }}"><h1 class="navbarMobile">สนับสนุนเงินในเกม</h1></a>
                                 <a href="{{ route('ProductSupport') }}"><h1 class="navbarMobile">สนับสนุนสินค้าในเกม</h1></a>
                                 <a href="{{ route('SponShelf') }}"><h1 class="navbarMobile">ตู้เกม (เกมเชล)</h1></a>
                                 <a href="{{ route('SponsorChangePassword') }}"><h1 class="navbarMobile">เปลี่ยนรหัสผ่าน</h1></a>

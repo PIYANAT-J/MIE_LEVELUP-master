@@ -13,11 +13,14 @@ class tradeController extends Controller
     public function SimulatorTrade(){
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-
+        $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
         $trade = $this->getDataTrade();
         $trade1 = $trade[0];
         // dd($trade1);
-        return view('avatar.simulator_trade.simulator_trade', compact('guest_user', 'userKyc', 'trade1','trade'));
+        foreach($guest_user as $defaultAvatar){
+            $avatar = json_decode($defaultAvatar->AVATAR);
+        }
+        return view('avatar.simulator_trade.simulator_trade', compact('guest_user', 'userKyc', 'trade1', 'trade', 'shopping', 'avatar'));
     }
 
     public function getDataTrade(){
@@ -30,24 +33,40 @@ class tradeController extends Controller
     public function MyTrade(){
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        return view('avatar.simulator_trade.my_trade', compact('guest_user', 'userKyc'));
+        $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
+        foreach($guest_user as $defaultAvatar){
+            $avatar = json_decode($defaultAvatar->AVATAR);
+        }
+        return view('avatar.simulator_trade.my_trade', compact('guest_user', 'userKyc', 'shopping', 'avatar'));
     }
 
     public function MyTradeDetail(){
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        return view('avatar.simulator_trade.my_trade_detail', compact('guest_user', 'userKyc'));
+        $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
+        foreach($guest_user as $defaultAvatar){
+            $avatar = json_decode($defaultAvatar->AVATAR);
+        }
+        return view('avatar.simulator_trade.my_trade_detail', compact('guest_user', 'userKyc', 'shopping', 'avatar'));
     }
 
     public function RankingTrade(){
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        return view('avatar.simulator_trade.ranking_trade', compact('guest_user', 'userKyc'));
+        $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
+        foreach($guest_user as $defaultAvatar){
+            $avatar = json_decode($defaultAvatar->AVATAR);
+        }
+        return view('avatar.simulator_trade.ranking_trade', compact('guest_user', 'userKyc', 'shopping', 'avatar'));
     }
 
     public function RealInvestors(){
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        return view('avatar.realTarde.real_investors', compact('guest_user', 'userKyc'));
+        $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
+        foreach($guest_user as $defaultAvatar){
+            $avatar = json_decode($defaultAvatar->AVATAR);
+        }
+        return view('avatar.realTarde.real_investors', compact('guest_user', 'userKyc', 'shopping', 'avatar'));
     }
 }

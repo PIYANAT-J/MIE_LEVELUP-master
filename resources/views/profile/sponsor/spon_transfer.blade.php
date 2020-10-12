@@ -46,14 +46,14 @@
                         </div>
 
                         <div class="row py-2" style="border-bottom:1px solid #edeef3">
-                            <div class="col-8 ">
+                            <div class="col-6 col-sm-8 col-md-8 col-lg-8 col-xl-8">
                                 <p style="margin:0;font-weight:800;">ช่องทางการชำระเงิน</p>
                                 <p style="color:#000;">
                                     ATM / โอนเข้าธนาคาร <br>
                                     กรุณาเก็บเอกสาร/หลักฐานการโอนเงินไว้ เพื่ออัพโหลดภายใน 24 ชม.
                                 </p>
                             </div>
-                            <div class="col-4 text-right">
+                            <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-right">
                                 <label><img src="{{asset('home/logo/'.$transfer->transferฺBank_name.'.svg')}}" ></label>
                                 @if($transfer->transferฺBank_name == "bangkok")
                                     <label class="p">ธนาคารกรุงเทพ</label> <br>

@@ -178,9 +178,11 @@ class marketItemController extends Controller
         if($request->input('submit') != null){
             $qrpayment = QrPayment::Where('invoice', $request->input('invoice'))->get()->first();
             if($qrpayment->status == "false"){
-                return back()->with("false", "กรุณากดปุ่มยืนยันอีกครั้ง");
+                // return back()->with("false", "กรุณากดปุ่มยืนยันอีกครั้ง");
+                return response()->json(['false'=>'กรุณากดปุ่มยืนยันอีกครั้ง'], 200);
             }
-            return redirect(route('SuccessfulPayment', ['invoice' => encrypt($request->input('invoice'))]));
+            return response()->json(['success'=>'กรุณากดปุ่มยืนยันอีกครั้ง', 'route'=>'/successful_payment/'.encrypt($request->input("invoice")).''], 200);
+            // return redirect(route('SuccessfulPayment', ['invoice' => encrypt($request->input('invoice'))]));
         }else{
             $qrpayment = QrPayment::Where('invoice', $request->input('invoice'))->get()->first();
             $qrpayment->status = "99";
@@ -191,22 +193,21 @@ class marketItemController extends Controller
 
             return redirect(route('ShoppingCart'));
         }
+        return response()->json(['success'=>$request->input('submit')], 200);
     }
 
     public function successfulPayment($invoice = null){
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
         $address = DB::table('addresses')->where('USER_EMAIL', Auth::user()->email)->get();
-        $shopping = DB::table('shopping_cart')->where([['shopping_cart.USER_EMAIL', Auth::user()->email], ['shopping_cart.shopping_cart_status', 'true']])
-                        ->join('market_items', 'market_items.item_id', 'shopping_cart.item_id')
-                        ->get();
+        $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
         $transeection = DB::table('transeection_buy_items')->where([['USER_EMAIL', Auth::user()->email], ['transeection_status', 'true']])->orderBy('transeection_id', 'desc')->first();
-        // dd($transeection);
-        // dd(json_decode($transeection->transeection_items));
+        $marketItem = Market_item::all();
+        
         if(count($address) != 0){
-            return view('avatar.payment.successful_payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address', 'invoice'));
+            return view('avatar.payment.successful_payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address', 'invoice', 'marketItem'));
         }
-        return view('avatar.payment.successful_payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'invoice'));
+        return view('avatar.payment.successful_payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'invoice', 'marketItem'));
     }
 
     public function itemTransferPayment(Request $req){

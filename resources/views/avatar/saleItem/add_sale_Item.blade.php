@@ -82,12 +82,14 @@
                                                             @foreach($item as $key=>$allItem)
                                                                     @if($allItem->my_item_type == "hair" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
                                                                         @if($allItem->my_item_gender == "man")
-                                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/hair/man/{{$allItem->my_item_img}}'">
+                                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" 
+                                                                                    data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$allItem->my_item_description}}</div>' data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/hair/man/{{$allItem->my_item_img}}'">
                                                                                 <img class="picture" src="{{asset('home/avatar/hair/man/'.$allItem->my_item_img) }}" />
                                                                                 <span class="font-sale2"><h5 style="margin:0;">{{$allItem->my_item_level}}</h5></span>
                                                                             </button>
                                                                         @else
-                                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/hair/woman/{{$allItem->my_item_img}}'">
+                                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" 
+                                                                                    data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$allItem->my_item_description}}</div>' data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/hair/woman/{{$allItem->my_item_img}}'">
                                                                                 <img class="picture" src="{{asset('home/avatar/hair/woman/'.$allItem->my_item_img) }}" />
                                                                                 <span class="font-sale2"><h5 style="margin:0;">{{$allItem->my_item_level}}</h5></span>
                                                                             </button>
@@ -109,12 +111,14 @@
                                                             @foreach($item as $key=>$allItem)
                                                                 @if($allItem->my_item_type == "eyes" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
                                                                     @if($allItem->my_item_gender == "man")
-                                                                        <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/eyes/man/{{$allItem->my_item_img}}'">
+                                                                        <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" 
+                                                                                data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$allItem->my_item_description}}</div>' data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/eyes/man/{{$allItem->my_item_img}}'">
                                                                             <img class="picture" src="{{asset('home/avatar/eyes/man/'.$allItem->my_item_img) }}" />
                                                                             <span class="font-sale2"><h5 style="margin:0;">{{$allItem->my_item_level}}</h5></span>
                                                                         </button>
                                                                     @else
-                                                                        <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/eyes/woman/{{$allItem->my_item_img}}'">
+                                                                        <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" 
+                                                                                data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$allItem->my_item_description}}</div>' data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/eyes/woman/{{$allItem->my_item_img}}'">
                                                                             <img class="picture" src="{{asset('home/avatar/eyes/woman/'.$allItem->my_item_img) }}" />
                                                                             <span class="font-sale2"><h5 style="margin:0;">{{$allItem->my_item_level}}</h5></span>
                                                                         </button>
@@ -135,7 +139,8 @@
                                                             <p style="margin:0;color:#fff;">แว่นตา</p>
                                                             @foreach($item as $key=>$allItem)
                                                                 @if($allItem->my_item_type == "glasses" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
-                                                                    <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/glasses/{{$allItem->my_item_img}}'">
+                                                                    <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" 
+                                                                            data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$allItem->my_item_description}}</div>' data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/glasses/{{$allItem->my_item_img}}'">
                                                                         <img class="picture" src="{{asset('home/avatar/glasses/'.$allItem->my_item_img) }}" />
                                                                     </button>
                                                                 @endif
@@ -171,13 +176,15 @@
                                                                     @if($allItem->my_item_type == "clothes" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
                                                                         @if($allItem->my_item_gender == "man")
                                                                             @if($allItem->my_item_other != "hero")
-                                                                                <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/{{$allItem->my_item_img}}'">
+                                                                                <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" 
+                                                                                        data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$allItem->my_item_description}}</div>' data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/{{$allItem->my_item_img}}'">
                                                                                     <img class="picture" src="{{asset('home/avatar/clothes/man/'.$allItem->my_item_img) }}" />
                                                                                 </button>
                                                                             @endif
                                                                         @else
                                                                             @if($allItem->my_item_other != "hero")
-                                                                                <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/woman/{{$allItem->my_item_img}}'">
+                                                                                <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" 
+                                                                                        data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$allItem->my_item_description}}</div>' data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/woman/{{$allItem->my_item_img}}'">
                                                                                     <img class="picture" src="{{asset('home/avatar/clothes/woman/'.$allItem->my_item_img) }}" />
                                                                                 </button>
                                                                             @endif
@@ -201,13 +208,15 @@
                                                                 @if($allItem->my_item_type == "clothes" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
                                                                     @if($allItem->my_item_gender == "man")
                                                                         @if($allItem->my_item_other == "hero")
-                                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/hero/{{$allItem->my_item_img}}'">
+                                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" 
+                                                                                    data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$allItem->my_item_description}}</div>' data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/man/hero/{{$allItem->my_item_img}}'">
                                                                                 <img class="picture" src="{{asset('home/avatar/clothes/man/hero/'.$allItem->my_item_img) }}" />
                                                                             </button>
                                                                         @endif
                                                                     @else
                                                                         @if($allItem->my_item_other == "hero")
-                                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/woman/hero/{{$allItem->my_item_img}}'">
+                                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" 
+                                                                                    data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$allItem->my_item_description}}</div>' data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/clothes/woman/hero/{{$allItem->my_item_img}}'">
                                                                                 <img class="picture" src="{{asset('home/avatar/clothes/woman/hero/'.$allItem->my_item_img) }}" />
                                                                             </button>
                                                                         @endif
@@ -234,7 +243,8 @@
                                                             <p style="margin:0;color:#fff;">ดาบ</p>
                                                             @foreach($item as $key=>$allItem)
                                                                 @if($allItem->my_item_type == "weapon" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
-                                                                    <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/weapon/{{$allItem->my_item_img}}'">
+                                                                    <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" 
+                                                                            data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$allItem->my_item_description}}</div>' data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/weapon/{{$allItem->my_item_img}}'">
                                                                         <img class="picture" src="{{asset('home/avatar/weapon/'.$allItem->my_item_img) }}" />
                                                                     </button>
                                                                 @endif
@@ -292,7 +302,8 @@
                                                                 @if($allItem->my_item_type == "other" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
                                                                     @if($allItem->my_item_other == "crown")
                                                                         @if($allItem->my_item_amount_discount != $allItem->my_item_amount)
-                                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/{{$allItem->my_item_img}}'">
+                                                                            <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" 
+                                                                                    data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$allItem->my_item_description}}</div>' data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/{{$allItem->my_item_img}}'">
                                                                                 <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
                                                                             </button>
                                                                         @endif
@@ -314,7 +325,8 @@
                                                             @foreach($item as $key=>$allItem)
                                                                 @if($allItem->my_item_type == "other" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
                                                                     @if($allItem->my_item_other == "gloves")
-                                                                        <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/{{$allItem->my_item_img}}'">
+                                                                        <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" 
+                                                                                data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$allItem->my_item_description}}</div>' data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/{{$allItem->my_item_img}}'">
                                                                             <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
                                                                         </button>
                                                                     @endif
@@ -335,7 +347,8 @@
                                                             @foreach($item as $key=>$allItem)
                                                                 @if($allItem->my_item_type == "other" && $allItem->my_item_amount > $allItem->my_item_amount_discount)
                                                                     @if($allItem->my_item_other == "armor")
-                                                                        <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" data-toggle="popover" data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/{{$allItem->my_item_img}}'">
+                                                                        <button class="labelItem bgItem" value="{{$allItem->item_id}}" data-amount="1" data-max="{{$allItem->my_item_amount}}" data-discount="{{$allItem->my_item_amount_discount}}" 
+                                                                                data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$allItem->my_item_description}}</div>' data-placement="bottom" onclick="document.getElementById('saleItem').src='home/avatar/other/{{$allItem->my_item_img}}'">
                                                                             <img class="picture" src="{{asset('home/avatar/other/'.$allItem->my_item_img) }}" />
                                                                         </button>
                                                                     @endif
@@ -395,7 +408,7 @@
                                 <div class="col-5 ">
                                     <label class="labelInputAvatar my-4">
                                         <span class="symbol1"><h4 style="margin:0">฿</h4></span>
-                                        <input type="number" name="dataprice" value="{{old('dataprice')}}" class="input-avatar h6" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="ตั้งราคาไอเทม">
+                                        <input type="number" name="dataprice" value="{{old('dataprice')}}" class="input-avatar p" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="ตั้งราคาไอเทม">
                                     </label>
                                 </div>
                                 <div class="col-1 my-4 py-1 text-center" style="padding:0;">
@@ -474,13 +487,13 @@
 @endif
 
 <script>
-$(document).ready(function(){
-  $('[data-toggle="popover"]').popover({
-    trigger : 'hover',
-    html : true,
-    content : '<div class="mediaPopover popover1">ตัวอย่างนี้เป็นการกำหนดให้ข้อความตัดอัตโนมัติเมื่อยาวเกินกว่าขอบเขตการแสดงผล โดยใช้ css ในการตัดด้วยคำสั่ง overflow</div>'
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover({
+            trigger : 'hover',
+            html : true,
+            // content : '<div class="mediaPopover popover1">ตัวอย่างนี้เป็นการกำหนดให้ข้อความตัดอัตโนมัติเมื่อยาวเกินกว่าขอบเขตการแสดงผล โดยใช้ css ในการตัดด้วยคำสั่ง overflow</div>'
+        });
     });
-});
 </script>
 
 <script>

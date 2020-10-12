@@ -64,106 +64,87 @@
                                             $itemamount[] = $transeeList->item_amount;
                                             $itemprice[] = $transeeList->item_price;
                                         }
-                                        // dd($itemamount[0]);
                                     ?>
-                                    @foreach($shopping as $shoppingList)
+                                    @foreach($marketItem as $shoppingList)
                                         @if(in_array($shoppingList->item_id, $itemlist))
-                                            <div class="row mx-2">
-                                                <div class="col-7" style="padding:0;">
-                                                    <label class="labelItem bgItem">
-                                                        <!-- <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" /> -->
-                                                        @if($shoppingList->item_type == "clothes")
-                                                            @if($shoppingList->item_gender == "woman")
-                                                                @if($shoppingList->item_other == "hero")
-                                                                    <img class="picture2" src="{{asset('home/avatar/clothes/woman/hero/'.$shoppingList->item_img) }}">
-                                                                @else
-                                                                    <img class="picture2" src="{{asset('home/avatar/clothes/woman/'.$shoppingList->item_img) }}">
+                                            @for($i=0;$i < count($itemlist);$i++)
+                                                @if($shoppingList->item_id == $itemlist[$i])
+                                                    <div class="row mx-2">
+                                                        <div class="col-7" style="padding:0;">
+                                                            <label class="labelItem bgItem">
+                                                                <!-- <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" /> -->
+                                                                @if($shoppingList->item_type == "clothes")
+                                                                    @if($shoppingList->item_gender == "woman")
+                                                                        @if($shoppingList->item_other == "hero")
+                                                                            <img class="picture2" src="{{asset('home/avatar/clothes/woman/hero/'.$shoppingList->item_img) }}">
+                                                                        @else
+                                                                            <img class="picture2" src="{{asset('home/avatar/clothes/woman/'.$shoppingList->item_img) }}">
+                                                                        @endif
+                                                                    @elseif($shoppingList->item_gender == "man")
+                                                                        @if($shoppingList->item_other == "hero")
+                                                                            <img class="picture2" src="{{asset('home/avatar/clothes/man/hero/'.$shoppingList->item_img) }}">
+                                                                        @else
+                                                                            <img class="picture2" src="{{asset('home/avatar/clothes/man/'.$shoppingList->item_img) }}">
+                                                                        @endif
+                                                                    @endif
+                                                                @elseif($shoppingList->item_type == "eyes")
+                                                                    @if($shoppingList->item_gender == "woman")
+                                                                        @if($shoppingList->item_other == "hero")
+                                                                            <img class="picture2" src="{{asset('home/avatar/eyes/woman/hero/'.$shoppingList->item_img) }}">
+                                                                        @else
+                                                                            <img class="picture2" src="{{asset('home/avatar/eyes/woman/'.$shoppingList->item_img) }}">
+                                                                        @endif
+                                                                    @elseif($shoppingList->item_gender == "man")
+                                                                        @if($shoppingList->item_other == "hero")
+                                                                            <img class="picture2" src="{{asset('home/avatar/eyes/man/hero/'.$shoppingList->item_img) }}">
+                                                                        @else
+                                                                            <img class="picture2" src="{{asset('home/avatar/eyes/man/'.$shoppingList->item_img) }}">
+                                                                        @endif
+                                                                    @endif
+                                                                @elseif($shoppingList->item_type == "glasses")
+                                                                    <img class="picture2" src="{{asset('home/avatar/glasses/'.$shoppingList->item_img) }}">
+                                                                @elseif($shoppingList->item_type == "hair")
+                                                                    @if($shoppingList->item_gender == "woman")
+                                                                        @if($shoppingList->item_other == "hero")
+                                                                            <img class="picture2" src="{{asset('home/avatar/hair/woman/hero/'.$shoppingList->item_img) }}">
+                                                                        @else
+                                                                            <img class="picture2" src="{{asset('home/avatar/hair/woman/'.$shoppingList->item_img) }}">
+                                                                        @endif
+                                                                    @elseif($shoppingList->item_gender == "man")
+                                                                        @if($shoppingList->item_other == "hero")
+                                                                            <img class="picture2" src="{{asset('home/avatar/hair/man/hero/'.$shoppingList->item_img) }}">
+                                                                        @else
+                                                                            <img class="picture2" src="{{asset('home/avatar/hair/man/'.$shoppingList->item_img) }}">
+                                                                        @endif
+                                                                    @endif
+                                                                @elseif($shoppingList->item_type == "other")
+                                                                    <img class="picture2" src="{{asset('home/avatar/other/'.$shoppingList->item_img) }}">
+                                                                @elseif($shoppingList->item_type == "weapon")
+                                                                    <img class="picture2" src="{{asset('home/avatar/weapon/'.$shoppingList->item_img) }}">
                                                                 @endif
-                                                            @elseif($shoppingList->item_gender == "man")
-                                                                @if($shoppingList->item_other == "hero")
-                                                                    <img class="picture2" src="{{asset('home/avatar/clothes/man/hero/'.$shoppingList->item_img) }}">
-                                                                @else
-                                                                    <img class="picture2" src="{{asset('home/avatar/clothes/man/'.$shoppingList->item_img) }}">
-                                                                @endif
-                                                            @endif
-                                                        @elseif($shoppingList->item_type == "eyes")
-                                                            @if($shoppingList->item_gender == "woman")
-                                                                @if($shoppingList->item_other == "hero")
-                                                                    <img class="picture2" src="{{asset('home/avatar/eyes/woman/hero/'.$shoppingList->item_img) }}">
-                                                                @else
-                                                                    <img class="picture2" src="{{asset('home/avatar/eyes/woman/'.$shoppingList->item_img) }}">
-                                                                @endif
-                                                            @elseif($shoppingList->item_gender == "man")
-                                                                @if($shoppingList->item_other == "hero")
-                                                                    <img class="picture2" src="{{asset('home/avatar/eyes/man/hero/'.$shoppingList->item_img) }}">
-                                                                @else
-                                                                    <img class="picture2" src="{{asset('home/avatar/eyes/man/'.$shoppingList->item_img) }}">
-                                                                @endif
-                                                            @endif
-                                                        @elseif($shoppingList->item_type == "glasses")
-                                                            <img class="picture2" src="{{asset('home/avatar/glasses/'.$shoppingList->item_img) }}">
-                                                        @elseif($shoppingList->item_type == "hair")
-                                                            @if($shoppingList->item_gender == "woman")
-                                                                @if($shoppingList->item_other == "hero")
-                                                                    <img class="picture2" src="{{asset('home/avatar/hair/woman/hero/'.$shoppingList->item_img) }}">
-                                                                @else
-                                                                    <img class="picture2" src="{{asset('home/avatar/hair/woman/'.$shoppingList->item_img) }}">
-                                                                @endif
-                                                            @elseif($shoppingList->item_gender == "man")
-                                                                @if($shoppingList->item_other == "hero")
-                                                                    <img class="picture2" src="{{asset('home/avatar/hair/man/hero/'.$shoppingList->item_img) }}">
-                                                                @else
-                                                                    <img class="picture2" src="{{asset('home/avatar/hair/man/'.$shoppingList->item_img) }}">
-                                                                @endif
-                                                            @endif
-                                                        @elseif($shoppingList->item_type == "other")
-                                                            <img class="picture2" src="{{asset('home/avatar/other/'.$shoppingList->item_img) }}">
-                                                        @elseif($shoppingList->item_type == "weapon")
-                                                            <img class="picture2" src="{{asset('home/avatar/weapon/'.$shoppingList->item_img) }}">
-                                                        @endif
-                                                    </label> 
-                                                    <label class="font-sale4 bgItem2 mt-2 ml-2">
-                                                        <p style="margin:0;"> <a style="font-weight: 700;">{{$shoppingList->item_name}} ระดับ {{$shoppingList->item_level}} </a></br>
-                                                        {{$shoppingList->item_description}}</br>
-                                                        เลือกลงทุนได้ 3 Signal</p>
-                                                    </label>
-                                                </div>
+                                                            </label> 
+                                                            <label class="font-sale4 bgItem2 mt-2 ml-2">
+                                                                <p style="margin:0;"> <a style="font-weight: 700;">{{$shoppingList->item_name}} ระดับ {{$shoppingList->item_level}} </a></br>
+                                                                {{$shoppingList->item_description}}</br>
+                                                                เลือกลงทุนได้ 3 Signal</p>
+                                                            </label>
+                                                        </div>
 
-                                                <div class="col-2 my-4 text-center" style="padding:0;">
-                                                    <p style="margin:0;color:#fff;">{{$itemamount[$i]}} ชิ้น</p>
-                                                </div>
+                                                        <div class="col-2 my-4 text-center" style="padding:0;">
+                                                            <p style="margin:0;color:#fff;">{{$itemamount[$i]}} ชิ้น</p>
+                                                        </div>
 
-                                                <div class="col-3 my-3">
-                                                    <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
-                                                        <h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{number_format($itemprice[$i])}}</h4>
-                                                        <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-{{$shoppingList->item_discount}}%)</p>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            {{$i++}}
+                                                        <div class="col-3 my-3">
+                                                            <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
+                                                                <h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{number_format($itemprice[$i])}}</h4>
+                                                                <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-{{$shoppingList->item_discount}}%)</p>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endfor
                                         @endif
                                     @endforeach
-                                    {{-- <div class="col-7" style="padding:0;">
-                                        <label class="labelItem bgItem">
-                                            <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" />
-                                        </label> 
-                                        <label class="font-sale4 bgItem2 mt-2 ml-2">
-                                            <p style="margin:0;"> <a style="font-weight: 700;">{{$shoppingList->item_name}} ระดับ {{$shoppingList->item_level}} </a></br>
-                                            {{$shoppingList->item_description}}</br>
-                                            เลือกลงทุนได้ 3 Signal</p>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-2 my-4 text-center" style="padding:0;">
-                                        <p style="margin:0;color:#fff;">{{$itemamount[$i]}} ชิ้น</p>
-                                    </div>
-
-                                    <div class="col-3 my-3">
-                                        <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
-                                            <h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{number_format($itemprice[$i])}}</h4>
-                                            <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-{{$shoppingList->item_discount}}%)</p>
-                                        </span>
-                                    </div> --}}
                                 <!-- </div> -->
 
                                 <div class="row mt-3 py-2" style="background-color:#191b29;">

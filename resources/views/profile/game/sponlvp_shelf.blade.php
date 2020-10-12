@@ -31,11 +31,11 @@
                         </div>
                         <div class="row mt-2 ">
                             <div class="col-12" >
-                                <div class="row mx-0 py-2" style="background-color:#f2f2f2;color:#000;font-weight:800;">
-                                    <div class="col-sm-3 col-md-6 col-lg-6 col-xl-6 align-self-center"><p style="font-weight:800;margin:0;">ชื่อเกม</p></div>
-                                    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 text-center align-self-center"><p style="font-weight:800;margin:0;">แพ็กเกจ</p></div>
-                                    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 text-center"><p style="font-weight:800;margin:0;">การเข้าถึง</p></div>
-                                    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 text-center"><p style="font-weight:800;margin:0;">วันหมดอายุ</p></div>
+                                <div class="row  py-2" style="background-color:#f2f2f2;color:#000;font-weight:800;">
+                                    <div class="col-6 align-self-center"><p style="font-weight:800;margin:0;">ชื่อเกม</p></div>
+                                    <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center align-self-center"><p style="font-weight:800;margin:0;">แพ็กเกจ</p></div>
+                                    <div class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block d-md-block text-center"><p style="font-weight:800;margin:0;">การเข้าถึง</p></div>
+                                    <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center"><p style="font-weight:800;margin:0;">วันหมดอายุ</p></div>
                                 </div>
                                 <div class="row row4" id="all">
                                     <div class="col-12">
@@ -61,9 +61,9 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-2 text-center"><p style="margin:0;">แพ็กเกจ {{$gameSpon->packageBuy_name}}</p></div>
-                                                                <div class="col-2 text-center"><p style="margin:0;">289</p></div>
-                                                                <div class="col-2 text-center">
+                                                                <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center"><p style="margin:0;">แพ็กเกจ {{$gameSpon->packageBuy_name}}</p></div>
+                                                                <div class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block d-md-block text-center"><p style="margin:0;">289</p></div>
+                                                                <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center">
                                                                     @if($dayIf <= date("Y-m-d H:i"))
                                                                         <p style="margin:0;">{{$deadline[1]}}, {{$deadline[0]}}</p>
                                                                         <span class="status-kyc4 px-2 p" style="color:#fff">หมดอายุ</span>
@@ -175,11 +175,11 @@
                         </div>
                         <div class="row mt-2 ">
                             <div class="col-12" >
-                                <div class="row mx-0 py-2" style="background-color:#f2f2f2;color:#000;">
+                                <div class="row d-flex align-items-center py-2" style="background-color:#f2f2f2;color:#000;">
                                     <div class="col-6"><p style="margin:0;font-weight:800;">ชื่อสินค้า</p></div>
-                                    <div class="col-2 text-center"><p style="margin:0;font-weight:800;">สถานะ</p></div>
-                                    <div class="col-2 text-center"><p style="margin:0;font-weight:800;">จำนวนที่แลก</p></div>
-                                    <div class="col-2 text-center"><p style="margin:0;font-weight:800;">วันหมดเขต</p></div>
+                                    <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center"><p style="margin:0;font-weight:800;">สถานะ</p></div>
+                                    <div class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block d-md-block text-center"><p style="margin:0;font-weight:800;">จำนวนที่แลก</p></div>
+                                    <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center"><p style="margin:0;font-weight:800;">วันหมดเขต</p></div>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +199,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-2 text-center">
+                                            <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center">
                                                 @if($productAll->product_status == "รออนุมัติ")
                                                     <span class="status-kyc3 px-2"><p style="margin:0;">รอการอนุมัติ</p></span>
                                                 @elseif($productAll->product_status == "อนุมัติ")
@@ -208,11 +208,11 @@
                                                     <span class="status-kyc4 px-2"><p style="margin:0;">หมดอายุ</p></span>
                                                 @endif
                                             </div>
-                                            <div class="col-2 text-center">
+                                            <div class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block d-md-block text-center">
                                                 <label><p style="margin:0;">0</p></label>
                                                 <label><p style="margin:0;">/{{$productAll->product_amount}}</p></label>
                                             </div>
-                                            <div class="col-2 text-right">
+                                            <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-right">
                                                 <p style="margin:0;">{{$productAll->product_deadline}}</p> 
                                             </div>
                                         </div>
