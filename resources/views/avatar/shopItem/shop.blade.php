@@ -125,7 +125,7 @@
                         <div class="col-12"><h1 style="color:#fff;font-weight:800;">ศรีษะ</h1></div>
                         <div class="col-12" style="height:120px;">
                             <div class="owl-carousel" id="owl-demo3">
-
+                                <?php $i=0; ?>
                                 @foreach($marketItem as $Itme)
                                     @if($Itme->item_type == "hair")
                                         <div class="item" style="height: 120px;">
@@ -133,9 +133,9 @@
                                             <label class="bg-shop2">
                                                 <label class="img-saleItem">
                                                     @if($Itme->item_gender == "woman")
-                                                        <img style="width:100%" src="{{asset('home/avatar/hair/woman/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
+                                                        <img style="width:100%" src="{{asset('home/avatar/hair/woman/'.$Itme->item_img) }}" data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$Itme->item_description}}</div>' data-placement="bottom">
                                                     @else
-                                                        <img style="width:100%" src="{{asset('home/avatar/hair/man/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
+                                                        <img style="width:100%" src="{{asset('home/avatar/hair/man/'.$Itme->item_img) }}" data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$Itme->item_description}}</div>' data-placement="bottom">
                                                     @endif
                                                 </label>
                                                 <span class="font-shop2"><h5 style="margin:0;">{{$Itme->item_level}}</h5></span>
@@ -145,9 +145,14 @@
                                                         ฿11,400.00
                                                     </h5>
                                                 </span>
-                                                <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
+                                                @if($Itme->item_amount_discount >= $Itme->item_amount)
+                                                    <label class="btn-shop2 btn-shop-position">สินค้าหมด</label>
+                                                @else
+                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
+                                                @endif
                                             </label>
                                         </div>
+                                        <?php $i++; ?>
                                     @endif
                                 @endforeach
 
@@ -173,15 +178,15 @@
                                                 <label class="img-saleItem">
                                                     @if($Itme->item_gender == "woman")
                                                         @if($Itme->item_other == "hero")
-                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/woman/hero/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/woman/hero/'.$Itme->item_img) }}" data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$Itme->item_description}}</div>' data-placement="bottom">
                                                         @else
-                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/woman/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/woman/'.$Itme->item_img) }}" data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$Itme->item_description}}</div>' data-placement="bottom">
                                                         @endif
                                                     @else
                                                         @if($Itme->item_other == "hero")
-                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/man/hero/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/man/hero/'.$Itme->item_img) }}" data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$Itme->item_description}}</div>' data-placement="bottom">
                                                         @else
-                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/man/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
+                                                            <img style="width:100%" src="{{asset('home/avatar/clothes/man/'.$Itme->item_img) }}" data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$Itme->item_description}}</div>' data-placement="bottom">
                                                         @endif
                                                     @endif
                                                 </label>
@@ -192,7 +197,11 @@
                                                         ฿11,400.00
                                                     </h5>
                                                 </span>
-                                                <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
+                                                @if($Itme->item_amount_discount >= $Itme->item_amount)
+                                                    <label class="btn-shop2 btn-shop-position">สินค้าหมด</label>
+                                                @else
+                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
+                                                @endif
                                             </label>
                                         </div>
                                     @endif
@@ -218,7 +227,7 @@
                                             <img class="img-ownerItem" src="{{asset('home/imgProfile/'.$Itme->GUEST_USERS_IMG) }}" />
                                             <label class="bg-shop2">
                                                 <label class="img-saleItem">
-                                                    <img style="width:100%" src="{{asset('home/avatar/weapon/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
+                                                    <img style="width:100%" src="{{asset('home/avatar/weapon/'.$Itme->item_img) }}" data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$Itme->item_description}}</div>' data-placement="bottom">
                                                 </label>
                                                 <span class="font-shop2"><h5 style="margin:0;">{{$Itme->item_level}}</h5></span>
                                                 <span class="font-price-position p">฿{{number_format($Itme->item_price)}}</span>
@@ -227,7 +236,11 @@
                                                         ฿11,400.00
                                                     </h5>
                                                 </span>
-                                                <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
+                                                @if($Itme->item_amount_discount >= $Itme->item_amount)
+                                                    <label class="btn-shop2 btn-shop-position">สินค้าหมด</label>
+                                                @else
+                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
+                                                @endif
                                             </label>
                                         </div>
                                     @endif
@@ -253,7 +266,7 @@
                                             <img class="img-ownerItem" src="{{asset('home/imgProfile/'.$Itme->GUEST_USERS_IMG) }}" />
                                             <label class="bg-shop2">
                                                 <label class="img-saleItem">
-                                                    <img style="width:100%" src="{{asset('home/avatar/other/'.$Itme->item_img) }}" data-toggle="popover" data-placement="bottom">
+                                                    <img style="width:100%" src="{{asset('home/avatar/other/'.$Itme->item_img) }}" data-toggle="popover" data-trigger="hover" data-content='<div class="mediaPopover popover1">{{$Itme->item_description}}</div>' data-placement="bottom">
                                                 </label>
                                                 <span class="font-shop2"><h5 style="margin:0;">{{$Itme->item_level}}</h5></span>
                                                 <span class="font-price-position p">฿{{number_format($Itme->item_price)}}</span>
@@ -262,7 +275,11 @@
                                                         ฿11,400.00
                                                     </h5>
                                                 </span>
-                                                <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
+                                                @if($Itme->item_amount_discount >= $Itme->item_amount)
+                                                    <label class="btn-shop2 btn-shop-position">สินค้าหมด</label>
+                                                @else
+                                                    <label class="btn-shop2 btn-shop-position" data-toggle="modal" data-target="#shop{{$Itme->item_id}}" data-price="{{$Itme->item_price}}" data-amount="1">ซื้อเลย</label>
+                                                @endif
                                             </label>
                                         </div>
                                     @endif
@@ -430,18 +447,12 @@
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
 <script>
-$(document).ready(function(){
-  $('[data-toggle="popover"]').popover({
-    trigger : 'hover',
-    html : true,
-    content : '<div class="media">คำอธิบาย</div>'
-    }); 
-});
-</script>
-
-<script>
     $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
+        $('[data-toggle="popover"]').popover({
+            trigger : 'hover',
+            html : true,
+            // content : '<div class="mediaPopover popover1">ตัวอย่างนี้เป็นการกำหนดให้ข้อความตัดอัตโนมัติเมื่อยาวเกินกว่าขอบเขตการแสดงผล โดยใช้ css ในการตัดด้วยคำสั่ง overflow</div>'
+        });
     });
 </script>
 
