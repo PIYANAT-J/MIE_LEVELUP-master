@@ -7,17 +7,17 @@
 
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3  pb-4" style="background-color:#141621;">
             <div class="row mt-4" >
-                <div class="col-sm-4 col-md-6 col-lg-6 col-xl-8 pt-2">
+                <div class="col-12 col-sm-4 col-md-6 col-lg-6 col-xl-8 pt-2">
                     <h1 style="color:#fff;">Avatar</h1>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2 text-right" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 text-right" style="padding:0;">
                     <a href="/simulator_trade">
                         <label class="bg-shop">
                             <p style="color:#fff;margin:0;">Simulator Trade</p> 
                         </label>
                     </a>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                     <a href="/shop">
                         <label class="bg-shop3">
                             <img class="iconShop2" src="{{asset('icon/shop.png') }}"/>
@@ -59,61 +59,69 @@
 
             <!-- ตัวละครชาย -->
             <div class="row avatar px-3">
-                <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
+                <div class="col-3 d-inline-block d-sm-none d-md-none d-lg-none d-xl-none" ></div>
                     @foreach($avatar as $avatar)
                         @if($avatar->gender == "man")
-                            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 pt-2 pb-3 manlist" style="height:530px">
-                                <img id="headMan" class="headManImg" src="{{asset('home/avatar/head/head_man.png')}}"/>
-                                <img id="hairMan" class="hairManImg" src="{{asset($avatar->hair)}}"/>
-                                <img id="eyesMan" class="eyesManImg" src="{{asset($avatar->eyes)}}"/>
-                                <img id="glassesMan" class="glassesManImg" src="{{asset($avatar->glasses)}}"/>
-                                <img id="crownMan" class="crownManImg" src="{{asset($avatar->crown)}}"/>
-                                <img id="clothesMan" class="clothesManImg" src="{{asset($avatar->clothes)}}"/>
-                                <img id="weaponMan" class="weaponManImg" src="{{asset($avatar->weapon)}}"/>
-                                <img id="glovesMan" class="glovesManImg" src="{{asset($avatar->gloves)}}"/>
-                                <img id="armorMan" class="armorWomanImg" src="{{asset($avatar->armor)}}"/>
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3 pt-2 pb-3 manlist">
+                                <div class="avatarHeight">
+                                    <img id="headMan" class="headManImg" src="{{asset('home/avatar/head/head_man.png')}}"/>
+                                    <img id="hairMan" class="hairManImg" src="{{asset($avatar->hair)}}"/>
+                                    <img id="eyesMan" class="eyesManImg" src="{{asset($avatar->eyes)}}"/>
+                                    <img id="glassesMan" class="glassesManImg" src="{{asset($avatar->glasses)}}"/>
+                                    <img id="crownMan" class="crownManImg" src="{{asset($avatar->crown)}}"/>
+                                    <img id="clothesMan" class="clothesManImg" src="{{asset($avatar->clothes)}}"/>
+                                    <img id="weaponMan" class="weaponManImg" src="{{asset($avatar->weapon)}}"/>
+                                    <img id="glovesMan" class="glovesManImg" src="{{asset($avatar->gloves)}}"/>
+                                    <img id="armorMan" class="armorWomanImg" src="{{asset($avatar->armor)}}"/>
+                                </div>
                             </div>
                         @elseif($avatar->gender == "woman")
-                            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 pt-2 pb-3 womanlist" style="height:530px">
-                                <img id="headWoman" class="headManImg" src="{{asset('home/avatar/head/head_woman.png') }}" />
-                                <img id="hairwoman" class="hairwomanImg" src="{{asset($avatar->hair)}}"/>
-                                <img id="eyesWoman" class="eyesWomanImg" src="{{asset($avatar->eyes)}}"/>
-                                <img id="glassesWoman" class="glassesWomanImg" src="{{asset($avatar->glasses)}}"/>
-                                <img id="crownWoman" class="crownWomanImg" src="{{asset($avatar->crown)}}"/>
-                                <img id="clothesWoman" class="clothesWomanImg" src="{{asset($avatar->clothes)}}"/>
-                                <img id="weaponWoman" class="weaponManImg" src="{{asset($avatar->weapon)}}"/>
-                                <img id="glovesWoman" class="glovesWomanImg" src="{{asset($avatar->gloves)}}"/>
-                                <img id="armorWoman" class="armorWomanImg" src="{{asset($avatar->armor)}}"/>
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3 pt-2 pb-3 womanlist">
+                                <div class="avatarHeight">
+                                    <img id="headWoman" class="headManImg" src="{{asset('home/avatar/head/head_woman.png') }}" />
+                                    <img id="hairwoman" class="hairwomanImg" src="{{asset($avatar->hair)}}"/>
+                                    <img id="eyesWoman" class="eyesWomanImg" src="{{asset($avatar->eyes)}}"/>
+                                    <img id="glassesWoman" class="glassesWomanImg" src="{{asset($avatar->glasses)}}"/>
+                                    <img id="crownWoman" class="crownWomanImg" src="{{asset($avatar->crown)}}"/>
+                                    <img id="clothesWoman" class="clothesWomanImg" src="{{asset($avatar->clothes)}}"/>
+                                    <img id="weaponWoman" class="weaponManImg" src="{{asset($avatar->weapon)}}"/>
+                                    <img id="glovesWoman" class="glovesWomanImg" src="{{asset($avatar->gloves)}}"/>
+                                    <img id="armorWoman" class="armorWomanImg" src="{{asset($avatar->armor)}}"/>
+                                </div>
                             </div>
                         @else
-                            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 pt-2 pb-3 womanlist" style="height:530px">
-                                <img id="headWoman" class="headManImg" src="{{asset('home/avatar/head/head_woman.png') }}" />
-                                <img id="hairwoman" class="hairwomanImg" src="{{asset('home/avatar/hair/woman/hair_woman_01.png') }}" />
-                                <img id="eyesWoman" class="eyesWomanImg" src="{{asset('home/avatar/eyes/woman/eyes_woman_01.png') }}" />
-                                <img id="glassesWoman" class="glassesWomanImg" src="{{asset('home/avatar/glasses/none.png') }}" />
-                                <img id="crownWoman" class="crownWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
-                                <img id="clothesWoman" class="clothesWomanImg" src="{{asset('home/avatar/clothes/woman/clothes_woman_01.png') }}" />
-                                <img id="weaponWoman" class="weaponManImg" src="{{asset('home/avatar/weapon/noneImg.png') }}" />
-                                <img id="glovesWoman" class="glovesWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
-                                <img id="armorWoman" class="armorWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3 pt-2 pb-3 womanlist">
+                                <div class="avatarHeight">
+                                    <img id="headWoman" class="headManImg" src="{{asset('home/avatar/head/head_woman.png') }}" />
+                                    <img id="hairwoman" class="hairwomanImg" src="{{asset('home/avatar/hair/woman/hair_woman_01.png') }}" />
+                                    <img id="eyesWoman" class="eyesWomanImg" src="{{asset('home/avatar/eyes/woman/eyes_woman_01.png') }}" />
+                                    <img id="glassesWoman" class="glassesWomanImg" src="{{asset('home/avatar/glasses/none.png') }}" />
+                                    <img id="crownWoman" class="crownWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                    <img id="clothesWoman" class="clothesWomanImg" src="{{asset('home/avatar/clothes/woman/clothes_woman_01.png') }}" />
+                                    <img id="weaponWoman" class="weaponManImg" src="{{asset('home/avatar/weapon/noneImg.png') }}" />
+                                    <img id="glovesWoman" class="glovesWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                    <img id="armorWoman" class="armorWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                </div>
                             </div>
-                            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 pt-2 pb-3 manlist" style="height:530px">
-                                <img id="headMan" class="headManImg" src="{{asset('home/avatar/head/head_man.png') }}" />
-                                <img id="hairMan" class="hairManImg" src="{{asset('home/avatar/hair/man/hair_man_01.png') }}" />
-                                <img id="eyesMan" class="eyesManImg" src="{{asset('home/avatar/eyes/man/eyes_man_01.png') }}" />
-                                <img id="glassesMan" class="glassesManImg" src="{{asset('home/avatar/glasses/noneImg.png') }}" />
-                                <img id="crownMan" class="crownManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
-                                <img id="clothesMan" class="clothesManImg" src="{{asset('home/avatar/clothes/man/clothes_man_01.png') }}" />
-                                <img id="weaponMan" class="weaponManImg" src="{{asset('home/avatar/weapon/noneImg.png') }}" />
-                                <img id="glovesMan" class="glovesManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
-                                <img id="armorMan" class="armorWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3 pt-2 pb-3 manlist">
+                                <div class="avatarHeight">
+                                    <img id="headMan" class="headManImg" src="{{asset('home/avatar/head/head_man.png') }}" />
+                                    <img id="hairMan" class="hairManImg" src="{{asset('home/avatar/hair/man/hair_man_01.png') }}" />
+                                    <img id="eyesMan" class="eyesManImg" src="{{asset('home/avatar/eyes/man/eyes_man_01.png') }}" />
+                                    <img id="glassesMan" class="glassesManImg" src="{{asset('home/avatar/glasses/noneImg.png') }}" />
+                                    <img id="crownMan" class="crownManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                    <img id="clothesMan" class="clothesManImg" src="{{asset('home/avatar/clothes/man/clothes_man_01.png') }}" />
+                                    <img id="weaponMan" class="weaponManImg" src="{{asset('home/avatar/weapon/noneImg.png') }}" />
+                                    <img id="glovesMan" class="glovesManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                    <img id="armorMan" class="armorWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                </div>
                             </div>
                         @endif
                     @endforeach
-                <div class="col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div>
+                <!-- <div class="col-4 col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div> -->
 
                 <!-- ไอเทม -->
-                <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9">
+                <div class="col-12 col-sm-8 col-md-9 col-lg-8 col-xl-9" style="padding:0;">
                     <div class="row">
                         <div class="col-12">
                             <ul class="nav">
@@ -136,7 +144,7 @@
                     <div class="tab-content">
 
                         <div id="head" class="container tab-pane active">
-                            <div class="row mt-4 row6" style="background-color:#202433;border-radius: 6px;">
+                            <div class="row mt-3 rowAvatar" style="background-color:#202433;border-radius: 6px;">
                                 <div class="col-12 mb-2"> 
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">ทรงผม</span>
@@ -202,7 +210,7 @@
                         </div>
 
                         <div id="clothes" class="container tab-pane">
-                            <div class="row mt-4 row6" style="background-color:#202433;border-radius: 6px;">
+                            <div class="row mt-3 rowAvatar" style="background-color:#202433;border-radius: 6px;">
                                 <div class="col-12 mb-2"> 
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">ชุดไปเวท</span>
@@ -267,7 +275,7 @@
                         </div>
 
                         <div id="weapon" class="container tab-pane">
-                            <div class="row mt-4 row6" style="background-color:#202433;border-radius: 6px;">
+                            <div class="row mt-3 rowAvatar" style="background-color:#202433;border-radius: 6px;">
                                 <div class="col-12 mb-2"> 
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">ดาบ</span>
@@ -332,7 +340,7 @@
                         </div>
 
                         <div id="other" class="container tab-pane">
-                            <div class="row mt-4 row6" style="background-color:#202433;border-radius: 6px;">
+                            <div class="row mt-3 rowAvatar" style="background-color:#202433;border-radius: 6px;">
                                 <div class="col-12 pb-2"> 
                                     <div class="row">
                                         <span class="fontItem ml-4 mt-2 p">มงกุฏ/หมวก</span>

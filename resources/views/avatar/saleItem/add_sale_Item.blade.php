@@ -50,7 +50,7 @@
             <div class="row mb-4 mt-2">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 mb-2">
                     <div class="row mb-3">
-                        <div class="col-lg-12">
+                        <div class="col-12">
                             <ul class="nav">
                                 <li class="nav-item">
                                     <a class="nav-link active itemAvatar3 p" data-toggle="tab" href="#head2">ศรีษะ</a>
@@ -390,14 +390,14 @@
                         <div class="col-12 mt-2">
                             <div class="font-sale1"><p style="margin:0">รายละเอียด</p></div>
                             
-                            <div class="row" >
-                                <div class="col-3">
+                            <div class="row mb-3" >
+                                <div class="col-6 col-sm-3 col-md-3 col-lg-3 col-xl-3">
                                     <label class="labelItem bgItem" data-toggle="popover" data-placement="bottom">
                                         <img id="saleItem" class="picture2" src="{{asset('home/avatar/icon/sale.png') }}" />
                                     </label>
                                 </div>
 
-                                <div class="col-3 text-center" style="padding:0;margin-top:28px;">
+                                <div class="col-6 col-sm-3 col-md-3 col-lg-3 col-xl-3 text-center" style="padding:0;margin-top:28px;">
                                     <div class="quantity-block2 ">
                                         <button class="quantity-arrow-minus2"> - </button>
                                         <input class="quantity-num2 h5" name="num2" type="number" value="1" min="1" max="5"/>
@@ -405,27 +405,27 @@
                                     </div>
                                 </div>
 
-                                <div class="col-5 ">
+                                <div class="col-10 col-sm-5 col-md-5 col-lg-5 col-xl-5 ">
                                     <label class="labelInputAvatar my-4">
                                         <span class="symbol1"><h4 style="margin:0">฿</h4></span>
                                         <input type="number" name="dataprice" value="{{old('dataprice')}}" class="input-avatar p" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="ตั้งราคาไอเทม">
                                     </label>
                                 </div>
-                                <div class="col-1 my-4 py-1 text-center" style="padding:0;">
+                                <div class="col-2 col-sm-1 col-md-1 col-lg-1 col-xl-1 my-4 py-1 text-center" style="padding:0;">
                                     <img style="width:50%;cursor:pointer;" src="{{asset('icon/trash.svg') }}" />
                                 </div>
                             </div>
 
                             <div class="row mx-0 pb-4" >
-                                <div class="col-6 mt-5">
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 mb-2 paddingAddsale">
                                     <button class="itemAvatar4">
                                         <p style="margin:0;color:#000;font-weight:800;">ยกเลิกการขาย</p>
                                     </button>
                                 </div>
-                                <div class="col-6 mt-5 text-right">
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-right mb-2 paddingAddsale">
                                     <form action="{{route('Add_SaleItem')}}" method="post">
                                         @csrf
-                                        <button class="btn-avatar" name="submit" value="sale_Item"><p style="margin:0;color:#000;font-weight:800;">เปิดการขาย</p></button>
+                                        <button class="btn-avatar2" name="submit" value="sale_Item"><p style="margin:0;color:#000;font-weight:800;">เปิดการขาย</p></button>
                                         <input type="hidden" name="amount">
                                         <input type="hidden" name="item_id">
                                         <input type="hidden" name="price">

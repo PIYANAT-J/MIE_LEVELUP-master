@@ -38,7 +38,43 @@
   .blockBtnCat{
     width: 45%;
     padding: 20px;
+  }
 
+  .avatarHeight{
+    height: 300px;
+  }
+
+  .rowAvatar{
+    height:300px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+  
+  .bgItemShop{
+    width: 400px;
+    /* background-color: #51a2ff; */
+    position: absolute;
+    top: 10%;
+    left: 10%;
+  }
+
+  .img-shop1{
+    width: 100px !important;
+    position: absolute;
+    top: 80%;
+    left: 30%;
+  }
+
+  .paddingShop1{
+    padding: 10px;
+  }
+
+  .marginShop{
+    margin: 0 -15px;
+  }
+
+  .paddingAddsale{
+    padding: 0;
   }
  }
 
@@ -85,6 +121,44 @@
     padding: 20px;
 
   }
+
+  .avatarHeight{
+    height: 340px;
+  }
+
+  .rowAvatar{
+    height:340px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  .bgItemShop{
+    width: 400px;
+    /* background-color: #51a2ff; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .img-shop1{
+    width: 130px !important;
+    position: absolute;
+    top: 0;
+    left: 60%;
+  }
+
+  .paddingShop1{
+    padding: 20px;
+  }
+  
+  .marginShop{
+    margin: 0 20px;
+  }
+
+  .paddingAddsale{
+    padding: 0 10px 0 0;
+  }
  }
 
  /* MD */
@@ -129,6 +203,40 @@
     width: 22.5%;
     padding: 20px;
 
+  }
+
+  .avatarHeight{
+    height: 340px;
+  }
+
+  .rowAvatar{
+    height:340px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  .bgItemShop{
+    width: 400px;
+    /* background-color: #51a2ff; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .img-shop1{
+    width: 130px !important;
+    position: absolute;
+    top: 0;
+    left: 70%;
+  }
+
+  .paddingShop1{
+    padding: 20px;
+  }
+
+  .marginShop{
+    margin: 0 20px;
   }
  }
 
@@ -175,6 +283,40 @@
     padding: 20px;
 
   }
+
+  .avatarHeight{
+    height: 530px;
+  }
+
+  .rowAvatar{
+    height:530px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  .bgItemShop{
+    width: 400px;
+    /* background-color: #51a2ff; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .img-shop1{
+    width: 130px !important;
+    position: absolute;
+    top: 0;
+    left: 70%;
+  }
+
+  .paddingShop1{
+    padding: 20px;
+  }
+
+  .marginShop{
+    margin: 0 20px;
+  }
  }
 
  /* XL */
@@ -217,7 +359,31 @@
   .blockBtnCat{
     width: 15.2%;
     padding: 20px;
+  }
 
+  .avatarHeight{
+    height: 530px;
+  }
+
+  .rowAvatar{
+    height:530px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  .img-shop1{
+    width: 130px !important;
+    position: absolute;
+    top: 0;
+    left: 70%;
+  }
+
+  .paddingShop1{
+    padding: 20px;
+  }
+
+  .marginShop{
+    margin: 0 20px;
   }
 
  }
@@ -262,7 +428,43 @@
   .blockBtnCat{
     width: 11.4%;
     padding: 20px;
+  }
+  .avatarHeight{
+    height: 530px;
+  }
 
+  .avatarHeight{
+    height: 530px;
+  }
+
+  .rowAvatar{
+    height:530px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  .bgItemShop{
+    width: 400px;
+    /* background-color: #51a2ff; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .img-shop1{
+    width: 130px !important;
+    position: absolute;
+    top: 0;
+    left: 70%;
+  }
+
+  .paddingShop1{
+    padding: 20px;
+  }
+
+  .marginShop{
+    margin: 0 20px;
   }
  }
  
@@ -1509,7 +1711,7 @@ input[type='file']:focus{
 .game_1 {
   border-radius: 8px;
   border: solid 1px rgba(255, 255, 255, 0.096);
-  width: 310px!important;
+  width:310px!important;
   height: 220px;
   object-fit: cover;
 }
@@ -1570,15 +1772,17 @@ input[type='file']:focus{
   border-radius: 8px;
   border: solid 1px #2a2c36;
   background-color:#fff;
-  width: 100%;
+  width:210px!important;
   height: 310px ;
   object-fit: cover;
 }
 
+
 .game_4 {
   border-radius: 8px;
   border: solid 1px #2a2c36;
-  width: 100%;
+  /* width: 100%; */
+  width:250px !important;
   height: 310px !important;
   object-fit: cover;
 }
@@ -4556,7 +4760,7 @@ ul.thumb-Images li {
 }
 
 .itemAvatar{
-    padding: 5px 20px;
+    padding: 5px 15px;
     border-radius: 6px;
     background-color: #202433;
     color: #57677b;
@@ -4580,7 +4784,7 @@ ul.thumb-Images li {
 }
 
 .itemAvatar3{
-  padding: 10px 20px;
+  padding: 10px 15px;
   border-radius: 6px;
   background-color: #202433;
   color: #57677b;
@@ -4790,6 +4994,7 @@ outline: none!important;
   overflow-x: hidden;
 }
 
+
 .row7{
   height:600px;
   overflow: scroll;
@@ -4835,8 +5040,9 @@ outline: none!important;
    position: relative;
  }
 
- .btn-avatar{
+ .btn-avatar2{
   color: #000;
+  width: 100%;
   padding: 8px 30px;
   border-radius: 6px;
   box-shadow: 0 0 12px 0 #5bf89d;
@@ -4844,7 +5050,7 @@ outline: none!important;
   border: none;
 }
 
-.btn-avatar:focus{
+.btn-avatar2:focus{
   outline: none!important;
 }
  
@@ -4946,15 +5152,6 @@ outline: none!important;
   height: auto;
 }
 
-.bgItemShop{
-  width: 400px;
-  /* background-color: #51a2ff; */
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .shop-next1{
   background-color: rgba(93,91,91,0.5);
   text-align: center;
@@ -4986,12 +5183,7 @@ outline: none!important;
   color: #fff;
   cursor: pointer;
 }
-.img-shop1{
-  width: 130px !important;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
+
 /* .font-head-shop1{
   color: #fff;
   position: absolute;
@@ -5565,6 +5757,7 @@ input[type="number"] {
 
 .itemAvatar4{
   padding: 8px 30px;
+  width: 100%;
   border-radius: 6px;
   background-color: #c3c3c3;
   border: none;
@@ -8871,7 +9064,8 @@ input[type="checkbox"].switch_2{
 .headManImg{
   z-index: 2;
   position: absolute;
-  width:150px;
+  width:60%;
+  /* width: 200px; */
   /* background-color: #ce0005; */
   top: 0;
   left: 0;
@@ -8885,8 +9079,8 @@ input[type="checkbox"].switch_2{
 .hairManImg{
   z-index: 3;
   position: absolute;
-  width:200px;
-  /* background-color: #ce0005; */
+  /* width:200px; */
+  width: 80%;
   top: 0;
   left: 0;
   right: 0;
@@ -8898,7 +9092,8 @@ input[type="checkbox"].switch_2{
 .hairwomanImg{
   z-index: 3;
   position: absolute;
-  width:200px;
+  width: 80%;
+  /* width:200px; */
   /* background-color: #ce0005; */
   top: 0;
   left: 0;
@@ -8920,7 +9115,8 @@ input[type="checkbox"].switch_2{
 .clothesManImg{
   z-index: 1;
   position: absolute;
-  width: 200px;
+  /* width: 200px; */
+  width: 70%;
   /* background-color: #ce0005; */
   top: 0;
   left: 0;
@@ -8933,7 +9129,8 @@ input[type="checkbox"].switch_2{
 .eyesManImg{
   z-index: 4;
   position: absolute;
-  width: 120px;
+  /* width: 120px; */
+  width: 48%;
   top: 0;
   left: 0;
   right: 0;
@@ -8945,7 +9142,8 @@ input[type="checkbox"].switch_2{
 .eyesWomanImg{
   z-index: 4;
   position: absolute;
-  width: 110px;
+  width: 45%;
+  /* width: 110px; */
   top: 0;
   left: 0;
   right: 0;
@@ -8979,7 +9177,8 @@ input[type="checkbox"].switch_2{
 .clothesWomanImg{
   z-index: 1;
   position: absolute;
-  width: 200px;
+  /* width: 200px; */
+  width: 70%;
   /* background-color: #ce0005; */
   top: 0;
   left: 0;
@@ -8992,7 +9191,8 @@ input[type="checkbox"].switch_2{
 .glassesManImg{
   z-index: 5;
   position: absolute;
-  width: 135px;
+  /* width: 135px; */
+  width: 54%;
   top: 0;
   left: 0;
   right: 0;
@@ -9003,7 +9203,8 @@ input[type="checkbox"].switch_2{
 .glassesWomanImg{
   z-index: 4;
   position: absolute;
-  width: 135px;
+  width: 54%;
+  /* width: 135px; */
   top: 0;
   left: 0;
   right: 0;
@@ -9028,7 +9229,8 @@ input[type="checkbox"].switch_2{
 .weaponManImg{
   z-index: 0;
   position: absolute;
-  width: 130px;
+  /* width: 130px; */
+  width: 60%;
   top: 0;
   left: 0;
   right: 0;
@@ -9082,19 +9284,8 @@ input[type="checkbox"].switch_2{
 .crownManImg{
   z-index: 5;
   position: absolute;
-  width:110px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  transform: translateY(-250%);
-}
-
-.crownWomanImg{
-  z-index: 5;
-  position: absolute;
-  width:110px;
+  /* width:110px; */
+  width: 45%;
   top: 0;
   left: 0;
   right: 0;
@@ -9103,10 +9294,24 @@ input[type="checkbox"].switch_2{
   transform: translateY(-240%);
 }
 
+.crownWomanImg{
+  z-index: 5;
+  position: absolute;
+  /* width:110px; */
+  width: 45%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: translateY(-250%);
+}
+
 .glovesWomanImg{
   z-index: 5;
   position: absolute;
-  width:142px;
+  /* width:142px; */
+  width: 50%;
   top: 0;
   left: 0;
   right: 0;
@@ -9118,19 +9323,21 @@ input[type="checkbox"].switch_2{
 .glovesManImg{
   z-index: 5;
   position: absolute;
-  width:142px;
+  width: 50%;
+  /* width:142px; */
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   margin: auto;
-  transform: translateY(122%);
+  transform: translateY(120%);
 }
 
 .armorWomanImg{
   z-index: 4;
   position: absolute;
-  width:142px;
+  /* width:142px; */
+  width: 50%;
   top: 0;
   left: 0;
   right: 0;
@@ -9139,14 +9346,3 @@ input[type="checkbox"].switch_2{
   transform: translateY(45%);
 }
 
-.crownWomanImg{
-  z-index: 5;
-  position: absolute;
-  width:110px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  transform: translateY(-260%);
-}

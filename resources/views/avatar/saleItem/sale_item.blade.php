@@ -7,7 +7,7 @@
 
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3  pb-4" style="background-color:#141621; ">
             <div class="row mt-4" >
-                <div class="col-sm-4 col-md-6 col-lg-6 col-xl-8 pt-2">
+                <div class="col-12 col-sm-4 col-md-6 col-lg-6 col-xl-8 pt-2">
                     <label>
                         <a href="/avatar"class="avatar-link active">
                             <h1 style="margin:0;">Avatar</h1>
@@ -29,14 +29,14 @@
                         <h1 style="margin:0;">ไอเทมวางขาย</h1>
                     </label>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2 text-right" style="padding:0;">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 text-right" style="padding:0;">
                     <a href="/simulator_trade">
                         <label class="bg-shop">
                             <p style="color:#fff;margin:0;">Simulator Trade</p> 
                         </label>
                     </a>
                 </div>
-                <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                     <a href="/add_sale_item">
                         <label class="labelshop bg-shop">
                             <p style="color:#fff;margin:0;">+ เพิ่มไอเทมขาย</p> 
@@ -47,10 +47,10 @@
 
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
-                    <div class="row mx-0 pb-3 row7" style="background-color:#202433;border-radius: 6px;">
+                    <div class="row mx-0 pb-3" >
                         <div class="col-12">
                             <!-- ทรงผม -->
-                            <div class="row mt-2">
+                            <div class="row mt-2 row7" style="background-color:#202433;border-radius: 6px;">
                                 <div class="col-12">
                                     <!-- <p style="margin:0;color:#fff;">ทรงผม</p>
                                     <label class="labelItem bgItem">
