@@ -1019,32 +1019,33 @@ $(document).ready(function() {
                 items:1.3,
                 nav:false
             },
+            360:{
+                items:1.5,
+                nav:false
+            },
             576:{
-                items:2,
+                items:2.5,
                 nav:false
             },
             768:{
-                items:3,
-                nav:true
+                items:3.3,
+                nav:false
             },
             992:{
-                items:4,
+                items:4.4,
                 nav:true
             },
             1280:{
                 items:5,
-                nav:true,
-                loop:false
+                nav:true
             },
             1360:{
                 items:6,
-                nav:true,
-                loop:false
+                nav:true
             },
             1920:{
                 items:8,
-                nav:true,
-                loop:false
+                nav:true
             }
         }
     })
@@ -1065,16 +1066,20 @@ $(document).ready(function() {
                 items:1.3,
                 nav:false
             },
+            360:{
+                items:1.5,
+                nav:false
+            },
             576:{
-                items:2,
+                items:2.5,
                 nav:false
             },
             768:{
-                items:3,
+                items:3.3,
                 nav:false
             },
             992:{
-                items:4,
+                items:4.4,
                 nav:true
             },
             1280:{

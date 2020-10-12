@@ -126,7 +126,7 @@
                     <div class="col-7 col-sm-8 col-md-8 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"></div>
                     <div class="col-2 col-sm-2 col-md-1 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">
                         <a  class="site-menu-toggle js-menu-toggle text-center">
-                            <span class="icon-menu h1 menu1 mr-2" data-toggle="drawer" data-target="#drawer-1"></span>
+                            <span class="icon-menu h6 menu1 mr-2" data-toggle="drawer" data-target="#drawer-1"></span>
                         </a>
                     </div>
                 </div>
