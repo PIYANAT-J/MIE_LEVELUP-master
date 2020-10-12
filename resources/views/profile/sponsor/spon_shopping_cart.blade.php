@@ -16,84 +16,89 @@
                 </div>
             </div>
 
-            <div id="general-content" style="background-color:#ffffff;border-radius: 8px;padding:20px;">
-                <div class="row">
+            <div id="general-content" style="background-color:#ffffff;border-radius: 8px;">
+                <div class="row" style="padding:20px 20px 0 20px;">
                     <div class="col-12 pb-2" style="border-bottom: 1px solid #f2f2f2;"> 
                         <h1 style="margin:0;font-weight:800;">ตระกร้าสินค้า</h1>
                     </div>
                 </div>
                 
-                <div class="row rowGameShopping">
-                    <div class="col-12" style="border-bottom: 1px solid #f2f2f2;">
-                        <div class="row mx-2 mt-3" style="border-bottom:1px solid #fff;height:200px;">
-                            @foreach($countCart as $key=>$gameList)
-                                <div class="col-8" style="padding:0;">
-                                    <div class="checkbox-dark pt-2">
-                                        <input type="checkbox" id="checkbox_{{$key}}" name="accept_01" value="{{$gameList->sponsor_cart_game}}" data-price="{{$gameList->sponsor_cart_price}}">
-                                        <label for="checkbox_{{$key}}" ></label>
-                                        <!-- <input type="checkbox" id="checkbox_{{$key}}" name="someCheck" value="{{$gameList->sponsor_cart_game}}"> -->
-                                        <!-- <label for="checkbox{{$key}}" ></label> -->
+                <div class="rowGameShopping pl-3">
+                    <div class="row">
+                        <div class="col-12" style="border-bottom: 1px solid #f2f2f2;">
+                            <div class="row my-2">
+                                @foreach($countCart as $key=>$gameList)
+                                    <div class=" align-self-center d-flex justify-content-center mr-3">
+                                        <div class="checkbox-dark2 ">
+                                            <input type="checkbox" id="checkbox_{{$key}}" name="accept_01" value="{{$gameList->sponsor_cart_game}}" data-price="{{$gameList->sponsor_cart_price}}">
+                                            <label for="checkbox_{{$key}}" ></label>
+                                            <!-- <input type="checkbox" id="checkbox_{{$key}}" name="someCheck" value="{{$gameList->sponsor_cart_game}}"> -->
+                                            <!-- <label for="checkbox{{$key}}" ></label> -->
+                                        </div>
                                     </div>
-                                    <img class="pImg" src="{{ asset('section/File_game/Profile_game/'.$gameList->GAME_IMG_PROFILE) }}" />
-                                    <div class="pFont">
-                                        <p style="font-weight: 700;margin:0;">{{$gameList->GAME_NAME}}</p>
-                                        <p style="color: #a8a8a8;margin:0;">{{$gameList->RATED_B_L}} • Online</p>
-                                        <h5 style="color: #23c197;margin:0;">
-                                        ช่วงเวลา   {{$gameList->sponsor_cart_start}} - {{$gameList->sponsor_cart_deadline}}<br>
-                                        จำนวนรอบโฆษณา {{$gameList->sponsor_cart_number}} รอบ </h5>
+
+                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-1 d-none d-sm-block d-md-block d-lg-block d-xl-block" style="padding:0;">
+                                        <img class="pImg mr-2" src="{{ asset('section/File_game/Profile_game/'.$gameList->GAME_IMG_PROFILE) }}" />
                                     </div>
-                                </div>
-                                <div class="col-3 text-right" style="padding:0;">
-                                        @if($gameList->GAME_DISCOUNT != null)
-                                            <h4 class="pt-2" style="margin:0;font-weight:800;">฿{{$gameList->sponsor_cart_price}}</h4>
-                                            <p class="mr-2"><a style="color: #b2b2b2;text-decoration:line-through;">฿680 </a> (-{{$gameList->GAME_DISCOUNT}}%)</p>
-                                        @else
-                                            <h4 class="pt-2" style="margin:0;font-weight:800;">฿{{$gameList->sponsor_cart_price}}</h4>
-                                        @endif
-                                    </span>
-                                </div>
-                                <div class="col-1 text-center" style="padding:0;">
-                                    <form action="{{route('daleteShoppingCart')}}" method="post">
-                                        @csrf
-                                        <button class="btnTrash pt-2" name="deleteGame" value="deleteGame">
-                                            <img style="width:100%;cursor:pointer;" src="{{asset('icon/trash.svg') }}" />
-                                            <input type="hidden" name="sponsor_cart_id" value="{{$gameList->sponsor_cart_id}}">
-                                        </button>
-                                    </form>
-                                </div>
-                            @endforeach
+
+                                    <div class="col-6 col-sm-5 col-md-5 col-lg-5 col-xl-6 ">
+                                        <label class="pFont">
+                                            <p style="font-weight: 700;margin:0;">{{$gameList->GAME_NAME}}</p>
+                                            <!-- <p style="color: #a8a8a8;margin:0;">{{$gameList->RATED_B_L}} • Online</p> -->
+                                            <h5 style="color: #23c197;margin:0;">
+                                            ช่วงเวลา   {{$gameList->sponsor_cart_start}} - {{$gameList->sponsor_cart_deadline}}<br>
+                                            จำนวนรอบโฆษณา {{$gameList->sponsor_cart_number}} รอบ </h5>
+                                        </label>
+                                    </div>
+
+                                    <div class="col-3 text-right align-self-center" style="padding:0;">
+                                            @if($gameList->GAME_DISCOUNT != null)
+                                                <h4 style="margin:0;font-weight:800;">฿{{$gameList->sponsor_cart_price}}</h4>
+                                                <p class="mr-2"><a style="color: #b2b2b2;text-decoration:line-through;">฿680 </a> (-{{$gameList->GAME_DISCOUNT}}%)</p>
+                                            @else
+                                                <h4 style="margin:0;font-weight:800;">฿{{$gameList->sponsor_cart_price}}</h4>
+                                            @endif
+                                        </span>
+                                    </div>
+                                    <div class="col-1 text-center align-self-center" style="padding:0;">
+                                        <form action="{{route('daleteShoppingCart')}}" method="post">
+                                            @csrf
+                                            <button class="btnTrash" name="deleteGame" value="deleteGame">
+                                                <img style="width:100%;cursor:pointer;" src="{{asset('icon/trash.svg') }}" />
+                                                <input type="hidden" name="sponsor_cart_id" value="{{$gameList->sponsor_cart_id}}">
+                                            </button>
+                                        </form>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="row mx-0 my-3">
-                    <div class="col-4">
-                        <div class="row my-2">
+                    <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                        <div class="row">
                             <div class="col-12">
                                 <label class="checkbox-dark">
                                     <input type="checkbox" id="select_all" name="accept_all" onclick="toggle(this);">
                                     <label for="select_all" class="pt-2 ml-2">
-                                        <p style="font-weight:800;margin:0;">เลือกทั้งหมด</p></label>
+                                        <p style="font-weight:800;margin:0;">เลือกทั้งหมด</p>
+                                    </label>
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 text-right">
-                        <div class="row mt-3 mb-2">
-                            <div class="col-12">
-                                <p style="margin:0;font-weight:800;">
-                                    <label>รวมค่าสินค้า ( </label>
-                                    <label id="count-checked">0</label>
-                                    <label> รายการ )</label>
-                                    <label class="pl-3" id="total"><b class="font-price">฿0.00</b></label>
-                                </p>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="col-2">
+                    <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 d-flex justify-content-end mb-2">
+                        <p class="pt-2 mr-2" style="margin:0;font-weight:800;">
+                            <label>รวมค่าสินค้า ( </label>
+                            <label id="count-checked">0</label>
+                            <label> รายการ )</label>
+                            <label class="pl-3" id="total"><b class="font-price">฿0.00</b></label>
+                        </p>
+                    
                         <form action="{{route('sponShoppingCartPayment')}}" method="post">
                             @csrf
-                            <button class="btn-submit-red" name="submit" value="submit">
+                            <button class="btn-submit-red-s" name="submit" value="submit">
                                 <p style="margin:0;">ชำระเงิน</p>
                                 <input type="hidden" name="sumTotal" id="sumTotal">
                                 <input type="hidden" name="gameId" id="data-checked">
