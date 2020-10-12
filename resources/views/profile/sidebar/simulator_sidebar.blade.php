@@ -28,7 +28,7 @@
                             </div> -->
 
                             <!-- หญิง -->
-                            <div class="item my-4">
+                            <!-- <div class="item my-4">
                                 <img id="headWoman" class="headManImg" src="{{asset('home/avatar/head/head_woman.png') }}" />
                                 <img id="hairwoman" class="hairwomanImg" src="{{asset('home/avatar/hair/woman/hair_woman_01.png') }}" />
                                 <img id="eyesWoman" class="eyesWomanImg" src="{{asset('home/avatar/eyes/woman/eyes_woman_01.png') }}" />
@@ -38,7 +38,46 @@
                                 <img id="weaponWoman" class="weaponManImg" src="{{asset('home/avatar/weapon/noneImg.png') }}" />
                                 <img id="glovesWoman" class="glovesWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
                                 <img id="armorWoman" class="armorWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
-                            </div>
+                            </div> -->
+                            @foreach($avatar as $avatar)
+                                @if($avatar->gender == "man")
+                                    <div class="item my-4">
+                                        <img id="headMan" class="headManImg" src="{{asset('home/avatar/head/head_man.png')}}"/>
+                                        <img id="hairMan" class="hairManImg" src="{{asset($avatar->hair)}}"/>
+                                        <img id="eyesMan" class="eyesManImg" src="{{asset($avatar->eyes)}}"/>
+                                        <img id="glassesMan" class="glassesManImg" src="{{asset($avatar->glasses)}}"/>
+                                        <img id="crownMan" class="crownManImg" src="{{asset($avatar->crown)}}"/>
+                                        <img id="clothesMan" class="clothesManImg" src="{{asset($avatar->clothes)}}"/>
+                                        <img id="weaponMan" class="weaponManImg" src="{{asset($avatar->weapon)}}"/>
+                                        <img id="glovesMan" class="glovesManImg" src="{{asset($avatar->gloves)}}"/>
+                                        <img id="armorMan" class="armorWomanImg" src="{{asset($avatar->armor)}}"/>
+                                    </div>
+                                @elseif($avatar->gender == "woman")
+                                    <div class="item my-4">
+                                        <img id="headWoman" class="headManImg" src="{{asset('home/avatar/head/head_woman.png') }}" />
+                                        <img id="hairwoman" class="hairwomanImg" src="{{asset($avatar->hair)}}"/>
+                                        <img id="eyesWoman" class="eyesWomanImg" src="{{asset($avatar->eyes)}}"/>
+                                        <img id="glassesWoman" class="glassesWomanImg" src="{{asset($avatar->glasses)}}"/>
+                                        <img id="crownWoman" class="crownWomanImg" src="{{asset($avatar->crown)}}"/>
+                                        <img id="clothesWoman" class="clothesWomanImg" src="{{asset($avatar->clothes)}}"/>
+                                        <img id="weaponWoman" class="weaponManImg" src="{{asset($avatar->weapon)}}"/>
+                                        <img id="glovesWoman" class="glovesWomanImg" src="{{asset($avatar->gloves)}}"/>
+                                        <img id="armorWoman" class="armorWomanImg" src="{{asset($avatar->armor)}}"/>
+                                    </div>
+                                @else
+                                    <div class="item my-4">
+                                        <img id="headMan" class="headManImg" src="{{asset('home/avatar/head/head_man.png') }}" />
+                                        <img id="hairMan" class="hairManImg" src="{{asset('home/avatar/hair/man/hair_man_01.png') }}" />
+                                        <img id="eyesMan" class="eyesManImg" src="{{asset('home/avatar/eyes/man/eyes_man_01.png') }}" />
+                                        <img id="glassesMan" class="glassesManImg" src="{{asset('home/avatar/glasses/noneImg.png') }}" />
+                                        <img id="crownMan" class="crownManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                        <img id="clothesMan" class="clothesManImg" src="{{asset('home/avatar/clothes/man/clothes_man_01.png') }}" />
+                                        <img id="weaponMan" class="weaponManImg" src="{{asset('home/avatar/weapon/noneImg.png') }}" />
+                                        <img id="glovesMan" class="glovesManImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                        <img id="armorMan" class="armorWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
+                                    </div>
+                                @endif
+                            @endforeach
                             <a href="shop">
                                 <label class="btn-buyItem middle2">
                                     <p style="margin:0;font-weight:800;">ซื้อไอเทม</p>

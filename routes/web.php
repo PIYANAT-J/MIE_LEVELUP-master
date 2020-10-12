@@ -120,6 +120,7 @@ Route::get('/avatar_management', 'AdminController@AvatarManagement')->name('Avat
 Route::view('/admin_change_password', 'profile.password.adminlvp_change_password');
 
 Route::get('/avatar', 'Avatar\avatarController@Avatar')->name('Avatar');
+Route::post('/avatar/addAvatar', 'Avatar\avatarController@addAvatar')->name('setAvatar');
 
 Route::get('/shop', 'Avatar\marketItemController@Shop')->name('Shop');
 Route::post('/shop/add_ShoppingCart', 'Avatar\marketItemController@add_ShoppingCart')->name('addShoppingCart');
