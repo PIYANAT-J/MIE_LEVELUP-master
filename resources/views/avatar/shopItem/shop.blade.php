@@ -859,7 +859,7 @@ $(function() {
     })();
 });
 </script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script>
     $(document).ready(function(e) {
         $(".btn-submit-red.addShopping").click(function(e) {
@@ -880,8 +880,19 @@ $(function() {
                     submit:submit,
                 },
                 success: function(response) {
+                    console.log(response);
                     $('.modal').modal('hide');
                     $('.font-shop').text(response.count);
+                    if(response.success){
+                        Swal.fire({
+                            // position: 'top-end',
+                            icon: 'success',
+                            title: response.success,
+                            // title: 'Oops...',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
                 },
                 error: function() {}
             });

@@ -79,7 +79,7 @@ class marketItemController extends Controller
                 DB::table('shopping_cart')->where('shopping_cart_id', $shopping->shopping_cart_id)->update(array("shopping_cart_amount"=>$amount, "shopping_cart_price"=>$sumprice));
             }
             $countShop = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
-            return response()->json(['count'=>count($countShop)], 200);
+            return response()->json(['count'=>count($countShop), 'success'=>'เพิ่มลงตระกร้าแล้ว'], 200);
             // return back();
         }elseif($request->input('Delete') != null){
             DB::table('shopping_cart')->where('shopping_cart_id', $request->input('shopping_cart_id'))->delete();
