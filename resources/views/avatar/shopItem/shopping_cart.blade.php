@@ -289,10 +289,6 @@
                     document.querySelector('input#data-checked').value = favorite.join(", ");
                     document.querySelector('input#allshopp').value = allshopp.join(", ");
                     document.querySelector('input#countChecked').value = len;
-                    // console.log(total);
-                    // console.log(alltotal.join(", "));
-                    // console.log(allamount.join(", "));
-                    // console.log(favorite.join(", "));
                 }else{
                     $(".count-checked span").text('0');
                     $.each($("input[name='accept_01']:checked"), function(){
@@ -311,10 +307,6 @@
                     document.querySelector('input#data-checked').value = favorite.join(", ");
                     document.querySelector('input#allshopp').value = allshopp.join(", ");
                     document.querySelector('input#countChecked').value = len;
-                    // console.log(total);
-                    // console.log(alltotal.join(", "));
-                    // console.log(allamount.join(", "));
-                    // console.log(favorite.join(", "));
                 }
             }
             $("#general-content input:checkbox").on("change", function() {
@@ -353,10 +345,9 @@
                         Delete:Delete,
                     },
                     success: function(response) {
-                        // console.log(response);
-                        updateCounter();
                         $('.font-shop').text(response.count);
                         btnThis.parents('.data-div').remove();
+                        updateCounter();
                         if(response.delete){
                             Swal.fire({
                                 // position: 'top-end',
@@ -396,9 +387,9 @@
                     Delete:Delete,
                 },
                 success: function(response) {
-                    // console.log(response);
                     $('.font-shop').text(response.count);
                     btnThis.parents('.data-div').remove();
+                    updateCounter();
                     if(response.delete){
                         Swal.fire({
                             // position: 'top-end',
