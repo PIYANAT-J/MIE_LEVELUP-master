@@ -63,20 +63,28 @@ class marketItemController extends Controller
 
     public function add_ShoppingCart(Request $request){
         if($request->input('submit') != null){
-            // dd($request);
-            $shopping_cart_amount = $request->input('amountItem');
-            $shopping_cart_price = $request->input('sumprice');
             $item_id = $request->input('item_id');
+            $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false'], ['item_id', $item_id]])->first();
+            
+            if($shopping == null){
+                $shopping_cart_amount = $request->input('amountItem');
+                $shopping_cart_price = $request->input('sumprice');
 
-            $data = array("shopping_cart_amount"=>$shopping_cart_amount, "shopping_cart_price"=>$shopping_cart_price, "item_id"=>$item_id, 
-                        "USER_ID"=>Auth::user()->id, "USER_EMAIL"=>Auth::user()->email);
-            Market_item::shopping_cart($data);
-
-            return back();
+                $data = array("shopping_cart_amount"=>$shopping_cart_amount, "shopping_cart_price"=>$shopping_cart_price, "item_id"=>$item_id, 
+                            "USER_ID"=>Auth::user()->id, "USER_EMAIL"=>Auth::user()->email);
+                Market_item::shopping_cart($data);
+            }else{
+                $amount = $shopping->shopping_cart_amount + $request->input('amountItem');
+                $sumprice = $shopping->shopping_cart_price + $request->input('sumprice');
+                DB::table('shopping_cart')->where('shopping_cart_id', $shopping->shopping_cart_id)->update(array("shopping_cart_amount"=>$amount, "shopping_cart_price"=>$sumprice));
+            }
+            $countShop = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
+            return response()->json(['count'=>count($countShop)], 200);
+            // return back();
         }elseif($request->input('Delete') != null){
-            // dd($request);
             DB::table('shopping_cart')->where('shopping_cart_id', $request->input('shopping_cart_id'))->delete();
-            return back()->with("delete", "ลบเรียบร้อยแล้ว");
+            $countShop = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
+            return response()->json(['count'=>count($countShop), 'delete'=>'ลบเรียบร้อยแล้ว'], 200);
         }
     }
 

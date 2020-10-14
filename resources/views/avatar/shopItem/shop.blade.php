@@ -307,8 +307,7 @@
                     <h1 class="modal-title"  style="font-weight:800;" id="exampleModalLabel">ไอเทม</h1>
                     <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
                 </div>
-                <form action="{{route('addShoppingCart')}}" method="post">
-                    @csrf
+                <form>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-12">
@@ -402,13 +401,11 @@
                         </div>
                         <div class="col-6"></div>
                         <div class="col-3">
-                            <button class="btn-submit-red">
-                                <p style="margin:0;">ใส่ตระกร้า</p>
-                                <input type="hidden" name="amountItem">
-                                <input type="hidden" name="sumprice">
-                                <input type="hidden" name="item_id" value="{{$itemModal->item_id}}">
-                                <input type="hidden" name="submit" value="submit">
-                            </button>
+                            <button type="button" class="btn-submit-red addShopping"><p style="margin:0;">ใส่ตระกร้า</p></button>
+                            <input type="hidden" name="amountItem">
+                            <input type="hidden" name="sumprice">
+                            <input type="hidden" name="item_id" value="{{$itemModal->item_id}}">
+                            <input type="hidden" name="submit" value="submit">
                         </div>
                     </div>
                 </form>
@@ -861,5 +858,34 @@ $(function() {
         })
     })();
 });
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        $(".btn-submit-red.addShopping").click(function(e) {
+
+            var amountItem = $(this).parent().find('input[name="amountItem"]').val();
+            var sumprice = $(this).parent().find('input[name="sumprice"]').val();
+            var item_id = $(this).parent().find('input[name="item_id"]').val();
+            var submit = "submit";
+
+            $.ajax({
+                url: "{{route('addShoppingCart')}}",
+                type: 'POST',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    amountItem:amountItem,
+                    sumprice:sumprice,
+                    item_id:item_id,
+                    submit:submit,
+                },
+                success: function(response) {
+                    $('.modal').modal('hide');
+                    $('.font-shop').text(response.count);
+                },
+                error: function() {}
+            });
+        });
+    });
 </script>
 @endsection
