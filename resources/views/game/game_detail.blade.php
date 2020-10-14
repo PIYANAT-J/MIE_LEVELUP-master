@@ -1050,8 +1050,13 @@
                             </button>
                         </div>
                     </div>
-                    <img style="width:50px;" src="{{ asset('icon/correct-green.svg')}}">
-                    <p style="font-weight:800;margin: 10px 0 10px 0">ทำรายการสำเร็จ</p>
+                    <svg class="psvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118.43873 118.43873">
+                        <style>.circle{ animation: stroke-fill 1s linear forwards; } .check { animation: stroke-fill 5s linear forwards; } @keyframes stroke-fill { 0% { stroke-dasharray: 0, 0; } 100% { stroke-dasharray: 500, 200000; } }</style>
+                        <path class="check" stroke-linejoin="round" d="M34.682 60.352l15.61 15.61 33.464-33.464" stroke="#08b237" stroke-linecap="round" stroke-width="4.3" fill="none"/>
+                        <circle class="circle" stroke-linejoin="round" cx="59.219" stroke-linecap="round" stroke="#08b237" cy="59.219" r="57.069" stroke-width="4.3" fill="none"/>
+                    </svg>
+    
+                    <h1 class="success-status mt-4" style="text-align:center;margin:0;">ทำรายการสำเร็จ</h1>
                     <a class="linkAd" href="{{ route('SponShoppingCart') }}">
                         <p class="btnGrey" style="cursor:pointer;padding:10px">ดูตะกร้าสินค้า</p>
                     </a>
@@ -1303,15 +1308,8 @@ function showSlides(n) {
 @if( Session::has('successSpon'))
     <script type="text/javascript">
         $(document).ready(function() {
-            Swal.fire({
-                title: '{{ Session::get('successSpon') }}',
-                icon: 'success',
-                footer:
-                '<a class="linkAd" href="{{ route('SponShoppingCart') }}">' +
-                '<label class="selectAll px-5 py-2" style="font-family:myfont1;font-size:0.8em;cursor:pointer;">ดูตระกร้าสินค้า</label></a>',
-                showCloseButton: true,
-                showConfirmButton: false,
-            })
+            $('#successModal').modal();
+            // alert("{{Session::get('susee')}}");
         });
     </script>
 @endif

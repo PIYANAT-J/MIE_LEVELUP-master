@@ -98,11 +98,11 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn-submit-modal-red d-none">ยืนยัน</button>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="container-fluid">
     <div class="row">

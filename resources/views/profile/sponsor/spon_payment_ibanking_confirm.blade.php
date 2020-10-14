@@ -89,30 +89,34 @@
 </div>
 
 <div class="modal fade" id="popupmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <div class="col-1"></div>
-                <div class="col-10 text-center">
-                    <h4 style="color:#000;margin:0;">แจ้งเตือน</h4>
-                    </div>
-                    <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
-                <div class="col-1"></div>
-            </div>
-
-            <div class="modal-body font-rate-modal">
-                <div class="row px-3">
-                    <div class="col-12 pb-1">
+            <div class="modal-body" style="border-radius: 8px;">
+                <div class="row" >
+                    <div class="col-12" >
                         <div class="row">
-                            <label class="massagrbox1" style="text-align:center;">{{ Session::get('false') }}</label>
+                            <!-- <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410.27 299.9">
+                                <defs><style>.cls-1{fill:none;stroke:rgb(15, 175, 23);stroke-miterlimit:10;stroke-width:5px;}</style></defs>
+                                <title>check</title>
+                                
+                                <path id="check" class="cls-1" d="M393.4,124.43,179.6,338.21a40.57,40.57,0,0,1-57.36,0L11.88,227.84a40.56,40.56,0,0,1,57.36-57.36l81.7,81.7L336,67.06a40.56,40.56,0,0,1,57.36,57.36Z" transform="translate(2.5 -52.69)"/>
+                            </svg> -->
+
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118.43873 118.43873">
+                                <style>.circle{ animation: stroke-fill 1s linear forwards; } .check { animation: stroke-fill 5s linear forwards; } @keyframes stroke-fill { 0% { stroke-dasharray: 0, 0; } 100% { stroke-dasharray: 500, 200000; } }</style>
+                                <path class="check" stroke-linejoin="round" d="M34.682 60.352l15.61 15.61 33.464-33.464" stroke="#08b237" stroke-linecap="round" stroke-width="4.3" fill="none"/>
+                                <circle class="circle" stroke-linejoin="round" cx="59.219" stroke-linecap="round" stroke="#08b237" cy="59.219" r="57.069" stroke-width="4.3" fill="none"/>
+                            </svg>
+    
+                            <p class="success-status mt-2" style="text-align:center;margin:0;">{{ Session::get('false') }}</p>
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn-submit-red d-none">ยืนยัน</button>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="container-fluid">
     <div class="row">
@@ -147,16 +151,16 @@
 @if( Session::has('false'))
     <script type="text/javascript">
         $(document).ready(function() {
-            Swal.fire({
-                // position: 'top-end',
-                icon: 'error',
-                title: '{{ Session::get('false') }}',
-                // title: 'Oops...',
-                showConfirmButton: false,
-                timer: 2000
-            })
+            $('#popupmodal').modal();
+            // alert("{{Session::get('susee')}}");
         });
     </script>
 @endif
+
+<script>
+setTimeout(function(){
+    $('#popupmodal').modal('hide')
+}, 1500);
+</script>
 
 @endsection
