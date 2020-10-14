@@ -29,7 +29,7 @@ class saleItemController extends Controller
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
         $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
         $item = My_item::where([['USER_EMAIL', Auth::user()->email], ['my_item_status', 'false']])->get();
-        return view('avatar.saleItem.add_sale_item', compact('guest_user', 'userKyc', 'shopping', 'item'));
+        return view('avatar.saleItem.add_sale_Item', compact('guest_user', 'userKyc', 'shopping', 'item'));
     }
 
     public function add_saleItem(Request $request){
