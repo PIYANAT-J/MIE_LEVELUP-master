@@ -9500,7 +9500,7 @@ input[type="checkbox"].switch_2{
 }
 
 .input2{
-  width: 90%;
+  width: 100%;
   height: 40px;
   background-color: #f2f2f2;
   border: 1px solid #f2f2f2;
@@ -9937,11 +9937,54 @@ input[type="checkbox"].switch_2{
   margin: auto;
 }
 
+#MESSAGE{
+  font-family: myfont1;
+}
 
 
+svg{
+  position: relative;
+  top: 40%;
+  left: 40%;
+  width: 20%;
+}
+  
+/* #check{
+stroke-dasharray: 4000;
+stroke-dashoffset: 5000;
+animation: draw 2.5s linear forwards;
+}
+
+@keyframes draw{
+  to 
+    {stroke-dashoffset: 0;}
+  } */
 
 
+.success-status{
+  /* background-color: #e7f2e5; */
+  /* color: #5fb156; */
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
+.circle{
+  animation: stroke-fill 0.7s linear forwards; 
+}
 
+.check  {
+    animation: stroke-fill 0.5s linear forwards; 
+}
+
+@keyframes stroke-fill {
+0% {
+stroke-dasharray: 0, 0;
+}
+
+100% {
+stroke-dasharray: 500, 200000;
+}
+}
 
 
