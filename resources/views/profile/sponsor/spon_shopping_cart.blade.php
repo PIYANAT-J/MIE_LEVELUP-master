@@ -23,56 +23,57 @@
                     </div>
                 </div>
                 
-                <div class="rowGameShopping pl-3">
+                <div class="rowGameShopping pl-3">    
+                    @foreach($countCart as $key=>$gameList)
                     <div class="row">
                         <div class="col-12" style="border-bottom: 1px solid #f2f2f2;">
                             <div class="row my-2">
-                                @foreach($countCart as $key=>$gameList)
-                                    <div class=" align-self-center d-flex justify-content-center mr-3">
-                                        <div class="checkbox-dark2 ">
-                                            <input type="checkbox" id="checkbox_{{$key}}" name="accept_01" value="{{$gameList->sponsor_cart_game}}" data-price="{{$gameList->sponsor_cart_price}}">
-                                            <label for="checkbox_{{$key}}" ></label>
-                                            <!-- <input type="checkbox" id="checkbox_{{$key}}" name="someCheck" value="{{$gameList->sponsor_cart_game}}"> -->
-                                            <!-- <label for="checkbox{{$key}}" ></label> -->
-                                        </div>
+                                <div class=" align-self-center d-flex justify-content-center mr-3">
+                                    <div class="checkbox-spon  ">
+                                        <input type="checkbox" id="checkbox_{{$key}}" name="accept_01" value="{{$gameList->sponsor_cart_game}}" data-price="{{$gameList->sponsor_cart_price}}">
+                                        <label for="checkbox_{{$key}}" ></label>
+                                        <!-- <input type="checkbox" id="checkbox_{{$key}}" name="someCheck" value="{{$gameList->sponsor_cart_game}}"> -->
+                                        <!-- <label for="checkbox{{$key}}" ></label> -->
                                     </div>
+                                </div>
 
-                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-1 d-none d-sm-block d-md-block d-lg-block d-xl-block" style="padding:0;">
-                                        <img class="pImg mr-2" src="{{ asset('section/File_game/Profile_game/'.$gameList->GAME_IMG_PROFILE) }}" />
-                                    </div>
+                                <div class="col-sm-2 col-md-2 col-lg-2 col-xl-1 d-none d-sm-block d-md-block d-lg-block d-xl-block" style="padding:0;">
+                                    <img class="pImg mr-2" src="{{ asset('section/File_game/Profile_game/'.$gameList->GAME_IMG_PROFILE) }}" />
+                                </div>
 
-                                    <div class="col-6 col-sm-5 col-md-5 col-lg-5 col-xl-6 ">
-                                        <label class="pFont">
-                                            <p style="font-weight: 700;margin:0;">{{$gameList->GAME_NAME}}</p>
-                                            <!-- <p style="color: #a8a8a8;margin:0;">{{$gameList->RATED_B_L}} • Online</p> -->
-                                            <h5 style="color: #23c197;margin:0;">
-                                            ช่วงเวลา   {{$gameList->sponsor_cart_start}} - {{$gameList->sponsor_cart_deadline}}<br>
-                                            จำนวนรอบโฆษณา {{$gameList->sponsor_cart_number}} รอบ </h5>
-                                        </label>
-                                    </div>
+                                <div class="col-6 col-sm-5 col-md-5 col-lg-5 col-xl-6 ">
+                                    <label class="pFont">
+                                        <p style="font-weight: 700;margin:0;">{{$gameList->GAME_NAME}}</p>
+                                        <!-- <p style="color: #a8a8a8;margin:0;">{{$gameList->RATED_B_L}} • Online</p> -->
+                                        <h5 style="color: #23c197;margin:0;">
+                                        ช่วงเวลา   {{$gameList->sponsor_cart_start}} - {{$gameList->sponsor_cart_deadline}}<br>
+                                        จำนวนรอบโฆษณา {{$gameList->sponsor_cart_number}} รอบ </h5>
+                                    </label>
+                                </div>
 
-                                    <div class="col-3 text-right align-self-center" style="padding:0;">
-                                            @if($gameList->GAME_DISCOUNT != null)
-                                                <h4 style="margin:0;font-weight:800;">฿{{$gameList->sponsor_cart_price}}</h4>
-                                                <p class="mr-2"><a style="color: #b2b2b2;text-decoration:line-through;">฿680 </a> (-{{$gameList->GAME_DISCOUNT}}%)</p>
-                                            @else
-                                                <h4 style="margin:0;font-weight:800;">฿{{$gameList->sponsor_cart_price}}</h4>
-                                            @endif
-                                        </span>
-                                    </div>
-                                    <div class="col-1 text-center align-self-center" style="padding:0;">
-                                        <form action="{{route('daleteShoppingCart')}}" method="post">
-                                            @csrf
-                                            <button class="btnTrash" name="deleteGame" value="deleteGame">
-                                                <img style="width:100%;cursor:pointer;" src="{{asset('icon/trash.svg') }}" />
-                                                <input type="hidden" name="sponsor_cart_id" value="{{$gameList->sponsor_cart_id}}">
-                                            </button>
-                                        </form>
-                                    </div>
-                                @endforeach
+                                <div class="col-3 text-right align-self-center" style="padding:0;">
+                                        @if($gameList->GAME_DISCOUNT != null)
+                                            <h4 style="margin:0;font-weight:800;">฿{{$gameList->sponsor_cart_price}}</h4>
+                                            <p class="mr-2"><a style="color: #b2b2b2;text-decoration:line-through;">฿680 </a> (-{{$gameList->GAME_DISCOUNT}}%)</p>
+                                        @else
+                                            <h4 style="margin:0;font-weight:800;">฿{{$gameList->sponsor_cart_price}}</h4>
+                                        @endif
+                                    </span>
+                                </div>
+                                
+                                <div class="col-1 text-center align-self-center" style="padding:0;">
+                                    <form action="{{route('daleteShoppingCart')}}" method="post">
+                                        @csrf
+                                        <button class="btnTrash" name="deleteGame" value="deleteGame">
+                                            <img style="width:100%;cursor:pointer;" src="{{asset('icon/trash.svg') }}" />
+                                            <input type="hidden" name="sponsor_cart_id" value="{{$gameList->sponsor_cart_id}}">
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
 
                 <div class="row mx-0 my-3">
