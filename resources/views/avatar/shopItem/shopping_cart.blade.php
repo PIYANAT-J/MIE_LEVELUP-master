@@ -122,13 +122,12 @@
                                             </div>
 
                                             <div class="col-1 my-4 text-center" style="padding:0;">
-                                                <form action="{{route('addShoppingCart')}}" method="post">
-                                                    @csrf
-                                                    <button class="btn-none" name="Delete" value="Delete">
+                                                <!-- <form> -->
+                                                    <button type="button" class="btn-none deleteShopping">
                                                         <img style="width:100%;cursor:pointer;" src="{{asset('icon/trash2.svg') }}" />
-                                                        <input type="hidden" name="shopping_cart_id" value="{{$shoppingLits->shopping_cart_id}}">
                                                     </button>
-                                                </form>
+                                                    <input type="hidden" name="shopping_cart_id" value="{{$shoppingLits->shopping_cart_id}}">
+                                                <!-- </form> -->
                                             </div>
                                         </div>
                                     @endforeach
@@ -336,24 +335,84 @@
                 });
                 
             })
+
+            $(".btn-none.deleteShopping").click(function(e) {
+                var btnThis = $(this);
+                alert("ยืนยันการลบรายการ");
+                var shopping_cart_id = $(this).parent().find('input[name="shopping_cart_id"]').val();
+                var Delete = "Delete";
+
+                console.log(shopping_cart_id);
+
+                $.ajax({
+                    url: "{{route('addShoppingCart')}}",
+                    type: 'POST',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        shopping_cart_id:shopping_cart_id,
+                        Delete:Delete,
+                    },
+                    success: function(response) {
+                        // console.log(response);
+                        updateCounter();
+                        $('.font-shop').text(response.count);
+                        btnThis.parents('.data-div').remove();
+                        if(response.delete){
+                            Swal.fire({
+                                // position: 'top-end',
+                                icon: 'success',
+                                title: response.delete,
+                                // title: 'Oops...',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        }
+                    },
+                    error: function() {}
+                });
+            });
         })();
     });
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-@if( Session::has('delete'))
-    <script type="text/javascript">
-        $(document).ready(function() {
-            // $('#address').modal();
-            Swal.fire({
-                // position: 'top-end',
-                icon: 'success',
-                title: '{{ Session::get('delete') }}',
-                // title: 'Oops...',
-                showConfirmButton: false,
-                timer: 2000
-            })
+
+<!-- <script>
+    $(document).ready(function(e) {
+        $(".btn-none.deleteShopping").click(function(e) {
+            var btnThis = $(this);
+            alert("ยืนยันการลบรายการ");
+            var shopping_cart_id = $(this).parent().find('input[name="shopping_cart_id"]').val();
+            var Delete = "Delete";
+
+            console.log(shopping_cart_id);
+
+            $.ajax({
+                url: "{{route('addShoppingCart')}}",
+                type: 'POST',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    shopping_cart_id:shopping_cart_id,
+                    Delete:Delete,
+                },
+                success: function(response) {
+                    // console.log(response);
+                    $('.font-shop').text(response.count);
+                    btnThis.parents('.data-div').remove();
+                    if(response.delete){
+                        Swal.fire({
+                            // position: 'top-end',
+                            icon: 'success',
+                            title: response.delete,
+                            // title: 'Oops...',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
+                },
+                error: function() {}
+            });
         });
-    </script>
-@endif
+    });
+</script> -->
 @endsection
