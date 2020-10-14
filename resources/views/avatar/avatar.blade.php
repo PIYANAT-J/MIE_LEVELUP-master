@@ -57,12 +57,12 @@
                 </div>
             </div>
 
-            <!-- ตัวละครชาย -->
+            <!-- ตัวละคร -->
             <div class="row avatar px-3">
                 <div class="col-3 d-inline-block d-sm-none d-md-none d-lg-none d-xl-none" ></div>
                     @foreach($avatar as $avatar)
                         @if($avatar->gender == "man")
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3 pt-2 pb-3 manlist">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-4 pt-2 pb-3 manlist">
                                 <div class="avatarHeight">
                                     <img id="headMan" class="headManImg" src="{{asset('home/avatar/head/head_man.png')}}"/>
                                     <img id="hairMan" class="hairManImg" src="{{asset($avatar->hair)}}"/>
@@ -76,7 +76,7 @@
                                 </div>
                             </div>
                         @elseif($avatar->gender == "woman")
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3 pt-2 pb-3 womanlist">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-4 pt-2 pb-3 womanlist">
                                 <div class="avatarHeight">
                                     <img id="headWoman" class="headManImg" src="{{asset('home/avatar/head/head_woman.png') }}" />
                                     <img id="hairwoman" class="hairwomanImg" src="{{asset($avatar->hair)}}"/>
@@ -90,7 +90,7 @@
                                 </div>
                             </div>
                         @else
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3 pt-2 pb-3 womanlist">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-4 pt-2 pb-3 womanlist">
                                 <div class="avatarHeight">
                                     <img id="headWoman" class="headManImg" src="{{asset('home/avatar/head/head_woman.png') }}" />
                                     <img id="hairwoman" class="hairwomanImg" src="{{asset('home/avatar/hair/woman/hair_woman_01.png') }}" />
@@ -103,7 +103,7 @@
                                     <img id="armorWoman" class="armorWomanImg" src="{{asset('home/avatar/other/noneImg.png') }}" />
                                 </div>
                             </div>
-                            <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3 pt-2 pb-3 manlist">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-4 pt-2 pb-3 manlist">
                                 <div class="avatarHeight">
                                     <img id="headMan" class="headManImg" src="{{asset('home/avatar/head/head_man.png') }}" />
                                     <img id="hairMan" class="hairManImg" src="{{asset('home/avatar/hair/man/hair_man_01.png') }}" />
@@ -121,7 +121,7 @@
                 <!-- <div class="col-4 col-sm-4 col-md-4 d-inline-block d-lg-none d-xl-none" ></div> -->
 
                 <!-- ไอเทม -->
-                <div class="col-12 col-sm-8 col-md-9 col-lg-8 col-xl-9" style="padding:0;">
+                <div class="col-12 col-sm-8 col-md-9 col-lg-8 col-xl-8" style="padding:0;">
                     <div class="row">
                         <div class="col-12">
                             <ul class="nav">
