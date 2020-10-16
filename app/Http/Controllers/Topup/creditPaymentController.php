@@ -12,7 +12,7 @@ use App\Transeection_buyItem;
 
 class creditPaymentController extends Controller
 {
-    public function visaCredit($transeection_id){
+    public function visaCredit(Request $request){
         // dd($request);
         if($request->input('submit') != null){
             $transeection_type = $request->input('paymentType');
@@ -21,7 +21,7 @@ class creditPaymentController extends Controller
             
             $transeection = Transeection_buyItem::where('transeection_id', $transeection_id)->first();
 
-            $total = number_format($transeection->transeection_price, 2);
+            $total = number_format($transeection->transeection_price, 2, '', '');
             // dd("NO.1", $total, $transeection->transeection_price);
             if($transeection != null){
                 // Transeection_buyItem::where('transeection_id', $transeection_id)->update(array('transeection_type'=>$transeection_type, 'transeection_invoice'=>$transeection_invoice));
@@ -47,54 +47,25 @@ class creditPaymentController extends Controller
                 $data["site_cd"] = $site_cd;
                 $data["hash_data"] = $hash_data;
 
-                // $headers = [
-                //     'Content-Type' => 'text/html',
-                // ];
-            
-                // $client = new \GuzzleHttp\Client();
-                // $response = $client->request('POST', 'https://paytest.treepay.co.th/total/hubInit.tp', [
-                //     'headers' => $headers,
-                //     'order_no'=>$data["order_no"], 
-                //     'ret_url'=>$data["ret_url"], 
-                //     'user_id'=>$data["user_id"], 
-                //     'currency'=>$data["currency"],
-                //     'good_name'=>$data["good_name"], 
-                //     'trade_mony'=>$data["trade_mony"], 
-                //     'order_first_name'=>$data["order_first_name"], 
-                //     'order_email'=>$data["order_email"], 
-                //     'pay_type'=>$data["pay_type"], 
-                //     'site_cd'=>$data["site_cd"], 
-                //     'hash_data'=>$data["hash_data"], 
-                // ]);
-
-                // return redirect()->to("https://paytest.treepay.co.th/total/hubInit.tp");
-                // dd($response);
-                // return response()->json([
-                //     'transeection_price'=>$data["transeection_price"], 
-                //     'transeection_invoice'=>$data["transeection_invoice"], 
-                //     'user_id'=>$data["user_id"], 
-                //     'good_name'=>$data["good_name"], 
-                //     'trade_mony'=>$data["trade_mony"], 
-                //     'order_first_name'=>$data["order_first_name"], 
-                //     'order_email'=>$data["order_email"], 
-                //     'pay_type'=>$data["pay_type"], 
-                //     'site_cd'=>$data["site_cd"], 
-                //     'hash_data'=>$data["hash_data"], 
-                //     'action'=>'https://paytest.treepay.co.th/total/hubInit.tp'
-                // ]);
+                return response()->json([
+                    'order_no'=>$data["order_no"], 
+                    'ret_url'=>$data["ret_url"], 
+                    'user_id'=>$data["user_id"], 
+                    'currency'=>$data["currency"],
+                    'good_name'=>$data["good_name"], 
+                    'trade_mony'=>$data["trade_mony"], 
+                    'order_first_name'=>$data["order_first_name"], 
+                    'order_email'=>$data["order_email"], 
+                    'pay_type'=>$data["pay_type"], 
+                    'site_cd'=>$data["site_cd"], 
+                    'hash_data'=>$data["hash_data"],
+                ]);
             }
-            // dd("NO");
         }
-        return view('avatar.payment.payment_credit', compact('data'));
     }
 
-    // public function treepay($data = null){
-    //     dd($data);
-    //     return view('avatar.payment.payment_credit', compact('data'));
-    // }
-
     public function visaCreditCallback(Request $request){
-        dd($request);
-        // return view('pages.product-payment-credit', $data);
+        // dd($request);
+        return redirect(route('LEVELup'));
     }
 }
