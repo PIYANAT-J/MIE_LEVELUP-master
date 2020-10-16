@@ -290,7 +290,7 @@
                                             </div>
                                         </div>
                                         <div class="row " style="border-right:1px solid #455160;">
-                                            <div class="col-12 redioGreenAvatar mt-1">
+                                            <!-- <div class="col-12 redioGreenAvatar mt-1">
                                                 <input type="radio" name="VisaCredit" value="visa" id="visa" />
                                                 <label for="visa" class="VisaCredit">
                                                     <img class="pVisaCredit" style="height:25px;" src="{{asset('home/logo/visa1.svg')}}" >
@@ -303,7 +303,7 @@
                                                     <img class="pVisaCredit" style="height:25px;" src="{{asset('home/logo/credit.svg')}}" >
                                                     <label for="credit" class="pBankAvatar"><p style="color:#414141;margin:0;">ธนาคารไทยพาณิชย์ *1234</p></label>
                                                 </label>
-                                            </div>
+                                            </div> -->
                                             <div class="col-12 px-3 mt-2">
                                                 <label class="addBank px-2" data-toggle="modal" data-target="#VisaCredit2"><p style="margin:0;">เพิ่มบัตรเครดิต / เดบิต</p></label>
                                             </div>
@@ -532,11 +532,25 @@
                                             {{-- <a href="{{ route('PaymentConfirmation') }}">
                                                 <label class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p></label>
                                             </a> --}}
+                                            @if($transeection->transeection_invoice == null)
+                                                <form action="{{route('VisaCredit')}}" method="post">
+                                                    @csrf
+                                                    <button class="btn-submit-red credit"><p style="margin:0;color:#fff;">ชำระเงิน</p></button>
+                                                    <input type="hidden" name="amount" value="{{$transeection->transeection_price}}" >
+                                                    <!-- <input type="hidden" name="bank_name" id="data-checked"> -->
+                                                    <input type="hidden" name="paymentType" value="VisaCredit">
+                                                    <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
+                                                    <input type="hidden" id="submit" name="submit" value="submit">
+                                                </form>
+                                            @else
+                                                @if($transeection->transeection_status == 'false')
+                                                    <button class="btn-cancel" style="cursor:default">
+                                                        <p style="margin:0">รอการชำระเงิน</p>
+                                                    </button>
+                                                @endif
+                                            @endif
                                         </div>
                                         <div class="col-lg-2 text-center" id="iBanking">
-                                            {{-- <a href="{{ route('PaymentConfirmation') }}">
-                                                <label class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p></label>
-                                            </a> --}}
                                             @if($transeection->transeection_invoice == null)
                                                 <form action="{{route('Itemibanking')}}" method="POST">
                                                     @csrf
@@ -558,9 +572,6 @@
                                             @endif
                                         </div>
                                         <div class="col-lg-2 text-center" id="Transfer">
-                                            {{-- <a href="{{ route('PaymentTransfer') }}">
-                                                <label class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p></label>
-                                            </a> --}}
                                             @if($transeection->transeection_invoice == null)
                                                 <form action="{{route('itemTransfer')}}" method="POST">
                                                     @csrf
@@ -1639,6 +1650,63 @@ document.execCommand('copy');
         });
     });
 </script>
+
+<!-- <script>
+    $(document).ready(function(e) {
+        $(".btn-submit-red.credit").click(function(e) {
+            var btnThis = $(this);
+            // alert("ยืนยันการลบรายการ");
+            var amount = $(this).parent().find('input[name="amount"]').val();
+            var paymentType = $(this).parent().find('input[name="paymentType"]').val();
+            var transeection_id = $(this).parent().find('input[name="transeection_id"]').val();
+            var submit = "submit";
+
+            console.log(paymentType);
+
+            $.ajax({
+                url: "{{route('VisaCredit')}}",
+                type: 'POST',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    amount:amount,
+                    paymentType:paymentType,
+                    transeection_id:transeection_id,
+                    submit:submit,
+                },
+                success: function(response) {
+                    console.log(response.action);
+                    // window.location.href = response.action;
+                    
+                    // $.ajax({
+                    //     url: 'https://paytest.treepay.co.th/total/hubInit.tp',
+                    //     type: 'POST',
+                    //     data: {
+                    //         "_token": "{{ csrf_token() }}",
+                    //         order_no:response.transeection_invoice,
+                    //         good_name:response.good_name,
+                    //         trade_mony:response.trade_mony,
+                    //         order_first_name:response.order_first_name,
+                    //         order_email:response.order_email,
+                    //         pay_type:response.pay_type,
+                    //         site_cd:response.site_cd,
+                    //         ret_url:response.ret_url,
+                    //         currency:response.currency,
+                    //         user_id:response.user_id,
+                    //         hash_data:response.hash_data,
+                    //     },
+                    //     success: function(response) {
+                    //         console.log(response);
+                    //     },
+                    //     error: function(response) {
+                    //         console.log("NO");
+                    //     }
+                    // });
+                },
+                error: function() {}
+            });
+        });
+    });
+</script> -->
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 @if( Session::has('success'))
