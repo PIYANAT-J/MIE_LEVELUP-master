@@ -15,16 +15,15 @@ class CreateCreditPaymentsTable extends Migration
     {
         Schema::create('credit_payments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            // $table->char('qrType')->collation('utf8_unicode_ci');
-            // $table->set('paymentType', ['KD', 'DP', 'QrCode'])->collation('utf8_unicode_ci')->nullable();
+            $table->string('credit_card')->collation('utf8_unicode_ci')->nullable();
+            $table->string('paymentType')->collation('utf8_unicode_ci')->nullable();
             $table->double('amount', 15, 4)->default(0);
             $table->char('note', 255)->collation('utf8_unicode_ci')->nullable();
             $table->string('bank_name', 10)->collation('utf8_unicode_ci')->nullable();
-            // $table->char('rawQrCode', 255)->collation('utf8_unicode_ci')->nullable();
             $table->char('invoice', 255)->collation('utf8_unicode_ci')->nullable();
-            $table->string('credit_invoice');
+            $table->char('tno', 255)->collation('utf8_unicode_ci')->nullable();
             $table->dateTime('confirm_at')->nullable();
-            $table->set('status', ['true', 'false', '99'])->default('false');
+            $table->set('status', ['true', 'false', 'W999'])->default('false');
             $table->char('blockchain', 255)->collation('utf8_unicode_ci')->nullable();
             $table->integer('user_id');
             $table->string('user_email')->nullable();
