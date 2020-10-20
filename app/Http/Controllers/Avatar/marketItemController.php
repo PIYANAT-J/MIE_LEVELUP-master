@@ -209,7 +209,8 @@ class marketItemController extends Controller
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
         $address = DB::table('addresses')->where('USER_EMAIL', Auth::user()->email)->get();
         $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
-        $transeection = DB::table('transeection_buy_items')->where([['USER_EMAIL', Auth::user()->email], ['transeection_status', 'true']])->orderBy('transeection_id', 'desc')->first();
+        $transeection = DB::table('transeection_buy_items')->where([['transeection_invoice', decrypt($invoice)], ['transeection_status', 'true']])->first();
+        // $transeection = DB::table('transeection_buy_items')->where([['USER_EMAIL', Auth::user()->email], ['transeection_status', 'true']])->orderBy('transeection_id', 'desc')->first();
         $marketItem = Market_item::all();
         
         if(count($address) != 0){

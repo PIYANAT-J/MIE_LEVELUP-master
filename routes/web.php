@@ -142,7 +142,8 @@ Route::post('/payment_confirmation/cancal', 'Avatar\marketItemController@cancali
 Route::get('/payment_transfer/{invoice}', 'Avatar\marketItemController@paymentTransfer')->name('PaymentTransfer');
 Route::get('/successful_payment/{invoice}', 'Avatar\marketItemController@successfulPayment')->name('SuccessfulPayment');
 
-Route::post('/payment/VisaCredit/callback', 'Topup\creditPaymentController@visaCreditCallback');
+Route::post('/payment/VisaCredit/callback', 'Topup\creditPaymentController@visaCreditCallback')->name('CreditCallback');
+// Route::get('/payment/VisaCredit/callback', 'Topup\creditPaymentController@visaCreditCallback')->name('CreditCallback');
 
 //trading
 Route::get('/simulator_trade', 'simulatorTrade\tradeController@SimulatorTrade')->name('SimulatorTrade');

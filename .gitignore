@@ -11,3 +11,10 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+docker-compose.yml
+index.php
+/.docker
+/__MACOSX
+/php-make
+/public/CLaravel-projectMIE_LEVELUP-masterstoragelogs

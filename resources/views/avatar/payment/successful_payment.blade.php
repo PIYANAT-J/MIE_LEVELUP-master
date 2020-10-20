@@ -191,7 +191,15 @@
 
                                 <div class="row py-3" style="border-bottom:1px solid #455160">
                                     <div class="col-6 font-payment2"><p style="margin:0;font-weight:800;">ช่องทางการชำระเงิน</p></div>
-                                    <div class="col-6 text-right font-payment2"><p style="margin:0;">T10 Wallet ชื่อบัญชี สมหญิง รักดี</p></div>
+                                    <div class="col-6 text-right font-payment2">
+                                        @if($transeection->transeection_type == "qr")
+                                            <p style="margin:0;">โมบายแบงค์กิ้ง ชื่อบัญชี {{Auth::user()->name}} {{Auth::user()->surname}}</p>
+                                        @elseif($transeection->transeection_type == "Transfer")
+                                            <p style="margin:0;">โอนเงินธนาคาร ชื่อบัญชี {{Auth::user()->name}} {{Auth::user()->surname}}</p>
+                                        @elseif($transeection->transeection_type == "VisaCredit")
+                                            <p style="margin:0;">บัตรเครดิต/บัตรเดบิต ชื่อบัญชี {{Auth::user()->name}} {{Auth::user()->surname}}</p>
+                                        @endif
+                                    </div>
                                 </div>
                                 
                                 <div class="row mt-3 py-2 " style="background-color:#000;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">

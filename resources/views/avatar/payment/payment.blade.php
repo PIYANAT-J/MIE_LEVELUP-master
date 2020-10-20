@@ -1397,7 +1397,7 @@
         <input type="hidden" name="order_email">
         <input type="hidden" name="pay_type">
         <input type="hidden" name="site_cd">
-        <input type="hidden" name="ret_url">
+        <input type="hidden" name="ret_url" value="{{route('CreditCallback')}}">
         <input type="hidden" name="currency">
         <input type="hidden" name="user_id">
         <input type="hidden" name="hash_data">
@@ -1696,7 +1696,7 @@ document.execCommand('copy');
                     $('form.VisaCreditTreePay input[name="order_email"]').val(response.order_email);
                     $('form.VisaCreditTreePay input[name="pay_type"]').val(response.pay_type);
                     $('form.VisaCreditTreePay input[name="site_cd"]').val(response.site_cd);
-                    $('form.VisaCreditTreePay input[name="ret_url"]').val(response.ret_url);
+                    // $('form.VisaCreditTreePay input[name="ret_url"]').val(response.ret_url);
                     $('form.VisaCreditTreePay input[name="currency"]').val(response.currency);
                     $('form.VisaCreditTreePay input[name="hash_data"]').val(response.hash_data);
                     // var formdata = new FormData();
