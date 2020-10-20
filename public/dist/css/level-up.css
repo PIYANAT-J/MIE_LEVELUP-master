@@ -4905,6 +4905,17 @@ input.date{
   color: #ffffff!important;
 }
 
+.font-select2{
+  font-family: myfont1;
+  font-size: 1em;
+  background-color: #141621;
+}
+
+.font-select2:focus{
+  outline: none!important;
+}
+
+
 .btn-upload-pic{
   background-color: #ce0005!important;
   border-radius: 8px;
@@ -4993,6 +5004,14 @@ input.date{
   background-color: #fff;
 }
 
+.SelectDr{
+  width: 115px;
+  height: 30px;
+  border-radius: 5px;
+  border: solid 1px #fff;
+  color: #ffff;
+  background-color: #141621;
+}
 
 .MySelect{
   width: 100%;
@@ -10112,3 +10131,11 @@ stroke-dasharray: 500, 200000;
   content: "";
 }
 /* ---------------- */
+
+.status-transfer{
+  border-radius: 6px;
+  background-color: #fc8800;
+  margin: 0;
+  padding: 2px 5px 2px 5px;
+  cursor: pointer;
+}
