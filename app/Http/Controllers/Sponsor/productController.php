@@ -71,6 +71,14 @@ class productController extends Controller
             return view('profile.game.sponlvp_shelf', compact('sponsor', 'product', 'game', 'package', 'countCart', 'transeection', 'allpackage'));
         }
     }
+    public function SponOrderList(){
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
+                            ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                            ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                            ->get();
+        return view('profile.sponsor.spon_order_list', compact('sponsor', 'countCart'));
+    }
 
     public function addProduct(Request $request){
         if($request->input('submit') != null){
