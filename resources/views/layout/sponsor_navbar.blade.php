@@ -200,6 +200,7 @@
                                 <a href="{{ route('AdvtPackage') }}"><h1 class="navbarMobile">สนับสนุนเงินในเกม</h1></a>
                                 <a href="{{ route('ProductSupport') }}"><h1 class="navbarMobile">สนับสนุนสินค้าในเกม</h1></a>
                                 <a href="{{ route('SponShelf') }}"><h1 class="navbarMobile">ตู้เกม (เกมเชล)</h1></a>
+                                <a href="{{ route('SponOrderList') }}"><h1 class="navbarMobile">รายการคำสั่งซื้อ</h1></a>
                                 <a href="{{ route('SponsorChangePassword') }}"><h1 class="navbarMobile">เปลี่ยนรหัสผ่าน</h1></a>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <h1 class="navbarMobile">{{ __('ออกจากระบบ') }}</h1>
