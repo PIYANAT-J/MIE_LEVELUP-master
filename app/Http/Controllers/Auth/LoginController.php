@@ -11,11 +11,12 @@ use Redirect;
 use Socialite;
 use Auth;
 use Exception;
+
 use App\User;
 use App\Guest_user;
 
 use Illuminate\Http\Request;
-
+use Session;
 class LoginController extends Controller
 {
     /*
@@ -64,6 +65,7 @@ class LoginController extends Controller
             if (auth()->user()->users_type == 0) {
                 return redirect()->route('AdminManagement');
             }else{
+                Session::save();
                 return redirect()->route('LEVELup');
             }
         }
