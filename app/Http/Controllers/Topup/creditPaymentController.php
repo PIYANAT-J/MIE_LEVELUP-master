@@ -10,6 +10,7 @@ use Auth;
 use DB;
 
 use App\Transeection_buyItem;
+use App\CreditPayment;
 use App\Market_item;
 use App\My_item;
 
@@ -23,6 +24,14 @@ class creditPaymentController extends Controller
             $transeection_id = $request->input('transeection_id');
             
             $transeection = Transeection_buyItem::where('transeection_id', $transeection_id)->first();
+
+            $credit_payments = new CreditPayment();
+            $credit_payments->paymentType = $transeection_type;
+            $credit_payments->amount = $transeection->transeection_price;
+            $credit_payments->invoice = $transeection_invoice;
+            $credit_payments->user_id = Auth::user()->id;
+            $credit_payments->user_email = Auth::user()->email;
+            $credit_payments->save();
 
             $total = number_format($transeection->transeection_price, 2, '', '');
             // dd("NO.1", $total, $transeection->transeection_price);
@@ -73,6 +82,16 @@ class creditPaymentController extends Controller
         $res_cd = $request->res_cd;
         $order_no = $request->order_no;
         if($res_cd == "0000"){
+            $y = substr($request->trade_ymd, 0, 4);
+            $mm = substr($request->trade_ymd, 4, 2);
+            $d = substr($request->trade_ymd, 6, 2);
+            $h = substr($request->trade_hms, 0, 2);
+            $m = substr($request->trade_hms, 2, 2);
+            $s = substr($request->trade_hms, 4, 2);
+            $confirm_at = $y.'-'.$mm.'-'.$d.' '.$h.':'.$m.':'.$d;
+            // dd($confirm_at);
+            CreditPayment::where('invoice', $order_no)->update(array('credit_card' => $request->card_no, 'tno' => $request->tno, 'status' => "true", 'confirm_at' => $confirm_at));
+
             $transeection_item = Transeection_buyItem::where('transeection_invoice', $order_no)->first();
             if($transeection_item != null){
 
@@ -123,6 +142,8 @@ class creditPaymentController extends Controller
             header("Location: ".url()->to(route('SuccessfulPayment', ['invoice' => encrypt($order_no)])));
             exit();
         }elseif($res_cd == "W999"){
+            CreditPayment::where('invoice', $order_no)->update(array('status' => $res_cd, 'confirm_at' => date('Y-m-d H:i:s')));
+
             $transeection_item = Transeection_buyItem::where('transeection_invoice', $order_no)->first();
             if($transeection_item != null){
                 Transeection_buyItem::where('transeection_invoice', $order_no)->update(array('transeection_type' => null, 'transeection_invoice' => null));
@@ -134,8 +155,8 @@ class creditPaymentController extends Controller
         }
 
         // dd(url()->to(route('AdsSpon')));
-        // Session::save();
-        // header("Location: ".url()->to(route('LEVELup')));
-        // exit();
+        Session::save();
+        header("Location: ".url()->to(route('LEVELup')));
+        exit();
     }
 }
