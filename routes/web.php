@@ -121,6 +121,7 @@ Route::view('/admin_change_password', 'profile.password.adminlvp_change_password
 
 Route::get('/avatar', 'Avatar\avatarController@Avatar')->name('Avatar');
 Route::post('/avatar/addAvatar', 'Avatar\avatarController@addAvatar')->name('setAvatar');
+Route::get('/avatar_order_list', 'Avatar\avatarController@AvatarOrderList')->name('AvatarOrderList');
 
 Route::get('/shop', 'Avatar\marketItemController@Shop')->name('Shop');
 Route::post('/shop/add_ShoppingCart', 'Avatar\marketItemController@add_ShoppingCart')->name('addShoppingCart');
@@ -169,6 +170,7 @@ Route::get('/product_support', 'Sponsor\productController@ProductSupport')->name
 Route::post('/product_support/addproduct', 'Sponsor\productController@addProduct')->name('addProduct');
 Route::get('/product_support_select', 'Sponsor\productController@ProductSupportSelect')->name('ProductSupportSelect');
 Route::get('/sponlvp_shelf', 'Sponsor\productController@SponShelf')->name('SponShelf');
+Route::get('/spon_order_list', 'Sponsor\productController@SponOrderList')->name('SponOrderList');
 
 Route::get('/spon_shopping_cart', 'Sponsor\game_sponController@SponShoppingCart')->name('SponShoppingCart');
 Route::post('/spon_shopping_cart/payment', 'Sponsor\game_sponController@SponShoppingCartPayment')->name('sponShoppingCartPayment');

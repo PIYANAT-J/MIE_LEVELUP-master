@@ -41,6 +41,11 @@
                 <i class="icon-profile menuIcon"></i>ตัวละครของฉัน (Avatar)
             </button>
         </a>
+        <a href="{{ route('AvatarOrderList') }}" style="width: 100%;">
+            <button class="btn-sidebar2 p">
+                <i class="fa fa-list-ul menuIcon"></i>รายการคำสั่งซื้อ
+            </button>
+        </a>
         <a href="{{ route('UserProfile') }}" style="width: 100%;">
             <button class="btn-sidebar2 p">
                 <i class="icon-profile menuIcon"></i>ข้อมูลส่วนตัว

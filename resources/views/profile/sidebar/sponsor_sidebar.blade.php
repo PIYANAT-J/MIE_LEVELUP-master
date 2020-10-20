@@ -63,6 +63,11 @@
                     <p style="margin: 0;"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</p>
                 </button>
             </a>
+            <a href="{{ route('SponOrderList') }}" style="width: 100%;">
+                <button class="btn-sidebar">
+                    <p style="margin: 0;"><i class="fa fa-list-ul menuIcon"></i>รายการคำสั่งซื้อ</p>
+                </button>
+            </a>
             <!-- <a href="{{ route('DevHistory') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-history menuIcon"></i>ประวัติพอยท์</button></a>
             <a href="{{ route('SponsorTopup') }}" style="width: 100%;"><button class="btn-sidebar"><i class="icon-top-up1 menuIcon"></i>เติมเงิน</button></a> -->
             <a href="{{ route('SponsorChangePassword') }}" style="width: 100%;">
