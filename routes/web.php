@@ -21,8 +21,8 @@ Route::get('/', 'GameController@indexGame')->name('LEVELup');
 Route::post('/Follow', 'FollowController@followGame')->name('Follow');
 
 Auth::routes(['verify' => true]);
-Route::view('/loginlvp', 'auth.login_lvp')->name('login-levelUp');
-Route::view('/registerlvp', 'auth.register_lvp')->name('register-levelUp');
+Route::view('/loginlvp', 'auth.login')->name('login-levelUp');
+Route::view('/registerlvp', 'auth.register')->name('register-levelUp');
 
 Route::get('login/facebook', 'Auth\LoginController@redirectToFacebook')->name('login-facebook');
 Route::get('callback/facebook', 'Auth\LoginController@handleFacebookCallback');
