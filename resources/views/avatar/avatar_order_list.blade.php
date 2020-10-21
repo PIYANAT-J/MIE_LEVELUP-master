@@ -17,8 +17,8 @@
                                 <h1 class="fontHeader" style="color:#fff;">รายการคำสั่งซื้อ</h1>
                             </div>
                             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-right"> 
-                                <!-- <SELECT class="SelectDr p" size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT>
-                                <SELECT class="SelectDr p" size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT> -->
+                                <SELECT class="SelectDr p" size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT>
+                                <SELECT class="SelectDr p" size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT>
                                 <!-- <div class="col-4 mt-2 d-none" style="padding:0;"><SELECT  size="1" id ="day" name = "dd" ></SELECT></div> -->
                             </div>
                         </div>
@@ -127,4 +127,121 @@
 <script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
 <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+<!-- วัน เดือน ปีเกิด -->
+<script>
+    var Days = [31,28,31,30,31,30,31,31,30,31,30,31];// index => month [0-11]
+    $(document).ready(function(){
+        var option = '<option  class="font-select2" value="day">วัน</option>';
+        var selectedDay="day";
+        for (var i=1;i <= Days[0];i++){ //add option days
+            option += '<option class="font-select2" value="'+ i +'">' + i + '</option>';
+        }
+        $('#day').append(option);
+        $('#day').val(selectedDay);
+        
+        var option = '<option class="font-select2" value="month">เดือน</option>';
+        var selectedMon ="month";
+        for (var i=1;i <= 12;i++){
+            // option += '<option value="'+ i + '">' + i + '</option>';
+            if(i == 1){
+                option += '<option class="font-select2"  value="'+ i + '">' + "มกราคม" + '</option>';
+            }else if(i == 2){
+                option += '<option class="font-select2"  value="'+ i + '">' + "กุมภาพันธ์" + '</option>';
+            }else if(i == 3){
+                option += '<option class="font-select2"  value="'+ i + '">' + "มีนาคม" + '</option>';
+            }else if(i == 4){
+                option += '<option class="font-select2"  value="'+ i + '">' + "เมษายน" + '</option>';
+            }else if(i == 5){
+                option += '<option class="font-select2"  value="'+ i + '">' + "พฤษภาคม" + '</option>';
+            }else if(i == 6){
+                option += '<option class="font-select2"  value="'+ i + '">' + "มิถุนายน" + '</option>';
+            }else if(i == 7){
+                option += '<option class="font-select2"  value="'+ i + '">' + "กรกฎาคม" + '</option>';
+            }else if(i == 8){
+                option += '<option class="font-select2"  value="'+ i + '">' + "สิงหาคม" + '</option>';
+            }else if(i == 9){
+                option += '<option class="font-select2"  value="'+ i + '">' + "กันยายน" + '</option>';
+            }else if(i == 10){
+                option += '<option class="font-select2"  value="'+ i + '">' + "ตุลาคม" + '</option>';
+            }else if(i == 11){
+                option += '<option class="font-select2"  value="'+ i + '">' + "พฤศจิกายน" + '</option>';
+            }else{
+                option += '<option class="font-select2"  value="'+ i + '">' + "ธันวาคม" + '</option>';
+            }
+        }
+        $('#month').append(option);
+        $('#month').val(selectedMon);
+        var option = '<option  class="font-select2" value="month">เดือน</option>';
+        var selectedMon ="month";
+        for (var i=1;i <= 12;i++){
+            option += '<option  class="font-select2" value="'+ i + '">' + i + '</option>';
+        }
+        $('#month2').append(option);
+        $('#month2').val(selectedMon);
+    
+        var d = new Date();
+        var option = '<option  class="font-select2" value="year">ปี</option>';
+        selectedYear ="year";
+        for (var i=1930;i <= d.getFullYear();i++){// years start i
+            option += '<option  class="font-select2" value="'+ i + '">' + i + '</option>';
+        }
+        $('#year').append(option);
+        $('#year').val(selectedYear);
+    });
+    function isLeapYear(year) {
+        year = parseInt(year);
+        if (year % 4 != 0) {
+            return false;
+        } else if (year % 400 == 0) {
+            return true;
+        } else if (year % 100 == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    function change_year(select)
+    {
+        if( isLeapYear( $(select).val() ) )
+        {
+                Days[1] = 29;
+                
+        }
+        else {
+            Days[1] = 28;
+        }
+        if( $("#month").val() == 2)
+                {
+                    var day = $('#day');
+                    var val = $(day).val();
+                    $(day).empty();
+                    var option = '<option  class="font-select2" value="day">วัน</option>';
+                    for (var i=1;i <= Days[1];i++){ //add option days
+                            option += '<option  class="font-select2" value="'+ i + '">' + i + '</option>';
+                }
+                    $(day).append(option);
+                    if( val > Days[ month ] )
+                    {
+                            val = 1;
+                    }
+                    $(day).val(val);
+                }
+    }
+    function change_month(select) {
+        var day = $('#day');
+        var val = $(day).val();
+        $(day).empty();
+        var option = '<option  class="font-select2" value="day">วัน</option>';
+        var month = parseInt( $(select).val() ) - 1;
+        for (var i=1;i <= Days[ month ];i++){ //add option days
+            option += '<option  class="font-select2" value="'+ i + '">' + i + '</option>';
+        }
+        $(day).append(option);
+        if( val > Days[ month ] )
+        {
+            val = 1;
+        }
+        $(day).val(val);
+    }
+</script>
 @endsection
