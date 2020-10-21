@@ -440,7 +440,7 @@
                                             <div class="row">
                                                 <div class="col-12" style="padding:0;">
                                                     <label class="bgInput field-wrap">
-                                                        <label><p class="fontHeadInput">ชื่อบอริษัท</p></label><br>
+                                                        <label><p class="fontHeadInput">ชื่อบริษัท</p></label><br>
                                                         <input id="name" name="name" class="input1 p ml-2 @error('name') is-invalid @enderror" value="{{ old('name') }}" autocomplete="name">
                                                     </label>
                                                     @error('name')

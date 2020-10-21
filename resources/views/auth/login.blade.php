@@ -69,33 +69,29 @@
                                 </div>
                             </div>
                             
-                            <div class="row mt-3">
+                            <div class="row mt-3 mb-2">
                                 <div class="col-12">
-                                    <label class="bgInput field-wrap my-2">
+                                    <label class="bgInput field-wrap">
                                         <label><p class="fontHeadInput">อีเมลผู้ใช้งาน</p></label><br>
-                                        <input type="email" name="email" class="input1 p ml-2 @error('email') is-invalid @enderror"  required autocomplete="email">
+                                        <input type="email" name="email" class="input1 p ml-2 @error('email') is-invalid @enderror" autocomplete="email">
+                                    </label>
+                                    @error('email')
+                                        <h5 style="color:#ce0005;margin:0;">กรุณากรอกอีเมล</h5>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="bgInput field-wrap">
+                                        <label><p class="fontHeadInput">รหัสผ่าน</p></label><br>
+                                        <input name="password" type='password' class="input1 p ml-2 @error('password') is-invalid @enderror" autocomplete="current-password">
                                     </label>
                                 </div>
                             </div>
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label class="bgInput field-wrap">
-                                            <label><p class="fontHeadInput">รหัสผ่าน</p></label><br>
-                                            <input name="password" type='password' class="input1 p ml-2 @error('password') is-invalid @enderror" required autocomplete="current-password">
-                                        </label>
-                                    </div>
-                                </div>
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            @error('password')
+                                <h5 style="color:#ce0005;margin:0;">กรุณากรอกรหัสผ่าน</h5>
+                            @enderror
                             <div class="row mt-2">
                                 <div class="col-6">
                                     <div class="checkboxLogin">
