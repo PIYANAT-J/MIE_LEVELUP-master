@@ -36,7 +36,6 @@ class ResetPasswordController extends Controller
     protected $redirectTo = '/';
     
     public function userPass(){
-        // dd('userPass');
         $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
         if($gameShalf->count() == 0){
             $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
@@ -56,38 +55,33 @@ class ResetPasswordController extends Controller
     }
 
     public function passwordUserReset(Request $req){
-        // dd('passwordUserReset');
         if($req->input('submit') != null){
-            // dd($req);
             $validate = $req->validate([
-                'old_password' => ['required', 'string', 'max:255'. Auth::user()->password],
-                'password' => ['required', 
-                                'string', 
-                                'min:8',
-                                'confirmed',
-                                'regex:/^.*(?=.{3,})(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^_~])(?=.*[0-9])(?=.*[\d\x]).*$/'
-                            ],
+                'old_password' => ['required', 'string', 'min:8', 'max:255'. Auth::user()->password],
+                'password' => ['required', 'string', 'min:8', 'regex:/^.*(?=.{3,})(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^_~])(?=.*[0-9])(?=.*[\d\x]).*$/'],
+                'password_confirmation' => ['required', 'same:password', 'min:8'],
+            ],
+            [
+                'old_password.required' => 'กรุณาระบุรหัสผ่านของคุณ',
+                'old_password.min' => 'รหัสผ่านขั้นต่ำ 8 ตัว',
+
+                'password.required' => 'กรุณาระบุรหัสผ่านของคุณ',
+                'password.min' => 'รหัสผ่านขั้นต่ำ 8 ตัว',
+                'password.regex' => 'ต้องประกอบด้วยตัวอักษร(A-Z,a-z,0-9 และ!@#$%^_~) อย่างละ 1 ตัว',
+
+                'password_confirmation.required' => 'กรุณาระบุรหัสผ่านของคุณ',
+                'password_confirmation.min' => 'รหัสผ่านขั้นต่ำ 8 ตัว',
+                'password_confirmation.same' => 'รหัสผ่านไม่ตรงกัน',
             ]);
 
             $user = Auth::user()->id;
             $password = $req->input('password');
             $old_password = $req->input('old_password');
-
-            // dd($password);
-            // if(Hash::check(Auth::user()->password, $old_password)){
-            //     dd();
-            // }
             
             $data = array("password"=>Hash::make($password));
             DB::table('users')->where('id',$user)->update($data);
 
-            return back()->with("susee", "เปลี่ยนรหัสผ่านสำเร็จ");
+            return response()->json(["susee" => "เปลี่ยนรหัสผ่านสำเร็จ"]);
         }
     }
-
-    // public function passwordUserReset(Request $request, $token = null){
-    //     return view('auth::passwords.reset')->with(
-    //         ['token' => $token, 'email' => $request->email]
-    //     );
-    // }
 }

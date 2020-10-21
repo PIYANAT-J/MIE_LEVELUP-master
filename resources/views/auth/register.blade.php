@@ -1,521 +1,567 @@
-@extends('layout.navbar')
+@extends('layout.header')
+@section('content')
 
-@section('navbar')
-<br><br><br><br><br><br><br>
-<div class="container mt-3">
-    <div class="row py-5  align-items-center">
-        <div class="col-md-5 pr-lg-5 mb-5 ">
-            <img src="{{asset('home/logo/levelup.png')}}" alt="" class="img-fluid  d-none d-md-block">
-        </div>
-        <div class="col-md-7 col-lg-6 ml-auto">
-            <!-- Nav tabs -->
-            <ul class="nav topnav">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#users">Users</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#develop">Developer</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#sponsors">Sponsors</a>
-                </li>
-            </ul>
+<div class="modal fade" id="Users" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title"  style="color:#383838;font-weight:800;margin:0;" id="exampleModalLabel">ข้อกำหนดและเงื่อนไข</h1>
+        <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size:0.7em;"></i></button>
+      </div>
+      <div class="modal-body font-rate-modal">
+        เงื่อนไขผู้ใช้ทั่วไป
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn-cancal" data-dismiss="modal">
+            <p style="margin:0;">ปิด</p></button>
+      </div> -->
+    </div>
+  </div>
+</div>
 
-            <!-- Tab panes -->
-            <div class="tab-content mt-2">
-                <!-- Register Users -->
-                <div id="users" class="container tab-pane active"><br>
-                    <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data" id="register_form">
-                        @csrf
-                        <div class="row">
-                            <div class="input-group col-lg-6 mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <span class="input-group-text login2 ">
-                                        <i class="fa fa-user text-danger pl-3"></i>
-                                    </span> -->
-                                </div>
-                                <input id="name" type="text" name="name" placeholder="Fisrt Name" class="regis @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="input-group col-lg-6 mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-user text-muted"></i>
-                                    </span> -->
-                                </div>
-                                <input id="surname" type="text" name="surname" placeholder="Last Name" class="regis @error('surname') is-invalid @enderror" value="{{ old('surname') }}" required autocomplete="surname">
-                                @error('surname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="input-group col-lg-12 mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-envelope text-muted"></i>
-                                    </span> -->
-                                </div>
-                                <input id="email" type="email" name="email" placeholder="Email-Address" class="regis @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email"> 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <br><span id="msg1"></span>      
-                            </div>
-                            <div class="input-group col-lg-6 mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-lock text-muted"></i>
-                                    </span> -->
-                                </div>
-                                <input id="password" type="password" name="password" placeholder="Password" class="regis @error('password') is-invalid @enderror" required autocomplete="new-password">
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="input-group col-lg-6 mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-lock text-muted"></i>
-                                    </span> -->
-                                </div>
-                                <input id="password-confirm" type="password" name="password_confirmation" placeholder="Confirm Password" class="regis" required autocomplete="new-password">
-                            </div>
-                            <div class="input-group col-lg-6 mb-1">
-                                <div class="input-group-prepend">
-                                    <span id="MESSAGE"></span>
-                                </div>
-                            </div>
+<div class="modal fade" id="Develop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title"  style="color:#383838;font-weight:800;margin:0;" id="exampleModalLabel">ข้อกำหนดและเงื่อนไข</h1>
+        <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 0.7em;"></i></button>
+      </div>
+      <div class="modal-body font-rate-modal">
+        เงื่อนไขผู้พัฒนาระบบ
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn-cancal" data-dismiss="modal">
+            <p style="margin:0;">ปิด</p></button>
+      </div> -->
+    </div>
+  </div>
+</div>
 
+<div class="modal fade" id="Sponsor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <h1 class="modal-title"  style="color:#383838;font-weight:800;margin:0;" id="exampleModalLabel">ข้อกำหนดและเงื่อนไข</h1>
+        <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 0.7em;"></i></button>
+      </div>
+      <div class="modal-body font-rate-modal">
+        เงื่อนไขผู้สนับสนุน
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn-cancal" data-dismiss="modal">
+            <p style="margin:0;">ปิด</p></button>
+      </div> -->
+    </div>
+  </div>
+</div>
 
-                            <div class="form-group col-lg-12 d-flex align-items-left">
-                                <div class="custom-control custom-checkbox mr-sm-2">
-                                    <input type="checkbox" class="custom-control-input" name="accept" id="customControlInline">
-                                    <label class="custom-control-label" for="customControlInline">ยอมรับเงื่อนไข</label>
-                                </div>
-                            </div>
-                            <!-- <div class="form-group col-lg-12 mx-auto d-flex align-items-left mb-2">
-                                <input type="checkbox" name="accept" id="accept">&nbsp; <font style="font-size: 14px;">ยอมรับเงื่อนไข</font>
-                            </div> -->
-                            <div class="form-group col-lg-12 mx-auto mb-2">
-                                <input type="submit" name="submit" id="submit" value="Create your account" class="btn button8 btn-block py-2">
-                                <input type="hidden" name="users_type" value="1">
-                            </div>
-                            <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
-                                <div class="border-bottom w-100 ml-5"></div>
-                                <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
-                                <div class="border-bottom w-100 mr-5"></div>
-                            </div>
-                            <div class="form-group col-lg-12 mx-auto">
-                                <a href="#" class="btn btn-primary btn-block py-2 btn-facebook">
-                                    <i class="icon-facebook mr-2"></i>
-                                    <span class="font-weight-bold">Continue with Facebook</span>
-                                </a>
-                            </div>
-                            <div class="text-center w-100">
-                                <p class="text-muted font-weight-bold">Already Registered? <a href="{{ route('login') }}" class="text-primary ml-2">Login</a></p>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            
-
-                <!-- Register Devepol -->
-                <div id="develop" class="container tab-pane fade"><br>
-                    <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data" id="register_form">
-                        @csrf
-                        <div class="row">
-                            <div class="input-group col-lg-6 mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-user text-muted"></i>
-                                    </span> -->
-                                </div>
-                                <input id="name" type="text" name="name" placeholder="Fisrt Name" class="regis @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="input-group col-lg-6 mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-user text-muted"></i>
-                                    </span> -->
-                                </div>
-                                <input id="surname" type="text" name="surname" placeholder="Last Name" class="regis @error('surname') is-invalid @enderror" value="{{ old('surname') }}" required autocomplete="surname">
-                                @error('surname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="input-group col-lg-12 mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-envelope text-muted"></i>
-                                    </span> -->
-                                </div>
-                                <input id="email" type="email" name="email" placeholder="Email-Address" class="regis @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email"> 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <br><span id="msg1"></span>      
-                            </div>
-                            <div class="input-group col-lg-6 mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-lock text-muted"></i>
-                                    </span> -->
-                                </div>
-                                <input id="password_dev" type="password" name="password" placeholder="Password" class="regis @error('password') is-invalid @enderror" required autocomplete="new-password">
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="input-group col-lg-6 mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-lock text-muted"></i>
-                                    </span> -->
-                                </div>
-                                <input id="password-confirm_dev" type="password" name="password_confirmation" placeholder="Confirm Password" class="regis" required autocomplete="new-password">
-                            </div>
-                            <div class="input-group col-lg-6 mb-1">
-                                <div class="input-group-prepend">
-                                    <span id="MESSAGE-DEV"></span>
-                                </div>
-                            </div>
-                            <div class="form-group col-lg-12 d-flex align-items-left">
-                                <div class="custom-control custom-checkbox mr-sm-2">
-                                    <input type="checkbox" class="custom-control-input" name="accept_dev" id="customControlInline_dev">
-                                    <label class="custom-control-label" for="customControlInline_dev">ยอมรับเงื่อนไข</label>
-                                </div>
-                            </div>
-                            <!-- <div class="form-group col-lg-12 mx-auto d-flex align-items-left mb-2">
-                                <input type="checkbox" name="accept" id="accept">&nbsp; <font style="font-size: 14px;">ยอมรับเงื่อนไข</font>
-                            </div> -->
-                            <div class="form-group col-lg-12 mx-auto mb-2">
-                                <input type="submit" name="submit" id="submit" value="Create your account" class="btn button8 btn-block py-2">
-                                <input type="hidden" name="users_type" value="2">
-                            </div>
-                            <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
-                                <div class="border-bottom w-100 ml-5"></div>
-                                <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
-                                <div class="border-bottom w-100 mr-5"></div>
-                            </div>
-                            <div class="form-group col-lg-12 mx-auto">
-                                <a href="#" class="btn btn-primary btn-block py-2 btn-facebook">
-                                    <i class="icon-facebook mr-2"></i>
-                                    <span class="font-weight-bold">Continue with Facebook</span>
-                                </a>
-                            </div>
-                            <div class="text-center w-100">
-                                <p class="text-muted font-weight-bold">Already Registered? <a href="{{ route('login') }}" class="text-primary ml-2">Login</a></p>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                
-                <!-- Register Sponsors -->
-                <div id="sponsors" class="container tab-pane fade"><br>
-                    <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data" id="register_form">
-                        @csrf
-                        <div class="row">
-                            <div class="input-group col-lg-6 mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-user text-muted"></i>
-                                    </span> -->
-                                </div>
-                                <input id="name" type="text" name="name" placeholder="Fisrt Name" class="regis @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="input-group col-lg-6 mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-user text-muted"></i>
-                                    </span> -->
-                                </div>
-                                <input id="surname" type="text" name="surname" placeholder="Last Name" class="regis @error('surname') is-invalid @enderror" value="{{ old('surname') }}" required autocomplete="surname">
-                                @error('surname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="input-group col-lg-12 mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-envelope text-muted"></i>
-                                    </span> -->
-                                </div>
-                                <input id="email" type="email" name="email" placeholder="Email-Address" class="regis @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email"> 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <br><span id="msg1"></span>      
-                            </div>
-                            <div class="input-group col-lg-6 mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-lock text-muted"></i>
-                                    </span> -->
-                                </div>
-                                <input id="password_spon" type="password" name="password" placeholder="Password" class="regis @error('password') is-invalid @enderror" required autocomplete="new-password">
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="input-group col-lg-6 mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-lock text-muted"></i>
-                                    </span> -->
-                                </div>
-                                <input id="password-confirm_spon" type="password" name="password_confirmation" placeholder="Confirm Password" class="regis" required autocomplete="new-password">
-                            </div>
-                            <div class="input-group col-lg-6 mb-1">
-                                <div class="input-group-prepend">
-                                    <span id="MESSAGE-SPON"></span>
-                                </div>
-                            </div>
-                            <div class="form-group col-lg-12 d-flex align-items-left">
-                                <div class="custom-control custom-checkbox mr-sm-2">
-                                    <input type="checkbox" class="custom-control-input" name="accept_spon" id="customControlInline_spon">
-                                    <label class="custom-control-label" for="customControlInline_spon">ยอมรับเงื่อนไข</label>
-                                </div>
-                            </div>
-                            <!-- <div class="form-group col-lg-12 mx-auto d-flex align-items-left mb-2">
-                                <input type="checkbox" name="accept" id="accept">&nbsp; <font style="font-size: 14px;">ยอมรับเงื่อนไข</font>
-                            </div> -->
-                            <div class="form-group col-lg-12 mx-auto mb-2">
-                                <input type="submit" name="submit" id="submit" value="Create your account" class="btn button8 btn-block py-2">
-                                <input type="hidden" name="users_type" value="3">
-                            </div>
-                            <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
-                                <div class="border-bottom w-100 ml-5"></div>
-                                <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
-                                <div class="border-bottom w-100 mr-5"></div>
-                            </div>
-                            <div class="form-group col-lg-12 mx-auto">
-                                <a href="#" class="btn btn-primary btn-block py-2 btn-facebook">
-                                    <i class="icon-facebook mr-2"></i>
-                                    <span class="font-weight-bold">Continue with Facebook</span>
-                                </a>
-                            </div>
-                            <div class="text-center w-100">
-                                <p class="text-muted font-weight-bold">Already Registered? <a href="{{ route('login') }}" class="text-primary ml-2">Login</a></p>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+<div class="container-fluid">
+    <div class="row" >
+        <div class="col-xl-6 d-none d-lg-block d-xl-block bgLogindark">
+            <div class="center-div text-center" style="background-color: #17202c;">
+                <img style="width:25%;" src="{{asset('home/logo/logo_lvp.svg') }}" />
+                <img class="my-3" style="max-width:100%;" src="{{asset('home/images/img_login.svg') }}" />
+                <h6 style="color:#fff;font-weight:800;">ยินดีต้อนรับ , Level Up</h6>
             </div>
         </div>
-    </div>
-</div>
-<!-- <div class="container">
-    <div class="row py-5 mt-4 align-items-center">
-        <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
-            <img src="{{asset('home/logo/levelup.png')}}" alt="" class="img-fluid mb-3 d-none d-md-block">
-        </div>
-        <div class="col-md-7 col-lg-6 ml-auto">
-            <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data" id="register_form">
-                @csrf
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 bgLoginwh">
+            <div class="center-div3">
                 <div class="row">
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user text-muted"></i>
-                            </span>
-                        </div>
-                        <input id="name" type="text" name="name" placeholder="Fisrt Name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                        @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user text-muted"></i>
-                            </span>
-                        </div>
-                        <input id="surname" type="text" name="surname" placeholder="Last Name" class="form-control @error('surname') is-invalid @enderror" value="{{ old('surname') }}" required autocomplete="surname">
-                        @error('surname')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-envelope text-muted"></i>
-                            </span>
-                        </div>
-                        <input id="email" type="email" name="email" placeholder="Email-Address" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email"> 
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                        <br><span id="msg1"></span>      
-                    </div>
-                    <div class="input-group col-lg-12 mb-4">
-                        <label for="users_type" class="radio-inline"><input type="radio" id="users_type" name="users_type" value="1" checked> : User &nbsp;</label>
-                        <label for="users_type" class="radio-inline"><input type="radio" id="users_type" name="users_type" value="2"> : Devepol &nbsp;</label>
-                        <label for="users_type" class="radio-inline"><input type="radio" id="users_type" name="users_type" value="3"> : Sponsors </label>
-                    </div>
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-lock text-muted"></i>
-                            </span>
-                        </div>
-                        <input id="password" type="password" name="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" required autocomplete="new-password">
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-lock text-muted"></i>
-                            </span>
-                        </div>
-                        <input id="password-confirm" type="password" name="password_confirmation" placeholder="Confirm Password" class="form-control" required autocomplete="new-password">
-                    </div>
-                    <div class="input-group col-lg-6 mb-2">
-                        <div class="input-group-prepend">
-                            <span id="MESSAGE"></span>
-                        </div>
-                    </div>
-                    <div class="form-group col-lg-12 mx-auto d-flex align-items-left mb-2">
-                        <input type="checkbox" name="accept" id="accept">&nbsp; <font style="font-size: 14px;">ยอมรับเงื่อนไข</font>
-                    </div>
-                    <div class="form-group col-lg-12 mx-auto mb-2">
-                        <input type="submit" name="submit" id="submit" value="Create your account" class="btn btn-danger btn-block py-2">
-                        <input type="hidden" name="do" value="registion">
-                    </div>
-                    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
-                        <div class="border-bottom w-100 ml-5"></div>
-                        <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
-                        <div class="border-bottom w-100 mr-5"></div>
-                    </div>
-                    <div class="form-group col-lg-12 mx-auto">
-                        <a href="#" class="btn btn-primary btn-block py-2 btn-facebook">
-                            <i class="icon-facebook mr-2"></i>
-                            <span class="font-weight-bold">Continue with Facebook</span>
+                    <div class="col-6">
+                        <a href="{{ url('/') }}">
+                            <label class="btn-login ">
+                                <h1 style="margin:0;color: #383838;">หน้าแรก</h1>
+                            </label>
                         </a>
                     </div>
-                    <div class="text-center w-100">
-                        <p class="text-muted font-weight-bold">Already Registered? <a href="{{ route('login') }}" class="text-primary ml-2">Login</a></p>
+                    <div class="col-6 text-right">
+                        <a href="{{ route('register-levelUp') }}">
+                            <label class="btn-login active">
+                                <h1 style="margin:0;color: #383838;">สมัครสมาชิก</h1>
+                            </label>
+                        </a>
                     </div>
                 </div>
-            </form>
-        </div>
-    </div>
-</div> -->
-<br><br><br><br><br><br><br>
 
-<footer class="site-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-5">
-                        <h2 class="footer-heading mb-1"><b>About Us</b></h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam voluptatum autem. Amet aliquid nesciunt veritatis aliquam.</p>
-                    </div>
-                    <div class="col-md-3 ml-auto">
-                        <h2 class="footer-heading mb-4">Quick Links</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="#about-section" class="smoothscroll">About Us</a></li>
-                            <li><a href="#services-section" class="smoothscroll">Services</a></li>
-                            <li><a href="#testimonials-section" class="smoothscroll">Testimonials</a></li>
-                            <li><a href="#contact-section" class="smoothscroll">Contact Us</a></li>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <ul class="nav topnav">
+                            <li class="nav-item">
+                                <a class="nav-link active" style="border-radius: 6px 0 0 0;" data-toggle="tab" href="#users">
+                                    <p style="margin:0;">ผู้ใช้ทั่วไป</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#delopers">
+                                    <p style="margin:0;">ผู้พัฒนาระบบ</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="border-radius: 0 6px 0 0;" data-toggle="tab" href="#sponsers">
+                                    <p style="margin:0;">ผู้สนับสนุน</p>
+                                </a>
+                            </li>
                         </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <h2 class="footer-heading mb-4">Follow Us</h2>
-                        <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                        <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                        <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                        <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
-                <form action="#" method="post" class="footer-subscribe">
-                    <div class="input-group mb-3">
-                        <input type="text" class="button7" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
-                        <div class="input-group-append">
-                            <button class="button6" type="button" id="button-addon2">Send</button>
+
+                        <div class="tab-content">
+                            <div id="users" class="container tab-pane active">
+                                <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data" id="register_form">
+                                    @csrf
+                                    <div class="row my-2">
+                                        <h5 style="color: #383838;font-weight:800;margin:0;">กรุณากรอกข้อมูลให้ครบถ้วน</h5>
+                                    </div>
+
+                                    <div class="row ">
+                                        <div class="col-6" style="padding:0 5px 0 0;">
+                                            <label class="bgInput field-wrap">
+                                                <label><p class="fontHeadInput">ชื่อ</p></label><br>
+                                                <input id="name" name="name" class="input1 p ml-2 @error('name') is-denger @enderror"  value="{{ old('name') }}" autocomplete="name">
+                                            </label>
+                                            @error('name')
+                                                <!-- <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('name') }}</strong>
+                                                </span> -->
+                                                <h5 style="color:#ce0005;margin:0;">กรุณากรอกชื่อ</h5>
+                                            @enderror
+                                        </div>
+                                        
+                                        <div class="col-6" style="padding:0;">
+                                            <label class="bgInput field-wrap">
+                                                <label><p class="fontHeadInput">นามสกุล</p></label><br>
+                                                <input id="surname" name="surname" class="input1 p ml-2 @error('surname') is-invalid @enderror"  value="{{ old('surname') }}" autocomplete="surname">
+                                            </label>
+                                            @error('surname')
+                                                <!-- <span class="text-danger font-error" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span> -->
+                                                <h5 style="color:#ce0005;margin:0;">กรุณากรอกนามสกุล</h5>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-12" style="padding:0;" data-toggle="tooltip" data-placement="bottom" title="example@email.com">
+                                            <label class="bgInput field-wrap my-1">
+                                                <label><p class="fontHeadInput">อีเมล</p></label><br>
+                                                <input id="email" type="email" name="email" class="input1 p ml-2  @error('email') is-invalid @enderror" value="{{ old('email') }}" autocomplete="email" >
+                                            </label>
+                                            @error('email')
+                                                <h5 style="color:#ce0005;margin:0;">อีเมลไม่ถูกต้อง</h5>
+                                            @enderror    
+                                        </div>
+
+                                        <div class="col-6" style="padding:0 5px 0 0;">
+                                            <label class="bgInput field-wrap">
+                                                <label><p class="fontHeadInput">รหัสผ่าน</p></label><br>
+                                                <input id="password" type="password" name="password" class="input1 p ml-2 @error('password') is-invalid @enderror" min="8" autocomplete="new-password">
+                                            </label>
+                                            @error('password')
+                                                <h5 id="MESSAGE" style="color:#ce0005;margin:0;">รหัสผ่านไม่ถูกต้อง</h5>
+                                            @else
+                                                <h5 id="MESSAGE" style="margin:0;"></h5>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-6" style="padding:0;">
+                                            <label class="bgInput field-wrap">
+                                                <label><p class="fontHeadInput">ยืนยันรหัสผ่าน</p></label><br>
+                                                <input id="password-confirm" type="password" name="password_confirmation" class="input1 p ml-2"  autocomplete="new-password">
+                                            </label>
+                                        </div>
+
+                                        <!-- <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
+                                            <span id="MESSAGE"></span>
+                                        </div> -->
+
+                                        <div class="col-lg-12 mt-3" style="padding-left:5px;">
+                                            <h5 style="color: #383838;font-weight:800;margin:0;">วิธีตั้งรหัสผ่าน</h5>
+                                            <h5 style="color: #383838;margin:0;" class="mt-2">
+                                                <!-- 1. รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร<br> -->
+                                                1. ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว <br>
+                                                2. ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว <br>
+                                                3. ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว <br>
+                                            </h5>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 my-2" style="margin-left:-15px;padding:0;">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="checkbox_user" name="accept"/>
+                                            <label for="checkbox_user" style="margin:0;">
+                                                <h5 class="fontCheckCondition">ยอมรับเงื่อนไข
+                                                    <a data-toggle="modal" data-target="#Users" style="text-decoration:underline;font-weight:800;color:#ce0005;">ข้อกำหนดและเงื่อนไข</a>
+                                                </h5>
+                                            </label>
+                                            @error('accept')
+                                                <h5 style="color:#ce0005;margin:0;line-height:1;"> (กรุณายอมรับเงื่อนไข)</h5>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 d-flex justify-content-center" style="padding:0">
+                                        <button name="submit" class="btnRed mb-2 mr-2">
+                                            <p style="margin:0;">สมัครสมาชิก</p>
+                                            <input type="hidden" name="users_type" value="1">
+                                        </button>
+                                        <button class="btnBlue mb-2">
+                                            <label><i class="icon-FBLogo" style=" margin-right:10px;"></i></label>
+                                            <label style="padding:0;"><p style="margin:0;">สมัครผ่าน Facebook</p></label>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <div id="delopers" class="container tab-pane">
+                                <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data" id="register_form">
+                                    @csrf
+                                    <div class="row my-2">
+                                        <h5 style="color: #383838;font-weight:800;margin:0;">กรุณากรอกข้อมูลให้ครบถ้วน</h5>
+                                    </div>
+
+                                    <div class="row ">
+                                        <div class="col-6" style="padding:0 5px 0 0;">
+                                            <label class="bgInput field-wrap">
+                                                <label><p class="fontHeadInput">ชื่อ</p></label><br>
+                                                <input id="name" name="name" class="input1 p ml-2 @error('name') is-invalid @enderror" value="{{ old('name') }}" autocomplete="name">
+                                            </label>
+                                            @error('name')
+                                                <h5 style="color:#ce0005;margin:0;">กรุณากรอกชื่อ</h5>
+                                            @enderror
+                                        </div>
+                                        <div class="col-6" style="padding:0">
+                                            <label class="bgInput field-wrap">
+                                                <label><p class="fontHeadInput">นามสกุล</p></label><br>
+                                                <input id="surname" name="surname" class="input1 p ml-2 @error('surname') is-invalid @enderror" value="{{ old('surname') }}" autocomplete="surname">
+                                            </label>
+                                            @error('surname')
+                                                <h5 style="color:#ce0005;margin:0;">กรุณากรอกนามสกุล</h5>
+                                            @enderror
+                                        </div>
+                                        <div class="col-12" style="padding:0;"data-toggle="tooltip" data-placement="bottom" title="example@email.com">
+                                            <label class="bgInput field-wrap my-1">
+                                                <label><p class="fontHeadInput">อีเมล</p></label><br>
+                                                <input id="email" type="email" name="email" class="input1 p ml-2  @error('email') is-invalid @enderror"  value="{{ old('email') }}" autocomplete="email">
+                                            </label>
+                                            @error('email')
+                                                <h5 style="color:#ce0005;margin:0;">อีเมลไม่ถูกต้อง</h5>
+                                            @enderror    
+                                        </div>
+                                        <div class="col-6" style="padding:0 5px 0 0">
+                                            <label class="bgInput field-wrap">
+                                                <label><p class="fontHeadInput">รหัสผ่าน</p></label><br>
+                                                <input id="password_dev" type="password" name="password" class="input1 p ml-2 @error('password') is-invalid @enderror" min="8" autocomplete="new-password">
+                                            </label>
+                                            @error('password')
+                                                <h5 id="MESSAGE-DEV" style="color:#ce0005;margin:0;">รหัสผ่านไม่ถูกต้อง</h5>
+                                            @else
+                                                <h5 id="MESSAGE-DEV" style="margin:0;"></h5>
+                                            @enderror
+                                        </div>
+                                        <div class="col-6" style="padding:0;">
+                                            <label class="bgInput field-wrap">
+                                            <label><p class="fontHeadInput">ยืนยันรหัสผ่าน</p></label><br>
+                                                <input id="password-confirm_dev" type="password" name="password_confirmation" class="input1 p ml-2" autocomplete="new-password">
+                                            </label>
+                                        </div>
+                                        <!-- <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
+                                            <span id="MESSAGE-DEV"></span>
+                                        </div> -->
+                                        <div class="col-12 mt-3" style="padding-left:5px;">
+                                            <h5 style="color: #383838;font-weight:800;margin:0;">วิธีตั้งรหัสผ่าน</h5>
+                                            <h5 style="color: #383838;margin:0;" class="mt-2">
+                                                <!-- 1. รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร<br> -->
+                                                1. ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว <br>
+                                                2. ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว <br>
+                                                3. ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว <br>
+                                            </h5>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 my-2" style="margin-left:-15px;padding:0;">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="checkbox_dev" name="accept_dev">
+                                            <label for="checkbox_dev" style="margin:0;"> 
+                                                <h5 class="fontCheckCondition">ยอมรับเงื่อนไข
+                                                    <a data-toggle="modal" data-target="#Develop" style="text-decoration:underline;font-weight:800;color:#ce0005;">ข้อกำหนดและเงื่อนไข</a>
+                                                </h5>
+                                            </label>
+                                            @error('accept_dev')
+                                                <h5 style="color:#ce0005;margin:0;line-height:1;">(กรุณายอมรับเงื่อนไข)</h5>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 d-flex justify-content-center" style="padding:0">
+                                        <button name="submit" class="btnRed mb-2 mr-2" style="padding:0">
+                                            <p style="margin:0;padding: 10px;">สมัครสมาชิก</p>
+                                            <input type="hidden" name="users_type" value="2">
+                                        </button>
+                                        <button class="btnBlue mb-2">
+                                            <label><i class="icon-FBLogo" style=" margin-right:10px;"></i></label>
+                                            <label style="padding:0;"><p style="margin:0;">สมัครผ่าน Facebook</p></label>
+                                        </button>
+                                    </div>
+                                </form>
+                                <!-- <div class="my-2" style="font-family: myfont1;color: #383838;font-size: 1em; margin-left:-13px">กรุณากรอกข้อมูลส่วนตัวให้ครบถ้วน</div>
+                                <div class="row ">
+                                    <div class="col-lg-6" style="padding:5px 3px 0px 3px;"><input class="input-name-reg"  placeholder="ชื่อ" require></input></div>
+                                    <div class="col-lg-6" style="padding:5px 3px 0px 3px;"><input class="input-name-reg"  placeholder="นามสกุล" require></input></div>
+                                    <div class="col-lg-12" style="padding:5px 3px 0px 3px;"data-toggle="tooltip" data-placement="bottom" title="example@email.com"><input type="email" class="input-name-reg"  placeholder="อีเมล"  require></input></div>
+                                    <div class="col-lg-6" style="padding:5px 3px 0px 3px;" data-toggle="tooltip" data-placement="bottom" title="อย่างน้อย 8 ตัวอักษร"><input type="password" class="input-name-reg"  placeholder="รหัสผ่าน"  min="8" require></input></div>
+                                    <div class="col-lg-6" style="padding:5px 3px 0px 3px;"><input type="password" class="input-name-reg"  placeholder="ยืนยันรหัสผ่าน" require></input></div>
+                                </div>
+                                <div class="my-3" style="font-family:margin-left:-15px">
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="checkbox_2">
+                                        <label for="checkbox_2" class="font-condition" >ยอมรับเงื่อนไข </label>
+                                        <a data-toggle="modal" data-target="#myModal2" class="" style="color:#ce0005;font-family: myfont;font-size: 24px;text-decoration:underline;cursor: pointer;">ข้อกำหนดและเงื่อนไข</a>
+                                    </div>
+                                    <button class="btn-submit-reg" style="margin-left:-13px">สมัครสมาชิก</button>
+                                    <button class="btn-fb-reg"><i class="icon-FBLogo" style="font-size:16px; margin-right:10px;"></i>สมัครผ่าน Facebook</button>
+                                </div> -->
+                            </div>
+
+                            <div id="sponsers" class="container tab-pane">
+                                <div class="row my-2">
+                                    <h5 style="color: #383838;font-weight:800;margin:0;">กรุณากรอกข้อมูลให้ครบถ้วน</h5>
+                                </div>
+                                <div class="row mb-2">
+                                    <ul class="nav topnav1">
+                                        <li class="nav-item mr-3">
+                                            <a class="nav-link active" data-toggle="tab" href="#type1">
+                                                <p style="margin:0;">บุคคลธรรมดา</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#type2">
+                                                <p style="margin:0;">นิติบุคคล</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="tab-content">
+                                    <div id="type1" class="container tab-pane active" style="padding:0;">
+                                        <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data" id="register_form">
+                                            @csrf
+                                            <div class="row">
+                                                <div class="col-6" style="padding:0 5px 0 0;">
+                                                    <label class="bgInput field-wrap">
+                                                        <label><p class="fontHeadInput">ชื่อ</p></label><br>
+                                                        <input id="name" name="name" class="input1 p ml-2 @error('name') is-invalid @enderror" value="{{ old('name') }}" autocomplete="name">
+                                                    </label>
+                                                    @error('name')
+                                                        <h5 style="color:#ce0005;margin:0;">กรุณากรอกชื่อ</h5>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-6" style="padding:0;">
+                                                    <label class="bgInput field-wrap">
+                                                        <label><p class="fontHeadInput">นามสกุล</p></label><br>
+                                                        <input id="surname" name="surname" class="input1 p ml-2 @error('surname') is-invalid @enderror" value="{{ old('surname') }}"autocomplete="surname">
+                                                    </label>
+                                                    @error('surname')
+                                                        <h5 style="color:#ce0005;margin:0;">กรุณากรอกนามสกุล</h5>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-12" style="padding:0;"data-toggle="tooltip" data-placement="bottom" title="example@email.com">
+                                                    <label class="bgInput field-wrap my-1">
+                                                        <label><p class="fontHeadInput">อีเมล</p></label><br>
+                                                        <input id="email" type="email" name="email" class="input1 p ml-2 @error('email') is-invalid @enderror" value="{{ old('email') }}"autocomplete="email">
+                                                    </label>
+                                                    @error('email')
+                                                        <h5 style="color:#ce0005;margin:0;">อีเมลไม่ถูกต้อง</h5>
+                                                    @enderror    
+                                                </div>
+                                                <div class="col-6" style="padding:0 5px 0 0;" data-toggle="tooltip" data-placement="bottom" title="อย่างน้อย 8 ตัวอักษร">
+                                                    <label class="bgInput field-wrap">
+                                                        <label><p class="fontHeadInput">รหัสผ่าน</p></label><br>
+                                                        <input id="password_spon" type="password" name="password" class="input1 p ml-2 @error('password') is-invalid @enderror"  min="8"autocomplete="new-password">
+                                                    </label>
+                                                    @error('password')
+                                                        <h5 id="MESSAGE-SPON" style="color:#ce0005;margin:0;">รหัสผ่านไม่ถูกต้อง</h5>
+                                                    @else
+                                                        <h5 id="MESSAGE-SPON" style="margin:0;"></h5>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-6" style="padding:0;">
+                                                    <label class="bgInput field-wrap">
+                                                        <label><p class="fontHeadInput">ยืนยันรหัสผ่าน</p></label><br>
+                                                        <input id="password-confirm_spon" type="password" name="password_confirmation" class="input1 p ml-2"  autocomplete="new-password">
+                                                    </label>
+                                                </div>
+
+                                                <div class="col-12 mt-3" style="padding-left:5px;">
+                                                    <h5 style="color: #383838;font-weight:800;margin:0;">วิธีตั้งรหัสผ่าน</h5>
+                                                    <h5 style="color: #383838;margin:0;" class="mt-2">
+                                                        <!-- 1. รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร<br> -->
+                                                        1. ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว <br>
+                                                        2. ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว <br>
+                                                        3. ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว <br>
+                                                    </h5>
+                                                </div>
+                                                <!-- <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
+                                                    <span id="MESSAGE-SPON"></span>
+                                                </div> -->
+                                                <!-- <div class="col-lg-6" style="margin-left:-15px; padding:5px 3px 0px 3px;"><input class="input-name-reg"  placeholder="ชื่อ" require></input></div>
+                                                <div class="col-lg-6" style=" padding:5px 3px 0px 3px;"><input class="input-name-reg"  placeholder="นามสกุล" require></input></div>
+                                                <div class="col-lg-12" style="margin-left:-15px;padding:5px 3px 0px 3px;"data-toggle="tooltip" data-placement="bottom" title="example@email.com"><input type="email" class="input-name-reg"  placeholder="อีเมล"  require></input></div>
+                                                <div class="col-lg-6" style="margin-left:-15px;padding:5px 3px 0px 3px;" data-toggle="tooltip" data-placement="bottom" title="อย่างน้อย 8 ตัวอักษร"><input type="password" class="input-name-reg"  placeholder="รหัสผ่าน"  min="8" require></input></div>
+                                                <div class="col-lg-6" style="padding:5px 3px 0px 3px;"><input type="password" class="input-name-reg"  placeholder="ยืนยันรหัสผ่าน" require></input></div>   -->
+                                            </div>
+                                        
+                                            <div class="col-lg-12 my-2" style="margin-left:-15px;padding:0;">
+                                                <div class="checkbox">
+                                                    <input type="checkbox" id="checkbox_spon" name="accept_spon">
+                                                    <label for="checkbox_spon" style="margin:0;">
+                                                        <h5 class="fontCheckCondition">ยอมรับเงื่อนไข
+                                                            <a data-toggle="modal" data-target="#Sponsor" style="text-decoration:underline;font-weight:800;color:#ce0005;">ข้อกำหนดและเงื่อนไข</a>
+                                                        </h5>
+                                                    </label>
+                                                    @error('accept_spon')
+                                                        <h5 style="color:#ce0005;margin:0;line-height:1;">(กรุณายอมรับเงื่อนไข)</h5>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-12 d-flex justify-content-center mb-2" style="padding:0">
+                                                <button name="submit" class="btnRed mb-2 mr-2">
+                                                    <p style="margin:0;">สมัครสมาชิก</p>
+                                                    <input type="hidden" name="users_type" value="3">
+                                                </button>
+                                                <button class="btnBlue mb-2">
+                                                    <label><i class="icon-FBLogo" style=" margin-right:10px;"></i></label>
+                                                    <label style="padding:0;"><p style="margin:0;">สมัครผ่าน Facebook</p></label>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    
+                                    <div id="type2" class="container tab-pane" style="padding:0;">
+                                        <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data" id="register_form">
+                                            @csrf
+                                            <div class="row">
+                                                <div class="col-12" style="padding:0;">
+                                                    <label class="bgInput field-wrap">
+                                                        <label><p class="fontHeadInput">ชื่อบอริษัท</p></label><br>
+                                                        <input id="name" name="name" class="input1 p ml-2 @error('name') is-invalid @enderror" value="{{ old('name') }}" autocomplete="name">
+                                                    </label>
+                                                    @error('name')
+                                                        <h5 style="color:#ce0005;margin:0;">กรุณากรอกชื่อ</h5>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-12" style="padding:0;"data-toggle="tooltip" data-placement="bottom" title="example@email.com">
+                                                    <label class="bgInput field-wrap my-1">
+                                                        <label><p class="fontHeadInput">อีเมล</p></label><br>
+                                                        <input id="email" type="email" name="email" class="input1 p ml-2  @error('email') is-invalid @enderror" value="{{ old('email') }}" autocomplete="email">
+                                                    </label>
+                                                    @error('email')
+                                                        <h5 style="color:#ce0005;margin:0;">อีเมลไม่ถูกต้อง</h5>
+                                                    @enderror    
+                                                </div>
+                                                <div class="col-6" style="padding: 0 5px 0 0;">
+                                                    <label class="bgInput field-wrap">
+                                                        <label><p class="fontHeadInput">รหัสผ่าน</p></label><br>
+                                                        <input id="password_spon2" type="password" name="password" class="input1 p ml-2 @error('password') is-invalid @enderror" min="8" autocomplete="new-password">
+                                                    </label>
+                                                    @error('password')
+                                                        <h5 id="MESSAGE-SPON2" style="color:#ce0005;margin:0;"">รหัสผ่านไม่ถูกต้อง</h5>
+                                                    @else
+                                                        <h5 id="MESSAGE-SPON2" style="margin:0;"></h5>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-6" style="padding:0;">
+                                                    <label class="bgInput field-wrap">
+                                                        <label><p class="fontHeadInput">ยืนยันรหัสผ่าน</p></label><br>
+                                                        <input id="password-confirm_spon2" type="password" name="password_confirmation" class="input1 p ml-2" autocomplete="new-password">
+                                                    </label>
+                                                </div>
+                                                <div class="col-12 mt-3" style="padding-left:5px;">
+                                                    <h5 style="color: #383838;font-weight:800;margin:0;">วิธีตั้งรหัสผ่าน</h5>
+                                                    <h5 style="color: #383838;margin:0;" class="mt-2">
+                                                        <!-- 1. รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร<br> -->
+                                                        1. ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว <br>
+                                                        2. ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว <br>
+                                                        3. ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว <br>
+                                                    </h5>
+                                                </div>
+                                                <!-- <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
+                                                    <span id="MESSAGE-SPON2"></span>
+                                                </div> -->
+                                                <!-- <div class="col-lg-12" style="margin-left:-15px; padding:5px 3px 0px 3px;"><input class="input-name-reg"  placeholder="ชื่อบริษัท" require></input></div> -->
+                                                <!-- <div class="col-lg-6" style=" padding:5px 3px 0px 3px;"><input class="input-name-reg"  placeholder="นามสกุล" require></input></div> -->
+                                                <!-- <div class="col-lg-12" style="margin-left:-15px;padding:5px 3px 0px 3px;"data-toggle="tooltip" data-placement="bottom" title="example@email.com"><input type="email" class="input-name-reg"  placeholder="อีเมล"  require></input></div>
+                                                <div class="col-lg-6" style="margin-left:-15px;padding:5px 3px 0px 3px;" data-toggle="tooltip" data-placement="bottom" title="อย่างน้อย 8 ตัวอักษร"><input type="password" class="input-name-reg"  placeholder="รหัสผ่าน"  min="8" require></input></div>
+                                                <div class="col-lg-6" style="padding:5px 3px 0px 3px;"><input type="password" class="input-name-reg"  placeholder="ยืนยันรหัสผ่าน" require></input></div>   -->
+                                            </div>
+                                    
+                                            <div class="col-lg-12 my-2" style="margin-left:-15px;padding:0;">
+                                                <div class="checkbox">
+                                                    <input type="checkbox" id="checkbox_spon2" name="accept_spon2">
+                                                    <label for="checkbox_spon2" style="margin:0;">
+                                                        <h5 class="fontCheckCondition">ยอมรับเงื่อนไข
+                                                            <a data-toggle="modal" data-target="#Sponsor" style="text-decoration:underline;font-weight:800;color:#ce0005;">ข้อกำหนดและเงื่อนไข</a>
+                                                        </h5>
+                                                    </label>
+                                                    @error('accept_spon2')
+                                                        <h5 style="color:#ce0005;margin:0;line-height:1;">(กรุณายอมรับเงื่อนไข)</h5>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-12 d-flex justify-content-center mb-2" style="padding:0">
+                                                <button name="submit" class="btnRed mb-2 mr-2">
+                                                    <p style="margin:0;">สมัครสมาชิก</p>
+                                                    <input type="hidden" name="users_type" value="3">
+                                                </button>
+                                                <button class="btnBlue mb-2">
+                                                    <label><i class="icon-FBLogo" style=" margin-right:10px;"></i></label>
+                                                    <label style="padding:0;"><p style="margin:0;">สมัครผ่าน Facebook</p></label>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>                           
+                            </div>
                         </div>
                     </div>
-                </form>
-            </div>
-        </div>
-        <div class="row pt-5 mt-5 text-center">
-            <div class="col-md-12">
-                <div class="border-top pt-5">
-                    <p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | LevelUp Multi innovation Engineering <i class="icon-heart text-light" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
-                </div>
-            </div>
+                <div>
+           </div>
         </div>
     </div>
-</footer>
-@endsection
+<div>
 
+
+
+@endsection
 @section('script')
+
 <script>
     $('#password, #password-confirm').on('keyup', function () {
         if ($('#password').val() == $('#password-confirm').val()) {
-            $('#MESSAGE').html('Password Matching !').css('color', 'green');
+            $('#MESSAGE').html('รหัสผ่านตรงกัน !').css('color', 'green');
         } else 
-            $('#MESSAGE').html('Password does not match !').css('color', 'red');
+            $('#MESSAGE').html('รหัสผ่านไม่ตรงกัน !').css('color', 'red');
     });
     $('#password_dev, #password-confirm_dev').on('keyup', function () {
         if ($('#password_dev').val() == $('#password-confirm_dev').val()) {
-            $('#MESSAGE-DEV').html('Password Matching !').css('color', 'green');
+            $('#MESSAGE-DEV').html('รหัสผ่านตรงกัน !').css('color', 'green');
         } else 
-            $('#MESSAGE-DEV').html('Password does not match !').css('color', 'red');
+            $('#MESSAGE-DEV').html('รหัสผ่านไม่ตรงกัน !').css('color', 'red');
     });
     $('#password_spon, #password-confirm_spon').on('keyup', function () {
         if ($('#password_spon').val() == $('#password-confirm_spon').val()) {
-            $('#MESSAGE-SPON').html('Password Matching !').css('color', 'green');
+            $('#MESSAGE-SPON').html('รหัสผ่านตรงกัน !').css('color', 'green');
         } else 
-            $('#MESSAGE-SPON').html('Password does not match !').css('color', 'red');
+            $('#MESSAGE-SPON').html('รหัสผ่านไม่ตรงกัน !').css('color', 'red');
+    });
+    $('#password_spon2, #password-confirm_spon2').on('keyup', function () {
+        if ($('#password_spon2').val() == $('#password-confirm_spon2').val()) {
+            $('#MESSAGE-SPON2').html('รหัสผ่านตรงกัน !').css('color', 'green');
+        } else 
+            $('#MESSAGE-SPON2').html('รหัสผ่านไม่ตรงกัน !').css('color', 'red');
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
     });
 </script>
 @endsection
