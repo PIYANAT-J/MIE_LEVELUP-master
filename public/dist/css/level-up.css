@@ -10139,3 +10139,25 @@ stroke-dasharray: 500, 200000;
   padding: 2px 5px 2px 5px;
   cursor: pointer;
 }
+
+.status-transfer2{
+  border-radius: 6px;
+  background-color: #ffd629;
+  margin: 0;
+  padding: 2px 5px 2px 5px;
+  cursor: pointer;
+}
+
+.status-transfer3{
+  border-radius: 6px;
+  background-color: #23c197;
+  margin: 0;
+  padding: 2px 5px 2px 5px;
+  cursor: pointer;
+}
+
+.textError{
+  width:80%;
+  word-wrap: break-word;
+  margin: 0 !important;
+}

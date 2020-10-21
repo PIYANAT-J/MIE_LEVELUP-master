@@ -250,28 +250,8 @@ class packageController extends Controller
                 }
 
                 if($req->input('package_id') != null){
-                    // $allpackage = DB::table('packages')->where('package_id',$req->input('package_id'))->first();
-                    // $packageBuy_name = $allpackage->package_name;
-                    // $packageBuy_amount = $allpackage->package_amount;
-                    // $packageBuy_season = $allpackage->package_season;
-                    // $packageBuy_invoice = $transferInvoice;
-                    // $package_id = $allpackage->package_id;
-                    // $USER_ID = Auth::user()->id;
-                    // $USER_EMAIL = Auth::user()->email;
-
-                    // $data = array("packageBuy_name"=>$packageBuy_name, "packageBuy_invoice"=>$packageBuy_invoice, "package_id"=>$package_id, 
-                    //         "packageBuy_amount"=>$packageBuy_amount, "packageBuy_season"=>$packageBuy_season,"USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
-                    // $value = Package::packageBuy($data);
-
-                    // return redirect(route('SponsorTransfer', ['invoice' => encrypt($transferInvoice)]));
                     return redirect(route('packagePay', ['id' => encrypt($req->input('package_id')), 'idT'=>encrypt('null')]));
                 }else{
-                    // $transeection = DB::table('transeection_sponshopping')->where([['transeection_id', $req->input('transeection_id')]])->first();
-                    // $transeection_invoice = $transferInvoice;
-
-                    // $data = array("transeection_id"=>$req->input('transeection_id'), "transeection_invoice"=>$transeection_invoice);
-                    // Package::cartPaymentUpdate($data);
-                    // return redirect(route('SponsorTransfer', ['invoice' => encrypt($transferInvoice)]));
                     return redirect(route('packagePay', ['idT' => encrypt($req->input('transeection_id')), 'id'=>encrypt('null')]));
                 }
             }else{
@@ -288,7 +268,15 @@ class packageController extends Controller
                         ->value('i');
                 $sumi = $i+1;
                 $invoice = $transferฺBank_name.$sumi;
-                $transferInvoice = $transferฺBank_name.time().$user_id;
+                if($transferฺBank_name == "bangkok"){
+                    $transferInvoice = "BBL".time().$user_id;
+                }elseif($transferฺBank_name == "ktc"){
+                    $transferInvoice = "KTC".time().$user_id;
+                }elseif($transferฺBank_name == "kbank"){
+                    $transferInvoice = "KBANK".time().$user_id;
+                }elseif($transferฺBank_name == "scb"){
+                    $transferInvoice = "SCB".time().$user_id;
+                }
                 $create_at = date('Y-m-d H:i:s');
 
                 if($transferAmount != "" && $transferฺBank_name != ""){

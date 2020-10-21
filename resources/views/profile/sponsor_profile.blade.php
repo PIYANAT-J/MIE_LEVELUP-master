@@ -26,73 +26,68 @@
                                     <div class="row">
                                         <div class="col-12 mt-2" >
                                             <label class="bgInput field-wrap my-1">
-                                                <p class="fontHeadInput">เลขผู้เสียภาษีอากร</p>
-                                                <input name="taxID" class="input1 p ml-2" value="{{ $spon->taxID ?? old('taxID') }}"></input>
+                                                <label><p class="fontHeadInput">เลขผู้เสียภาษีอากร</p></label>
+                                                <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label>
+                                                <input id="texID" name="taxID" class="input1 p ml-2" value="{{ $spon->taxID ?? old('taxID') }}" required=""></input>
                                             </label>
                                             <label class="bgInput field-wrap my-1">
-                                                <p class="fontHeadInput">ชื่อ</p>
-                                                <input name="name" class="input1 p ml-2" value="{{ Auth::user()->name }}"></input>
+                                                <label><p class="fontHeadInput">ชื่อ</p></label>
+                                                <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label><br>
+                                                <input id="name" name="name" class="input1 p ml-2" value="{{ Auth::user()->name }}" required=""></input>
                                             </label>
-                                            @error('name')
-                                                <p style="color:#ce0005;">กรุณากรอกชื่อ</p>
-                                            @enderror
                                             <label class="bgInput field-wrap my-1">
-                                                <p class="fontHeadInput">นามสกุล</p>
-                                                <input name="surname" class="input1 p ml-2" value="{{ Auth::user()->surname }}"></input>
+                                                <label><p class="fontHeadInput">นามสกุล</p></label>
+                                                <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label>
+                                                <input id="surname" name="surname" class="input1 p ml-2" value="{{ Auth::user()->surname }}" required=""></input>
                                             </label>
-                                            @error('surname')
-                                                <p style="color:#ce0005;">กรุณากรอกนามสกุล</p>
-                                            @enderror
                                             <label class="bgInput field-wrap my-1">
-                                                <p class="fontHeadInput">ที่อยู่</p>
-                                                <input name="SPON_ADDRESS" class="input1 p ml-2" value="{{ $spon->SPON_ADDRESS ?? old('SPON_ADDRESS') }}"></input>
+                                                <label><p class="fontHeadInput">ที่อยู่</p></label>
+                                                <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label>
+                                                <input name="SPON_ADDRESS" class="input1 p ml-2" value="{{ $spon->SPON_ADDRESS ?? old('SPON_ADDRESS') }}" required=""></input>
                                             </label>
-                                            @error('SPON_ADDRESS')
-                                                <p style="color:#ce0005;">กรุณากรอกที่อยู่</p>
-                                            @enderror
                                             <div class="row">
                                                 <div class="col-6" style="padding-right:5px;">
                                                     <label class="bgInput field-wrap my-1">
-                                                        <p class="fontHeadInput">จังหวัด</p>
-                                                        <input class="input1 p ml-2" style="padding-top:12px;" type="text" name="province" value="{{ $spon->province }}">
+                                                        <label><p class="fontHeadInput">จังหวัด</p></label>
+                                                        <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label><br>
+                                                        <input class="input1 p ml-2" style="padding-top:12px;" type="text" name="province" value="{{ $spon->province }}" required="">
                                                     </label>
                                                 </div>
                                                 <div class="col-6" style="padding-left:5px;">
                                                     <label class="bgInput field-wrap my-1">
-                                                        <p class="fontHeadInput">อำเภอ</p>
-                                                        <input class="input1 p ml-2" style="padding-top:12px;" type="text" name="amphure" value="{{ $spon->amphure }}">
+                                                        <label><p class="fontHeadInput">อำเภอ</p></label>
+                                                        <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label><br>
+                                                        <input class="input1 p ml-2" style="padding-top:12px;" type="text" name="amphure" value="{{ $spon->amphure }}" required="">
                                                     </label>
                                                 </div>
                                                 <div class="col-6" style="padding-right:5px;">
                                                     <label class="bgInput field-wrap my-1">
-                                                        <p class="fontHeadInput">ตำบล</p>
-                                                        <input class="input1 p ml-2" style="padding-top:12px;" type="text" name="district" value="{{ $spon->district }}">
+                                                        <label><p class="fontHeadInput">ตำบล</p></label>
+                                                        <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label><br>
+                                                        <input class="input1 p ml-2" style="padding-top:12px;" type="text" name="district" value="{{ $spon->district }}" required="">
                                                     </label>
                                                 </div>
                                                 <div class="col-6" style="padding-left:5px;">
                                                     <label class="bgInput field-wrap my-1">
-                                                        <p class="fontHeadInput">รหัสไปรษณีย์</p>
-                                                        <input class="input1 p ml-2" style="padding-top:12px;" type="text" name="ZIPCODE_ID" value="{{ $spon->ZIPCODE_ID }}">
+                                                        <label><p class="fontHeadInput">รหัสไปรษณีย์</p></label>
+                                                        <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label><br>
+                                                        <input class="input1 p ml-2" style="padding-top:12px;" type="text" name="ZIPCODE_ID" value="{{ $spon->ZIPCODE_ID }}" required="">
                                                     </label>
                                                 </div>
                                             </div>
                                         
                                             <label class="bgInput field-wrap my-1">
-                                                <p class="fontHeadInput">เบอร์โทรศัพท์</p>
-                                                <input name="SPON_TEL" type="text" class="input1 p ml-2"  data-toggle="tooltip" value="{{ $spon->SPON_TEL ?? old('SPON_TEL') }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
+                                                <label><p class="fontHeadInput">เบอร์โทรศัพท์</p></label>
+                                                <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label>
+                                                <input name="SPON_TEL" type="text" class="input1 p ml-2"  data-toggle="tooltip" value="{{ $spon->SPON_TEL ?? old('SPON_TEL') }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required=""></input>
                                             </label>
-                                            @error('SPON_TEL')
-                                                <p style="color:#ce0005;">กรุณากรอกเบอร์โทรศัพท์</span>
-                                            @enderror
                                             <label class="bgInput field-wrap my-1">
-                                                <p class="fontHeadInput">เลขบัตรประจำตัวประชาชน</p>
-                                                <input name="SPON_ID_CARD" type="text" class="input1 p ml-2"  value="{{ $spon->SPON_ID_CARD ?? old('SPON_ID_CARD') }}" minlength="13" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
+                                                <label><p class="fontHeadInput">เลขบัตรประจำตัวประชาชน</p></label>
+                                                <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label>
+                                                <input name="SPON_ID_CARD" type="text" class="input1 p ml-2"  value="{{ $spon->SPON_ID_CARD ?? old('SPON_ID_CARD') }}" minlength="13" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required=""></input>
                                             </label>
-                                            @error('SPON_ID_CARD')
-                                                <p style="color:#ce0005;">เลขบัตรประจำตัวประชาชนไม่ถูกต้อง</p>
-                                            @enderror
                                             <div class="row ">
-                                                <div class="col-lg-12">
+                                                <div class="col-12">
                                                     <div class="row mx-0">
                                                         <?php
                                                             // $yyyy = substr($spon->DEV_BIRTHDAY,0,4);
@@ -100,10 +95,11 @@
                                                             // $dd = substr($spon->DEV_BIRTHDAY,8,2);
                                                         ?>
                                                         <label class="bgInput field-wrap my-1">
-                                                            <p class="fontHeadInput">วัน เดือน ปีเกิด</p>
-                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></label>
-                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></label>
-                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1" id ="day" name = "dd"></SELECT></label>
+                                                            <label><p class="fontHeadInput">วัน เดือน ปีเกิด</p></label>
+                                                            <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label><br>
+                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1" id ="year" name = "yyyy" onchange="change_year(this)" required></SELECT></label>
+                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1"  id ="month" name = "mm" onchange="change_month(this)" required></SELECT></label>
+                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1" id ="day" name = "dd" required></SELECT></label>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -124,7 +120,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2">
-                                    <button name="submit" id="submit" value="submit" type="submit" class="btn-submit">
+                                    <button name="submit" id="submit" value="submit" type="button" class="btn-submit">
                                         <p style="margin:0;">ยืนยัน</p>
                                         <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
                                         <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
@@ -334,162 +330,182 @@ $(document).ready(function(){
 
 <!-- วัน เดือน ปีเกิด -->
 <script>
-var Days = [31,28,31,30,31,30,31,31,30,31,30,31];// index => month [0-11]
-$(document).ready(function(){
-    var option = '<option  class="font-select" value="day">วัน</option>';
-    var selectedDay="day";
-    for (var i=1;i <= Days[0];i++){ //add option days
-        option += '<option class="font-select" value="'+ i +'">' + i + '</option>';
-    }
-    $('#day').append(option);
-    $('#day').val(selectedDay);
+    var Days = [31,28,31,30,31,30,31,31,30,31,30,31];// index => month [0-11]
+    $(document).ready(function(){
+        var option = '<option  class="font-select" value="day">วัน</option>';
+        var selectedDay="day";
+        for (var i=1;i <= Days[0];i++){ //add option days
+            option += '<option class="font-select" value="'+ i +'">' + i + '</option>';
+        }
+        $('#day').append(option);
+        $('#day').val(selectedDay);
+        
+        var option = '<option class="font-select" value="month">เดือน</option>';
+        var selectedMon ="month";
+        for (var i=1;i <= 12;i++){
+            // option += '<option value="'+ i + '">' + i + '</option>';
+            if(i == 1){
+                option += '<option class="font-select"  value="'+ i + '">' + "มกราคม" + '</option>';
+            }else if(i == 2){
+                option += '<option class="font-select"  value="'+ i + '">' + "กุมภาพันธ์" + '</option>';
+            }else if(i == 3){
+                option += '<option class="font-select"  value="'+ i + '">' + "มีนาคม" + '</option>';
+            }else if(i == 4){
+                option += '<option class="font-select"  value="'+ i + '">' + "เมษายน" + '</option>';
+            }else if(i == 5){
+                option += '<option class="font-select"  value="'+ i + '">' + "พฤษภาคม" + '</option>';
+            }else if(i == 6){
+                option += '<option class="font-select"  value="'+ i + '">' + "มิถุนายน" + '</option>';
+            }else if(i == 7){
+                option += '<option class="font-select"  value="'+ i + '">' + "กรกฎาคม" + '</option>';
+            }else if(i == 8){
+                option += '<option class="font-select"  value="'+ i + '">' + "สิงหาคม" + '</option>';
+            }else if(i == 9){
+                option += '<option class="font-select"  value="'+ i + '">' + "กันยายน" + '</option>';
+            }else if(i == 10){
+                option += '<option class="font-select"  value="'+ i + '">' + "ตุลาคม" + '</option>';
+            }else if(i == 11){
+                option += '<option class="font-select"  value="'+ i + '">' + "พฤศจิกายน" + '</option>';
+            }else{
+                option += '<option class="font-select"  value="'+ i + '">' + "ธันวาคม" + '</option>';
+            }
+        }
+        $('#month').append(option);
+        $('#month').val(selectedMon);
+        var option = '<option  class="font-select" value="month">เดือน</option>';
+        var selectedMon ="month";
+        for (var i=1;i <= 12;i++){
+            option += '<option  class="font-select" value="'+ i + '">' + i + '</option>';
+        }
+        $('#month2').append(option);
+        $('#month2').val(selectedMon);
     
-    var option = '<option class="font-select" value="month">เดือน</option>';
-    var selectedMon ="month";
-    for (var i=1;i <= 12;i++){
-        // option += '<option value="'+ i + '">' + i + '</option>';
-        if(i == 1){
-            option += '<option class="font-select"  value="'+ i + '">' + "มกราคม" + '</option>';
-        }else if(i == 2){
-            option += '<option class="font-select"  value="'+ i + '">' + "กุมภาพันธ์" + '</option>';
-        }else if(i == 3){
-            option += '<option class="font-select"  value="'+ i + '">' + "มีนาคม" + '</option>';
-        }else if(i == 4){
-            option += '<option class="font-select"  value="'+ i + '">' + "เมษายน" + '</option>';
-        }else if(i == 5){
-            option += '<option class="font-select"  value="'+ i + '">' + "พฤษภาคม" + '</option>';
-        }else if(i == 6){
-            option += '<option class="font-select"  value="'+ i + '">' + "มิถุนายน" + '</option>';
-        }else if(i == 7){
-            option += '<option class="font-select"  value="'+ i + '">' + "กรกฎาคม" + '</option>';
-        }else if(i == 8){
-            option += '<option class="font-select"  value="'+ i + '">' + "สิงหาคม" + '</option>';
-        }else if(i == 9){
-            option += '<option class="font-select"  value="'+ i + '">' + "กันยายน" + '</option>';
-        }else if(i == 10){
-            option += '<option class="font-select"  value="'+ i + '">' + "ตุลาคม" + '</option>';
-        }else if(i == 11){
-            option += '<option class="font-select"  value="'+ i + '">' + "พฤศจิกายน" + '</option>';
-        }else{
-            option += '<option class="font-select"  value="'+ i + '">' + "ธันวาคม" + '</option>';
+        var d = new Date();
+        var option = '<option  class="font-select" value="year">ปี</option>';
+        selectedYear ="year";
+        for (var i=1930;i <= d.getFullYear();i++){// years start i
+            option += '<option  class="font-select" value="'+ i + '">' + i + '</option>';
+        }
+        $('#year').append(option);
+        $('#year').val(selectedYear);
+    });
+    function isLeapYear(year) {
+        year = parseInt(year);
+        if (year % 4 != 0) {
+            return false;
+        } else if (year % 400 == 0) {
+            return true;
+        } else if (year % 100 == 0) {
+            return false;
+        } else {
+            return true;
         }
     }
-    $('#month').append(option);
-    $('#month').val(selectedMon);
-    var option = '<option  class="font-select" value="month">เดือน</option>';
-    var selectedMon ="month";
-    for (var i=1;i <= 12;i++){
-        option += '<option  class="font-select" value="'+ i + '">' + i + '</option>';
-    }
-    $('#month2').append(option);
-    $('#month2').val(selectedMon);
-  
-    var d = new Date();
-    var option = '<option  class="font-select" value="year">ปี</option>';
-    selectedYear ="year";
-    for (var i=1930;i <= d.getFullYear();i++){// years start i
-        option += '<option  class="font-select" value="'+ i + '">' + i + '</option>';
-    }
-    $('#year').append(option);
-    $('#year').val(selectedYear);
-});
-function isLeapYear(year) {
-    year = parseInt(year);
-    if (year % 4 != 0) {
-	      return false;
-	  } else if (year % 400 == 0) {
-	      return true;
-	  } else if (year % 100 == 0) {
-	      return false;
-	  } else {
-	      return true;
-	  }
-}
-function change_year(select)
-{
-    if( isLeapYear( $(select).val() ) )
-	  {
-		    Days[1] = 29;
-		    
-    }
-    else {
-        Days[1] = 28;
-    }
-    if( $("#month").val() == 2)
-		    {
-			       var day = $('#day');
-			       var val = $(day).val();
-			       $(day).empty();
-			       var option = '<option  class="font-select" value="day">วัน</option>';
-			       for (var i=1;i <= Days[1];i++){ //add option days
-				         option += '<option  class="font-select" value="'+ i + '">' + i + '</option>';
-             }
-			       $(day).append(option);
-			       if( val > Days[ month ] )
-			       {
-				          val = 1;
-			       }
-			       $(day).val(val);
-		     }
-  }
-function change_month(select) {
-    var day = $('#day');
-    var val = $(day).val();
-    $(day).empty();
-    var option = '<option  class="font-select" value="day">วัน</option>';
-    var month = parseInt( $(select).val() ) - 1;
-    for (var i=1;i <= Days[ month ];i++){ //add option days
-        option += '<option  class="font-select" value="'+ i + '">' + i + '</option>';
-    }
-    $(day).append(option);
-    if( val > Days[ month ] )
+    function change_year(select)
     {
-        val = 1;
+        if( isLeapYear( $(select).val() ) )
+        {
+                Days[1] = 29;
+                
+        }
+        else {
+            Days[1] = 28;
+        }
+        if( $("#month").val() == 2)
+                {
+                    var day = $('#day');
+                    var val = $(day).val();
+                    $(day).empty();
+                    var option = '<option  class="font-select" value="day">วัน</option>';
+                    for (var i=1;i <= Days[1];i++){ //add option days
+                            option += '<option  class="font-select" value="'+ i + '">' + i + '</option>';
+                }
+                    $(day).append(option);
+                    if( val > Days[ month ] )
+                    {
+                            val = 1;
+                    }
+                    $(day).val(val);
+                }
     }
-    $(day).val(val);
-}
+    function change_month(select) {
+        var day = $('#day');
+        var val = $(day).val();
+        $(day).empty();
+        var option = '<option  class="font-select" value="day">วัน</option>';
+        var month = parseInt( $(select).val() ) - 1;
+        for (var i=1;i <= Days[ month ];i++){ //add option days
+            option += '<option  class="font-select" value="'+ i + '">' + i + '</option>';
+        }
+        $(day).append(option);
+        if( val > Days[ month ] )
+        {
+            val = 1;
+        }
+        $(day).val(val);
+    }
 </script>
 
 
 <script> /* รูปโปรไฟล์เกม */
-$(function () {
- $("#upload").on("click",function(e){
-     $("#file_upload").show().click().hide();
-     e.preventDefault();
- });
- $("#file_upload").on("change",function(e){
-     var files = this.files
-     showThumbnail(files)        
- });
- function showThumbnail(files){
-     $("#thumb").html("");
-     for(var i=0;i<files.length;i++){
-         var file = files[i]
-         var imageType = /image.*/
-         if(!file.type.match(imageType)){
-                //  console.log("Not an Image");
-             continue;
-         }
-         var image = document.createElement("img");
-         var thumbnail = document.getElementById("thumb");
-         image.file = file;
-         thumbnail.appendChild(image)
-         var reader = new FileReader()
-         reader.onload = (function(aImg){
-             return function(e){
-                 aImg.src = e.target.result;
-             };
-         }(image))
-         var ret = reader.readAsDataURL(file);
-         var canvas = document.createElement("canvas");
-         ctx = canvas.getContext("2d");
-         image.onload= function(){
-             ctx.drawImage(image,100,100)
-         }
-     } // end for loop
-     console.log(file);
- } // end showThumbnail
-});
+    $(function () {
+    $("#upload").on("click",function(e){
+        $("#file_upload").show().click().hide();
+        e.preventDefault();
+    });
+    $("#file_upload").on("change",function(e){
+        var files = this.files
+        showThumbnail(files)        
+    });
+    function showThumbnail(files){
+        $("#thumb").html("");
+        for(var i=0;i<files.length;i++){
+            var file = files[i]
+            var imageType = /image.*/
+            if(!file.type.match(imageType)){
+                    //  console.log("Not an Image");
+                continue;
+            }
+            var image = document.createElement("img");
+            var thumbnail = document.getElementById("thumb");
+            image.file = file;
+            thumbnail.appendChild(image)
+            var reader = new FileReader()
+            reader.onload = (function(aImg){
+                return function(e){
+                    aImg.src = e.target.result;
+                };
+            }(image))
+            var ret = reader.readAsDataURL(file);
+            var canvas = document.createElement("canvas");
+            ctx = canvas.getContext("2d");
+            image.onload= function(){
+                ctx.drawImage(image,100,100)
+            }
+        } // end for loop
+        console.log(file);
+    } // end showThumbnail
+    });
 </script>
 
+<script type="text/javascript">
+	$('input').on('keypress',function(){
+		$(this).parent().find('.messageError').addClass('d-none');
+	})
+	$('#submit').on('click',function(){
+		var check = true;
+		$('.messageError').addClass('d-none');
+		$( "form#upDate input, select" ).each(function( index ) {
+			var required = $(this).attr('required');
+		 	var value = $(this).val();
+		 	var id = $(this).attr('id');
+		 	if(!value && required){
+		 		check = false;
+		 		$(this).parent().find('.messageError').removeClass('d-none');
+		 	}
+		});
+		if(check){
+			$('form#upDate').submit();
+		}
+	})
 @endsection

@@ -20,7 +20,7 @@ class creditPaymentController extends Controller
         // dd($request);
         if($request->input('submit') != null){
             $transeection_type = $request->input('paymentType');
-            $transeection_invoice =  $transeection_type.time().Auth::user()->id;
+            $transeection_invoice =  "VISACREDIT".time().Auth::user()->id;
             $transeection_id = $request->input('transeection_id');
             
             $transeection = Transeection_buyItem::where('transeection_id', $transeection_id)->first();
