@@ -19,16 +19,21 @@
                             <div class="col-12  mt-2" >
                                 <!-- <form> -->
                                     <label class="bgInput field-wrap my-1">
-                                        <label><p class="fontHeadInput">รหัสผ่านเก่า</p></label><label><h5 class="old_password d-none MError" style="color:#ce0005; margin:0"></h5></label>
+                                        <label><p class="fontHeadInput">รหัสผ่านเก่า</p></label>
+                                        <label><h5 class="old_password d-none MError" style="color:#ce0005; margin:0"></h5></label>
                                         <input type="password" name="old_password" value="{{old('old_password')}}" class="input1 p ml-2" require></input>
                                     </label>
                                     <label class="bgInput field-wrap my-1">
-                                        <label><p class="fontHeadInput">รหัสผ่านใหม่</p></label><label><h5 class="password d-none MError" style="color:#ce0005; margin:0"></h5></label>
-                                        <input id="password" type="password" name="password" value="{{old('password')}}" class="input1 p ml-2" require></input>
+                                        <div class="d-flex justify-content-start">
+                                            <p class="fontHeadInput">รหัสผ่านใหม่</p>
+                                            <h5 class="password d-none MError textError" style="color:#ce0005; margin:0"></h5>
+                                        </div>
+                                        <input id="password" type="password" name="password" value="{{old('password')}}" class="input1 p ml-2 pt-2" require></input>
                                     </label>
                                     <label class="bgInput field-wrap my-1">
                                         <!-- <p class="fontHeadInput">ยืนยันรหัสผ่านใหม่</p> -->
-                                        <label><p class="fontHeadInput">ยืนยันรหัสผ่านใหม่</p></label><label><h5 id="MESSAGE" class="password_confirmation d-none MError" style="color:#ce0005; margin:0"></h5></label>
+                                        <label><p class="fontHeadInput">ยืนยันรหัสผ่านใหม่</p></label>
+                                        <label><h5 id="MESSAGE" class="password_confirmation d-none MError" style="color:#ce0005; margin:0"></h5></label>
                                         <input id="password-confirm" type="password" name="password_confirmation" class="input1 p ml-2" require></input>
                                     </label>
                                     <!-- <p id="MESSAGE" class="password_confirmation d-none MError" style="color:#ce0005;"></p> -->
