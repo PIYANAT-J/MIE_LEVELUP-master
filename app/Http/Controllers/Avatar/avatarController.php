@@ -10,6 +10,8 @@ use Auth;
 
 use App\Guest_user;
 use App\Default_item;
+use App\Transeection_buyItem;
+use App\TransferPayment;
 use App\My_item;
 
 class avatarController extends Controller
@@ -30,12 +32,15 @@ class avatarController extends Controller
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
         $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
-        $default = Default_item::all();
-        $item = My_item::where([['USER_EMAIL', Auth::user()->email]])->get();
-        foreach($guest_user as $defaultAvatar){
-            $avatar = json_decode($defaultAvatar->AVATAR);
+        $transeection = Transeection_buyItem::where([['USER_EMAIL', Auth::user()->email]])->orderBy('transeection_id', 'desc')->get();
+        $transfer = TransferPayment::where([['USER_EMAIL', Auth::user()->email], ['transferStatus', 'รอการอนุมัติ']])->orderBy('id', 'desc')->get();
+
+        $transfer_invoice = array();
+        foreach($transfer as $transferList){
+            $transfer_invoice[] = $transferList->transferInvoice;
         }
-        return view('avatar.avatar_order_list', compact('guest_user', 'avatar', 'userKyc', 'shopping', 'default', 'item', 'avatar'));
+        // dd($transeection);
+        return view('avatar.avatar_order_list', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'transfer_invoice'));
     }
 
     public function addAvatar(Request $request){

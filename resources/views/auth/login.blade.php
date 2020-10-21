@@ -80,19 +80,18 @@
                                     @enderror
                                 </div>
                             </div>
-                                
 
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label class="bgInput field-wrap">
-                                            <label><p class="fontHeadInput">รหัสผ่าน</p></label><br>
-                                            <input name="password" type='password' class="input1 p ml-2 @error('password') is-invalid @enderror" autocomplete="current-password">
-                                        </label>
-                                    </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="bgInput field-wrap">
+                                        <label><p class="fontHeadInput">รหัสผ่าน</p></label><br>
+                                        <input name="password" type='password' class="input1 p ml-2 @error('password') is-invalid @enderror" autocomplete="current-password">
+                                    </label>
                                 </div>
-                                @error('password')
-                                    <h5 style="color:#ce0005;margin:0;">กรุณากรอกรหัสผ่าน</h5>
-                                @enderror
+                            </div>
+                            @error('password')
+                                <h5 style="color:#ce0005;margin:0;">กรุณากรอกรหัสผ่าน</h5>
+                            @enderror
                             <div class="row mt-2">
                                 <div class="col-6">
                                     <div class="checkboxLogin">

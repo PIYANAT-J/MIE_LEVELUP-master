@@ -32,7 +32,7 @@
                                             </label>
                                             <label class="bgInput field-wrap my-1">
                                                 <label><p class="fontHeadInput">ชื่อ</p></label>
-                                                <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label>
+                                                <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label><br>
                                                 <input id="name" name="name" class="input1 p ml-2" value="{{ Auth::user()->name }}" required=""></input>
                                             </label>
                                             <label class="bgInput field-wrap my-1">
@@ -49,28 +49,28 @@
                                                 <div class="col-6" style="padding-right:5px;">
                                                     <label class="bgInput field-wrap my-1">
                                                         <label><p class="fontHeadInput">จังหวัด</p></label>
-                                                        <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label>
+                                                        <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label><br>
                                                         <input class="input1 p ml-2" style="padding-top:12px;" type="text" name="province" value="{{ $spon->province }}" required="">
                                                     </label>
                                                 </div>
                                                 <div class="col-6" style="padding-left:5px;">
                                                     <label class="bgInput field-wrap my-1">
                                                         <label><p class="fontHeadInput">อำเภอ</p></label>
-                                                        <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label>
+                                                        <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label><br>
                                                         <input class="input1 p ml-2" style="padding-top:12px;" type="text" name="amphure" value="{{ $spon->amphure }}" required="">
                                                     </label>
                                                 </div>
                                                 <div class="col-6" style="padding-right:5px;">
                                                     <label class="bgInput field-wrap my-1">
                                                         <label><p class="fontHeadInput">ตำบล</p></label>
-                                                        <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label>
+                                                        <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label><br>
                                                         <input class="input1 p ml-2" style="padding-top:12px;" type="text" name="district" value="{{ $spon->district }}" required="">
                                                     </label>
                                                 </div>
                                                 <div class="col-6" style="padding-left:5px;">
                                                     <label class="bgInput field-wrap my-1">
                                                         <label><p class="fontHeadInput">รหัสไปรษณีย์</p></label>
-                                                        <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label>
+                                                        <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label><br>
                                                         <input class="input1 p ml-2" style="padding-top:12px;" type="text" name="ZIPCODE_ID" value="{{ $spon->ZIPCODE_ID }}" required="">
                                                     </label>
                                                 </div>

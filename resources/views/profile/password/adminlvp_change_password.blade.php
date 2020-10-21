@@ -88,49 +88,58 @@
 
 @section('script')
 <script>
-$(document).ready(function(){
-  $('[data-toggle="tooltip"]').tooltip();
-});
+    $('#password, #password-confirm').on('keyup', function () {
+        if ($('#password').val() == $('#password-confirm').val() && $('#password-confirm').val() != null) {
+            $('#MESSAGE').html('รหัสผ่านตรงกัน !').css('color', 'green').removeClass('d-none');
+        } else 
+            $('#MESSAGE').html('รหัสผ่านไม่ตรงกัน !').css('color', '#ce0005').removeClass('d-none');
+    });
 </script>
 
-<script> /* รูปโปรไฟล์เกม */
-$(function () {
- $("#upload").on("click",function(e){
-     $("#file_upload").show().click().hide();
-     e.preventDefault();
- });
- $("#file_upload").on("change",function(e){
-     var files = this.files
-     showThumbnail(files)        
- });
- function showThumbnail(files){
-     $("#thumb").html("");
-     for(var i=0;i<files.length;i++){
-         var file = files[i]
-         var imageType = /image.*/
-         if(!file.type.match(imageType)){
-                //  console.log("Not an Image");
-             continue;
-         }
-         var image = document.createElement("img");
-         var thumbnail = document.getElementById("thumb");
-         image.file = file;
-         thumbnail.appendChild(image)
-         var reader = new FileReader()
-         reader.onload = (function(aImg){
-             return function(e){
-                 aImg.src = e.target.result;
-             };
-         }(image))
-         var ret = reader.readAsDataURL(file);
-         var canvas = document.createElement("canvas");
-         ctx = canvas.getContext("2d");
-         image.onload= function(){
-             ctx.drawImage(image,100,100)
-         }
-     } // end for loop
-     console.log(file);
- } // end showThumbnail
-});
+<script>
+    $(document).ready(function(e) {
+        $(".btn-submit.mt-2.re-password").click(function(e) {
+            var btnThis = $(this);
+            var old_password = $('input[name="old_password"]').val();
+            var password = $('input[name="password"]').val();
+            var password_confirmation = $('input[name="password_confirmation"]').val();
+            var users_type = $(this).parent().find('input[name="users_type"]').val()
+            var submit = "submit";
+
+            $('.MError').addClass('d-none');
+            $.ajax({
+                url: "{{route('passwordUserReset')}}",
+                type: 'POST',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    old_password:old_password,
+                    password:password,
+                    password_confirmation:password_confirmation,
+                    users_type:users_type,
+                    submit:submit,
+                },
+                success: function(response) {
+                    console.log(response);
+                    $(document).ready(function() {
+                        $('#popupmodal').modal();
+                        $('.success-status.mt-2').html(response.susee);
+                        setTimeout(function(){
+                            $('#popupmodal').modal('hide')
+                        }, 2000);
+                        $('input[name="old_password"]').val('');
+                        $('input[name="password"]').val('');
+                        $('input[name="password_confirmation"]').val('');
+                    });
+                },
+                error: function(response) {
+                    json = JSON.parse(response.responseText);
+                    console.log(json['errors']);
+                    $.each(json['errors'], function (index, value) {
+                        $('.'+index).html(value).removeClass('d-none');
+                    });
+                }
+            });
+        });
+    });
 </script>
 @endsection
