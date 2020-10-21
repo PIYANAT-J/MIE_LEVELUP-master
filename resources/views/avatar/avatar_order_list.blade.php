@@ -50,7 +50,7 @@
                                                     <div class="col-5 col-sm-4 col-md-2 col-lg-3 col-xl-2 text-center align-self-center my-2">
                                                         <!-- ไปแสดงใบเสร็จการชำระเงิน -->
                                                         <a href="{{route('SuccessfulPayment', ['invoice' => encrypt($transeectionList->transeection_invoice)])}}" style="color:#fff;">
-                                                            <p style="color:#000;margin:0;color:#fff;">ชำระเงินแล้ว</p>
+                                                            <p style="margin:0;color:#000;" class="status-transfer3">ชำระเงินแล้ว</p>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -74,12 +74,12 @@
                                                             @if(in_array($transeectionList->transeection_invoice, $transfer_invoice))
                                                                 <!-- รอการอนุมัติ -->
                                                                 <!-- <a href="{{route('PaymentTransfer', ['invoice' => encrypt($transeectionList->transeection_invoice)])}}" style="color:#000;"> -->
-                                                                <p style="margin:0;color:#fff;" class="status-transfer">รอการอนุมัติ</p>
+                                                                <p style="margin:0;" class="status-transfer2">รอการอนุมัติ</p>
                                                                 <!-- </a> -->
                                                             @else
                                                                 <!-- ไปหน้าแจ้งชำระเงิน -->
                                                                 <a href="{{route('PaymentTransfer', ['invoice' => encrypt($transeectionList->transeection_invoice)])}}" style="color:#000;">
-                                                                    <p style="margin:0;color:#fff;" class="status-transfer">แจ้งชำระเงิน</p>
+                                                                    <p style="margin:0;" class="status-transfer">แจ้งชำระเงิน</p>
                                                                 </a>
                                                             @endif
                                                         </div>

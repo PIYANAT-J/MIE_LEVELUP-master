@@ -10156,3 +10156,8 @@ stroke-dasharray: 500, 200000;
   cursor: pointer;
 }
 
+.textError{
+  width:80%;
+  word-wrap: break-word;
+  margin: 0 !important;
+}
