@@ -17,33 +17,24 @@
                     <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
                         <div class="row">
                             <div class="col-12  mt-2" >
-                                <form action="{{ route('passwordUserReset') }}" method="post">
-                                    @csrf
+                                <!-- <form> -->
                                     <label class="bgInput field-wrap my-1">
-                                        <p class="fontHeadInput">รหัสผ่านเก่า</p>
+                                        <label><p class="fontHeadInput">รหัสผ่านเก่า</p></label><label><h5 class="old_password d-none MError" style="color:#ce0005; margin:0"></h5></label>
                                         <input type="password" name="old_password" value="{{old('old_password')}}" class="input1 p ml-2" require></input>
                                     </label>
-                                    @error('old_password')
-                                        <p style="color:#ce0005;">รหัสผ่านไม่ถูกต้อง</p>
-                                    @enderror
                                     <label class="bgInput field-wrap my-1">
-                                        <p class="fontHeadInput">รหัสผ่านใหม่</p>
+                                        <label><p class="fontHeadInput">รหัสผ่านใหม่</p></label><label><h5 class="password d-none MError" style="color:#ce0005; margin:0"></h5></label>
                                         <input id="password" type="password" name="password" value="{{old('password')}}" class="input1 p ml-2" require></input>
                                     </label>
-                                    @error('password')
-                                        <p style="color:#ce0005;">รหัสผ่านไม่ถูกต้อง</p>
-                                    @enderror
                                     <label class="bgInput field-wrap my-1">
-                                        <p class="fontHeadInput">ยืนยันรหัสผ่านใหม่</p>
+                                        <!-- <p class="fontHeadInput">ยืนยันรหัสผ่านใหม่</p> -->
+                                        <label><p class="fontHeadInput">ยืนยันรหัสผ่านใหม่</p></label><label><h5 id="MESSAGE" class="password_confirmation d-none MError" style="color:#ce0005; margin:0"></h5></label>
                                         <input id="password-confirm" type="password" name="password_confirmation" class="input1 p ml-2" require></input>
                                     </label>
-                                    <!-- <input id="password-confirm" type="password" name="password_confirmation" class="input-name-reg"  placeholder="ยืนยันรหัสผ่าน" autocomplete="new-password"> -->
-                                    <div class="col-12" style="padding:5px 3px 0px 3px;">
-                                        <span id="MESSAGE"></span>
-                                    </div>
+                                    <!-- <p id="MESSAGE" class="password_confirmation d-none MError" style="color:#ce0005;"></p> -->
                                     <div class="row">
                                         <div class="col-6">
-                                            <button name="submit" value="submit" class="btn-submit mt-2">
+                                            <button type="button" name="submit" value="submit" class="btn-submit mt-2 re-password">
                                                 <p style="margin:0;">ยืนยัน</p>
                                                 <input type="hidden" name="users_type" value="{{Auth::user()->users_type}}">
                                             </button>
@@ -54,7 +45,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                </form>
+                                <!-- </form> -->
                             </div>
                         </div>
                     </div>
@@ -94,7 +85,7 @@
                                 <circle class="circle" stroke-linejoin="round" cx="59.219" stroke-linecap="round" stroke="#08b237" cy="59.219" r="57.069" stroke-width="4.3" fill="none"/>
                             </svg>
     
-                            <p class="success-status mt-2" style="text-align:center;margin:0;">{{ Session::get('susee') }}</p>
+                            <p class="success-status mt-2" style="text-align:center;margin:0;"></p>
                         </div>
                     </div>
                 </div>
@@ -135,25 +126,57 @@
 
 <script>
     $('#password, #password-confirm').on('keyup', function () {
-        if ($('#password').val() == $('#password-confirm').val()) {
-            $('#MESSAGE').html('รหัสผ่านตรงกัน !').css('color', 'green','h5',);
+        if ($('#password').val() == $('#password-confirm').val() && $('#password-confirm').val() != null) {
+            $('#MESSAGE').html('รหัสผ่านตรงกัน !').css('color', 'green').removeClass('d-none');
         } else 
-            $('#MESSAGE').html('รหัสผ่านไม่ตรงกัน !').css('color', 'red','h5');
+            $('#MESSAGE').html('รหัสผ่านไม่ตรงกัน !').css('color', '#ce0005').removeClass('d-none');
     });
 </script>
 
-@if( Session::has('susee'))
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#popupmodal').modal();
-            // alert("{{Session::get('susee')}}");
-        });
-    </script>
-@endif
-
 <script>
-setTimeout(function(){
-    $('#popupmodal').modal('hide')
-}, 1500);
+    $(document).ready(function(e) {
+        $(".btn-submit.mt-2.re-password").click(function(e) {
+            var btnThis = $(this);
+            var old_password = $('input[name="old_password"]').val();
+            var password = $('input[name="password"]').val();
+            var password_confirmation = $('input[name="password_confirmation"]').val();
+            var users_type = $(this).parent().find('input[name="users_type"]').val()
+            var submit = "submit";
+
+            $('.MError').addClass('d-none');
+            $.ajax({
+                url: "{{route('passwordUserReset')}}",
+                type: 'POST',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    old_password:old_password,
+                    password:password,
+                    password_confirmation:password_confirmation,
+                    users_type:users_type,
+                    submit:submit,
+                },
+                success: function(response) {
+                    console.log(response);
+                    $(document).ready(function() {
+                        $('#popupmodal').modal();
+                        $('.success-status.mt-2').html(response.susee);
+                        setTimeout(function(){
+                            $('#popupmodal').modal('hide')
+                        }, 2000);
+                        $('input[name="old_password"]').val('');
+                        $('input[name="password"]').val('');
+                        $('input[name="password_confirmation"]').val('');
+                    });
+                },
+                error: function(response) {
+                    json = JSON.parse(response.responseText);
+                    console.log(json['errors']);
+                    $.each(json['errors'], function (index, value) {
+                        $('.'+index).html(value).removeClass('d-none');
+                    });
+                }
+            });
+        });
+    });
 </script>
 @endsection

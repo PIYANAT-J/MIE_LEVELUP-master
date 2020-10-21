@@ -262,7 +262,15 @@ class marketItemController extends Controller
                         ->value('i');
                 $sumi = $i+1;
                 $invoice = $transferฺBank_name.$sumi;
-                $transferInvoice = $transferฺBank_name.time().$user_id;
+                if($transferฺBank_name == "bangkok"){
+                    $transferInvoice = "BBL".time().$user_id;
+                }elseif($transferฺBank_name == "ktc"){
+                    $transferInvoice = "KTC".time().$user_id;
+                }elseif($transferฺBank_name == "kbank"){
+                    $transferInvoice = "KBANK".time().$user_id;
+                }elseif($transferฺBank_name == "scb"){
+                    $transferInvoice = "SCB".time().$user_id;
+                }
                 $create_at = date('Y-m-d H:i:s');
 
                 if($transferAmount != "" && $transferฺBank_name != ""){
