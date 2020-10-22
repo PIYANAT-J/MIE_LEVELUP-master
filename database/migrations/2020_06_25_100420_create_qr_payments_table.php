@@ -17,6 +17,7 @@ class CreateQrPaymentsTable extends Migration
             $table->bigIncrements('id');
             $table->char('qrType')->collation('utf8_unicode_ci');
             $table->set('paymentType', ['KD', 'DP', 'QrCode'])->collation('utf8_unicode_ci')->nullable();
+            $table->string('useType')->collation('utf8_unicode_ci')->nullable();
             $table->double('amount', 15, 4)->default(0);
             $table->char('note', 255)->collation('utf8_unicode_ci')->nullable();
             $table->string('bank_name', 10)->collation('utf8_unicode_ci')->nullable();
