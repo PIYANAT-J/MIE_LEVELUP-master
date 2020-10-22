@@ -16,7 +16,7 @@ class CreateTranseectionBuyItemsTable extends Migration
         Schema::create('transeection_buy_items', function (Blueprint $table) {
             $table->bigIncrements('transeection_id');
             $table->double('transeection_price', 15, 4);
-            $table->string('transeection_items')->collation('utf8_unicode_ci')->nullable();
+            $table->json('transeection_items')->collation('utf8_unicode_ci')->nullable();
             $table->string('transeection_type')->collation('utf8_unicode_ci')->nullable();
             $table->string('transeection_invoice')->collation('utf8_unicode_ci')->nullable();
             $table->set('transeection_status', ['true', 'false'])->collation('utf8_unicode_ci')->default('false');

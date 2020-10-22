@@ -79,6 +79,7 @@ class TransferController extends Controller{
                     $value = transferPayment::updateTransfer($data);
                 }
             }else{
+                $useTransferType = "wallet";
                 $transferAmount = $req->input('transferAmount');
                 $transferฺBank_name = $req->input('transferฺBank_name');
                 $transferStatus = "ยืนยันการโอน";
@@ -103,7 +104,7 @@ class TransferController extends Controller{
                 $create_at = date('Y-m-d H:i:s');
 
                 if($transferAmount != "" && $transferฺBank_name != ""){
-                    $data = array("transferAmount"=>$transferAmount, "transferฺBank_name"=>$transferฺBank_name, "transferStatus"=>$transferStatus, 
+                    $data = array("transferAmount"=>$transferAmount, "transferฺBank_name"=>$transferฺBank_name, "transferStatus"=>$transferStatus, "useTransferType"=>$useTransferType,
                                 "user_id"=>$user_id, "user_email"=>$user_email, "invoice"=>$invoice, "transferInvoice"=>$transferInvoice, "create_at"=>$create_at);
                     // dd($data);
                     $value = transferPayment::insertTransfer($data);

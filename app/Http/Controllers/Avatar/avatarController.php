@@ -33,7 +33,7 @@ class avatarController extends Controller
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
         $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
         $transeection = Transeection_buyItem::where([['USER_EMAIL', Auth::user()->email]])->orderBy('transeection_id', 'desc')->get();
-        $transfer = TransferPayment::where([['USER_EMAIL', Auth::user()->email], ['transferStatus', 'รอการอนุมัติ']])->orderBy('id', 'desc')->get();
+        $transfer = TransferPayment::where([['USER_EMAIL', Auth::user()->email], ['transferStatus', 'รอการอนุมัติ'], ['useTransferType', 'item']])->orderBy('id', 'desc')->get();
 
         $transfer_invoice = array();
         foreach($transfer as $transferList){

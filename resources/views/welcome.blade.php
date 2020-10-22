@@ -535,77 +535,83 @@
             </div>
         </div>
         <div class="owl-carousel " id="owl-demo3">
+            <?php 
+                $game_id = array();
+            ?>
             @foreach($Gamehot as $gameHot)
-                <div class="item imgteaser">
-                    <a>
-                        <img class="game_2" src="{{ asset('section/File_game/Profile_game/'.$gameHot->GAME_IMG_PROFILE) }}" />
-                        <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
-                        <span class="desc">
-                            <!-- <button class="btn_follow2 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
-                            @guest
-                                <form action="{{route('login-levelUp')}}">
-                                    <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
-                                        <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
-                                        <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
-                                    </button>
-                                </form>
-                            @else
-                                @if($Follows->count() > 0)
-                                    @foreach($Follows as $follow)
-                                        @if($gameHot->GAME_ID == $follow->GAME_ID)
-                                            <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
-                                                @csrf
-                                                <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
-                                                    <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
-                                                    <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
-                                                    <input type="hidden" name="submit" value="submit">
-                                                    <input type="hidden" name="FOLLOW_ID" value="{{ $follow->FOLLOW_ID }}">
-                                                </button >
-                                            </form>
-                                            @break
-                                        @else
-                                            <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
-                                                @csrf
-                                                <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
-                                                    <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:5px;"></p></label>
-                                                    <label style="margin:0;"><p class="fontBTNfollow">ติดตาม</p></label>
-                                                    <input type="hidden" name="submit" value="submit">
-                                                    <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
-                                                    <input type="hidden" name="GAME_ID" value="{{ $gameHot->GAME_ID }}">
-                                                    <input type="hidden" name="GAME_NAME" value="{{ $gameHot->GAME_NAME }}">
-                                                    <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                                                </button >
-                                            </form>
-                                        @endif
-                                    @endforeach
-                                @else
-                                    <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
-                                        @csrf
+                <?php $game_id[] = $gameHot->GAME_ID;?>
+                @if(array_search($gameHot->GAME_ID, $game_id))
+                    <div class="item imgteaser">
+                        <a>
+                            <img class="game_2" src="{{ asset('section/File_game/Profile_game/'.$gameHot->GAME_IMG_PROFILE) }}" />
+                            <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                            <span class="desc">
+                                <!-- <button class="btn_follow2 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:16px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;">กำลังติดตาม</b></button > -->
+                                @guest
+                                    <form action="{{route('login-levelUp')}}">
                                         <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
-                                            <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:5px;"></p></label>
-                                            <label style="margin:0;"><p class="fontBTNfollow">ติดตาม</p></label>
-                                            <input type="hidden" name="submit" value="submit">
-                                            <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
-                                            <input type="hidden" name="GAME_ID" value="{{ $gameHot->GAME_ID }}">
-                                            <input type="hidden" name="GAME_NAME" value="{{ $gameHot->GAME_NAME }}">
-                                            <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                                        </button >
+                                            <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
+                                            <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
+                                        </button>
                                     </form>
-                                @endif
-                            @endguest
-                            <img class="rate_pic" style="width: 40px;" src="{{asset('section/game_rate/'.$gameHot->RATED_ESRB.'.svg') }}" />
-                            <div class="game_name">
-                                <label style="margin:0;"><p style="margin:0;font-weight:900;">{{ $gameHot->GAME_NAME }}</p></label><br>
-                                <label style="margin:0;"><p style="margin:0;">{{ $gameHot->RATED_B_L }} • Online</p></label>
-                            </div>
-                            <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
-                            <!-- <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#{{ $gameHot->GAME_NAME }}4  " aria-expanded="false" aria-controls="collapseExample"><img id="downImg6" src="{{asset('icon/down1.svg')}}"></button> -->
-                            <label class="accordion-arrow arrowShowContent" style="cursor:pointer;" onclick="openTab('GAME_NAME4{{$gameHot->GAME_ID}}');">
-                                <i class="icon-dropdown-wh"></i>
-                            </label>
-                        </span>
-                    </a>
-                </div>
+                                @else
+                                    @if($Follows->count() > 0)
+                                        @foreach($Follows as $follow)
+                                            @if($gameHot->GAME_ID == $follow->GAME_ID)
+                                                <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                                                        <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
+                                                        <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
+                                                        <input type="hidden" name="submit" value="submit">
+                                                        <input type="hidden" name="FOLLOW_ID" value="{{ $follow->FOLLOW_ID }}">
+                                                    </button >
+                                                </form>
+                                                @break
+                                            @else
+                                                <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
+                                                        <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:5px;"></p></label>
+                                                        <label style="margin:0;"><p class="fontBTNfollow">ติดตาม</p></label>
+                                                        <input type="hidden" name="submit" value="submit">
+                                                        <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                                                        <input type="hidden" name="GAME_ID" value="{{ $gameHot->GAME_ID }}">
+                                                        <input type="hidden" name="GAME_NAME" value="{{ $gameHot->GAME_NAME }}">
+                                                        <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                                    </button >
+                                                </form>
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
+                                                <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:5px;"></p></label>
+                                                <label style="margin:0;"><p class="fontBTNfollow">ติดตาม</p></label>
+                                                <input type="hidden" name="submit" value="submit">
+                                                <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                                                <input type="hidden" name="GAME_ID" value="{{ $gameHot->GAME_ID }}">
+                                                <input type="hidden" name="GAME_NAME" value="{{ $gameHot->GAME_NAME }}">
+                                                <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
+                                            </button >
+                                        </form>
+                                    @endif
+                                @endguest
+                                <img class="rate_pic" style="width: 40px;" src="{{asset('section/game_rate/'.$gameHot->RATED_ESRB.'.svg') }}" />
+                                <div class="game_name">
+                                    <label style="margin:0;"><p style="margin:0;font-weight:900;">{{ $gameHot->GAME_NAME }}</p></label><br>
+                                    <label style="margin:0;"><p style="margin:0;">{{ $gameHot->RATED_B_L }} • Online</p></label>
+                                </div>
+                                <!-- <div class="down"><img  src="{{asset('icon/down1.svg') }}" /></div> -->
+                                <!-- <button id="down" class="down3 btn btn-dark" data-toggle="collapse" data-target="#{{ $gameHot->GAME_NAME }}4  " aria-expanded="false" aria-controls="collapseExample"><img id="downImg6" src="{{asset('icon/down1.svg')}}"></button> -->
+                                <label class="accordion-arrow arrowShowContent" style="cursor:pointer;" onclick="openTab('GAME_NAME4{{$gameHot->GAME_ID}}');">
+                                    <i class="icon-dropdown-wh"></i>
+                                </label>
+                            </span>
+                        </a>
+                    </div>
+                @endif
             @endforeach
         </div>
         @foreach($Gamehot as $gameHotID)
@@ -1045,6 +1051,7 @@ $(document).ready(function() {
             },
             1920:{
                 items:8,
+                loop:false,
                 nav:true
             }
         }
