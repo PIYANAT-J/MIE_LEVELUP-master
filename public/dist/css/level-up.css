@@ -3799,7 +3799,7 @@ body {
   border: none;
 }
 
-.btn-closeModal{
+.btn-closeModal:focus{
   outline: none!important;
 }
 
@@ -3811,7 +3811,19 @@ body {
   right: 0;
 }
 
-.btn-closeModal-body{
+.btn-closeModal-body:focus{
+  outline: none!important;
+}
+
+.btn-closeproduct{
+  /* background-color: #fff; */
+  border: none;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+}
+
+.btn-closeproduct{
   outline: none!important;
 }
 
@@ -5709,6 +5721,7 @@ ul.thumb-Images li {
   width: 100%;
   border-radius: 4px;
   cursor: pointer;
+  
 }
 
 .bg-disabled{
