@@ -1,8 +1,6 @@
 @extends('layout.detail_navbar')
 
 @section('style')
-
-
 <style>
     .filterDiv {
     /* float: left; */
@@ -27,78 +25,89 @@
      
     * {box-sizing:border-box}
 
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
+    /* Slideshow container */
+    .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+    }
 
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
+    /* Hide the images by default */
+    .mySlides {
+    display: none;
+    }
 
 
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
+    /* Caption text */
+    .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    }
 
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
+    /* Number text (1/3 etc) */
+    .numbertext {
+    color: #f2f2f2;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+    }
 
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
+    /* The dots/bullets/indicators */
+    .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    }
 
-.active, .dot:hover {
-  background-color: #717171;
-}
+    .active, .dot:hover {
+    background-color: #717171;
+    }
 
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
+    /* Fading animation */
+    .fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+    }
 
-@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
+    @-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+    }
 
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
+    @keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+    }
 
-    
+    .container-fluid {
+    padding-right:0;
+    padding-left:0;
+    margin-right:0;
+    margin-left:0;
+    overflow-x: hidden;
+    object-fit: cover;
+    }
+    .row {
+    margin:0;
+    max-width:100%;
+    }
 </style>
 @endsection
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: #141621;">
     @foreach($Detail as $detailGame)
         <div class="row" style="background-color: #202433;height:130px;"></div>
         <div class="row" style="background-color: #202433;">
@@ -133,16 +142,16 @@
 
         <div class="row" style="background-color: #141621;">
             <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
-            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6">
+            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6" style="padding:0;">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12" style="padding:0;">
                         <div class="row mt-2">
                             <div class="col-2 col-sm-1 col-md-1 col-lg-1 col-xl-1 mb-2">
                                 <!-- <label class="pImgRateDetail"> -->
                                     <img style="height:100%;" src="{{asset('section/game_rate/'.$detailGame->RATED_ESRB.'.svg') }}" />
                                 <!-- </label> -->
                             </div>
-                            <div class="col-8 col-sm-7 col-md-8 col-lg-8 col-xl-8">
+                            <div class="col-8 col-sm-7 col-md-8 col-lg-8 col-xl-8" >
                                 <!-- <div class="pFontRateDetail"> -->
                                     @if(isset($CommentAll))
                                         <?php $i = 0; ?>
@@ -167,17 +176,18 @@
                                 <!-- </div> -->
                             </div>
 
-                            <div class="col-12 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+                            <div class="col-12 col-sm-3 col-md-2 col-lg-2 col-xl-2" style="padding:0;">
                                 <div class="row">
                                 @guest
+                                <!-- ไม่ login -->
                                     <a href="{{ route('login-levelUp') }}">
-                                        <div class="col-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" >
                                             <button class="btnFollowDetail">
                                                 <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;"></p></label>
                                                 <label style="margin:0;"><p class="fontBTNDetail" >ติดตาม</p></label>
                                             </button>
-                                        </div>
-                                        <div class="col-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <!-- </div>
+                                        <div class="col-6 col-sm-12 col-md-12 col-lg-12 col-xl-12"> -->
                                             <button class="btnDownloadDetail">
                                                 <label style="margin:0;"><p class="icon-icon_download" style="cursor: pointer;"></p></label>
                                                 <label style="margin:0;"><p class="fontBTNDetail" >ดาวน์โหลด</p></label>
@@ -185,154 +195,156 @@
                                         </div>
                                     </a>
                                     @else
-                                        @if(isset($FollowDetail))
-                                            <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
-                                                @csrf
-                                                <div class="col-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <button class="btnFollowingDetail">
-                                                        <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;"></p></label>
-                                                        <label style="margin:0;"><p class="fontBTNDetail-wh" >กำลังติดตาม</p></label>
-                                                        <input type="hidden" name="submit" value="submit">
-                                                        <input type="hidden" name="FOLLOW_ID" value="{{ $FollowDetail->FOLLOW_ID }}">
-                                                    </button>
-                                                </div>
-                                            </form>
-                                            @if(isset($Download))
-                                                <div class="col-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <button class="btnDownloaded">
-                                                        <label style="margin:0;"><p class="icon-download_after" style="cursor: pointer;"></p></label>
-                                                        <label style="margin:0;"><p class="fontBTNDetail-wh" >ดาวน์โหลดแล้ว</p></label>
-                                                    </button >
-                                                </div>
-                                                @if($detailGame->USER_ID == Auth::user()->id)
-                                                <div class="col-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <a href="#">
-                                                        <button class="btnUpdateDetail mt-1">
-                                                            <label style="margin:0;"><p class="icon-update_version" style="cursor:pointer;"></p></label>
-                                                            <label style="margin:0;"><p class="fontBTNDetail">อัพเดตเวอร์ชัน</p></label>
+                                        <div class="row">
+                                            @if(isset($FollowDetail))
+                                                <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="col-6 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                        <button class="btnFollowingDetail">
+                                                            <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;"></p></label>
+                                                            <label style="margin:0;"><p class="fontBTNDetail-wh" >กำลังติดตาม</p></label>
+                                                            <input type="hidden" name="submit" value="submit">
+                                                            <input type="hidden" name="FOLLOW_ID" value="{{ $FollowDetail->FOLLOW_ID }}">
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                                @if(isset($Download))
+                                                    <div class="col-6 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                        <button class="btnDownloaded">
+                                                            <label style="margin:0;"><p class="icon-download_after" style="cursor: pointer;"></p></label>
+                                                            <label style="margin:0;"><p class="fontBTNDetail-wh" >ดาวน์โหลดแล้ว</p></label>
                                                         </button >
-                                                    </a>
-                                                </div>
-                                                @elseif(Auth::user()->users_type == '3')
-                                                <div class="col-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <button data-toggle="modal" data-target="#myModal" class="btnSupportDetail">
-                                                        <label style="margin:0;"><p class="icon-support" style="cursor:pointer;"></p></label>
-                                                        <label style="margin:0;"><p class="fontBTNDetail">สนับสนุนเกม</p></label>
-                                                    </button >
-                                                </div>
+                                                    </div>
+                                                    @if($detailGame->USER_ID == Auth::user()->id)
+                                                    <div class="col-6 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                        <a href="#">
+                                                            <button class="btnUpdateDetail mt-1">
+                                                                <label style="margin:0;"><p class="icon-update_version" style="cursor:pointer;"></p></label>
+                                                                <label style="margin:0;"><p class="fontBTNDetail">อัพเดตเวอร์ชัน</p></label>
+                                                            </button >
+                                                        </a>
+                                                    </div>
+                                                    @elseif(Auth::user()->users_type == '3')
+                                                    <div class="col-6 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                        <button data-toggle="modal" data-target="#myModal" class="btnSupportDetail">
+                                                            <label style="margin:0;"><p class="icon-support" style="cursor:pointer;"></p></label>
+                                                            <label style="margin:0;"><p class="fontBTNDetail">สนับสนุนเกม</p></label>
+                                                        </button >
+                                                    </div>
+                                                    @endif
+                                                @else
+                                                    @if($detailGame->USER_ID == Auth::user()->id)
+                                                    <div class="col-6 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                        <a href="#">
+                                                            <button class="btnUpdateDetail mt-1">
+                                                                <label style="margin:0;"><p class="icon-update_version" style="cursor:pointer;"></p></label>
+                                                                <label style="margin:0;"><p class="fontBTNDetail">อัพเดตเวอร์ชัน</p></label>
+                                                            </button >
+                                                        </a>
+                                                    </div>
+                                                    @elseif(Auth::user()->users_type == '3')
+                                                    <div class="col-6 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                        <button data-toggle="modal" data-target="#myModal" class="btnSupportDetail">
+                                                            <label style="margin:0;"><p class="icon-support" style="cursor:pointer;"></p></label>
+                                                            <label style="margin:0;"><p class="fontBTNDetail">สนับสนุนเกม</p></label>
+                                                        </button >
+                                                    </div>
+                                                    @else
+                                                        @if(Auth::user()->users_type == '1')
+                                                            <form action="{{ route('downloadGame') }}" method="POST" enctype="multipart/form-data">
+                                                                @csrf
+                                                                <div class="col-6 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                                    <button class="btnDownloadDetail2">
+                                                                        <label style="margin:0;"><p class="icon-icon_download" style="cursor: pointer;"></p></label>
+                                                                        <label style="margin:0;"><p class="fontBTNDetail" >ดาวน์โหลด</p></label>
+                                                                        <input type="hidden" name="submit" value="submit">
+                                                                        <input type="hidden" name="DOWNLOAD_DATE" value="{{ date('Y-m-d H:i:s') }}">  
+                                                                        <input type="hidden" name="GAME_ID" value="{{ $detailGame->GAME_ID }}">
+                                                                        <input type="hidden" name="GAME_FILE" value="{{ $detailGame->GAME_FILE }}">
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        @endif
+                                                        
+                                                    @endif
                                                 @endif
                                             @else
-                                                @if($detailGame->USER_ID == Auth::user()->id)
-                                                <div class="col-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <a href="#">
-                                                        <button class="btnUpdateDetail mt-1">
-                                                            <label style="margin:0;"><p class="icon-update_version" style="cursor:pointer;"></p></label>
-                                                            <label style="margin:0;"><p class="fontBTNDetail">อัพเดตเวอร์ชัน</p></label>
+                                                <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="col-6 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                        <button class="btnFollowDetail">
+                                                            <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;"></p></label>
+                                                            <label style="margin:0;"><p class="fontBTNDetail" >ติดตาม</p></label>
+                                                            <input type="hidden" name="submit" value="submit">
+                                                            <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                                                            <input type="hidden" name="GAME_ID" value="{{ $detailGame->GAME_ID }}">
+                                                            <input type="hidden" name="GAME_NAME" value="{{ $detailGame->GAME_NAME }}">
+                                                            <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
                                                         </button >
-                                                    </a>
-                                                </div>
-                                                @elseif(Auth::user()->users_type == '3')
-                                                <div class="col-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <button data-toggle="modal" data-target="#myModal" class="btnSupportDetail">
-                                                        <label style="margin:0;"><p class="icon-support" style="cursor:pointer;"></p></label>
-                                                        <label style="margin:0;"><p class="fontBTNDetail">สนับสนุนเกม</p></label>
-                                                    </button >
-                                                </div>
-                                                @else
-                                                    @if(Auth::user()->users_type == '1')
-                                                        <form action="{{ route('downloadGame') }}" method="POST" enctype="multipart/form-data">
-                                                            @csrf
-                                                            <div class="col-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                                <button class="btnDownloadDetail2">
-                                                                    <label style="margin:0;"><p class="icon-icon_download" style="cursor: pointer;"></p></label>
-                                                                    <label style="margin:0;"><p class="fontBTNDetail" >ดาวน์โหลด</p></label>
-                                                                    <input type="hidden" name="submit" value="submit">
-                                                                    <input type="hidden" name="DOWNLOAD_DATE" value="{{ date('Y-m-d H:i:s') }}">  
-                                                                    <input type="hidden" name="GAME_ID" value="{{ $detailGame->GAME_ID }}">
-                                                                    <input type="hidden" name="GAME_FILE" value="{{ $detailGame->GAME_FILE }}">
-                                                                </button>
-                                                            </div>
-                                                        </form>
+                                                    </div>
+                                                </form>
+                                                @if(isset($Download))
+                                                    <div class="col-6 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                        <button class="btnDownloaded">
+                                                            <label style="margin:0;"><p class="icon-download_after" style="cursor: pointer;"></p></label>
+                                                            <label style="margin:0;"><p class="fontBTNDetail-wh" >ดาวน์โหลดแล้ว</p></label>
+                                                        </button >
+                                                    </div>
+                                                    @if($detailGame->USER_ID == Auth::user()->id)
+                                                    <div class="col-6 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                        <a href="#">
+                                                            <button class="btnUpdateDetail mt-1">
+                                                                <label style="margin:0;"><p class="icon-update_version" style="cursor:pointer;"></p></label>
+                                                                <label style="margin:0;"><p class="fontBTNDetail">อัพเดตเวอร์ชัน</p></label>
+                                                            </button >
+                                                        </a>
+                                                    </div>
+                                                    @elseif(Auth::user()->users_type == '3')
+                                                    <div class="col-6 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                        <button data-toggle="modal" data-target="#myModal" class="btnSupportDetail">
+                                                            <label style="margin:0;"><p class="icon-support" style="cursor:pointer;"></p></label>
+                                                            <label style="margin:0;"><p class="fontBTNDetail">สนับสนุนเกม</p></label>
+                                                        </button >
+                                                    </div>
                                                     @endif
-                                                    
+                                                @else
+                                                    @if($detailGame->USER_ID == Auth::user()->id)
+                                                    <div class="col-6 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                        <a href="#">
+                                                            <button class="btnUpdateDetail mt-1">
+                                                                <label style="margin:0;"><p class="icon-update_version" style="cursor:pointer;"></p></label>
+                                                                <label style="margin:0;"><p class="fontBTNDetail">อัพเดตเวอร์ชัน</p></label>
+                                                            </button >
+                                                        </a>
+                                                    </div>
+                                                    @elseif(Auth::user()->users_type == '3')
+                                                    <div class="col-6 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                        <button data-toggle="modal" data-target="#myModal" class="btnSupportDetail">
+                                                            <label style="margin:0;"><p class="icon-support" style="cursor:pointer;"></p></label>
+                                                            <label style="margin:0;"><p class="fontBTNDetail">สนับสนุนเกม</p></label>
+                                                        </button >
+                                                    </div>
+                                                    @else
+                                                        @if(Auth::user()->users_type == '1')
+                                                            <form action="{{ route('downloadGame') }}" method="POST" enctype="multipart/form-data">
+                                                                @csrf
+                                                                <div class="col-6 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                                    <button class="btnDownloadDetail">
+                                                                        <label style="margin:0;"><p class="icon-icon_download" style="cursor: pointer;"></p></label>
+                                                                        <label style="margin:0;"><p class="fontBTNDetail" >ดาวน์โหลด</p></label>
+                                                                        <input type="hidden" name="submit" value="submit">
+                                                                        <input type="hidden" name="DOWNLOAD_DATE" value="{{ date('Y-m-d H:i:s') }}">  
+                                                                        <input type="hidden" name="GAME_ID" value="{{ $detailGame->GAME_ID }}">
+                                                                        <input type="hidden" name="GAME_FILE" value="{{ $detailGame->GAME_FILE }}">
+                                                                    </button >
+                                                                </div>
+                                                            </form>
+                                                        @endif
+                                                        
+                                                    @endif
                                                 @endif
                                             @endif
-                                        @else
-                                            <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
-                                                @csrf
-                                                <div class="col-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <button class="btnFollowDetail">
-                                                        <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;"></p></label>
-                                                        <label style="margin:0;"><p class="fontBTNDetail" >ติดตาม</p></label>
-                                                        <input type="hidden" name="submit" value="submit">
-                                                        <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
-                                                        <input type="hidden" name="GAME_ID" value="{{ $detailGame->GAME_ID }}">
-                                                        <input type="hidden" name="GAME_NAME" value="{{ $detailGame->GAME_NAME }}">
-                                                        <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                                                    </button >
-                                                </div>
-                                            </form>
-                                            @if(isset($Download))
-                                                <div class="col-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <button class="btnDownloaded">
-                                                        <label style="margin:0;"><p class="icon-download_after" style="cursor: pointer;"></p></label>
-                                                        <label style="margin:0;"><p class="fontBTNDetail-wh" >ดาวน์โหลดแล้ว</p></label>
-                                                    </button >
-                                                </div>
-                                                @if($detailGame->USER_ID == Auth::user()->id)
-                                                <div class="col-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <a href="#">
-                                                        <button class="btnUpdateDetail mt-1">
-                                                            <label style="margin:0;"><p class="icon-update_version" style="cursor:pointer;"></p></label>
-                                                            <label style="margin:0;"><p class="fontBTNDetail">อัพเดตเวอร์ชัน</p></label>
-                                                        </button >
-                                                    </a>
-                                                </div>
-                                                @elseif(Auth::user()->users_type == '3')
-                                                <div class="col-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <button data-toggle="modal" data-target="#myModal" class="btnSupportDetail">
-                                                        <label style="margin:0;"><p class="icon-support" style="cursor:pointer;"></p></label>
-                                                        <label style="margin:0;"><p class="fontBTNDetail">สนับสนุนเกม</p></label>
-                                                    </button >
-                                                </div>
-                                                @endif
-                                            @else
-                                                @if($detailGame->USER_ID == Auth::user()->id)
-                                                <div class="col-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <a href="#">
-                                                        <button class="btnUpdateDetail mt-1">
-                                                            <label style="margin:0;"><p class="icon-update_version" style="cursor:pointer;"></p></label>
-                                                            <label style="margin:0;"><p class="fontBTNDetail">อัพเดตเวอร์ชัน</p></label>
-                                                        </button >
-                                                    </a>
-                                                </div>
-                                                @elseif(Auth::user()->users_type == '3')
-                                                <div class="col-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <button data-toggle="modal" data-target="#myModal" class="btnSupportDetail">
-                                                        <label style="margin:0;"><p class="icon-support" style="cursor:pointer;"></p></label>
-                                                        <label style="margin:0;"><p class="fontBTNDetail">สนับสนุนเกม</p></label>
-                                                    </button >
-                                                </div>
-                                                @else
-                                                    @if(Auth::user()->users_type == '1')
-                                                        <form action="{{ route('downloadGame') }}" method="POST" enctype="multipart/form-data">
-                                                            @csrf
-                                                            <div class="col-3 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                                <button class="btnDownloadDetail">
-                                                                    <label style="margin:0;"><p class="icon-icon_download" style="cursor: pointer;"></p></label>
-                                                                    <label style="margin:0;"><p class="fontBTNDetail" >ดาวน์โหลด</p></label>
-                                                                    <input type="hidden" name="submit" value="submit">
-                                                                    <input type="hidden" name="DOWNLOAD_DATE" value="{{ date('Y-m-d H:i:s') }}">  
-                                                                    <input type="hidden" name="GAME_ID" value="{{ $detailGame->GAME_ID }}">
-                                                                    <input type="hidden" name="GAME_FILE" value="{{ $detailGame->GAME_FILE }}">
-                                                                </button >
-                                                            </div>
-                                                        </form>
-                                                    @endif
-                                                    
-                                                @endif
-                                            @endif
-                                        @endif
+                                        </div>
                                     @endguest
                                 </div>
                             </div>
@@ -455,7 +467,7 @@
             </div>
         </div>
     </div>
-
+    
     <div class="row pt-3 " style="background-color: #141621;">
         <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3 "></div>
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6 commentArea pl-4">
@@ -675,7 +687,8 @@
         @endif
     @endif
 
-    <div class="row pt-4" style="background-color: #141621;">
+    <!-- เกมใกล้เคียง -->
+    <!-- <div class="row pt-4" style="background-color: #141621;">
         <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6">
             <div class="row px-2">
@@ -691,19 +704,19 @@
             </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-2 col-xl-3"></div>
-    </div>
+    </div> -->
 
-    <div class="container-fluid pb-3 " style="background-color: #141621;">
+    <!-- <div class="row pb-3 " style="background-color: #141621;">
         <div class="owl-carousel" id="owl-demo" style="background-color: #141621;">
             <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
                     <span class="desc">
-                            <!-- <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
+                            <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
                                 <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
                                 <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
-                            </button> -->
+                            </button>
                             <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
                                 <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
                                 <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
@@ -720,16 +733,16 @@
             <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game2.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
                     <span class="desc">
                             <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
                                 <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
                                 <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
                             </button>
-                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                            <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
                                 <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
                                 <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
-                            </button > -->
+                            </button >
                         <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
                         <div class="game_name">
                             <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
@@ -742,16 +755,16 @@
             <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game3.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
                     <span class="desc">
                             <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
                                 <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
                                 <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
                             </button>
-                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                            <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
                                 <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
                                 <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
-                            </button > -->
+                            </button >
                         <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
                         <div class="game_name">
                             <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
@@ -764,16 +777,16 @@
             <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game4.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
                     <span class="desc">
                             <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
                                 <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
                                 <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
                             </button>
-                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                            <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
                                 <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
                                 <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
-                            </button > -->
+                            </button >
                         <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
                         <div class="game_name">
                             <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
@@ -786,16 +799,16 @@
             <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game5.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
                     <span class="desc">
                             <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
                                 <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
                                 <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
                             </button>
-                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                            <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
                                 <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
                                 <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
-                            </button > -->
+                            </button >
                         <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
                         <div class="game_name">
                             <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
@@ -808,16 +821,16 @@
             <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game6.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
                     <span class="desc">
                             <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
                                 <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
                                 <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
                             </button>
-                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                            <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
                                 <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
                                 <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
-                            </button > -->
+                            </button >
                         <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
                         <div class="game_name">
                             <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
@@ -830,104 +843,16 @@
             <div class="item imgteaser" style="background-color: #141621;">
                 <a>
                     <img class="game_4" src="{{asset('section/picture_game/game7.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
+                    <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div>
                     <span class="desc">
                             <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
                                 <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
                                 <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
                             </button>
-                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
+                            <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
                                 <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
                                 <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
-                            </button > -->
-                        <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
-                            <label style="margin:0;"><p style="margin:0;">Discrimination • Online</p></label>
-                        </div>
-                    </span>
-                </a>
-            </div>
-
-            <div class="item imgteaser" style="background-color: #141621;">
-                <a>
-                    <img class="game_4" src="{{asset('section/picture_game/game8.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
-                    <span class="desc">
-                            <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
-                                <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
-                                <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
-                            </button>
-                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
-                                <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
-                                <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
-                            </button > -->
-                        <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
-                            <label style="margin:0;"><p style="margin:0;">Discrimination • Online</p></label>
-                        </div>
-                    </span>
-                </a>
-            </div>
-
-            <div class="item imgteaser" style="background-color: #141621;">
-                <a>
-                    <img class="game_4" src="{{asset('section/picture_game/game9.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
-                    <span class="desc">
-                            <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
-                                <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
-                                <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
-                            </button>
-                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
-                                <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
-                                <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
-                            </button > -->
-                        <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
-                            <label style="margin:0;"><p style="margin:0;">Discrimination • Online</p></label>
-                        </div>
-                    </span>
-                </a>
-            </div>
-
-            <div class="item imgteaser" style="background-color: #141621;">
-                <a>
-                    <img class="game_4" src="{{asset('section/picture_game/game10.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
-                    <span class="desc">
-                            <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
-                                <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
-                                <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
-                            </button>
-                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
-                                <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
-                                <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
-                            </button > -->
-                        <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
-                        <div class="game_name">
-                            <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
-                            <label style="margin:0;"><p style="margin:0;">Discrimination • Online</p></label>
-                        </div>
-                    </span>
-                </a>
-            </div>
-
-            <div class="item imgteaser" style="background-color: #141621;">
-                <a>
-                    <img class="game_4" src="{{asset('section/picture_game/game11.png') }}" />
-                    <!-- <div class="btn following"><span class="icon-follow_wh"></span><b style="font-family:myfont; color: #fff;" class="download">กำลังติดตาม</b></div> -->
-                    <span class="desc">
-                            <button class="btnFollow" data-toggle="tooltip" data-placement="bottom" title="ติดตาม" >
-                                <label style="margin:0;"><p class="icon-follow_red" style="cursor: pointer;padding-left:10px;"></p></label>
-                                <label style="margin:0;"><p class="fontBTNfollow" style="margin:0;">ติดตาม</p></label>
-                            </button>
-                            <!-- <button class="btnFollowing" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม">
-                                <label style="margin:0;"><p class="icon-follow_wh" style="cursor: pointer;padding-left:5px;"></p></label>
-                                <label style="margin:0;"><p class="fontBTNfollowing">กำลังติดตาม</p></label>
-                            </button > -->
+                            </button >
                         <img class="rate_pic" style="width:40px;" src="{{asset('section/game_rate/rate.svg') }}" />
                         <div class="game_name">
                             <label style="margin:0;"><p style="margin:0;font-weight:900;">Maneater</p></label><br>
@@ -937,7 +862,7 @@
                 </a>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="modal fade mymodal" id="myModal" role="dialog">
         <div class="modal-dialog modal-lg modal-dialog-centered">

@@ -25,6 +25,13 @@
         @yield('style')
     </head>
 
+    <style>
+        .img_logo{ /**/
+        width:95%;
+        margin-left: 15px;
+        margin-top: 0px;
+        }
+    </style>
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
         <div id="app" class="site-wrap active">
             <div class="site-mobile-menu site-navbar-target">
@@ -118,7 +125,7 @@
                     <div class="col-7 col-sm-8 col-md-8 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"></div>
                     <div class="col-2 col-sm-2 col-md-1 d-inline-block d-lg-none d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">
                         <a href="#" class="site-menu-toggle js-menu-toggle text-center">
-                            <span class="icon-menu h6 menu1 mr-2"></span>
+                            <span class="icon-menu h6 menu1 ml-2"></span>
                         </a>
                     </div>
                 </div>
@@ -136,8 +143,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="row mt-4 pl-4">
+                        <div class="col-12">
+                            <div class="row mt-4 pl-2">
                                 <div class="col-md-4 col-lg-4 col-xl-3">
                                     <div>
                                         <div><p class="fontAddressFooter"><a style="font-weight:800;">ที่อยู่ :</a> 8/1 ถนนบรมราชชนนี <br> 
