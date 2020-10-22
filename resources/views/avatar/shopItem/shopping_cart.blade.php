@@ -162,9 +162,10 @@
                         <div class="col-sm-8 d-inline-block d-xl-none d-md-none"></div>
                         <div class="col-lg-8 d-none d-lg-block d-xl-none"></div>
                         <div class="col-sm-4 col-md-3 col-lg-4 col-xl-2 text-right">
+                            <button class="btn-submit" name="submit" value="submit"><p style="margin:0;">ชำระเงิน</p></button>
                             <form action="{{route('shoppingCartPayment')}}" method="post">
                                 @csrf
-                                <button class="btn-submit-red" name="submit" value="submit"><p style="margin:0;">ชำระเงิน</p></button>
+                                <button class="btn-submit-red d-none" name="submit" value="submit"><p style="margin:0;">ชำระเงิน</p></button>
                                 <input type="hidden" name="itemList" id="data-checked">
                                 <input type="hidden" name="sumTotal" id="sumTotal">
                                 <input type="hidden" name="allTotal" id="allTotal">
@@ -273,6 +274,8 @@
                 var len = $("#general-content input[name='accept_01']:checked").length;
                 if(len>0){
                     $(".count-checked span").text(len);
+                    $('.btn-submit-red').removeClass('d-none');
+                    $('.btn-submit').addClass('d-none');
                     $.each($("input[name='accept_01']:checked"), function(){
                         favorite.push($(this).val());
                     });
@@ -291,6 +294,8 @@
                     document.querySelector('input#countChecked').value = len;
                 }else{
                     $(".count-checked span").text('0');
+                    $('.btn-submit-red').addClass('d-none');
+                    $('.btn-submit').removeClass('d-none');
                     $.each($("input[name='accept_01']:checked"), function(){
                         favorite.push($(this).val());
                     });

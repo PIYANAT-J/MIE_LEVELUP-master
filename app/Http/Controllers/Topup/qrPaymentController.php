@@ -18,11 +18,11 @@ class qrPaymentController extends Controller
     public function indexPayment(){
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        $payment = DB::table('qr_payments')->where('user_email', Auth::user()->email)->orderBy('id', 'desc')->get();
-        $transfer = DB::table('transfer_payments')->where('user_email', Auth::user()->email)->orderBy('id', 'desc')->get();
+        $payment = DB::table('qr_payments')->where([['user_email', Auth::user()->email], ['useType', 'wallet']])->orderBy('id', 'desc')->get();
+        $transfer = DB::table('transfer_payments')->where([['user_email', Auth::user()->email], ['useTransferType', 'wallet']])->orderBy('id', 'desc')->get();
 
-        $sumPayment = DB::table('qr_payments')->where('status', 'true')->where('user_email', Auth::user()->email)->get();
-        $sumTransfer = DB::table('transfer_payments')->where('transferStatus', 'อนุมัติแล้ว')->where('user_email', Auth::user()->email)->get();
+        $sumPayment = DB::table('qr_payments')->where([['status', 'true'], ['user_email', Auth::user()->email], ['useType', 'wallet']])->get();
+        $sumTransfer = DB::table('transfer_payments')->where([['transferStatus', 'อนุมัติแล้ว'], ['user_email', Auth::user()->email], ['useTransferType', 'wallet']])->get();
         $wallet = 0;
         foreach($sumTransfer as $sumtransfer){
             $wallet = $wallet+$sumtransfer->transferAmount;
@@ -38,6 +38,7 @@ class qrPaymentController extends Controller
         $qrpayment = new QrPayment();
         $qrpayment->user_id = Auth::user()->id;
         $qrpayment->user_email = Auth::user()->email;
+        $qrpayment->useType = "wallet";
         $qrpayment->qrType = "qr30";
         $qrpayment->paymentType = $request->paymentType;
         $qrpayment->amount = $request->amount;

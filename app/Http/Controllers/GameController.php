@@ -40,8 +40,44 @@ class GameController extends Controller
                                 ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
                                 ->select('games.*', 'comments.RATING')
                                 ->get();
-                // dd($Gamehot);
-                // return $Gamehot;
+
+                // $game_id = array();
+                // $Gamehot = [];
+                // foreach($GameList as $game){
+                //     if(in_array($game->GAME_ID, $game_id)){
+                //         // $Gamehot[] = $game->GAME_ID;
+                //         // dd("e");
+                        
+                //     }else{
+                //         $game_id[] = $game->GAME_ID;
+                //         if(in_array($game->GAME_ID, $game_id)){
+                //             array_push($Gamehot, ([
+                //                 'GAME_ID' => $game->GAME_ID,
+                //                 'GAME_NAME' => $game->GAME_NAME,
+                //                 'GAME_IMG_PROFILE' => $game->GAME_IMG_PROFILE,
+                //                 'GAME_DESCRIPTION' => $game->GAME_DESCRIPTION,
+                //                 'GAME_DESCRIPTION_FULL' => $game->GAME_DESCRIPTION_FULL,
+                //                 'GAME_STATUS' => $game->GAME_STATUS,
+                //                 'GAME_DATE' => $game->GAME_DATE,
+                //                 'GAME_EDIT_DATE' => $game->GAME_EDIT_DATE,
+                //                 'GAME_APPROVE_DATE' => $game->GAME_APPROVE_DATE,
+                //                 'GAME_FILE' => $game->GAME_FILE,
+                //                 'GAME_SIZE' => $game->GAME_SIZE,
+                //                 'GAME_VDO_LINK' => $game->GAME_VDO_LINK,
+                //                 'GAME_TYPE' => $game->GAME_TYPE,
+                //                 'GAME_PRICE' => $game->GAME_PRICE,
+                //                 'GAME_DISCOUNT' => $game->GAME_DISCOUNT,
+                //                 'GAME_COMMENT' => $game->GAME_COMMENT,
+                //                 'RATED_ESRB' => $game->RATED_ESRB,
+                //                 'RATED_B_L' => $game->RATED_B_L,
+                //                 'USER_ID' => $game->USER_ID,
+                //                 'USER_EMAIL' => $game->USER_EMAIL,
+                //                 'ADMIN_NAME' => $game->ADMIN_NAME,
+                //                 'RATING' => $game->RATING
+                //             ]));
+                //         }
+                //     }
+                // }
                 return view('welcome', compact('Games', 'Follows', 'GamesNew', 'CDownload', 'Com_count', 'CommentAll', 'guest_user', 'Gamehot'));
             }elseif(Auth::user()->users_type == '2'){
                 $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->first();
@@ -109,7 +145,49 @@ class GameController extends Controller
                                 ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
                                 ->select('games.*', 'comments.RATING')
                                 ->get();
-            // die('<pre>'. print_r($CommentAll, 1));
+        
+            // // $game_id = array();
+            // // $game_la = array();
+            // // $Gamehot = [];
+            // // foreach($GameList as $game){
+            // //     $game_id[] = $game->GAME_ID;
+            // //     if(array_search($game->GAME_ID, $game_id)){
+            // //         $game_la[] = $game->GAME_ID;
+            // //         // dd($game->GAME_ID);
+                    
+            // //     }else{
+            // //         $game_la[] = $game->GAME_ID;
+            // //         // dd("sss");
+            // //         // $game_id[] = $game->GAME_ID;
+            // //         // if(in_array($game->GAME_ID, $game_id)){
+            // //         //     array_push($Gamehot, ([
+            // //         //         'GAME_ID' => $game->GAME_ID,
+            // //         //         'GAME_NAME' => $game->GAME_NAME,
+            // //         //         'GAME_IMG_PROFILE' => $game->GAME_IMG_PROFILE,
+            // //         //         'GAME_DESCRIPTION' => $game->GAME_DESCRIPTION,
+            // //         //         'GAME_DESCRIPTION_FULL' => $game->GAME_DESCRIPTION_FULL,
+            // //         //         'GAME_STATUS' => $game->GAME_STATUS,
+            // //         //         'GAME_DATE' => $game->GAME_DATE,
+            // //         //         'GAME_EDIT_DATE' => $game->GAME_EDIT_DATE,
+            // //         //         'GAME_APPROVE_DATE' => $game->GAME_APPROVE_DATE,
+            // //         //         'GAME_FILE' => $game->GAME_FILE,
+            // //         //         'GAME_SIZE' => $game->GAME_SIZE,
+            // //         //         'GAME_VDO_LINK' => $game->GAME_VDO_LINK,
+            // //         //         'GAME_TYPE' => $game->GAME_TYPE,
+            // //         //         'GAME_PRICE' => $game->GAME_PRICE,
+            // //         //         'GAME_DISCOUNT' => $game->GAME_DISCOUNT,
+            // //         //         'GAME_COMMENT' => $game->GAME_COMMENT,
+            // //         //         'RATED_ESRB' => $game->RATED_ESRB,
+            // //         //         'RATED_B_L' => $game->RATED_B_L,
+            // //         //         'USER_ID' => $game->USER_ID,
+            // //         //         'USER_EMAIL' => $game->USER_EMAIL,
+            // //         //         'ADMIN_NAME' => $game->ADMIN_NAME,
+            // //         //         'RATING' => $game->RATING
+            // //         //     ]));
+            // //         // }
+            // //     }
+            // // }
+            // dd($GameList, count($GameList), $Com_count, $CommentAll, $Gamehot, $game_id, $game_la);
             return view('welcome', compact('Games', 'GamesNew', 'CDownload', 'Com_count', 'CommentAll', 'Gamehot'));
         }
         

@@ -15,6 +15,7 @@ class CreateTransferPaymentsTable extends Migration
     {
         Schema::create('transfer_payments', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('useTransferType')->collation('utf8_unicode_ci')->nullable();
             $table->double('transferAmount', 15, 4)->default(0);
             $table->string('transferNote', 255)->collation('utf8_unicode_ci')->nullable();
             $table->string('transferฺBank_name', 10)->collation('utf8_unicode_ci')->nullable();
