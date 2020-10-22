@@ -17,6 +17,7 @@ class CreateCreditPaymentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('credit_card')->collation('utf8_unicode_ci')->nullable();
             $table->string('paymentType')->collation('utf8_unicode_ci')->nullable();
+            $table->string('useType')->collation('utf8_unicode_ci')->nullable();
             $table->double('amount', 15, 4)->default(0);
             $table->char('note', 255)->collation('utf8_unicode_ci')->nullable();
             $table->string('bank_name', 10)->collation('utf8_unicode_ci')->nullable();

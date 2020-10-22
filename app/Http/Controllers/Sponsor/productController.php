@@ -79,7 +79,7 @@ class productController extends Controller
                             ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
                             ->get();
         $transeection = DB::table('transeection_sponshopping')->where([['USER_EMAIL', Auth::user()->email]])->orderBy('transeection_id', 'desc')->get();
-        $transfer = TransferPayment::where([['USER_EMAIL', Auth::user()->email], ['transferStatus', 'รอการอนุมัติ']])->orderBy('id', 'desc')->get();
+        $transfer = TransferPayment::where([['USER_EMAIL', Auth::user()->email], ['transferStatus', 'รอการอนุมัติ'], ['useTransferType', 'package']])->orderBy('id', 'desc')->get();
 
         $transfer_invoice = array();
         foreach($transfer as $transferList){
