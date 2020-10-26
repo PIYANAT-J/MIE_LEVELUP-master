@@ -77,4 +77,53 @@ class creditPaymentController extends Controller
             }
         }
     }
+
+    public function topupCredit(Request $request){
+
+        $invoice = "VISACREDIT".time().Auth::user()->id;
+
+        $credit_payments = new CreditPayment();
+        $credit_payments->paymentType = "VisaCredit";
+        $credit_payments->useType = "wallet";
+        $credit_payments->amount = $request->input('creditAmount');
+        $credit_payments->invoice = $invoice;
+        $credit_payments->user_id = Auth::user()->id;
+        $credit_payments->user_email = Auth::user()->email;
+        $credit_payments->save();
+
+        $total = number_format($request->input('creditAmount'), 2, '', '');
+
+        $pay_type = 'PACA';
+        $secure_key = '2MU3bSrnXhZ.UaMieWO8liyxrpWOQ3B-C8TR32xUs7e4A8wffY8V34FTHLL2eDvGMlyGGYENOCqUrKbkOqCleFkVHM6hDUeVwCBF-FUwcb4VNfgEzPU78owJGfGAuWp1M3H22tNyKc8ZbI7DuPHVXWsny65e50iGXnq.rTgZVIKPj1ue2E5d7q092FxxFkA0WzgIkkObV7knUnRHI5vPRxHCuVGlnj4qLIjVNsq2E5vvXETAUX.5SfwzaAj7H8CcnmLy8Kki5vv5fHzCnnezLQ0mJOAbI1UtDugPZUfFYGsxMRhmFXfMawErOZKlL-wLlSrYjQhwDDPvU-u1avfCglf__';
+        $site_cd = 'A0001165MK';
+
+        $hash_string  = $pay_type . $invoice . $total . $site_cd . $secure_key . Auth::user()->id;
+        $hash_data = hash('sha256', $hash_string);
+
+        // $data["transeection_price"] = $transeection->transeection_price;
+        // $data["transeection_invoice"] = $transeection_invoice;
+        $data["order_no"] = $invoice;
+        $data["user_id"] = Auth::user()->id;
+        $data["good_name"] = "wallet";
+        $data["trade_mony"] = $total;
+        $data["currency"] = "764";
+        $data["order_first_name"] = Auth::user()->name;
+        $data["order_email"] = Auth::user()->email;
+        $data["pay_type"] = $pay_type;
+        $data["site_cd"] = $site_cd;
+        $data["hash_data"] = $hash_data;
+
+        return response()->json([
+            'order_no'=>$data["order_no"], 
+            'user_id'=>$data["user_id"], 
+            'currency'=>$data["currency"],
+            'good_name'=>$data["good_name"], 
+            'trade_mony'=>$data["trade_mony"], 
+            'order_first_name'=>$data["order_first_name"], 
+            'order_email'=>$data["order_email"], 
+            'pay_type'=>$data["pay_type"], 
+            'site_cd'=>$data["site_cd"], 
+            'hash_data'=>$data["hash_data"],
+        ]);
+    }
 }
