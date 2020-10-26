@@ -179,7 +179,7 @@
                                             @endif
                                         @endforeach
                                     @else
-                                        <p>กรุณาเพิ่มที่อยู่</p>
+                                        <p style="margin:0;color:#fff;" class="ml-2">กรุณาเพิ่มที่อยู่</p>
                                     @endif
                                 </div>
                             </div>
@@ -266,7 +266,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <!-- <div class="col-12">
                                         <p class="ml-2" style="font-weight:800;margin:0;color:#fff;">รายการรอชำระ</p>
                                         <div class="row pl-2 row200">
                                             <div class="col-12 pl-2">
@@ -277,7 +277,7 @@
                                                 </label>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
 
@@ -446,7 +446,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <!-- <div class="col-12">
                                         <p style="margin:0;font-weight:800;color:#fff;">รายการรอการแจ้งโอน</p>
                                         <div class="row row200">
                                             <div class="col-12 ">
@@ -456,10 +456,10 @@
                                                     </a>
                                                     <label class="bgOrange"><p style="margin:0;">รออนุมัติ</p></label> --}}
                                                     {{-- <a href="{{ route('SuccessfulPayment') }}"> --}}
-                                                        <!-- <label class="bgGreen"><p style="margin:0;">อนุมัติแล้ว</p></label> -->
-                                                    <!-- </a> -->
-                                                    <!-- <label><p style="margin:0;color:#fff;"> ฿6000 ธนาคารกรุงเทพ</p></label>
-                                                    <label><p style="margin:0;color:#ce0005;"> ควรชำระก่อน 10/10/20</p></label> -->
+                                                        <label class="bgGreen"><p style="margin:0;">อนุมัติแล้ว</p></label>
+                                                    </a>
+                                                    <label><p style="margin:0;color:#fff;"> ฿6000 ธนาคารกรุงเทพ</p></label>
+                                                    <label><p style="margin:0;color:#ce0005;"> ควรชำระก่อน 10/10/20</p></label>
                                                     @if(isset($transfer))
                                                         @if($transfer != null)
                                                             @if($transfer->transferStatus == "ยืนยันการโอน")
@@ -490,14 +490,14 @@
                                                             @elseif($transfer->transferStatus == "อนุมัติแล้ว")
                                                                 {{-- <a href="{{ route('SuccessfulPayment') }}"> --}}
                                                                     <label class="bgGreen p">อนุมัติแล้ว</label>
-                                                                <!-- </a> -->
+                                                                </a>
                                                             @endif
                                                         @endif
                                                     @endif
                                                 </label>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
 
@@ -1545,10 +1545,10 @@
 
 
 <script>
-$('.text-clear').on('click', function (e) {
-  e.preventDefault();
-  $(this).prev('.text-box').val('');
-});
+    $('.text-clear').on('click', function (e) {
+    e.preventDefault();
+    $(this).prev('.text-box').val('');
+    });
 </script>
 
 <script>
@@ -1628,14 +1628,14 @@ $('.text-clear').on('click', function (e) {
 </script>
 
 <script>
-function copyToClipboard() {
+    function copyToClipboard() {
 
-var inputElement=document.getElementById('copy-text');
-inputElement.select();
-document.execCommand('copy');
-//   alert("Copied to clipboard");
+    var inputElement=document.getElementById('copy-text');
+    inputElement.select();
+    document.execCommand('copy');
+    //   alert("Copied to clipboard");
 
-}
+    }
 </script>
 
 <script>
