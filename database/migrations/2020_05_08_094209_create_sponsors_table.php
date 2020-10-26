@@ -20,7 +20,7 @@ class CreateSponsorsTable extends Migration
             $table->string('SPON_IMG')->collation('utf8_unicode_ci')->default('No_Img.jpg');
             $table->date('SPON_BIRTHDAY')->nullable();
             $table->integer('SPON_AGE')->nullable();
-            $table->integer('taxID')->nullable();
+            $table->string('taxID')->nullable();
             $table->set('SPON_GENDER', ['Select','Men', 'Women'])->collation('utf8_unicode_ci')->nullable();
             $table->text('SPON_ADDRESS')->collation('utf8_unicode_ci')->nullable();
             $table->string('province')->collation('utf8_unicode_ci')->nullable();
