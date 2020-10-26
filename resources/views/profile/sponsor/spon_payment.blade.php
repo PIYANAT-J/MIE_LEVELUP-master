@@ -392,105 +392,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- <div class="col-12">
-                            <p class="ml-2" style="font-weight:800;margin:0;">รายการรอการแจ้งโอน</p>
-                            <div class="row200">
-                                <div class="row mt-2 pl-2 " style=" background-color: #ffffff">
-                                    <div class="col-4 pl-2">
-                                        <label class="ml-2 bgT10ListBanking">
-                                            @if(isset($transfer))
-                                                @if($transfer != null)
-                                                    @if($transfer->transferStatus == "ยืนยันการโอน")
-                                                        @if(isset($package))
-                                                            <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2 d-flex align-items-center" style="padding : 0 0 0 15px">
-                                                                <a href="{{ route('SponsorTransfer', ['invoice' => encrypt($package->packageBuy_invoice)]) }}" style="width:100%">
-                                                                    <label class="bgTransfer">
-                                                                        <p  style="margin:0;">ชำระเงิน</p>
-                                                                    </label>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10 ">
-                                                                <label class="mr-2 p" style="line-height:0;"> ฿{{$package->packageBuy_amount}}
-                                                                    @if($transfer->transferฺBank_name == "bangkok")
-                                                                        ธนาคารกรุงเทพ
-                                                                    @elseif($transfer->transferฺBank_name == "ktc")
-                                                                        ธนาคารกรุงไทย
-                                                                    @elseif($transfer->transferฺBank_name == "kbank")
-                                                                        ธนาคารกสิกรไทย
-                                                                    @elseif($transfer->transferฺBank_name == "scb")
-                                                                        ธนาคารไทยพาณิชย์
-                                                                    @endif
-                                                                </label>
-                                                                @else
-                                                                    <a href="{{ route('SponsorTransfer', ['invoice' => encrypt($transeection->transeection_invoice)]) }} " style="width:100%">
-                                                                        <label class="bgTransfer">
-                                                                            <p style="margin:0;">ชำระเงิน</p>
-                                                                        </label>
-                                                                    </a>
-                                                                    <label class="mr-2 p" style="line-height:0;"> ฿{{$transeection->transeection_amount}}
-                                                                        @if($transfer->transferฺBank_name == "bangkok")
-                                                                            ธนาคารกรุงเทพ
-                                                                        @elseif($transfer->transferฺBank_name == "ktc")
-                                                                            ธนาคารกรุงไทย
-                                                                        @elseif($transfer->transferฺBank_name == "kbank")
-                                                                            ธนาคารกสิกรไทย
-                                                                        @elseif($transfer->transferฺBank_name == "scb")
-                                                                            ธนาคารไทยพาณิชย์
-                                                                        @endif
-                                                                    </label>
-                                                                @endif
-                                                                    <?php
-                                                                        $start = explode("-",$transfer->create_at);
-                                                                        $deadline = explode(" ",$start[2]);
-                                                                        $deadline1 = $deadline[0] + 1;
-                                                                    ?>
-                                                                    <label style="color:#ce0005;" class="p"> ควรชำระก่อน {{$start[0]}}/{{$start[1]}}/{{$deadline1}} {{$deadline[1]}}</label>
-                                                            </div> 
-                                                    @elseif($transfer->transferStatus == "รอการอนุมัติ")
-                                                        <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2 d-flex align-items-center" style="padding : 0 0 0 15px">
-                                                            <label class="bgOrange p">รออนุมัติ</label>
-                                                        </div>
-                                                        <div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10 ">
-                                                            <label class="mr-2 p" style="line-height:0;"> ฿{{$package->packageBuy_amount}}
-                                                                @if($transfer->transferฺBank_name == "bangkok")
-                                                                    ธนาคารกรุงเทพ
-                                                                @elseif($transfer->transferฺBank_name == "ktc")
-                                                                    ธนาคารกรุงไทย
-                                                                @elseif($transfer->transferฺBank_name == "kbank")
-                                                                    ธนาคารกสิกรไทย
-                                                                @elseif($transfer->transferฺBank_name == "scb")
-                                                                    ธนาคารไทยพาณิชย์
-                                                                @endif
-                                                            </label>
-                                                        </div>
-                                                    @elseif($transfer->transferStatus == "อนุมัติแล้ว")
-                                                        <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2 d-flex align-items-center" style="padding : 0 0 0 15px">
-                                                            {{-- <a href="{{ route('SponsorSuccessfulPayment') }}" style="width:100%;">
-                                                                <label class="bgGreen p">อนุมัติแล้ว</label>
-                                                            </a> --}}
-                                                        </div>
-                                                        <div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10 ">
-                                                            <label class="mr-2 p" style="line-height:0;"> ฿{{$package->packageBuy_amount}}
-                                                                @if($transfer->transferฺBank_name == "bangkok")
-                                                                    ธนาคารกรุงเทพ
-                                                                @elseif($transfer->transferฺBank_name == "ktc")
-                                                                    ธนาคารกรุงไทย
-                                                                @elseif($transfer->transferฺBank_name == "kbank")
-                                                                    ธนาคารกสิกรไทย
-                                                                @elseif($transfer->transferฺBank_name == "scb")
-                                                                    ธนาคารไทยพาณิชย์
-                                                                @endif
-                                                            </label>
-                                                        </div>
-                                                    @endif
-                                                @endif
-                                            @endif
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
 
@@ -624,7 +525,7 @@
                                         </form>
                                     @else
                                         @if($transeection->transeection_status == 'false')
-                                            <button class="btn-cancel" style="cursor:default">
+                                            <button class="btn-cancel-s" style="cursor:default">
                                                 <p style="margin:0">รอการชำระเงิน</p>
                                             </button>
                                         @endif
@@ -643,7 +544,7 @@
                                         </form>
                                     @else
                                         @if($transeection->transeection_status == 'false')
-                                            <button class="btn-cancel" style="cursor:default">
+                                            <button class="btn-cancel-s" style="cursor:default">
                                                 <p style="margin:0">รอการชำระเงิน</p>
                                             </button>
                                         @endif
