@@ -525,7 +525,7 @@
                                         </form>
                                     @else
                                         @if($transeection->transeection_status == 'false')
-                                            <button class="btn-cancel" style="cursor:default">
+                                            <button class="btn-cancel-s" style="cursor:default">
                                                 <p style="margin:0">รอการชำระเงิน</p>
                                             </button>
                                         @endif
@@ -544,7 +544,7 @@
                                         </form>
                                     @else
                                         @if($transeection->transeection_status == 'false')
-                                            <button class="btn-cancel" style="cursor:default">
+                                            <button class="btn-cancel-s" style="cursor:default">
                                                 <p style="margin:0">รอการชำระเงิน</p>
                                             </button>
                                         @endif

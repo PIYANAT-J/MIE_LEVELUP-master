@@ -8632,9 +8632,9 @@ input[type="checkbox"].switch_2{
   border: 1px solid #000;
   border-radius: 6px;
   object-fit: cover;
-  position: absolute;
+  /* position: absolute;
   top: 5px;
-  left: 5px;
+  left: 5px; */
 }
 
 .pImg{

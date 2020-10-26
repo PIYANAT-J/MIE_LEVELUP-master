@@ -17,7 +17,7 @@
                     <div id="budget" class="tab-pane active">
                         <div class="row">
                             <div class="col-6 pb-2"> 
-                                <h1 class="fontHeader">ตู้เกม (เกมเชล)</h1>
+                                <h1 class="fontHeader">รายการสนับสนุน</h1>
                             </div>
                             <div class="col-6 text-right"> 
                                 <select class="SelectWh p" name="version-select" id="version-select">
@@ -127,7 +127,7 @@
                     <div id="product" class="tab-pane">
                         <div class="row">
                             <div class="col-6 pb-2"> 
-                                <h1 class="fontHeader">ตู้เกม (เกมเชล)</h1>
+                                <h1 class="fontHeader">รายการสนับสนุน</h1>
                             </div>
                             <div class="col-6 text-right"> 
                                 <select class="SelectWh p" name="" id="">

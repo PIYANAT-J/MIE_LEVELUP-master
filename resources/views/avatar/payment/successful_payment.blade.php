@@ -69,7 +69,7 @@
                                         @if(in_array($shoppingList->item_id, $itemlist))
                                             @for($i=0;$i < count($itemlist);$i++)
                                                 @if($shoppingList->item_id == $itemlist[$i])
-                                                    <div class="row mx-2">
+                                                    <div class="row mx-2 mt-5">
                                                         <div class="col-7" style="padding:0;">
                                                             <label class="labelItem bgItem mr-2">
                                                                 <!-- <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" /> -->
@@ -157,10 +157,10 @@
                                                 @if($addressOn->addresses_status == "true")
                                                     <div class="row ml-2 mt-2">
                                                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
-                                                            <label class="font-payment-avatar">
+                                                            <label class="font-payment-avatar mr-2">
                                                                 <p style="margin:0;font-weight: 800;">ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</p>
                                                             </label>
-                                                            <label class="font-payment-avatar2 ml-2">
+                                                            <label class="font-payment-avatar2">
                                                                 <p style="margin:0;">{{Auth::user()->name}} {{Auth::user()->surname}} (5-1005-00148-76-6)
                                                                     @foreach($guest_user as $user)
                                                                         <br>(+66) {{$user->GUEST_USERS_TEL}}
@@ -169,10 +169,10 @@
                                                             </label>
                                                         </div>
                                                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
-                                                            <label class="font-payment-avatar">
+                                                            <label class="font-payment-avatar mr-2">
                                                                 <p style="margin:0;font-weight: 800;">ที่อยู่</p>
                                                             </label>
-                                                            <label class="font-payment-avatar3 ml-2">
+                                                            <label class="font-payment-avatar3">
                                                                 <p style="margin:0;">{{$addressOn->addresses}} {{$addressOn->district}} {{$addressOn->amphure}} {{$addressOn->province}} {{$addressOn->zipcode}}
                                                                 </p>
                                                             </label>
