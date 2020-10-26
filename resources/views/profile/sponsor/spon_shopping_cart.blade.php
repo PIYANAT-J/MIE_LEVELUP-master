@@ -53,10 +53,10 @@
 
                                 <div class="col-3 text-right align-self-center" style="padding:0;">
                                         @if($gameList->GAME_DISCOUNT != null)
-                                            <h4 style="margin:0;font-weight:800;">฿{{$gameList->sponsor_cart_price}}</h4>
+                                            <h4 style="margin:0;font-weight:800;">฿{{number_format($gameList->sponsor_cart_price)}}</h4>
                                             <p class="mr-2"><a style="color: #b2b2b2;text-decoration:line-through;">฿680 </a> (-{{$gameList->GAME_DISCOUNT}}%)</p>
                                         @else
-                                            <h4 style="margin:0;font-weight:800;">฿{{$gameList->sponsor_cart_price}}</h4>
+                                            <h4 style="margin:0;font-weight:800;">฿{{number_format($gameList->sponsor_cart_price)}}</h4>
                                         @endif
                                     </span>
                                 </div>
@@ -96,10 +96,10 @@
                             <label> รายการ )</label>
                             <label class="pl-3" id="total"><b class="font-price">฿0.00</b></label>
                         </p>
-                    
+                        <button class="btn-submit-s" name="submit" value="submit"><p style="margin:0;">ชำระเงิน</p></button>
                         <form action="{{route('sponShoppingCartPayment')}}" method="post">
                             @csrf
-                            <button class="btn-submit-red-s" name="submit" value="submit">
+                            <button class="btn-submit-red-s d-none" name="submit" value="submit">
                                 <p style="margin:0;">ชำระเงิน</p>
                                 <input type="hidden" name="sumTotal" id="sumTotal">
                                 <input type="hidden" name="gameId" id="data-checked">
@@ -210,19 +210,23 @@
         var len = $("#general-content input[name='accept_01']:checked").length;
         if(len>0){
             $("#count-checked").text(len);
+            $('.btn-submit-red-s').removeClass('d-none');
+            $('.btn-submit-s').addClass('d-none');
             $.each($("input[name='accept_01']:checked"), function(){
                 favorite.push($(this).val());
             });
             $("input[name='accept_01']:checked").each(function() {
                 total += parseFloat($(this).attr('data-price')) || 0;
             });
-            $('#total').html("฿"+total);
+            $('#total').html("฿"+new Intl.NumberFormat().format(total));
             document.querySelector('input#sumTotal').value = total;
             console.log(total);
             document.querySelector('input#data-checked').value = favorite.join(", ");
             console.log(favorite);
         }else{
             $("#count-checked").text('0');
+            $('.btn-submit-red-s').addClass('d-none');
+            $('.btn-submit-s').removeClass('d-none');
             $.each($("input[name='accept_01']:checked"), function(){
                 favorite.push($(this).val());
             });

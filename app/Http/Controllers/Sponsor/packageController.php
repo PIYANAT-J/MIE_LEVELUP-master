@@ -143,6 +143,9 @@ class packageController extends Controller
             $data = array("packageBuy_name"=>$packageBuy_name, "packageBuy_invoice"=>$packageBuy_invoice, "package_id"=>$package_id, 
                     "packageBuy_amount"=>$packageBuy_amount, "packageBuy_season"=>$packageBuy_season,"USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
             $value = Package::packageBuy($data);
+
+            DB::table('transeection_sponshopping')->insert(array("transeection_amount"=>$packageBuy_amount, "transeection_type"=>"qr", "transeection_invoice"=>$packageBuy_invoice,
+                "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL));
     
             return redirect(route('Sponsoribanking', ['invoice' => encrypt($qrpayment->invoice)]));
         }else{
@@ -300,6 +303,9 @@ class packageController extends Controller
                     $data = array("packageBuy_name"=>$packageBuy_name, "packageBuy_invoice"=>$packageBuy_invoice, "package_id"=>$package_id, 
                             "packageBuy_amount"=>$packageBuy_amount, "packageBuy_season"=>$packageBuy_season,"USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
                     $value = Package::packageBuy($data);
+
+                    DB::table('transeection_sponshopping')->insert(array("transeection_amount"=>$packageBuy_amount, "transeection_type"=>"qr", "transeection_invoice"=>$packageBuy_invoice,
+                            "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL));
 
                     return redirect(route('SponsorTransfer', ['invoice' => encrypt($transferInvoice)]));
                 }else{

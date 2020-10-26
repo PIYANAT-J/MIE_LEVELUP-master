@@ -101,16 +101,6 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- <div class="col-2 text-center"><span class="font-game-shelf" style="color:#000;">รายเกม</span></div>
-                                                                    <div class="col-2 text-center"><span class="font-game-shelf">289</span></div>
-                                                                    <div class="col-2 text-center">
-                                                                        @if($dayIf <= date("Y-m-d H:i"))
-                                                                            <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
-                                                                            <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
-                                                                        @else
-                                                                            <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
-                                                                        @endif
-                                                                    </div> -->
                                                                 </div>
                                                                 <div class="col-2 text-center"><p style="margin:0;">รายเกม</p></div>
                                                                 <div class="col-2 text-center"><p style="margin:0;">289</p></div>
@@ -121,11 +111,6 @@
                                                                     @else
                                                                         <p style="margin:0;">{{$deadline[1]}}, {{$deadline[0]}}</p>
                                                                     @endif
-                                                                    <!-- <span class="font-game-shelf" style="font-size:0.7em;">{{$deadline[1]}}, {{$deadline[0]}}</span><br>
-                                                                    <span class="font-game-shelf" style="font-size:0.7em;">{{$packageGameID->deadline}}</span> <br>
-                                                                    <span class="font-game-shelf" style="font-size:0.7em;">{{$dayIf}}</span> <br>
-                                                                    <span class="font-game-shelf" style="font-size:0.7em;">{{date("Y-m-d H:i")}}</span> <br>
-                                                                    <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span> -->
                                                                 </div>
                                                             </div>
                                                         @endif
@@ -133,26 +118,6 @@
                                                 @endforeach
                                             @endif
                                         @endforeach
-                                        <!-- <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                            <div class="col-6">
-                                                <div class="row">
-                                                    <div class="col-3"><img class="shelf-pic" src="{{asset('section/picture_game/game3.png') }}" /></div>
-                                                    <div class="col-9 font-game-shelf">
-                                                        <div>
-                                                            <span style="font-family:myfont1;color:#000;font-weight:800;">Time Lie</span></br>
-                                                            Online • Other</br>
-                                                            เวอร์ชั่น 1.03
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-2 text-center"><span class="font-game-shelf" style="color:#000;">แพ็กเกจ 1 </span></div>
-                                            <div class="col-2 text-center"><span class="font-game-shelf">289</span></div>
-                                            <div class="col-2 text-center">
-                                                <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span> <br>
-                                                <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
-                                            </div>
-                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -218,30 +183,6 @@
                                         </div>
                                     @endforeach
                                 @endif
-
-                                <!-- <div class="row mx-0 py-2 line2" style="font-family:myfont;font-size:1.2em;color:#000;">
-                                    <div class="col-6">
-                                        <div class="row">
-                                            <div class="col-3"><img class="shelf-pic" src="{{asset('section/product/p2.jfif') }}" /></div>
-                                            <div class="col-9 font-game-shelf">
-                                                <div>
-                                                    <span style="font-family:myfont;color:#000;">บะหมี่กึ่งสำเร็จรูปรสต้มยำกุ้งตรามาม่า</span> <br>
-                                                    คะแนนที่ใช้แลกสินค้า 250 พอยท์
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 text-center">
-                                        <span class="status-kyc3 px-2" style="font-size:0.8em;">รอการอนุมัติ</span>
-                                        <span class="status-kyc2 px-2" style="font-size:0.8em;">อนุมัติแล้ว</span>
-                                        <span class="status-kyc4 px-2" style="font-size:0.8em;">หมดอายุ</span>
-                                    </div>
-                                    <div class="col-2 text-center"><span class="font-game-shelf"> <label style="color:#000;">10</label>/300</span></div>
-                                    <div class="col-2 text-right">
-                                        <span class="font-game-shelf" style="font-size:0.7em;">12:50, 23/05/20</span>
-                                    </div>
-                                </div> -->
-                                
                             </div>
                         </div>
                     </div>

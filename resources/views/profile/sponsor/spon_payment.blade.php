@@ -215,7 +215,7 @@
                             </div>
                         </div>
 
-                        <div class="col-12">
+                        <!-- <div class="col-12">
                             <p class="ml-2" style="font-weight:800;margin:0;">รายการรอชำระ</p>
                             <div class="row200">
                                 <div class="row mt-2 pl-2 " style=" background-color: #ffffff">
@@ -231,7 +231,7 @@
                                     </div> 
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -393,12 +393,12 @@
                             </div>
                         </div>
 
-                        <div class="col-12">
+                        <!-- <div class="col-12">
                             <p class="ml-2" style="font-weight:800;margin:0;">รายการรอการแจ้งโอน</p>
                             <div class="row200">
                                 <div class="row mt-2 pl-2 " style=" background-color: #ffffff">
-                                    <!-- <div class="col-4 pl-2"> -->
-                                        <!-- <label class="ml-2 bgT10ListBanking"> -->
+                                    <div class="col-4 pl-2">
+                                        <label class="ml-2 bgT10ListBanking">
                                             @if(isset($transfer))
                                                 @if($transfer != null)
                                                     @if($transfer->transferStatus == "ยืนยันการโอน")
@@ -486,11 +486,11 @@
                                                     @endif
                                                 @endif
                                             @endif
-                                        <!-- </label> -->
-                                    <!-- </div> -->
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 

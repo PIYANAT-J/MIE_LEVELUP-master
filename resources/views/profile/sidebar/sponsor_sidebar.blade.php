@@ -60,7 +60,7 @@
             </a>
             <a href="{{ route('SponShelf') }}" style="width: 100%;">
                 <button class="btn-sidebar">
-                    <p style="margin: 0;"><i class="icon-game-shelf menuIcon"></i>ตู้เกม (เกมเชล)</p>
+                    <p style="margin: 0;"><i class="icon-game-shelf menuIcon"></i>รายการสนับสนุน</p>
                 </button>
             </a>
             <a href="{{ route('SponOrderList') }}" style="width: 100%;">
