@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 use App\TransferPayment;
 use App\Sponsors;
+use App\QrPayment;
 use Image;
 use File;
 use Auth;
@@ -62,13 +63,6 @@ class productController extends Controller
                                 ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
                                 ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
                                 ->get();
-            // dd($package);
-            // $packageGame = [];
-            // foreach($package as $packageID){
-            //     array_push($packageGame, ([$packageID->packageBuy_gameSpon]));
-            //     // $packageGame = json_decode($package->packageBuy_gameSpon);
-            // }
-            // dd($packageGame);
             return view('profile.game.sponlvp_shelf', compact('sponsor', 'product', 'game', 'package', 'countCart', 'transeection', 'allpackage'));
         }
     }
@@ -79,8 +73,8 @@ class productController extends Controller
                             ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
                             ->get();
         $transeection = DB::table('transeection_sponshopping')->where([['USER_EMAIL', Auth::user()->email]])->orderBy('transeection_id', 'desc')->get();
-        $transfer = TransferPayment::where([['USER_EMAIL', Auth::user()->email], ['transferStatus', 'รอการอนุมัติ'], ['useTransferType', 'package']])->orderBy('id', 'desc')->get();
-
+        $transfer = DB::table('transfer_payments')->where([['USER_EMAIL', Auth::user()->email], ['useTransferType', 'package'], ['transferStatus', 'รอการอนุมัติ']])->orderBy('id', 'desc')->get();
+        
         $transfer_invoice = array();
         foreach($transfer as $transferList){
             $transfer_invoice[] = $transferList->transferInvoice;

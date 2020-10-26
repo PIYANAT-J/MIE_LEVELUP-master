@@ -78,7 +78,7 @@
                                                                 <!-- </a> -->
                                                             @else
                                                                 <!-- ไปหน้าแจ้งชำระเงิน -->
-                                                                <a href="#" style="color:#000;">
+                                                                <a href="{{route('SponsorTransfer', ['invoice' => encrypt($transeectionList->transeection_invoice)])}}" style="color:#000;">
                                                                     <p style="margin:0;" class="status-transfer">แจ้งชำระเงิน</p>
                                                                 </a>
                                                             @endif

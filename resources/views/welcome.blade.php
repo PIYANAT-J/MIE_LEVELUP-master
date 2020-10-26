@@ -535,12 +535,16 @@
             </div>
         </div>
         <div class="owl-carousel " id="owl-demo3">
-            <?php 
+            {{-- <?php 
                 $game_id = array();
-            ?>
+                // $gameList = array();
+            ?> --}}
             @foreach($Gamehot as $gameHot)
-                <?php $game_id[] = $gameHot->GAME_ID;?>
-                @if(array_search($gameHot->GAME_ID, $game_id))
+                {{-- <?php 
+                    $game_id[] = $gameHot->GAME_ID;
+                    $gameList = array_unique($game_id);
+                ?>
+                @if(array_search($gameHot->GAME_ID, $gameList)) --}}
                     <div class="item imgteaser">
                         <a>
                             <img class="game_2" src="{{ asset('section/File_game/Profile_game/'.$gameHot->GAME_IMG_PROFILE) }}" />
@@ -611,7 +615,7 @@
                             </span>
                         </a>
                     </div>
-                @endif
+                {{-- @endif --}}
             @endforeach
         </div>
         @foreach($Gamehot as $gameHotID)
