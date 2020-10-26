@@ -74,23 +74,41 @@ class callback_creditController extends Controller
                     DB::table('shopping_cart')->where('shopping_cart_id', $shopping_id[$i])->update(['shopping_cart_status'=>"true"]);
 
                     Transeection_buyItem::where([['transeection_type', $transeection_item->transeection_type], ['transeection_status', 'false'], ['USER_EMAIL', $transeection_item->USER_EMAIL]])->delete();
-
+                }
+                Session::save();
+                header("Location: ".url()->to(route('SuccessfulPayment', ['invoice' => encrypt($order_no)])));
+                exit();
+            }else{
+                $type = CreditPayment::where('invoice', $order_no)->first();
+                if($type->useType == "wallet"){
+                    Session::save();
+                    header("Location: ".url()->to(route('UserTopup')));
+                    exit();
                 }
             }
-            Session::save();
-            header("Location: ".url()->to(route('SuccessfulPayment', ['invoice' => encrypt($order_no)])));
-            exit();
         }elseif($res_cd == "W999"){
+
             CreditPayment::where('invoice', $order_no)->update(array('status' => $res_cd, 'confirm_at' => date('Y-m-d H:i:s')));
 
             $transeection_item = Transeection_buyItem::where('transeection_invoice', $order_no)->first();
             if($transeection_item != null){
                 Transeection_buyItem::where('transeection_invoice', $order_no)->update(array('transeection_type' => null, 'transeection_invoice' => null));
+
+                Session::save();
+                header("Location: ".url()->to(route('Payment')));
+                exit();
+            }else{
+                $type = CreditPayment::where('invoice', $order_no)->first();
+                if($type->useType == "wallet"){
+                    Session::save();
+                    header("Location: ".url()->to(route('UserTopup')));
+                    exit();
+                }
             }
             // dd($transeection_item);
-            Session::save();
-            header("Location: ".url()->to(route('Payment')));
-            exit();
+            // Session::save();
+            // header("Location: ".url()->to(route('Payment')));
+            // exit();
         }
 
         // dd(url()->to(route('AdsSpon')));

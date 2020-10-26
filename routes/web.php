@@ -62,6 +62,7 @@ Route::get('/user_topup', 'Topup\qrPaymentController@indexPayment')->name('UserT
 Route::post('/user_topup/qrCode', 'Topup\qrPaymentController@mobilebanking')->name('QrPayment');
 Route::post('/user_topup/qrCode/callback', 'Topup\Call_back\Callback_scbController@callback')->name('callbackQr');
 Route::post('/user_topup/transfer', 'TransferController@transferPayment')->name('transferPayment');
+Route::post('/user_topup/credit', 'Topup\creditPaymentController@topupCredit')->name('creditPayment');
 
 Route::get('/user_change_password', 'Auth\ResetPasswordController@userPass')->name('userPsss');
 Route::post('/user_change_password/Reset', 'Auth\ResetPasswordController@passwordUserReset')->name('passwordUserReset');
