@@ -120,7 +120,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2">
-                                    <button name="submit" id="submit" value="submit" type="button" class="btn-submit">
+                                    <button name="submit" id="submit" value="submit" type="submit" class="btn-submit">
                                         <p style="margin:0;">ยืนยัน</p>
                                         <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
                                         <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">

@@ -153,21 +153,21 @@
     </div>
 </div>
 
-<div class="modal fade" id="popupmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="popupmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" role="document" >
         <div class="modal-content">
-            <div class="modal-header">
+            <!-- <div class="modal-header">
                 <div class="col-12 text-center" style="font-family:myfont1;color:#000;">แจ้งเตือน</div>
-                <button type="button" class="close btn-closeModal-header" data-dismiss="modal">
+                <button type="button" class="close btn-closeproduct" data-dismiss="modal">
                     <i class="icon-close_modal" style="font-size: 14px;"></i>
                 </button>
-            </div>
+            </div> -->
 
-            <div class="modal-body font-rate-modal">
+            <div class="modal-body" style="background-color: #edd0d5;border-radius: 8px;border:none;">
                 <div class="row px-3">
-                    <div class="col-lg-12 pb-1">
+                    <div class="col-12">
                         <div class="row">
-                            <label class="massagrbox1" style="text-align:center;">
+                            <label class="massagrbox1 p pt-2" style="text-align:center;">
                             @if(Session::has('product'))
                                 {{ Session::get('product') }}
                             @else
