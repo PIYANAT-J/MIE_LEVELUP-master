@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use DB;
 use Auth;
 
+use App\CreditPayment;
 use App\QrPayment;
 use DNS2D;
 
@@ -20,18 +21,23 @@ class qrPaymentController extends Controller
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
         $payment = DB::table('qr_payments')->where([['user_email', Auth::user()->email], ['useType', 'wallet']])->orderBy('id', 'desc')->get();
         $transfer = DB::table('transfer_payments')->where([['user_email', Auth::user()->email], ['useTransferType', 'wallet']])->orderBy('id', 'desc')->get();
-
-        $sumPayment = DB::table('qr_payments')->where([['status', 'true'], ['user_email', Auth::user()->email], ['useType', 'wallet']])->get();
-        $sumTransfer = DB::table('transfer_payments')->where([['transferStatus', 'อนุมัติแล้ว'], ['user_email', Auth::user()->email], ['useTransferType', 'wallet']])->get();
+        $credit = CreditPayment::where([['status', 'true'], ['user_email', Auth::user()->email], ['useType', 'wallet']])->get();
         $wallet = 0;
-        foreach($sumTransfer as $sumtransfer){
-            $wallet = $wallet+$sumtransfer->transferAmount;
+        foreach($transfer as $sumtransfer){
+            if($sumtransfer->transferStatus == "อนุมัติแล้ว"){
+                $wallet = $wallet+$sumtransfer->transferAmount;
+            }
         }
-        foreach($sumPayment as $sumpayment){
-            $wallet = $wallet+$sumpayment->amount;
+        foreach($payment as $sumpayment){
+            if($sumpayment->status == "true"){
+                $wallet = $wallet+$sumpayment->amount;
+            }
+        }
+        foreach($credit as $sumcredit){
+            $wallet = $wallet+$sumcredit->amount;
         }
 
-        return view('profile.topup.userlvp_topup', compact('guest_user', 'userKyc', 'payment', 'transfer', 'wallet'));
+        return view('profile.topup.userlvp_topup', compact('guest_user', 'userKyc', 'payment', 'transfer', 'credit', 'wallet'));
     }
 
     public function mobilebanking(Request $request){
