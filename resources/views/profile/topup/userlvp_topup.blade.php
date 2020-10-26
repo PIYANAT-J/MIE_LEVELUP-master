@@ -133,7 +133,7 @@
                                                         <div class="row">
                                                             <div class="col-12">
                                                                 <p style="margin:0;">หมายเลขคำร้อง</p>
-                                                                <p class="fontInvoice">{{ $PaymentList->qr_invoice }}</p>
+                                                                <p class="fontInvoice">{{ $PaymentList->invoice }}</p>
                                                             </div> 
                                                         </div>
                                                         <div class="row ">
@@ -424,7 +424,7 @@
                 </button>
             </div>
 
-            <div class="modal-body">
+            <!-- <div class="modal-body">
                 <div class="row">
                     <div class="col-12 mb-2">
                         <input type="text" class="input2 p pl-2" placeholder="หมายเลขบัตร" require></input>
@@ -457,9 +457,37 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn-submit" data-dismiss="modal" data-toggle="modal" data-target="#myModal3">
-                   <p style="margin:0;color:#ffffff;"> ยืนยัน</p>
-                </button>
+                <button type="button" class="btn-submit credit" data-dismiss="modal" data-toggle="modal" data-target="#myModal3"><p style="margin:0;color:#ffffff;"> ยืนยัน</p></button>
+                <input type="hidden" name="creditAmount" id="credit">
+            </div> -->
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 mb-2">
+                        <label><p style="color:#000;margin:0">จำนวนเงินที่ต้องชำระ</p></label>
+                        <input type="number" class="input2 p pl-2" placeholder="จำนวนเงินที่ต้องชำระ" id="creditM" readonly></input>
+                    </div>
+                </div>
+            </div>
+            <form class="VisaCreditTreePay d-none" action="https://paytest.treepay.co.th/total/hubInit.tp" method="post">
+                @csrf
+                <button class="btn-submit-red creditTree"><p style="margin:0;color:#fff;">ชำระเงิน</p></button>
+                <input type="hidden" name="order_no">
+                <input type="hidden" name="good_name">
+                <input type="hidden" name="trade_mony">
+                <input type="hidden" name="order_first_name">
+                <input type="hidden" name="order_email">
+                <input type="hidden" name="pay_type">
+                <input type="hidden" name="site_cd">
+                <input type="hidden" name="ret_url" value="{{route('CreditCallback')}}">
+                <input type="hidden" name="currency">
+                <input type="hidden" name="user_id">
+                <input type="hidden" name="hash_data">
+            </form>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-submit credit"><p style="margin:0;color:#ffffff;"> ยืนยัน</p></button>
+                <input type="hidden" name="creditAmount" id="credit">
             </div>
         </div>
     </div>
@@ -1001,12 +1029,8 @@ $(function () {
         document.querySelector('input#kbank').value = moneyTransfer
         document.querySelector('input#scb').value = moneyTransfer
         console.log('Error:', moneyTransfer);
-    })
-</script>
-<script>
-    document.querySelector('input[name="amount"]').addEventListener('keyup', (event)=>{
-        var creditTM = document.querySelector('input[name="amount"]').value
-        var moneyTM = creditTM
+
+        var moneyTM = creditTransfer
         document.querySelector('input#bangkokM').value = moneyTM
         document.querySelector('input#ktcM').value = moneyTM
         document.querySelector('input#kbankM').value = moneyTM
@@ -1014,16 +1038,21 @@ $(function () {
         console.log('Error:', moneyTM);
     })
 </script>
+<script>
+    document.querySelector('input[name="amount"]').addEventListener('keyup', (event)=>{
+        var credit = document.querySelector('input[name="amount"]').value
+        var money = credit
+        document.querySelector('input#credit').value = money
+        console.log('Error:', money);
+
+        var moneyM = credit
+        document.querySelector('input#creditM').value = moneyM
+        console.log('Error:', moneyM);
+    })
+</script>
 
 <script>
     $(document).ready(function(){
-        // $('#myModalSCB').DataTable({
-        //     processing: true,
-        //     serverSide: true,
-        //     ajax:{
-        //         url: "{{ route('UserTopup') }}",
-        //     }
-        // });
         $('#myModal_SCB').click(function(){
             $('#myModalSCB').modal('show')
         });
@@ -1057,6 +1086,45 @@ $(function () {
                     }
                 })
             }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        $(".btn-submit.credit").click(function(e) {
+            var btnThis = $(this);
+            // alert("ยืนยันการลบรายการ");
+            var creditAmount = $(this).parent().find('input[name="creditAmount"]').val();
+            // var paymentType = $(this).parent().find('input[name="paymentType"]').val();
+            // var transeection_id = $(this).parent().find('input[name="transeection_id"]').val();
+            // var submit = "submit";
+
+            // console.log(creditAmount);
+
+            $.ajax({
+                url: "{{route('creditPayment')}}",
+                type: 'POST',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    creditAmount:creditAmount,
+                },
+                success: function(response) {
+                    // console.log(response);
+                    $('form.VisaCreditTreePay input[name="order_no"]').val(response.order_no);
+                    $('form.VisaCreditTreePay input[name="good_name"]').val(response.good_name);
+                    $('form.VisaCreditTreePay input[name="user_id"]').val(response.user_id);
+                    $('form.VisaCreditTreePay input[name="trade_mony"]').val(response.trade_mony);
+                    $('form.VisaCreditTreePay input[name="order_first_name"]').val(response.order_first_name);
+                    $('form.VisaCreditTreePay input[name="order_email"]').val(response.order_email);
+                    $('form.VisaCreditTreePay input[name="pay_type"]').val(response.pay_type);
+                    $('form.VisaCreditTreePay input[name="site_cd"]').val(response.site_cd);
+                    $('form.VisaCreditTreePay input[name="currency"]').val(response.currency);
+                    $('form.VisaCreditTreePay input[name="hash_data"]').val(response.hash_data);
+                    $('.btn-submit-red.creditTree').click();
+                },
+                error: function() {}
+            });
         });
     });
 </script>
