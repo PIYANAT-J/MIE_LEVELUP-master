@@ -73,7 +73,7 @@
                                                         <div class="col-5 col-sm-4 col-md-2 col-lg-3 col-xl-2 text-center align-self-center my-2">
                                                             @if(in_array($transeectionList->transeection_invoice, $transfer_invoice))
                                                                 <!-- รอการอนุมัติ -->
-                                                                {{-- <a href="{{route('PaymentTransfer', ['invoice' => encrypt($transeectionList->transeection_invoice)])}}" style="color:#000;"> --}}
+                                                                {{-- <a href="{{route('SponsorTransfer', ['invoice' => encrypt($transeectionList->transeection_invoice)])}}" style="color:#000;"> --}}
                                                                 <p style="margin:0;" class="status-transfer2">รอการอนุมัติ</p>
                                                                 <!-- </a> -->
                                                             @else

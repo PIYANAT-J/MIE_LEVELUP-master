@@ -8,7 +8,7 @@
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 pt-3 pb-4" style="background-color:#141621; ">
             <div class="row mt-4" >
                     <div class="col-12 pt-2 " style="color:#fff;">
-                        <label>
+                        <!-- <label>
                             <a href="/avatar"class="avatar-link active">
                                 <h1 style="margin:0;">Avatar</h1>
                             </a>
@@ -31,7 +31,7 @@
                         </label>
                         <label>
                             <h1 style="margin: 0;" class="avatar-link"> > </h1>
-                        </label>
+                        </label> -->
                         <label>
                             <a class="avatar-link" >
                                 <h1 style="margin:0;">ชำระเงินสำเร็จ</h1>
@@ -71,7 +71,7 @@
                                                 @if($shoppingList->item_id == $itemlist[$i])
                                                     <div class="row mx-2">
                                                         <div class="col-7" style="padding:0;">
-                                                            <label class="labelItem bgItem">
+                                                            <label class="labelItem bgItem mr-2">
                                                                 <!-- <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" /> -->
                                                                 @if($shoppingList->item_type == "clothes")
                                                                     @if($shoppingList->item_gender == "woman")
@@ -123,7 +123,7 @@
                                                                     <img class="picture2" src="{{asset('home/avatar/weapon/'.$shoppingList->item_img) }}">
                                                                 @endif
                                                             </label> 
-                                                            <label class="font-sale4 bgItem2 mt-2 ml-2">
+                                                            <label class="font-sale4 bgItem2 mt-2">
                                                                 <p style="margin:0;"> <a style="font-weight: 700;">{{$shoppingList->item_name}} ระดับ {{$shoppingList->item_level}} </a></br>
                                                                 {{$shoppingList->item_description}}</br>
                                                                 เลือกลงทุนได้ 3 Signal</p>
@@ -191,22 +191,22 @@
 
                                 <div class="row py-3" style="border-bottom:1px solid #455160">
                                     <div class="col-6 font-payment2"><p style="margin:0;font-weight:800;">ช่องทางการชำระเงิน</p></div>
-                                    <div class="col-6 text-right font-payment2">
+                                    <div class="col-6 text-right font-payment2" style="padding-left:0;">
                                         @if($transeection->transeection_type == "qr")
-                                            <p style="margin:0;">โมบายแบงค์กิ้ง ชื่อบัญชี {{Auth::user()->name}} {{Auth::user()->surname}}</p>
+                                            <p style="margin:0;">โมบายแบงค์กิ้ง <br> บัญชี {{Auth::user()->name}} {{Auth::user()->surname}}</p>
                                         @elseif($transeection->transeection_type == "Transfer")
-                                            <p style="margin:0;">โอนเงินธนาคาร ชื่อบัญชี {{Auth::user()->name}} {{Auth::user()->surname}}</p>
+                                            <p style="margin:0;">โอนเงินธนาคาร <br> บัญชี {{Auth::user()->name}} {{Auth::user()->surname}}</p>
                                         @elseif($transeection->transeection_type == "VisaCredit")
-                                            <p style="margin:0;">บัตรเครดิต/บัตรเดบิต ชื่อบัญชี {{Auth::user()->name}} {{Auth::user()->surname}}</p>
+                                            <p style="margin:0;">บัตรเครดิต/บัตรเดบิต <br> บัญชี {{Auth::user()->name}} {{Auth::user()->surname}}</p>
                                         @endif
                                     </div>
                                 </div>
                                 
-                                <div class="row mt-3 py-2 " style="background-color:#000;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
-                                    <div class="col-lg-12">
-                                        <div class="row mx-1 mt-3">
-                                            <div class="col-10"></div>
-                                            <div class="col-2 text-right" style="padding:0;">
+                                <div class="row" style="background-color:#000;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
+                                    <div class="col-12">
+                                        <div class="row my-2" style="padding-right:12px">
+                                            <div class="col-8 col-sm-10 col-md-10 col-lg-10 col-xl-10"></div>
+                                            <div class="col-4 col-sm-2 col-md-2 col-lg-2 col-xl-2 text-right" style="padding:0;">
                                                 <a href="{{route('Avatar')}}">
                                                     <button type="button" class="btn-submit">
                                                         <p style="margin:0;">ปิด</p>

@@ -57,7 +57,7 @@
 
 <div class="container-fluid">
     <div class="row" >
-        <div class="col-xl-6 d-none d-lg-block d-xl-block bgLogindark">
+        <div class="col-xl-6 d-none d-lg-block d-xl-block bgLogindark" >
             <div class="center-div text-center" style="background-color: #17202c;">
                 <img style="width:25%;" src="{{asset('home/logo/logo_lvp.svg') }}" />
                 <img class="my-3" style="max-width:100%;" src="{{asset('home/images/img_login.svg') }}" />
@@ -172,14 +172,16 @@
                                             <span id="MESSAGE"></span>
                                         </div> -->
 
-                                        <div class="col-lg-12 mt-3" style="padding-left:5px;">
+                                        <div class="col-12 mt-1" style="padding-left:5px;">
                                             <h5 style="color: #383838;font-weight:800;margin:0;">วิธีตั้งรหัสผ่าน</h5>
-                                            <h5 style="color: #383838;margin:0;" class="mt-2">
-                                                <!-- 1. รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร<br> -->
-                                                1. ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว <br>
-                                                2. ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว <br>
-                                                3. ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว <br>
-                                            </h5>
+                                            <div id="validator-output">
+                                                <h5 style="margin:0;color:#ce0005;">
+                                                    รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร<br>
+                                                    ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว <br>
+                                                    ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว <br>
+                                                    ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว (!@#$%?=*&)<br>
+                                                </h5>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -265,14 +267,16 @@
                                         <!-- <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
                                             <span id="MESSAGE-DEV"></span>
                                         </div> -->
-                                        <div class="col-12 mt-3" style="padding-left:5px;">
+                                        <div class="col-12 mt-1" style="padding-left:5px;">
                                             <h5 style="color: #383838;font-weight:800;margin:0;">วิธีตั้งรหัสผ่าน</h5>
-                                            <h5 style="color: #383838;margin:0;" class="mt-2">
-                                                <!-- 1. รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร<br> -->
-                                                1. ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว <br>
-                                                2. ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว <br>
-                                                3. ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว <br>
-                                            </h5>
+                                            <div id="validator-output-dev">
+                                                <h5 style="margin:0;color:#ce0005;">
+                                                    รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร<br>
+                                                    ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว <br>
+                                                    ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว <br>
+                                                    ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว (!@#$%?=*&)<br>
+                                                </h5>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -389,14 +393,16 @@
                                                     </label>
                                                 </div>
 
-                                                <div class="col-12 mt-3" style="padding-left:5px;">
+                                                <div class="col-12 mt-1" style="padding-left:5px;">
                                                     <h5 style="color: #383838;font-weight:800;margin:0;">วิธีตั้งรหัสผ่าน</h5>
-                                                    <h5 style="color: #383838;margin:0;" class="mt-2">
-                                                        <!-- 1. รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร<br> -->
-                                                        1. ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว <br>
-                                                        2. ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว <br>
-                                                        3. ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว <br>
-                                                    </h5>
+                                                    <div id="validator-output-spon">
+                                                        <h5 style="margin:0;color:#ce0005;">
+                                                            รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร<br>
+                                                            ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว <br>
+                                                            ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว <br>
+                                                            ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว (!@#$%?=*&)<br>
+                                                        </h5>
+                                                    </div>
                                                 </div>
                                                 <!-- <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
                                                     <span id="MESSAGE-SPON"></span>
@@ -473,14 +479,16 @@
                                                         <input id="password-confirm_spon2" type="password" name="password_confirmation" class="input1 p ml-2" autocomplete="new-password">
                                                     </label>
                                                 </div>
-                                                <div class="col-12 mt-3" style="padding-left:5px;">
+                                                <div class="col-12 mt-1" style="padding-left:5px;">
                                                     <h5 style="color: #383838;font-weight:800;margin:0;">วิธีตั้งรหัสผ่าน</h5>
-                                                    <h5 style="color: #383838;margin:0;" class="mt-2">
-                                                        <!-- 1. รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร<br> -->
-                                                        1. ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว <br>
-                                                        2. ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว <br>
-                                                        3. ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว <br>
-                                                    </h5>
+                                                    <div id="validator-output-spon2">
+                                                        <h5 style="margin:0;color:#ce0005;">
+                                                            รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร<br>
+                                                            ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว <br>
+                                                            ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว <br>
+                                                            ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว (!@#$%?=*&)<br>
+                                                        </h5>
+                                                    </div>
                                                 </div>
                                                 <!-- <div class="col-lg-6" style="padding:5px 3px 0px 3px;">
                                                     <span id="MESSAGE-SPON2"></span>
@@ -528,8 +536,13 @@
 <div>
 
 
-
+<style>
+    h5,.h5{
+        margin:0;
+    }
+</style>
 @endsection
+
 @section('script')
 
 <script>
@@ -563,5 +576,433 @@
     $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
     });
+</script>
+
+<!-- user -->
+<script>
+    $(function () {
+    $("#validator-output").realtimePasswordValidator({
+        debug: true,
+        input1: $("#password"),
+        input2: $("#password-confirm"),
+        validators: [
+        {
+            regexp: ".{8,}",
+            message: "<h5>รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร</h5>"
+        },
+        {
+            regexp: "[A-Z]",
+            message: "<h5>ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว</h5>"
+        },
+        {
+            regexp: "[0-9]",
+            message: "<h5>ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว</h5>"
+        },
+        {
+            regexp: ".*[!@#$%?=*&]",
+            message: "<h5>ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว (!@#$%?=*&)</h5>"
+        }
+        ],
+        ok: function (instance) {
+        console.log("ok");
+
+        $("#submit").removeAttr("disabled");
+        },
+        ko: function (instance) {
+        console.log("ko");
+        $("#submit").attr("disabled", "");
+        }
+    });
+    });
+
+    // plugin definition
+    (function ($, window, document, undefined) {
+    "use strict";
+    var pluginName = "realtimePasswordValidator",
+        defaults = {
+        debug: false
+        };
+    function Plugin(element, options) {
+        this.element = element;
+        this.settings = $.extend({}, defaults, options);
+        this._defaults = defaults;
+        this._name = pluginName;
+        this.init();
+    }
+
+    $.extend(Plugin.prototype, {
+        init: function () {
+        this.settings.input1.on("input", { self: this }, this.validateEvent);
+        this.settings.input2.on("input", { self: this }, this.validateEvent);
+        },
+
+        validateEvent: function (event) {
+        const self = event.data.self;
+        const messages = [];
+        let valid_count = 0;
+        $(self.element).empty();
+        $(self.settings.validators).each(function (index, validator) {
+            let valid = false;
+            if (validator.regexp)
+            valid = new RegExp(validator.regexp).test(self.settings.input1.val());
+            if (validator.compare)
+            valid = self.settings.input1.val() == $(self.settings.input2).val();
+            const message = $("<div>" + validator.message + "</div>");
+            message.addClass(valid ? "valid" : "invalid");
+            if (self.settings.input1.val().length > 0)
+            $(self.element).append(message);
+            if (valid) valid_count++;
+            if (this.debug)
+            console.log(
+                index,
+                self.settings.input1.val(),
+                validator.message,
+                valid
+            );
+        });
+        if (valid_count == self.settings.validators.length) {
+            if (self.settings.ok) self.settings.ok(self);
+        } else {
+            if (self.settings.ko) self.settings.ko(self);
+        }
+        if (this.debug)
+            console.log(
+            "valid",
+            valid_count,
+            "of",
+            self.settings.validators.length
+            );
+        }
+    });
+
+    $.fn[pluginName] = function (options) {
+        return this.each(function () {
+        if (!$.data(this, "plugin_" + pluginName)) {
+            $.data(this, "plugin_" + pluginName, new Plugin(this, options));
+        }
+        });
+    };
+    })(jQuery, window, document);
+</script>
+
+<!-- developer -->
+<script>
+    $(function () {
+    $("#validator-output-dev").realtimePasswordValidator({
+        debug: true,
+        input1: $("#password_dev"),
+        input2: $("#password-confirm_dev"),
+        validators: [
+        {
+            regexp: ".{8,}",
+            message: "<h5>รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร</h5>"
+        },
+        {
+            regexp: "[A-Z]",
+            message: "<h5>ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว</h5>"
+        },
+        {
+            regexp: "[0-9]",
+            message: "<h5>ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว</h5>"
+        },
+        {
+            regexp: ".*[!@#$%?=*&]",
+            message: "<h5>ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว (!@#$%?=*&)</h5>"
+        }
+        ],
+        ok: function (instance) {
+        console.log("ok");
+
+        $("#submit").removeAttr("disabled");
+        },
+        ko: function (instance) {
+        console.log("ko");
+        $("#submit").attr("disabled", "");
+        }
+    });
+    });
+
+    // plugin definition
+    (function ($, window, document, undefined) {
+    "use strict";
+    var pluginName = "realtimePasswordValidator",
+        defaults = {
+        debug: false
+        };
+    function Plugin(element, options) {
+        this.element = element;
+        this.settings = $.extend({}, defaults, options);
+        this._defaults = defaults;
+        this._name = pluginName;
+        this.init();
+    }
+
+    $.extend(Plugin.prototype, {
+        init: function () {
+        this.settings.input1.on("input", { self: this }, this.validateEvent);
+        this.settings.input2.on("input", { self: this }, this.validateEvent);
+        },
+
+        validateEvent: function (event) {
+        const self = event.data.self;
+        const messages = [];
+        let valid_count = 0;
+        $(self.element).empty();
+        $(self.settings.validators).each(function (index, validator) {
+            let valid = false;
+            if (validator.regexp)
+            valid = new RegExp(validator.regexp).test(self.settings.input1.val());
+            if (validator.compare)
+            valid = self.settings.input1.val() == $(self.settings.input2).val();
+            const message = $("<div>" + validator.message + "</div>");
+            message.addClass(valid ? "valid" : "invalid");
+            if (self.settings.input1.val().length > 0)
+            $(self.element).append(message);
+            if (valid) valid_count++;
+            if (this.debug)
+            console.log(
+                index,
+                self.settings.input1.val(),
+                validator.message,
+                valid
+            );
+        });
+        if (valid_count == self.settings.validators.length) {
+            if (self.settings.ok) self.settings.ok(self);
+        } else {
+            if (self.settings.ko) self.settings.ko(self);
+        }
+        if (this.debug)
+            console.log(
+            "valid",
+            valid_count,
+            "of",
+            self.settings.validators.length
+            );
+        }
+    });
+
+    $.fn[pluginName] = function (options) {
+        return this.each(function () {
+        if (!$.data(this, "plugin_" + pluginName)) {
+            $.data(this, "plugin_" + pluginName, new Plugin(this, options));
+        }
+        });
+    };
+    })(jQuery, window, document);
+</script>
+
+<!-- sponsor -->
+<script>
+    $(function () {
+    $("#validator-output-spon").realtimePasswordValidator({
+        debug: true,
+        input1: $("#password_spon"),
+        input2: $("#password-confirm_spon"),
+        validators: [
+        {
+            regexp: ".{8,}",
+            message: "<h5>รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร</h5>"
+        },
+        {
+            regexp: "[A-Z]",
+            message: "<h5>ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว</h5>"
+        },
+        {
+            regexp: "[0-9]",
+            message: "<h5>ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว</h5>"
+        },
+        {
+            regexp: ".*[!@#$%?=*&]",
+            message: "<h5>ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว (!@#$%?=*&)</h5>"
+        }
+        ],
+        ok: function (instance) {
+        console.log("ok");
+
+        $("#submit").removeAttr("disabled");
+        },
+        ko: function (instance) {
+        console.log("ko");
+        $("#submit").attr("disabled", "");
+        }
+    });
+    });
+
+    // plugin definition
+    (function ($, window, document, undefined) {
+    "use strict";
+    var pluginName = "realtimePasswordValidator",
+        defaults = {
+        debug: false
+        };
+    function Plugin(element, options) {
+        this.element = element;
+        this.settings = $.extend({}, defaults, options);
+        this._defaults = defaults;
+        this._name = pluginName;
+        this.init();
+    }
+
+    $.extend(Plugin.prototype, {
+        init: function () {
+        this.settings.input1.on("input", { self: this }, this.validateEvent);
+        this.settings.input2.on("input", { self: this }, this.validateEvent);
+        },
+
+        validateEvent: function (event) {
+        const self = event.data.self;
+        const messages = [];
+        let valid_count = 0;
+        $(self.element).empty();
+        $(self.settings.validators).each(function (index, validator) {
+            let valid = false;
+            if (validator.regexp)
+            valid = new RegExp(validator.regexp).test(self.settings.input1.val());
+            if (validator.compare)
+            valid = self.settings.input1.val() == $(self.settings.input2).val();
+            const message = $("<div>" + validator.message + "</div>");
+            message.addClass(valid ? "valid" : "invalid");
+            if (self.settings.input1.val().length > 0)
+            $(self.element).append(message);
+            if (valid) valid_count++;
+            if (this.debug)
+            console.log(
+                index,
+                self.settings.input1.val(),
+                validator.message,
+                valid
+            );
+        });
+        if (valid_count == self.settings.validators.length) {
+            if (self.settings.ok) self.settings.ok(self);
+        } else {
+            if (self.settings.ko) self.settings.ko(self);
+        }
+        if (this.debug)
+            console.log(
+            "valid",
+            valid_count,
+            "of",
+            self.settings.validators.length
+            );
+        }
+    });
+
+    $.fn[pluginName] = function (options) {
+        return this.each(function () {
+        if (!$.data(this, "plugin_" + pluginName)) {
+            $.data(this, "plugin_" + pluginName, new Plugin(this, options));
+        }
+        });
+    };
+    })(jQuery, window, document);
+</script>
+
+<!-- sponsor2 -->
+<script>
+    $(function () {
+    $("#validator-output-spon2").realtimePasswordValidator({
+        debug: true,
+        input1: $("#password_spon2"),
+        input2: $("#password-confirm_spon2"),
+        validators: [
+        {
+            regexp: ".{8,}",
+            message: "<h5>รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร</h5>"
+        },
+        {
+            regexp: "[A-Z]",
+            message: "<h5>ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว</h5>"
+        },
+        {
+            regexp: "[0-9]",
+            message: "<h5>ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว</h5>"
+        },
+        {
+            regexp: ".*[!@#$%?=*&]",
+            message: "<h5>ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว (!@#$%?=*&)</h5>"
+        }
+        ],
+        ok: function (instance) {
+        console.log("ok");
+
+        $("#submit").removeAttr("disabled");
+        },
+        ko: function (instance) {
+        console.log("ko");
+        $("#submit").attr("disabled", "");
+        }
+    });
+    });
+
+    // plugin definition
+    (function ($, window, document, undefined) {
+    "use strict";
+    var pluginName = "realtimePasswordValidator",
+        defaults = {
+        debug: false
+        };
+    function Plugin(element, options) {
+        this.element = element;
+        this.settings = $.extend({}, defaults, options);
+        this._defaults = defaults;
+        this._name = pluginName;
+        this.init();
+    }
+
+    $.extend(Plugin.prototype, {
+        init: function () {
+        this.settings.input1.on("input", { self: this }, this.validateEvent);
+        this.settings.input2.on("input", { self: this }, this.validateEvent);
+        },
+
+        validateEvent: function (event) {
+        const self = event.data.self;
+        const messages = [];
+        let valid_count = 0;
+        $(self.element).empty();
+        $(self.settings.validators).each(function (index, validator) {
+            let valid = false;
+            if (validator.regexp)
+            valid = new RegExp(validator.regexp).test(self.settings.input1.val());
+            if (validator.compare)
+            valid = self.settings.input1.val() == $(self.settings.input2).val();
+            const message = $("<div>" + validator.message + "</div>");
+            message.addClass(valid ? "valid" : "invalid");
+            if (self.settings.input1.val().length > 0)
+            $(self.element).append(message);
+            if (valid) valid_count++;
+            if (this.debug)
+            console.log(
+                index,
+                self.settings.input1.val(),
+                validator.message,
+                valid
+            );
+        });
+        if (valid_count == self.settings.validators.length) {
+            if (self.settings.ok) self.settings.ok(self);
+        } else {
+            if (self.settings.ko) self.settings.ko(self);
+        }
+        if (this.debug)
+            console.log(
+            "valid",
+            valid_count,
+            "of",
+            self.settings.validators.length
+            );
+        }
+    });
+
+    $.fn[pluginName] = function (options) {
+        return this.each(function () {
+        if (!$.data(this, "plugin_" + pluginName)) {
+            $.data(this, "plugin_" + pluginName, new Plugin(this, options));
+        }
+        });
+    };
+    })(jQuery, window, document);
 </script>
 @endsection
