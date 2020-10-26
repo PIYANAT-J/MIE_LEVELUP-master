@@ -186,6 +186,8 @@ class AdminController extends Controller
                         ->where('packageBuy_invoice', $dataPackage['packageBuy_invoice'])
                         ->update($dataPackage);
 
+                    DB::table('transeection_sponshopping')->where('transeection_invoice', $dataPackage['packageBuy_invoice'])->update(array("transeection_status"=>"true"));
+
                     return back()->with("success", "อนุมัตแล้ว");
                 }else{
                     $transeection = DB::table('transeection_sponshopping')->where('transeection_invoice', $request->input('transferInvoice'))->first();

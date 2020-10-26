@@ -56,6 +56,8 @@ class Callback_scbController extends Controller
                     $data = array("packageBuy_status"=>$packageBuy_status, "packageBuy_start"=>$packageBuy_start, "packageBuy_deadline"=>$packageBuy_deadline, "packageBuy_invoice"=>$invoice);
                     $value = Package::packageBuy($data);
 
+                    DB::table('transeection_sponshopping')->where('transeection_invoice', $invoice)->update(array("transeection_status"=>"true"));
+
                     $qrpayment->save();
                 }else{
                     $transeection = DB::table('transeection_sponshopping')->where('transeection_invoice', $invoice)->first();
@@ -144,58 +146,4 @@ class Callback_scbController extends Controller
         }
         
     }
-
-
-    // public function callack($invoice)
-    // {
-    //     $register = $this->getToken();
-    //     $token = $register->token;
-    //     $headers = [
-    //         'Content-Type' => 'application/json',
-    //         'Authorization' => $token
-    //     ];
-
-    //     $client = new \GuzzleHttp\Client();
-
-    //     $response = $client->request('POST', 'https://iot.finsense.co/device/received', [
-    //         'headers' => $headers,
-    //         'json' => [
-    //         "qrType" => "qr30",
-    //         "invoice" => $invoice
-    //     ]
-    //     ]);
-
-    //     $response->getStatusCode(); # 200
-    //     $response->getHeaderLine('content-type');
-    //     $response->getBody();
-    //     $contents = json_decode($response->getBody());
-
-    //     return $contents;
-    // }
-
-
-    // public function getToken()
-    // {
-
-    //   $headers = [
-    //     'Content-Type' => 'application/json',
-    //   ];
-
-    //   $client = new \GuzzleHttp\Client();
-    //   $response = $client->request('POST', 'https://iot.finsense.co/device/register', [
-    //       'headers' => $headers,
-    //       'json' => [
-    //         "companyName" => "SP INVESTOREST COMPANY LIMITED",
-    //         "branchName" => "headoffice",
-    //         "deviceName" => "Device-Multi"
-    //     ]
-    //   ]);
-
-    //   $response->getStatusCode();
-    //   $response->getHeaderLine('content-type');
-    //   $response->getBody();
-    //   $contents = json_decode($response->getBody());
-
-    //   return $contents;
-    // }
 }

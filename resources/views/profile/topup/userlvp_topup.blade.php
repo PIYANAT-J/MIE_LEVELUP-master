@@ -22,7 +22,7 @@
                                         <h1 style="color:#ffffff;font-weight:500;">ยอดเงินในวอลเล็ท<h1>
                                     </div>
                                     <div class="col-4 text-right" style="padding:0;">
-                                        <h1 style="color:#ffffff;font-weight:500;">฿ {{round($wallet, 2)}}</h1>
+                                        <h1 style="color:#ffffff;font-weight:500;">฿ {{number_format($wallet, 2)}}</h1>
                                     </div>
                                 </div>
                                 <div class="mt-3"><p style="margin:0;font-weight:800;">จำนวนเงินที่ต้องการเติม (ขั้นต่ำ  ฿100 )</p></div>
@@ -127,7 +127,7 @@
                                                                 <p style="margin:0;font-weight:800;">iBanking / Mobile Banking</p>
                                                                 <img class="imgBank" src="{{asset('home/logo/'.$PaymentList->bank_name.'.svg') }}" />
                                                                 <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารไทยพาณิชย์</p>
-                                                                <p class="font-bank1">+{{ $PaymentList->amount }} ฿</p>
+                                                                <p class="font-bank1">+{{ number_format($PaymentList->amount) }} ฿</p>
                                                             </div> 
                                                         </div>
                                                         <div class="row">
@@ -152,13 +152,13 @@
                                                                 <p style="margin:0;font-weight:800;">iBanking / Mobile Banking</p>
                                                                 <img class="imgBank" src="{{asset('home/logo/'.$PaymentList->bank_name.'.svg') }}" />
                                                                 <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารไทยพาณิชย์</p>   
-                                                                <p class="font-bank1">+{{ $PaymentList->amount }} ฿</p>
+                                                                <p class="font-bank1">+{{ number_format($PaymentList->amount) }} ฿</p>
                                                             </div> 
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-12">
                                                                 <p style="margin:0;">หมายเลขคำร้อง</p>
-                                                                <p class="fontInvoice">{{ $PaymentList->qr_invoice }}</p>
+                                                                <p class="fontInvoice">{{ $PaymentList->invoice }}</p>
                                                             </div> 
                                                         </div>
                                                         <div class="row mt-1">
@@ -196,7 +196,7 @@
                                                             @elseif($transferLits->transferฺBank_name == "scb")
                                                                 <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารไทยพาณิชย์</p>
                                                             @endif
-                                                            <p class="font-bank1">+{{ $transferLits->transferAmount }} ฿</p>
+                                                            <p class="font-bank1">+{{ number_format($transferLits->transferAmount) }} ฿</p>
                                                         </div> 
                                                     </div>
                                                     <div class="row">
@@ -233,7 +233,7 @@
                                                             @elseif($transferLits->transferฺBank_name == "scb")
                                                                 <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารไทยพาณิชย์</p>
                                                             @endif
-                                                            <p class="font-bank1">+{{ $transferLits->transferAmount }} ฿</p>
+                                                            <p class="font-bank1">+{{ number_format($transferLits->transferAmount) }} ฿</p>
                                                         </div> 
                                                     </div>
                                                     <div class="row">
@@ -268,7 +268,7 @@
                                                             @elseif($transferLits->transferฺBank_name == "scb")
                                                                 <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารไทยพาณิชย์</p>
                                                             @endif
-                                                            <p class="font-bank1">+{{ $transferLits->transferAmount }} ฿</p>
+                                                            <p class="font-bank1">+{{ number_format($transferLits->transferAmount) }} ฿</p>
                                                         </div> 
                                                     </div>
                                                     <div class="row">
@@ -360,7 +360,7 @@
                                 <div class="col-12">
                                     <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">หมายเลขอ้างอิง</label></br>
                                     <label class="bgGrey px-2 pt-2 pb-2 mb-2">
-                                        <p style="margin:0;padding-left:5px">1234567890123456</p>
+                                        <p style="margin:0;padding-left:5px">{{$transferModal->transferInvoice}}</p>
                                     </label>
                                 </div>
                                 <div class="col-12 mb-2">
@@ -374,7 +374,7 @@
                                 </div>
                                 <div class="col-12 mb-2">
                                     <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">จำนวนเงินที่ชำระ</label></br>
-                                    <input type="text" class="input2 p" style="padding-left:10px" value="{{ $transferModal->transferAmount }}" require></input>
+                                    <input type="text" class="input2 p" style="padding-left:10px" value="{{ number_format($transferModal->transferAmount) }}" require></input>
                                 </div>
                             </div>
                             <div class="row">
@@ -756,13 +756,13 @@
                                 <div class="row">
                                     <div class="col-12 " style="border-bottom: 1px solid #fff;">
                                     <label><p style="margin:0;padding-left:30px;">หมายเลขคำร้อง</p></label>
-                                    <input type='text' id="copy-text" value="12345678900000" class="input3 p mt-2" style="font-weight:800;">
+                                    <input type='text' id="copy-text" value="{{$qrPayment->invoice}}" class="input3 p mt-2" style="font-weight:800;">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12" style="border-bottom: 1px solid #fff;">
                                         <label><p style="margin:0;padding:8px 0 0 30px;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></label>
-                                        <label style="float:right;"><p style="color:#23c197;cursor:pointer;padding-top:5px;margin:0;">{{ $qrPayment->amount }} ฿</p></label>
+                                        <label style="float:right;"><p style="color:#23c197;cursor:pointer;padding-top:5px;margin:0;">{{ number_format($qrPayment->amount) }} ฿</p></label>
                                     </div>
                                 </div>
                             </div>
