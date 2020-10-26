@@ -35,14 +35,14 @@
                 <div class="row mx-2 mt-5"> 
                     @if(isset($package))
                         <div class="col-8" style="padding:0;">
-                            <label class="plabelimg2">
+                            <label class="plabelimg2 pt-1">
                                 <img src="{{asset('icon/money2.svg') }}" />
                             </label> 
 
                             <label style="padding-left:60px;">
-                                <p class="pt-2" style="font-weight: 700;margin:0;">{{$package->packageBuy_name}}</p>
-                                <label class="p" style="color: #23c197;">{{$package->packageBuy_season}} เดือน</label>
-                                <label class="p" style="color: #23c197;">จำนวน {{$package->package_game}} เกม </label>
+                                <p style="font-weight: 700;margin:0;">{{$package->packageBuy_name}}</p>
+                                <label class="p" style="color: #23c197;margin:0;">{{$package->packageBuy_season}} เดือน</label>
+                                <label class="p" style="color: #23c197;margin:0;">จำนวน {{$package->package_game}} เกม </label>
                             </label>
                         </div>
                         <div class="col-4 text-right">
@@ -60,16 +60,18 @@
                         
                         @foreach($gameTrue as $gameList)
                             @if(in_array($gameList->sponsor_cart_game, $gamearray))
-                                <div class="col-9" style="padding:0;">
-                                    <img class="labelimg2" src="{{ asset('section/File_game/Profile_game/'.$gameList->GAME_IMG_PROFILE) }}" /> 
-                                    <div class="pFont2">
+                                <div class="col-12 d-flex justify-content-start" style="padding:0;">
+                                    <label class="mr-2">
+                                        <img class="labelimg2" src="{{ asset('section/File_game/Profile_game/'.$gameList->GAME_IMG_PROFILE) }}" />
+                                    </label>
+                                    <label class="pFont2">
                                         <p style="font-weight: 700;margin:0;">{{$gameList->GAME_NAME}}</p>
                                         <p style="color: #a8a8a8;margin:0;">{{$gameList->RATED_B_L}} • Online</p>
                                         <h5 style="color: #23c197;margin:0;">
-                                            ช่วงเวลา {{$gameList->sponsor_cart_start}} - {{$gameList->sponsor_cart_deadline}}
+                                            ช่วงเวลา {{$gameList->sponsor_cart_start}} - {{$gameList->sponsor_cart_deadline}}<br>
                                             จำนวนรอบโฆษณา {{$gameList->sponsor_cart_number}} รอบ
                                         </h5>
-                                    </div>
+                                    </label>
                                 </div>
                             @endif
                         @endforeach
@@ -84,11 +86,11 @@
                         @foreach($address as $addressOn)
                             @if($addressOn->addresses_status == "true")
                                 <div class="row mx-3 mt-3">
-                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
-                                        <label class="fontAdsPayment">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" >
+                                        <label class="fontAdsPayment mr-2">
                                             <p style="margin:0;font-weight: 800;">ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</p>
                                         </label>
-                                        <label class="fontAdsPayment2 ml-2">
+                                        <label class="fontAdsPayment2">
                                             <p style="margin:0;">{{Auth::user()->name}} {{Auth::user()->surname}} 
                                                 @foreach($sponsor as $spon)
                                                     ({{$spon->taxID}})<br>(+66) {{$spon->SPON_TEL}}
@@ -98,10 +100,10 @@
                                     </div>
                                     
                                     <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
-                                        <label class="fontAdsPayment">
+                                        <label class="fontAdsPayment mr-2">
                                             <p style="margin:0;font-weight: 800;">ที่อยู่</p>
                                         </label>
-                                        <label class="fontAdsPayment3 ml-2" style="margin:0;">
+                                        <label class="fontAdsPayment3" style="margin:0;">
                                             <p style="margin:0;">{{$addressOn->addresses}} {{$addressOn->district}}  {{$addressOn->amphure}} {{$addressOn->province}} {{$addressOn->zipcode}}</p>
                                         </label>
                                     </div>
@@ -112,14 +114,23 @@
                 </div>
 
                 <div class="row mt-3" style="padding: 0 0 0 7px;">
+                    <div class="col-6"><p style="color:#000;margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></div>
+                    @if(isset($package))
+                        <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{$package->packageBuy_amount}}</h4></div>
+                    @else
+                        <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{$transeection->transeection_amount}}</h4></div>
+                    @endif
+                </div>
+
+                <div class="row mt-3" style="padding: 0 0 0 7px;">
                     <div class="col-6"><p style="color:#000;margin:0;font-weight:800;">ช่องทางการชำระเงิน</p></div>
-                    <div class="col-6 text-right">
-                        <p style="color:#000;margin:0;font-weight:800;">T10 Wallet ชื่อบัญชี สมหญิง รักดี</p>
+                    <div class="col-6 text-right" style="padding-left:0;">
+                        <p style="color:#000;margin:0;font-weight:800;">T10 Wallet <br>บัญชี สมหญิง รักดี</p>
                     </div>
                 </div>
                 
                 <div class="row mt-3 py-2 " style="background-color:#fafaff ;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
-                    <div class="col-6"></div>
+                    <!-- <div class="col-6"></div>
                     <div class="col-6">
                         <div class="row">
                             <div class="col-6 text-right p">ยอดรวมสินค้า</div>
@@ -141,12 +152,12 @@
                                 <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{$transeection->transeection_amount}}</h4></div>
                             @endif
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-12">
                         <div class="row mx-1 mt-3">
-                            <div class="col-10"></div>
-                            <div class="col-2 text-right">
-                                <a href="{{route('SponShelf')}}">
+                            <div class="col-8 col-sm-10 col-md-10 col-lg-10 col-xl-10"></div>
+                            <div class="col-4 col-sm-2 col-md-2 col-lg-2 col-xl-2 text-right" style="padding:0;">
+                                <a href="{{route('SponOrderList')}}">
                                     <button type="button" class="btn-submit">
                                         <p style="margin:0;">ปิด</p>
                                     </button>
