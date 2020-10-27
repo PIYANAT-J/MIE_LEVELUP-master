@@ -889,9 +889,11 @@
                                     </label>
                                 </div>
                                 <div class="col-3 text-right align-self-center">
-                                    <h4 style="color: #ce0005;margin:0;font-weight:900;">฿{{$detailGame->GAME_PRICE}}</h4>
-                                    <label style="margin:0;"><p style="color:#b2b2b2;text-decoration:line-through;margin:0;">฿400 </p></label>
-                                    <label><p style="display:block;text-align:right;font-weight:500;">(-{{$detailGame->GAME_DISCOUNT}}%)</p></label>
+                                    <h4 style="color: #ce0005;margin:0;font-weight:900;">฿{{number_format($detailGame->GAME_PRICE, 2)}}</h4>
+                                    @if($detailGame->GAME_DISCOUNT != null && $detailGame->GAME_DISCOUNT != "0")
+                                        <label style="margin:0;"><p style="color:#b2b2b2;text-decoration:line-through;margin:0;">฿400 </p></label>
+                                        <label><p style="display:block;text-align:right;font-weight:500;">(-{{$detailGame->GAME_DISCOUNT}}%)</p></label>
+                                    @endif
                                 </div>
                             </div>
                             <input type="hidden" name="game_id" value="{{$detailGame->GAME_ID}}">

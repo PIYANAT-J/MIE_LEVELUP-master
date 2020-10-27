@@ -62,9 +62,9 @@
                                                 <div class="row">
                                                     <div class="col-1 py-1 td1 p">{{$i}}</div>
                                                     <div class="col-2 py-1 td1 p text-left">{{$packageList->package_name}}</div>
-                                                    <div class="col-2 py-1 td1 p">{{$packageList->package_amount}}</div>
+                                                    <div class="col-2 py-1 td1 p">{{number_format($packageList->package_amount, 2)}}</div>
                                                     <div class="col-2 py-1 td1 p">{{$packageList->package_season}} เดือน</div>
-                                                    <div class="col-2 py-1 td1 p" style="cursor:pointer;text-decoration: underline;color:#0061fc;"data-toggle="modal" data-target="#PackageDetail">เพิ่มเติม</div>
+                                                    <div class="col-2 py-1 td1 p" style="cursor:pointer;text-decoration: underline;color:#0061fc;"data-toggle="modal" data-target="#PackageDetail{{$packageList->package_id}}">เพิ่มเติม</div>
                                                     <div class="col-2 py-1 td1 p text-left">
                                                     @if($packageList->package_status == "true")
                                                         <label class="bgGreen" style="cursor:default;">ใช้งาน</label>
@@ -74,7 +74,7 @@
                                                     </div>
                                                     <div class="col-1 py-1 td1 p text-right">
                                                         <i class="fa fa-trash-o mr-3" aria-hidden="true" style="font-size:1em;cursor:pointer;"></i>
-                                                        <i class="fa fa-pencil" aria-hidden="true" style="font-size:1em;cursor:pointer;" data-toggle="modal" data-target="#EditPackage"></i>
+                                                        <i class="fa fa-pencil" aria-hidden="true" style="font-size:1em;cursor:pointer;" data-toggle="modal" data-target="#EditPackage{{$packageList->package_id}}"></i>
                                                     </div>
                                                 </div>
                                                 <?php $i++; ?>
@@ -198,7 +198,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="EditPackage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach($package as $packageModal)
+<div class="modal fade" id="EditPackage{{$packageModal->package_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -261,7 +262,7 @@
     </div>
 </div>   
 
-<div class="modal fade" id="PackageDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="PackageDetail{{$packageModal->package_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -283,15 +284,15 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 text-center mt-2">
-                                        <label style="font-family:myfont1;font-size:1em;line-height:0.5;color:#000;">แพ็กเกจ 1</label><br>
-                                        <label style="font-family:myfont;font-size:1.3em;color:#000;">฿900.00</label>
-                                        <label style="font-family:myfont1;font-size:0.9em;color:#000;">/ เดือน</label>
+                                        <label style="font-family:myfont1;font-size:1em;line-height:0.5;color:#000;">{{$packageModal->package_name}}</label><br>
+                                        <label style="font-family:myfont;font-size:1.3em;color:#000;">฿{{number_format($packageModal->package_amount, 2)}}</label>
+                                        <label style="font-family:myfont1;font-size:0.9em;color:#000;">{{$packageModal->package_season}} เดือน</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 text-center">
                                         <label class="btnBuyPackage">
-                                            <a href="{{ route('SponsorPayment') }}"><label style="font-family:myfont1;font-size:1em;color:#ffffff;cursor: pointer;">ซื้อเลย</label></a>
+                                            <a href="#"><label style="font-family:myfont1;font-size:1em;color:#ffffff;cursor: pointer;">ซื้อเลย</label></a>
                                         </label>
                                     </div>
                                 </div>
@@ -303,18 +304,18 @@
                                         <label style="font-family:myfont1;font-size:0.9em;font-weight: 800;color:#000;">รายละเอียด</label>
                                     </div>
                                 </div>
-                                <div class="row pl-2 pr-1">
-                                    <div class="col-12 fontDetailPackage">
+                                <!-- <div class="row pl-2 pr-1"> -->
+                                    <!-- <div class="col-12 fontDetailPackage">
                                         <div class="input-container">
                                             <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
                                             <label class="input-field ">เลือกสนุบสนุนเกมได้ทั้งหมด 20 เกม/เดือน</label>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="row pl-2 pr-1">
                                         <div class="col-lg-12 fontDetailPackage">
                                             <div class="input-container">
                                                 <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                <label class="input-field ">เลือกสนุบสนุนเกมได้ทั้งหมด 20 เกม/เดือน</label>
+                                                <label class="input-field ">เลือกสนุบสนุนเกมได้ทั้งหมด {{$packageModal->package_game}} เกม/เดือน</label>
                                             </div>
 
                                             <div class="input-container">
@@ -324,7 +325,7 @@
 
                                             <div class="input-container">
                                                 <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                <label class="input-field ">ได้โฆษณาความยาว 15 วินาที</label>
+                                                <label class="input-field ">ได้โฆษณาความยาว {{$packageModal->package_length}} วินาที</label>
                                             </div>
 
                                             <div class="input-container">
@@ -333,8 +334,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </label>
-                            </div>
+                                <!-- </div> -->
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -342,6 +343,7 @@
         </div>
     </div>
 </div>
+@endforeach
 
 @foreach($advertising as $key=>$advertisingModal)
 <div class="modal fade" id="pendingApprove{{$advertisingModal->advertising_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

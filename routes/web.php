@@ -177,6 +177,7 @@ Route::get('/spon_shopping_cart', 'Sponsor\game_sponController@SponShoppingCart'
 Route::post('/spon_shopping_cart/payment', 'Sponsor\game_sponController@SponShoppingCartPayment')->name('sponShoppingCartPayment');
 Route::post('/spon_shopping_cart/delete', 'Sponsor\game_sponController@daleteSponShoppingCart')->name('daleteShoppingCart');
 
+Route::post('/sponsor_payment/visaCredit', 'Sponsor\packageController@sponVisaCredit')->name('SponVisaCredit');
 Route::get('/sponsor_payment', 'UploadImageProfile@SponsorPayment')->name('SponsorPayment');
 Route::post('/sponsor_payment/qrCode', 'Sponsor\packageController@packageibanking')->name('packageibanking');
 
