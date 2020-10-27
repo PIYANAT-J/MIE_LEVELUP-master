@@ -446,58 +446,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-12">
-                                        <p style="margin:0;font-weight:800;color:#fff;">รายการรอการแจ้งโอน</p>
-                                        <div class="row row200">
-                                            <div class="col-12 ">
-                                                <label class="ml-2 bgT10ListBanking2">
-                                                    {{-- <a href="{{ route('PaymentTransfer') }}">
-                                                        <label class="bgT10ListBankingPay"><p style="margin:0;">ชำระเงิน</p></label>
-                                                    </a>
-                                                    <label class="bgOrange"><p style="margin:0;">รออนุมัติ</p></label> --}}
-                                                    {{-- <a href="{{ route('SuccessfulPayment') }}"> --}}
-                                                        <label class="bgGreen"><p style="margin:0;">อนุมัติแล้ว</p></label>
-                                                    </a>
-                                                    <label><p style="margin:0;color:#fff;"> ฿6000 ธนาคารกรุงเทพ</p></label>
-                                                    <label><p style="margin:0;color:#ce0005;"> ควรชำระก่อน 10/10/20</p></label>
-                                                    @if(isset($transfer))
-                                                        @if($transfer != null)
-                                                            @if($transfer->transferStatus == "ยืนยันการโอน")
-                                                                    <a href="{{ route('PaymentTransfer', ['invoice' => encrypt($transeection->transeection_invoice)]) }}">
-                                                                        <label class="bgT10ListBankingPay"><p style="margin:0;">ชำระเงิน</p></label>
-                                                                    </a>
-                                                                    <label>
-                                                                        <p style="margin:0;color:#fff;"> ฿{{$transeection->transeection_price}}
-                                                                            @if($transfer->transferฺBank_name == "bangkok")
-                                                                                ธนาคารกรุงเทพ
-                                                                            @elseif($transfer->transferฺBank_name == "ktc")
-                                                                                ธนาคารกรุงไทย
-                                                                            @elseif($transfer->transferฺBank_name == "kbank")
-                                                                                ธนาคารกสิกรไทย
-                                                                            @elseif($transfer->transferฺBank_name == "scb")
-                                                                                ธนาคารไทยพาณิชย์
-                                                                            @endif
-                                                                        </p>
-                                                                    </label>
-                                                                <?php
-                                                                    $start = explode("-",$transfer->create_at);
-                                                                    $deadline = explode(" ",$start[2]);
-                                                                    $deadline1 = $deadline[0] + 1;
-                                                                ?>
-                                                                <label><h5 style="margin:0;color:#ce0005;"> ควรชำระก่อน {{$start[0]}}/{{$start[1]}}/{{$deadline1}} {{$deadline[1]}}</h5></label> 
-                                                            @elseif($transfer->transferStatus == "รอการอนุมัติ")
-                                                                <label class="bgOrange"><p style="margin:0;">รออนุมัติ</p></label>
-                                                            @elseif($transfer->transferStatus == "อนุมัติแล้ว")
-                                                                {{-- <a href="{{ route('SuccessfulPayment') }}"> --}}
-                                                                    <label class="bgGreen p">อนุมัติแล้ว</label>
-                                                                </a>
-                                                            @endif
-                                                        @endif
-                                                    @endif
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                 </div>
                             </div>
 

@@ -19,7 +19,7 @@ class CreateMyItemsTable extends Migration
             $table->string('my_item_img')->collation('utf8_unicode_ci');
             $table->set('my_item_gender', ['man', 'woman', 'all'])->collation('utf8_unicode_ci');
             $table->set('my_item_type', ['clothes', 'eyes', 'glasses', 'hair', 'other', 'weapon'])->collation('utf8_unicode_ci');
-            $table->set('my_item_other', ['armor', 'crown', 'glove', 'hat', 'shoes', 'sword', 'hero'])->collation('utf8_unicode_ci')->nullable();
+            $table->set('my_item_other', ['armor', 'crown', 'gloves', 'hat', 'shoes', 'sword', 'hero'])->collation('utf8_unicode_ci')->nullable();
             $table->text('my_item_description')->collation('utf8_unicode_ci')->nullable();
             $table->integer('my_item_level')->default(1);
             $table->integer('my_item_amount')->default(1);
