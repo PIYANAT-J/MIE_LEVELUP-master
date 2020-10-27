@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid" id="getActive" active="{{ route('AvatarOrderList') }}">
     <div class="row py-5"></div>
-    <div class="row py-2" style="background-color:#f5f5f5;"></div>
+    <div class="row py-2" style="background-color:#141621;"></div>
     <div class="row ">
 
         @include('profile.sidebar.avatar_sidebar')
@@ -24,7 +24,7 @@
                         </div>
                         <div class="row mt-2 ">
                             <div class="col-12" >
-                                <div class="row  py-2" style="background-color:#000;color:#000;font-weight:800;">
+                                <div class="row  py-2" style="background-color:#141621;color:#000;font-weight:800;">
                                     <div class="col-7 col-sm-8 col-md-6 col-lg-5 col-xl-7 align-self-center"><p style="font-weight:800;margin:0;color:#fff;">หมายเลขคำสั่งซื้อ</p></div>
                                     <div class="col-3 col-md-4 col-lg-4 col-xl-3 text-center  d-none d-lg-block d-xl-block d-md-block"><p style="font-weight:800;margin:0;color:#fff">ช่องทางการชำระเงิน</p></div>
                                     <div class="col-5 col-sm-4 col-md-2 col-lg-3 col-xl-2 text-center align-self-center"><p style="font-weight:800;margin:0;color:#fff">สถานะ</p></div>
