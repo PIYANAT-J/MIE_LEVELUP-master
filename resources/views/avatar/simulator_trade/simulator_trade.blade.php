@@ -1,7 +1,6 @@
-@extends('layout.avatar_navbar')
+@extends('layout.simulator_navbar')
 @section('content')
-
-<div class="container-fluid" id="getActive" active="/simulator_trade">
+<div class="container-fluid" id="getActive" active="{{ route('SimulatorTrade') }}">
     <div class="row my-5"></div>
     <div class="row my-2"></div>
     <div class="row  mt-3">
@@ -77,46 +76,46 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-3 mb-3">
+                    <div class="row my-3">
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-8 mb-3">
                             <!-- <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade3.png') }}" /></div> -->
                             <div class="chart">
-                                <div class="row mx-2 my-2">
-                                    <div class="col-3 bgdetail">
+                                <div class="row  d-flex align-items-center bgdetail text-center" style="margin:0;">
+                                    <div class="col-3 " style="padding:5px;">
                                         <label class="detail-rank py-2 my-2"><p style="margin:0;">ตารางรวม SET</p></label>
                                     </div>
-                                    <div class="col-3 bgdetail">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detail-rank py-2 my-2"><p style="margin:0;">ล่าสุด</p></label>
                                     </div>
-                                    <div class="col-3 bgdetail">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detail-rank py-2 my-2"><p style="margin:0;">เปลี่ยนแปลง</p></label>
                                     </div>
-                                    <div class="col-3 bgdetail">
+                                    <div class="col-3" style="padding:5px;"> 
                                         <label class="detail-rank py-2 my-2"><p style="margin:0;">มูลค่า (ลบ.)</p></label>
                                     </div>
                                 </div>
 
                                 <div class="row mx-2 ">
-                                    <div class="col-3">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detailTable my-1"><p style="margin:0;">SET</p></label>
                                     </div>
-                                    <div class="col-3">
-                                        <label class="detailTableGreen my-1">
-                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}"></label>
+                                    <div class="col-3" style="padding:5px;">
+                                        <label class="detailTableGreen">
+                                            <label style="margin:0;"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}"></label>
                                             <label><p style="margin:0;">1,444.63</p></label>
                                         </label>
-                                        <!-- <label class="detailTableRed my-1">
-                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}"></label>
+                                        <!-- <label class="detailTableRed">
+                                            <label style="margin:0"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}"></label>
                                             <label><p style="margin:0;">1,444.63</p></label>
                                         </label>-->
                                     </div>
-                                    <div class="col-3">
-                                        <label class="detailTableGreen my-1">
+                                    <div class="col-3" style="padding:5px;">
+                                        <label class="detailTableGreen">
                                             <p style="margin:0;">+5.97</p>
                                         </label>
                                         <!-- <label class="detailTableRed my-1"><p style="margin:0;">+5.97</p></label> -->
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detail-rank my-1">
                                             <p style="margin:0;">52,568.36</p>
                                         </label>
@@ -124,95 +123,95 @@
                                 </div>
 
                                 <div class="row mx-2 ">
-                                    <div class="col-3">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detailTable my-1">
                                             <p style="margin:0;">SET50</p>
                                         </label>
                                     </div>
-                                    <div class="col-3">
-                                        <label class="detailTableGreen my-1">
-                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}"></label>
+                                    <div class="col-3" style="padding:5px;">
+                                        <label class="detailTableGreen">
+                                            <label style="margin:0"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}"></label>
                                             <label><p style="margin:0;">968.29</p></label>
                                         </label>
-                                        <!-- <label class="detailTableRed my-1">
-                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}"></label>
+                                        <!-- <label class="detailTableRed">
+                                            <label style="margin:0"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}"></label>
                                             <label><p style="margin:0;">968.29</p></label>
                                         </label>-->
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detailTableGreen my-1"><p style="margin:0;">+3.17</p></label>
                                         <!-- <label class="detailTableRed my-1"><p style="margin:0;">+3.17</p></label> -->
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detail-rank my-1"><p style="margin:0;">31,866.95</p></label>
                                     </div>
                                 </div>
 
                                 <div class="row mx-2 ">
-                                    <div class="col-3">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detailTable my-1"><p style="margin:0;">SET100</p></label>
                                     </div>
-                                    <div class="col-3">
-                                        <label class="detailTableGreen my-1">
-                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}"></label>
+                                    <div class="col-3" style="padding:5px;">
+                                        <label class="detailTableGreen">
+                                            <label style="margin:0"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}"></label>
                                             <label><p style="margin:0;">2,134.03</p></label>
                                         </label>
-                                        <!-- <label class="detailTableRed my-1">
-                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}"></label>
+                                        <!-- <label class="detailTableRed">
+                                            <label style="margin:0"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}"></label>
                                             <label><p style="margin:0;">2,134.03</p></label> 
                                         </label>-->
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detailTableGreen my-2"><p style="margin:0;">+9.08</p></label>
                                         <!-- <label class="detailTableRed my-1"><p style="margin:0;">+3.17</p></label> -->
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">40,500.04</p></label>
                                     </div>
                                 </div>
 
                                 <div class="row mx-2 ">
-                                    <div class="col-3">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detailTable my-2"><p style="margin:0;">sSET</p></label>
                                     </div>
-                                    <div class="col-3">
-                                        <!-- <label class="detailTableGreen my-1">
-                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}"></label>
+                                    <div class="col-3" style="padding:5px;">
+                                        <!-- <label class="detailTableGreen">
+                                            <label style="margin:0"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}"></label>
                                             <label><p style="margin:0;">649.02</p></label>
                                         </label>-->
-                                        <label class="detailTableRed my-1">
-                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}"></label>
+                                        <label class="detailTableRed">
+                                            <label style="margin:0"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}"></label>
                                             <label><p style="margin:0;">649.02</p></label>
                                         </label>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-3" style="padding:5px;">
                                         <!-- <label class="detailTableGreen my-2">-2.24</label> -->
                                         <label class="detailTableRed my-2"><p style="margin:0;">-2.24</p></label>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">2,234.72</p></label>
                                     </div>
                                 </div>
 
                                 <div class="row mx-2 ">
-                                    <div class="col-3">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detailTable my-2"><p style="margin:0;">SETCLMV</p></label>
                                     </div>
-                                    <div class="col-3">
-                                       <label class="detailTableGreen my-1">
-                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}"></label>
+                                    <div class="col-3" style="padding:5px;">
+                                       <label class="detailTableGreen">
+                                            <label style="margin:0"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}"></label>
                                             <label><p style="margin:0;">1,212</p></label>
                                         </label>
-                                        <!-- <label class="detailTableRed my-1">
-                                            <label><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}"></label>
+                                        <!-- <label class="detailTableRed">
+                                            <label style="margin:0"><img style="width:8px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}"></label>
                                             <label><p style="margin:0;">1,212</p></label>
                                         </label> -->
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detailTableGreen my-2"><p style="margin:0;">+2.09</p></label>
                                         <!-- <label class="detailTableRed my-2"><p style="margin:0;">+2.09<p></label> -->
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">15,982.05</p></label>
                                     </div>
                                 </div>

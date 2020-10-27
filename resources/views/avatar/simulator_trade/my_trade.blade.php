@@ -1,6 +1,6 @@
-@extends('layout.avatar_navbar')
+@extends('layout.simulator_navbar')
 @section('content')
-<div class="container-fluid" id="getActive" active="/my_trade">
+<div class="container-fluid" id="getActive" active="{{ route('MyTrade') }}">
     <div class="row my-5"></div>
     <div class="row my-2"></div>
     <div class="row  mt-3">

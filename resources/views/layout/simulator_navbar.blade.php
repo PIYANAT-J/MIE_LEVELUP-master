@@ -191,6 +191,9 @@
                                 <a href="{{ route('Avatar') }}"><h1 class="navbarMobile">ตัวละครของฉัน(Avatar)</h1></a>
                                 <a href="{{ route('AvatarOrderList') }}"><h1 class="navbarMobile">รายการคำสั่งซื้อ</h1></a>
                                 <a href="{{ route('SimulatorTrade') }}"><h1 class="navbarMobile">Simulator Trade</h1></a>
+                                <a href="{{ route('MyTrade') }}"><h1 class="navbarMobile">การซื้อขายของฉัน</h1></a>
+                                <a href="{{ route('RankingTrade') }}"><h1 class="navbarMobile">Ranking</h1></a>
+                                <a href="{{ route('RealInvestors') }}"><h1 class="navbarMobile">นักลงทุนจริง</h1></a>
                                 <a href="{{ route('UserProfile') }}"><h1 class="navbarMobile">ข้อมูลส่วนตัว</h1></a>
                                 <a href="{{ route('UserKyc') }}">
                                     <label style="margin:0;"><h1 class="navbarMobile">ยืนยันตัวตน</h1></label>
