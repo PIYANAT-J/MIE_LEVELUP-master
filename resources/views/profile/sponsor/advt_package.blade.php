@@ -55,7 +55,7 @@
                                 </div>
                             </div>
 
-                            <div class="row" style="padding:10px; width:100%">
+                            <div class="row" style="padding:10px 0 10px 10px; width:100%;">
                                 @foreach($allPackage as $AllPackage)
                                     <!-- <div class="bgPackage">
                                         <label>

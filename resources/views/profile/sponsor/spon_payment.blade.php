@@ -401,16 +401,16 @@
                             <div class="row mx2">
                                 <div class="col-12">
                                     <div class="row">
-                                        <div class="col-6 text-right p">ยอดรวมสินค้า</div>
-                                        <div class="col-6 text-right p">฿ {{$allPackage->package_amount}}</div>
+                                        <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9  text-right p">ยอดรวมสินค้า</div>
+                                        <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right p">฿ {{$allPackage->package_amount}}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 text-right p">ส่วนลด</div>
-                                        <div class="col-6 text-right p">-</div>
+                                        <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right p">ส่วนลด</div>
+                                        <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right p">-</div>
                                     </div>
                                     <div class="row mb-2">
-                                        <div class="col-6 text-right p pt-2">รวมราคาทั้งสิ้น</div>
-                                        <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{$allPackage->package_amount}}</h4></div>
+                                        <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right p pt-2">รวมราคาทั้งสิ้น</div>
+                                        <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right align-self-end"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{$allPackage->package_amount}}</h4></div>
                                     </div>
                                 </div>
                             </div>

@@ -47,10 +47,10 @@
 
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
-                    <div class="row mx-0 pb-3" >
+                    <div class="row mx-0 pb-3 row7" style="background-color:#202433;border-radius: 6px;">
                         <div class="col-12">
                             <!-- ทรงผม -->
-                            <div class="row mt-2 row7" style="background-color:#202433;border-radius: 6px;">
+                            <div class="row mt-2 " >
                                 <div class="col-12">
                                     <!-- <p style="margin:0;color:#fff;">ทรงผม</p>
                                     <label class="labelItem bgItem">
@@ -243,42 +243,6 @@
                                 </div> 
                             </div>
 
-                            <!-- คฑา-->
-                            <!-- <div class="row">
-                                <div class="col-12">
-                                    <p style="margin:0;color:#fff;">คฑา</p>
-                                    <label class="labelItem bgItem">
-                                        <img class="picture2" src="{{asset('home/avatar/woman/weapon/wand/w01.svg') }}" />
-                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                        <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span>
-                                    </label>
-                                </div> 
-                            </div> -->
-
-                            <!-- ปืน-->
-                            <!-- <div class="row">
-                                <<div class="col-12">
-                                    <p style="margin:0;color:#fff;">ปืน</p>
-                                    <label class="labelItem bgItem">
-                                        <img class="picture2" src="{{asset('home/avatar/woman/weapon/gun/g01.svg') }}" />
-                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                        <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span>
-                                    </label>
-                                </div> 
-                            </div> -->
-
-                            <!-- ธนู-->
-                            <!-- <div class="row">
-                                <div class="col-12">
-                                    <p style="margin:0;color:#fff;">ธนู</p>
-                                    <label class="labelItem bgItem">
-                                        <img class="picture2" src="{{asset('home/avatar/woman/weapon/archer/a01.svg') }}" />
-                                        <span class="font-sale2"><h5 style="margin:0;">1</h5></span>
-                                        <span class="font-sale3"><p style="margin:0;font-weight:800;">Sold Out</p></span>
-                                    </label>
-                                </div> 
-                            </div> -->
-
                             <!-- มงกุฏ/หมวก -->
                             <div class="row">
                                 <div class="col-12">
@@ -406,7 +370,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 text-right my-3">
+                        <div class="col-12 text-right my-3" style="padding:0;">
                             <button class="itemAvatar4">
                                 <p style="margin:0;color:#000;font-weight:800;">ยกเลิกการขาย</p>
                             </button>

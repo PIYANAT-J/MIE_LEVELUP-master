@@ -316,7 +316,7 @@
                             </div>
                         </div>
                         <div class="row my-2 mx-1">
-                            <div class="col-2">
+                            <div class="col-4 col-sm-3 col-md-3 col-lg-2 col-xl-2">
                                 <div class="bg-modal-shop item-modal-shop">
                                     @if($itemModal->item_type == "clothes")
                                         @if($itemModal->item_gender == "woman")
@@ -369,13 +369,13 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-5">
+                            <div class="col-sm-3 col-md-3 col-lg-5 col-xl-5 d-none d-sm-block d-md-block d-lg-block d-xl-block" style="padding:0;">
                                 <div class="mt-2">
                                     <span class="font-modal-shop p"><b>{{$itemModal->item_name}}</b></br> ระดับ 3 สามารถเห็น Signal Rank 5-10 ได้ เลือกลงทุนได้ 5 Signal</span>
                                 </div>
                             </div>
 
-                            <div class="col-2 my-3">
+                            <div class="col-4 col-sm-3 col-md-3 col-lg-2 col-xl-2 my-3 text-center" style="padding-right:0;">
                                 <div class="quantity-block ">
                                     <label class="quantity-arrow-minus"> - </label>
                                     <input class="quantity-num" type="number" value="1" min="1" max="{{$itemModal->item_amount}}" dataprice="{{$itemModal->item_price}}" disabled />
@@ -383,7 +383,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-3 my-3">
+                            <div class="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 my-3" style="padding-right:0;">
                                 <span class="font-price-modal" style="line-height:1.2; display:block;text-align:right;">
                                     <h4 class="total" style="margin:0;color:#ce0005;font-weight:800;">฿<span>{{number_format($itemModal->item_price)}}</span></h4>
                                     <p class="mr-2"><a style="color:#b2b2b2;text-decoration:line-through;">฿11,400 </a> (-{{$itemModal->item_discount}}%)</p>
@@ -394,13 +394,13 @@
                     </div> 
 
                     <div class="modal-footer">
-                        <div class="col-3">
+                        <div class="col-6 col-sm-3 col-md-3 col-lg-3 col-xl-3">
                             <button class="btn-cancel" data-dismiss="modal">
                                 <p style="margin:0;">ยกเลิก</p>
                             </button>
                         </div>
-                        <div class="col-6"></div>
-                        <div class="col-3">
+                        <div class="col-6 d-none d-sm-block d-md-block d-lg-block d-xl-block"></div>
+                        <div class="col-6 col-sm-3 col-md-3 col-lg-3 col-xl-3">
                             <button type="button" class="btn-submit-red addShopping"><p style="margin:0;">ใส่ตระกร้า</p></button>
                             <input type="hidden" name="amountItem">
                             <input type="hidden" name="sumprice">
@@ -409,6 +409,34 @@
                         </div>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="popupmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body" style="border-radius: 8px;">
+                    <div class="row" >
+                        <div class="col-12" >
+                            <div class="row">
+                                <!-- <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410.27 299.9">
+                                    <defs><style>.cls-1{fill:none;stroke:rgb(15, 175, 23);stroke-miterlimit:10;stroke-width:5px;}</style></defs>
+                                    <title>check</title>
+                                    
+                                    <path id="check" class="cls-1" d="M393.4,124.43,179.6,338.21a40.57,40.57,0,0,1-57.36,0L11.88,227.84a40.56,40.56,0,0,1,57.36-57.36l81.7,81.7L336,67.06a40.56,40.56,0,0,1,57.36,57.36Z" transform="translate(2.5 -52.69)"/>
+                                </svg> -->
+
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118.43873 118.43873">
+                                    <style>.circle{ animation: stroke-fill 1s linear forwards; } .check { animation: stroke-fill 5s linear forwards; } @keyframes stroke-fill { 0% { stroke-dasharray: 0, 0; } 100% { stroke-dasharray: 500, 200000; } }</style>
+                                    <path class="check" stroke-linejoin="round" d="M34.682 60.352l15.61 15.61 33.464-33.464" stroke="#08b237" stroke-linecap="round" stroke-width="4.3" fill="none"/>
+                                    <circle class="circle" stroke-linejoin="round" cx="59.219" stroke-linecap="round" stroke="#08b237" cy="59.219" r="57.069" stroke-width="4.3" fill="none"/>
+                                </svg>
+        
+                                <p class="success-status mt-2" style="text-align:center;margin:0;">เพิ่มสินค้าเข้าตะกร้าแล้ว</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -570,7 +598,6 @@
     
     });
 </script>
-
 
 <script>
     $(document).ready(function(){
@@ -813,53 +840,54 @@
 </script>
 
 <script>
-$(function() {
-    (function quantityProducts() {
-        var $quantityArrowMinus = $(".quantity-arrow-minus");
-        var $quantityArrowPlus = $(".quantity-arrow-plus");
-        $quantityArrowMinus.click(quantityMinus);
-        $quantityArrowPlus.click(quantityPlus);
+    $(function() {
+        (function quantityProducts() {
+            var $quantityArrowMinus = $(".quantity-arrow-minus");
+            var $quantityArrowPlus = $(".quantity-arrow-plus");
+            $quantityArrowMinus.click(quantityMinus);
+            $quantityArrowPlus.click(quantityPlus);
 
-        function quantityMinus() {
-            $quantityNum = $(this).parent().find('.quantity-num').val();
-            if($quantityNum > 1){
-                $quantityNum = (+$quantityNum - 1);
-                $(this).parent().find('.quantity-num').val($quantityNum);
-                $(this).parents('form').find('input[name="amountItem"]').val($quantityNum);
-                dataprice = $(this).parent().find('.quantity-num').attr('dataprice');
-                sum = (+dataprice)*$quantityNum;
-                $(this).parents('form').find('.total span').text(new Intl.NumberFormat().format(sum));
-                $(this).parents('form').find('input[name="sumprice"]').val(sum);
-                console.log($quantityNum);
-                console.log(sum);
+            function quantityMinus() {
+                $quantityNum = $(this).parent().find('.quantity-num').val();
+                if($quantityNum > 1){
+                    $quantityNum = (+$quantityNum - 1);
+                    $(this).parent().find('.quantity-num').val($quantityNum);
+                    $(this).parents('form').find('input[name="amountItem"]').val($quantityNum);
+                    dataprice = $(this).parent().find('.quantity-num').attr('dataprice');
+                    sum = (+dataprice)*$quantityNum;
+                    $(this).parents('form').find('.total span').text(new Intl.NumberFormat().format(sum));
+                    $(this).parents('form').find('input[name="sumprice"]').val(sum);
+                    console.log($quantityNum);
+                    console.log(sum);
+                }
             }
-        }
-        function quantityPlus() {
-            $quantityNum = $(this).parent().find('.quantity-num').val();
-            $max = $(this).parent().find('.quantity-num').attr('max');
-            if($quantityNum < (+$max)){
-                $quantityNum = (+$quantityNum + 1);
-                $(this).parent().find('.quantity-num').val($quantityNum);
-                $(this).parents('form').find('input[name="amountItem"]').val($quantityNum);
-                dataprice = $(this).parent().find('.quantity-num').attr('dataprice');
-                sum = (+dataprice)*$quantityNum;
-                $(this).parents('form').find('.total span').text(new Intl.NumberFormat().format(sum));
-                $(this).parents('form').find('input[name="sumprice"]').val(sum);
-                console.log($quantityNum);
-                console.log(sum);
+            function quantityPlus() {
+                $quantityNum = $(this).parent().find('.quantity-num').val();
+                $max = $(this).parent().find('.quantity-num').attr('max');
+                if($quantityNum < (+$max)){
+                    $quantityNum = (+$quantityNum + 1);
+                    $(this).parent().find('.quantity-num').val($quantityNum);
+                    $(this).parents('form').find('input[name="amountItem"]').val($quantityNum);
+                    dataprice = $(this).parent().find('.quantity-num').attr('dataprice');
+                    sum = (+dataprice)*$quantityNum;
+                    $(this).parents('form').find('.total span').text(new Intl.NumberFormat().format(sum));
+                    $(this).parents('form').find('input[name="sumprice"]').val(sum);
+                    console.log($quantityNum);
+                    console.log(sum);
+                }
             }
-        }
-        $('.btn-shop2.btn-shop-position').on('click', function(){
-            var id = $(this).data('target');
-            var price = $(this).data('price');
-            var amount = $(this).data('amount');
-            $(id).find('input[name="sumprice"]').val(price);
-            $(id).find('input[name="amountItem"]').val(amount);
-        })
-    })();
-});
+            $('.btn-shop2.btn-shop-position').on('click', function(){
+                var id = $(this).data('target');
+                var price = $(this).data('price');
+                var amount = $(this).data('amount');
+                $(id).find('input[name="sumprice"]').val(price);
+                $(id).find('input[name="amountItem"]').val(amount);
+            })
+        })();
+    });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> -->
 <script>
     $(document).ready(function(e) {
         $(".btn-submit-red.addShopping").click(function(e) {
@@ -882,6 +910,11 @@ $(function() {
                 success: function(response) {
                     console.log(response);
                     $('.modal').modal('hide');
+                    $('#popupmodal').modal();
+                    $('.success-status.mt-2').html(response.susee);
+                        setTimeout(function(){
+                            $('#popupmodal').modal('hide')
+                        }, 2000);
                     $('.font-shop').text(response.count);
                     if(response.success){
                         Swal.fire({
