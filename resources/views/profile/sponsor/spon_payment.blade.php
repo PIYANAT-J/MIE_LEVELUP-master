@@ -47,9 +47,11 @@
 
                                 <div class="col-3">
                                     <span  style="display:block;text-align:right;">
-                                        <h4 style="font-weight:800;margin:0;color:#ce0005;">฿{{$allPackage->package_amount}}</h4>
-                                        <label style="margin:0;"><p style="color: #b2b2b2;text-decoration:line-through;font-weight:800;margin:0;">฿680 </p></label>
-                                        <!-- <label><p style="margin:0;font-weight:800;"> (-37%)</p></label> -->
+                                        <h4 style="font-weight:800;margin:0;color:#ce0005;">฿{{number_format($allPackage->package_amount, 2)}}</h4>
+                                        <label style="margin:0;"><p style="color: #b2b2b2;text-decoration:line-through;font-weight:800;margin:0;"></p></label>
+                                        <label><p style="margin:0;font-weight:800;"></p></label>
+                                        <!-- <label style="margin:0;"><p style="color: #b2b2b2;text-decoration:line-through;font-weight:800;margin:0;">฿680 </p></label>
+                                        <label><p style="margin:0;font-weight:800;"> (-37%)</p></label> -->
                                     </span>
                                 </div>
                             </div>
@@ -81,10 +83,10 @@
 
                                         <div class="col-3 d-flex align-items-center justify-content-end">
                                             <span style="display:block;text-align:right;">
-                                                <h4 style="font-weight:800;margin:0;color:#ce0005;">฿{{$gameList->sponsor_cart_price}}</h4>
-                                                @if($gameList->GAME_DISCOUNT != null)
+                                                <h4 style="font-weight:800;margin:0;color:#ce0005;">฿{{number_format($gameList->sponsor_cart_price, 2)}}</h4>
+                                                @if($gameList->GAME_DISCOUNT != null && $gameList->GAME_DISCOUNT != "0")
                                                 <label style="margin:0;"><p style="color: #b2b2b2;text-decoration:line-through;font-weight:800;margin:0;">฿680 </p></label>
-                                                <!-- <label><p style="margin:0;font-weight:800;"> (-{{$gameList->GAME_DISCOUNT}}%) </p></label> -->
+                                                <label><p style="margin:0;font-weight:800;"> (-{{$gameList->GAME_DISCOUNT}}%) </p></label>
                                                 @endif
                                             </span>
                                         </div>
@@ -237,7 +239,7 @@
 
                 <div id="second1">
                     <div class="row my-3 fade-in">
-                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                        <!-- <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
                             <p class="ml-2" style="margin:0;font-weight:800;">บัญชี</p>
                             <div class="row">
                                 <div class="col-12 redioGreen">
@@ -264,8 +266,7 @@
                                     </label>
                                 </div>
                             </div>
-                                
-                        </div>
+                        </div> -->
 
                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
                             <div class="row">
@@ -402,7 +403,7 @@
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9  text-right p">ยอดรวมสินค้า</div>
-                                        <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right p">฿ {{$allPackage->package_amount}}</div>
+                                        <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right p">฿ {{number_format($allPackage->package_amount, 2)}}</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right p">ส่วนลด</div>
@@ -410,7 +411,7 @@
                                     </div>
                                     <div class="row mb-2">
                                         <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right p pt-2">รวมราคาทั้งสิ้น</div>
-                                        <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right align-self-end"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{$allPackage->package_amount}}</h4></div>
+                                        <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right align-self-end"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{number_format($allPackage->package_amount, 2)}}</h4></div>
                                     </div>
                                 </div>
                             </div>
@@ -422,9 +423,26 @@
                                     </a>
                                 </div>
                                 <div class="col-12 text-right" id="VisaCredit">
-                                    <a href="{{ route('SponsorPaymentConfirm') }}">
+                                    {{-- <a href="{{ route('SponsorPaymentConfirm') }}">
                                         <label class="btn-submit-red-s p">ชำระเงิน</label>
-                                    </a>
+                                    </a> --}}
+                                    @if($package == null)
+                                        <button type="button" class="btn-submit-red-s p credit">ชำระเงิน</button>
+                                        <input type="hidden" name="amount" value="{{$allPackage->package_amount}}" >
+                                        <input type="hidden" name="paymentType" value="VisaCredit">
+                                        <input type="hidden" name="package_id" value="{{$allPackage->package_id}}">
+                                        <input type="hidden" id="submit" name="submit" value="submit">
+                                    @else
+                                        @if($package->packageBuy_status == 'false')
+                                            <button class="btn-cancel-s" style="cursor:default">
+                                                <p style="margin:0">รอการชำระเงิน</p>
+                                            </button>
+                                        @else
+                                            <span>
+                                                <p style="color:#a8a8a8;">คุณมีเพคเกจนี้อยู่แล้ว</p>
+                                            </span>
+                                        @endif
+                                    @endif
                                 </div>
                                 <div class="col-12 text-right" id="iBanking">
                                     <!-- <a href="{{ route('SponsorPaymentConfirm') }}"> -->
@@ -488,7 +506,7 @@
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-8 col-sm-8 col-md-10 col-lg-10 col-xl-10 text-right p">ยอดรวมสินค้า</div>
-                                        <div class="col-4 col-sm-4 col-md-2 col-lg-2 col-xl-2 text-right p">฿ {{$transeection->transeection_amount}}</div>
+                                        <div class="col-4 col-sm-4 col-md-2 col-lg-2 col-xl-2 text-right p">฿ {{number_format($transeection->transeection_amount, 2)}}</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-8 col-sm-8  col-md-10 col-lg-10 col-xl-10 text-right p">ส่วนลด</div>
@@ -496,7 +514,7 @@
                                     </div>
                                     <div class="row mb-2">
                                         <div class="col-8 col-sm-8 col-md-10 col-lg-10 col-xl-10 text-right p pt-2">รวมราคาทั้งสิ้น</div>
-                                        <div class="col-4 col-sm-4 col-md-2 col-lg-2 col-xl-2 justify-content-end d-flex align-items-end"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{$transeection->transeection_amount}}</h4></div>
+                                        <div class="col-4 col-sm-4 col-md-2 col-lg-2 col-xl-2 justify-content-end d-flex align-items-end"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{number_format($transeection->transeection_amount, 2)}}</h4></div>
                                     </div>
                                 </div>
                             </div>
@@ -505,7 +523,20 @@
                                     <a href="{{ route('SponsorPaymentConfirm') }}"><label class="btn-submit-red-s p">ชำระเงิน</label></a>
                                 </div>
                                 <div class="col-12 text-right" id="VisaCredit">
-                                    <a href="{{ route('SponsorPaymentConfirm') }}"><label class="btn-submit-red-s p">ชำระเงิน</label></a>
+                                    {{-- <a href="{{ route('SponsorPaymentConfirm') }}"><label class="btn-submit-red-s p">ชำระเงิน</label></a> --}}
+                                    @if($transeection->transeection_invoice == null)
+                                        <button type="button" class="btn-submit-red-s p credit">ชำระเงิน</button>
+                                        <input type="hidden" name="amount" value="{{$transeection->transeection_amount}}" >
+                                        <input type="hidden" name="paymentType" value="VisaCredit">
+                                        <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
+                                        <input type="hidden" id="submit" name="submit" value="submit">
+                                    @else
+                                        @if($transeection->transeection_status == 'false')
+                                            <button class="btn-cancel-s" style="cursor:default">
+                                                <p style="margin:0">รอการชำระเงิน</p>
+                                            </button>
+                                        @endif
+                                    @endif
                                 </div>
                                 <div class="col-12 text-right" id="iBanking">
                                     <!-- <a href="{{ route('SponsorPaymentConfirm') }}"> -->
@@ -1404,6 +1435,21 @@
             </div>
         </div>
     </div>
+    <form class="VisaCreditTreePay d-none" action="https://paytest.treepay.co.th/total/hubInit.tp" method="post">
+        @csrf
+        <button class="btn-submit-red creditTree"><p style="margin:0;color:#fff;">ชำระเงิน</p></button>
+        <input type="hidden" name="order_no">
+        <input type="hidden" name="good_name">
+        <input type="hidden" name="trade_mony">
+        <input type="hidden" name="order_first_name">
+        <input type="hidden" name="order_email">
+        <input type="hidden" name="pay_type">
+        <input type="hidden" name="site_cd">
+        <input type="hidden" name="ret_url" value="{{route('CreditCallback')}}">
+        <input type="hidden" name="currency">
+        <input type="hidden" name="user_id">
+        <input type="hidden" name="hash_data">
+    </form>
 </div>
 
 <!-- พื้นหลัง -->
@@ -1439,7 +1485,7 @@
 @endsection
 
 @section('script')
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 <script src="{{ asset('dist/js/popper.min.js') }}"></script>
 <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('dist/js/owl.carousel.min.js') }}"></script>
@@ -1631,7 +1677,51 @@ $(document).ready(function(){
     });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script>
+    $(document).ready(function(e) {
+        $(".btn-submit-red-s.p.credit").click(function(e) {
+            var btnThis = $(this);
+            // alert("ยืนยันการลบรายการ");
+            var amount = $(this).parent().find('input[name="amount"]').val();
+            var paymentType = $(this).parent().find('input[name="paymentType"]').val();
+            var transeection_id = $(this).parent().find('input[name="transeection_id"]').val();
+            var package_id = $(this).parent().find('input[name="package_id"]').val();
+            var submit = "submit";
+
+            // console.log(paymentType);
+
+            $.ajax({
+                url: "{{route('SponVisaCredit')}}",
+                type: 'POST',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    amount:amount,
+                    paymentType:paymentType,
+                    transeection_id:transeection_id,
+                    package_id:package_id,
+                    submit:submit,
+                },
+                success: function(response) {
+                    console.log(response);
+                    $('form.VisaCreditTreePay input[name="order_no"]').val(response.order_no);
+                    $('form.VisaCreditTreePay input[name="good_name"]').val(response.good_name);
+                    $('form.VisaCreditTreePay input[name="user_id"]').val(response.user_id);
+                    $('form.VisaCreditTreePay input[name="trade_mony"]').val(response.trade_mony);
+                    $('form.VisaCreditTreePay input[name="order_first_name"]').val(response.order_first_name);
+                    $('form.VisaCreditTreePay input[name="order_email"]').val(response.order_email);
+                    $('form.VisaCreditTreePay input[name="pay_type"]').val(response.pay_type);
+                    $('form.VisaCreditTreePay input[name="site_cd"]').val(response.site_cd);
+                    $('form.VisaCreditTreePay input[name="currency"]').val(response.currency);
+                    $('form.VisaCreditTreePay input[name="hash_data"]').val(response.hash_data);
+                    $('.btn-submit-red.creditTree').click();
+                },
+                error: function(response) {}
+            });
+        });
+    });
+</script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> -->
 @if( Session::has('success'))
     <script type="text/javascript">
         $(document).ready(function() {

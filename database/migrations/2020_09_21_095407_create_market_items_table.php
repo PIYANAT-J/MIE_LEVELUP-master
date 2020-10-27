@@ -21,7 +21,7 @@ class CreateMarketItemsTable extends Migration
             $table->string('item_img')->collation('utf8_unicode_ci');
             $table->set('item_gender', ['man', 'woman', 'all'])->collation('utf8_unicode_ci');
             $table->set('item_type', ['clothes', 'eyes', 'glasses', 'hair', 'other', 'weapon'])->collation('utf8_unicode_ci');
-            $table->set('item_other', ['armor', 'crown', 'glove', 'hat', 'shoes', 'sword', 'hero'])->collation('utf8_unicode_ci')->nullable();
+            $table->set('item_other', ['armor', 'crown', 'gloves', 'hat', 'shoes', 'sword', 'hero'])->collation('utf8_unicode_ci')->nullable();
             $table->text('item_description')->collation('utf8_unicode_ci')->nullable();
             $table->integer('item_level')->default(1);
             $table->integer('item_amount')->default(1);

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use DB;
 use Auth;
 
+use App\CreditPayment;
 use App\TransferPayment;
 use App\QrPayment;
 use App\Package;
@@ -322,6 +323,7 @@ class packageController extends Controller
     }
 
     public function SponsorSuccessfulPayment($invoice){
+        // dd(decrypt($invoice));
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
         $package = DB::table('my_package_buy')->where([['my_package_buy.packageBuy_invoice', decrypt($invoice)], ['my_package_buy.USER_EMAIL', Auth::user()->email]])
                         ->join('packages','packages.package_id','my_package_buy.package_id')
@@ -334,13 +336,31 @@ class packageController extends Controller
                             ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
                             ->get();
         if($package == null){
-            $gameTrue = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'true']])
+            $gameList = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'true']])
                             ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
                             ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                            ->orderBy('sponsor_cart_id', 'desc')
                             ->get();
+            
+            $game_id = array();
+            $shopping_id = array();
+            $Gamehot = [];
+            foreach($gameList as $game){
+                $game_id[] = $game->sponsor_cart_game;
+                $game_list = array_unique($game_id);
+            }
+            for($i=0;$i <= count($game_list); $i++){
+                if(isset($game_list[$i])){
+                    $gameTrue[$i] = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.sponsor_cart_game', $game_list[$i]], ['sponsor_shopping_cart.USER_ID', Auth::user()->id]])
+                            ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                            ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                            ->orderBy('sponsor_cart_id', 'desc')
+                            ->first();
+                }
+            }
             return view('profile.sponsor.spon_successful_payment', compact('sponsor', 'invoice', 'address', 'countCart', 'transeection', 'gameTrue'));
         }else{
-            return view('profile.sponsor.spon_successful_payment', compact('sponsor', 'package', 'invoice', 'address', 'countCart'));
+            return view('profile.sponsor.spon_successful_payment', compact('sponsor', 'package', 'invoice', 'address', 'countCart', 'transeection'));
         }
     }
 
@@ -367,6 +387,84 @@ class packageController extends Controller
             DB::table('advertising_links')->insert($data);
             
             return back()->with("advertising", "เพิ่มโฆษณาเรียบร้อย");
+        }
+    }
+
+    public function sponVisaCredit(Request $request){
+        // dd($request);
+        if($request->input('submit') != null){
+            
+            $paymentType = $request->input('paymentType');
+            $invoice =  "VISACREDIT".time().Auth::user()->id;
+            $amount = $request->input('amount');
+            
+            // $transeection = DB::table('transeection_sponshopping')->where('transeection_id', $transeection_id)->first();
+
+            $credit_payments = new CreditPayment();
+            $credit_payments->paymentType = $paymentType;
+            $credit_payments->useType = "package";
+            $credit_payments->amount = $amount;
+            $credit_payments->invoice = $invoice;
+            $credit_payments->user_id = Auth::user()->id;
+            $credit_payments->user_email = Auth::user()->email;
+            $credit_payments->save();
+
+            $total = number_format($amount, 2, '', '');
+            // dd("NO.1", $total, $transeection->transeection_price);
+            if($request->input('transeection_id') != null){
+                $transeection_id = $request->input('transeection_id');
+                DB::table('transeection_sponshopping')->where('transeection_id', $transeection_id)->update(array('transeection_type'=>$paymentType, 'transeection_invoice'=>$invoice));
+                
+            }else{
+                $allpackage = DB::table('packages')->where('package_id',$request->input('package_id'))->first();
+                $packageBuy_name = $allpackage->package_name;
+                $packageBuy_amount = $allpackage->package_amount;
+                $packageBuy_season = $allpackage->package_season;
+                $packageBuy_invoice = $invoice;
+                $package_id = $allpackage->package_id;
+                $USER_ID = Auth::user()->id;
+                $USER_EMAIL = Auth::user()->email;
+        
+                $data = array("packageBuy_name"=>$packageBuy_name, "packageBuy_invoice"=>$packageBuy_invoice, "package_id"=>$package_id, 
+                        "packageBuy_amount"=>$packageBuy_amount, "packageBuy_season"=>$packageBuy_season,"USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
+                $value = Package::packageBuy($data);
+
+                DB::table('transeection_sponshopping')->insert(array("transeection_amount"=>$packageBuy_amount, "transeection_type"=>$paymentType, "transeection_invoice"=>$packageBuy_invoice,
+                    "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL));
+            }
+
+            $pay_type = 'PACA';
+            $secure_key = '2MU3bSrnXhZ.UaMieWO8liyxrpWOQ3B-C8TR32xUs7e4A8wffY8V34FTHLL2eDvGMlyGGYENOCqUrKbkOqCleFkVHM6hDUeVwCBF-FUwcb4VNfgEzPU78owJGfGAuWp1M3H22tNyKc8ZbI7DuPHVXWsny65e50iGXnq.rTgZVIKPj1ue2E5d7q092FxxFkA0WzgIkkObV7knUnRHI5vPRxHCuVGlnj4qLIjVNsq2E5vvXETAUX.5SfwzaAj7H8CcnmLy8Kki5vv5fHzCnnezLQ0mJOAbI1UtDugPZUfFYGsxMRhmFXfMawErOZKlL-wLlSrYjQhwDDPvU-u1avfCglf__';
+            $site_cd = 'A0001165MK';
+
+            $hash_string  = $pay_type . $invoice . $total . $site_cd . $secure_key . Auth::user()->id;
+            $hash_data = hash('sha256', $hash_string);
+
+            $data["transeection_amount"] = $amount;
+            $data["transeection_invoice"] = $invoice;
+            $data["order_no"] = $invoice;
+            $data["user_id"] = Auth::user()->id;
+            $data["good_name"] = "PACKAGE";
+            $data["trade_mony"] = $total;
+            $data["currency"] = "764";
+            $data["order_first_name"] = Auth::user()->name;
+            $data["order_email"] = Auth::user()->email;
+            $data["pay_type"] = $pay_type;
+            $data["site_cd"] = $site_cd;
+            $data["hash_data"] = $hash_data;
+
+            return response()->json([
+                'order_no'=>$data["order_no"], 
+                'user_id'=>$data["user_id"], 
+                'currency'=>$data["currency"],
+                'good_name'=>$data["good_name"], 
+                'trade_mony'=>$data["trade_mony"], 
+                'order_first_name'=>$data["order_first_name"], 
+                'order_email'=>$data["order_email"], 
+                'pay_type'=>$data["pay_type"], 
+                'site_cd'=>$data["site_cd"], 
+                'hash_data'=>$data["hash_data"],
+            ]);
         }
     }
 }
