@@ -1,7 +1,7 @@
-@extends('layout.avatar_navbar')
+@extends('layout.simulator_navbar')
 @section('content')
 
-<div class="container-fluid" id="getActive" active="/real_investors">
+<div class="container-fluid" id="getActive" active="{{ route('RealInvestors') }}">
     <div class="row my-5"></div>
     <div class="row my-2"></div>
     <div class="row  mt-3">

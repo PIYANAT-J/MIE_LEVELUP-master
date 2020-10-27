@@ -51,14 +51,14 @@
                             </div>
 
                             <div class="row mx-2 py-3" style="border-bottom:1px solid #455160">
-                                <div class="col-8">
+                                <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 mb-2">
                                     <label class="font-payment2"><p style="margin:0;font-weight:800;">ช่องทางการชำระเงิน</p></label> <br>
                                     <p style="color:#fff;margin:0;">
                                         ATM / โอนเข้าธนาคาร <br>
                                         กรุณาเก็บเอกสาร/หลักฐานการโอนเงินไว้ เพื่ออัพโหลดภายใน 24 ชม.
                                     </p>
                                 </div>
-                                <div class="col-4 text-right">
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <label><img src="{{asset('home/logo/'.$transfer->transferฺBank_name.'.svg')}}" ></label>
                                 @if($transfer->transferฺBank_name == "bangkok")
                                     <label class="font-payment2"><p style="color:#fff;margin:0;">ธนาคารกรุงเทพ</p></label> <br>
@@ -76,10 +76,10 @@
                                     <label class="ml-2" id="copy"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
                                     <label class="ml-2" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label>
                                 @elseif($transfer->transferฺBank_name == "scb")
-                                    <label class="font-payment2"><p style="color:#fff;margin:0;">ธนาคารไทยพาณิชย์</p></label> <br>
-                                    <label class="ml-2"><p style="color:#fff;margin:0;">บริษัท ทีเท็น จำกัด</p></label><br>
-                                    <label class="ml-2" id="copy"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
-                                    <label class="ml-2" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label>
+                                    <label class="font-payment2" style="margin:0;"><p style="color:#fff;margin:0;">ธนาคารไทยพาณิชย์</p></label> <br>
+                                    <label class="ml-2" style="margin:0;"><p style="color:#fff;margin:0;">บริษัท ทีเท็น จำกัด</p></label><br>
+                                    <label class="ml-2" id="copy" style="margin:0;"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
+                                    <label class="ml-2" style="margin:0;" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label>
                                 @endif
                                 <!-- <label ><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
                                 <label class="font-payment2"><p style="color:#fff;margin:0;">ธนาคารกรุงเทพ</p></label> <br>
@@ -120,7 +120,7 @@
                                             </label>
                                             <label class="bgInput field-wrap my-1">
                                                 <p class="fontHeadInput">ธนาคารทีโอน</p>
-                                                <select class="MySelect p pl-2" type="text" name="text4" style="width:97.2%">
+                                                <select class="MySelect p pl-2" type="text" name="text4">
                                                     <option value="">ธนาคารกรุงเทพ</option>
                                                     <option value="">ธนาคารกสิกรไทย</option>
                                                     <option value="">ธนาคารกรุงไทย</option>
@@ -213,14 +213,15 @@
     </div>
 </div>
 
+<!-- พื้นหลัง -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 bg_avatar"></div>
+        <div class="col-lg-4 col-xl-3 bg_avatar"></div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 bg_avatar2"></div>
+        <div class="col-lg-8 col-xl-9 bg_avatar2"></div>
     </div>
 </div>
 

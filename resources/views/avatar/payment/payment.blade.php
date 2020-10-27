@@ -66,7 +66,7 @@
                                     @foreach($shopping as $shoppingList)
                                         @if(in_array($shoppingList->item_id, $itemlist))
                                             <div class="row mt-3 pb-2" style="border-bottom:1px solid rgb(255, 255, 255,0.3);"> 
-                                                <div class="col-8 pl-2" style="padding:0;">
+                                                <div class="col-7 col-sm-8 col-md-8 col-lg-8 col-xl-8 pl-2" style="padding:0;">
                                                     <label class="labelItem2 bgItem">
                                                         <!-- <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" /> -->
                                                         @if($shoppingList->item_type == "clothes")
@@ -130,7 +130,7 @@
                                                     <p style="color:#ffffff">{{$itemamount[$i]}} ชิ้น</p>
                                                 </div>
 
-                                                <div class="col-3 align-self-center">
+                                                <div class="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 align-self-center">
                                                     <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
                                                         <h4 style="margin:0;font-weight:800;">฿{{number_format($itemprice[$i])}}</h4>
                                                         <p class="mr-2" style="margin:0;color:#ce0005;"><a style="color: #b2b2b2;text-decoration:line-through;">฿3,400 </a> (-{{$shoppingList->item_discount}}%)<p>
@@ -446,58 +446,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-12">
-                                        <p style="margin:0;font-weight:800;color:#fff;">รายการรอการแจ้งโอน</p>
-                                        <div class="row row200">
-                                            <div class="col-12 ">
-                                                <label class="ml-2 bgT10ListBanking2">
-                                                    {{-- <a href="{{ route('PaymentTransfer') }}">
-                                                        <label class="bgT10ListBankingPay"><p style="margin:0;">ชำระเงิน</p></label>
-                                                    </a>
-                                                    <label class="bgOrange"><p style="margin:0;">รออนุมัติ</p></label> --}}
-                                                    {{-- <a href="{{ route('SuccessfulPayment') }}"> --}}
-                                                        <label class="bgGreen"><p style="margin:0;">อนุมัติแล้ว</p></label>
-                                                    </a>
-                                                    <label><p style="margin:0;color:#fff;"> ฿6000 ธนาคารกรุงเทพ</p></label>
-                                                    <label><p style="margin:0;color:#ce0005;"> ควรชำระก่อน 10/10/20</p></label>
-                                                    @if(isset($transfer))
-                                                        @if($transfer != null)
-                                                            @if($transfer->transferStatus == "ยืนยันการโอน")
-                                                                    <a href="{{ route('PaymentTransfer', ['invoice' => encrypt($transeection->transeection_invoice)]) }}">
-                                                                        <label class="bgT10ListBankingPay"><p style="margin:0;">ชำระเงิน</p></label>
-                                                                    </a>
-                                                                    <label>
-                                                                        <p style="margin:0;color:#fff;"> ฿{{$transeection->transeection_price}}
-                                                                            @if($transfer->transferฺBank_name == "bangkok")
-                                                                                ธนาคารกรุงเทพ
-                                                                            @elseif($transfer->transferฺBank_name == "ktc")
-                                                                                ธนาคารกรุงไทย
-                                                                            @elseif($transfer->transferฺBank_name == "kbank")
-                                                                                ธนาคารกสิกรไทย
-                                                                            @elseif($transfer->transferฺBank_name == "scb")
-                                                                                ธนาคารไทยพาณิชย์
-                                                                            @endif
-                                                                        </p>
-                                                                    </label>
-                                                                <?php
-                                                                    $start = explode("-",$transfer->create_at);
-                                                                    $deadline = explode(" ",$start[2]);
-                                                                    $deadline1 = $deadline[0] + 1;
-                                                                ?>
-                                                                <label><h5 style="margin:0;color:#ce0005;"> ควรชำระก่อน {{$start[0]}}/{{$start[1]}}/{{$deadline1}} {{$deadline[1]}}</h5></label> 
-                                                            @elseif($transfer->transferStatus == "รอการอนุมัติ")
-                                                                <label class="bgOrange"><p style="margin:0;">รออนุมัติ</p></label>
-                                                            @elseif($transfer->transferStatus == "อนุมัติแล้ว")
-                                                                {{-- <a href="{{ route('SuccessfulPayment') }}"> --}}
-                                                                    <label class="bgGreen p">อนุมัติแล้ว</label>
-                                                                </a>
-                                                            @endif
-                                                        @endif
-                                                    @endif
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                 </div>
                             </div>
 
@@ -505,19 +453,18 @@
                             <div class="row mt-3 py-2 " style="background-color:#000;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
                                 <div class="col-12">
                                     <div class="row mx-4">
-                                        <div class="col-6"></div>
-                                        <div class="col-6">
+                                        <div class="col-12">
                                             <div class="row">
-                                                <div class="col-6 text-right font-payment2"><p style="margin:0;">ยอดรวมสินค้า</p></div>
-                                                <div class="col-6 text-right font-payment2"><p style="margin:0;">฿{{number_format($transeection->transeection_price)}}</p></div>
+                                                <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right font-payment2"><p style="margin:0;">ยอดรวมสินค้า</p></div>
+                                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 text-right font-payment2"><p style="margin:0;">฿{{number_format($transeection->transeection_price)}}</p></div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-6 text-right font-payment2"><p style="margin:0;">ส่วนลด</p></div>
-                                                <div class="col-6 text-right font-payment2"><p style="margin:0;">-</p></div>
+                                                <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right font-payment2"><p style="margin:0;">ส่วนลด</p></div>
+                                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 text-right font-payment2"><p style="margin:0;">-</p></div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-6 text-right font-payment2 pt-2"><p style="margin:0;">รวมราคาทั้งสิ้น</p></div>
-                                                <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿{{number_format($transeection->transeection_price)}}</h4></div>
+                                                <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right font-payment2 pt-2"><p style="margin:0;">รวมราคาทั้งสิ้น</p></div>
+                                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 text-right align-self-end"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿{{number_format($transeection->transeection_price)}}</h4></div>
                                             </div>
                                         </div>
                                     </div>

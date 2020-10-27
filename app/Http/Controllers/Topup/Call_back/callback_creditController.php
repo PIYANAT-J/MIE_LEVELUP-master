@@ -13,6 +13,7 @@ use App\Transeection_buyItem;
 use App\CreditPayment;
 use App\Market_item;
 use App\My_item;
+use App\Package;
 
 class callback_creditController extends Controller
 {
@@ -84,6 +85,53 @@ class callback_creditController extends Controller
                     Session::save();
                     header("Location: ".url()->to(route('UserTopup')));
                     exit();
+                }elseif($type->useType == "package"){
+                    $transeection = DB::table('transeection_sponshopping')->where('transeection_invoice', $order_no)->first();
+                    if($transeection != null){
+                        $packageBuy = DB::table('my_package_buy')->where('packageBuy_invoice', $order_no)->first();
+                        if($packageBuy != null){
+                            $package = DB::table('packages')->where('package_id', $packageBuy->package_id)->first();
+                            $packageBuy_status = "true";
+                            $packageBuy_start = date('Y-m-d');
+                            $Y = date('Y');
+                            $m = date('m')+$package->package_season;
+                            $d = date('d');
+                            $packageBuy_deadline = $Y.'-'.$m.'-'.$d;
+
+                            $data = array("packageBuy_status"=>$packageBuy_status, "packageBuy_start"=>$packageBuy_start, "packageBuy_deadline"=>$packageBuy_deadline, "packageBuy_invoice"=>$order_no);
+                            $value = Package::packageBuy($data);
+
+                            DB::table('transeection_sponshopping')->where('transeection_invoice', $order_no)->update(array("transeection_status"=>"true"));
+
+                        }else{
+                            $game = explode(", ", $transeection->transeection_gameSpon);
+                            $gameSpon = [];
+                            for($i=0;$i<count($game);$i++){
+                                $shopping = DB::table('sponsor_shopping_cart')->where([['sponsor_cart_game', $game[$i]], ['USER_ID', $transeection->USER_ID], ['sponsor_cart_status', 'false']])->first();
+                                $sponsor_cart_id = $shopping->sponsor_cart_id;
+                                $sponsor_cart_status = "true";
+                                $data = array("sponsor_cart_id"=>$sponsor_cart_id, "sponsor_cart_status"=>$sponsor_cart_status);
+                                Package::cartGameUpdate($data);
+
+                                $start = explode(" ", $shopping->sponsor_cart_start);
+                                $deadline = explode(" ", $shopping->sponsor_cart_deadline);
+                                array_push($gameSpon, ([
+                                    'gameid' => $shopping->sponsor_cart_game,
+                                    'start' => $start[0].'T'.$start[1],
+                                    'deadline' => $deadline[0].'T'.$deadline[1]
+                                ]));
+                            }
+                            
+                            $data = array("transeection_invoice"=>$order_no, "transeection_status"=>"true", "transeection_gameSpon"=>$gameSpon);
+                            Package::transeectionPaymentUpdate($data);
+                        }
+
+                        $dataDelete = array("transeection_type"=>$transeection->transeection_type, "USER_ID"=>$transeection->USER_ID);
+                        Package::transeectionPaymentDelete($dataDelete);
+                    }
+                    Session::save();
+                    header("Location: ".url()->to(route('SponsorSuccessfulPayment', ['invoice' => encrypt($order_no)])));
+                    exit();
                 }
             }
         }elseif($res_cd == "W999"){
@@ -103,17 +151,25 @@ class callback_creditController extends Controller
                     Session::save();
                     header("Location: ".url()->to(route('UserTopup')));
                     exit();
+                }elseif($type->useType == "package"){
+                    $packge = DB::table('my_package_buy')->where('packageBuy_invoice', $order_no)->first();
+                    if($packge != null){
+                        DB::table('transeection_sponshopping')->where('transeection_invoice', $order_no)->update(array('transeection_invoice'=>null, 'transeection_type'=>null));
+
+                        Session::save();
+                        header("Location: ".url()->to(route('packagePay', ['id' => encrypt($packge->package_id), 'idT'=>encrypt('null')])));
+
+                        DB::table('my_package_buy')->where('packageBuy_id', $packge->packageBuy_id)->delete();
+                        exit();
+                    }else{
+                        DB::table('transeection_sponshopping')->where('transeection_invoice', $order_no)->update(array('transeection_invoice'=>null, 'transeection_type'=>null));
+
+                        Session::save();
+                        header("Location: ".url()->to(route('packagePay', ['id'=>encrypt('list'), 'idT'=>encrypt('null')])));
+                        exit();
+                    }
                 }
             }
-            // dd($transeection_item);
-            // Session::save();
-            // header("Location: ".url()->to(route('Payment')));
-            // exit();
         }
-
-        // dd(url()->to(route('AdsSpon')));
-        // Session::save();
-        // header("Location: ".url()->to(route('LEVELup')));
-        // exit();
     }
 }

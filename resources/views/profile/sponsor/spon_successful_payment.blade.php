@@ -19,8 +19,6 @@
                         </a>
                     @endif
                     <label class="fontAd1 p"> > </label>
-                    <!-- <a href="{{ route('SponsorPayment') }}"><label class="fontAd1 active" >ชำระเงิน</label></a>
-                    <label class="fontAd1"> > </label> -->
                     <label class="fontAd1 p" >ยืนยันการชำระเงิน</label>
                 </div>
             </div>
@@ -46,8 +44,8 @@
                             </label>
                         </div>
                         <div class="col-4 text-right">
-                            <h4 style="font-weight:800;margin:0;">฿{{$package->packageBuy_amount}}</h4>
-                            <p style="margin:0;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-37%)</p>
+                            <h4 style="font-weight:800;margin:0;">฿{{number_format($package->packageBuy_amount, 2)}}</h4>
+                            <!-- <p style="margin:0;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-37%)</p> -->
                         </div>
                     @else
                         <?php 
@@ -116,16 +114,16 @@
                 <div class="row mt-3" style="padding: 0 0 0 7px;">
                     <div class="col-6"><p style="color:#000;margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></div>
                     @if(isset($package))
-                        <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{$package->packageBuy_amount}}</h4></div>
+                        <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{number_format($package->packageBuy_amount, 2)}}</h4></div>
                     @else
-                        <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{$transeection->transeection_amount}}</h4></div>
+                        <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{number_format($transeection->transeection_amount, 2)}}</h4></div>
                     @endif
                 </div>
 
                 <div class="row mt-3" style="padding: 0 0 0 7px;">
                     <div class="col-6"><p style="color:#000;margin:0;font-weight:800;">ช่องทางการชำระเงิน</p></div>
                     <div class="col-6 text-right" style="padding-left:0;">
-                        <p style="color:#000;margin:0;font-weight:800;">T10 Wallet <br>บัญชี สมหญิง รักดี</p>
+                        <p style="color:#000;margin:0;font-weight:800;">{{$transeection->transeection_type}} <br>บัญชี {{Auth::user()->name}} {{Auth::user()->surname}}</p>
                     </div>
                 </div>
                 

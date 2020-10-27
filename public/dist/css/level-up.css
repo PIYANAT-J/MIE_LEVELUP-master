@@ -1,4 +1,4 @@
-/* screen 320-575 */
+/* screen 320-575 xs*/
 @media (min-width: 320px) { 
   p,.p {font-size: 14px;}
   h1,.h1{font-size: 14px;}
@@ -7,6 +7,20 @@
   h4,.h4{font-size: 20px;}
   h5,.h5{font-size: 12px;}
   h6,.h6{font-size: 24px;}
+
+  .MySelect{
+    width: 92%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 10px;
+  }
+  
+  .MySelect:focus{
+    outline: none;
+  }
 
   .columnPackage  {
     width: 100%;
@@ -44,6 +58,7 @@
   .avatarHeight{
     height: 300px;
   }
+
 
   .rowAvatar{
     height:300px;
@@ -91,6 +106,7 @@
     margin: auto;
     transform: translateY(-55%);
   }
+
   .hairManImg{
     z-index: 3;
     position: absolute;
@@ -277,9 +293,201 @@
     height: 80%;
     transform: translate(0%, 0%);
   }
+
+  .simHeight{
+    height: 450px;
+  }
+
+  .headManImg2{
+    z-index: 2;
+    position: absolute;
+    width:30%;
+    /* width: 200px; */
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-55%);
+  }
+
+  .hairManImg2{
+    z-index: 3;
+    position: absolute;
+    /* width:200px; */
+    width: 40%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-60%);
+  }
+
+  .eyesManImg2{
+    z-index: 4;
+    position: absolute;
+    /* width: 120px; */
+    width: 24%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-180%);
+  }
+  .glassesManImg2{
+    z-index: 5;
+    position: absolute;
+    /* width: 135px; */
+    width: 27%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-155%);
+  }
+  .crownManImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:110px; */
+    width: 25%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-230%);
+  }
+
+  .clothesManImg2{
+    z-index: 1;
+    position: absolute;
+    /* width: 200px; */
+    width: 50%;
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .glovesManImg2{
+    z-index: 5;
+    position: absolute;
+    width: 36%;
+    /* width:142px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(120%);
+  }
+  .armorWomanImg2{
+    z-index: 4;
+    position: absolute;
+    /* width:142px; */
+    width: 35%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .weaponManImg2{
+    z-index: 0;
+    position: absolute;
+    /* width: 130px; */
+    width: 40%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(30%);
+  }
+  .hairwomanImg2{
+    z-index: 3;
+    position: absolute;
+    width: 40%;
+    /* width:200px; */
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-40%);
+  }
+  .eyesWomanImg2{
+    z-index: 4;
+    position: absolute;
+    width: 22%;
+    /* width: 110px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-190%);
+  }
+  .glassesWomanImg2{
+    z-index: 4;
+    position: absolute;
+    width:27%;
+    /* width: 135px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-148%);
+  }
+  .crownWomanImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:110px; */
+    width: 24%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-240%);
+  }
+  .clothesWomanImg2{
+    z-index: 1;
+    position: absolute;
+    /* width: 200px; */
+    width: 50%;
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .glovesWomanImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:142px; */
+    width: 35%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(120%);
+  }
  }
 
- /* screen 576-767 */
+ /* screen 576-767 md*/
 @media (min-width: 576px) { 
   p,.p {font-size: 14px;}
   h1,.h1{font-size: 14px;}
@@ -288,6 +496,20 @@
   h4,.h4{font-size: 22px;}
   h5,.h5{font-size: 12px;}
   h6,.h6{font-size: 20px;}
+
+  .MySelect{
+    width: 91.5%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 10px;
+  }
+  
+  .MySelect:focus{
+    outline: none;
+  }
 
   .columnPackage  {
     width: 33.33%;
@@ -560,6 +782,197 @@
     height: 80%;
     transform: translate(0%, 0%);
   }
+  .simHeight{
+    height: 480px;
+  }
+
+  .headManImg2{
+    z-index: 2;
+    position: absolute;
+    width:30%;
+    /* width: 200px; */
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-55%);
+  }
+
+  .hairManImg2{
+    z-index: 3;
+    position: absolute;
+    /* width:200px; */
+    width: 40%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-60%);
+  }
+
+  .eyesManImg2{
+    z-index: 4;
+    position: absolute;
+    /* width: 120px; */
+    width: 24%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-180%);
+  }
+  .glassesManImg2{
+    z-index: 5;
+    position: absolute;
+    /* width: 135px; */
+    width: 27%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-155%);
+  }
+  .crownManImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:110px; */
+    width: 25%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-230%);
+  }
+
+  .clothesManImg2{
+    z-index: 1;
+    position: absolute;
+    /* width: 200px; */
+    width: 50%;
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .glovesManImg2{
+    z-index: 5;
+    position: absolute;
+    width: 36%;
+    /* width:142px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(120%);
+  }
+  .armorWomanImg2{
+    z-index: 4;
+    position: absolute;
+    /* width:142px; */
+    width: 35%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .weaponManImg2{
+    z-index: 0;
+    position: absolute;
+    /* width: 130px; */
+    width: 40%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(30%);
+  }
+  .hairwomanImg2{
+    z-index: 3;
+    position: absolute;
+    width: 40%;
+    /* width:200px; */
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-40%);
+  }
+  .eyesWomanImg2{
+    z-index: 4;
+    position: absolute;
+    width: 22%;
+    /* width: 110px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-190%);
+  }
+  .glassesWomanImg2{
+    z-index: 4;
+    position: absolute;
+    width:27%;
+    /* width: 135px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-148%);
+  }
+  .crownWomanImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:110px; */
+    width: 24%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-240%);
+  }
+  .clothesWomanImg2{
+    z-index: 1;
+    position: absolute;
+    /* width: 200px; */
+    width: 50%;
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .glovesWomanImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:142px; */
+    width: 35%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(120%);
+  }
  }
 
  /* screen 768-991 */
@@ -571,6 +984,20 @@
   h4,.h4{font-size: 20px;}
   h5,.h5{font-size: 12px;}
   h6,.h6{font-size: 26px;}
+
+  .MySelect{
+    width: 91.2%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 10px;
+  }
+  
+  .MySelect:focus{
+    outline: none;
+  }
 
   .columnPackage  {
     width: 33.33%;
@@ -838,9 +1265,200 @@
     height: 80%;
     transform: translate(0%, 0%);
   }
+  .simHeight{
+    height: 500px;
+  }
+
+  .headManImg2{
+    z-index: 2;
+    position: absolute;
+    width:30%;
+    /* width: 200px; */
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-55%);
+  }
+
+  .hairManImg2{
+    z-index: 3;
+    position: absolute;
+    /* width:200px; */
+    width: 40%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-60%);
+  }
+
+  .eyesManImg2{
+    z-index: 4;
+    position: absolute;
+    /* width: 120px; */
+    width: 24%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-180%);
+  }
+  .glassesManImg2{
+    z-index: 5;
+    position: absolute;
+    /* width: 135px; */
+    width: 27%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-155%);
+  }
+  .crownManImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:110px; */
+    width: 25%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-230%);
+  }
+
+  .clothesManImg2{
+    z-index: 1;
+    position: absolute;
+    /* width: 200px; */
+    width: 50%;
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .glovesManImg2{
+    z-index: 5;
+    position: absolute;
+    width: 36%;
+    /* width:142px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(120%);
+  }
+  .armorWomanImg2{
+    z-index: 4;
+    position: absolute;
+    /* width:142px; */
+    width: 35%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .weaponManImg2{
+    z-index: 0;
+    position: absolute;
+    /* width: 130px; */
+    width: 40%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(30%);
+  }
+  .hairwomanImg2{
+    z-index: 3;
+    position: absolute;
+    width: 40%;
+    /* width:200px; */
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-40%);
+  }
+  .eyesWomanImg2{
+    z-index: 4;
+    position: absolute;
+    width: 22%;
+    /* width: 110px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-190%);
+  }
+  .glassesWomanImg2{
+    z-index: 4;
+    position: absolute;
+    width:27%;
+    /* width: 135px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-148%);
+  }
+  .crownWomanImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:110px; */
+    width: 24%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-240%);
+  }
+  .clothesWomanImg2{
+    z-index: 1;
+    position: absolute;
+    /* width: 200px; */
+    width: 50%;
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .glovesWomanImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:142px; */
+    width: 35%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(120%);
+  }
  }
 
- /* screen 992-1199 */
+ /* screen 992-1199 lg*/
 @media (min-width: 992px) { 
   p,.p {font-size: 14px;}
   h1,.h1{font-size: 16px;}
@@ -850,6 +1468,19 @@
   h5,.h5{font-size: 12px;}
   h6,.h6{font-size: 28px;}
 
+  .MySelect{
+    width: 92.5%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 10px;
+  }
+  
+  .MySelect:focus{
+    outline: none;
+  }
   .columnPackage  {
     width: 33.33%;
     padding: 5px;
@@ -1115,6 +1746,198 @@
     /* height: 580px; */
     height: 80%;
     transform: translate(0%, 0%);
+  }
+
+  .simHeight{
+    height: 300px;
+  }
+
+  .headManImg2{
+    z-index: 2;
+    position: absolute;
+    width:30%;
+    /* width: 200px; */
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-55%);
+  }
+
+  .hairManImg2{
+    z-index: 3;
+    position: absolute;
+    /* width:200px; */
+    width: 40%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-60%);
+  }
+
+  .eyesManImg2{
+    z-index: 4;
+    position: absolute;
+    /* width: 120px; */
+    width: 24%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-180%);
+  }
+  .glassesManImg2{
+    z-index: 5;
+    position: absolute;
+    /* width: 135px; */
+    width: 27%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-155%);
+  }
+  .crownManImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:110px; */
+    width: 25%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-230%);
+  }
+
+  .clothesManImg2{
+    z-index: 1;
+    position: absolute;
+    /* width: 200px; */
+    width: 50%;
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .glovesManImg2{
+    z-index: 5;
+    position: absolute;
+    width: 36%;
+    /* width:142px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(120%);
+  }
+  .armorWomanImg2{
+    z-index: 4;
+    position: absolute;
+    /* width:142px; */
+    width: 35%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .weaponManImg2{
+    z-index: 0;
+    position: absolute;
+    /* width: 130px; */
+    width: 40%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(30%);
+  }
+  .hairwomanImg2{
+    z-index: 3;
+    position: absolute;
+    width: 40%;
+    /* width:200px; */
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-40%);
+  }
+  .eyesWomanImg2{
+    z-index: 4;
+    position: absolute;
+    width: 22%;
+    /* width: 110px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-190%);
+  }
+  .glassesWomanImg2{
+    z-index: 4;
+    position: absolute;
+    width:27%;
+    /* width: 135px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-148%);
+  }
+  .crownWomanImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:110px; */
+    width: 24%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-240%);
+  }
+  .clothesWomanImg2{
+    z-index: 1;
+    position: absolute;
+    /* width: 200px; */
+    width: 50%;
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .glovesWomanImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:142px; */
+    width: 35%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(120%);
   }
  }
 
@@ -1383,9 +2206,215 @@
     height: 93%;
     transform: translate(0%, 0%);
   }
+  .simHeight{
+    height: 400px;
+  }
+
+  .headManImg2{
+    z-index: 2;
+    position: absolute;
+    width:30%;
+    /* width: 200px; */
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-55%);
+  }
+
+  .hairManImg2{
+    z-index: 3;
+    position: absolute;
+    /* width:200px; */
+    width: 40%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-60%);
+  }
+
+  .eyesManImg2{
+    z-index: 4;
+    position: absolute;
+    /* width: 120px; */
+    width: 24%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-180%);
+  }
+  .glassesManImg2{
+    z-index: 5;
+    position: absolute;
+    /* width: 135px; */
+    width: 27%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-155%);
+  }
+  .crownManImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:110px; */
+    width: 25%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-230%);
+  }
+
+  .clothesManImg2{
+    z-index: 1;
+    position: absolute;
+    /* width: 200px; */
+    width: 50%;
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .glovesManImg2{
+    z-index: 5;
+    position: absolute;
+    width: 36%;
+    /* width:142px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(120%);
+  }
+  .armorWomanImg2{
+    z-index: 4;
+    position: absolute;
+    /* width:142px; */
+    width: 35%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .weaponManImg2{
+    z-index: 0;
+    position: absolute;
+    /* width: 130px; */
+    width: 40%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(30%);
+  }
+  .hairwomanImg2{
+    z-index: 3;
+    position: absolute;
+    width: 40%;
+    /* width:200px; */
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-40%);
+  }
+  .eyesWomanImg2{
+    z-index: 4;
+    position: absolute;
+    width: 22%;
+    /* width: 110px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-190%);
+  }
+  .glassesWomanImg2{
+    z-index: 4;
+    position: absolute;
+    width:27%;
+    /* width: 135px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-148%);
+  }
+  .crownWomanImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:110px; */
+    width: 24%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-240%);
+  }
+  .clothesWomanImg2{
+    z-index: 1;
+    position: absolute;
+    /* width: 200px; */
+    width: 50%;
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .glovesWomanImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:142px; */
+    width: 36%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(120%);
+  }
  }
 
- /* screen 1600+ */
+ /* screen 1600+ xl*/
+ @media (min-width: 1300px) { 
+  .MySelect{
+    width: 91%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 10px;
+  }
+  .MySelect:focus{
+    outline: none;
+  }
+ }
+ /* screen 1600+ xl*/
  @media (min-width: 1600px) { 
   p,.p {font-size: 16px;}
   h1,.h1{font-size: 18px;}
@@ -1394,6 +2423,20 @@
   h4,.h4{font-size: 24px;}
   h5,.h5{font-size: 16px;}
   h6,.h6{font-size: 32px;}
+
+  .MySelect{
+    width: 91%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 10px;
+  }
+  
+  .MySelect:focus{
+    outline: none;
+  }
   
   .columnPackage  {
     width: 16.66%;
@@ -1661,6 +2704,198 @@
     /* height: 580px; */
     height: 50%;
     transform: translate(0%, 0%);
+  }
+
+  .simHeight{
+    height: 600px;
+  }
+
+  .headManImg2{
+    z-index: 2;
+    position: absolute;
+    width:30%;
+    /* width: 200px; */
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-55%);
+  }
+
+  .hairManImg2{
+    z-index: 3;
+    position: absolute;
+    /* width:200px; */
+    width: 40%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-60%);
+  }
+
+  .eyesManImg2{
+    z-index: 4;
+    position: absolute;
+    /* width: 120px; */
+    width: 24%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-180%);
+  }
+  .glassesManImg2{
+    z-index: 5;
+    position: absolute;
+    /* width: 135px; */
+    width: 27%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-155%);
+  }
+  .crownManImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:110px; */
+    width: 25%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-230%);
+  }
+
+  .clothesManImg2{
+    z-index: 1;
+    position: absolute;
+    /* width: 200px; */
+    width: 50%;
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .glovesManImg2{
+    z-index: 5;
+    position: absolute;
+    width: 36%;
+    /* width:142px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(120%);
+  }
+  .armorWomanImg2{
+    z-index: 4;
+    position: absolute;
+    /* width:142px; */
+    width: 35%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .weaponManImg2{
+    z-index: 0;
+    position: absolute;
+    /* width: 130px; */
+    width: 40%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(30%);
+  }
+  .hairwomanImg2{
+    z-index: 3;
+    position: absolute;
+    width: 40%;
+    /* width:200px; */
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-40%);
+  }
+  .eyesWomanImg2{
+    z-index: 4;
+    position: absolute;
+    width: 22%;
+    /* width: 110px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-190%);
+  }
+  .glassesWomanImg2{
+    z-index: 4;
+    position: absolute;
+    width:27%;
+    /* width: 135px; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-148%);
+  }
+  .crownWomanImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:110px; */
+    width: 24%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-240%);
+  }
+  .clothesWomanImg2{
+    z-index: 1;
+    position: absolute;
+    /* width: 200px; */
+    width: 50%;
+    /* background-color: #ce0005; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(45%);
+  }
+  .glovesWomanImg2{
+    z-index: 5;
+    position: absolute;
+    /* width:142px; */
+    width: 35%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(120%);
   }
  }
  
@@ -3453,8 +4688,6 @@ input[type='image']:focus{
   outline: none!important;
 }
 
-
-
 .pic1{
   width: 100%;
   height: 350px;
@@ -4409,7 +5642,9 @@ margin: 30px auto;
   padding-left: 18px;
 }
 .input-name-reg:hover{
+  outline: none!important;
 }
+
 .input-name-reg:focus{
   outline: none!important;
 }
@@ -5025,19 +6260,7 @@ input.date{
   background-color: #141621;
 }
 
-.MySelect{
-  width: 100%;
-  height: 40px;
-  border-radius: 5px;
-  border: none;
-  background-color: #f2f2f2;
-  margin: 0;
-  padding: 10px;
-}
 
-.MySelect:focus{
-  outline: none;
-}
 
 .select4{
   width: 100%;
@@ -7830,10 +9053,12 @@ button {
 
 .detailTableGreen{
   color: #0ce63e;
+  margin: 0;
 }
 
 .detailTableRed{
   color: #ce0005;
+  margin: 0;
 }
 
 .VisaCredit{
@@ -9156,7 +10381,8 @@ input[type="checkbox"].switch_2{
   border-radius: 6px 0 0 6px;
   background-color: #fff;
   padding: 6px 10px;
-  border: none
+  border: none;
+  width: 60%;
 }
 .inputT10Avatar:focus{
   background-color: #fff !important;
