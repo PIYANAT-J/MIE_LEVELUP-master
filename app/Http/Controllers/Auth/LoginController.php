@@ -88,7 +88,19 @@ class LoginController extends Controller
                 $name = explode(' ', $user->name);
                 $newUser = User::create(['name' => $name[0], 'surname' => $name[1], 'email' => $user->email, 'users_type' => '1', 'facebook_id' => $user->id]);
 
-                $data = array("USER_EMAIL"=>$user->email);
+                $data = array("USER_EMAIL"=>$user->email,"AVATAR"=>'[
+                        {
+                            "eyes": "",
+                            "hair": "",
+                            "armor": "",
+                            "crown": "",
+                            "gender": "",
+                            "gloves": "",
+                            "weapon": "",
+                            "clothes": "",
+                            "glasses": ""
+                        }
+                    ]');
                 Guest_user::InsertAndUpdateData($data);
 
                 Auth::login($newUser);
@@ -115,7 +127,19 @@ class LoginController extends Controller
                 $name = explode(' ', $user->name);
                 $newUser = User::create(['name' => $name[0], 'surname' => $name[1], 'email' => $user->email, 'users_type' => '1', 'google_id' => $user->id]);
 
-                $data = array("USER_EMAIL"=>$user->email);
+                $data = array("USER_EMAIL"=>$user->email,"AVATAR"=>'[
+                        {
+                            "eyes": "",
+                            "hair": "",
+                            "armor": "",
+                            "crown": "",
+                            "gender": "",
+                            "gloves": "",
+                            "weapon": "",
+                            "clothes": "",
+                            "glasses": ""
+                        }
+                    ]');
                 Guest_user::InsertAndUpdateData($data);
                 
                 Auth::login($newUser);
