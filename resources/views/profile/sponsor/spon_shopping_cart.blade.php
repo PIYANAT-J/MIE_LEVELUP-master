@@ -52,11 +52,11 @@
                                 </div>
 
                                 <div class="col-3 text-right align-self-center" style="padding:0;">
-                                        @if($gameList->GAME_DISCOUNT != null)
-                                            <h4 style="margin:0;font-weight:800;">฿{{number_format($gameList->sponsor_cart_price)}}</h4>
+                                        @if($gameList->GAME_DISCOUNT != null && $gameList->GAME_DISCOUNT != "0")
+                                            <h4 style="margin:0;font-weight:800;">฿{{number_format($gameList->sponsor_cart_price, 2)}}</h4>
                                             <p class="mr-2"><a style="color: #b2b2b2;text-decoration:line-through;">฿680 </a> (-{{$gameList->GAME_DISCOUNT}}%)</p>
                                         @else
-                                            <h4 style="margin:0;font-weight:800;">฿{{number_format($gameList->sponsor_cart_price)}}</h4>
+                                            <h4 style="margin:0;font-weight:800;">฿{{number_format($gameList->sponsor_cart_price, 2)}}</h4>
                                         @endif
                                     </span>
                                 </div>

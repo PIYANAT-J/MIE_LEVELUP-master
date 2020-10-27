@@ -35,13 +35,13 @@ class productController extends Controller
         $count = DB::table('products')->where('USER_EMAIL', Auth::user()->email)->get();
         if($count->count() == 0){
             $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-            $game = DB::table('games')->where('GAME_STATUS','อนุมัติ')->get();
+            $game = DB::table('games')->where('GAME_STATUS','อนุมัติ')->orderBy('GAME_ID', 'desc')->get();
             $allpackage = DB::table('packages')->where('package_status','true')->get();
             $package = DB::table('my_package_buy')->where([['my_package_buy.USER_EMAIL', Auth::user()->email], ['my_package_buy.packageBuy_status', 'true']])
                             ->join('packages','packages.package_id','my_package_buy.package_id')
                             ->select('my_package_buy.*', 'packages.package_game', 'packages.package_length')
                             ->get();
-            $transeection = DB::table('transeection_sponshopping')->where([['transeection_status', 'true'], ['USER_ID', Auth::user()->id]])->get();
+            $transeection = DB::table('transeection_sponshopping')->where([['transeection_status', 'true'], ['USER_ID', Auth::user()->id]])->orderBy('transeection_id', 'desc')->get();
             $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
                             ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
                             ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
@@ -52,13 +52,13 @@ class productController extends Controller
         }else{
             $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
             $product = DB::table('products')->where('USER_EMAIL', Auth::user()->email)->get();
-            $game = DB::table('games')->where('GAME_STATUS','อนุมัติ')->get();
+            $game = DB::table('games')->where('GAME_STATUS','อนุมัติ')->orderBy('GAME_ID', 'desc')->get();
             $allpackage = DB::table('packages')->where('package_status','true')->get();
             $package = DB::table('my_package_buy')->where([['my_package_buy.USER_EMAIL', Auth::user()->email], ['my_package_buy.packageBuy_status', 'true']])
                             ->join('packages','packages.package_id','my_package_buy.package_id')
                             ->select('my_package_buy.*', 'packages.package_game', 'packages.package_length')
                             ->get();
-            $transeection = DB::table('transeection_sponshopping')->where([['transeection_status', 'true'], ['USER_ID', Auth::user()->id]])->get();
+            $transeection = DB::table('transeection_sponshopping')->where([['transeection_status', 'true'], ['USER_ID', Auth::user()->id]])->orderBy('transeection_id', 'desc')->get();
             $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
                                 ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
                                 ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
