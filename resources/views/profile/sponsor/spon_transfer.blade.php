@@ -108,7 +108,7 @@
                                         </label>
                                         <label class="bgInput field-wrap my-1">
                                             <p class="fontHeadInput">ธนาคารทีโอน</p>
-                                            <select class="MySelect p pl-2" type="text" name="text4" style="width:97.2%">
+                                            <select class="MySelect p pl-2" type="text" name="text4">
                                                 <option value="">ธนาคารกรุงเทพ</option>
                                                 <option value="">ธนาคารกสิกรไทย</option>
                                                 <option value="">ธนาคารกรุงไทย</option>

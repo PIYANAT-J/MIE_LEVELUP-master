@@ -5585,6 +5585,34 @@ body {
   background: #adadad; 
 }
 
+.rowOderListAvatar{
+  height: 500px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+/* width */
+.rowOderListAvatar::-webkit-scrollbar {
+  width: 4px;
+  
+}
+
+/* Track */
+.rowOderListAvatar::-webkit-scrollbar-track {
+  background: #141621; 
+}
+ 
+/* Handle */
+.rowOderListAvatar::-webkit-scrollbar-thumb {
+  background: #adadad;
+  /* border-radius: 25px;  */
+}
+
+/* Handle on hover */
+.rowOderListAvatar::-webkit-scrollbar-thumb:hover {
+  background: #adadad; 
+}
+
 
 .btns{
 display: table;
@@ -8569,9 +8597,10 @@ input[type=number]
   color: #ce0005;
   z-index: 5;
   line-height: 1;
-  position: absolute;
+  padding-left: 35px ;
+  /* position: absolute;
   top: 0px;
-  left: 50px;
+  left: 50px; */
 }
 
 .number-rank4{
@@ -8581,22 +8610,23 @@ input[type=number]
   color: #fff;
   z-index: 5;
   line-height: 1;
-  position: absolute;
+  padding-left: 35px ;
+  /* position: absolute;
   top: 0px;
-  left: 50px;
+  left: 50px; */
 }
 
 .number-rank5{
   font-family: myfont;
-  font-size: 5.5em;
-  letter-spacing: -8px;
+  font-size: 6em;
   font-weight: 700;
   color: #fff;
   z-index: 5;
   line-height: 1;
-  position: absolute;
+  padding-left:10px ;
+  /* position: absolute;
   top: 0px;
-  left: 25px;
+  left: 50px; */
 }
 
 .sidebar-pic4{
@@ -8618,9 +8648,9 @@ input[type=number]
   height:4em; 
   object-fit: cover;
   box-shadow: 0 0 12px 0 rgba(255, 255, 255, 0.84);
-  position: absolute;
+  /* position: absolute;
   top: 8px;
-  left: 10px;
+  left: 10px; */
 }
 
 .font-avatar-rank{
@@ -8658,10 +8688,10 @@ input[type=number]
   border-radius: 6px;
   box-shadow: 0 5px 0 0 #c3c3c3;
   padding:  5px 20px;
-  position: absolute;
+  /* position: absolute; */
   z-index: 8;
-  top: 30px;
-  right: 60px;
+  /* top: 30px;
+  right: 60px; */
 }
 .btn-view:focus{
   outline: none !important;
@@ -8674,10 +8704,10 @@ input[type=number]
   border-radius: 6px;
   box-shadow: 0 5px 0 0 #2b2e3c;
   padding:  5px 20px;
-  position: absolute;
+  /* position: absolute; */
   z-index: 8;
-  top: 30px;
-  right: 60px;
+  /* top: 30px;
+  right: 60px; */
   cursor: default !important;
 }
 .btn-viewlock:focus{
@@ -9033,6 +9063,7 @@ button {
   box-shadow: 0 0 5px 0 rgba(255, 255, 255, 0.84);
   border-radius: 6px;
   background-color: #21242c;
+  
 }
 
 .bgchart{
@@ -11410,4 +11441,46 @@ stroke-dasharray: 500, 200000;
 }
 .invalid {
   color: #ce0005;
+}
+
+.MySelectProfile{
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 10px;
+}
+
+.MySelectProfile:focus{
+  outline: none;
+}
+
+.MySelectDetail{
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 10px;
+}
+
+.MySelectDetail:focus{
+  outline: none;
+}
+
+.MySelectProductSupport{
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 10px;
+}
+
+.MySelectProductSupport:focus{
+  outline: none;
 }

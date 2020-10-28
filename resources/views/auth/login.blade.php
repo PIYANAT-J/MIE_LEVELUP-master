@@ -4,19 +4,19 @@
 
 <div class="modal fade" id="popupmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content" style=" background-color: #edd0d5;">
+            <!-- <div class="modal-header">
                 <div class="col-1"></div>
                 <div class="col-10 text-center">
                     <h1 style="font-weight:800;color:#383838;margin:0;">แจ้งเตือน</h1>
                 </div>
                     <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
                 <div class="col-1"></div>
-            </div>
+            </div> -->
 
             <div class="modal-body">
                 <div class="row px-3">
-                    <div class="col-12 pb-1">
+                    <div class="col-12">
                         <div class="row"><label class="massagrbox1" style="text-align:center;">
                         <p style="margin:10px;">{{ Session::get('email') }}</p></label></div>
                         <!-- <div class="row bg-disabled mb-2 py-2">
@@ -26,7 +26,6 @@
                         </div> -->
                     </div>
                 </div>
-                <button type="button" class="btn-submit-red d-none">ยืนยัน</button>
             </div>
         </div>
     </div>
@@ -147,6 +146,9 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#popupmodal').modal();
+            setTimeout(function(){
+                $('#popupmodal').modal('hide')
+            }, 2000);
         });
     </script>
     <!-- <div id="popupmodal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
