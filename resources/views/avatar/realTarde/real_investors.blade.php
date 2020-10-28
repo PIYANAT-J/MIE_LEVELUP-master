@@ -31,7 +31,7 @@
                     <button class="btn-sim2" id="addDataset"><p style="margin:0;">Add Dataset</p></button>
                     <button class="btn-sim2" id="removeDataset"><p style="margin:0;">Remove Dataset</p></button>
                     <button class="btn-sim2" id="addData"><p style="margin:0;">Add Data</p></button>
-                    
+
                     <div class="row mt-2 d-flex align-items-center">
                         <div class="col-12">
                             <!-- <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade1.png') }}" /></div> -->
