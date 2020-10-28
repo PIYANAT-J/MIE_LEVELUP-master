@@ -901,7 +901,7 @@
 
                             <div class="row">
                                 <div class="col-12">
-                                    <select class="MySelect p ">
+                                    <select class="MySelectDetail p ">
                                         <option value="">เลือกโฆษณา</option>
                                         <option value="">ดึงข้อมูลจาก DB</option>
                                         <option value="">ดึงข้อมูลจาก DB</option>
@@ -910,7 +910,7 @@
                                     </select>
                                 </div>
                                 <!-- <div class="col-6">
-                                    <select class="MySelect p">
+                                    <select class="MySelectDetail p">
                                         <option value="">ซื้อรายเกม</option>
                                         <option value="">แพ็กเกจ 1</option>
                                         <option value="">ดึงข้อมูลจาก DB</option>
@@ -925,11 +925,11 @@
                                 <div class="col-12 " style="padding-right:0;">
                                     <label>
                                         <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">เริ่มต้น</label></br>
-                                        <input class="MySelect p" type="datetime-local" id="default-picker" name="dateStart" value="{{old('dateStart')}}" class="timepicker" />
+                                        <input class="MySelectDetail p" type="datetime-local" id="default-picker" name="dateStart" value="{{old('dateStart')}}" class="timepicker" />
                                     </label>
                                     <label>
                                         <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">สิ้นสุด</label></br>
-                                        <input class="MySelect p" type="datetime-local" id="default-picker" name="dateDeadline" value="{{old('dateDeadline')}}" class="timepicker" />
+                                        <input class="MySelectDetail p" type="datetime-local" id="default-picker" name="dateDeadline" value="{{old('dateDeadline')}}" class="timepicker" />
                                     </label>
                                     <label>
                                     <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">จำนวนรอบการโฆษณา</label></br>

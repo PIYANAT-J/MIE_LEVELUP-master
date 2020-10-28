@@ -58,7 +58,7 @@
                                         กรุณาเก็บเอกสาร/หลักฐานการโอนเงินไว้ เพื่ออัพโหลดภายใน 24 ชม.
                                     </p>
                                 </div>
-                                <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-right">
                                 <label><img src="{{asset('home/logo/'.$transfer->transferฺBank_name.'.svg')}}" ></label>
                                 @if($transfer->transferฺBank_name == "bangkok")
                                     <label class="font-payment2"><p style="color:#fff;margin:0;">ธนาคารกรุงเทพ</p></label> <br>

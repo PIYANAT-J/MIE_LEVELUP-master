@@ -402,16 +402,16 @@
                             <div class="row mx2">
                                 <div class="col-12">
                                     <div class="row">
-                                        <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9  text-right p">ยอดรวมสินค้า</div>
-                                        <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right p">฿ {{number_format($allPackage->package_amount, 2)}}</div>
+                                        <div class="col-6 col-sm-8 col-md-8 col-lg-8 col-xl-9 text-right p">ยอดรวมสินค้า</div>
+                                        <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 text-right p">฿ {{number_format($allPackage->package_amount, 2)}}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right p">ส่วนลด</div>
-                                        <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right p">-</div>
+                                        <div class="col-6 col-sm-8 col-md-8 col-lg-8 col-xl-9 text-right p">ส่วนลด</div>
+                                        <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 text-right p">-</div>
                                     </div>
                                     <div class="row mb-2">
-                                        <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right p pt-2">รวมราคาทั้งสิ้น</div>
-                                        <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right align-self-end"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{number_format($allPackage->package_amount, 2)}}</h4></div>
+                                        <div class="col-6 col-sm-8 col-md-8 col-lg-8 col-xl-9 text-right p">รวมราคาทั้งสิ้น</div>
+                                        <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 text-right align-self-end"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{number_format($allPackage->package_amount, 2)}}</h4></div>
                                     </div>
                                 </div>
                             </div>
@@ -505,16 +505,16 @@
                             <div class="row mx2">
                                 <div class="col-12">
                                     <div class="row">
-                                        <div class="col-8 col-sm-8 col-md-10 col-lg-10 col-xl-10 text-right p">ยอดรวมสินค้า</div>
-                                        <div class="col-4 col-sm-4 col-md-2 col-lg-2 col-xl-2 text-right p">฿ {{number_format($transeection->transeection_amount, 2)}}</div>
+                                        <div class="col-6 col-sm-8 col-md-8 col-lg-8 col-xl-9 text-right p">ยอดรวมสินค้า</div>
+                                        <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 text-right p">฿ {{number_format($transeection->transeection_amount, 2)}}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-8 col-sm-8  col-md-10 col-lg-10 col-xl-10 text-right p">ส่วนลด</div>
-                                        <div class="col-4 col-sm-4 col-md-2 col-lg-2 col-xl-2 text-right p">-</div>
+                                        <div class="col-6 col-sm-8 col-md-8 col-lg-8 col-xl-9 text-right p">ส่วนลด</div>
+                                        <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 text-right p">-</div>
                                     </div>
                                     <div class="row mb-2">
-                                        <div class="col-8 col-sm-8 col-md-10 col-lg-10 col-xl-10 text-right p pt-2">รวมราคาทั้งสิ้น</div>
-                                        <div class="col-4 col-sm-4 col-md-2 col-lg-2 col-xl-2 justify-content-end d-flex align-items-end"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{number_format($transeection->transeection_amount, 2)}}</h4></div>
+                                        <div class="col-6 col-sm-8 col-md-8 col-lg-8 col-xl-9 text-right p pt-2">รวมราคาทั้งสิ้น</div>
+                                        <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 text-right p justify-content-end d-flex align-items-end"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{number_format($transeection->transeection_amount, 2)}}</h4></div>
                                     </div>
                                 </div>
                             </div>

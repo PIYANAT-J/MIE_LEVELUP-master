@@ -23,42 +23,42 @@
                         <div class="col-12">
                             <!-- <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade3.png') }}" /></div> -->
                             <div class="chart">
-                                <div class="row mx-2 my-2">
-                                    <div class="col-4 bgdetail">
+                                <div class="row  d-flex align-items-center bgdetail" style="margin:0;">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detail-rank py-2 my-2"><p style="margin:0;">Symbol</p></label>
                                     </div>
-                                    <div class="col-2 bgdetail">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detail-rank py-2 my-2"><p style="margin:0;">Avail Vol</p></label>
                                     </div>
-                                    <div class="col-2 bgdetail">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank py-2 my-2"><p style="margin:0;">Avg</p></label>
                                     </div>
-                                    <div class="col-2 bgdetail">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank py-2 my-2"><p style="margin:0;">Market</p></label>
                                     </div>
-                                    <div class="col-2 bgdetail">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank py-2 my-2"><p style="margin:0;">%U.PL</p></label>
                                     </div>
                                 </div>
 
                                 <div class="row mx-2 ">
-                                    <div class="col-4">
+                                    <div class="col-3" style="padding:5px;">
                                         <a href="my_trade_detail">
                                             <label class="detailTable my-2" style="cursor:pointer;">
                                             <p style="margin:0;">RS</p>
                                             </label>
                                         </a>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">10,300</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">30.55</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">12.7</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <!-- <label class="detailTableGreen my-2"><p style="margin:0;">+58.48</p></label> -->
                                         <label class="detailTableRed my-2"><p style="margin:0;">-58.48</p></label>
                                         <!-- <label class="detail-rank my-2"><p style="margin:0;">12.7</p></label> -->
@@ -66,23 +66,23 @@
                                 </div>
 
                                 <div class="row mx-2 ">
-                                    <div class="col-4">
+                                    <div class="col-3" style="padding:5px;">
                                         <a href="#">
                                             <label class="detailTable my-2" style="cursor:pointer;">
                                                 <p style="margin:0;">ADVANCE</p>
                                             </label>
                                         </a>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">5,400</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">27.68</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">34.67</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detailTableGreen my-2"><p style="margin:0;">+5.67</p></label>
                                         <!-- <label class="detailTableRed my-2"><p style="margin:0;">-58.48</p></label> -->
                                         <!-- <label class="detail-rank my-2"><p style="margin:0;">12.7</p></label> -->
@@ -90,23 +90,23 @@
                                 </div>
 
                                 <div class="row mx-2 ">
-                                    <div class="col-4">
+                                    <div class="col-3" style="padding:5px;">
                                         <a href="#">
                                             <label class="detailTable my-2" style="cursor:pointer;">
                                                 <p style="margin:0;">DTEC</p>
                                             </label>
                                         </a>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">2,500</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">134.89</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">134.89</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <!-- <label class="detailTableGreen my-2"><p style="margin:0;">+5.67</p></label> -->
                                         <!-- <label class="detailTableRed my-2"><p style="margin:0;">-58.48</p></label> -->
                                         <label class="detail-rank my-2"><p style="margin:0;">0</p></label>
@@ -114,46 +114,46 @@
                                 </div>
 
                                 <div class="row mx-2 ">
-                                    <div class="col-4">
+                                    <div class="col-3" style="padding:5px;">
                                     <a href="#">
                                         <label class="detailTable my-2" style="cursor:pointer;">
                                             <p style="margin:0;">BBL</p>
                                         </label>
                                     </a>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">100,000</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">33.77</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">23.56</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detailTableGreen my-2"><p style="margin:0;">+10.56</p></label>
                                         <!-- <label class="detailTableRed my-2"><p style="margin:0;">-58.48</p></label> -->
                                         <!-- <label class="detail-rank my-2"><p style="margin:0;">0</p></label> -->
                                     </div>
                                 </div>
                                 <div class="row mx-2 ">
-                                    <div class="col-4">
+                                    <div class="col-3" style="padding:5px;">
                                         <a href="#">
                                             <label class="detailTable my-2" style="cursor:pointer;">
                                                 <p style="margin:0;">SCB</p>
                                             </label>
                                         </a>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">1,000</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">34.78</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">56.89</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detailTableGreen my-2"><p style="margin:0;">+23.56</p></label>
                                         <!-- <label class="detailTableRed my-2"><p style="margin:0;">-58.48</p></label> -->
                                         <!-- <label class="detail-rank my-2"><p style="margin:0;">0</p></label> -->
@@ -161,23 +161,23 @@
                                 </div>
 
                                 <div class="row mx-2 ">
-                                    <div class="col-4">
+                                    <div class="col-3" style="padding:5px;">
                                         <a href="#">
                                             <label class="detailTable my-2" style="cursor:pointer;">
                                                 <p style="margin:0;">SCG</p>
                                             </label>
                                         </a>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">2,900</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">123.55</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">150.56</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detailTableGreen my-2"><p style="margin:0;">+24.67</p></label>
                                         <!-- <label class="detailTableRed my-2"><p style="margin:0;">-58.48</p></label> -->
                                         <!-- <label class="detail-rank my-2"><p style="margin:0;">0</p></label> -->
@@ -185,23 +185,23 @@
                                 </div>
 
                                 <div class="row mx-2 ">
-                                    <div class="col-4">
+                                    <div class="col-3" style="padding:5px;">
                                         <a href="#">
                                             <label class="detailTable my-2" style="cursor:pointer;">
                                                 <p style="margin:0;">PPT</p>
                                             </label>
                                         </a>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">3,000</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">234.67</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <label class="detail-rank my-2"><p style="margin:0;">234.67</p></label>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" style="padding:5px;">
                                         <!-- <label class="detailTableGreen my-2"><p style="margin:0;">+24.67</p></label> -->
                                         <!-- <label class="detailTableRed my-2"><p style="margin:0;">-58.48</p></label> -->
                                         <label class="detail-rank my-2"><p style="margin:0;">0</p></label>
@@ -209,12 +209,12 @@
                                 </div>
 
                                 <div class="row mx-2 mt-3 py-2" style="border-top:1px solid #dddddd">
-                                    <div class="col-6">
+                                    <div class="col-6" style="padding:5px;">
                                         <label class="detailTable my-2">
                                             <p style="margin:0;">Total</p>
                                         </label>
                                     </div>
-                                    <div class="col-6 text-right">
+                                    <div class="col-6 text-right" style="padding:5px;">
                                         <label class="detailTableGreen my-2 pr-2">
                                             <p style="margin:0;">+198.78 %</p>
                                         </label>
@@ -238,7 +238,7 @@
                         </div>
                     </div>
 
-                    <div class="row pr-3">
+                    <div class="row px-3">
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-12" style="border-bottom:1px #a0a0a0 solid;">
                             <span class="number-rank1">1</span>
                             <div><img class="sidebar-pic3" src="{{asset('dist/images/person_1.jpg') }}" /></div>
@@ -295,7 +295,7 @@
                         </div>
                     </div>
                     <div class="row pr-3">
-                        <div class="col-12 mt-2">
+                        <div class="col-12 mt-2" style="padding-right:0;">
                             <a href="/ranking_trade">
                                 <label class="btn-buyItem2">
                                     <p style="margin:0;font-weight: 800;">ดูทั้งหมด</p>

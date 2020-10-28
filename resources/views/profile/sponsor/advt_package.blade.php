@@ -48,123 +48,124 @@
                     <form action="{{ route('DevEditProfile') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row" style="background-color:#ffffff;border-radius: 8px;margin:20px 0; padding:10px;">
-
-                            <div class="row"  >
-                                <div class="col-12 py-2 ml-2"> 
-                                    <h1 class="fontHeader">สนับสนุนเงินในเกม</h1>
+                            <div class="col-12"> 
+                                <div class="row"  >
+                                    <div class="col-12 py-2 ml-2"> 
+                                        <h1 class="fontHeader">สนับสนุนเงินในเกม</h1>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row" style="padding:10px 0 10px 10px; width:100%;">
-                                @foreach($allPackage as $AllPackage)
-                                    <!-- <div class="bgPackage">
-                                        <label>
-                                            <div class="row">
-                                                <div class="col-12 text-center mt-2">
+                                <div class="row">
+                                    @foreach($allPackage as $AllPackage)
+                                        <!-- <div class="bgPackage">
+                                            <label>
+                                                <div class="row">
+                                                    <div class="col-12 text-center mt-2">
+                                                        <img src="{{asset('icon/money2.svg') }}">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 text-center mt-2">
+                                                        <p style="margin:0">แพ็กเกจ {{$AllPackage->package_name}}</p>
+                                                        <p style="margin:0;font-weight:800;padding:5px 0;">฿{{number_format($AllPackage->package_amount, 2)}}</p>
+                                                        <p style="margin:0">{{$AllPackage->package_season}} เดือน</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-2">
+                                                    <div class="col-12 text-center">
+                                                        <a href="{{ route('packagePay', ['id'=>encrypt($AllPackage->package_id), 'idT'=>encrypt('null')]) }}">
+                                                            <label class="btnBuyPackage" style="margin:0;">
+                                                                <p style="margin:0;color:#ffffff;cursor: pointer;">ซื้อเลย<p>
+                                                            </label>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2 px-4">
+                                                    <div class="col-12 text-center" style="border-bottom:1px solid #f5f5f5"></div>
+                                                </div>
+                                                <div class="row pl-3">
+                                                    <div class="col-12 ">
+                                                        <p style="font-weight: 800;margin:0;">รายละเอียด</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row pl-2 pr-1">
+                                                    <div class="col-12 fontDetailPackage">
+                                                        <div class="input-container">
+                                                            <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                            <label class="input-field "><h5 style="margin:0;">เลือกสนุบสนุนเกมได้ทั้งหมด {{$AllPackage->package_game}} เกม/เดือน</h5></label>
+                                                        </div>
+
+                                                        <div class="input-container">
+                                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                            <label class="input-field "><h5 style="margin:0;">สามารถเลือกเรทเกมได้ทุกชนิด</h5></label>
+                                                        </div>
+
+                                                        <div class="input-container">
+                                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                            <label class="input-field "><h5 style="margin:0;">ได้โฆษณาความยาว {{$AllPackage->package_length}} วินาที</h5></label>
+                                                        </div>
+
+                                                        <div class="input-container">
+                                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                            <label class="input-field "><h5 style="margin:0;">ได้สูงสุด 2 รอบ/เกม ระยะเวลา 1 เดือน</h5></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div> -->
+                                        <div class="columnPackage2">
+                                            <div class="bgPackage">
+
+                                                <div class="d-flex justify-content-center mt-2">
                                                     <img src="{{asset('icon/money2.svg') }}">
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12 text-center mt-2">
+
+                                                <div class="text-center mt-2">
                                                     <p style="margin:0">แพ็กเกจ {{$AllPackage->package_name}}</p>
-                                                    <p style="margin:0;font-weight:800;padding:5px 0;">฿{{number_format($AllPackage->package_amount, 2)}}</p>
+                                                    <h1 style="margin:0;font-weight:800;padding:5px 0;">฿{{number_format($AllPackage->package_amount, 2)}}</h1>
                                                     <p style="margin:0">{{$AllPackage->package_season}} เดือน</p>
                                                 </div>
-                                            </div>
-                                            <div class="row mt-2">
-                                                <div class="col-12 text-center">
-                                                    <a href="{{ route('packagePay', ['id'=>encrypt($AllPackage->package_id), 'idT'=>encrypt('null')]) }}">
-                                                        <label class="btnBuyPackage" style="margin:0;">
+
+                                                    
+                                                <a href="{{ route('packagePay', ['id'=>encrypt($AllPackage->package_id), 'idT'=>encrypt('null')]) }}">
+                                                    <div class="d-flex justify-content-center">    
+                                                        <div class="btnBuyPackage" style="margin:0;">
                                                             <p style="margin:0;color:#ffffff;cursor: pointer;">ซื้อเลย<p>
-                                                        </label>
-                                                    </a>
+                                                        </div>
+                                                    </div>
+                                                </a>
+
+                                                <div class="row my-2 px-4" style="border-bottom:1px solid #f5f5f5"></div>
+                                                    
+                                                <div class="d-flex justify-content-center">
+                                                    <label>
+                                                        <!-- <p class="pl-2" style="font-weight: 800;margin:0;">รายละเอียด</p> -->
+                                                        <div class="input-container">
+                                                            <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                            <label class="input-field "><h5 style="margin:0;">เลือกสนุบสนุนเกมได้ทั้งหมด {{$AllPackage->package_game}} เกม/เดือน</h5></label>
+                                                        </div>
+
+                                                        <div class="input-container">
+                                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                            <label class="input-field "><h5 style="margin:0;">สามารถเลือกเรทเกมได้ทุกชนิด</h5></label>
+                                                        </div>
+
+                                                        <div class="input-container">
+                                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                            <label class="input-field "><h5 style="margin:0;">ได้โฆษณาความยาว {{$AllPackage->package_length}} วินาที</h5></label>
+                                                        </div>
+
+                                                        <div class="input-container">
+                                                            <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
+                                                            <label class="input-field "><h5 style="margin:0;">ได้สูงสุด 2 รอบ/เกม ระยะเวลา 1 เดือน</h5></label>
+                                                        </div>
+                                                    </label>
                                                 </div>
-                                            </div>
-                                            <div class="row mb-2 px-4">
-                                                <div class="col-12 text-center" style="border-bottom:1px solid #f5f5f5"></div>
-                                            </div>
-                                            <div class="row pl-3">
-                                                <div class="col-12 ">
-                                                    <p style="font-weight: 800;margin:0;">รายละเอียด</p>
-                                                </div>
-                                            </div>
-                                            <div class="row pl-2 pr-1">
-                                                <div class="col-12 fontDetailPackage">
-                                                    <div class="input-container">
-                                                        <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                        <label class="input-field "><h5 style="margin:0;">เลือกสนุบสนุนเกมได้ทั้งหมด {{$AllPackage->package_game}} เกม/เดือน</h5></label>
-                                                    </div>
-
-                                                    <div class="input-container">
-                                                        <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                        <label class="input-field "><h5 style="margin:0;">สามารถเลือกเรทเกมได้ทุกชนิด</h5></label>
-                                                    </div>
-
-                                                    <div class="input-container">
-                                                        <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                        <label class="input-field "><h5 style="margin:0;">ได้โฆษณาความยาว {{$AllPackage->package_length}} วินาที</h5></label>
-                                                    </div>
-
-                                                    <div class="input-container">
-                                                        <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                        <label class="input-field "><h5 style="margin:0;">ได้สูงสุด 2 รอบ/เกม ระยะเวลา 1 เดือน</h5></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div> -->
-                                    <div class="columnPackage2">
-                                        <div class="bgPackage">
-
-                                            <div class="d-flex justify-content-center mt-2">
-                                                <img src="{{asset('icon/money2.svg') }}">
-                                            </div>
-
-                                            <div class="text-center mt-2">
-                                                <p style="margin:0">แพ็กเกจ {{$AllPackage->package_name}}</p>
-                                                <h1 style="margin:0;font-weight:800;padding:5px 0;">฿{{number_format($AllPackage->package_amount, 2)}}</h1>
-                                                <p style="margin:0">{{$AllPackage->package_season}} เดือน</p>
-                                            </div>
-
-                                                
-                                            <a href="{{ route('packagePay', ['id'=>encrypt($AllPackage->package_id), 'idT'=>encrypt('null')]) }}">
-                                                <div class="d-flex justify-content-center">    
-                                                    <div class="btnBuyPackage" style="margin:0;">
-                                                        <p style="margin:0;color:#ffffff;cursor: pointer;">ซื้อเลย<p>
-                                                    </div>
-                                                </div>
-                                            </a>
-
-                                            <div class="row my-2 px-4" style="border-bottom:1px solid #f5f5f5"></div>
-                                                
-                                            <div class="d-flex justify-content-center">
-                                                <label>
-                                                    <!-- <p class="pl-2" style="font-weight: 800;margin:0;">รายละเอียด</p> -->
-                                                    <div class="input-container">
-                                                        <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                        <label class="input-field "><h5 style="margin:0;">เลือกสนุบสนุนเกมได้ทั้งหมด {{$AllPackage->package_game}} เกม/เดือน</h5></label>
-                                                    </div>
-
-                                                    <div class="input-container">
-                                                        <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                        <label class="input-field "><h5 style="margin:0;">สามารถเลือกเรทเกมได้ทุกชนิด</h5></label>
-                                                    </div>
-
-                                                    <div class="input-container">
-                                                        <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                        <label class="input-field "><h5 style="margin:0;">ได้โฆษณาความยาว {{$AllPackage->package_length}} วินาที</h5></label>
-                                                    </div>
-
-                                                    <div class="input-container">
-                                                        <img class="imgCorrectPackage icon2" src="{{asset('icon/correct-green.svg') }}">
-                                                        <label class="input-field "><h5 style="margin:0;">ได้สูงสุด 2 รอบ/เกม ระยะเวลา 1 เดือน</h5></label>
-                                                    </div>
-                                                </label>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
-                            </div>
+                                    @endforeach
+                                </div>
+                            </div> 
                         </div>
                     </form>
             </div>
