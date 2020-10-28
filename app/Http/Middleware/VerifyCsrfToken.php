@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'http://127.0.0.1:8000/*',
-        'https://level-ups.co/user_topup/qrCode/callback'
+        'https://level-ups.co/user_topup/qrCode/callback',
+        'https://level-ups.co/payment/VisaCredit/callback'
     ];
 }
