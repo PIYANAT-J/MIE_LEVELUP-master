@@ -28,7 +28,7 @@
                                             <label class="bgInput field-wrap my-1">
                                                 <label><p class="fontHeadInput">เลขผู้เสียภาษีอากร</p></label>
                                                 <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label>
-                                                <input id="texID" name="taxID" class="input1 p ml-2" value="{{ $spon->taxID ?? old('taxID') }}" required=""></input>
+                                                <input id="texID" name="taxID" class="input1 p ml-2" value="{{ $spon->taxID ?? old('taxID') }}"  minlength="13" maxlength="13" required=""></input>
                                             </label>
                                             <label class="bgInput field-wrap my-1">
                                                 <label><p class="fontHeadInput">ชื่อ</p></label>
@@ -79,7 +79,7 @@
                                             <label class="bgInput field-wrap my-1">
                                                 <label><p class="fontHeadInput">เบอร์โทรศัพท์</p></label>
                                                 <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label>
-                                                <input name="SPON_TEL" type="text" class="input1 p ml-2"  data-toggle="tooltip" value="{{ $spon->SPON_TEL ?? old('SPON_TEL') }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required=""></input>
+                                                <input name="SPON_TEL" type="text" class="input1 p ml-2"  data-toggle="tooltip" value="{{ $spon->SPON_TEL ?? old('SPON_TEL') }}"  minlength="10" maxlength="10" data-placement="bottom" title="ตัวอย่าง:082 222 2222" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required=""></input>
                                             </label>
                                             <label class="bgInput field-wrap my-1">
                                                 <label><p class="fontHeadInput">เลขบัตรประจำตัวประชาชน</p></label>
@@ -97,9 +97,9 @@
                                                         <label class="bgInput field-wrap my-1">
                                                             <label><p class="fontHeadInput">วัน เดือน ปีเกิด</p></label>
                                                             <label style="margin:0;"><h5 class="d-none messageError" style="margin:0;color:#ce0005">กรุณากรอกข้อมูล</h5></label><br>
-                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1" id ="year" name = "yyyy" onchange="change_year(this)" required></SELECT></label>
-                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1"  id ="month" name = "mm" onchange="change_month(this)" required></SELECT></label>
-                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1" id ="day" name = "dd" required></SELECT></label>
+                                                            <label style="padding:0;"><SELECT class="MySelectProfile p pl-2" size="1" id ="year" name = "yyyy" onchange="change_year(this)" required></SELECT></label>
+                                                            <label style="padding:0;"><SELECT class="MySelectProfile p pl-2" size="1"  id ="month" name = "mm" onchange="change_month(this)" required></SELECT></label>
+                                                            <label style="padding:0;"><SELECT class="MySelectProfile p pl-2" size="1" id ="day" name = "dd" required></SELECT></label>
                                                         </label>
                                                     </div>
                                                 </div>
