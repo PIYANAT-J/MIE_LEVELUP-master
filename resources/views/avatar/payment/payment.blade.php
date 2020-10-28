@@ -394,24 +394,24 @@
                                             <p class="ml-3" style="margin:0;font-weight:800;color:#fff;">บัญชี</p>
                                             <div class="col-12 mt-1">
                                                 <div class="checkbox01 ">
-                                                    <div class="row radio-ibank">
+                                                    <div class="row radio-transfer">
                                                         <div class="col-12 mb-2">
-                                                            <input type="radio" name="ibank" value="bangkok" id="bank05">
+                                                            <input type="radio" name="transfer" value="bangkok" id="bank05">
                                                             <label for="bank05"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
                                                             <span class="ml-2 p" style="color:#fff;">ธนาคารกรุงเทพ</span>
                                                         </div>
                                                         <div class="col-12 mb-2">
-                                                            <input type="radio" name="ibank" value="ktc" id="bank06">
+                                                            <input type="radio" name="transfer" value="ktc" id="bank06">
                                                             <label for="bank06"><img src="{{asset('home/logo/ktc.svg')}}" ></label>
                                                             <span class="ml-2 p" style="color:#fff;">ธนาคารกรุงไทย</span>
                                                         </div>
                                                         <div class="col-12 mb-2">
-                                                            <input type="radio" name="ibank" value="kbank" id="bank07">
+                                                            <input type="radio" name="transfer" value="kbank" id="bank07">
                                                             <label for="bank07"><img src="{{asset('home/logo/kbank.svg')}}" ></label>
                                                             <span class="ml-2 p" style="color:#fff;">ธนาคารกสิกรไทย</span>
                                                         </div>
                                                         <div class="col-12 mb-2">
-                                                            <input type="radio" name="ibank" value="scb" id="bank08">
+                                                            <input type="radio" name="transfer" value="scb" id="bank08">
                                                             <label for="bank08"><img src="{{asset('home/logo/scb.svg')}}" ></label>
                                                             <span class="ml-2 p" style="color:#fff;">ธนาคารไทยพาณิชย์</span>
                                                         </div>
@@ -498,7 +498,7 @@
                                             @if($transeection->transeection_invoice == null)
                                                 <form action="{{route('Itemibanking')}}" method="POST">
                                                     @csrf
-                                                    <button class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p>
+                                                    <button class="btn-submit-red ibank d-none"><p style="margin:0;color:#fff;">ชำระเงิน</p>
                                                         <input type="hidden" name="amount" value="{{$transeection->transeection_price}}" >
                                                         <input type="hidden" name="bank_name" id="data-checked">
                                                         <input type="hidden" name="paymentType" value="QrCode">
@@ -519,12 +519,11 @@
                                             @if($transeection->transeection_invoice == null)
                                                 <form action="{{route('itemTransfer')}}" method="POST">
                                                     @csrf
-                                                    <button class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p>
-                                                        <input type="hidden" name="transferAmount" value="{{$transeection->transeection_price}}">
-                                                        <input type="hidden" name="transferฺBank_name" id="data-bank">
-                                                        <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
-                                                        <input type="hidden" id="submit" name="submit" value="submit">
-                                                    </button>
+                                                    <button class="btn-submit-red transfer d-none"><p style="margin:0;color:#fff;">ชำระเงิน</p></button>
+                                                    <input type="hidden" name="transferAmount" value="{{$transeection->transeection_price}}">
+                                                    <input type="hidden" name="transferฺBank_name" id="data-bank">
+                                                    <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
+                                                    <input type="hidden" id="submit" name="submit" value="submit">
                                                 </form>
                                             @else
                                                 @if($transeection->transeection_status == 'false')
@@ -1470,6 +1469,15 @@
     document.getElementById("four").style.display ='none';
     document.getElementById("four1").style.display ='none';
     document.getElementById("Transfer").style.display ='none';
+    $('.btn-submit-red.transfer').addClass('d-none');
+    var Transfer = document.getElementsByName("transfer");
+        for(var i=0;i<Transfer.length;i++)
+            Transfer[i].checked = false;
+    $('.btn-submit-red.ibank').addClass('d-none');
+    var Bank = document.getElementsByName("ibank");
+        for(var i=0;i<Bank.length;i++)
+            Bank[i].checked = false;
+    
     }
     const myFunction3 = () => {
     document.getElementById("first").style.display ='none';
@@ -1599,10 +1607,31 @@
 <script>
     $(document).ready(function() {
         $(".radio-ibank").change(function() {
+            $('.btn-submit-red.transfer').addClass('d-none');
+            $('.btn-submit-red.ibank').removeClass('d-none');
+            var Bank = document.getElementsByName("transfer");
+            for(var i=0;i<Bank.length;i++)
+                Bank[i].checked = false;
             var closest = $(this).closest("div.row.radio-ibank");
-            var creditTransfer = document.querySelector('input[name="ibank"]:checked').value
+            var creditBank = document.querySelector('input[name="ibank"]:checked').value
+            var moneyBank = creditBank
+            document.querySelector('input#data-checked').value = moneyBank
+            console.log(moneyBank);
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $(".radio-transfer").change(function() {
+            $('.btn-submit-red.transfer').removeClass('d-none');
+            $('.btn-submit-red.ibank').addClass('d-none');
+            var Transfer = document.getElementsByName("ibank");
+            for(var i=0;i<Transfer.length;i++)
+                Transfer[i].checked = false;
+            var closest = $(this).closest("div.row.radio-transfer");
+            var creditTransfer = document.querySelector('input[name="transfer"]:checked').value
             var moneyTransfer = creditTransfer
-            document.querySelector('input#data-checked').value = moneyTransfer
             document.querySelector('input#data-bank').value = moneyTransfer
             console.log(moneyTransfer);
         });
