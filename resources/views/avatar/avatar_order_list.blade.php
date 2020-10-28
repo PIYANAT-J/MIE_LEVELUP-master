@@ -29,7 +29,7 @@
                                     <div class="col-3 col-md-4 col-lg-4 col-xl-3 text-center  d-none d-lg-block d-xl-block d-md-block"><p style="font-weight:800;margin:0;color:#fff">ช่องทางการชำระเงิน</p></div>
                                     <div class="col-5 col-sm-4 col-md-2 col-lg-3 col-xl-2 text-center align-self-center"><p style="font-weight:800;margin:0;color:#fff">สถานะ</p></div>
                                 </div>
-                                <div class="row row4" id="all">
+                                <div class="row rowOderListAvatar" id="all">
                                     <div class="col-12">
                                         @foreach($transeection as $transeectionList)
                                             @if($transeectionList->transeection_status == "true")

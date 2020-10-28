@@ -394,24 +394,24 @@
                                             <p class="ml-3" style="margin:0;font-weight:800;color:#fff;">บัญชี</p>
                                             <div class="col-12 mt-1">
                                                 <div class="checkbox01 ">
-                                                    <div class="row radio-ibank">
+                                                    <div class="row radio-transfer">
                                                         <div class="col-12 mb-2">
-                                                            <input type="radio" name="ibank" value="bangkok" id="bank05">
+                                                            <input type="radio" name="transfer" value="bangkok" id="bank05">
                                                             <label for="bank05"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
                                                             <span class="ml-2 p" style="color:#fff;">ธนาคารกรุงเทพ</span>
                                                         </div>
                                                         <div class="col-12 mb-2">
-                                                            <input type="radio" name="ibank" value="ktc" id="bank06">
+                                                            <input type="radio" name="transfer" value="ktc" id="bank06">
                                                             <label for="bank06"><img src="{{asset('home/logo/ktc.svg')}}" ></label>
                                                             <span class="ml-2 p" style="color:#fff;">ธนาคารกรุงไทย</span>
                                                         </div>
                                                         <div class="col-12 mb-2">
-                                                            <input type="radio" name="ibank" value="kbank" id="bank07">
+                                                            <input type="radio" name="transfer" value="kbank" id="bank07">
                                                             <label for="bank07"><img src="{{asset('home/logo/kbank.svg')}}" ></label>
                                                             <span class="ml-2 p" style="color:#fff;">ธนาคารกสิกรไทย</span>
                                                         </div>
                                                         <div class="col-12 mb-2">
-                                                            <input type="radio" name="ibank" value="scb" id="bank08">
+                                                            <input type="radio" name="transfer" value="scb" id="bank08">
                                                             <label for="bank08"><img src="{{asset('home/logo/scb.svg')}}" ></label>
                                                             <span class="ml-2 p" style="color:#fff;">ธนาคารไทยพาณิชย์</span>
                                                         </div>
@@ -498,7 +498,7 @@
                                             @if($transeection->transeection_invoice == null)
                                                 <form action="{{route('Itemibanking')}}" method="POST">
                                                     @csrf
-                                                    <button class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p>
+                                                    <button class="btn-submit-red ibank d-none"><p style="margin:0;color:#fff;">ชำระเงิน</p>
                                                         <input type="hidden" name="amount" value="{{$transeection->transeection_price}}" >
                                                         <input type="hidden" name="bank_name" id="data-checked">
                                                         <input type="hidden" name="paymentType" value="QrCode">
@@ -519,12 +519,11 @@
                                             @if($transeection->transeection_invoice == null)
                                                 <form action="{{route('itemTransfer')}}" method="POST">
                                                     @csrf
-                                                    <button class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p>
-                                                        <input type="hidden" name="transferAmount" value="{{$transeection->transeection_price}}">
-                                                        <input type="hidden" name="transferฺBank_name" id="data-bank">
-                                                        <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
-                                                        <input type="hidden" id="submit" name="submit" value="submit">
-                                                    </button>
+                                                    <button class="btn-submit-red transfer d-none"><p style="margin:0;color:#fff;">ชำระเงิน</p></button>
+                                                    <input type="hidden" name="transferAmount" value="{{$transeection->transeection_price}}">
+                                                    <input type="hidden" name="transferฺBank_name" id="data-bank">
+                                                    <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
+                                                    <input type="hidden" id="submit" name="submit" value="submit">
                                                 </form>
                                             @else
                                                 @if($transeection->transeection_status == 'false')
@@ -1349,8 +1348,19 @@
         <input type="hidden" name="user_id">
         <input type="hidden" name="hash_data">
     </form>
-
 </div>
+<div id="loading" class="d-none" style="position:fixed;top:0;width:100vw;height:100vh;z-index:5000;background:rgba(0,0,0,0.6);">
+    <div class="d-flex justify-content-center align-items-center w-100 h-100">
+        <div style="animation:loadingAnimate 2s linear infinite;">
+            <svg id="Capa_1" enable-background="new 0 0 497 497" height="200" viewBox="0 0 497 497" width="200" xmlns="http://www.w3.org/2000/svg"><g><circle cx="98" cy="376" fill="#909ba6" r="53"/><circle cx="439" cy="336" fill="#c8d2dc" r="46"/><circle cx="397" cy="112" fill="#e9edf1" r="38"/><ellipse cx="56.245" cy="244.754" fill="#7e8b96" rx="56.245" ry="54.874"/><ellipse cx="217.821" cy="447.175" fill="#a2abb8" rx="51.132" ry="49.825"/><ellipse cx="349.229" cy="427.873" fill="#b9c3cd" rx="48.575" ry="47.297"/><ellipse cx="117.092" cy="114.794" fill="#5f6c75" rx="58.801" ry="57.397"/><ellipse cx="453.538" cy="216.477" fill="#dce6eb" rx="43.462" ry="42.656"/><circle cx="263" cy="62" fill="#4e5a61" r="62"/></g></svg>
+        </div>
+    </div>
+</div>
+<style>
+    @keyframes loadingAnimate {
+        100% {transform:rotate(360deg);}
+    }
+</style>
 
 <!-- พื้นหลัง -->
 <div class="container-fluid">
@@ -1459,6 +1469,15 @@
     document.getElementById("four").style.display ='none';
     document.getElementById("four1").style.display ='none';
     document.getElementById("Transfer").style.display ='none';
+    $('.btn-submit-red.transfer').addClass('d-none');
+    var Transfer = document.getElementsByName("transfer");
+        for(var i=0;i<Transfer.length;i++)
+            Transfer[i].checked = false;
+    $('.btn-submit-red.ibank').addClass('d-none');
+    var Bank = document.getElementsByName("ibank");
+        for(var i=0;i<Bank.length;i++)
+            Bank[i].checked = false;
+    
     }
     const myFunction3 = () => {
     document.getElementById("first").style.display ='none';
@@ -1588,10 +1607,31 @@
 <script>
     $(document).ready(function() {
         $(".radio-ibank").change(function() {
+            $('.btn-submit-red.transfer').addClass('d-none');
+            $('.btn-submit-red.ibank').removeClass('d-none');
+            var Bank = document.getElementsByName("transfer");
+            for(var i=0;i<Bank.length;i++)
+                Bank[i].checked = false;
             var closest = $(this).closest("div.row.radio-ibank");
-            var creditTransfer = document.querySelector('input[name="ibank"]:checked').value
+            var creditBank = document.querySelector('input[name="ibank"]:checked').value
+            var moneyBank = creditBank
+            document.querySelector('input#data-checked').value = moneyBank
+            console.log(moneyBank);
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $(".radio-transfer").change(function() {
+            $('.btn-submit-red.transfer').removeClass('d-none');
+            $('.btn-submit-red.ibank').addClass('d-none');
+            var Transfer = document.getElementsByName("ibank");
+            for(var i=0;i<Transfer.length;i++)
+                Transfer[i].checked = false;
+            var closest = $(this).closest("div.row.radio-transfer");
+            var creditTransfer = document.querySelector('input[name="transfer"]:checked').value
             var moneyTransfer = creditTransfer
-            document.querySelector('input#data-checked').value = moneyTransfer
             document.querySelector('input#data-bank').value = moneyTransfer
             console.log(moneyTransfer);
         });
@@ -1621,6 +1661,7 @@
             var submit = "submit";
 
             console.log(paymentType);
+            $('#loading').removeClass('d-none');
 
             $.ajax({
                 url: "{{route('VisaCredit')}}",
@@ -1633,8 +1674,6 @@
                     submit:submit,
                 },
                 success: function(response) {
-                    // console.log(response.order_no);
-                    // window.location.href = response.action;
                     $('form.VisaCreditTreePay input[name="order_no"]').val(response.order_no);
                     $('form.VisaCreditTreePay input[name="good_name"]').val(response.good_name);
                     $('form.VisaCreditTreePay input[name="user_id"]').val(response.user_id);
@@ -1643,12 +1682,8 @@
                     $('form.VisaCreditTreePay input[name="order_email"]').val(response.order_email);
                     $('form.VisaCreditTreePay input[name="pay_type"]').val(response.pay_type);
                     $('form.VisaCreditTreePay input[name="site_cd"]').val(response.site_cd);
-                    // $('form.VisaCreditTreePay input[name="ret_url"]').val(response.ret_url);
                     $('form.VisaCreditTreePay input[name="currency"]').val(response.currency);
                     $('form.VisaCreditTreePay input[name="hash_data"]').val(response.hash_data);
-                    // var formdata = new FormData();
-                    // formdata.append('order_no',response.order_no);
-                    // alert('success');
                     $('.btn-submit-red.creditTree').click();
                 },
                 error: function() {}

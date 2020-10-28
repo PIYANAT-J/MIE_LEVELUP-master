@@ -61,9 +61,9 @@
                                                         ?>
                                                         <label class="bgInput field- my-1">
                                                             <p class="fontHeadInput">วัน เดือน ปีเกิด</p>
-                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></label>
-                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></label>
-                                                            <label style="padding:0;"><SELECT class="MySelect p pl-2" size="1" id ="day" name = "dd"></SELECT></label>
+                                                            <label style="padding:0;"><SELECT class="MySelectProfile p pl-2" size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></label>
+                                                            <label style="padding:0;"><SELECT class="MySelectProfile p pl-2" size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></label>
+                                                            <label style="padding:0;"><SELECT class="MySelectProfile p pl-2" size="1" id ="day" name = "dd"></SELECT></label>
                                                         </label>
                                                     </div>
                                                 </div>

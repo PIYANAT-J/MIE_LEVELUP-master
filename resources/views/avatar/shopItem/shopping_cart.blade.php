@@ -116,7 +116,7 @@
 
                                             <div class="col-6 col-sm-11 col-md-2 col-lg-11 col-xl-3 align-self-center" style="padding:0;">
                                                 <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
-                                                    <h4 class="total" style="margin:0;font-weight:800;">฿<span>{{number_format($shoppingLits->shopping_cart_price)}}</span></h4>
+                                                    <h4 class="total" style="margin:0;font-weight:800;">฿<span>{{number_format($shoppingLits->shopping_cart_price, 2)}}</span></h4>
                                                     <p class="mr-2" style="margin:0;color:#ce0005;"><a style="color: #b2b2b2;text-decoration:line-through;">฿3,400 </a> (-{{$shoppingLits->item_discount}}%)<p>
                                                 </span>
                                             </div>
