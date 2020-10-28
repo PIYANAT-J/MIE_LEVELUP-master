@@ -1451,6 +1451,18 @@
         <input type="hidden" name="hash_data">
     </form>
 </div>
+<div id="loading" class="d-none" style="position:fixed;top:0;width:100vw;height:100vh;z-index:5000;background:rgba(0,0,0,0.6);">
+    <div class="d-flex justify-content-center align-items-center w-100 h-100">
+        <div style="animation:loadingAnimate 2s linear infinite;">
+            <svg id="Capa_1" enable-background="new 0 0 497 497" height="200" viewBox="0 0 497 497" width="200" xmlns="http://www.w3.org/2000/svg"><g><circle cx="98" cy="376" fill="#909ba6" r="53"/><circle cx="439" cy="336" fill="#c8d2dc" r="46"/><circle cx="397" cy="112" fill="#e9edf1" r="38"/><ellipse cx="56.245" cy="244.754" fill="#7e8b96" rx="56.245" ry="54.874"/><ellipse cx="217.821" cy="447.175" fill="#a2abb8" rx="51.132" ry="49.825"/><ellipse cx="349.229" cy="427.873" fill="#b9c3cd" rx="48.575" ry="47.297"/><ellipse cx="117.092" cy="114.794" fill="#5f6c75" rx="58.801" ry="57.397"/><ellipse cx="453.538" cy="216.477" fill="#dce6eb" rx="43.462" ry="42.656"/><circle cx="263" cy="62" fill="#4e5a61" r="62"/></g></svg>
+        </div>
+    </div>
+</div>
+<style>
+    @keyframes loadingAnimate {
+        100% {transform:rotate(360deg);}
+    }
+</style>
 
 <!-- พื้นหลัง -->
 <div class="container-fluid">
@@ -1688,7 +1700,7 @@ $(document).ready(function(){
             var package_id = $(this).parent().find('input[name="package_id"]').val();
             var submit = "submit";
 
-            // console.log(paymentType);
+            $('#loading').removeClass('d-none');
 
             $.ajax({
                 url: "{{route('SponVisaCredit')}}",

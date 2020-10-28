@@ -7,6 +7,7 @@
         <div class="col-sm-2 col-md-3 d-inline-block d-lg-none d-xl-none" style="background-color:#141621;"></div>
         @include('profile.sidebar.simulator_sidebar')
         <div class="col-sm-2 col-md-3 d-inline-block d-lg-none d-xl-none" style="background-color:#141621;"></div>
+
         <div class="col-sm-12 co-md-12 col-lg-9 col-xl-9" style="background-color:#141621; ">
             <div class="row mt-4 pl-2" >
                 <div class="col-12">
