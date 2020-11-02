@@ -160,7 +160,7 @@
             <div id="demo3" class="collapse">
                 <a href="/topup_management" style="width: 100%;">
                     <button class="btn-sidebar" style="padding-left:2em;">
-                        <p style="margin: 0;">• &nbsp;การเติมเงิน</p>
+                        <p style="margin: 0;">• &nbsp;การแจ้งโอน</p>
                     </button>
                 </a>
                 <a href="/withdraw_management" style="width: 100%;">

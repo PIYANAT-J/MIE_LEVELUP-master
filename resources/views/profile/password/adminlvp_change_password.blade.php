@@ -32,11 +32,11 @@
                                             </label>
                                             <label class="bgInput field-wrap my-1">
                                                 <p class="fontHeadInput">รหัสผ่านใหม่</p>
-                                                <input type="password" class="input1 p ml-2" require></input>
+                                                <input id="password" type="password" class="input1 p ml-2" require></input>
                                             </label>
                                             <label class="bgInput field-wrap my-1">
                                                 <p class="fontHeadInput">ยืนยันรหัสผ่านใหม่</p>
-                                                <input type="password" class="input1 p ml-2" require></input>
+                                                <input id="password-confirm" type="password" class="input1 p ml-2" require></input>
                                             </label>
                                             <div class="row">
                                                 <div class="col-6" style="padding-right:5px;">
@@ -54,7 +54,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                     <p class="mt-2" style="margin:0;font-weight:800;">วิธีตั้งรหัสผ่าน</p>
                                     <div id="validator-output">
                                         <p style="margin:0;color:#ce0005;">
@@ -86,6 +86,12 @@
         <div class="col-10 bgContent"></div>
     </div>
 </div>
+
+<style>
+    p,.p{
+        margin:0;
+    }
+</style>
 @endsection
 
 @section('script')
@@ -154,19 +160,19 @@
         validators: [
         {
             regexp: ".{8,}",
-            message: "รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร"
+            message: "<p>รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร</p>"
         },
         {
             regexp: "[A-Z]",
-            message: "ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว"
+            message: "<p>ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว</p>"
         },
         {
             regexp: "[0-9]",
-            message: "ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว"
+            message: "<p>ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว</p>"
         },
         {
             regexp: ".*[!@#$%?=*&]",
-            message: "ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว (!@#$%?=*&)"
+            message: "<p>ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว (!@#$%?=*&)</p>"
         }
         ],
         ok: function (instance) {

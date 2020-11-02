@@ -15,7 +15,7 @@
             </div>
 
             <div class="row pb-2 pt-3">
-                <div class="col-9"><h1 class="fontHeader">การเติมเงินวอลเลต</h1></div>
+                <div class="col-9"><h1 class="fontHeader">การแจ้งโอน</h1></div>
                 <div class="col-3">
                     <select class="SelectWh p">
                         <option>ประเภทผู้ใช้</option>
