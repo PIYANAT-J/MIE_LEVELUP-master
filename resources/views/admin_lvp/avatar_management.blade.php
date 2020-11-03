@@ -322,7 +322,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -371,29 +370,35 @@
                             </select>
                         </label>
                         <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">ชนิด</p>
-                            <select class="MySelect p pl-2" type="text" name="text4">
-                                <option value="">พื้นฐาน</option>
-                                <option value="">ไอเทมขาย</option>
-                            </select>
-                        </label>
-                        <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">ราคา</p>
-                            <input id="name" type="text" class="input1 p ml-2" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                        </label>
-                        <label class="bgInput field-wrap my-1">
                             <p class="fontHeadInput">เพศ</p>
                             <select class="MySelect p pl-2" type="text" name="text4">
                                 <option value="">ชาย</option>
                                 <option value="">หญิง</option>
+                                <option value="">ทั้งหมด</option>
                             </select>
                         </label>
+                        <div class="checkbox-red mt-2 pl-2">
+                            <input type="checkbox" id="checkbox_1" data-toggle='collapse' data-target='#salePirce1'>
+                            <label for="checkbox_1">
+                                <p class="fontChekboxCat pl-1" style="margin:0 0 0 15px;color:#000;">ประการขาย</p>
+                            </label>
+                        </div>
+                        <div class="collapse" id="salePirce1">
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">ราคา</p>
+                                <input id="name" type="text" class="input1 p ml-2" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            </label>
+
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">ส่วนลด</p>
+                                <input id="name" type="text" class="input1 p ml-2" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            </label>
+                        </div>
                     </div>
-                    
                 </div>
                 <div class="row mt-2">
                     <div class="col-12">
-                        <button type="button" class="btn-submit-red">
+                        <button type="button" class="btn-submit-red" >
                             <p style="margin:0;">ยืนยัน</p>
                         </button>
                     </div>
@@ -434,7 +439,7 @@
                             <input id="name" type="text" class="input1 p ml-2" readonly>
                         </label>
                         <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">ชนิด</p>
+                            <p class="fontHeadInput">เพศ</p>
                             <input id="name" type="text" class="input1 p ml-2" readonly>
                         </label>
                         <label class="bgInput field-wrap my-1">
@@ -445,11 +450,7 @@
                             <p class="fontHeadInput">ส่วนลด</p>
                             <input id="name" type="text" class="input1 p ml-2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                         </label>
-                        <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">เพศ</p>
-                            <input id="name" type="text" class="input1 p ml-2" readonly>
-                        </label>
-                        <div class="col-12 my-2 pl-4 custom02">
+                        <div class="col-12 my-2 custom02">
                             <input type="radio" name="status" value="inactive" id="inactive01">
                             <label for="inactive01" style="color:#000;">ไม่ใช้งาน</label>
                         </div>
@@ -506,25 +507,31 @@
                             </select>
                         </label>
                         <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">ชนิด</p>
-                            <select class="MySelect p pl-2" type="text" name="text4">
-                                <option value="">พื้นฐาน</option>
-                                <option value="">ไอเทมขาย</option>
-                            </select>
-                        </label>
-                        <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">ราคา</p>
-                            <input id="name" type="text" class="input1 p ml-2" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                        </label>
-                        <label class="bgInput field-wrap my-1">
                             <p class="fontHeadInput">เพศ</p>
                             <select class="MySelect p pl-2" type="text" name="text4">
                                 <option value="">ชาย</option>
                                 <option value="">หญิง</option>
+                                <option value="">ทั้งหมด</option>
                             </select>
                         </label>
+                        <div class="checkbox-red mt-2 pl-2">
+                            <input type="checkbox" id="checkbox_2" data-toggle='collapse' data-target='#salePirce2'>
+                            <label for="checkbox_2">
+                                <p class="fontChekboxCat pl-1" style="margin:0 0 0 15px;color:#000;">ประการขาย</p>
+                            </label>
+                        </div>
+                        <div class="collapse" id="salePirce2">
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">ราคา</p>
+                                <input id="name" type="text" class="input1 p ml-2" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            </label>
+
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">ส่วนลด</p>
+                                <input id="name" type="text" class="input1 p ml-2" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            </label>
+                        </div>
                     </div>
-                    
                 </div>
                 <div class="row mt-2">
                     <div class="col-12">
@@ -569,7 +576,7 @@
                             <input id="name" type="text" class="input1 p ml-2" readonly>
                         </label>
                         <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">ชนิด</p>
+                            <p class="fontHeadInput">เพศ</p>
                             <input id="name" type="text" class="input1 p ml-2" readonly>
                         </label>
                         <label class="bgInput field-wrap my-1">
@@ -580,11 +587,7 @@
                             <p class="fontHeadInput">ส่วนลด</p>
                             <input id="name" type="text" class="input1 p ml-2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                         </label>
-                        <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">เพศ</p>
-                            <input id="name" type="text" class="input1 p ml-2" readonly>
-                        </label>
-                        <div class="col-12 my-2 pl-4 custom02">
+                        <div class="col-12 my-2 custom02">
                             <input type="radio" name="status" value="inactive02" id="inactive02">
                             <label for="inactive02" style="color:#000;">ไม่ใช้งาน</label>
                         </div>
@@ -637,31 +640,34 @@
                             <p class="fontHeadInput">ประเภทอาวุธ</p>
                             <select class="MySelect p pl-2" type="text" name="text4">
                                 <option value="">ดาบ</option>
-                                <option value="">คฑา</option>
-                                <option value="">ปืน</option>
-                                <option value="">ธนู</option>
                             </select>
-                        </label>
-                        <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">ชนิด</p>
-                            <select class="MySelect p pl-2" type="text" name="text4">
-                                <option value="">พื้นฐาน</option>
-                                <option value="">ไอเทมขาย</option>
-                            </select>
-                        </label>
-                        <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">ราคา</p>
-                            <input id="name" type="text" class="input1 p ml-2" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                         </label>
                         <label class="bgInput field-wrap my-1">
                             <p class="fontHeadInput">เพศ</p>
                             <select class="MySelect p pl-2" type="text" name="text4">
                                 <option value="">ชาย</option>
                                 <option value="">หญิง</option>
+                                <option value="">ทั้งหมด</option>
                             </select>
                         </label>
+                        <div class="checkbox-red mt-2 pl-2">
+                            <input type="checkbox" id="checkbox_3" data-toggle='collapse' data-target='#salePirce3'>
+                            <label for="checkbox_3">
+                                <p class="fontChekboxCat pl-1" style="margin:0 0 0 15px;color:#000;">ประการขาย</p>
+                            </label>
+                        </div>
+                        <div class="collapse" id="salePirce3">
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">ราคา</p>
+                                <input id="name" type="text" class="input1 p ml-2" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            </label>
+
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">ส่วนลด</p>
+                                <input id="name" type="text" class="input1 p ml-2" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            </label>
+                        </div>
                     </div>
-                    
                 </div>
                 <div class="row mt-2">
                     <div class="col-12">
@@ -706,7 +712,7 @@
                             <input id="name" type="text" class="input1 p ml-2" readonly>
                         </label>
                         <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">ชนิด</p>
+                            <p class="fontHeadInput">เพศ</p>
                             <input id="name" type="text" class="input1 p ml-2" readonly>
                         </label>
                         <label class="bgInput field-wrap my-1">
@@ -717,11 +723,7 @@
                             <p class="fontHeadInput">ส่วนลด</p>
                             <input id="name" type="text" class="input1 p ml-2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                         </label>
-                        <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">เพศ</p>
-                            <input id="name" type="text" class="input1 p ml-2" readonly>
-                        </label>
-                        <div class="col-12 my-2 pl-4 custom02">
+                        <div class="col-12 my-2 custom02">
                             <input type="radio" name="status" value="inactive02" id="inactive02">
                             <label for="inactive02" style="color:#000;">ไม่ใช้งาน</label>
                         </div>
@@ -776,29 +778,34 @@
                                 <option value="">หมวก/มงกุฏ</option>
                                 <option value="">ถุงมือ</option>
                                 <option value="">เสื้อเกราะ</option>
-                                <option value="">รองเท้า</option>
                             </select>
-                        </label>
-                        <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">ชนิด</p>
-                            <select class="MySelect p pl-2" type="text" name="text4">
-                                <option value="">พื้นฐาน</option>
-                                <option value="">ไอเทมขาย</option>
-                            </select>
-                        </label>
-                        <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">ราคา</p>
-                            <input id="name" type="text" class="input1 p ml-2" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                         </label>
                         <label class="bgInput field-wrap my-1">
                             <p class="fontHeadInput">เพศ</p>
                             <select class="MySelect p pl-2" type="text" name="text4">
                                 <option value="">ชาย</option>
                                 <option value="">หญิง</option>
+                                <option value="">ทั้งหมด</option>
                             </select>
                         </label>
+                        <div class="checkbox-red mt-2 pl-2">
+                            <input type="checkbox" id="checkbox_4" data-toggle='collapse' data-target='#salePirce4'>
+                            <label for="checkbox_4">
+                                <p class="fontChekboxCat pl-1" style="margin:0 0 0 15px;color:#000;">ประการขาย</p>
+                            </label>
+                        </div>
+                        <div class="collapse" id="salePirce4">
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">ราคา</p>
+                                <input id="name" type="text" class="input1 p ml-2" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            </label>
+
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">ส่วนลด</p>
+                                <input id="name" type="text" class="input1 p ml-2" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            </label>
+                        </div>
                     </div>
-                    
                 </div>
                 <div class="row mt-2">
                     <div class="col-12">
@@ -843,7 +850,7 @@
                             <input id="name" type="text" class="input1 p ml-2" readonly>
                         </label>
                         <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">ชนิด</p>
+                            <p class="fontHeadInput">เพศ</p>
                             <input id="name" type="text" class="input1 p ml-2" readonly>
                         </label>
                         <label class="bgInput field-wrap my-1">
@@ -854,11 +861,7 @@
                             <p class="fontHeadInput">ส่วนลด</p>
                             <input id="name" type="text" class="input1 p ml-2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                         </label>
-                        <label class="bgInput field-wrap my-1">
-                            <p class="fontHeadInput">เพศ</p>
-                            <input id="name" type="text" class="input1 p ml-2" readonly>
-                        </label>
-                        <div class="col-12 my-2 pl-4 custom02">
+                        <div class="col-12 my-2 custom02">
                             <input type="radio" name="status" value="inactive02" id="inactive02">
                             <label for="inactive02" style="color:#000;">ไม่ใช้งาน</label>
                         </div>
@@ -888,6 +891,7 @@
         <div class="col-10 bgContent"></div>
     </div>
 </div>
+
 @endsection
 
 @section('script')
@@ -910,8 +914,6 @@ $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();
 });
 </script>
-
-
 
 <script> /*ศรีษะชาย */
     $(function () {
@@ -1423,5 +1425,21 @@ $(function () {
     document.getElementById("first").style.display ='none';
     }
 </script>
+
+<!-- <script>
+    $(".saleItem1").click(function() {
+    var lable = $(".saleItem1").text().trim();
+    if(lable == "Hide") {
+        $(".saleItem1").text("hide");
+        $(".salePirce1").hide();
+    }
+    else {
+        $(".saleItem1").text("show");
+        $(".salePirce1").show();
+    }
+    });
+</script> -->
+
+
 
 @endsection
