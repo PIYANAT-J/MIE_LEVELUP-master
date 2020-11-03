@@ -88,10 +88,10 @@
 
                 <div class="row py-2" style="background-color: #fff;border-radius: 6px;box-shadow: 0 5px 0 0 #c3c3c3;">
                     <div class="col-12 pl-5 mb-3">
-                        <h1 style="margin:0;font-weight:800;">$20,000.00<br>STARTING PRICE </h1>
+                        <h1 style="margin:0;font-weight:800;">$0.00<br>STARTING PRICE </h1>
                     </div>
                     <div class="col-12 pl-5">
-                        <h1 style="margin:0;font-weight:800;">$35000.45<a style="color:#0ce63e;"> (+5%)</a><br>PERIOD CHANGE</h1>
+                        <h1 style="margin:0;font-weight:800;">$0.00<a style="color:#0ce63e;"> (+5%)</a><br>PERIOD CHANGE</h1>
                     </div>
                 </div>
 

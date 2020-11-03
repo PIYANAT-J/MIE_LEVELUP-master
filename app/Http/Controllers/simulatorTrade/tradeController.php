@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 
+use App\simulator_trade;
+
 class tradeController extends Controller
 {
     public function SimulatorTrade(){
@@ -68,5 +70,21 @@ class tradeController extends Controller
             $avatar = json_decode($defaultAvatar->AVATAR);
         }
         return view('avatar.realTarde.real_investors', compact('guest_user', 'userKyc', 'shopping', 'avatar'));
+    }
+
+    public function getSimulatorTrade(Request $request){
+        $simulator = simulator_trade::all();
+        $random = random_int(0, count($simulator));
+        // dd(count($simulator), $random);
+        $dataSimulator = simulator_trade::where('id', $random)->first();
+        return response()->json([
+                'symbol'=>$dataSimulator->symbol,
+                'date'=>$dataSimulator->date,
+                'open'=>$dataSimulator->open,
+                'high'=>$dataSimulator->high,
+                'low'=>$dataSimulator->low,
+                'close'=>$dataSimulator->close,
+                'p_chg_'=>number_format($dataSimulator->p_chg_, 2)
+            ]);
     }
 }

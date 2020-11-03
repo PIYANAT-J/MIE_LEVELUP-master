@@ -21,13 +21,13 @@
                             <div class="col-6">
                                 <label class="btn-point-avatar pt-2">
                                     <h1 class="fontPoint">พอยท์</h1>
-                                    <h2 class="fontPoint">100 <i class="icon-Icon_Point"></i></h2>
+                                    <h2 class="fontPoint">0 <i class="icon-Icon_Point"></i></h2>
                                 </label>
                             </div>
                             <div class="col-6">
                                 <label class="btn-point-avatar pt-2">
                                     <h1 class="fontPoint">เหรียญ</h1>
-                                    <h2 class="fontPoint">100 <i class="icon-Icon_Coin"></i></h2>
+                                    <h2 class="fontPoint">0 <i class="icon-Icon_Coin"></i></h2>
                                 </label>
                             </div>
                         </div>
