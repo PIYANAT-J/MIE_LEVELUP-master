@@ -56,32 +56,104 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-6 line1">
-                                                    <div class="row">
-                                                        <div class="col-12  mt-2" >
-                                                            <div class="form-group" align="center">
-                                                                <div id="thumb" class="thumbAvatar "><img src="home/avatar/character/man.png"></div>    
-                                                                <input id="file_upload" style="display:none" name="product_img" type="file" multiple="true" accept="image/* ">
-                                                                <button id="upload" class="btn-upload-pic mt-2">
-                                                                    <p style="margin:0;color:#ffffff;">เลือกรูป</p>
+                                                    <div class="row mt-2">
+                                                        <div class="col-12">
+                                                            <!-- ศรีษะชาย -->
+                                                            <div class="avatarAdmin">
+                                                                <div id="thumbHeadMan" class="thumbHeadMan">
+                                                                    <img src="home/avatar/head/head_man.png">
+                                                                </div>    
+                                                                <input id="file_uploadHeadMan" style="display:none" name="product_img" type="file" multiple="true" accept="image/* ">
+                                                                <button id="upload-head-man" class="btn-upload-head">
+                                                                    <p style="margin:0;color:#ffffff;">ศรีษะ</p>
+                                                                </button>
+
+                                                            <!-- ทรงผมชาย -->
+                                                                <div id="thumbHairMan" class="thumbHairMan">
+                                                                    <img src="home/avatar/hair/man/hair_man_01.png">
+                                                                </div>    
+                                                                <input id="file_uploadHairMan" style="display:none" name="product_img" type="file" multiple="true" accept="image/* ">
+                                                                
+                                                                <button id="upload-hair-man" class="btn-upload-hair">
+                                                                    <p style="margin:0;color:#ffffff;">ทรงผม</p>
+                                                                </button>
+
+                                                            <!-- ดวงตาชาย -->
+                                                                <div id="thumbEyesMan" class="thumbEyesMan">
+                                                                    <img src="home/avatar/eyes/man/eyes_man_01.png">
+                                                                </div>    
+                                                                <input id="file_uploadEyesMan" style="display:none" name="product_img" type="file" multiple="true" accept="image/* ">
+                                                                
+                                                                <button id="upload-eyes-man" class="btn-upload-eyes">
+                                                                    <p style="margin:0;color:#ffffff;">ดวงตา</p>
+                                                                </button>
+
+                                                            <!--ลำตัวชาย-->
+                                                                <div id="thumbBodyMan" class="thumbBodyMan">
+                                                                    <img src="home/avatar/clothes/man/clothes_man_01.png">
+                                                                </div>    
+                                                                <input id="file_uploadBodyMan" style="display:none" name="product_img" type="file" multiple="true" accept="image/* ">
+                                                                
+                                                                <button id="upload-body-man" class="btn-upload-body">
+                                                                    <p style="margin:0;color:#ffffff;">ลำตัว</p>
                                                                 </button>
                                                             </div>
-                                                            <button type="button" class="btn-submit">
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button type="button" class="btn-submit ">
                                                                 <p style="margin:0;">ยืนยัน</p>
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
-                                                    <div class="row">
-                                                        <div class="col-12  mt-2" >
-                                                            <div class="form-group" align="center">
-                                                                <div id="thumb2" class="thumbAvatar "><img src="home/avatar/character/woman.png"></div>    
-                                                                <input id="file_upload2" style="display:none" name="product_img" type="file" multiple="true" accept="image/* ">
-                                                                <button id="upload2" class="btn-upload-pic mt-2">
-                                                                    <p style="margin:0;color:#ffffff;">เลือกรูป</p></button>
+                                                <div class="row mt-2">
+                                                        <div class="col-12">
+                                                            <!-- ศรีษะหญิง-->
+                                                            <div class="avatarAdmin">
+                                                                <div id="thumbHeadWoman" class="thumbHeadWoman">
+                                                                    <img src="home/avatar/head/head_woman.png">
+                                                                </div>    
+                                                                <input id="file_uploadHeadWoman" style="display:none" name="product_img" type="file" multiple="true" accept="image/* ">
+                                                                <button id="upload-head-woman" class="btn-upload-head">
+                                                                    <p style="margin:0;color:#ffffff;">ศรีษะ</p>
+                                                                </button>
+
+                                                            <!-- ทรงผมหญิง-->
+                                                                <div id="thumbHairWoman" class="thumbHairWoman">
+                                                                    <img src="home/avatar/hair/woman/hair_woman_01.png">
+                                                                </div>    
+                                                                <input id="file_uploadHairWoman" style="display:none" name="product_img" type="file" multiple="true" accept="image/* ">
+                                                                
+                                                                <button id="upload-hair-woman" class="btn-upload-hair">
+                                                                    <p style="margin:0;color:#ffffff;">ทรงผม</p>
+                                                                </button>
+
+                                                            <!-- ดวงตาหญิง-->
+                                                                <div id="thumbEyesWoman" class="thumbEyesWoman">
+                                                                    <img src="home/avatar/eyes/woman/eyes_woman_01.png">
+                                                                </div>    
+                                                                <input id="file_uploadEyesWoman" style="display:none" name="product_img" type="file" multiple="true" accept="image/* ">
+                                                                
+                                                                <button id="upload-eyes-woman" class="btn-upload-eyes">
+                                                                    <p style="margin:0;color:#ffffff;">ดวงตา</p>
+                                                                </button>
+
+                                                            <!--ลำตัวหญิง-->
+                                                                <div id="thumbBodyWoman" class="thumbBodyWoman">
+                                                                    <img src="home/avatar/clothes/woman/clothes_woman_01.png">
+                                                                </div>    
+                                                                <input id="file_uploadBodyWoman" style="display:none" name="product_img" type="file" multiple="true" accept="image/* ">
+                                                                
+                                                                <button id="upload-body-woman" class="btn-upload-body">
+                                                                    <p style="margin:0;color:#ffffff;">ลำตัว</p>
+                                                                </button>
                                                             </div>
-                                                            <button type="button" class="btn-submit">
-                                                                <p style="margin:0;">ยืนยัน</p></button>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button type="button" class="btn-submit ">
+                                                                <p style="margin:0;">ยืนยัน</p>
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -273,7 +345,7 @@
             <div class="modal-body font-rate-modal">                        
                 <div class="row">
                     <div class="col-12">
-                        <div class="form-group" align="center">
+                        <div align="center">
                             <div id="thumbitem1" class="thumb-game "><img src="home/imgProfile/pic-profile.png"></div>    
                             <input id="file_uploaditem1" style="display:none" name="product_img" type="file" multiple="true" accept="image/* ">
                             <button id="uploaditem1" class="btn-upload-pic mt-2">
@@ -841,86 +913,332 @@ $(document).ready(function(){
 
 
 
-<script> /*ตัวละครชาย */
-$(function () {
-    $("#upload").on("click",function(e){
-        $("#file_upload").show().click().hide();
-        e.preventDefault();
+<script> /*ศรีษะชาย */
+    $(function () {
+        $("#upload-head-man").on("click",function(e){
+            $("#file_uploadHeadMan").show().click().hide();
+            e.preventDefault();
+        });
+        $("#file_uploadHeadMan").on("change",function(e){
+            var files = this.files
+            showThumbnail(files)        
+        });
+        function showThumbnail(files){
+            $("#thumbHeadMan").html("");
+            for(var i=0;i<files.length;i++){
+                var file = files[i]
+                var imageType = /image.*/
+                if(!file.type.match(imageType)){
+                        //  console.log("Not an Image");
+                    continue;
+                }
+                var image = document.createElement("img");
+                var thumbnail = document.getElementById("thumbHeadMan");
+                image.file = file;
+                thumbnail.appendChild(image)
+                var reader = new FileReader()
+                reader.onload = (function(aImg){
+                    return function(e){
+                        aImg.src = e.target.result;
+                    };
+                }(image))
+                var ret = reader.readAsDataURL(file);
+                var canvas = document.createElement("canvas");
+                ctx = canvas.getContext("2d");
+                image.onload= function(){
+                    ctx.drawImage(image,100,100)
+                }
+            } // end for loop
+            console.log(file);
+        } // end showThumbnail
     });
-    $("#file_upload").on("change",function(e){
-        var files = this.files
-        showThumbnail(files)        
-    });
-    function showThumbnail(files){
-        $("#thumb").html("");
-        for(var i=0;i<files.length;i++){
-            var file = files[i]
-            var imageType = /image.*/
-            if(!file.type.match(imageType)){
-                    //  console.log("Not an Image");
-                continue;
-            }
-            var image = document.createElement("img");
-            var thumbnail = document.getElementById("thumb");
-            image.file = file;
-            thumbnail.appendChild(image)
-            var reader = new FileReader()
-            reader.onload = (function(aImg){
-                return function(e){
-                    aImg.src = e.target.result;
-                };
-            }(image))
-            var ret = reader.readAsDataURL(file);
-            var canvas = document.createElement("canvas");
-            ctx = canvas.getContext("2d");
-            image.onload= function(){
-                ctx.drawImage(image,100,100)
-            }
-        } // end for loop
-        console.log(file);
-    } // end showThumbnail
-});
 </script>
 
-<script> /*ตัวละครหญิง */
-$(function () {
-    $("#upload2").on("click",function(e){
-        $("#file_upload2").show().click().hide();
-        e.preventDefault();
+<script> /*ทรงผมชาย */
+    $(function () {
+        $("#upload-hair-man").on("click",function(e){
+            $("#file_uploadHairMan").show().click().hide();
+            e.preventDefault();
+        });
+        $("#file_uploadHairMan").on("change",function(e){
+            var files = this.files
+            showThumbnail(files)        
+        });
+        function showThumbnail(files){
+            $("#thumbHairMan").html("");
+            for(var i=0;i<files.length;i++){
+                var file = files[i]
+                var imageType = /image.*/
+                if(!file.type.match(imageType)){
+                        //  console.log("Not an Image");
+                    continue;
+                }
+                var image = document.createElement("img");
+                var thumbnail = document.getElementById("thumbHairMan");
+                image.file = file;
+                thumbnail.appendChild(image)
+                var reader = new FileReader()
+                reader.onload = (function(aImg){
+                    return function(e){
+                        aImg.src = e.target.result;
+                    };
+                }(image))
+                var ret = reader.readAsDataURL(file);
+                var canvas = document.createElement("canvas");
+                ctx = canvas.getContext("2d");
+                image.onload= function(){
+                    ctx.drawImage(image,100,100)
+                }
+            } // end for loop
+            console.log(file);
+        } // end showThumbnail
     });
-    $("#file_upload2").on("change",function(e){
-        var files = this.files
-        showThumbnail(files)        
+</script>
+
+<script> /*ดวงตาชาย */
+    $(function () {
+        $("#upload-eyes-man").on("click",function(e){
+            $("#file_uploadEyesMan").show().click().hide();
+            e.preventDefault();
+        });
+        $("#file_uploadEyesMan").on("change",function(e){
+            var files = this.files
+            showThumbnail(files)        
+        });
+        function showThumbnail(files){
+            $("#thumbEyesMan").html("");
+            for(var i=0;i<files.length;i++){
+                var file = files[i]
+                var imageType = /image.*/
+                if(!file.type.match(imageType)){
+                        //  console.log("Not an Image");
+                    continue;
+                }
+                var image = document.createElement("img");
+                var thumbnail = document.getElementById("thumbEyesMan");
+                image.file = file;
+                thumbnail.appendChild(image)
+                var reader = new FileReader()
+                reader.onload = (function(aImg){
+                    return function(e){
+                        aImg.src = e.target.result;
+                    };
+                }(image))
+                var ret = reader.readAsDataURL(file);
+                var canvas = document.createElement("canvas");
+                ctx = canvas.getContext("2d");
+                image.onload= function(){
+                    ctx.drawImage(image,100,100)
+                }
+            } // end for loop
+            console.log(file);
+        } // end showThumbnail
     });
-    function showThumbnail(files){
-        $("#thumb2").html("");
-        for(var i=0;i<files.length;i++){
-            var file = files[i]
-            var imageType = /image.*/
-            if(!file.type.match(imageType)){
-                    //  console.log("Not an Image");
-                continue;
-            }
-            var image = document.createElement("img");
-            var thumbnail = document.getElementById("thumb2");
-            image.file = file;
-            thumbnail.appendChild(image)
-            var reader = new FileReader()
-            reader.onload = (function(aImg){
-                return function(e){
-                    aImg.src = e.target.result;
-                };
-            }(image))
-            var ret = reader.readAsDataURL(file);
-            var canvas = document.createElement("canvas");
-            ctx = canvas.getContext("2d");
-            image.onload= function(){
-                ctx.drawImage(image,100,100)
-            }
-        } // end for loop
-        console.log(file);
-    } // end showThumbnail
-});
+</script>
+
+<script> /*ลำตัวชาย */
+    $(function () {
+        $("#upload-body-man").on("click",function(e){
+            $("#file_uploadBodyMan").show().click().hide();
+            e.preventDefault();
+        });
+        $("#file_uploadBodyMan").on("change",function(e){
+            var files = this.files
+            showThumbnail(files)        
+        });
+        function showThumbnail(files){
+            $("#thumbBodyMan").html("");
+            for(var i=0;i<files.length;i++){
+                var file = files[i]
+                var imageType = /image.*/
+                if(!file.type.match(imageType)){
+                        //  console.log("Not an Image");
+                    continue;
+                }
+                var image = document.createElement("img");
+                var thumbnail = document.getElementById("thumbBodyMan");
+                image.file = file;
+                thumbnail.appendChild(image)
+                var reader = new FileReader()
+                reader.onload = (function(aImg){
+                    return function(e){
+                        aImg.src = e.target.result;
+                    };
+                }(image))
+                var ret = reader.readAsDataURL(file);
+                var canvas = document.createElement("canvas");
+                ctx = canvas.getContext("2d");
+                image.onload= function(){
+                    ctx.drawImage(image,100,100)
+                }
+            } // end for loop
+            console.log(file);
+        } // end showThumbnail
+    });
+</script>
+
+<script> /*ศรีษะหญิง */
+    $(function () {
+        $("#upload-head-woman").on("click",function(e){
+            $("#file_uploadHeadWoman").show().click().hide();
+            e.preventDefault();
+        });
+        $("#file_uploadHeadWoman").on("change",function(e){
+            var files = this.files
+            showThumbnail(files)        
+        });
+        function showThumbnail(files){
+            $("#thumbHeadWoman").html("");
+            for(var i=0;i<files.length;i++){
+                var file = files[i]
+                var imageType = /image.*/
+                if(!file.type.match(imageType)){
+                        //  console.log("Not an Image");
+                    continue;
+                }
+                var image = document.createElement("img");
+                var thumbnail = document.getElementById("thumbHeadWoman");
+                image.file = file;
+                thumbnail.appendChild(image)
+                var reader = new FileReader()
+                reader.onload = (function(aImg){
+                    return function(e){
+                        aImg.src = e.target.result;
+                    };
+                }(image))
+                var ret = reader.readAsDataURL(file);
+                var canvas = document.createElement("canvas");
+                ctx = canvas.getContext("2d");
+                image.onload= function(){
+                    ctx.drawImage(image,100,100)
+                }
+            } // end for loop
+            console.log(file);
+        } // end showThumbnail
+    });
+</script>
+
+<script> /*ทรงผมหญิง */
+    $(function () {
+        $("#upload-hair-woman").on("click",function(e){
+            $("#file_uploadHairWoman").show().click().hide();
+            e.preventDefault();
+        });
+        $("#file_uploadHairWoman").on("change",function(e){
+            var files = this.files
+            showThumbnail(files)        
+        });
+        function showThumbnail(files){
+            $("#thumbHairWoman").html("");
+            for(var i=0;i<files.length;i++){
+                var file = files[i]
+                var imageType = /image.*/
+                if(!file.type.match(imageType)){
+                        //  console.log("Not an Image");
+                    continue;
+                }
+                var image = document.createElement("img");
+                var thumbnail = document.getElementById("thumbHairWoman");
+                image.file = file;
+                thumbnail.appendChild(image)
+                var reader = new FileReader()
+                reader.onload = (function(aImg){
+                    return function(e){
+                        aImg.src = e.target.result;
+                    };
+                }(image))
+                var ret = reader.readAsDataURL(file);
+                var canvas = document.createElement("canvas");
+                ctx = canvas.getContext("2d");
+                image.onload= function(){
+                    ctx.drawImage(image,100,100)
+                }
+            } // end for loop
+            console.log(file);
+        } // end showThumbnail
+    });
+</script>
+
+<script> /*ดวงตาหญิง */
+    $(function () {
+        $("#upload-eyes-woman").on("click",function(e){
+            $("#file_uploadEyesWoman").show().click().hide();
+            e.preventDefault();
+        });
+        $("#file_uploadEyesWoman").on("change",function(e){
+            var files = this.files
+            showThumbnail(files)        
+        });
+        function showThumbnail(files){
+            $("#thumbEyesWoman").html("");
+            for(var i=0;i<files.length;i++){
+                var file = files[i]
+                var imageType = /image.*/
+                if(!file.type.match(imageType)){
+                        //  console.log("Not an Image");
+                    continue;
+                }
+                var image = document.createElement("img");
+                var thumbnail = document.getElementById("thumbEyesWoman");
+                image.file = file;
+                thumbnail.appendChild(image)
+                var reader = new FileReader()
+                reader.onload = (function(aImg){
+                    return function(e){
+                        aImg.src = e.target.result;
+                    };
+                }(image))
+                var ret = reader.readAsDataURL(file);
+                var canvas = document.createElement("canvas");
+                ctx = canvas.getContext("2d");
+                image.onload= function(){
+                    ctx.drawImage(image,100,100)
+                }
+            } // end for loop
+            console.log(file);
+        } // end showThumbnail
+    });
+</script>
+
+<script> /*ลำตัวหญิง */
+    $(function () {
+        $("#upload-body-woman").on("click",function(e){
+            $("#file_uploadBodyMan").show().click().hide();
+            e.preventDefault();
+        });
+        $("#file_uploadBodyWoman").on("change",function(e){
+            var files = this.files
+            showThumbnail(files)        
+        });
+        function showThumbnail(files){
+            $("#thumbBodyWoman").html("");
+            for(var i=0;i<files.length;i++){
+                var file = files[i]
+                var imageType = /image.*/
+                if(!file.type.match(imageType)){
+                        //  console.log("Not an Image");
+                    continue;
+                }
+                var image = document.createElement("img");
+                var thumbnail = document.getElementById("thumbBodyWoman");
+                image.file = file;
+                thumbnail.appendChild(image)
+                var reader = new FileReader()
+                reader.onload = (function(aImg){
+                    return function(e){
+                        aImg.src = e.target.result;
+                    };
+                }(image))
+                var ret = reader.readAsDataURL(file);
+                var canvas = document.createElement("canvas");
+                ctx = canvas.getContext("2d");
+                image.onload= function(){
+                    ctx.drawImage(image,100,100)
+                }
+            } // end for loop
+            console.log(file);
+        } // end showThumbnail
+    });
 </script>
 
 

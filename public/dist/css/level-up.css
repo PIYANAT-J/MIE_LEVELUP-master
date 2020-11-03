@@ -1939,6 +1939,217 @@
     margin: auto;
     transform: translateY(120%);
   }
+  .thumbHeadMan {
+    border: none;
+  }
+  
+  .thumbHeadMan img {
+    width:20%;
+    height: auto;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto; 
+    transform: translateY(-75%);
+  }
+  
+  .btn-upload-head{
+    background-color: #ce0005!important;
+    border-radius: 8px;
+    border:none;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 10px;
+  
+  }
+  .btn-upload-head:hover{
+    background-color: #ce0005!important;
+    outline: none!important;
+  }
+  .btn-upload-head:focus{
+    outline: none!important;
+  }
+  
+  .thumbHairMan {
+    border: none;
+  }
+  
+  .thumbHairMan img {
+    width:26%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-75%);
+  }
+  
+  .btn-upload-hair{
+    background-color: #ce0005!important;
+    border-radius: 8px;
+    border:none;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 70px;
+  
+  }
+  .btn-upload-hair:hover{
+    background-color: #ce0005!important;
+    outline: none!important;
+  }
+  .btn-upload-hair:focus{
+    outline: none!important;
+  }
+  
+  .thumbEyesMan {
+    border: none;
+  }
+  
+  .thumbEyesMan img {
+    width:15%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-280%);
+  }
+  
+  .btn-upload-eyes{
+    background-color: #ce0005!important;
+    border-radius: 8px;
+    border:none;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 143px;
+  
+  }
+  .btn-upload-eyes:hover{
+    background-color: #ce0005!important;
+    outline: none!important;
+  }
+  .btn-upload-eyes:focus{
+    outline: none!important;
+  }
+  
+  .thumbBodyMan {
+    border: none;
+  }
+  
+  .thumbBodyMan img {
+    width:28%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(35%);
+  }
+  
+  .btn-upload-body{
+    background-color: #ce0005!important;
+    border-radius: 8px;
+    border:none;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 214px;
+  
+  }
+  .btn-upload-body:hover{
+    background-color: #ce0005!important;
+    outline: none!important;
+  }
+  .btn-upload-body:focus{
+    outline: none!important;
+  }
+  
+  .avatarAdmin{
+    height:500px;
+  }
+  
+  
+  .thumbHeadWoman {
+    border: none;
+  }
+  
+  .thumbHeadWoman img {
+    width:20%;
+    height: auto;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto; 
+    transform: translateY(-75%);
+  }
+  
+  .thumbHairWoman {
+    border: none;
+  }
+  
+  .thumbHairWoman img {
+    width:25%;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-50%);
+  }
+  
+  
+  .thumbEyesWoman {
+    border: none;
+  }
+  
+  .thumbEyesWoman img {
+    width:15%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-280%);
+  }
+  
+  .thumbBodyWoman {
+    border: none;
+  }
+  
+  .thumbBodyWoman img {
+    width:28%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(35%);
+  }
  }
 
  /* screen 1200-1599 */
@@ -2396,6 +2607,218 @@
     bottom: 0;
     margin: auto;
     transform: translateY(120%);
+  }
+
+  .thumbHeadMan {
+    border: none;
+  }
+  
+  .thumbHeadMan img {
+    width:20%;
+    height: auto;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto; 
+    transform: translateY(-75%);
+  }
+  
+  .btn-upload-head{
+    background-color: #ce0005!important;
+    border-radius: 8px;
+    border:none;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 10px;
+  
+  }
+  .btn-upload-head:hover{
+    background-color: #ce0005!important;
+    outline: none!important;
+  }
+  .btn-upload-head:focus{
+    outline: none!important;
+  }
+  
+  .thumbHairMan {
+    border: none;
+  }
+  
+  .thumbHairMan img {
+    width:26%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-75%);
+  }
+  
+  .btn-upload-hair{
+    background-color: #ce0005!important;
+    border-radius: 8px;
+    border:none;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 70px;
+  
+  }
+  .btn-upload-hair:hover{
+    background-color: #ce0005!important;
+    outline: none!important;
+  }
+  .btn-upload-hair:focus{
+    outline: none!important;
+  }
+  
+  .thumbEyesMan {
+    border: none;
+  }
+  
+  .thumbEyesMan img {
+    width:15%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-280%);
+  }
+  
+  .btn-upload-eyes{
+    background-color: #ce0005!important;
+    border-radius: 8px;
+    border:none;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 143px;
+  
+  }
+  .btn-upload-eyes:hover{
+    background-color: #ce0005!important;
+    outline: none!important;
+  }
+  .btn-upload-eyes:focus{
+    outline: none!important;
+  }
+  
+  .thumbBodyMan {
+    border: none;
+  }
+  
+  .thumbBodyMan img {
+    width:28%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(35%);
+  }
+  
+  .btn-upload-body{
+    background-color: #ce0005!important;
+    border-radius: 8px;
+    border:none;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 214px;
+  
+  }
+  .btn-upload-body:hover{
+    background-color: #ce0005!important;
+    outline: none!important;
+  }
+  .btn-upload-body:focus{
+    outline: none!important;
+  }
+  
+  .avatarAdmin{
+    height:500px;
+  }
+  
+  
+  .thumbHeadWoman {
+    border: none;
+  }
+  
+  .thumbHeadWoman img {
+    width:20%;
+    height: auto;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto; 
+    transform: translateY(-75%);
+  }
+  
+  .thumbHairWoman {
+    border: none;
+  }
+  
+  .thumbHairWoman img {
+    width:25%;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-50%);
+  }
+  
+  
+  .thumbEyesWoman {
+    border: none;
+  }
+  
+  .thumbEyesWoman img {
+    width:15%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-280%);
+  }
+  
+  .thumbBodyWoman {
+    border: none;
+  }
+  
+  .thumbBodyWoman img {
+    width:28%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(35%);
   }
  }
 
@@ -2896,6 +3319,218 @@
     bottom: 0;
     margin: auto;
     transform: translateY(120%);
+  }
+
+  .thumbHeadMan {
+    border: none;
+  }
+  
+  .thumbHeadMan img {
+    width:15%;
+    height: auto;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto; 
+    transform: translateY(-75%);
+  }
+  
+  .btn-upload-head{
+    background-color: #ce0005!important;
+    border-radius: 8px;
+    border:none;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 10px;
+  
+  }
+  .btn-upload-head:hover{
+    background-color: #ce0005!important;
+    outline: none!important;
+  }
+  .btn-upload-head:focus{
+    outline: none!important;
+  }
+  
+  .thumbHairMan {
+    border: none;
+  }
+  
+  .thumbHairMan img {
+    width:20%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-75%);
+  }
+  
+  .btn-upload-hair{
+    background-color: #ce0005!important;
+    border-radius: 8px;
+    border:none;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 70px;
+  
+  }
+  .btn-upload-hair:hover{
+    background-color: #ce0005!important;
+    outline: none!important;
+  }
+  .btn-upload-hair:focus{
+    outline: none!important;
+  }
+  
+  .thumbEyesMan {
+    border: none;
+  }
+  
+  .thumbEyesMan img {
+    width:11.5%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-270%);
+  }
+  
+  .btn-upload-eyes{
+    background-color: #ce0005!important;
+    border-radius: 8px;
+    border:none;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 143px;
+  
+  }
+  .btn-upload-eyes:hover{
+    background-color: #ce0005!important;
+    outline: none!important;
+  }
+  .btn-upload-eyes:focus{
+    outline: none!important;
+  }
+  
+  .thumbBodyMan {
+    border: none;
+  }
+  
+  .thumbBodyMan img {
+    width:23%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(35%);
+  }
+  
+  .btn-upload-body{
+    background-color: #ce0005!important;
+    border-radius: 8px;
+    border:none;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 214px;
+  
+  }
+  .btn-upload-body:hover{
+    background-color: #ce0005!important;
+    outline: none!important;
+  }
+  .btn-upload-body:focus{
+    outline: none!important;
+  }
+  
+  .avatarAdmin{
+    height:500px;
+  }
+  
+  
+  .thumbHeadWoman {
+    border: none;
+  }
+  
+  .thumbHeadWoman img {
+    width:15%;
+    height: auto;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto; 
+    transform: translateY(-75%);
+  }
+  
+  .thumbHairWoman {
+    border: none;
+  }
+  
+  .thumbHairWoman img {
+    width:20%;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-50%);
+  }
+  
+  
+  .thumbEyesWoman {
+    border: none;
+  }
+  
+  .thumbEyesWoman img {
+    width:11.5%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(-260%);
+  }
+  
+  .thumbBodyWoman {
+    border: none;
+  }
+  
+  .thumbBodyWoman img {
+    width:23%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateY(35%);
   }
  }
  
@@ -4519,13 +5154,11 @@ input[type='file']:focus{
   float: left;
   
 }
-/* ถ้าไม่ใส่ cursor: pointer ไป ตอนแสดงใน ie6 caption จะหน่วงนิดนึง*/
+
 .imgteaser2 a:hover {
   cursor: pointer;
 }
 
-/* เมื่อเอาเมาส์ไปชี้ที่รูปภาพ ให้แสดงตัว caption ขึ้นมา โดยกำหนดความโปร่งแสงไว้ที่ 75%*/
- /* ตรงนี้แหละที่เป็นจุดสำคัญ  CSS ตรงนี้จะทำงานก็ต่อเมื่อเอาเมาส์ไปชี้ที่ภาพเท่านั้น  โอ้วเหมือน javascript เลย*/
  .imgteaser2 a:hover .desc2 {
   display: block;
   padding: 10px 0;
@@ -4546,7 +5179,6 @@ input[type='file']:focus{
   /* border: #ce0005 3px solid; */
 }
  
-/* ตัว strong ใน caption กำหนดให้ใหญ่กว่าปกติหน่อย เพื่อความสวยงาม*/
 .imgteaser2 a:hover .desc2 strong {
   display: block;
   margin-bottom: 5px;
@@ -11485,671 +12117,38 @@ stroke-dasharray: 500, 200000;
   outline: none;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.colseModalPackageAdmin{
+  background-color: #fff;
+  border: none;
+  opacity: 0.5;
+}
+
+.colseModalPackageAdmin:focus{
+  outline: none!important;
+}
+
+.uploadpreview{
+  width:150px;
+  height:150px;
+  display:block;
+  border:1px solid #ccc;
+  margin:0 auto 15px;
+  background-size:100% auto;
+  background-repeat:no-repeat;
+  background-position:center;
+}
+
+.upload-wrap{
+  float:left;
+  width:200px;
+}
+
+input[type="file"] {
+    color: transparent;
+    width: 120px;
+    margin: 0 auto;
+    display: block;
+}
 
 .btn-simulator{
   object-fit: contain;

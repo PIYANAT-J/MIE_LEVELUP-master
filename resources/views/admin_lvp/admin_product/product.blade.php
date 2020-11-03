@@ -208,12 +208,12 @@
                             <div class="custom02 mb-2">
                                 <div>
                                     <input type="radio" name="Approve" value="อนุมัติ" id="approve{{$key}}">
-                                    <label for="approve{{$key}}" style="color:#000;">อนุมัติ</label>
+                                    <label for="approve{{$key}}" style="color:#000;" class="p">อนุมัติ</label>
                                 </div>
-                                <div>
+                                <!-- <div>
                                     <input type="radio" name="Approve" value="ไม่อนุมัติ" id="noneApprove{{$key}}">
                                     <label for="noneApprove{{$key}}" style="color:#000;" for="nl">ไม่อนุมัติ</label>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="row">
                                 <button name="submit" value="submit" class="btn-submit-modal-red">ยืนยัน</button>

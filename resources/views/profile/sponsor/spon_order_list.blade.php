@@ -42,7 +42,7 @@
                                                         @if($transeectionList->transeection_type == "qr")
                                                             <p style="color:#000;margin:0;">โมบายแบงค์กิ้ง</p>
                                                         @elseif($transeectionList->transeection_type == "Transfer")
-                                                            <p style="color:#000;margin:0;">โอนเงินธนาคาร</p>
+                                                            <p style="color:#000;margin:0;">โอนเงินผ่านธนาคาร</p>
                                                         @elseif($transeectionList->transeection_type == "VisaCredit")
                                                             <p style="color:#000;margin:0;">บัตรเครดิต/บัตรเดบิต</p>
                                                         @endif
