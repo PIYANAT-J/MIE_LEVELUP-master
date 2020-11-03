@@ -149,6 +149,8 @@ Route::post('/payment/VisaCredit/callback', 'Topup\Call_back\callback_creditCont
 
 //trading
 Route::get('/simulator_trade', 'simulatorTrade\tradeController@SimulatorTrade')->name('SimulatorTrade');
+Route::post('/simulator_trade/getSimulator', 'simulatorTrade\tradeController@getSimulatorTrade')->name('getSimulator');
+
 Route::get('/my_trade', 'simulatorTrade\tradeController@MyTrade')->name('MyTrade');
 Route::get('/my_trade_detail', 'simulatorTrade\tradeController@MyTradeDetail')->name('MyTradeDetail');
 Route::get('/ranking_trade', 'simulatorTrade\tradeController@RankingTrade')->name('RankingTrade');
