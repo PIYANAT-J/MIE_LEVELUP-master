@@ -50,7 +50,7 @@
                                         <div class="col-2 py-3 th1 p">ราคา</div>
                                         <div class="col-2 py-3 th1 p">ระยะเวลา</div>
                                         <div class="col-2 py-3 th1 p">รายละเอียด</div>
-                                        <div class="col-1 py-3 th1 p">สถานะ</div>
+                                        <div class="col-1 py-3 th1 p text-center">สถานะ</div>
                                         <div class="col-2 py-3 th1 p text-right">
                                             <p style="cursor:pointer;margin:0;" data-toggle="modal" data-target="#AddPackage"> + เพิ่มแพ็กเกจ</p>
                                         </div>
@@ -263,47 +263,47 @@
 </div>   
 
 <div class="modal fade" id="PackageDetail{{$packageModal->package_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="col-1"></div>
                 <div class="col-10 text-center" style="font-family:myfont1;font-weight: 800;font-size:1em;color:#000;">รายละเอียดแพ็กเกจโฆษณา</div>
-                <button type="button" class="close btn-closeModal " data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;padding:0;"></i></button>
+                <button type="button" class="colseModalPackageAdmin " data-dismiss="modal"><i class="icon-close_modal" style="font-size: 13px;padding:0;"></i></button>
                 <div class="col-1"></div>
             </div>
 
-            <div class="modal-body font-rate-modal">                        
+            <div class="modal-body">                        
                 <div class="row ">
                     <div class="col-12 mb-3 mt-2">
                         <div class="bgPackage" style="margin:auto;">
-                            <label>
+                            <!-- <label> -->
                                 <div class="row">
                                     <div class="col-12 text-center mt-2">
                                         <img src="{{asset('icon/money2.svg') }}">
                                     </div>
-                                </div>
-                                <div class="row">
+                                <!-- </div>
+                                <div class="row"> -->
                                     <div class="col-12 text-center mt-2">
                                         <label style="font-family:myfont1;font-size:1em;line-height:0.5;color:#000;">{{$packageModal->package_name}}</label><br>
                                         <label style="font-family:myfont;font-size:1.3em;color:#000;">฿{{number_format($packageModal->package_amount, 2)}}</label>
                                         <label style="font-family:myfont1;font-size:0.9em;color:#000;">{{$packageModal->package_season}} เดือน</label>
                                     </div>
-                                </div>
-                                <div class="row">
+                                <!-- </div>
+                                <div class="row"> -->
                                     <div class="col-12 text-center">
                                         <label class="btnBuyPackage">
                                             <a href="#"><label style="font-family:myfont1;font-size:1em;color:#ffffff;cursor: pointer;">ซื้อเลย</label></a>
                                         </label>
                                     </div>
-                                </div>
-                                <div class="row my-2 px-4">
+                                <!-- </div>
+                                <div class="row my-2 px-4"> -->
                                     <div class="col-12 text-center" style="border-bottom:1px solid #f5f5f5"></div>
-                                </div>
-                                <div class="row pl-3">
+                                <!-- </div>
+                                <div class="row pl-3"> -->
                                     <div class="col-12 ">
                                         <label style="font-family:myfont1;font-size:0.9em;font-weight: 800;color:#000;">รายละเอียด</label>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                                 <!-- <div class="row pl-2 pr-1"> -->
                                     <!-- <div class="col-12 fontDetailPackage">
                                         <div class="input-container">
@@ -311,8 +311,8 @@
                                             <label class="input-field ">เลือกสนุบสนุนเกมได้ทั้งหมด 20 เกม/เดือน</label>
                                         </div>
                                     </div> -->
-                                    <div class="row pl-2 pr-1">
-                                        <div class="col-lg-12 fontDetailPackage">
+                                    <!-- <div class="row pl-2 pr-1"> -->
+                                        <div class="col-12 fontDetailPackage">
                                             <div class="input-container">
                                                 <img class="icon2" src="{{asset('icon/correct-green.svg') }}">
                                                 <label class="input-field ">เลือกสนุบสนุนเกมได้ทั้งหมด {{$packageModal->package_game}} เกม/เดือน</label>
@@ -333,9 +333,9 @@
                                                 <label class="input-field ">ได้สูงสุด 2 รอบ/เกม ระยะเวลา 1 เดือน</label>
                                             </div>
                                         </div>
-                                    </div>
-                                <!-- </div> -->
-                            </label>
+                                    <!-- </div> -->
+                                </div>
+                            <!-- </label> -->
                         </div>
                     </div>
                 </div>

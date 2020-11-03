@@ -161,7 +161,7 @@
                                         <h1 style="color:#ffffff;">พอยท์</h1>
                                     </label>
                                     <label style="float: right;margin:0;">
-                                        <h1 style="color: #ffffff;margin:0;padding:5px 0 0 0;">1000000
+                                        <h1 style="color: #ffffff;margin:0;padding:5px 0 0 0;">0
                                         <i class="icon-Icon_Point"></i></h1>
                                     </label>
                                 </div>
@@ -171,7 +171,7 @@
                                         <h1 style="color:#ffffff;">เหรียญ</h1>
                                     </label>
                                     <label style="float: right;margin:0;padding:5px 0 0 0;">
-                                        <h1 style="color: #ffffff;margin:0;">100
+                                        <h1 style="color: #ffffff;margin:0;">0
                                         <i class="icon-Icon_Coin"></i></h1>
                                     </label>
                                 </div>

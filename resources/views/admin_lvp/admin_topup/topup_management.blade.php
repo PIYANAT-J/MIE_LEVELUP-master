@@ -15,7 +15,7 @@
             </div>
 
             <div class="row pb-2 pt-3">
-                <div class="col-9"><h1 class="fontHeader">การเติมเงินวอลเลต</h1></div>
+                <div class="col-9"><h1 class="fontHeader">การแจ้งโอน</h1></div>
                 <div class="col-3">
                     <select class="SelectWh p">
                         <option>ประเภทผู้ใช้</option>
@@ -43,10 +43,10 @@
                                 <div id="topup1" class="tab-pane active">
                                     <div class="row" >
                                         <div class="col-1 py-3 th1 p">#</div>
-                                        <div class="col-4 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
+                                        <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
                                         <div class="col-2 py-3 th1 p">ประเภท</div>
                                         <div class="col-2 py-3 th1 p">สถานะ</div>
-                                        <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
+                                        <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
                                         <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
                                     </div>
                                     <div class="row row4"> 
@@ -56,7 +56,7 @@
                                                 @if($transferList->transferStatus == "รอการอนุมัติ")
                                                     <div class="row">
                                                         <div class="col-1 py-1 td1 p">{{ $i }}</div>
-                                                        <div class="col-4 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
+                                                        <div class="col-3 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
                                                         @if($transferList->users_type == "1")
                                                             <div class="col-2 py-1 td1 p">ผู้ใช้ทั่วไป</div>
                                                         @elseif($transferList->users_type == "3")
@@ -67,13 +67,13 @@
                                                                 <p style="margin:0;">รอการตรวจสอบ</p>
                                                             </label>
                                                         </div>
-                                                        <div class="col-1 py-1 td1 p">{{ $transferList->admin_name }}</div>
+                                                        <div class="col-2 py-1 td1 p">{{ $transferList->admin_name }}</div>
                                                         <div class="col-2 py-1 td1 p">{{explode(' ',$transferList->update_at)[0]}}</div>
                                                     </div>
                                                 @elseif($transferList->transferStatus == "อนุมัติแล้ว")
                                                     <div class="row">
                                                         <div class="col-1 py-1 td1 p">{{ $i }}</div>
-                                                        <div class="col-4 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
+                                                        <div class="col-3 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
                                                         @if($transferList->users_type == "1")
                                                             <div class="col-2 py-1 td1 p">ผู้ใช้ทั่วไป</div>
                                                         @elseif($transferList->users_type == "3")
@@ -84,13 +84,13 @@
                                                                 <p style="margin:0;">อนุมัติแล้ว</p>
                                                             </label>
                                                         </div>
-                                                        <div class="col-1 py-1 td1 p">{{ $transferList->admin_name }}</div>
+                                                        <div class="col-2 py-1 td1 p">{{ $transferList->admin_name }}</div>
                                                         <div class="col-2 py-1 td1 p">{{explode(' ',$transferList->confirm_at)[0]}}</div>
                                                     </div>
                                                 @elseif($transferList->transferStatus == "ไม่อนุมัติ")
                                                     <div class="row">
                                                         <div class="col-1 py-1 td1 p">{{ $i }}</div>
-                                                        <div class="col-4 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
+                                                        <div class="col-3 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
                                                         @if($transferList->users_type == "1")
                                                             <div class="col-2 py-1 td1 p">ผู้ใช้ทั่วไป</div>
                                                         @elseif($transferList->users_type == "3")
@@ -101,7 +101,7 @@
                                                                 <p style="margin:0;">ไม่ผ่านการอนุมัติ</p>
                                                             </label>
                                                         </div>
-                                                        <div class="col-1 py-1 td1 p">{{ $transferList->admin_name }}</div>
+                                                        <div class="col-2 py-1 td1 p">{{ $transferList->admin_name }}</div>
                                                         <div class="col-2 py-1 td1 p">{{explode(' ',$transferList->confirm_at)[0]}}</div>
                                                     </div>
                                                 @endif
@@ -114,10 +114,10 @@
                                 <div id="topup2" class="tab-pane">
                                     <div class="row" >
                                         <div class="col-1 py-3 th1 p">#</div>
-                                        <div class="col-4 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
+                                        <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
                                         <div class="col-2 py-3 th1 p">ประเภท</div>
                                         <div class="col-2 py-3 th1 p">สถานะ</div>
-                                        <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
+                                        <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
                                         <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
                                     </div>
                                     <div class="row row4"> 
@@ -127,7 +127,7 @@
                                                 @if($transferList->transferStatus == "รอการอนุมัติ")
                                                     <div class="row">
                                                         <div class="col-1 py-1 td1 p">{{ $i }}</div>
-                                                        <div class="col-4 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
+                                                        <div class="col-3 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
                                                         @if($transferList->users_type == "1")
                                                             <div class="col-2 py-1 td1 p">ผู้ใช้ทั่วไป</div>
                                                         @elseif($transferList->users_type == "3")
@@ -138,7 +138,7 @@
                                                                 <p style="margin:0;">รอการตรวจสอบ</p>
                                                             </label>
                                                         </div>
-                                                        <div class="col-1 py-1 td1 p">{{ $transferList->admin_name }}</div>
+                                                        <div class="col-2 py-1 td1 p">{{ $transferList->admin_name }}</div>
                                                         <div class="col-2 py-1 td1 p">{{explode(' ',$transferList->update_at)[0]}}</div>
                                                     </div>
                                                     <?php $i = $i+1; ?>
@@ -151,10 +151,10 @@
                                 <div id="topup3" class="tab-pane">
                                     <div class="row" >
                                         <div class="col-1 py-3 th1 p">#</div>
-                                        <div class="col-4 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
+                                        <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
                                         <div class="col-2 py-3 th1 p">ประเภท</div>
                                         <div class="col-2 py-3 th1 p">สถานะ</div>
-                                        <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
+                                        <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
                                         <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
                                     </div>
                                     <div class="row row4"> 
@@ -164,7 +164,7 @@
                                                 @if($transferList->transferStatus == "ไม่อนุมัติ")
                                                     <div class="row">
                                                         <div class="col-1 py-1 td1 p">{{ $i }}</div>
-                                                        <div class="col-4 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
+                                                        <div class="col-3 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
                                                         @if($transferList->users_type == "1")
                                                             <div class="col-2 py-1 td1 p">ผู้ใช้ทั่วไป</div>
                                                         @elseif($transferList->users_type == "3")
@@ -175,7 +175,7 @@
                                                                 <p style="margin:0;">ไม่ผ่านการอนุมัติ</p>
                                                             </label>
                                                         </div>
-                                                        <div class="col-1 py-1 td1 p">{{ $transferList->admin_name }}</div>
+                                                        <div class="col-2 py-1 td1 p">{{ $transferList->admin_name }}</div>
                                                         <div class="col-2 py-1 td1 p">{{explode(' ',$transferList->confirm_at)[0]}}</div>
                                                     </div>
                                                     <?php $i = $i+1; ?>
@@ -188,10 +188,10 @@
                                 <div id="topup4" class="tab-pane">
                                     <div class="row" >
                                         <div class="col-1 py-3 th1 p">#</div>
-                                        <div class="col-4 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
+                                        <div class="col-3 py-3 th1 p text-left">ชื่อ-นามสกุล</div>
                                         <div class="col-2 py-3 th1 p">ประเภท</div>
                                         <div class="col-2 py-3 th1 p">สถานะ</div>
-                                        <div class="col-1 py-3 th1 p">ผู้อนุมัติ</div>
+                                        <div class="col-2 py-3 th1 p">ผู้อนุมัติ</div>
                                         <div class="col-2 py-3 th1 p">อัพเดตล่าสุด</div>
                                     </div>
                                     <div class="row row4"> 
@@ -201,7 +201,7 @@
                                                 @if($transferList->transferStatus == "อนุมัติแล้ว")
                                                     <div class="row">
                                                         <div class="col-1 py-1 td1 p">{{ $i }}</div>
-                                                        <div class="col-4 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
+                                                        <div class="col-3 py-1 td1 p text-left">{{ $transferList->name }} {{ $transferList->surname }}</div>
                                                         @if($transferList->users_type == "1")
                                                             <div class="col-2 py-1 td1 p">ผู้ใช้ทั่วไป</div>
                                                         @elseif($transferList->users_type == "3")
@@ -212,7 +212,7 @@
                                                                 <p style="margin:0;">อนุมัติแล้ว</p>
                                                             </label>
                                                         </div>
-                                                        <div class="col-1 py-1 td1 p">{{ $transferList->admin_name }}</div>
+                                                        <div class="col-2 py-1 td1 p">{{ $transferList->admin_name }}</div>
                                                         <div class="col-2 py-1 td1 p">{{explode(' ',$transferList->confirm_at)[0]}}</div>
                                                     </div>
                                                     <?php $i = $i+1; ?>
