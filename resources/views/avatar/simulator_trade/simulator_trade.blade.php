@@ -9,10 +9,11 @@
         <div class="col-sm-2 col-md-3 d-inline-block d-lg-none d-xl-none" style="background-color:#141621;"></div>
 
         <div class="col-sm-12 co-md-12 col-lg-9 col-xl-9" style="background-color:#141621;">
-            <div class="row mt-4" >
-                <div class="col-12">
-                    <h1 style="margin:0;color:#fff;font-weight:800;">Simulator Trade</h1>
-                    <!-- <label class="inputWithIcon3">
+            <div class="row mt-4" style="height:48px" >
+                <div class="col-12 d-flex justify-content-between">
+                    <h3 class="d-flex align-items-center" style="margin:0;color:#fff;font-weight:800;">Simulator Trade</h3>
+                    <button type="button" class="btn-sim2 next-simulator d-none"><p style="margin:0;">START</p></button>
+                    <!-- <label class="inputWithIcon3">style="opacity:0;
                         <input style="font-family:myfont1;" class="search_btn4" type="text" placeholder="ค้นหา Symbol" aria-label="Search">
                         <i class="icon-search" aria-hidden="true" style="font-size:18px"></i>
                     </label> -->
@@ -31,7 +32,7 @@
                     <button class="btn-sim2" id="removeDataset"><p style="margin:0;">Remove Dataset</p></button>
                     <button class="btn-sim2" id="addData"><p style="margin:0;">Add Data</p></button> --}}
 
-                    <button type="button" class="btn-sim2 next-simulator d-none"><p style="margin:0;">START</p></button>
+                    <!-- <button type="button" class="btn-sim2 next-simulator d-none"><p style="margin:0;">START</p></button> -->
                     <!-- <button class="btn-sim2" id="stop"><p style="margin:0;">SET</p></button> -->
                     <div class="row my-2">
                         <div class="col-12">
@@ -93,7 +94,7 @@
                                     <canvas class="pr-2" id="myChart" height="150"></canvas>
                                 </div> -->
                                 <div id="myChart-div">
-                                    <div class="pr-2 heightChartSim" id="chartContainer" >
+                                    <div class="pr-2 heightChartSim" id="chartSimula">
                                         <div class="simulator-label text-center">
                                             <h3>Simulator trade</h3>
                                         <!-- <button type="button" class="btn-simulator next-simulator" > -->
@@ -106,8 +107,9 @@
                                         <!-- </button> -->
                                             <p>Play Now</p>
                                         </div>
+                                        <label style="height:100%;width:100%;opacity:0.5; background-color: #000;z-index:1;position:absolute;padding-right:15px;"></label>
+                                        <div id="chartContainer" style="z-index:0; height:100%"></div>
                                     </div>
-                                    
                                 </div>
                                 
                             </div>
@@ -432,7 +434,7 @@
     $(document).ready(function(e) {
         $(".next-simulator").click(function(e) {
             var btnThis = $(this);
-            $('.next-simulator').removeClass('d-none').html("NEXT");
+            $('.next-simulator').removeClass('d-none').prop('disabled', true).html("NEXT");
             var amount = $('input[name="amount_simula"]').val();
             var status = $('input[name="status"]').val();
             // alert("amount : "+amount);
@@ -453,8 +455,8 @@
                     }else{
                         $('#money-simulator span').html(commaSeparateNumber(sumVal)+"฿").css('color', '#ce0005', 'cursor', 'pointer');
                     }
-                    $('#chartContainer').remove();
-                    $('#myChart-div').append('<div class="pr-2 heightChartSim2" id="chartContainer"></div>');
+                    $('#chartSimula').remove();
+                    $('#myChart-div').append('<div class="pr-2 heightChartSim" id="chartSimula"><div id="chartContainer" style="z-index:0; height:100%"></div></div>');
                     $('.symbol span').html(response.symbol);
                     $('input[name="status"]').val("false");
 
@@ -469,11 +471,11 @@
                     };
                     chart.options.toolTip = {
                         enabled: true, //disable here
-                        fontSize: 14,
+                        // fontSize: 14,
                     };
                     chart.options.axisX = {
                         valueFormatString: "DD MMM",
-                        fontSize: 14,
+                        labelFontSize: 16,
                         crosshair: {
                             enabled: true,
                             snapToDataPoint: true,
@@ -481,7 +483,7 @@
                     };
                     chart.options.axisY = {
                         valueFormatString: "฿##0.00",
-                        fontSize: 14,
+                        labelFontSize: 16,
                         crosshair: {
                             enabled: true,
                             snapToDataPoint: true,
@@ -516,7 +518,7 @@
                         },
                         type: "stepArea",
                         color: "#d32f2f",
-                        fontSize: 14,
+                        // fontSize: 14,
                         xValueType: "dateTime",
                         xValueFormatString: "DD MMM YYYY",
                         yValueFormatString: "฿##0.00",
@@ -558,8 +560,9 @@
                     var random = Math.round(Math.random()*(730 - 365)) + 365;
                     var myVar = setInterval(function(){
                         count++;
-                        if(count == random){
+                        if(count == 100){
                             clearInterval(myVar);
+                            $('.next-simulator').removeClass('d-none').prop('disabled', false).html("NEXT");
                             var chart = new CanvasJS.Chart("chartContainer");
                             chart.options.theme = "light2"; // "light1", "light2", "dark1", "dark2"
                             chart.options.backgroundColor = '#21242c';
@@ -570,11 +573,11 @@
                             };
                             chart.options.toolTip = {
                                 enabled: true, //disable here
-                                fontSize: 14,
+                                // fontSize: 14,
                             };
                             chart.options.axisX = {
                                 valueFormatString: "DD MMM",
-                                fontSize: 14,
+                                labelFontSize: 16,
                                 crosshair: {
                                     enabled: true,
                                     snapToDataPoint: true,
@@ -582,7 +585,7 @@
                             };
                             chart.options.axisY = {
                                 valueFormatString: "฿##0.00",
-                                fontSize: 14,
+                                labelFontSize: 16,
                                 crosshair: {
                                     enabled: true,
                                     snapToDataPoint: true,
@@ -594,7 +597,7 @@
                             chart.options.data = [{
                                 type: "stepArea",
                                 color: "#d32f2f",
-                                fontSize: 14,
+                                // fontSize: 14,
                                 xValueType: "dateTime",
                                 xValueFormatString: "DD MMM YYYY",
                                 yValueFormatString: "฿##0.00",
@@ -604,7 +607,7 @@
                         }else{
                             updateChart()
                         }
-                    }, random);
+                    }, 250);
                 },
                 error: function() {}
             });
@@ -617,6 +620,63 @@
             val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
         }
         return val.toFixed(2);
+    }
+</script>
+<script>
+    window.onload = function() {
+        var dps = []; // dataPoints
+        var chart = new CanvasJS.Chart("chartContainer");
+        chart.options.theme = "light2"; // "light1", "light2", "dark1", "dark2"
+        chart.options.backgroundColor = '#21242c';
+        chart.options.axisX = {
+            valueFormatString: "DD MMM",
+            labelFontSize: 16,
+        };
+        chart.options.axisY = {
+            valueFormatString: "฿##0.00",
+            labelFontSize: 16,
+        };
+        chart.options.data = [{
+            type: "stepArea",
+            color: "#d32f2f",
+            dataPoints: []
+        }];
+
+        var yVal = 100;
+        var updateCount = 0;
+        var yyyy = 2000;
+        var mmm = 0;
+        var dd = 1;
+        var updateChart = function () {
+            yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
+            updateCount++;
+            if(dd > 30){
+                dd = 1;
+                mmm++;
+                if(mmm > 11){
+                    dd = 2;
+                    mmm = 0;
+                    yyyy++;
+                }
+            }
+            for(var i=0; i <= 1;i++){
+                chart.options.data[0].dataPoints.push({
+                    x: new Date(yyyy, mmm, dd),
+                    y : yVal
+                });
+            }
+            dd++;
+            chart.options.data[0].dataPoints.shift();
+            // chart.options.title.text = "Update " + updateCount;
+            chart.render();
+        };
+        
+        // update chart every second
+        var count = 0;
+        var random = Math.round(Math.random()*(730 - 365)) + 365;
+        var myVar = setInterval(function(){
+            updateChart()
+        }, 500);
     }
 </script>
 @endsection
