@@ -432,7 +432,7 @@
     $(document).ready(function(e) {
         $(".next-simulator").click(function(e) {
             var btnThis = $(this);
-            $('.next-simulator').removeClass('d-none').html("NEXT");
+            $('.next-simulator').removeClass('d-none').prop('disabled', true).html("NEXT");
             var amount = $('input[name="amount_simula"]').val();
             var status = $('input[name="status"]').val();
             // alert("amount : "+amount);
@@ -469,11 +469,11 @@
                     };
                     chart.options.toolTip = {
                         enabled: true, //disable here
-                        fontSize: 14,
+                        // fontSize: 14,
                     };
                     chart.options.axisX = {
                         valueFormatString: "DD MMM",
-                        fontSize: 14,
+                        labelFontSize: 16,
                         crosshair: {
                             enabled: true,
                             snapToDataPoint: true,
@@ -481,7 +481,7 @@
                     };
                     chart.options.axisY = {
                         valueFormatString: "฿##0.00",
-                        fontSize: 14,
+                        labelFontSize: 16,
                         crosshair: {
                             enabled: true,
                             snapToDataPoint: true,
@@ -516,7 +516,7 @@
                         },
                         type: "stepArea",
                         color: "#d32f2f",
-                        fontSize: 14,
+                        // fontSize: 14,
                         xValueType: "dateTime",
                         xValueFormatString: "DD MMM YYYY",
                         yValueFormatString: "฿##0.00",
@@ -558,8 +558,9 @@
                     var random = Math.round(Math.random()*(730 - 365)) + 365;
                     var myVar = setInterval(function(){
                         count++;
-                        if(count == random){
+                        if(count == 100){
                             clearInterval(myVar);
+                            $('.next-simulator').removeClass('d-none').prop('disabled', false).html("NEXT");
                             var chart = new CanvasJS.Chart("chartContainer");
                             chart.options.theme = "light2"; // "light1", "light2", "dark1", "dark2"
                             chart.options.backgroundColor = '#21242c';
@@ -570,11 +571,11 @@
                             };
                             chart.options.toolTip = {
                                 enabled: true, //disable here
-                                fontSize: 14,
+                                // fontSize: 14,
                             };
                             chart.options.axisX = {
                                 valueFormatString: "DD MMM",
-                                fontSize: 14,
+                                labelFontSize: 16,
                                 crosshair: {
                                     enabled: true,
                                     snapToDataPoint: true,
@@ -582,7 +583,7 @@
                             };
                             chart.options.axisY = {
                                 valueFormatString: "฿##0.00",
-                                fontSize: 14,
+                                labelFontSize: 16,
                                 crosshair: {
                                     enabled: true,
                                     snapToDataPoint: true,
@@ -594,7 +595,7 @@
                             chart.options.data = [{
                                 type: "stepArea",
                                 color: "#d32f2f",
-                                fontSize: 14,
+                                // fontSize: 14,
                                 xValueType: "dateTime",
                                 xValueFormatString: "DD MMM YYYY",
                                 yValueFormatString: "฿##0.00",
@@ -604,7 +605,7 @@
                         }else{
                             updateChart()
                         }
-                    }, random);
+                    }, 250);
                 },
                 error: function() {}
             });
