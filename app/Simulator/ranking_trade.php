@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Simulator;
 
 use Illuminate\Database\Eloquent\Model;
 
-class simulator_trade extends Model
+class ranking_trade extends Model
 {
     //
 }
