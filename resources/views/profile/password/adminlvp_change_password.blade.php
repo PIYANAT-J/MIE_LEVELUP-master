@@ -58,14 +58,14 @@
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                            <p class="mt-2" style="margin:0;font-weight:800;">วิธีตั้งรหัสผ่าน</p>
                             <div id="validator-output">
+                                <!-- <p class="mt-2" style="margin:0;font-weight:800;">วิธีตั้งรหัสผ่าน</p>
                                 <p style="margin:0;color:#ce0005;">
                                     รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร<br>
                                     ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว <br>
                                     ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว <br>
                                     ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว (!@#$%?=*&)<br>
-                                </p>
+                                </p> -->
                             </div>
                         </div>
                     </div>
@@ -184,107 +184,96 @@
 
 <script>
     $(function () {
-    $("#validator-output").realtimePasswordValidator({
-        debug: true,
-        input1: $("#password"),
-        input2: $("#password-confirm"),
-        validators: [
-        {
-            regexp: ".{8,}",
-            message: "<p>รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร</p>"
-        },
-        {
-            regexp: "[A-Z]",
-            message: "<p>ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว</p>"
-        },
-        {
-            regexp: "[0-9]",
-            message: "<p>ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว</p>"
-        },
-        {
-            regexp: ".*[!@#$%?=*&]",
-            message: "<p>ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว (!@#$%?=*&)</p>"
-        }
-        ],
-        ok: function (instance) {
-        console.log("ok");
-
-        $("#submit").removeAttr("disabled");
-        },
-        ko: function (instance) {
-        console.log("ko");
-        $("#submit").attr("disabled", "");
-        }
-    });
+        $("#validator-output").realtimePasswordValidator({
+            debug: true,
+            input1: $("#password"),
+            input2: $("#password-confirm"),
+            validators: [
+                {
+                    message:`<p class="mt-2" style="margin:0;font-weight:800;color:#212529">วิธีตั้งรหัสผ่าน</p>`
+                },
+                {
+                    regexp: ".{8,}",
+                    message: "<p>รหัสผ่านต้องมีความยาวอย่างน้อย 8 อักษร</p>"
+                },
+                {
+                    regexp: "[A-Z]",
+                    message: "<p>ต้องประกอบด้วยตัวอักษรตัวพิมพ์ใหญ่(A-Z) อย่างน้อย 1 ตัว</p>"
+                },
+                {
+                    regexp: "[0-9]",
+                    message: "<p>ต้องประกอบด้วยตัวเลข(0-9) อย่างน้อย 1 ตัว</p>"
+                },
+                {
+                    regexp: ".*[!@#$%?=*&]",
+                    message: "<p>ต้องประกอบด้วยสัญลักษณ์พิเศษ อย่างน้อย 1 ตัว (!@#$%?=*&)</p>"
+                }
+            ],
+            ok: function (instance) {
+                // console.log("ok");
+                $("#submit").removeAttr("disabled");
+            },
+            ko: function (instance) {
+                // console.log("ko1");
+                $("#submit").attr("disabled", "");
+            }
+        });
     });
 
     // plugin definition
     (function ($, window, document, undefined) {
-    "use strict";
-    var pluginName = "realtimePasswordValidator",
-        defaults = {
-        debug: false
+        "use strict";
+        var pluginName = "realtimePasswordValidator", defaults = { debug: false };
+        function Plugin(element, options) {
+            this.element = element;
+            this.settings = $.extend({}, defaults, options);
+            this._defaults = defaults;
+            this._name = pluginName;
+            this.init();
+        }
+
+        $.extend(Plugin.prototype, {
+            init: function () {
+                this.settings.input1.on("input", { self: this }, this.validateEvent);
+                this.settings.input2.on("input", { self: this }, this.validateEvent);
+            },
+
+            validateEvent: function (event) {
+                const self = event.data.self;
+                const messages = [];
+                let valid_count = 0;
+                $(self.element).empty();
+                $(self.settings.validators).each(function (index, validator) {
+                    let valid = false;
+                    if (validator.regexp)
+                        valid = new RegExp(validator.regexp).test(self.settings.input1.val());
+                    if (validator.compare)
+                        valid = self.settings.input1.val() == $(self.settings.input2).val();
+                        const message = $("<div>" + validator.message + "</div>");
+                        message.addClass(valid ? "valid" : "invalid");
+                    if (self.settings.input1.val().length > 0)
+                        $(self.element).append(message);
+                    if (valid) valid_count++;
+                        if (this.debug)
+                            console.log(index, self.settings.input1.val(), validator.message, valid);
+                });
+                if (valid_count == self.settings.validators.length) {
+                    if (self.settings.ok) self.settings.ok(self);
+                } else {
+                    if (self.settings.ko) self.settings.ko(self);
+                }
+                if (this.debug)
+                    console.log("valid", valid_count, "of", self.settings.validators.length);
+            }
+        });
+
+        $.fn[pluginName] = function (options) {
+            return this.each(function () {
+                if (!$.data(this, "plugin_" + pluginName)) {
+                    $.data(this, "plugin_" + pluginName, new Plugin(this, options));
+                }
+            });
         };
-    function Plugin(element, options) {
-        this.element = element;
-        this.settings = $.extend({}, defaults, options);
-        this._defaults = defaults;
-        this._name = pluginName;
-        this.init();
-    }
-
-    $.extend(Plugin.prototype, {
-        init: function () {
-        this.settings.input1.on("input", { self: this }, this.validateEvent);
-        this.settings.input2.on("input", { self: this }, this.validateEvent);
-        },
-
-        validateEvent: function (event) {
-        const self = event.data.self;
-        const messages = [];
-        let valid_count = 0;
-        $(self.element).empty();
-        $(self.settings.validators).each(function (index, validator) {
-            let valid = false;
-            if (validator.regexp)
-            valid = new RegExp(validator.regexp).test(self.settings.input1.val());
-            if (validator.compare)
-            valid = self.settings.input1.val() == $(self.settings.input2).val();
-            const message = $("<div>" + validator.message + "</div>");
-            message.addClass(valid ? "valid" : "invalid");
-            if (self.settings.input1.val().length > 0)
-            $(self.element).append(message);
-            if (valid) valid_count++;
-            if (this.debug)
-            console.log(
-                index,
-                self.settings.input1.val(),
-                validator.message,
-                valid
-            );
-        });
-        if (valid_count == self.settings.validators.length) {
-            if (self.settings.ok) self.settings.ok(self);
-        } else {
-            if (self.settings.ko) self.settings.ko(self);
-        }
-        if (this.debug)
-            console.log(
-            "valid",
-            valid_count,
-            "of",
-            self.settings.validators.length
-            );
-        }
-    });
-
-    $.fn[pluginName] = function (options) {
-        return this.each(function () {
-        if (!$.data(this, "plugin_" + pluginName)) {
-            $.data(this, "plugin_" + pluginName, new Plugin(this, options));
-        }
-        });
-    };
     })(jQuery, window, document);
 </script>
 @endsection
