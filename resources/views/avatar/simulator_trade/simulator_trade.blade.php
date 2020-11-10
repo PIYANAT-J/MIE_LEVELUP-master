@@ -93,8 +93,7 @@
                                     <canvas class="pr-2" id="myChart" height="150"></canvas>
                                 </div> -->
                                 <div id="myChart-div">
-                                    <!-- <div class="pr-2" id="chartContainer" style="height:500px;"></div> -->
-                                    <div class="pr-2" id="chartContainer" style="height:590px;">
+                                    <div class="pr-2" id="chartContainer" style="height:720px;">
                                         <!-- <label class="simulator-label">PLAY GAME</label> -->
                                         <!-- <button type="button" class="btn-simulator next-simulator" > -->
                                             <svg type="button" class="next-simulator" height="80" viewBox="0 0 512 512" width="80" xmlns="http://www.w3.org/2000/svg"><g><g><circle cx="256" cy="256" fill="#d80027" r="240"/><path d="m208.538 344v-176l145.924 88z" fill="#e0e0e2"/></g><g><g><path d="m431.36 80.64a248 248 0 1 0 -350.72 350.72 248 248 0 1 0 350.72-350.72zm-11.31 339.41a232 232 0 0 1 -328.1-328.1 232 232 0 0 1 328.1 328.1z"/><path d="m176 464.7a7.982 7.982 0 0 1 -2.963-.571 224.077 224.077 0 0 1 -141.037-208.129 8 8 0 0 1 16 0 208.073 208.073 0 0 0 130.965 193.271 8 8 0 0 1 -2.965 15.429z"/><path d="m216.009 476.305a8.072 8.072 0 0 1 -1.482-.138c-5.557-1.041-11.141-2.309-16.595-3.77a8 8 0 1 1 4.136-15.455c5.063 1.355 10.245 2.533 15.405 3.5a8 8 0 0 1 -1.464 15.865z"/></g><path d="m208.538 352a8 8 0 0 1 -8-8v-176a8 8 0 0 1 12.131-6.851l145.924 88a8 8 0 0 1 0 13.7l-145.924 88a8 8 0 0 1 -4.131 1.151zm8-169.833v147.666l122.433-73.833z"/></g></g></svg>
@@ -106,7 +105,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row my-3">
+                    {{-- <div class="row my-3">
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-8 mb-3">
                             <!-- <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade3.png') }}" /></div> -->
                             <div class="chart">
@@ -377,7 +376,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -447,52 +446,74 @@
                         $('#money-simulator span').html(commaSeparateNumber(sumVal)+"฿").css('color', '#ce0005', 'cursor', 'pointer');
                     }
                     $('#chartContainer').remove();
-                    $('#myChart-div').append('<div class="pr-2" id="chartContainer" style="height:540px;"></div>');
+                    $('#myChart-div').append('<div class="pr-2" id="chartContainer" style="height:670px;"></div>');
                     $('.symbol span').html(response.symbol);
                     $('input[name="status"]').val("false");
 
                     var dps = []; // dataPoints
-                    var chart = new CanvasJS.Chart("chartContainer", {
-                        theme: "light2", // "light1", "light2", "dark1", "dark2"
-                        backgroundColor: '#21242c',
-                        animationEnabled: true,
-                        zoomEnabled: true,
-                        title: {
-                            display: false,
-                        },
-                        toolTip:{
-                            enabled: true, //disable here
-                            fontSize: 14,
-                        },
-                        axisX:{
-                            valueFormatString: "DD MMM",
-                            fontSize: 14,
-                            crosshair: {
-                                enabled: true,
-                                snapToDataPoint: true,
+                    var chart = new CanvasJS.Chart("chartContainer");
+                    chart.options.theme = "light2"; // "light1", "light2", "dark1", "dark2"
+                    chart.options.backgroundColor = '#21242c';
+                    chart.options.animationEnabled = true;
+                    chart.options.zoomEnabled = true;
+                    chart.options.title = {
+                        display: false,
+                    };
+                    chart.options.toolTip = {
+                        enabled: true, //disable here
+                        fontSize: 14,
+                    };
+                    chart.options.axisX = {
+                        valueFormatString: "DD MMM",
+                        fontSize: 14,
+                        crosshair: {
+                            enabled: true,
+                            snapToDataPoint: true,
+                        }
+                    };
+                    chart.options.axisY = {
+                        valueFormatString: "฿##0.00",
+                        fontSize: 14,
+                        crosshair: {
+                            enabled: true,
+                            snapToDataPoint: true,
+                            labelFormatter: function(e) {
+                                return "฿" + CanvasJS.formatNumber(e.value, "##0.00");
                             }
-                        },
-                        axisY: {
-                            valueFormatString: "฿##0.00",
-                            fontSize: 14,
-                            crosshair: {
-                                enabled: true,
-                                snapToDataPoint: true,
-                                labelFormatter: function(e) {
-                                    return "฿" + CanvasJS.formatNumber(e.value, "##0.00");
-                                }
+                        }
+                    };
+                    chart.options.data = [{
+                        click:function(e){
+                            // alert(  "dataSeries Event click => Type: "+ e.dataSeries.type+ ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }" );
+                            var value1 = 0;
+                            var value2 = 0;
+                            var value3 = 0;
+                            countClick++;
+                            if((countClick % 2) == 0){
+                                value1 = e.dataPoint.y;
+                                $('.symbol-open span').html(e.dataPoint.y+"฿");
+                            }else{
+                                value2 = e.dataPoint.y;
+                                $('.symbol-open span').html(e.dataPoint.y+"฿");
                             }
+                            value3 = (value1) - (value2);
+                            sumVal = sumVal + value3;
+                            if(sumVal >= 0){
+                                $('#money-simulator span').html(commaSeparateNumber(sumVal)+"฿").css('color', '#0ce63e', 'cursor', 'pointer');
+                            }else{
+                                $('#money-simulator span').html(commaSeparateNumber(sumVal)+"฿").css('color', '#ce0005', 'cursor', 'pointer');
+                            }
+                            $('input[name="amount_simula"]').val(sumVal);
+                            $('input[name="status"]').val("true");
                         },
-                        data: [{
-                            type: "stepArea",
-                            color: "#d32f2f",
-                            fontSize: 14,
-                            xValueType: "dateTime",
-                            xValueFormatString: "DD MMM YYYY",
-                            yValueFormatString: "฿##0.00",
-                            dataPoints: dps
-                        }],
-                    });
+                        type: "stepArea",
+                        color: "#d32f2f",
+                        fontSize: 14,
+                        xValueType: "dateTime",
+                        xValueFormatString: "DD MMM YYYY",
+                        yValueFormatString: "฿##0.00",
+                        dataPoints: []
+                    }];
 
                     var yVal = 100;
                     var updateCount = 0;
@@ -512,94 +533,70 @@
                             }
                         }
                         for(var i=0; i <= 1;i++){
-                            dps.push({
+                            chart.options.data[0].dataPoints.push({
                                 x: new Date(yyyy, mmm, dd),
-                                y : yVal,
-                                click:function(e){
-                                    // alert(  "dataSeries Event click => Type: "+ e.dataSeries.type+ ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }" );
-                                    var value1 = 0;
-                                    var value2 = 0;
-                                    var value3 = 0;
-                                    countClick++;
-                                    if((countClick % 2) == 0){
-                                        value1 = e.dataPoint.y;
-                                        $('.symbol-open span').html(e.dataPoint.y+"฿");
-                                    }else{
-                                        value2 = e.dataPoint.y;
-                                        $('.symbol-open span').html(e.dataPoint.y+"฿");
-                                    }
-                                    value3 = (value1) - (value2);
-                                    sumVal = sumVal + value3;
-                                    if(sumVal >= 0){
-                                        $('#money-simulator span').html(commaSeparateNumber(sumVal)+"฿").css('color', '#0ce63e', 'cursor', 'pointer');
-                                    }else{
-                                        $('#money-simulator span').html(commaSeparateNumber(sumVal)+"฿").css('color', '#ce0005', 'cursor', 'pointer');
-                                    }
-                                    $('input[name="amount_simula"]').val(sumVal);
-                                    $('input[name="status"]').val("true");
-
-                                },
+                                y : yVal
                             });
+                            dps.push(chart.options.data[0].dataPoints[i]);
                         }
                         dd++;
-                        dps.shift();
-                        // chart.options.data[0].dataPoints.shift();
+                        chart.options.data[0].dataPoints.shift();
                         // chart.options.title.text = "Update " + updateCount;
                         chart.render();
                     };
-
+                    
                     // update chart every second
                     var count = 0;
                     var random = Math.round(Math.random()*(730 - 365)) + 365;
                     var myVar = setInterval(function(){
-                        updateChart()
                         count++;
-                        if(count == 200){
+                        if(count == random){
                             clearInterval(myVar);
-                            var chart = new CanvasJS.Chart("chartContainer", {
-                                theme: "light2", // "light1", "light2", "dark1", "dark2"
-                                backgroundColor: '#21242c',
-                                animationEnabled: true,
-                                zoomEnabled: true,
-                                title: {
-                                    display: false,
-                                },
-                                toolTip:{
-                                    enabled: true, //disable here
-                                    fontSize: 14,
-                                },
-                                axisX:{
-                                    valueFormatString: "DD MMM",
-                                    fontSize: 14,
-                                    crosshair: {
-                                        enabled: true,
-                                        snapToDataPoint: true,
+                            var chart = new CanvasJS.Chart("chartContainer");
+                            chart.options.theme = "light2"; // "light1", "light2", "dark1", "dark2"
+                            chart.options.backgroundColor = '#21242c';
+                            chart.options.animationEnabled = true;
+                            chart.options.zoomEnabled = true;
+                            chart.options.title = {
+                                display: false,
+                            };
+                            chart.options.toolTip = {
+                                enabled: true, //disable here
+                                fontSize: 14,
+                            };
+                            chart.options.axisX = {
+                                valueFormatString: "DD MMM",
+                                fontSize: 14,
+                                crosshair: {
+                                    enabled: true,
+                                    snapToDataPoint: true,
+                                }
+                            };
+                            chart.options.axisY = {
+                                valueFormatString: "฿##0.00",
+                                fontSize: 14,
+                                crosshair: {
+                                    enabled: true,
+                                    snapToDataPoint: true,
+                                    labelFormatter: function(e) {
+                                        return "฿" + CanvasJS.formatNumber(e.value, "##0.00");
                                     }
-                                },
-                                axisY: {
-                                    valueFormatString: "฿##0.00",
-                                    fontSize: 14,
-                                    crosshair: {
-                                        enabled: true,
-                                        snapToDataPoint: true,
-                                        labelFormatter: function(e) {
-                                            return "฿" + CanvasJS.formatNumber(e.value, "##0.00");
-                                        }
-                                    }
-                                },
-                                data: [{
-                                    type: "stepArea",
-                                    color: "#d32f2f",
-                                    fontSize: 14,
-                                    xValueType: "dateTime",
-                                    xValueFormatString: "DD MMM YYYY",
-                                    yValueFormatString: "฿##0.00",
-                                    dataPoints: dps
-                                }],
-                            });
+                                }
+                            };
+                            chart.options.data = [{
+                                type: "stepArea",
+                                color: "#d32f2f",
+                                fontSize: 14,
+                                xValueType: "dateTime",
+                                xValueFormatString: "DD MMM YYYY",
+                                yValueFormatString: "฿##0.00",
+                                dataPoints: dps
+                            }];
                             chart.render();
+                        }else{
+                            updateChart()
                         }
-                    }, 250);
+                    }, random);
                 },
                 error: function() {}
             });
@@ -614,151 +611,4 @@
         return val.toFixed(2);
     }
 </script>
-
-<!-- <script>
-    var status = true;
-    window.onload = function () {
-    var dps = []; // dataPoints
-    var countClick = 0;
-    var chart = new CanvasJS.Chart("chartContainer", {
-        backgroundColor: '#21242c',
-        animationEnabled: true,
-        zoomEnabled: true,
-        title: {
-            display: false,
-        },
-        toolTip:{
-            enabled: true, //disable here
-            fontSize: 14,
-        },
-        axisX:{
-            valueFormatString: "DD MMM",
-            fontSize: 14,
-            crosshair: {
-                enabled: true,
-                snapToDataPoint: true,
-            }
-        },
-        axisY: {
-            valueFormatString: "$##0.00",
-            fontSize: 14,
-            crosshair: {
-                enabled: true,
-                snapToDataPoint: true,
-                labelFormatter: function(e) {
-                    return "$" + CanvasJS.formatNumber(e.value, "##0.00");
-                }
-            }
-        },
-        data: [{
-            click:function(e){
-                countClick++;
-                if((countClick % 2) == 0){
-                    alert("$"+e.dataPoint.y+", count : "+countClick+" mod:0");
-                }else{
-                    alert("$"+e.dataPoint.y+", count : "+countClick+" mod:1");
-                }
-            },
-            type: "stepArea",
-            color: "#d32f2f",
-            fontSize: 14,
-            xValueType: "dateTime",
-            xValueFormatString: "DD MMM",
-            yValueFormatString: "$##0.00",
-            dataPoints: dps
-        }],
-    });
-
-    var yVal = 100;
-    var updateCount = 20;
-    var yyyy = 2000;
-    var mmm = 0;
-    var dd = 1;
-    var updateChart = function () {
-        yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
-        /* updateCount = updateCount || 1; */
-        if(dd > 31){
-            dd = 1;
-            mmm++;
-            if(mmm > 11){
-                dd = 2;
-                mmm = 0;
-                yyyy++;
-            }
-        }
-        for(var i=0; i <= 1;i++){
-            dps.push({
-                x: new Date(yyyy, mmm, dd),
-                y : yVal
-            });
-        }
-        dd++;
-        dps.shift();
-        // console.log(dps);
-        chart.render();
-    };
-
-    // console.log(dps);
-    var count = 0;
-    var random = Math.round(Math.random()*(730 - 365)) + 365;
-    var myVar = setInterval(function(){
-        updateChart()
-        count++;
-        if(count == 50){
-            clearInterval(myVar);
-            console.log(dps);
-            
-            var chart = new CanvasJS.Chart("chartContainer", {
-                backgroundColor: '#21242c',
-                animationEnabled: true,
-                zoomEnabled: true,
-                title: {
-                    display: false,
-                },
-                toolTip:{
-                    enabled: true, //disable here
-                    fontSize: 14,
-                },
-                axisX:{
-                    valueFormatString: "DD MMM",
-                    fontSize: 14,
-                    crosshair: {
-                        enabled: true,
-                        snapToDataPoint: true,
-                    }
-                },
-                axisY: {
-                    valueFormatString: "$##0.00",
-                    fontSize: 14,
-                    crosshair: {
-                        enabled: true,
-                        snapToDataPoint: true,
-                        labelFormatter: function(e) {
-                            return "$" + CanvasJS.formatNumber(e.value, "##0.00");
-                        }
-                    }
-                },
-                data: [{
-                    click:function(e){
-                        countClick++;
-                        if((countClick % 2) == 0){
-                            alert("$"+e.dataPoint.y+", count : "+countClick+" mod:0");
-                        }else{
-                            alert("$"+e.dataPoint.y+", count : "+countClick+" mod:1");
-                        }
-                    },
-                    type: "stepArea",
-                    color: "#d32f2f",
-                    fontSize: 14,
-                    xValueType: "dateTime",
-                    xValueFormatString: "DD MMM",
-                    yValueFormatString: "$##0.00",
-                    dataPoints: dps
-                }],
-            });
-            chart.render();
-        }
-    }, 250);
-}
-</script> -->
 @endsection
