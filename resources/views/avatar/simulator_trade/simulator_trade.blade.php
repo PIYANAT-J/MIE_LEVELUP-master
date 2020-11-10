@@ -9,10 +9,11 @@
         <div class="col-sm-2 col-md-3 d-inline-block d-lg-none d-xl-none" style="background-color:#141621;"></div>
 
         <div class="col-sm-12 co-md-12 col-lg-9 col-xl-9" style="background-color:#141621;">
-            <div class="row mt-4" >
-                <div class="col-12">
-                    <h1 style="margin:0;color:#fff;font-weight:800;">Simulator Trade</h1>
-                    <!-- <label class="inputWithIcon3">
+            <div class="row mt-4" style="height:48px" >
+                <div class="col-12 d-flex justify-content-between">
+                    <h3 class="d-flex align-items-center" style="margin:0;color:#fff;font-weight:800;">Simulator Trade</h3>
+                    <button type="button" class="btn-sim2 next-simulator d-none"><p style="margin:0;">START</p></button>
+                    <!-- <label class="inputWithIcon3">style="opacity:0;
                         <input style="font-family:myfont1;" class="search_btn4" type="text" placeholder="ค้นหา Symbol" aria-label="Search">
                         <i class="icon-search" aria-hidden="true" style="font-size:18px"></i>
                     </label> -->
@@ -31,9 +32,9 @@
                     <button class="btn-sim2" id="removeDataset"><p style="margin:0;">Remove Dataset</p></button>
                     <button class="btn-sim2" id="addData"><p style="margin:0;">Add Data</p></button> --}}
 
-                    <button type="button" class="btn-sim2 next-simulator d-none"><p style="margin:0;">START</p></button>
+                    <!-- <button type="button" class="btn-sim2 next-simulator d-none"><p style="margin:0;">START</p></button> -->
                     <!-- <button class="btn-sim2" id="stop"><p style="margin:0;">SET</p></button> -->
-                    <div class="row mt-2">
+                    <div class="row my-2">
                         <div class="col-12">
                             <!-- <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade1.png') }}" /></div> -->
                             <div class="chart">
@@ -93,13 +94,22 @@
                                     <canvas class="pr-2" id="myChart" height="150"></canvas>
                                 </div> -->
                                 <div id="myChart-div">
-                                    <div class="pr-2" id="chartContainer" style="height:720px;">
-                                        <!-- <label class="simulator-label">PLAY GAME</label> -->
+                                    <div class="pr-2 heightChartSim" id="chartSimula">
+                                        <div class="simulator-label text-center">
+                                            <h3>Simulator trade</h3>
                                         <!-- <button type="button" class="btn-simulator next-simulator" > -->
-                                            <svg type="button" class="next-simulator" height="80" viewBox="0 0 512 512" width="80" xmlns="http://www.w3.org/2000/svg"><g><g><circle cx="256" cy="256" fill="#d80027" r="240"/><path d="m208.538 344v-176l145.924 88z" fill="#e0e0e2"/></g><g><g><path d="m431.36 80.64a248 248 0 1 0 -350.72 350.72 248 248 0 1 0 350.72-350.72zm-11.31 339.41a232 232 0 0 1 -328.1-328.1 232 232 0 0 1 328.1 328.1z"/><path d="m176 464.7a7.982 7.982 0 0 1 -2.963-.571 224.077 224.077 0 0 1 -141.037-208.129 8 8 0 0 1 16 0 208.073 208.073 0 0 0 130.965 193.271 8 8 0 0 1 -2.965 15.429z"/><path d="m216.009 476.305a8.072 8.072 0 0 1 -1.482-.138c-5.557-1.041-11.141-2.309-16.595-3.77a8 8 0 1 1 4.136-15.455c5.063 1.355 10.245 2.533 15.405 3.5a8 8 0 0 1 -1.464 15.865z"/></g><path d="m208.538 352a8 8 0 0 1 -8-8v-176a8 8 0 0 1 12.131-6.851l145.924 88a8 8 0 0 1 0 13.7l-145.924 88a8 8 0 0 1 -4.131 1.151zm8-169.833v147.666l122.433-73.833z"/></g></g></svg>
+                                            <svg type="button" class="next-simulator pBTNPlay" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><g><g><circle cx="256" cy="256" fill="#d80027" r="240"/>
+                                            <path d="m208.538 344v-176l145.924 88z" fill="#e0e0e2"/></g><g><g>
+                                            <path d="m431.36 80.64a248 248 0 1 0 -350.72 350.72 248 248 0 1 0 350.72-350.72zm-11.31 339.41a232 232 0 0 1 -328.1-328.1 232 232 0 0 1 328.1 328.1z"/>
+                                            <path d="m176 464.7a7.982 7.982 0 0 1 -2.963-.571 224.077 224.077 0 0 1 -141.037-208.129 8 8 0 0 1 16 0 208.073 208.073 0 0 0 130.965 193.271 8 8 0 0 1 -2.965 15.429z"/>
+                                            <path d="m216.009 476.305a8.072 8.072 0 0 1 -1.482-.138c-5.557-1.041-11.141-2.309-16.595-3.77a8 8 0 1 1 4.136-15.455c5.063 1.355 10.245 2.533 15.405 3.5a8 8 0 0 1 -1.464 15.865z"/></g>
+                                            <path d="m208.538 352a8 8 0 0 1 -8-8v-176a8 8 0 0 1 12.131-6.851l145.924 88a8 8 0 0 1 0 13.7l-145.924 88a8 8 0 0 1 -4.131 1.151zm8-169.833v147.666l122.433-73.833z"/></g></g></svg>
                                         <!-- </button> -->
+                                            <p>Play Now</p>
+                                        </div>
+                                        <label style="height:100%;width:100%;opacity:0.5; background-color: #000;z-index:1;position:absolute;padding-right:15px;"></label>
+                                        <div id="chartContainer" style="z-index:0; height:100%"></div>
                                     </div>
-                                    
                                 </div>
                                 
                             </div>
@@ -445,8 +455,8 @@
                     }else{
                         $('#money-simulator span').html(commaSeparateNumber(sumVal)+"฿").css('color', '#ce0005', 'cursor', 'pointer');
                     }
-                    $('#chartContainer').remove();
-                    $('#myChart-div').append('<div class="pr-2" id="chartContainer" style="height:670px;"></div>');
+                    $('#chartSimula').remove();
+                    $('#myChart-div').append('<div class="pr-2 heightChartSim" id="chartSimula"><div id="chartContainer" style="z-index:0; height:100%"></div></div>');
                     $('.symbol span').html(response.symbol);
                     $('input[name="status"]').val("false");
 
@@ -610,6 +620,63 @@
             val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
         }
         return val.toFixed(2);
+    }
+</script>
+<script>
+    window.onload = function() {
+        var dps = []; // dataPoints
+        var chart = new CanvasJS.Chart("chartContainer");
+        chart.options.theme = "light2"; // "light1", "light2", "dark1", "dark2"
+        chart.options.backgroundColor = '#21242c';
+        chart.options.axisX = {
+            valueFormatString: "DD MMM",
+            labelFontSize: 16,
+        };
+        chart.options.axisY = {
+            valueFormatString: "฿##0.00",
+            labelFontSize: 16,
+        };
+        chart.options.data = [{
+            type: "stepArea",
+            color: "#d32f2f",
+            dataPoints: []
+        }];
+
+        var yVal = 100;
+        var updateCount = 0;
+        var yyyy = 2000;
+        var mmm = 0;
+        var dd = 1;
+        var updateChart = function () {
+            yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
+            updateCount++;
+            if(dd > 30){
+                dd = 1;
+                mmm++;
+                if(mmm > 11){
+                    dd = 2;
+                    mmm = 0;
+                    yyyy++;
+                }
+            }
+            for(var i=0; i <= 1;i++){
+                chart.options.data[0].dataPoints.push({
+                    x: new Date(yyyy, mmm, dd),
+                    y : yVal
+                });
+            }
+            dd++;
+            chart.options.data[0].dataPoints.shift();
+            // chart.options.title.text = "Update " + updateCount;
+            chart.render();
+        };
+        
+        // update chart every second
+        var count = 0;
+        var random = Math.round(Math.random()*(730 - 365)) + 365;
+        var myVar = setInterval(function(){
+            updateChart()
+        }, 500);
     }
 </script>
 @endsection
