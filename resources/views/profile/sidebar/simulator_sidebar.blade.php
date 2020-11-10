@@ -104,14 +104,14 @@
                             </button>
                         </a>
                     </div>
-                    <div class="col-12 col-lg-12 col-xl-12 d-none d-lg-block d-xl-block mb-3" style="padding:0px">
+                    <!-- <div class="col-12 col-lg-12 col-xl-12 d-none d-lg-block d-xl-block mb-3" style="padding:0px">
                         <a href="{{ route('MyTrade') }}">
                             <button class="bg-simulator d-flex">
                                 <h2 style="margin:0;">การซื้อขายของฉัน</h2>
                                 <label class="arrowMenu"><i class="fa fa-angle-right" aria-hidden="true"></i></label>
                             </button>
                         </a>
-                    </div>
+                    </div> -->
                     <div class="col-12 col-lg-12 col-xl-12 d-none d-lg-block d-xl-block mb-3" style="padding:0px">
                         <a href="{{ route('RankingTrade') }}">
                             <button class="bg-simulator d-flex">
@@ -120,14 +120,14 @@
                             </button>
                         </a>
                     </div>
-                    <div class="col-12 col-lg-12 col-xl-12 d-none d-lg-block d-xl-block mb-3" style="padding:0px">
+                    <!-- <div class="col-12 col-lg-12 col-xl-12 d-none d-lg-block d-xl-block mb-3" style="padding:0px">
                         <a href="{{ route('RealInvestors') }}">
                             <button class="bg-simulator d-flex">
                                 <h2 style="margin:0;">นักลงทุนจริง</h2>
                                 <label class="arrowMenu"><i class="fa fa-angle-right" aria-hidden="true"></i></label>
                             </button>
                         </a>
-                    </div>
+                    </div> -->
                     <div class="col-12 col-lg-12 col-xl-12 d-none d-lg-block d-xl-block mb-3" style="padding:0px">
                         <a href="{{ route('Avatar') }}">
                             <button class="bg-simulator d-flex">
