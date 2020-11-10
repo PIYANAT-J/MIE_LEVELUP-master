@@ -3627,13 +3627,14 @@
         right: 0;
         bottom: 0;
         margin: auto;
+       
     }
     .heightChartSim {
-        height: 588px;
+        height: 693.5px;
     }
-    .heightChartSim2 {
-        height: 558px;
-    }
+    /* .heightChartSim2 {
+        height: 674px;
+    } */
 }
 
 p,
