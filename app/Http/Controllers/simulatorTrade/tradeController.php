@@ -98,27 +98,25 @@ class tradeController extends Controller
     }
 
     public function getSimulatorTrade(Request $request){
-        // dd($request);
-        if($request->input('status') != "false"){
-            $amount_trade = ranking_trade::where('user_email', Auth::user()->email)->first();
-            if($amount_trade == null){
-                $trade = new ranking_trade();
-                $trade->amount = $request->input('amount');
-                $trade->user_id = Auth::user()->id;
-                $trade->user_email = Auth::user()->email;
-                $trade->save();
-            }else{
-                // dd($amount_trade->amount);
-                // $amount_sum = $amount_trade->amount + ($request->input('amount'));
+        $amount_trade = ranking_trade::where('user_email', Auth::user()->email)->first();
+        $simulator = simulator_trade::limit(6)->get();
+        $random = random_int(1, count($simulator));
+        $dataSimulator = simulator_trade::where('id', $random)->first();
+        if($amount_trade != null){
+            if($request->input('status') != "false"){
                 $amount_sum = $request->input('amount');
                 ranking_trade::where('id', $amount_trade->id)->update(array('amount'=>$amount_sum));
             }
+        }else{
+            $trade = new ranking_trade();
+            $trade->amount = $request->input('amount');
+            $trade->user_id = Auth::user()->id;
+            $trade->user_email = Auth::user()->email;
+            $trade->save();
         }
+        
         $amount = ranking_trade::where('user_email', Auth::user()->email)->first();
-        $simulator = simulator_trade::limit(6)->get();
-        $random = random_int(1, count($simulator));
-        // dd(count($simulator), $random);
-        $dataSimulator = simulator_trade::where('id', $random)->first();
+        // dd($amount);
         return response()->json([
             'symbol'=>$dataSimulator->symbol,
             'date'=>$dataSimulator->date,
