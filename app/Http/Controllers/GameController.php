@@ -234,7 +234,6 @@ class GameController extends Controller
                             ->get();
                 $FollowDetail = DB::table('follows')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
                 $Download = DB::table('downloads')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
-                // die('<pre>'. print_r($Detail, 1));
                 $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', decrypt($gameId))->get();
                 $Comment = DB::table('comments')->where([['comments.GAME_ID', '=', decrypt($gameId)],['comments.USER_ID', '=', Auth::user()->id]])
                             ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'comments.USER_EMAIL')
@@ -255,10 +254,6 @@ class GameController extends Controller
                 $FollowDetail = DB::table('follows')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
                 $Download = DB::table('downloads')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
                 $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', decrypt($gameId))->get();
-                // $Comment = DB::table('comments')->where([['comments.GAME_ID', '=', decrypt($gameId)],['comments.USER_ID', '=', Auth::user()->id]])
-                //             ->join('developers', 'developers.USER_EMAIL', '=', 'comments.USER_EMAIL')
-                //             ->select('comments.*', 'developers.DEV_IMG')
-                //             ->first();
                 $CommentAll = DB::table('comments')->where('comments.GAME_ID', '=', decrypt($gameId))
                             ->join('users', 'users.id', '=', 'comments.USER_ID')
                             ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'users.email')
@@ -274,19 +269,26 @@ class GameController extends Controller
                 $FollowDetail = DB::table('follows')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
                 $Download = DB::table('downloads')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
                 $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', decrypt($gameId))->get();
-                // $Comment = DB::table('comments')->where([['comments.GAME_ID', '=', decrypt($gameId)],['comments.USER_ID', '=', Auth::user()->id]])
-                //             ->join('sponsors', 'sponsors.USER_EMAIL', '=', 'comments.USER_EMAIL')
-                //             ->select('comments.*', 'sponsors.SPON_IMG')
-                //             ->first();
                 $CommentAll = DB::table('comments')->where('comments.GAME_ID', '=', decrypt($gameId))
                             ->join('users', 'users.id', '=', 'comments.USER_ID')
                             ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'users.email')
                             ->select('comments.*', 'guest_users.GUEST_USERS_IMG', 'users.name','surname')
                             ->get();
                 $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->first();
-                // $package = DB::table('my_package_buy')->where([['USER_EMAIL', Auth::user()->email], ['my_package_buy.packageBuy_status', 'true']])->get();
-                // dd($FollowDetail);
                 return view('game.game_detail', compact('Detail', 'FollowDetail', 'Download', 'DownloadAll', 'CommentAll', 'sponsor'));
+            }else{
+                $Detail = DB::table('games')->where('GAME_ID', '=', decrypt($gameId))
+                        ->join('users', 'users.id', '=', 'games.USER_ID')
+                        ->select('games.*', 'users.name','surname')
+                        ->get();
+                $CommentAll = DB::table('comments')->where('comments.GAME_ID', '=', decrypt($gameId))
+                                ->join('users', 'users.id', '=', 'comments.USER_ID')
+                                ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'users.email')
+                                ->select('comments.*', 'users.name','surname', 'guest_users.GUEST_USERS_IMG')
+                                ->get();
+                $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', decrypt($gameId))->get();
+                $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+                return view('game.game_detail', compact('Detail', 'CommentAll', 'DownloadAll', 'guest_user'));
             }
         }else{
             $Detail = DB::table('games')->where('GAME_ID', '=', decrypt($gameId))
