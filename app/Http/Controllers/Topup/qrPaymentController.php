@@ -53,7 +53,6 @@ class qrPaymentController extends Controller
         $qrpayment->bank_name = $request->bank_name;
         $qrpayment->blockchain = "###TOPUP-LEVELup###";
         $qrpayment->save();
-        // dd($qrpayment);
         
         // $error = Validator::make($request->all(), $rules);
 
@@ -70,7 +69,14 @@ class qrPaymentController extends Controller
         $qrpayment->invoice = $qrcode->invoice;
         $qrpayment->save();
 
-        return redirect(route('UserTopup'));
+        $qr = QrPayment::where('invoice', $qrcode->invoice)->first();
+        $bank_name = asset('home/logo/'.$qr->bank_name.'.svg');
+        return response()->json([
+            'rawQrCode' => DNS2D::getBarcodeHTML($qr->rawQrCode, "QRCODE",6,6),
+            'invoice' => $qr->invoice,
+            'amount' => $qr->amount,
+            'bank_name' => $bank_name,
+        ]);
     }
 
     public function getQrcode($amount = null, $note = null){

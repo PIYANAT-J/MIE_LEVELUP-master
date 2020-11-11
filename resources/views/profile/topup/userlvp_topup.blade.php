@@ -44,61 +44,63 @@
                                         @endif
                                     <!-- <input type="text" id="moneyQr"> -->
                                 </div>
-                                <div class="mb-1"><p style="margin:0;font-weight:800;">ช่องทางการชำระเงิน</p></div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div id="banking" class="redioRed ">
-                                            <div data-toggle="modal" data-target="#myModal2" onClick="myFunction3()">
-                                                <input type="radio" name="bank" value="visa" id="visa">
-                                                <label for="visa"> <p style="margin:0;"> บัตรเครดิต/บัตรเดบิต</p></label>
-                                                <img src="{{asset('home/logo/visa.png') }}" />
-                                                <img src="{{asset('home/logo/visa2.png') }}" />
-                                            </div>
-                                            <div onClick="myFunction()">
-                                                <input type="radio" name="bank" value="atm" id="atm">
-                                                <label for="atm"><p style="margin:0;">โอน/ชำระผ่านบัญชีธนาคาร</p></label>
-                                            </div>
-                                            <div onClick="myFunction2()">
-                                                <input type="radio" name="bank" value="ibank" id="ibank">
-                                                <label for="ibank"><p style="margin:0;">iBanking / Mobile </p></label>
-                                            </div>
-                                        
-                                        
-                                            <div class="mt-0" id="first">
-                                                <p style="margin:0;font-weight:800;">เลือกธนาคารที่ต้องการชำระ</p>
-                                                <div>
-                                                    <button class="btn-bangkok" data-toggle="modal" data-target="#myModal5"><img src="{{asset('home/logo/bangkok.svg') }}" /></button>
-                                                    <button class="btn-ktc" data-toggle="modal" data-target="#myModal6"><img src="{{asset('home/logo/ktc.svg') }}" /></button>
-                                                    <button class="btn-kbank" data-toggle="modal" data-target="#myModal7"><img src="{{asset('home/logo/kbank.svg') }}" /></button>
-                                                    <button class="btn-scb" data-toggle="modal" data-target="#myModal8"><img src="{{asset('home/logo/scb.svg') }}" /></button>
+                                <div class="amount d-none">
+                                    <div class="mb-1"><p style="margin:0;font-weight:800;">ช่องทางการชำระเงิน</p></div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div id="banking" class="redioRed ">
+                                                <div data-toggle="modal" data-target="#myModal2" onClick="myFunction3()">
+                                                    <input type="radio" name="bank" value="visa" id="visa">
+                                                    <label for="visa"> <p style="margin:0;"> บัตรเครดิต/บัตรเดบิต</p></label>
+                                                    <img src="{{asset('home/logo/visa.png') }}" />
+                                                    <img src="{{asset('home/logo/visa2.png') }}" />
                                                 </div>
-                                            </div>
+                                                <div onClick="myFunction()">
+                                                    <input type="radio" name="bank" value="atm" id="atm">
+                                                    <label for="atm"><p style="margin:0;">โอน/ชำระผ่านบัญชีธนาคาร</p></label>
+                                                </div>
+                                                <div onClick="myFunction2()">
+                                                    <input type="radio" name="bank" value="ibank" id="ibank">
+                                                    <label for="ibank"><p style="margin:0;">iBanking / Mobile </p></label>
+                                                </div>
                                             
-                                            <div class="mt-0 " id="second">
-                                                <p style="margin:0;font-weight:800;">เลือกธนาคารที่ต้องการชำระ</p>
-                                                <div>
-                                                    <!-- <button class="btn-bangkok" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/bangkok.svg') }}" /></button>
-                                                    <button class="btn-ktc" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/ktc.svg') }}" /></button>
-                                                    <button class="btn-kbank" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/kbank.svg') }}" /></button> -->
-                                                    <!-- <button id="myModal_SCB" class="btn-scb" data-toggle="modal" name="myModal_SCB"><img src="{{asset('home/logo/scb.svg') }}" /> -->
-                                                        <!-- <form id="qr_scb" method="post">
-                                                            @csrf
-                                                            <button id="myModal_SCB" class="btn-scb" data-toggle="modal" name="myModal_SCB"><img src="{{asset('home/logo/scb.svg') }}" />
-                                                                <input type="hidden" name="amount" id="money">
-                                                                <input type="hidden" name="note" id="note" value="no">
-                                                                <input type="hidden" id="submit" name="submit" value="submit">
-                                                            </button>
-                                                        </form> -->
-                                                    <form action="{{route('QrPayment')}}" method="POST">
-                                                        @csrf
-                                                        <button class="btn-scb"><img src="{{asset('home/logo/scb.svg') }}" />
+                                            
+                                                <div class="mt-0" id="first">
+                                                    <p style="margin:0;font-weight:800;">เลือกธนาคารที่ต้องการชำระ</p>
+                                                    <div>
+                                                        <button class="btn-bangkok" data-toggle="modal" data-target="#myModal5"><img src="{{asset('home/logo/bangkok.svg') }}" /></button>
+                                                        <button class="btn-ktc" data-toggle="modal" data-target="#myModal6"><img src="{{asset('home/logo/ktc.svg') }}" /></button>
+                                                        <button class="btn-kbank" data-toggle="modal" data-target="#myModal7"><img src="{{asset('home/logo/kbank.svg') }}" /></button>
+                                                        <button class="btn-scb" data-toggle="modal" data-target="#myModal8"><img src="{{asset('home/logo/scb.svg') }}" /></button>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="mt-0 " id="second">
+                                                    <p style="margin:0;font-weight:800;">เลือกธนาคารที่ต้องการชำระ</p>
+                                                    <div>
+                                                        <!-- <button class="btn-bangkok" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/bangkok.svg') }}" /></button>
+                                                        <button class="btn-ktc" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/ktc.svg') }}" /></button>
+                                                        <button class="btn-kbank" data-toggle="modal" data-target="#myModal9"><img src="{{asset('home/logo/kbank.svg') }}" /></button> -->
+                                                        <!-- <button id="myModal_SCB" class="btn-scb" data-toggle="modal" name="myModal_SCB"><img src="{{asset('home/logo/scb.svg') }}" /> -->
+                                                            <!-- <form id="qr_scb" method="post">
+                                                                @csrf
+                                                                <button id="myModal_SCB" class="btn-scb" data-toggle="modal" name="myModal_SCB"><img src="{{asset('home/logo/scb.svg') }}" />
+                                                                    <input type="hidden" name="amount" id="money">
+                                                                    <input type="hidden" name="note" id="note" value="no">
+                                                                    <input type="hidden" id="submit" name="submit" value="submit">
+                                                                </button>
+                                                            </form> -->
+                                                        <!-- <form action="{{route('QrPayment')}}" method="POST">
+                                                            @csrf -->
+                                                            <button type="button" class="btn-scb qrPayment"><img src="{{asset('home/logo/scb.svg') }}" /></button>
                                                             <input type="hidden" name="amount" id="moneyQr">
                                                             <input type="hidden" name="bank_name" value="scb">
                                                             <input type="hidden" name="paymentType" value="QrCode">
                                                             <input type="hidden" name="note" id="note" value="no">
-                                                            <input type="hidden" id="submit" name="submit" value="submit">
-                                                        </button>
-                                                    </form>
+                                                            <!-- <input type="hidden" id="submit" name="submit" value="submit"> -->
+                                                            <!-- </button> -->
+                                                        <!-- </form> -->
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,6 +118,34 @@
                         </div>
                         <div class="row row5">
                             <div class="col-12">
+                                <div class="row bg-bank ml-0 mb-2 py-2 myHitQR d-none">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-12 mb-3">
+                                                <p style="margin:0;font-weight:800;">iBanking / Mobile Banking</p>
+                                                <img class="imgBank myHitQR-bank"/>
+                                                <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารไทยพาณิชย์</p>   
+                                                <p class="font-bank1 myHitQR-amount">+<span>0.00</span> ฿</p>
+                                            </div> 
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <p style="margin:0;">หมายเลขคำร้อง</p>
+                                                <p class="fontInvoice myHitQR-invoice">invoice</p>
+                                            </div> 
+                                        </div>
+                                        <div class="row mt-1">
+                                            <div class="col-9 pb-2">
+                                                <h5 style="color:#ff6f6f;margin:0;padding:10px 0 0 0;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</h5>
+                                            </div> 
+                                            <div class="col-3">
+                                                <button class="btn-submit-s" style="position:absolute;top:0;right:16px" data-toggle="modal" data-target="#myModalSCB">
+                                                    <p style="margin:0;">โอนเงิน</p>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
                                 @if(isset($payment))
                                     @foreach($payment as $PaymentList)
                                         @if($PaymentList->paymentType == "QrCode")
@@ -127,7 +157,7 @@
                                                                 <p style="margin:0;font-weight:800;">iBanking / Mobile Banking</p>
                                                                 <img class="imgBank" src="{{asset('home/logo/'.$PaymentList->bank_name.'.svg') }}" />
                                                                 <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารไทยพาณิชย์</p>
-                                                                <p class="font-bank1">+{{ number_format($PaymentList->amount) }} ฿</p>
+                                                                <p class="font-bank1">+{{ number_format($PaymentList->amount, 2) }} ฿</p>
                                                             </div> 
                                                         </div>
                                                         <div class="row">
@@ -152,7 +182,7 @@
                                                                 <p style="margin:0;font-weight:800;">iBanking / Mobile Banking</p>
                                                                 <img class="imgBank" src="{{asset('home/logo/'.$PaymentList->bank_name.'.svg') }}" />
                                                                 <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารไทยพาณิชย์</p>   
-                                                                <p class="font-bank1">+{{ number_format($PaymentList->amount) }} ฿</p>
+                                                                <p class="font-bank1">+{{ number_format($PaymentList->amount, 2) }} ฿</p>
                                                             </div> 
                                                         </div>
                                                         <div class="row">
@@ -196,7 +226,7 @@
                                                             @elseif($transferLits->transferฺBank_name == "scb")
                                                                 <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารไทยพาณิชย์</p>
                                                             @endif
-                                                            <p class="font-bank1">+{{ number_format($transferLits->transferAmount) }} ฿</p>
+                                                            <p class="font-bank1">+{{ number_format($transferLits->transferAmount, 2) }} ฿</p>
                                                         </div> 
                                                     </div>
                                                     <div class="row">
@@ -233,7 +263,7 @@
                                                             @elseif($transferLits->transferฺBank_name == "scb")
                                                                 <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารไทยพาณิชย์</p>
                                                             @endif
-                                                            <p class="font-bank1">+{{ number_format($transferLits->transferAmount) }} ฿</p>
+                                                            <p class="font-bank1">+{{ number_format($transferLits->transferAmount, 2) }} ฿</p>
                                                         </div> 
                                                     </div>
                                                     <div class="row">
@@ -268,7 +298,7 @@
                                                             @elseif($transferLits->transferฺBank_name == "scb")
                                                                 <p style="margin:0;font-weight:800;padding: 0 0 0 33px">ธนาคารไทยพาณิชย์</p>
                                                             @endif
-                                                            <p class="font-bank1">+{{ number_format($transferLits->transferAmount) }} ฿</p>
+                                                            <p class="font-bank1">+{{ number_format($transferLits->transferAmount, 2) }} ฿</p>
                                                         </div> 
                                                     </div>
                                                     <div class="row">
@@ -374,7 +404,7 @@
                                 </div>
                                 <div class="col-12 mb-2">
                                     <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">จำนวนเงินที่ชำระ</label></br>
-                                    <input type="text" class="input2 p" style="padding-left:10px" value="{{ number_format($transferModal->transferAmount) }}" require></input>
+                                    <input type="text" class="input2 p" style="padding-left:10px" value="{{ number_format($transferModal->transferAmount, 2) }}" require></input>
                                 </div>
                             </div>
                             <div class="row">
@@ -790,7 +820,7 @@
                                 <div class="row">
                                     <div class="col-12" style="border-bottom: 1px solid #fff;">
                                         <label><p style="margin:0;padding:8px 0 0 30px;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></label>
-                                        <label style="float:right;"><p style="color:#23c197;cursor:pointer;padding-top:5px;margin:0;">{{ number_format($qrPayment->amount) }} ฿</p></label>
+                                        <label style="float:right;"><p style="color:#23c197;cursor:pointer;padding-top:5px;margin:0;">{{ number_format($qrPayment->amount, 2) }} ฿</p></label>
                                     </div>
                                 </div>
                             </div>
@@ -802,53 +832,64 @@
     @endforeach
 @endif
 
-<!-- <div class="modal fade" id="myModalSCB" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="myModalSCB" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                    <div class="col-1" style="cursor:pointer;"><img class="mr-2" src="{{asset('icon/back.svg') }}" data-dismiss="modal"/></div>
-                    <div class="col-10 text-center" style="font-family:myfont;font-wieght:bold;font-size:1.2em;color:#000;">iBanking / Mobile Banking</div> 
-                    <div class="col-1"></div>
+                <div class="col-1"></div>
+                <div class="col-10 text-center">
+                    <p style="margin:0;font-weight:800;">iBanking / Mobile Banking</div> 
+                <div class="col-1 text-cente">
+                    <button type="button" class="close btn-closeModal" data-dismiss="modal"><i class="icon-close_modal" style="font-size: 15px;"></i></button>
+                </div>
             </div>
-            <div class="modal-body font-rate-modal">
+
+            <div class="modal-body">
                 <div class="row px-3">
-                    <div class="col-lg-12 pb-1 bg-bank text-center">
-                        <div class="my-2"><img src="{{asset('icon/waiting.svg') }}" /></div>
-                        <span style="font-family:myfont;color:#000;">
-                            กำลังรอชำระเงิน</br>ผ่านโมบายแบงค์กิ้ง/ไอแบงค์กิ้ง
-                        </span></br>
-                        <span style="color:#000";>
-                            กรุณาทำการชำระเงินผ่านโมบายแบงค์กิ้งหรือเอทีเอ็มภายใน 48 ชม.</br>มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกอัตโนมัติ
-                        </span>
-                        <div class="my-2"><img src="{{asset('home/topup/qr.png') }}" /></div>
-                        @if(isset($invoice))
-                            <div class="row justify-content-center" id="qrCode">{!! DNS2D::getBarcodeHTML($invoice, "QRCODE",6,6) !!}</div>
-                        @endif
-                        <span style="font-family:myfont;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</span>
+                    <div class="col-12 pb-1 bg-bank text-center">
+                        <div class="my-2"><img style="width:50px;" src="{{asset('icon/waiting.svg') }}" /></div>
+                        <p style="margin:0;font-weight:800;">กำลังรอชำระเงิน</br>ผ่านโมบายแบงค์กิ้ง/ไอแบงค์กิ้ง</p>
+                        <p class="mb-2" style="margin:0;">
+                            กรุณาทำการชำระเงินผ่านโมบายแบงค์กิ้งหรือเอทีเอ็มภายใน 48 ชม.</br>
+                            มิเช่นนั้นคำร้องของคุณจะถูกยกเลิกอัตโนมัติ
+                        </p>
+                        <div class="row justify-content-center mb-2 myModalSCB-rawQrCode">rawQrCode</div>
+                        <h5 style="margin:0;color:#ff6f6f;">ควรชำระเงินก่อน 10/05/2563 เวลา 10:09</h5>
                     </div>
                 </div>
+
                 <div class="row px-3 mt-3">
-                    <div class="col-lg-12 pb-1 bg-bank">
+                    <div class="col-12 bg-bank">
                         <div class="row">
-                            <div class="col-1 py-1" style="border-bottom: 1px solid #fff;"><img class="mt-3" src="{{asset('home/logo/scb.svg') }}" /></div>
-                            <div class="col-8 mt-2 py-2" style="border-bottom: 1px solid #fff;"><span style="color:#000;">หมายเลขบัญชี <b class="ml-2"><label>1234567890</label></b></span></div>
-                            <div class="col-3 text-center py-3"  style="font-family:myfont;color:#ff6f6f;border-bottom: 1px solid #fff;cursor:pointer;">คัดลอก</div>
-                            <div class="col-1 py-1" style="border-bottom: 1px solid #fff;"></div>
-                            <div class="col-8 py-3" style="border-bottom: 1px solid #fff;"><span style="color:#000;">หมายเลขคำร้อง<b class="ml-2"><label>1234567890123456</label></b></span></div>
-                            <div class="col-3 py-2 text-center mt-2"  style="font-family:myfont;color:#ff6f6f; border-bottom: 1px solid #fff;cursor:pointer;">คัดลอก</div>
-                            <div class="col-1 py-1" style="border-bottom: 1px solid #fff;"></div>
-                            <div class="col-8 pt-3"><span style="color:#000;font-family:myfont;">จำนวนเงินที่ต้องการเติม</span></div>
-                            <div class="col-3 py-2 text-center mt-2" style="font-family:myfont;color:#23c197;"><input type="number" name="amount" id="money"></div>
+                            <div class="col-12 " style="border-bottom: 1px solid #fff;">
+                                <img style="width:25px;" src="{{asset('home/logo/scb.svg') }}" />
+                                <label><p style="margin:0;">หมายเลขบัญชี</p></label>
+                                <input type='text' id="copy-text" value="1234567890" class="input3 p mt-2" style="font-weight:800;">
+                                <button class="btnNone" style="float:right;" onClick="copyToClipboard()">
+                                    <p style="color:#ff6f6f;cursor:pointer;padding-top:8px;margin:0;">คัดลอก</p>
+                                </button>
+                            </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 " style="border-bottom: 1px solid #fff;">
+                            <label><p style="margin:0;padding-left:30px;">หมายเลขคำร้อง</p></label>
+                            <input type='text' name="myModalSCB-invoice" class="input3 p mt-2" style="font-weight:800;">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12" style="border-bottom: 1px solid #fff;">
+                                <label><p style="margin:0;padding:8px 0 0 30px;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></label>
+                                <label style="float:right;"><p class="myModalSCB-amount" style="color:#23c197;cursor:pointer;padding-top:5px;margin:0;"><span>0.00</span> ฿</p></label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn-submit-modal" >บันทึก</button>
-            </div>
         </div>
     </div>
-</div> -->
+</div>
+
 <div class="modal fade" id="popupmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
@@ -1023,7 +1064,7 @@ $(function () {
       }
 </script>
 
-<script>
+<!-- <script>
     document.querySelector('input[name="amount"]').addEventListener('keyup', (event)=>{
         var creditQr = document.querySelector('input[name="amount"]').value
         // var money = credit * 30 - ((credit * 30) * 3 /100)
@@ -1031,7 +1072,7 @@ $(function () {
         document.querySelector('input#moneyQr').value = moneyQr
         console.log('Error:', moneyQr);
     })
-</script>
+</script> -->
 <script>
     document.querySelector('input[name="amount"]').addEventListener('keyup', (event)=>{
         var creditTransfer = document.querySelector('input[name="amount"]').value
@@ -1040,17 +1081,26 @@ $(function () {
         document.querySelector('input#ktc').value = moneyTransfer
         document.querySelector('input#kbank').value = moneyTransfer
         document.querySelector('input#scb').value = moneyTransfer
-        console.log('Error:', moneyTransfer);
+        // QRCODE
+        document.querySelector('input#moneyQr').value = moneyTransfer
+        // CREDIT
+        document.querySelector('input#credit').value = moneyTransfer
 
         var moneyTM = creditTransfer
         document.querySelector('input#bangkokM').value = moneyTM
         document.querySelector('input#ktcM').value = moneyTM
         document.querySelector('input#kbankM').value = moneyTM
         document.querySelector('input#scbM').value = moneyTM
-        console.log('Error:', moneyTM);
+        // CREDIT
+        document.querySelector('input#creditM').value = moneyTM
+        if(moneyTransfer > 99){
+            $('.amount').removeClass('d-none');
+        }else{
+            $('.amount').addClass('d-none');
+        }
     })
 </script>
-<script>
+<!-- <script>
     document.querySelector('input[name="amount"]').addEventListener('keyup', (event)=>{
         var credit = document.querySelector('input[name="amount"]').value
         var money = credit
@@ -1061,46 +1111,7 @@ $(function () {
         document.querySelector('input#creditM').value = moneyM
         console.log('Error:', moneyM);
     })
-</script>
-
-<script>
-    $(document).ready(function(){
-        $('#myModal_SCB').click(function(){
-            $('#myModalSCB').modal('show')
-        });
-        $('#qr_scb').on('submit', function(event){
-            event.preventDefault();
-            if($('#submit').val() == 'submit'){
-                $.ajax({
-                    url:"{{ route('QrPayment') }}",
-                    method:"POST",
-                    data: new FormData(this),
-                    contentType: false,
-                    cache:false,
-                    processData: false,
-                    dataType:"json",
-                    success:function(data){
-                        var html = '';
-                        if(data.errors){
-                            html = '<div class="alert alert-danger">';
-                                for(var count = 0; count < data.errors.length; count++){
-                                    html += '<p>' + data.errors[count] + '</p>';
-                                }
-                            html += '</div>';
-                        }
-                        if(data.success){
-                            html = '<div class="alert alert-success">' + data.success + '</div>';
-                            // console.log('Error:', data);
-                            $('#myModalSCB')[0].reset();
-                            $('#myModalSCB').Data().ajax.reload();
-                        }
-                        $('#qrCode').html(html);
-                    }
-                })
-            }
-        });
-    });
-</script>
+</script> -->
 
 <script>
     $(document).ready(function(e) {
@@ -1136,6 +1147,58 @@ $(function () {
             });
         });
     });
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        $(".btn-scb.qrPayment").click(function(e) {
+            var btnThis = $(this);
+            var amount = $(this).parent().find('input[name="amount"]').val();
+            var bank_name = $(this).parent().find('input[name="bank_name"]').val();
+            var paymentType = $(this).parent().find('input[name="paymentType"]').val();
+            var note = $(this).parent().find('input[name="note"]').val();
+
+            $('#loading').removeClass('d-none');
+
+            $.ajax({
+                url: "{{route('QrPayment')}}",
+                type: 'POST',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    amount:amount,
+                    bank_name:bank_name,
+                    paymentType:paymentType,
+                    note:note,
+                },
+                success: function(response) {
+                    // var amount = response.amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+                    // Modal
+                    console.log(response.amount);
+                    $('.myModalSCB-rawQrCode').html(response.rawQrCode);
+                    $('input[name="myModalSCB-invoice"]').val(response.invoice);
+                    $('.myModalSCB-amount span').html(commaSeparateNumber(response.amount));
+                    $('#loading').addClass('d-none');
+                    $('.amount').addClass('d-none');
+                    $('#myModalSCB').modal();
+                    $('input[name="amount"]').val('');
+                    // Hit {{asset('home/logo/bank_name.svg') }}
+                    $('.myHitQR-bank').attr('src', response.bank_name);
+                    $('.myHitQR-invoice').html(response.invoice);
+                    $('.myHitQR-amount span').html(commaSeparateNumber(response.amount));
+                    $('.myHitQR').removeClass('d-none');
+                },
+                error: function() {}
+            });
+        });
+    });
+</script>
+<script>
+    function commaSeparateNumber(val){
+        while (/(\d+)(\d{3})/.test(val.toString())){
+            val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+        }
+        return val.toFixed(2);
+    }
 </script>
 
 @if( Session::has('success'))
