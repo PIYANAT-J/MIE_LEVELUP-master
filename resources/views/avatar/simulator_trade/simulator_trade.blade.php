@@ -107,7 +107,7 @@
                                         <!-- </button> -->
                                             <p>Play Now</p>
                                         </div>
-                                        <label style="height:100%;width:100%;opacity:0.5; background-color: #000;z-index:1;position:absolute;padding-right:15px;"></label>
+                                        <div class="coverBlack px-2" style="color:#ffff;"></div>
                                         <div id="chartContainer" style="z-index:0; height:100%"></div>
                                     </div>
                                 </div>
