@@ -86,17 +86,17 @@
                         
                 </div>
 
-                <div class="row py-2" style="background-color: #fff;border-radius: 6px;box-shadow: 0 5px 0 0 #c3c3c3;">
+                <!-- <div class="row py-2" style="background-color: #fff;border-radius: 6px;box-shadow: 0 5px 0 0 #c3c3c3;">
                     <div class="col-12 pl-5 mb-3">
                         <h1 style="margin:0;font-weight:800;">$0.00<br>STARTING PRICE </h1>
                     </div>
                     <div class="col-12 pl-5">
                         <h1 style="margin:0;font-weight:800;">$0.00<a style="color:#0ce63e;"> (+5%)</a><br>PERIOD CHANGE</h1>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="row mt-3">
-                    <div class="col-12 col-lg-12 col-xl-12 d-none d-lg-block d-xl-block mb-3" style="padding:0px">
+                    <div class="col-12 col-lg-12 col-xl-12 d-none d-lg-block d-xl-block mb-2" style="padding:0px">
                         <a href="{{ route('SimulatorTrade') }}">
                             <button class="bg-simulator d-flex">
                                 <h2 style="margin:0;">Simulator Trade</h2>
@@ -112,7 +112,7 @@
                             </button>
                         </a>
                     </div> -->
-                    <div class="col-12 col-lg-12 col-xl-12 d-none d-lg-block d-xl-block mb-3" style="padding:0px">
+                    <div class="col-12 col-lg-12 col-xl-12 d-none d-lg-block d-xl-block" style="padding:0px">
                         <a href="{{ route('RankingTrade') }}">
                             <button class="bg-simulator d-flex">
                                 <h2 style="margin:0;">Ranking</h2>
@@ -128,14 +128,14 @@
                             </button>
                         </a>
                     </div> -->
-                    <div class="col-12 col-lg-12 col-xl-12 d-none d-lg-block d-xl-block mb-3" style="padding:0px">
+                    <!-- <div class="col-12 col-lg-12 col-xl-12 d-none d-lg-block d-xl-block mb-3" style="padding:0px">
                         <a href="{{ route('Avatar') }}">
                             <button class="bg-simulator d-flex">
                                 <h2 style="margin:0;">ตัวละครของฉัน</h2>
                                 <label class="arrowMenu"><i class="fa fa-angle-right" aria-hidden="true"></i></label>
                             </button>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         @endforeach

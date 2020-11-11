@@ -597,7 +597,6 @@
                             chart.options.data = [{
                                 type: "stepArea",
                                 color: "#d32f2f",
-                                // fontSize: 14,
                                 xValueType: "dateTime",
                                 xValueFormatString: "DD MMM YYYY",
                                 yValueFormatString: "฿##0.00",
@@ -625,58 +624,108 @@
 <script>
     window.onload = function() {
         var dps = []; // dataPoints
+        var dps2 = []; // dataPoints
+        var dps3 = []; // dataPoints
+        var dps4 = []; // dataPoints
         var chart = new CanvasJS.Chart("chartContainer");
         chart.options.theme = "light2"; // "light1", "light2", "dark1", "dark2"
         chart.options.backgroundColor = '#21242c';
+        chart.options.toolTip = {
+            shared: true
+        },
         chart.options.axisX = {
-            valueFormatString: "DD MMM",
+            valueFormatString: "hh:mm:ss TT",
             labelFontSize: 16,
         };
         chart.options.axisY = {
             valueFormatString: "฿##0.00",
             labelFontSize: 16,
         };
-        chart.options.data = [{
-            type: "stepArea",
-            color: "#d32f2f",
-            dataPoints: []
-        }];
+        chart.options.data = [
+            {
+                type: "line",
+                color: "#d32f2f",
+                xValueType: "dateTime",
+                dataPoints: []
+            },
+            {
+                type: "line",
+                color: "#9B59B6",
+                xValueType: "dateTime",
+                dataPoints: dps
+            },
+            {
+                type: "line",
+                color: "#3498DB",
+                xValueType: "dateTime",
+                dataPoints: dps2
+            },
+            {
+                type: "line",
+                color: "#2ECC71",
+                xValueType: "dateTime",
+                dataPoints: dps3
+            },
+            {
+                type: "line",
+                color: "#F39C12",
+                xValueType: "dateTime",
+                dataPoints: dps4
+            }
+        ];
+
+        var updateInterval = 1000;
+        var time = new Date;
+        // starting at 10.00 am
+        // time.setHours(10);
+        // time.setMinutes(00);
+        // time.setSeconds(00);
+        // time.setMilliseconds(00);
 
         var yVal = 100;
-        var updateCount = 0;
-        var yyyy = 2000;
-        var mmm = 0;
-        var dd = 1;
-        var updateChart = function () {
+        var yVal2 = 105;
+        var yVal3 = 110;
+        var yVal4 = 115;
+        var yVal5 = 120;
+        var updateChart = function (count) {
+            count = count || 1;
+            time.setTime(time.getTime() + updateInterval);
             yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
-            updateCount++;
-            if(dd > 30){
-                dd = 1;
-                mmm++;
-                if(mmm > 11){
-                    dd = 2;
-                    mmm = 0;
-                    yyyy++;
-                }
-            }
-            for(var i=0; i <= 1;i++){
+            yVal2 = yVal2 +  Math.round(5 + Math.random() *(-5-5));
+            yVal3 = yVal3 +  Math.round(5 + Math.random() *(-5-5));
+            yVal4 = yVal4 +  Math.round(5 + Math.random() *(-5-5));
+            yVal5 = yVal5 +  Math.round(5 + Math.random() *(-5-5));
+            for(var i=0; i < count;i++){
                 chart.options.data[0].dataPoints.push({
-                    x: new Date(yyyy, mmm, dd),
+                    x: time.getTime(),
                     y : yVal
                 });
+                dps.push({
+                    x: time.getTime(),
+                    y : yVal2
+                });
+                dps2.push({
+                    x: time.getTime(),
+                    y : yVal3
+                });
+                dps3.push({
+                    x: time.getTime(),
+                    y : yVal4
+                });
+                dps4.push({
+                    x: time.getTime(),
+                    y : yVal5
+                });
             }
-            dd++;
-            chart.options.data[0].dataPoints.shift();
+            // chart.options.data[0].dataPoints.shift();
             // chart.options.title.text = "Update " + updateCount;
             chart.render();
         };
         
         // update chart every second
-        var count = 0;
-        var random = Math.round(Math.random()*(730 - 365)) + 365;
         var myVar = setInterval(function(){
-            updateChart()
-        }, 500);
+            updateChart(100)
+        }, updateInterval);
     }
 </script>
 @endsection
