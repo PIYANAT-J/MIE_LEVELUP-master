@@ -2910,7 +2910,7 @@
         margin: auto;
     }
     .heightChartSim {
-        height: 378px;
+        height: 350px;
     }
     .heightChartSim2 {
         height: 328px;
@@ -3627,7 +3627,6 @@
         right: 0;
         bottom: 0;
         margin: auto;
-       
     }
     .heightChartSim {
         height: 693.5px;
@@ -12937,4 +12936,18 @@ input[type="file"] {
     outline: none !important;
     background-color: #44422f;
     border: solid 2px #e6b926;
+}
+
+.coverBlack {
+    background-color: #000;
+    opacity: 0.5;
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 3px 18px !important;
+    border-radius: 6px;
 }
