@@ -7987,7 +7987,7 @@ input[type="checkbox"].switch_1:checked:after {
 }
 
 ul.thumb-Images li {
-    width: 110px;
+    width: 100px;
     float: left;
     display: inline-block;
     vertical-align: top;
@@ -10543,7 +10543,7 @@ input[type="checkbox"].switch_2:checked:after {
     background-color: #ce0005;
     border-radius: 6px;
     cursor: pointer;
-    padding: 10px 20px;
+    padding: 8px 20px 10px 20px;
     height: 40px;
 }
 
@@ -12950,4 +12950,75 @@ input[type="file"] {
     right: 0;
     margin: 3px 18px !important;
     border-radius: 6px;
+}
+
+.MySelectTopupUser {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 10px;
+}
+
+.MySelectTopupUser:focus {
+    outline: none;
+}
+
+.rowImgGame {
+    height: 250px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+
+/* width */
+
+.rowImgGame ::-webkit-scrollbar {
+    width: 4px;
+}
+
+
+/* Track */
+
+.rowImgGame ::-webkit-scrollbar-track {
+    background: #ffff;
+}
+
+
+/* Handle */
+
+.rowImgGame ::-webkit-scrollbar-thumb {
+    background: #ececec;
+    /* border-radius: 25px;  */
+}
+
+
+/* Handle on hover */
+
+.rowImgGame ::-webkit-scrollbar-thumb:hover {
+    background: #ececec;
+}
+
+.statusShelf {
+    border-radius: 6px;
+    background-color: #ffd629;
+    margin: 0;
+    height: 25px;
+    color: #000;
+}
+
+.statusShelf2 {
+    border-radius: 6px;
+    background-color: #23c197;
+    margin: 0;
+    height: 25px;
+}
+
+.statusShelf3 {
+    border-radius: 6px;
+    background-color: #ce0005;
+    margin: 0;
+    height: 25px;
 }
