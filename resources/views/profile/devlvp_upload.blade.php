@@ -140,9 +140,9 @@
                     </div>  
                     
                     <div class="row mt-2">
-                        <div class="col-lg-12 pb-2"> 
+                        <div class="col-12 pb-2"> 
                             <label><p class="fontHeader" style="margin:0;">เลือกรูปภาพเพิ่มเติม</p></label>
-                            <label><h5 style="margin:0;"> เพิ่มได้สูงสุด 6 รูปภาพ</h5></label>
+                            <!-- <label><h5 style="margin:0;"> เพิ่มได้สูงสุด 6 รูปภาพ</h5></label> -->
                         </div>
                     </div>
                     <div class="row ">
@@ -153,9 +153,11 @@
                                   อัพโหลดรูปภาพ
                                 </label>
                                 <input type="file" name="GAME_IMG_NAME[]" id="files" multiple accept="image/*" style="width:150px;" ><br />
-                            </span></br>
-                            <output id="Filelist"></output>
+                            </span>
                         </div>
+                    </div>
+                    <div class="rowImgGame">
+                      <output id="Filelist"></output>
                     </div>
                 </div>
                   <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2">
@@ -396,26 +398,26 @@ function ApplyFileValidationRules(readerEvt) {
     return;
   }
   //To check file Size according to upload conditions
-  if (CheckFileSize(readerEvt.size) == false) {
-    alert(
-      "The file (" +
-        readerEvt.name +
-        ") does not match the upload conditions, The maximum file size for uploads should not exceed 300 KB"
-    );
-    e.preventDefault();
-    return;
-  }
+  // if (CheckFileSize(readerEvt.size) == false) {
+  //   alert(
+  //     "The file (" +
+  //       readerEvt.name +
+  //       ") does not match the upload conditions, The maximum file size for uploads should not exceed 300 KB"
+  //   );
+  //   e.preventDefault();
+  //   return;
+  // }
   //To check files count according to upload conditions
-  if (CheckFilesCount(AttachmentArray) == false) {
-    if (!filesCounterAlertStatus) {
-      filesCounterAlertStatus = true;
-      alert(
-        "เพิ่มได้สูงสุด 6 รูปภาพ"
-      );
-    }
-    e.preventDefault();
-    return;
-  }
+  // if (CheckFilesCount(AttachmentArray) == false) {
+  //   if (!filesCounterAlertStatus) {
+  //     filesCounterAlertStatus = true;
+  //     alert(
+  //       "เพิ่มได้สูงสุด 6 รูปภาพ"
+  //     );
+  //   }
+  //   e.preventDefault();
+  //   return;
+  // }
 }
 //To check file type according to upload conditions
 function CheckFileType(fileType) {
@@ -430,15 +432,15 @@ function CheckFileType(fileType) {
   }
   return true;
 }
-//To check file Size according to upload conditions
-function CheckFileSize(fileSize) {
-  if (fileSize < 900000) {
-    return true;
-  } else {
-    return false;
-  }
-  return true;
-}
+// //To check file Size according to upload conditions
+// function CheckFileSize(fileSize) {
+//   if (fileSize < 900000) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+//   return true;
+// }
 //To check files count according to upload conditions
 function CheckFilesCount(AttachmentArray) {
   //Since AttachmentArray.length return the next available index in the array,
@@ -450,11 +452,11 @@ function CheckFilesCount(AttachmentArray) {
     }
   }
   //To check the length does not exceed 10 files maximum
-  if (len > 5) {
-    return false;
-  } else {
-    return true;
-  }
+  // if (len > 5) {
+  //   return false;
+  // } else {
+  //   return true;
+  // }
 }
 //Render attachments thumbnails.
 function RenderThumbnail(e, readerEvt) {

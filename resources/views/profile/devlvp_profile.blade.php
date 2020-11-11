@@ -39,7 +39,7 @@
                                             @enderror
                                             <label class="bgInput field-wrap my-1">
                                                 <p class="fontHeadInput">เบอร์โทรศัพท์</p>
-                                                <input name="DEV_TEL" type="text" class="input1 p ml-2"  data-toggle="tooltip" value="{{ $Dev->DEV_TEL ?? old('DEV_TEL') }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
+                                                <input name="DEV_TEL" type="text" class="input1 p ml-2"  data-toggle="tooltip" value="{{ $Dev->DEV_TEL ?? old('DEV_TEL') }}" data-placement="bottom" title="ตัวอย่าง:082 222 2222" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="10"></input>
                                             </label>
                                             @error('DEV_TEL')
                                                 <p style="color:#ce0005;">กรุณากรอกเบอร์โทรศัพท์</p>
