@@ -106,6 +106,9 @@
                                                 <a class="nav-link font_profile" href="{{ route('SponsorProfile') }}">{{ __('โปรไฟล์') }}</a>
                                             @else
                                                 <a class="nav-link font_profile" href="{{ route('UserProfile') }}">{{ __('โปรไฟล์') }}</a>
+                                                <li class="nav-item">
+                                                    <a href="{{ route('Avatar') }}">ตัวละครของฉัน</a>
+                                                </li>
                                             @endif
                                         </li>
                                         <li class="nav-item font_profile">

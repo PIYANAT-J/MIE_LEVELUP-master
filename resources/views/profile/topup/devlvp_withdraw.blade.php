@@ -220,7 +220,7 @@
                         <div class="col-12">
                             <label class="bgInput field-wrap my-1">
                                 <p class="fontHeadInput">หมายเลขบัญชีธนาคาร</p>
-                                <input type="text"  name="accountNumber" value="{{ old('accountNumber') }}" class="input1 p ml-2"  require  maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
+                                <input type="text"  name="accountNumber" value="{{ old('accountNumber') }}" class="input1 p ml-2"  require  maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></input>
                             </label>
                         </div>
                         <div class="col-12 mb-2">
