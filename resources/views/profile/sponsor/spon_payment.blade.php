@@ -703,7 +703,7 @@
                                     <label class="bgInput field-wrap my-1">
                                         <p class="fontHeadInput">เลขผู้เสียภาษีอาการ</p>
                                         @foreach($sponsor as $spon)
-                                            <input name="taxID" class="input1 p ml-2" value="{{$spon->taxID}}" readonly></input>
+                                            <input name="taxID" class="input1 p ml-2" value="{{$spon->taxID}}" maxlength="13"></input>
                                         @endforeach
                                     </label>
                                 </div>

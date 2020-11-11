@@ -66,11 +66,11 @@
                         </div>
                         @foreach($advertising as $key=>$advt)
                             <div class="row line2">
-                                <div class="col-6 p">{{$advt->advertising_name}}</div>
+                                <div class="col-6 p mt-1">{{$advt->advertising_name}}</div>
                                 <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center">
                                     <div class="py-1 p" style="cursor:pointer;text-decoration: underline;color:#0061fc;"data-toggle="modal" data-target="#Ads{{$key}}">โฆษณา</div>
                                 </div>
-                                <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center">
+                                <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center my-1">
                                     @if($advt->advertising_status == "รออนุมัติ")
                                         <label class="ml-2 px-1 p" style="color:#000;background-color: #ffd629;border-radius: 6px;margin:0;">รออนุมัติ</label></br>
                                     @elseif($advt->advertising_status == "true")
@@ -83,7 +83,7 @@
                                     <!-- <label class="ml-2 px-1 p" style="color:#fff;background-color: #ce0005;border-radius: 6px;margin:0;">ไม่อนุมัติ</label></br> -->
                                 </div>
                                 <?php $dateTime = explode(" ", $advt->advertising_create); ?>
-                                <div class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block d-md-block text-center"><h5 style="margin:0;">{{$dateTime[1]}}, {{$dateTime[0]}}</h5></div>
+                                <div class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block d-md-block text-center mt-2"><h5 style="margin:0;">{{$dateTime[1]}}, {{$dateTime[0]}}</h5></div>
                             </div>
 
                             <div class="modal fade" id="Ads{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

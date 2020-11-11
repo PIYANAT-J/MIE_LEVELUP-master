@@ -395,7 +395,7 @@
                                 </div>
                                 <div class="col-12 mb-2">
                                     <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">ธนาคารที่ชำระเงิน</label></br>
-                                    <select class="MySelect p" require>
+                                    <select class="MySelectTopupUser p" require>
                                         <option>เลือกธนาคาร</option>
                                         <option>ธนาคารกสิกร</option>
                                         <option>ธนาคารกรุงเทพ</option>
@@ -410,11 +410,11 @@
                             <div class="row">
                                 <div class="col-6 mb-2" style="padding-right:0;">
                                     <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">วันที่ชำระเงิน</label></br>
-                                    <input type="date" class="MySelect p" require></input>
+                                    <input type="date" class="MySelectTopupUser p" require></input>
                                 </div>
                                 <div class="col-6 mb-2">
                                     <label style="font-family:myfont1;font-weight:900;margin:0;font-size:0.8em;">เวลาที่ชำระเงิน</label></br>
-                                    <input type="time" class="MySelect p" placeholder="เวลาที่โอน" require></input>
+                                    <input type="time" class="MySelectTopupUser p" placeholder="เวลาที่โอน" require></input>
                                 </div>
                             </div>
                             <div>

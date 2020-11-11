@@ -94,8 +94,8 @@
                                             @if(isset($Game->GAME_IMG_PROFILE))
                                                 <div class="row line2 ">
                                                     <div class="col-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-4 col-xl-3 d-none d-lg-block d-xl-block mb-2">
+                                                        <div class="row my-2">
+                                                            <div class="col-lg-4 col-xl-3 d-none d-lg-block d-xl-block">
                                                                 <img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" />
                                                             </div>
                                                             <div class="col-12 col-lg-8 col-xl-9" style="color:#000;">
@@ -111,7 +111,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center text-center">
+                                                    <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center mt-2">
                                                         <p style="margin:0;">
                                                             @foreach($CDownload as $cdown)
                                                                 @if($cdown->GAME_ID == $Game->GAME_ID && $cdown->GAME_ID != null)
@@ -127,7 +127,7 @@
                                                         </p>
                                                     </div>
                                                     <div class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block d-md-block text-center">
-                                                        <h5 style="color:#a8a8a8;margin:0;">
+                                                        <h5 class="mt-2" style="color:#a8a8a8;margin:0;">
                                                             @if($Game->GAME_EDIT_DATE == null)
                                                                 {{ $Game->GAME_DATE }}
                                                             @else
@@ -135,7 +135,7 @@
                                                             @endif
                                                         </h5>
                                                     </div>
-                                                    <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center mb-2">
+                                                    <div class="col-3 col-md-2 col-lg-2 col-xl-2 mb-2 text-center mt-2">
                                                         @if($Game->GAME_STATUS == 'รออนุมัติ')
                                                             <form action="{{ route('DevShelfUpdate') }}" method="POST" enctype="multipart/form-data">
                                                                 @csrf

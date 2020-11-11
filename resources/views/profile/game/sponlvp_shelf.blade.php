@@ -53,7 +53,7 @@
                                                             <div class="row mx-0 py-2 line2" data-eventtype="game_{{$Allpackage->package_id}}" style="color:#000;">
                                                                 <div class="col-6">
                                                                     <div class="row">
-                                                                        <div class="col-3"><img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" /></div>
+                                                                        <div class="col-3" style="padding:0;"><img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$Game->GAME_IMG_PROFILE)}}" /></div>
                                                                         <div class="col-9">
                                                                             <p style="margin:0;">{{$Game->GAME_NAME}}</p>
                                                                             <p style="margin:0;">{{$Game->RATED_B_L}} • Other</p>
@@ -92,7 +92,7 @@
                                                             <div class="row mx-0 py-2 line2" data-eventtype="game" style="color:#000;">
                                                                 <div class="col-6">
                                                                     <div class="row">
-                                                                        <div class="col-3"><img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$GameID->GAME_IMG_PROFILE)}}" /></div>
+                                                                        <div class="col-3" style="padding:0;"><img class="shelf-pic" src="{{asset('section/File_game/Profile_game/'.$GameID->GAME_IMG_PROFILE)}}" /></div>
                                                                         <div class="col-9">
                                                                             <div>
                                                                                 <p style="margin:0;">{{$GameID->GAME_NAME}}</p>
@@ -107,7 +107,7 @@
                                                                 <div class="col-2 text-center">
                                                                     @if($dayIf <= date("Y-m-d H:i"))
                                                                         <p style="margin:0;">{{$deadline[1]}}, {{$deadline[0]}}</p>
-                                                                        <span class="status-kyc4 px-2 p" style="color:#fff">หมดอายุ</span>
+                                                                        <span class="statusShelf3 px-2 p" style="color:#fff">หมดอายุ</span>
                                                                     @else
                                                                         <p style="margin:0;">{{$deadline[1]}}, {{$deadline[0]}}</p>
                                                                     @endif
@@ -155,7 +155,7 @@
                                         <div class="row mx-0 py-2 line2" style="color:#000;">
                                             <div class="col-6">
                                                 <div class="row">
-                                                    <div class="col-3"><img class="shelf-pic" src="{{asset('section/product//product_img/'.$productAll->product_img) }}" /></div>
+                                                    <div class="col-3" style="padding:0;"><img class="shelf-pic" src="{{asset('section/product//product_img/'.$productAll->product_img) }}" /></div>
                                                     <div class="col-9">
                                                         <div>
                                                             <p style="margin:0;">{{$productAll->product_name}}</p>
@@ -166,11 +166,11 @@
                                             </div>
                                             <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center">
                                                 @if($productAll->product_status == "รออนุมัติ")
-                                                    <span class="status-kyc3 px-2"><p style="margin:0;">รอการอนุมัติ</p></span>
+                                                    <p class="statusShelf" style="margin:0;">รอการอนุมัติ</p>
                                                 @elseif($productAll->product_status == "อนุมัติ")
-                                                    <span class="status-kyc2 px-2"><p style="margin:0;">อนุมัติแล้ว</p></span>
+                                                    <span class="statusShelf2"><p style="margin:0;">อนุมัติแล้ว</p></span>
                                                 @elseif($productAll->product_status == "หมดอายุ")
-                                                    <span class="status-kyc4 px-2"><p style="margin:0;">หมดอายุ</p></span>
+                                                    <span class="statusShelf3"><p style="margin:0;">หมดอายุ</p></span>
                                                 @endif
                                             </div>
                                             <div class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block d-md-block text-center">
