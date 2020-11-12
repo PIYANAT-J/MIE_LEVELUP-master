@@ -22,7 +22,8 @@ class CreateKycsTable extends Migration
             $table->timestamp('KYC_APPROVE_DATE')->nullable();
             $table->integer('USER_ID')->nullable();
             $table->string('USER_EMAIL')->unique()->collation('utf8_unicode_ci');
-            $table->string('ADMIN_NAME')->unique()->collation('utf8_unicode_ci')->nullable();
+            $table->string('ADMIN_NAME')->collation('utf8_unicode_ci')->nullable();
+            $table->text('COMMENT')->nullable();
         });
     }
 

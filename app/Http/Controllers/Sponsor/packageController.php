@@ -187,9 +187,11 @@ class packageController extends Controller
         if($request->input('submit') != null){
             $qrpayment = QrPayment::Where('invoice', $request->input('invoice'))->get()->first();
             if($qrpayment->status == "false"){
-                return back()->with("false", "กรุณากดปุ่มยืนยันอีกครั้ง");
+                // return back()->with("false", "กรุณากดปุ่มยืนยันอีกครั้ง");
+                return response()->json(['false'=>'กรุณากดปุ่มยืนยันอีกครั้ง'], 200);
             }
-            return redirect(route('SponsorSuccessfulPayment', ['invoice' => encrypt($request->input('invoice'))]));
+            return response()->json(['success'=>'กรุณากดปุ่มยืนยันอีกครั้ง', 'route'=>'/sponsor_successful_payment/'.encrypt($request->input("invoice")).''], 200);
+            // return redirect(route('SponsorSuccessfulPayment', ['invoice' => encrypt($request->input('invoice'))]));
         }else{
             $qrpayment = QrPayment::Where('invoice', $request->input('invoice'))->get()->first();
             $qrpayment->status = "99";

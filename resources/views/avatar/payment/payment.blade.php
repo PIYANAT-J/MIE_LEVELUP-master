@@ -132,8 +132,10 @@
 
                                                 <div class="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 align-self-center">
                                                     <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
-                                                        <h4 style="margin:0;font-weight:800;">฿{{number_format($itemprice[$i])}}</h4>
-                                                        <p class="mr-2" style="margin:0;color:#ce0005;"><a style="color: #b2b2b2;text-decoration:line-through;">฿3,400 </a> (-{{$shoppingList->item_discount}}%)<p>
+                                                        <h4 style="margin:0;font-weight:800;">฿{{number_format($itemprice[$i], 2)}}</h4>
+                                                        @if($shoppingList->item_discount != 0)
+                                                            <p class="mr-2" style="margin:0;color:#ce0005;"><a style="color: #b2b2b2;text-decoration:line-through;">฿{{number_format($shoppingList->shopping_cart_price, 2)}} </a> (-{{$shoppingList->item_discount}}%)<p>
+                                                        @endif
                                                     </span>
                                                 </div>
                                             </div>
@@ -330,7 +332,7 @@
                                             <div class="col-12 mt-1">
                                                 <div class="checkbox01 ">
                                                     <div class="row radio-ibank">
-                                                        <div class="col-12 mb-2">
+                                                        <!-- <div class="col-12 mb-2">
                                                             <input type="radio" name="ibank" value="bangkok" id="bank01">
                                                             <label for="bank01"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
                                                             <span class="ml-2 p" style="color:#fff;">ธนาคารกรุงเทพ</span>
@@ -344,7 +346,7 @@
                                                             <input type="radio" name="ibank" value="kbank" id="bank03">
                                                             <label for="bank03"><img src="{{asset('home/logo/kbank.svg')}}" ></label>
                                                             <span class="ml-2 p" style="color:#fff;">ธนาคารกสิกรไทย</span>
-                                                        </div>
+                                                        </div> -->
                                                         <div class="col-12 mb-2">
                                                             <input type="radio" name="ibank" value="scb" id="bank04">
                                                             <label for="bank04"><img src="{{asset('home/logo/scb.svg')}}" ></label>
@@ -456,7 +458,7 @@
                                         <div class="col-12">
                                             <div class="row">
                                                 <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right font-payment2"><p style="margin:0;">ยอดรวมสินค้า</p></div>
-                                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 text-right font-payment2"><p style="margin:0;">฿{{number_format($transeection->transeection_price)}}</p></div>
+                                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 text-right font-payment2"><p style="margin:0;">฿{{number_format($transeection->transeection_price, 2)}}</p></div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right font-payment2"><p style="margin:0;">ส่วนลด</p></div>
@@ -464,7 +466,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right font-payment2 pt-2"><p style="margin:0;">รวมราคาทั้งสิ้น</p></div>
-                                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 text-right align-self-end"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿{{number_format($transeection->transeection_price)}}</h4></div>
+                                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 text-right align-self-end"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿{{number_format($transeection->transeection_price, 2)}}</h4></div>
                                             </div>
                                         </div>
                                     </div>
@@ -488,7 +490,7 @@
                                                     <input type="hidden" id="submit" name="submit" value="submit">
                                             @else
                                                 @if($transeection->transeection_status == 'false')
-                                                    <button class="btn-cancel-s" style="cursor:default">
+                                                    <button class="btn-cancel" style="cursor:default">
                                                         <p style="margin:0">รอการชำระเงิน</p>
                                                     </button>
                                                 @endif
@@ -509,7 +511,7 @@
                                                 </form>
                                             @else
                                                 @if($transeection->transeection_status == 'false')
-                                                    <button class="btn-cancel-s" style="cursor:default">
+                                                    <button class="btn-cancel" style="cursor:default">
                                                         <p style="margin:0">รอการชำระเงิน</p>
                                                     </button>
                                                 @endif
@@ -527,7 +529,7 @@
                                                 </form>
                                             @else
                                                 @if($transeection->transeection_status == 'false')
-                                                    <button class="btn-cancel-s" style="cursor:default">
+                                                    <button class="btn-cancel" style="cursor:default">
                                                         <p style="margin:0">รอการชำระเงิน</p>
                                                     </button>
                                                 @endif

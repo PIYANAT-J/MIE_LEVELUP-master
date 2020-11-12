@@ -31,11 +31,11 @@
                             </div>
                             @if(isset($package))
                                 <div class="col-6 text-right">
-                                    <h4 style="margin:0;font-weight:800;">฿ {{$package->packageBuy_amount}}</h4>
+                                    <h4 style="margin:0;font-weight:800;">฿ {{number_format($package->packageBuy_amount, 2)}}</h4>
                                 </div>
                             @else
                                 <div class="col-6 text-right">
-                                    <h4 style="margin:0;font-weight:800;">฿ {{$transeection->transeection_amount}}</h4>
+                                    <h4 style="margin:0;font-weight:800;">฿ {{number_format($transeection->transeection_amount, 2)}}</h4>
                                 </div>
                             @endif
                         </div>
@@ -53,8 +53,8 @@
                         <div class="row mt-3 py-2 " style="border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
                             <div class="col-12">
                                 <div class="row">
-                                    <div class="col-sm-2 col-md-3 col-lg-8 col-xl-4"></div>
-                                    <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 mt-2">
+                                    <div class="col-lg-5"></div>
+                                    <div class="col-lg-2">
                                         <form action="{{route('cancalIbanking')}}" method="post">
                                             @csrf
                                             <button class="btn-submit">
@@ -69,7 +69,7 @@
                                             <!-- <label class="btn-submit-payment">ยกเลิก</label> -->
                                         </form>
                                     </div>
-                                    <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 mt-2">
+                                    <!-- <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 mt-2">
                                         <form action="{{route('cancalIbanking')}}" method="post">
                                             @csrf
                                             <button class="btn-submit-red" name="submit" value="submit">
@@ -77,7 +77,7 @@
                                                 <input type="hidden" name="invoice" value="{{$qrpayment->invoice}}">
                                             </button>
                                         </form>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -163,4 +163,32 @@ setTimeout(function(){
 }, 1500);
 </script>
 
+<script>
+    $(document).ready(function(e) {
+        invoice = "{{$qrpayment->invoice}}";
+        console.log(invoice);
+        submit = "submit";
+        setInterval(function(){
+            $.ajax({
+                url: "{{route('cancalIbanking')}}",
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    invoice:invoice,
+                    submit:submit,
+                },
+                success: function(response) {
+                    if(response.success){
+                        console.log(response.success)
+                        window.location.href = response.route;
+                    }else{
+                        console.log(response.false)
+                        // window.location.href = response.route;
+                    }
+                },
+                error: function() {}
+            });
+        }, 2000);
+    });
+</script>
 @endsection

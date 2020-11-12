@@ -117,7 +117,9 @@
                                             <div class="col-6 col-sm-11 col-md-2 col-lg-11 col-xl-3 align-self-center" style="padding:0;">
                                                 <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
                                                     <h4 class="total" style="margin:0;font-weight:800;">฿<span>{{number_format($shoppingLits->shopping_cart_price, 2)}}</span></h4>
-                                                    <p class="mr-2" style="margin:0;color:#ce0005;"><a style="color: #b2b2b2;text-decoration:line-through;">฿3,400 </a> (-{{$shoppingLits->item_discount}}%)<p>
+                                                    @if($shoppingLits->item_discount != 0)
+                                                        <p class="mr-2" style="margin:0;color:#ce0005;"><a style="color: #b2b2b2;text-decoration:line-through;">฿{{number_format($shoppingLits->shopping_cart_price, 2)}} </a> (-{{$shoppingLits->item_discount}}%)<p>
+                                                    @endif
                                                 </span>
                                             </div>
 
@@ -268,7 +270,7 @@
                     // $(this).parents('form').find('input[name="amountItem"]').val($quantityNum);
                     dataprice = $(this).parent().find('.quantity-num').attr('dataprice');
                     sum = (+dataprice)*$quantityNum;
-                    $(this).parents('.data-div').find('.total span').text(new Intl.NumberFormat().format(sum));
+                    $(this).parents('.data-div').find('.total span').text(sum.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
                     // $(this).parents('form').find('input[name="sumprice"]').val(sum);
                     $(this).parents('.data-div').find('input[name="accept_01"]').attr('data-price', sum);
                     console.log(dataprice);
@@ -286,7 +288,7 @@
                     // $(this).parents('form').find('input[name="amountItem"]').val($quantityNum);
                     dataprice = $(this).parent().find('.quantity-num').attr('dataprice');
                     sum = (+dataprice)*$quantityNum;
-                    $(this).parents('.data-div').find('.total span').text(new Intl.NumberFormat().format(sum));
+                    $(this).parents('.data-div').find('.total span').text(sum.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
                     // $(this).parents('form').find('input[name="sumprice"]').val(sum);
                     $(this).parents('.data-div').find('input[name="accept_01"]').attr('data-price', sum);
                     console.log(dataprice);
@@ -314,7 +316,7 @@
                         allamount.push($(this).parents('.data-div').find('.quantity-num').val());
                         allshopp.push($(this).attr('data-shop'));
                     });
-                    $('.sumtotal span').html(new Intl.NumberFormat().format(total));
+                    $('.sumtotal span').html(total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
                     document.querySelector('input#sumTotal').value = total;
                     document.querySelector('input#allTotal').value = alltotal.join(", ");
                     document.querySelector('input#allamount').value = allamount.join(", ");
@@ -404,6 +406,15 @@
             });
         })();
     });
+</script>
+
+<script>
+    function commaSeparateNumber(val){
+        while (/(\d+)(\d{3})/.test(val.toString())){
+            val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+        }
+        return val.toFixed(2);
+    }
 </script>
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> -->
