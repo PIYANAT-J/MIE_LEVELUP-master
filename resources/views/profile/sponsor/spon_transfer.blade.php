@@ -41,7 +41,7 @@
                                 <p style="margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p>
                             </div>
                             <div class="col-6 text-right">
-                                <h4 style="margin:0;font-weight:800;">฿ {{$transfer->transferAmount}}</h4>
+                                <h4 style="margin:0;font-weight:800;">฿ {{number_format($transfer->transferAmount, 2)}}</h4>
                             </div>
                         </div>
 
