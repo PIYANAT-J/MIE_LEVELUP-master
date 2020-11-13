@@ -40,7 +40,7 @@
                             <img src="{{asset('icon/money2.svg') }}" />
                         </label> 
 
-                        <label style="padding-left:60px;">
+                        <label style="padding-left:80px;">
                             <p style="font-weight: 700;margin:0;">Test 1</p>
                             <label class="p" style="color: #23c197;margin:0;">2 เดือน</label>
                             <label class="p" style="color: #23c197;margin:0;">จำนวน 10 เกม </label>
@@ -54,7 +54,7 @@
                         <label class="mr-2 pl-4">
                             <img class="labelimg2" src="{{ asset('section/File_game/Profile_game/GAME_IMG_PROFILE_1595566491.png') }}" />
                         </label>
-                        <label class="pFont2">
+                        <label class="pFont2 pl-2">
                             <p style="font-weight: 700;margin:0;">ชื่อเกม</p>
                             <p style="color: #a8a8a8;margin:0;">Online • Online</p>
                             <h5 style="color: #23c197;margin:0;">
