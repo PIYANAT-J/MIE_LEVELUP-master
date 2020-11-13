@@ -288,7 +288,7 @@
                             <p class="ml-2" style="margin:0;font-weight:800;">บัญชี</p>
                             <div class="redioRed">
                                 <div class="row pl-2 radio-ibank">
-                                    <div class="col-12 my-2">
+                                    <!-- <div class="col-12 my-2">
                                         <input type="radio" name="ibank" value="bangkok" id="bank01">
                                         <label for="bank01"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
                                         <span class="p">ธนาคารกรุงเทพ</span>
@@ -302,7 +302,7 @@
                                         <input type="radio" name="ibank" value="kbank" id="bank03">
                                         <label for="bank03"><img src="{{asset('home/logo/kbank.svg')}}" ></label>
                                         <span class="p">ธนาคารกสิกรไทย</span>
-                                    </div>
+                                    </div> -->
                                     <div class="col-12 mb-2">
                                         <input type="radio" name="ibank" value="scb" id="bank04">
                                         <label for="bank04"><img src="{{asset('home/logo/scb.svg')}}" ></label>
@@ -343,24 +343,24 @@
                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
                             <p class="ml-2" style="margin:0;font-weight:800;">บัญชี</p>
                             <div class="redioRed">
-                                <div class="row radio-ibank">
+                                <div class="row radio-transfer">
                                     <div class="col-12 my-2">
-                                        <input type="radio" name="ibank" value="bangkok" id="bank05">
+                                        <input type="radio" name="transfer" value="bangkok" id="bank05">
                                         <label for="bank05"><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
                                         <span class="p">ธนาคารกรุงเทพ</span>
                                     </div>
                                     <div class="col-12 mb-2">
-                                        <input type="radio" name="ibank" value="ktc" id="bank06">
+                                        <input type="radio" name="transfer" value="ktc" id="bank06">
                                         <label for="bank06"><img src="{{asset('home/logo/ktc.svg')}}" ></label>
                                         <span class="p">ธนาคารกรุงไทย</span>
                                     </div>
                                     <div class="col-12 mb-2">
-                                        <input type="radio" name="ibank" value="kbank" id="bank07">
+                                        <input type="radio" name="transfer" value="kbank" id="bank07">
                                         <label for="bank07"><img src="{{asset('home/logo/kbank.svg')}}" ></label>
                                         <span class="p">ธนาคารกสิกรไทย</span>
                                     </div>
                                     <div class="col-12 mb-2">
-                                        <input type="radio" name="ibank" value="scb" id="bank08">
+                                        <input type="radio" name="transfer" value="scb" id="bank08">
                                         <label for="bank08"><img src="{{asset('home/logo/scb.svg')}}" ></label>
                                         <span class="p">ธนาคารไทยพาณิชย์</span>
                                     </div>
@@ -418,9 +418,9 @@
 
                             <div class="row" >
                                 <div class="col-12 text-right" id="T10">
-                                    <a href="{{ route('SponsorPaymentConfirm') }}">
+                                    {{-- <a href="{{ route('SponsorPaymentConfirm') }}">
                                         <label class="btn-submit-red-s p">ชำระเงิน</label>
-                                    </a>
+                                    </a> --}}
                                 </div>
                                 <div class="col-12 text-right" id="VisaCredit">
                                     {{-- <a href="{{ route('SponsorPaymentConfirm') }}">
@@ -445,13 +445,10 @@
                                     @endif
                                 </div>
                                 <div class="col-12 text-right" id="iBanking">
-                                    <!-- <a href="{{ route('SponsorPaymentConfirm') }}"> -->
-                                    <!-- <label class="btn-submit-red-s">ชำระเงิน</label> -->
-                                    <!-- </a> -->
                                     @if($package == null)
                                         <form action="{{route('packageibanking')}}" method="POST">
                                             @csrf
-                                            <button class="btn-submit-red-s p">ชำระเงิน
+                                            <button class="btn-submit-red-s p ibank d-none">ชำระเงิน
                                                 <input type="hidden" name="amount" value="{{$allPackage->package_amount}}">
                                                 <input type="hidden" name="bank_name" id="data-checked">
                                                 <input type="hidden" name="paymentType" value="QrCode">
@@ -477,7 +474,7 @@
                                     @if($package == null)
                                         <form action="{{route('sponTransferPayment')}}" method="POST">
                                             @csrf
-                                            <button class="btn-submit-red-s p">ชำระเงิน
+                                            <button class="btn-submit-red-s p transfer d-none">ชำระเงิน
                                                 <input type="hidden" name="transferAmount" value="{{$allPackage->package_amount}}">
                                                 <input type="hidden" name="transferฺBank_name" id="data-bank">
                                                 <input type="hidden" name="package_id" value="{{$allPackage->package_id}}">
@@ -520,7 +517,7 @@
                             </div>
                             <div class="row" >
                                 <div class="col-12 text-right" id="T10">
-                                    <a href="{{ route('SponsorPaymentConfirm') }}"><label class="btn-submit-red-s p">ชำระเงิน</label></a>
+                                    {{-- <a href="{{ route('SponsorPaymentConfirm') }}"><label class="btn-submit-red-s p">ชำระเงิน</label></a> --}}
                                 </div>
                                 <div class="col-12 text-right" id="VisaCredit">
                                     {{-- <a href="{{ route('SponsorPaymentConfirm') }}"><label class="btn-submit-red-s p">ชำระเงิน</label></a> --}}
@@ -545,7 +542,7 @@
                                     @if($transeection->transeection_invoice == null)
                                         <form action="{{route('packageibanking')}}" method="POST">
                                             @csrf
-                                            <button class="btn-submit-red-s p">ชำระเงิน
+                                            <button class="btn-submit-red-s p ibank d-none">ชำระเงิน
                                                 <input type="hidden" name="amount" value="{{$transeection->transeection_amount}}" >
                                                 <input type="hidden" name="bank_name" id="data-checked">
                                                 <input type="hidden" name="paymentType" value="QrCode">
@@ -566,7 +563,7 @@
                                     @if($transeection->transeection_invoice == null)
                                         <form action="{{route('sponTransferPayment')}}" method="POST">
                                             @csrf
-                                            <button class="btn-submit-red-s p">ชำระเงิน
+                                            <button class="btn-submit-red-s p transfer d-none">ชำระเงิน
                                                 <input type="hidden" name="transferAmount" value="{{$transeection->transeection_amount}}">
                                                 <input type="hidden" name="transferฺBank_name" id="data-bank">
                                                 <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
@@ -1570,6 +1567,15 @@
     document.getElementById("four").style.display ='none';
     document.getElementById("four1").style.display ='none';
     document.getElementById("Transfer").style.display ='none';
+    $('.btn-submit-red-s.p.transfer').addClass('d-none');
+    var Transfer = document.getElementsByName("transfer");
+        for(var i=0;i<Transfer.length;i++)
+            Transfer[i].checked = false;
+    $('.btn-submit-red-s.p.ibank').addClass('d-none');
+    var Bank = document.getElementsByName("ibank");
+        for(var i=0;i<Bank.length;i++)
+            Bank[i].checked = false;
+    
     }
     const myFunction3 = () => {
     document.getElementById("first").style.display ='none';
@@ -1667,10 +1673,31 @@ $(document).ready(function(){
 <script>
     $(document).ready(function() {
         $(".radio-ibank").change(function() {
+            $('.btn-submit-red-s.p.transfer').addClass('d-none');
+            $('.btn-submit-red-s.p.ibank').removeClass('d-none');
+            var Bank = document.getElementsByName("transfer");
+            for(var i=0;i<Bank.length;i++)
+                Bank[i].checked = false;
             var closest = $(this).closest("div.row.radio-ibank");
-            var creditTransfer = document.querySelector('input[name="ibank"]:checked').value
+            var creditBank = document.querySelector('input[name="ibank"]:checked').value
+            var moneyBank = creditBank
+            document.querySelector('input#data-checked').value = moneyBank
+            console.log(moneyBank);
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $(".radio-transfer").change(function() {
+            $('.btn-submit-red-s.p.transfer').removeClass('d-none');
+            $('.btn-submit-red-s.p.ibank').addClass('d-none');
+            var Transfer = document.getElementsByName("ibank");
+            for(var i=0;i<Transfer.length;i++)
+                Transfer[i].checked = false;
+            var closest = $(this).closest("div.row.radio-transfer");
+            var creditTransfer = document.querySelector('input[name="transfer"]:checked').value
             var moneyTransfer = creditTransfer
-            document.querySelector('input#data-checked').value = moneyTransfer
             document.querySelector('input#data-bank').value = moneyTransfer
             console.log(moneyTransfer);
         });

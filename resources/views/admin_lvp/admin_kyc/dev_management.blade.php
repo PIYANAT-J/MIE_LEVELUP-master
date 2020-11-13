@@ -227,7 +227,7 @@
                                 <div class="noneApprovelist">
                                     <div for="noneApprovelabel"><p class="mt-2" style="color:#000;margin:0;height:15px;">หมายเหตุ<p></div>
                                     <div name="noneApprovediv" form="userKYC">
-                                        <textarea class="input1 p pl-2" placeholder="รายละเอียด" row="3"  require></textarea>
+                                        <textarea name="COMMENT" class="input1 p pl-2" placeholder="รายละเอียด" row="3"  require></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -327,7 +327,7 @@
                         <label class="status-none-approve p" style="text-align:center;">ไม่ผ่านการอนุมัติ</label>
                         <label class="bgInput field-wrap my-1">
                             <p class="fontHeadInput">หมายเหตุ</p>
-                            <label class="input-update p"></label>
+                            <label class="input-update p">{{$KycModel->COMMENT}}</label>
                         </label>
                     </div>
                 </div>

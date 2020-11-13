@@ -22,7 +22,7 @@ class CreateTransferPaymentsTable extends Migration
             $table->string('transferImg')->collation('utf8_unicode_ci')->nullable();
             $table->string('invoice', 255)->collation('utf8_unicode_ci');
             $table->string('transferInvoice');
-            $table->set('transferStatus', ['ยืนยันการโอน', 'รอการอนุมัติ', 'อนุมัติแล้ว'])->collation('utf8_unicode_ci')->nullable();
+            $table->set('transferStatus', ['ยืนยันการโอน', 'รอการอนุมัติ', 'อนุมัติแล้ว', 'ไม่อนุมัติ'])->collation('utf8_unicode_ci')->nullable();
             $table->dateTime('confirm_at')->nullable();
             $table->string('blockchain', 255)->collation('utf8_unicode_ci')->nullable();
             $table->integer('user_id');

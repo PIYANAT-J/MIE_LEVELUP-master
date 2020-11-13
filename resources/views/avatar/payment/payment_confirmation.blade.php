@@ -47,7 +47,7 @@
                             <div class="row mx-2 py-3" style="font-family:myfont1;font-size:1em;color:#fff;border-bottom:1px solid #fff;font-weight:800;">ยืนยันการชำระเงิน</div>
                             <div class="row mx-2" style="border-bottom:1px solid #455160">
                                 <div class="col-6 font-payment2 py-3 "><p style="margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></div>
-                                <div class="col-6 text-right font-price align-self-center"><h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{number_format($transeection->transeection_price)}}</h4></div>
+                                <div class="col-6 text-right font-price align-self-center"><h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{number_format($transeection->transeection_price, 2)}}</h4></div>
                             </div>
 
                             <div class="row mx-2 py-3" style="border-bottom:1px solid #455160">
