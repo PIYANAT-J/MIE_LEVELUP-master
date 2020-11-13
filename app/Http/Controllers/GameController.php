@@ -308,106 +308,137 @@ class GameController extends Controller
 
     public function saveGameProfile(Request $request){
         if ($request->input('submit') != null ){
-    
-            // Insert && Update (TABLE {{ games }})
-            if($request->has('GAME_FILE')){
-                $uploadFile = $request->file('GAME_FILE');
-                $file_name = 'GAME_FILE_'.time().'.'.$uploadFile->getClientOriginalExtension();
-                // $file_size = File::size($file_name);
-                $pathFile = public_path('section/File_game');
-                $uploadFile->move($pathFile, $file_name);
+            if($request->input('upload') != null ){
+                $validate = $request->validate([
+                    'GAME_FILE' => ['required'],
+                    'GAME_NAME' => ['required'],
+                    'GAME_DESCRIPTION' => ['required'],
+                    'RATED_ESRB' => ['required'],
+                    'RATED_B_L' => ['required'],
+                    'GAME_TYPE' => ['required'],
+                    'GAME_VDO_LINK' => ['required'],
+                    'GAME_DESCRIPTION_FULL' => ['required'],
+                    'GAME_IMG_PROFILE' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:5000'],
+                    'GAME_PRICE' => ['required', 'integer'],
+                ],
+                [
+                    'GAME_FILE.required' => 'กรุณาเลือกไฟล์',
+                    'GAME_NAME.required' => 'กรุณาระบุชื่อเกม',
+                    'GAME_DESCRIPTION.required' => 'กรุณาระบุคำอธิบาย',
+                    'RATED_ESRB.required' => 'กรุณาเลือกเรทเกม',
+                    'RATED_B_L.required' => 'กรุณาเลือกเรทเนื้อหาเกม',
+                    'GAME_TYPE.required' => 'กรุณาเลือกประเภทเกม',
+                    'GAME_VDO_LINK.required' => 'กรุณาระบุลิงค์วีดีโอ',
+                    'GAME_DESCRIPTION_FULL.required' => 'กรุณาระบุรายละเอียด',
+                    
+                    'GAME_IMG_PROFILE.required' => 'กรุณาเลือกรูปภาพหน้าปก',
+                    'GAME_IMG_PROFILE.mimes' => 'ต้องเป็นไฟล์ jpeg,png,jpg,gif,svg',
+                    'GAME_IMG_PROFILE.max' => 'ขนาดรูปภาพใหญ่เกินไป',
 
-                $file_size = File::size(public_path('section/File_game/'.$file_name));
+                    'GAME_PRICE.required' => 'กรุณาระบุราคาเกม',
+                    'GAME_PRICE.integer' => 'ต้องเป็นตัวเลขเท่านั้น',
+                ]);
+                // Insert && Update (TABLE {{ games }})
+                if($request->has('GAME_FILE')){
+                    $uploadFile = $request->file('GAME_FILE');
+                    $file_name = 'GAME_FILE_'.time().'.'.$uploadFile->getClientOriginalExtension();
+                    // $file_size = File::size($file_name);
+                    $pathFile = public_path('section/File_game');
+                    $uploadFile->move($pathFile, $file_name);
 
-                $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
-                $base = log($file_size, 1024);
-                $size = round(pow(1024, $base - floor($base)), $precision = 2) .' '. $units[floor($base)];
+                    $file_size = File::size(public_path('section/File_game/'.$file_name));
+
+                    $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
+                    $base = log($file_size, 1024);
+                    $size = round(pow(1024, $base - floor($base)), $precision = 2) .' '. $units[floor($base)];
+                    
+                    if($request->has('GAME_IMG_PROFILE')){
+
+                        $uploadImg = $request->file('GAME_IMG_PROFILE');
+                        $img_name = 'GAME_IMG_PROFILE_'.time().'.'.$uploadImg->getClientOriginalExtension();
+                        $pathImg = public_path('section/File_game/Profile_game');
+                        $uploadImg->move($pathImg, $img_name);
+
+                        $GAME_NAME = $request->input('GAME_NAME');
+                        $GAME_IMG_PROFILE = $img_name;
+                        $GAME_DESCRIPTION = $request->input('GAME_DESCRIPTION');
+                        $GAME_DESCRIPTION_FULL = $request->input('GAME_DESCRIPTION_FULL');
+                        // $GAME_STATUS = $request->input('GAME_STATUS');
+                        $GAME_DATE = $request->input('GAME_DATE');
+                        $GAME_FILE = $file_name;
+                        $GAME_SIZE = $size;
+                        $GAME_VDO_LINK = $request->input('GAME_VDO_LINK');
+                        $GAME_TYPE = $request->input('GAME_TYPE');
+                        $RATED_ESRB = $request->input('RATED_ESRB');
+                        $RATED_B_L = $request->input('RATED_B_L');
+                        $USER_ID = Auth::user()->id;
+                        $USER_EMAIL = Auth::user()->email;
+
+                        if($GAME_NAME != '' || $GAME_IMG_PROFILE != '' || $GAME_DESCRIPTION != '' || $GAME_DESCRIPTION_FULL != '' || $GAME_DATE != '' || $GAME_FILE != '' || $GAME_SIZE != '' || $GAME_VDO_LINK != ''
+                            || $GAME_TYPE != '' || $RATED_ESRB != '' || $USER_ID != '' || $RATED_B_L != '' || $USER_EMAIL != ''){
+                            $data = array("GAME_NAME"=>$GAME_NAME, "GAME_IMG_PROFILE"=>$GAME_IMG_PROFILE, "GAME_DESCRIPTION"=>$GAME_DESCRIPTION, "GAME_DESCRIPTION_FULL"=>$GAME_DESCRIPTION_FULL, "GAME_DATE"=>$GAME_DATE, "GAME_FILE"=>$GAME_FILE, 
+                                            "GAME_SIZE"=>$GAME_SIZE, "GAME_VDO_LINK"=>$GAME_VDO_LINK, "GAME_TYPE"=>$GAME_TYPE, "RATED_ESRB"=>$RATED_ESRB, "RATED_B_L"=>$RATED_B_L, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
+                            
+                            // die('<pre>'. print_r($data, 1));
+                            // Insert && Update
+                            $value = Game::InsertGame($data);
+                            if($value){
+                                Session::flash('message','Insert successfully.');
+                            }else{
+                                Session::flash('message','Username already exists.');
+                            }
+
+                            $Game_id = DB::table('games')->where('GAME_NAME', $GAME_NAME)->value('GAME_ID');
+                            
+                            // Insert && Update (TABLE {{ games_img }})
+                            if($request->has('GAME_IMG_NAME')){
+                                $i = 0;
+                                foreach($request->file('GAME_IMG_NAME') as $Game_img){
+                                    $img_game = 'GAME_IMG_'.time().'_'.$i.'.'.$Game_img->getClientOriginalExtension();
+                                    $pathImgGame = public_path('section/picture_game/Game_Img');
+                                    $Game_img->move($pathImgGame, $img_game);
                 
-                if($request->has('GAME_IMG_PROFILE')){
-
-                    $uploadImg = $request->file('GAME_IMG_PROFILE');
-                    $img_name = 'GAME_IMG_PROFILE_'.time().'.'.$uploadImg->getClientOriginalExtension();
-                    $pathImg = public_path('section/File_game/Profile_game');
-                    $uploadImg->move($pathImg, $img_name);
-
-                    $GAME_NAME = $request->input('GAME_NAME');
-                    $GAME_IMG_PROFILE = $img_name;
-                    $GAME_DESCRIPTION = $request->input('GAME_DESCRIPTION');
-                    $GAME_DESCRIPTION_FULL = $request->input('GAME_DESCRIPTION_FULL');
-                    // $GAME_STATUS = $request->input('GAME_STATUS');
-                    $GAME_DATE = $request->input('GAME_DATE');
-                    $GAME_FILE = $file_name;
-                    $GAME_SIZE = $size;
-                    $GAME_VDO_LINK = $request->input('GAME_VDO_LINK');
-                    $GAME_TYPE = $request->input('GAME_TYPE');
-                    $RATED_ESRB = $request->input('RATED_ESRB');
-                    $RATED_B_L = $request->input('RATED_B_L');
-                    $USER_ID = $request->input('USER_ID');
-                    $USER_EMAIL = $request->input('USER_EMAIL');
-
-                    if($GAME_NAME != '' || $GAME_IMG_PROFILE != '' || $GAME_DESCRIPTION != '' || $GAME_DESCRIPTION_FULL != '' || $GAME_DATE != '' || $GAME_FILE != '' || $GAME_SIZE != '' || $GAME_VDO_LINK != ''
-                        || $GAME_TYPE != '' || $RATED_ESRB != '' || $USER_ID != '' || $RATED_B_L != '' || $USER_EMAIL != ''){
-                        $data = array("GAME_NAME"=>$GAME_NAME, "GAME_IMG_PROFILE"=>$GAME_IMG_PROFILE, "GAME_DESCRIPTION"=>$GAME_DESCRIPTION, "GAME_DESCRIPTION_FULL"=>$GAME_DESCRIPTION_FULL, "GAME_DATE"=>$GAME_DATE, "GAME_FILE"=>$GAME_FILE, 
-                                        "GAME_SIZE"=>$GAME_SIZE, "GAME_VDO_LINK"=>$GAME_VDO_LINK, "GAME_TYPE"=>$GAME_TYPE, "RATED_ESRB"=>$RATED_ESRB, "RATED_B_L"=>$RATED_B_L, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
-                        
-                        // die('<pre>'. print_r($data, 1));
-                        // Insert && Update
-                        $value = Game::InsertGame($data);
-                        if($value){
-                            Session::flash('message','Insert successfully.');
-                        }else{
-                            Session::flash('message','Username already exists.');
-                        }
-
-                        $Game_id = DB::table('games')->where('GAME_NAME', $GAME_NAME)->value('GAME_ID');
-                        
-                        // Insert && Update (TABLE {{ games_img }})
-                        if($request->has('GAME_IMG_NAME')){
-                            $i = 0;
-                            foreach($request->file('GAME_IMG_NAME') as $Game_img){
-                                $img_game = 'GAME_IMG_'.time().'_'.$i.'.'.$Game_img->getClientOriginalExtension();
-                                $pathImgGame = public_path('section/picture_game/Game_Img');
-                                $Game_img->move($pathImgGame, $img_game);
-            
-                                $GAME_IMG_NAME = $img_game;
-                                $GAME_ID = $Game_id;
-            
-                                if($GAME_IMG_NAME != '' || $GAME_ID != ''){
-                                    $data = array("GAME_IMG_NAME"=>$GAME_IMG_NAME, "GAME_ID"=>$GAME_ID);
-                                    
-                                    // die('<pre>'. print_r($data, 1));
-                                    // Insert && Update
-                                    $value = Game_imgae::InsertAndUpdateData($data);
+                                    $GAME_IMG_NAME = $img_game;
+                                    $GAME_ID = $Game_id;
+                
+                                    if($GAME_IMG_NAME != '' || $GAME_ID != ''){
+                                        $data = array("GAME_IMG_NAME"=>$GAME_IMG_NAME, "GAME_ID"=>$GAME_ID);
+                                        
+                                        // die('<pre>'. print_r($data, 1));
+                                        // Insert && Update
+                                        $value = Game_imgae::InsertAndUpdateData($data);
+                                    }
+                                    $i++;
                                 }
-                                $i++;
                             }
                         }
-                    }
-                }else{
-                    $GAME_NAME = $request->input('GAME_NAME');
-                    $GAME_DESCRIPTION = $request->input('GAME_DESCRIPTION');
-                    $GAME_DESCRIPTION_FULL = $request->input('GAME_DESCRIPTION_FULL');
-                    // $GAME_STATUS = $request->input('GAME_STATUS');
-                    $GAME_DATE = $request->input('GAME_DATE');
-                    $GAME_FILE = $file_name;
-                    $GAME_SIZE = $size;
-                    $GAME_VDO_LINK = $request->input('GAME_VDO_LINK');
-                    $GAME_TYPE = $request->input('GAME_TYPE');
-                    $RATED_ESRB = $request->input('RATED_ESRB');
-                    $RATED_B_L = $request->input('RATED_B_L');
-                    $USER_ID = $request->input('USER_ID');
-                    $USER_EMAIL = $request->input('USER_EMAIL');
+                    }else{
+                        $GAME_NAME = $request->input('GAME_NAME');
+                        $GAME_DESCRIPTION = $request->input('GAME_DESCRIPTION');
+                        $GAME_DESCRIPTION_FULL = $request->input('GAME_DESCRIPTION_FULL');
+                        // $GAME_STATUS = $request->input('GAME_STATUS');
+                        $GAME_DATE = $request->input('GAME_DATE');
+                        $GAME_FILE = $file_name;
+                        $GAME_SIZE = $size;
+                        $GAME_VDO_LINK = $request->input('GAME_VDO_LINK');
+                        $GAME_TYPE = $request->input('GAME_TYPE');
+                        $RATED_ESRB = $request->input('RATED_ESRB');
+                        $RATED_B_L = $request->input('RATED_B_L');
+                        $USER_ID = $request->input('USER_ID');
+                        $USER_EMAIL = $request->input('USER_EMAIL');
 
-                    if($GAME_NAME != '' || $GAME_DESCRIPTION != '' || $GAME_DESCRIPTION_FULL != '' || $GAME_DATE != '' || $GAME_FILE != '' || $GAME_SIZE != '' || $GAME_VDO_LINK != ''
-                        || $GAME_TYPE != '' || $RATED_ESRB != '' || $USER_ID != '' || $RATED_B_L != '' || $USER_EMAIL != ''){
-                        $data = array("GAME_NAME"=>$GAME_NAME, "GAME_DESCRIPTION"=>$GAME_DESCRIPTION, "GAME_DESCRIPTION_FULL"=>$GAME_DESCRIPTION_FULL, "GAME_DATE"=>$GAME_DATE, "GAME_FILE"=>$GAME_FILE, 
-                                        "GAME_SIZE"=>$GAME_SIZE, "GAME_VDO_LINK"=>$GAME_VDO_LINK, "GAME_TYPE"=>$GAME_TYPE, "RATED_ESRB"=>$RATED_ESRB, "RATED_B_L"=>$RATED_B_L, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
-                        
-                        // die('<pre>'. print_r($data, 1));
-                        // Insert && Update
-                        $value = Game::InsertGame($data);
+                        if($GAME_NAME != '' || $GAME_DESCRIPTION != '' || $GAME_DESCRIPTION_FULL != '' || $GAME_DATE != '' || $GAME_FILE != '' || $GAME_SIZE != '' || $GAME_VDO_LINK != ''
+                            || $GAME_TYPE != '' || $RATED_ESRB != '' || $USER_ID != '' || $RATED_B_L != '' || $USER_EMAIL != ''){
+                            $data = array("GAME_NAME"=>$GAME_NAME, "GAME_DESCRIPTION"=>$GAME_DESCRIPTION, "GAME_DESCRIPTION_FULL"=>$GAME_DESCRIPTION_FULL, "GAME_DATE"=>$GAME_DATE, "GAME_FILE"=>$GAME_FILE, 
+                                            "GAME_SIZE"=>$GAME_SIZE, "GAME_VDO_LINK"=>$GAME_VDO_LINK, "GAME_TYPE"=>$GAME_TYPE, "RATED_ESRB"=>$RATED_ESRB, "RATED_B_L"=>$RATED_B_L, "USER_ID"=>$USER_ID, "USER_EMAIL"=>$USER_EMAIL);
+                            
+                            // die('<pre>'. print_r($data, 1));
+                            // Insert && Update
+                            $value = Game::InsertGame($data);
+                        }
                     }
                 }
+                return response()->json(['susee'=>'อัพโหลดเกมเรียบร้อย']);
             }else{
                 if($request->input('GAME_ID') != null){
                     $GAME_ID = $request->input('GAME_ID');

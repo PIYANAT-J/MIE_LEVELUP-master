@@ -15,7 +15,7 @@
               <h1 class="fontHeader">อัพโหลดเกม</h1>
             </div>
         </div>
-        <form action="{{ route('DevUploadGame') }}" method="POST" enctype="multipart/form-data">
+        <form id="DevUploadGame">
             {{csrf_field()}}
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -26,26 +26,30 @@
                                     <div class="col-12">
                                         <div class="mr-2">
                                             <input type="file" name="GAME_FILE" id="file-2" class="inputfile inputfile-2" data-multiple-caption="{count} files selected" accept=".zip" require>
-                                            <label for="file-2" style="font-size:1em;"><span class="p">+ อัพโหลดไฟล์เกม</span></label>
+                                            <label id="game-file" for="file-2" style="font-size:1em;"><span class="p">+ อัพโหลดไฟล์เกม</span></label>
                                         </div>
-                                        <p style="margin:0;color:#b2b2b2;">ต้องเป็นไฟล์ .zip เท่านั้น</p>
+                                        <label><p style="margin:0;color:#b2b2b2;">ต้องเป็นไฟล์ .zip เท่านั้น</p></label>
+                                        <label><h5 class="GAME_FILE d-none MError" style="color:#ce0005; margin:0"></h5></label>
                                     </div>
                                 </div>
                             </div>
                             <label class="bgInput field-wrap my-1">
-                                <p class="fontHeadInput">ชื่อเกม</p>
+                                <label><p class="fontHeadInput">ชื่อเกม</p></label>
+                                <label><h5 class="GAME_NAME d-none MError" style="color:#ce0005; margin:0"></h5></label>
                                 <input type="text" class="input1 p ml-2" name="GAME_NAME" value="{{ old('GAME_NAME') }}" require></input>
                             </label>
                             <label class="bgInput field-wrap my-1">
-                                <p class="fontHeadInput">คำอธิบาย</p>
+                                <label><p class="fontHeadInput">คำอธิบาย</p></label>
+                                <label><h5 class="GAME_DESCRIPTION d-none MError" style="color:#ce0005; margin:0"></h5></label>
                                 <textarea name="GAME_DESCRIPTION" id="data" class="input1 p ml-2" style="line-height:120%;" row="3" value="{{ old('GAME_DESCRIPTION') }}" require></textarea>
                             </label>
                             <h5 style="margin:0;color:#b2b2b2;" id="now_length"></h5>
 
                             <label class="bgInput field-wrap my-1">
-                                <p class="fontHeadInput">เรทเกม</p>
+                                <label><p class="fontHeadInput">เรทเกม</p></label>
+                                <label><h5 class="RATED_ESRB d-none MError" style="color:#ce0005; margin:0"></h5></label>
                                 <select class="MySelect p pl-2" id="mySelect" data-live-search="true" style="border-radius: 0px;" name="RATED_ESRB" value="{{ old('RATED_ESRB') }}">
-                                    <option>เลือกเรทเกม</option>
+                                    <option name="RATED_ESRB" value="">เลือกเรทเกม</option>
                                     <option name="RATED_ESRB" value="EarlyChildhood">EC : Early Childhood</option>
                                     <option name="RATED_ESRB" value="Everyone">E : Everyone</option>
                                     <option name="RATED_ESRB" value="Everyone10">E10+ : Everyone 10+</option>
@@ -56,9 +60,10 @@
                                 </select>
                             </label>
                             <label class="bgInput field-wrap my-1">
-                                <p class="fontHeadInput">เรทเนื้อหาเกม</p>
+                                <label><p class="fontHeadInput">เรทเนื้อหาเกม</p></label>
+                                <label><h5 class="RATED_B_L d-none MError" style="color:#ce0005; margin:0"></h5></label>
                                 <select class="MySelect p pl-2" id="mySelect" data-live-search="true" style="border-radius: 0px;" name="RATED_B_L" value="{{ old('RATED_B_L') }}">
-                                    <option>เลือกเนื้อหา</option>
+                                    <option name="RATED_B_L" value="">เลือกเนื้อหา</option>
                                     <option name="RATED_B_L" value="Discrimination">Discrimination : มีการแบ่งแยก แบ่งแยกฝ่ายอย่างชัดเจน</option>
                                     <option name="RATED_B_L" value="Drugs">Drugs : มีการใช้สารเสพติดในเกม</option>
                                     <option name="RATED_B_L" value="Fear">Fear : มีการใช้ความกลัวเข้ามาอยู่ในเกม</option>
@@ -70,9 +75,10 @@
                                 </select>
                             </label>
                             <label class="bgInput field-wrap my-1">
-                                <p class="fontHeadInput">ประเภทเกม</p>
+                                <label><p class="fontHeadInput">ประเภทเกม</p></label>
+                                <label><h5 class="GAME_TYPE d-none MError" style="color:#ce0005; margin:0"></h5></label>
                                 <select class="MySelect p pl-2" id="mySelect" data-live-search="true" style="border-radius: 0px;" name="GAME_TYPE" value="{{ old('GAME_TYPE') }}">
-                                    <option>เลือกประเภท</option>
+                                    <option name="GAME_TYPE" value="">เลือกประเภท</option>
                                     <option name="GAME_TYPE" value="Action">Action</option>
                                     <option name="GAME_TYPE" value="Adventure">Adventure</option>
                                     <option name="GAME_TYPE" value="BBG">BBG</option>
@@ -104,16 +110,19 @@
                                 </select>
                             </label>
                             <label class="bgInput field-wrap my-1">
-                                <p class="fontHeadInput">ลิงค์วีดีโอ</p>
+                                <label><p class="fontHeadInput">ลิงค์วีดีโอ</p></label>
+                                <label><h5 class="GAME_VDO_LINK d-none MError" style="color:#ce0005; margin:0"></h5></label>
                                 <input type="text" class="input1 p ml-2" name="GAME_VDO_LINK" value="{{ old('GAME_VDO_LINK') }}" require></input>
                             </label>
                             <label class="bgInput field-wrap my-1">
-                                <p class="fontHeadInput">รายละเอียด</p>
+                                <label><p class="fontHeadInput">รายละเอียด</p></label>
+                                <label><h5 class="GAME_DESCRIPTION_FULL d-none MError" style="color:#ce0005; margin:0"></h5></label>
                                 <textarea class="input1 p ml-2" style="line-height:120%;" row="3" name="GAME_DESCRIPTION_FULL" value="{{ old('GAME_DESCRIPTION_FULL') }}" require></textarea>
                             </label>
                             <label class="bgInput field-wrap my-1">
-                                <p class="fontHeadInput">ราคาเกม</p>
-                                <input type="text" class="input1 p ml-2" require></input>
+                                <label><p class="fontHeadInput">ราคาเกม</p></label>
+                                <label><h5 class="GAME_PRICE d-none MError" style="color:#ce0005; margin:0"></h5></label>
+                                <input type="text" name="GAME_PRICE" value="{{ old('GAME_PRICE') }}" class="input1 p ml-2" require></input>
                             </label>
                         </div>
                     </div>
@@ -134,6 +143,7 @@
                                 </button>
                                 <div class="mt-2">
                                   <p style="margin:0;color:#b2b2b2;">ขนาดไฟล์: สูงสุด 1 MB</p>
+                                  <label><h5 class="GAME_IMG_PROFILE d-none MError" style="color:#ce0005; margin:0"></h5></label>
                                 </div>
                             </div>
                         </div>
@@ -160,18 +170,37 @@
                       <output id="Filelist"></output>
                     </div>
                 </div>
-                  <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2">
-                    <button name="submit" id="submit" type="submit" value="submit" class="btn-submit">
-                      <p style="margin:0;">ยืนยัน</p>
-                      <input type="hidden" name="GAME_DATE" value="{{ date('Y-m-d H:i:s') }}">
-                      <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
-                      <input type="hidden" name="USER_EMAIL" value="{{ Auth::user()->email }}">
-                    </button>
-                  </div>
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2">
+                  <button type="button" class="btn-submit upload-game"><p style="margin:0;">ยืนยัน</p></button>
+                  <input type="hidden" name="GAME_DATE" value="{{ date('Y-m-d H:i:s') }}">
+                  <input type="hidden" name="upload" value="upload">
+                  <input type="hidden" name="submit" value="submit">
+                </div>
             </div>
         </form>
       </div>
     <div class="col-sm-1 col-md-1 d-inline-block d-lg-none d-xl-none" style="background-color: #f5f5f5;"></div>
+</div>
+
+<div class="modal fade" id="popupmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="border-radius: 8px;">
+                <div class="row" >
+                    <div class="col-12" >
+                        <div class="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118.43873 118.43873">
+                                <style>.circle{ animation: stroke-fill 1s linear forwards; } .check { animation: stroke-fill 5s linear forwards; } @keyframes stroke-fill { 0% { stroke-dasharray: 0, 0; } 100% { stroke-dasharray: 500, 200000; } }</style>
+                                <path class="check" stroke-linejoin="round" d="M34.682 60.352l15.61 15.61 33.464-33.464" stroke="#08b237" stroke-linecap="round" stroke-width="4.3" fill="none"/>
+                                <circle class="circle" stroke-linejoin="round" cx="59.219" stroke-linecap="round" stroke="#08b237" cy="59.219" r="57.069" stroke-width="4.3" fill="none"/>
+                            </svg>
+                            <p class="success-status mt-2" style="text-align:center;margin:0;">xxxx</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="container-fluid">
@@ -493,5 +522,41 @@ function FillAttachmentArray(e, readerEvt) {
   arrCounter = arrCounter + 1;
 }
 </script>
-
+<script>
+    $(document).ready(function(e) {
+        $('.upload-game').on('click',function(){
+            $('#DevUploadGame').submit();
+        })
+        $('#DevUploadGame').on('submit',function(e){
+            var formdata = new FormData(this);
+            $('.MError').addClass('d-none');
+            $.ajax({
+                url: "{{route('DevUploadGame')}}",
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                data: formdata,
+                success: function(response) {
+                    console.log(response);
+                    $('#popupmodal').modal();
+                    $('.success-status.mt-2').html(response.susee);
+                    setTimeout(function(){
+                        $('#popupmodal').modal('hide')
+                    }, 2000);
+                    $('#DevUploadGame').trigger('reset');
+                    $('#Filelist').html('');
+                    $('#thumb img').attr('src', 'home/imgProfile/pic-profile.png');
+                    $('#game-file span').html('+ อัพโหลดไฟล์เกม');
+                },
+                error: function(response) {
+                    json = JSON.parse(response.responseText);
+                    console.log(json['errors']);
+                    $.each(json['errors'], function (index, value) {
+                        $('.'+index).html(value).removeClass('d-none');
+                    });
+                }
+            });
+        });
+    });
+</script>
 @endsection

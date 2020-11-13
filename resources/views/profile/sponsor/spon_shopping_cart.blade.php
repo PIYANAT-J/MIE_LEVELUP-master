@@ -183,27 +183,6 @@
 </script>
 
 <script>
-    // $(document).ready(function() {
-    //     $(":checkbox").change(function() {
-    //         var total = 0;
-    //         var closest = $(this).closest("div.row");
-    //         var countCheckedCheckboxes = $(":checkbox", closest).filter(':checked').length;
-    //         $('#count-checked').html(countCheckedCheckboxes);
-    //         console.log(countCheckedCheckboxes);
-    //         var favorite = [];
-    //         $.each($("input[name='accept_01']:checked"), function(){
-    //             favorite.push($(this).val());
-    //         });
-    //         $("input[name='accept_01']:checked").each(function() {
-    //             total += parseFloat($(this).attr('data-price')) || 0;
-    //         });
-    //         $('#total').html("฿"+total);
-    //         document.querySelector('input#sumTotal').value = total;
-    //         console.log(total);
-    //         document.querySelector('input#data-checked').value = favorite.join(", ");
-    //         console.log(favorite);
-    //     });
-    // });
     function updateCounter() {
         var total = 0;
         var favorite = [];
@@ -218,7 +197,7 @@
             $("input[name='accept_01']:checked").each(function() {
                 total += parseFloat($(this).attr('data-price')) || 0;
             });
-            $('#total').html("฿"+new Intl.NumberFormat().format(total));
+            $('#total').html("฿"+commaSeparateNumber(total));
             document.querySelector('input#sumTotal').value = total;
             console.log(total);
             document.querySelector('input#data-checked').value = favorite.join(", ");
@@ -259,7 +238,14 @@
         
     })
 </script>
-
+<script>
+    function commaSeparateNumber(val){
+        while (/(\d+)(\d{3})/.test(val.toString())){
+            val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+        }
+        return val.toFixed(2);
+    }
+</script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 @if( Session::has('Delete'))
     <script type="text/javascript">
