@@ -43,7 +43,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-3 col-md-2 col-lg-2 col-xl-2 text-center" style="color:#000;"><p style="margin:0;">5 ชั่วโมง</p></div>
-                                                    <div class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block d-md-block" style="color:#000;"><p style="margin:0;">16/05/63</p></div>
+                                                    <div class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block d-md-block text-center" style="color:#000;"><p style="margin:0;">16/05/63</p></div>
                                                     <div class="col-3 col-md-2 col-lg-2 col-xl-2  text-center" style="color:#000;">
                                                         <p style="margin:0;">ล่าสุด</p>
                                                     <!-- <button class="btn-update-game">อัพเดต</button> -->

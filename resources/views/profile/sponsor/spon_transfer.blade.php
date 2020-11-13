@@ -34,6 +34,36 @@
                         <h1 style="margin:0;font-weight:800;">ยืนยันการชำระเงิน</h1>
                     </div>
                 </div>
+                <div class="row  mt-2" style="border-bottom: 1px solid #f2f2f2;"> 
+                    <div class="col-8" style="padding:0;" >
+                        <label class="plabelimg2 pt-1 pl-3">
+                            <img src="{{asset('icon/money2.svg') }}" />
+                        </label> 
+
+                        <label style="padding-left:60px;">
+                            <p style="font-weight: 700;margin:0;">Test 1</p>
+                            <label class="p" style="color: #23c197;margin:0;">2 เดือน</label>
+                            <label class="p" style="color: #23c197;margin:0;">จำนวน 10 เกม </label>
+                        </label>
+                    </div>
+                    <div class="col-4 text-right">
+                        <h4 style="font-weight:800;margin:0;">฿1000</h4>
+                        <p style="margin:0;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-37%)</p>
+                    </div>
+                    <div class="col-12 d-flex justify-content-start" style="padding:0;">
+                        <label class="mr-2 pl-4">
+                            <img class="labelimg2" src="{{ asset('section/File_game/Profile_game/GAME_IMG_PROFILE_1595566491.png') }}" />
+                        </label>
+                        <label class="pFont2">
+                            <p style="font-weight: 700;margin:0;">ชื่อเกม</p>
+                            <p style="color: #a8a8a8;margin:0;">Online • Online</p>
+                            <h5 style="color: #23c197;margin:0;">
+                                ช่วงเวลา 13/11/63 15:00 - 14/01/64 15:00<br>
+                                จำนวนรอบโฆษณา 20 รอบ
+                            </h5>
+                        </label>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-12 mt-1">
                         <div class="row py-2" style="border-bottom:1px solid #edeef3">

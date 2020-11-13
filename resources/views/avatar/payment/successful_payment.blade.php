@@ -71,7 +71,7 @@
                                                 @if($shoppingList->item_id == $itemlist[$i])
                                                     <div class="row mx-2 mt-5">
                                                         <div class="col-7" style="padding:0;">
-                                                            <label class="labelItem bgItem mr-2">
+                                                            <label class="labelItemAvatar bgItem mr-2">
                                                                 <!-- <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" /> -->
                                                                 @if($shoppingList->item_type == "clothes")
                                                                     @if($shoppingList->item_gender == "woman")

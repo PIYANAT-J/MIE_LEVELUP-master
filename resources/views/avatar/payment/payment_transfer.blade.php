@@ -44,7 +44,32 @@
                 <div class="col-12"> 
                     <div class="row mx-0" style="background-color:#202433;border-radius: 6px;">
                         <div class="col-12 mt-1">
-                        <div class="row mx-2 py-3" style="font-family:myfont1;font-size:1em;color:#fff;border-bottom:1px solid #fff;font-weight:800;">ยืนยันการชำระเงิน</div>
+                            <div class="row mx-2 py-3" style="font-family:myfont1;font-size:1em;color:#fff;border-bottom:1px solid #fff;font-weight:800;">ยืนยันการชำระเงิน</div>
+                            
+                            <div class="row mx-2 mt-2" style="border-bottom:1px solid #455160">
+                                <div class="col-7" style="padding:0;">
+                                    <label class="labelItemAvatar bgItem mr-2">
+                                        <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" />
+                                    </label> 
+                                    <label class="font-sale4 bgItem2 mt-2">
+                                        <p style="margin:0;"> <a style="font-weight: 700;">ชื่อไอเทม ระดับ 3</a></br>
+                                        คำอธิบาย</br>
+                                        เลือกลงทุนได้ 3 Signal</p>
+                                    </label>
+                                </div>
+
+                                <div class="col-2 my-4 text-center" style="padding:0;">
+                                    <p style="margin:0;color:#fff;">1 ชิ้น</p>
+                                </div>
+
+                                <div class="col-3 my-3">
+                                    <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
+                                        <h4 style="margin:0;font-weight:800;color:#ce0005;">฿3000</h4>
+                                        <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-25)</p>
+                                    </span>
+                                </div>
+                            </div>
+
                             <div class="row mx-2" style="border-bottom:1px solid #455160">
                                 <div class="col-6 font-payment2 py-3 "><p style="margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></div>
                                 <div class="col-6 text-right font-price align-self-center"><h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{number_format($transfer->transferAmount, 2)}}</h4></div>
@@ -59,34 +84,34 @@
                                     </p>
                                 </div>
                                 <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-right">
-                                <label><img src="{{asset('home/logo/'.$transfer->transferฺBank_name.'.svg')}}" ></label>
-                                @if($transfer->transferฺBank_name == "bangkok")
+                                    <label><img src="{{asset('home/logo/'.$transfer->transferฺBank_name.'.svg')}}" ></label>
+                                    @if($transfer->transferฺBank_name == "bangkok")
+                                        <label class="font-payment2"><p style="color:#fff;margin:0;">ธนาคารกรุงเทพ</p></label> <br>
+                                        <label class="ml-2"><p style="color:#fff;margin:0;">บริษัท ทีเท็น จำกัด</p></label><br>
+                                        <label class="ml-2" id="copy"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
+                                        <label class="ml-2" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label>
+                                    @elseif($transfer->transferฺBank_name == "ktc")
+                                        <label class="font-payment2"><p style="color:#fff;margin:0;">ธนาคารกรุงไทย</p></label> <br>
+                                        <label class="ml-2"><p style="color:#fff;margin:0;">บริษัท ทีเท็น จำกัด</p></label><br>
+                                        <label class="ml-2" id="copy"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
+                                        <label class="ml-2" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label>
+                                    @elseif($transfer->transferฺBank_name == "kbank")
+                                        <label class="font-payment2"><p style="color:#fff;margin:0;">ธนาคารกสิกรไทย</p></label> <br>
+                                        <label class="ml-2"><p style="color:#fff;margin:0;">บริษัท ทีเท็น จำกัด</p></label><br>
+                                        <label class="ml-2" id="copy"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
+                                        <label class="ml-2" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label>
+                                    @elseif($transfer->transferฺBank_name == "scb")
+                                        <label class="font-payment2" style="margin:0;"><p style="color:#fff;margin:0;">ธนาคารไทยพาณิชย์</p></label> <br>
+                                        <label class="ml-2" style="margin:0;"><p style="color:#fff;margin:0;">บริษัท ทีเท็น จำกัด</p></label><br>
+                                        <label class="ml-2" id="copy" style="margin:0;"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
+                                        <label class="ml-2" style="margin:0;" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label>
+                                    @endif
+                                    <!-- <label ><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
                                     <label class="font-payment2"><p style="color:#fff;margin:0;">ธนาคารกรุงเทพ</p></label> <br>
                                     <label class="ml-2"><p style="color:#fff;margin:0;">บริษัท ทีเท็น จำกัด</p></label><br>
                                     <label class="ml-2" id="copy"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
-                                    <label class="ml-2" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label>
-                                @elseif($transfer->transferฺBank_name == "ktc")
-                                    <label class="font-payment2"><p style="color:#fff;margin:0;">ธนาคารกรุงไทย</p></label> <br>
-                                    <label class="ml-2"><p style="color:#fff;margin:0;">บริษัท ทีเท็น จำกัด</p></label><br>
-                                    <label class="ml-2" id="copy"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
-                                    <label class="ml-2" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label>
-                                @elseif($transfer->transferฺBank_name == "kbank")
-                                    <label class="font-payment2"><p style="color:#fff;margin:0;">ธนาคารกสิกรไทย</p></label> <br>
-                                    <label class="ml-2"><p style="color:#fff;margin:0;">บริษัท ทีเท็น จำกัด</p></label><br>
-                                    <label class="ml-2" id="copy"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
-                                    <label class="ml-2" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label>
-                                @elseif($transfer->transferฺBank_name == "scb")
-                                    <label class="font-payment2" style="margin:0;"><p style="color:#fff;margin:0;">ธนาคารไทยพาณิชย์</p></label> <br>
-                                    <label class="ml-2" style="margin:0;"><p style="color:#fff;margin:0;">บริษัท ทีเท็น จำกัด</p></label><br>
-                                    <label class="ml-2" id="copy" style="margin:0;"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
-                                    <label class="ml-2" style="margin:0;" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label>
-                                @endif
-                                <!-- <label ><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
-                                <label class="font-payment2"><p style="color:#fff;margin:0;">ธนาคารกรุงเทพ</p></label> <br>
-                                <label class="ml-2"><p style="color:#fff;margin:0;">บริษัท ทีเท็น จำกัด</p></label><br>
-                                <label class="ml-2" id="copy"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
-                                <label class="ml-2" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label> -->
-                            </div>
+                                    <label class="ml-2" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label> -->
+                                </div>
                             </div>
                             
                             <div class="row mt-3 py-2 " style="border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
@@ -105,10 +130,60 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="Transfer">
-                                <form action="{{ route('itemTransfer') }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="row fade-in mt-3">
+                                <div id="Transfer">
+                                    <form action="{{ route('itemTransfer') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="row fade-in mt-3">
+                                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
+                                                <label class="bgInput field-wrap my-1">
+                                                    <p class="fontHeadInput">วันที่โอน</p>
+                                                    <input type="date" name="date" class="input1 p ml-2" ></input>
+                                                </label>
+                                                <label class="bgInput field-wrap my-1">
+                                                    <p class="fontHeadInput">เวลาที่โอน</p>
+                                                    <input type="time" name="time" class="input1 p ml-2" ></input>
+                                                </label>
+                                                <label class="bgInput field-wrap my-1">
+                                                    <p class="fontHeadInput">ธนาคารทีโอน</p>
+                                                    <select class="MySelect p pl-2" type="text" name="text4">
+                                                        <option value="">ธนาคารกรุงเทพ</option>
+                                                        <option value="">ธนาคารกสิกรไทย</option>
+                                                        <option value="">ธนาคารกรุงไทย</option>
+                                                        <option value="">ธนาคารทหารไทย</option>
+                                                        <option value="">ธนาคารไทยพาณิชย์</option>
+                                                        <option value="">ธนาคารกรุงศรีอยุธยา</option>
+                                                        <option value="">ธนาคารเกียรตินาคิน</option>
+                                                        <option value="">ธนาคารเกียรตินาคิน</option>
+                                                        <option value="">ธนาคารทิสโก้</option>
+                                                        <option value="">ธนาคารธนชาต</option>
+                                                        <option value="">ธนาคารยูโอบี</option>
+                                                        <option value="">ธนาคารออมสิน</option>
+                                                        <option value="">ธนาคารอาคารสงเคราะห์</option>
+                                                        <option value="">ธนาคารอิสลามแห่งประเทศไทย</option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                                <div class="mb-2">
+                                                    <label id="upload" style="cursor:pointer;">
+                                                        <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
+                                                        <label><p style="font-weight:800;margin:0;color:#fff;">อัพโหลดรูปภาพ</p></label>
+                                                    </label>
+                                                    <div id="thumb" class="thumb-topup2"><img src="{{asset('home/topup/pic-topup.png') }}"/></div>    
+                                                    <input id="file_upload" style="display:none" name="transferImg" type="file" multiple="true" accept="image/* " require/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
+                                                <!-- <a href="{{ route('SponsorPayment') }}"><label class="btn-submit-drak2">ยืนยัน</label></a>transferNote -->
+                                                <button class="btn-submit-red" name="submit" value="submit">
+                                                    <p style="margin:0;">ยืนยัน</p>
+                                                </button>
+                                                <input type="hidden" name="id" value="{{$transfer->id}}">
+                                                <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!-- <div class="row fade-in mt-3">
                                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
                                             <label class="bgInput field-wrap my-1">
                                                 <p class="fontHeadInput">วันที่โอน</p>
@@ -120,7 +195,7 @@
                                             </label>
                                             <label class="bgInput field-wrap my-1">
                                                 <p class="fontHeadInput">ธนาคารทีโอน</p>
-                                                <select class="MySelect p pl-2" type="text" name="text4">
+                                                <select class="MySelect p pl-2" type="text" name="text4" style="width:97.2%">
                                                     <option value="">ธนาคารกรุงเทพ</option>
                                                     <option value="">ธนาคารกสิกรไทย</option>
                                                     <option value="">ธนาคารกรุงไทย</option>
@@ -139,7 +214,7 @@
                                             </label>
                                         </div>
                                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                            <div class="mb-2">
+                                            <div>
                                                 <label id="upload" style="cursor:pointer;">
                                                     <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
                                                     <label><p style="font-weight:800;margin:0;color:#fff;">อัพโหลดรูปภาพ</p></label>
@@ -149,63 +224,13 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
-                                            <!-- <a href="{{ route('SponsorPayment') }}"><label class="btn-submit-drak2">ยืนยัน</label></a>transferNote -->
                                             <button class="btn-submit-red" name="submit" value="submit">
                                                 <p style="margin:0;">ยืนยัน</p>
                                             </button>
-                                            <input type="hidden" name="id" value="{{$transfer->id}}">
-                                            <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
                                         </div>
-                                    </div>
-                                </form>
-                                <!-- <div class="row fade-in mt-3">
-                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
-                                        <label class="bgInput field-wrap my-1">
-                                            <p class="fontHeadInput">วันที่โอน</p>
-                                            <input type="date" name="date" class="input1 p ml-2" ></input>
-                                        </label>
-                                        <label class="bgInput field-wrap my-1">
-                                            <p class="fontHeadInput">เวลาที่โอน</p>
-                                            <input type="time" name="time" class="input1 p ml-2" ></input>
-                                        </label>
-                                        <label class="bgInput field-wrap my-1">
-                                            <p class="fontHeadInput">ธนาคารทีโอน</p>
-                                            <select class="MySelect p pl-2" type="text" name="text4" style="width:97.2%">
-                                                <option value="">ธนาคารกรุงเทพ</option>
-                                                <option value="">ธนาคารกสิกรไทย</option>
-                                                <option value="">ธนาคารกรุงไทย</option>
-                                                <option value="">ธนาคารทหารไทย</option>
-                                                <option value="">ธนาคารไทยพาณิชย์</option>
-                                                <option value="">ธนาคารกรุงศรีอยุธยา</option>
-                                                <option value="">ธนาคารเกียรตินาคิน</option>
-                                                <option value="">ธนาคารเกียรตินาคิน</option>
-                                                <option value="">ธนาคารทิสโก้</option>
-                                                <option value="">ธนาคารธนชาต</option>
-                                                <option value="">ธนาคารยูโอบี</option>
-                                                <option value="">ธนาคารออมสิน</option>
-                                                <option value="">ธนาคารอาคารสงเคราะห์</option>
-                                                <option value="">ธนาคารอิสลามแห่งประเทศไทย</option>
-                                            </select>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                        <div>
-                                            <label id="upload" style="cursor:pointer;">
-                                                <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
-                                                <label><p style="font-weight:800;margin:0;color:#fff;">อัพโหลดรูปภาพ</p></label>
-                                            </label>
-                                            <div id="thumb" class="thumb-topup2"><img src="{{asset('home/topup/pic-topup.png') }}"/></div>    
-                                            <input id="file_upload" style="display:none" name="transferImg" type="file" multiple="true" accept="image/* " require/>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
-                                        <button class="btn-submit-red" name="submit" value="submit">
-                                            <p style="margin:0;">ยืนยัน</p>
-                                        </button>
-                                    </div>
-                                </div> -->
+                                    </div> -->
+                                </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
