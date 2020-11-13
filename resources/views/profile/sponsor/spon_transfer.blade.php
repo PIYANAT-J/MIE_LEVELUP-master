@@ -35,6 +35,8 @@
                     </div>
                 </div>
                 <div class="row  mt-2" style="border-bottom: 1px solid #f2f2f2;"> 
+
+                <!-- แพ็กเกจ -->
                     <div class="col-8" style="padding:0;" >
                         <label class="plabelimg2 pt-1 pl-3">
                             <img src="{{asset('icon/money2.svg') }}" />
@@ -50,7 +52,9 @@
                         <h4 style="font-weight:800;margin:0;">฿1000</h4>
                         <p style="margin:0;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-37%)</p>
                     </div>
-                    <div class="col-12 d-flex justify-content-start" style="padding:0;">
+
+                    <!-- เกม -->
+                    <!-- <div class="col-12 d-flex justify-content-start" style="padding:0;">
                         <label class="mr-2 pl-4">
                             <img class="labelimg2" src="{{ asset('section/File_game/Profile_game/GAME_IMG_PROFILE_1595566491.png') }}" />
                         </label>
@@ -62,7 +66,7 @@
                                 จำนวนรอบโฆษณา 20 รอบ
                             </h5>
                         </label>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row">
                     <div class="col-12 mt-1">
