@@ -184,8 +184,18 @@ class GameController extends Controller
                 $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
                                 ->groupBy('GAME_ID')
                                 ->get();
+                $GameHit = [];
+                foreach($CDownload as $donwload){
+                    if($donwload->downloads_count > 1){
+                        array_push($GameHit, ([
+                            'GAME_ID' => $donwload->GAME_ID,
+                            'downloads_count' =>$donwload->downloads_count
+                        ]));
+                    }
+                }
+                // dd($GameHit, count($GameHit));
                 $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->first();
-                return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'CDownload', 'guest_user'));
+                return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'guest_user'));
             }elseif(Auth::user()->users_type == '2'){
                 $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
                 $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();

@@ -275,7 +275,7 @@
         <div class="col-sm col-md col-lg-11 col-xl-11 mb-3" id="filters">
             <button class="btn-game-category mb-1" onclick="filterSelection('hot')">
                 <h1 style="color: #fff;font-weight:800;">เกมยอดนิยม</h1>
-                <h1 style="color: #b1b7bc;margin:0;">{{ $Games->count() }} เกม</h1>
+                <h1 style="color: #b1b7bc;margin:0;">{{ count($GameHit) }} เกม</h1>
             </button>
             @auth
             <button class="btn-game-category mb-1" onclick="filterSelection('follow')">
