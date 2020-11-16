@@ -13022,3 +13022,29 @@ input[type="file"] {
     margin: 0;
     height: 25px;
 }
+
+.fontAdsPaymentSpon {
+    width: 85%;
+    line-height: 1.5;
+    word-wrap: break-word;
+    vertical-align: text-top;
+}
+
+.font-payment-avatar4 {
+    color: #fff;
+    line-height: 1.5;
+    width: 85%;
+    word-wrap: break-word;
+    vertical-align: text-top;
+    cursor: pointer;
+}
+
+.labelItemAvatar {
+    object-fit: cover;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: top;
+    border: 2px solid #fff;
+    position: relative;
+    margin-bottom: 5px;
+}

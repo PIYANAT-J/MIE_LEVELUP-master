@@ -401,7 +401,7 @@
                         </div>
                         <div class="col-6 d-none d-sm-block d-md-block d-lg-block d-xl-block"></div>
                         <div class="col-6 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                            <button type="button" class="btn-submit-red addShopping"><p style="margin:0;">ใส่ตระกร้า</p></button>
+                            <button type="button" class="btn-submit-red addShopping"><p style="margin:0;">ใส่ตะกร้า</p></button>
                             <input type="hidden" name="amountItem">
                             <input type="hidden" name="sumprice">
                             <input type="hidden" name="item_id" value="{{$itemModal->item_id}}">
