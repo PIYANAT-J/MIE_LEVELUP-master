@@ -175,62 +175,120 @@ class GameController extends Controller
         
     }
 
-    public function categoryGame(){
+    public function categoryGame(Request $request){
         if(isset(Auth::user()->id)){
-            if(Auth::user()->users_type == '1'){
-                $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
-                $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
-                $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
-                $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
-                                ->groupBy('GAME_ID')
+            // dd($request->gameType);
+            if(isset($request->gameType)){
+                $game = explode(',', $request->gameType);
+                $Games = DB::table('games')
+                                ->where('GAME_STATUS', 'อนุมัติ')
+                                ->whereIn('GAME_TYPE', $game)->get();
+                $Follows = DB::table('follows')->where('follows.USER_ID', '=', Auth::user()->id)
+                                ->join('games', 'games.GAME_ID', 'follows.GAME_ID')
+                                ->whereIn('games.GAME_TYPE', $game)
                                 ->get();
-                $GameHit = [];
+                $New = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')
+                                ->whereIn('GAME_TYPE', $game)
+                                ->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
+                $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, downloads.GAME_ID'))
+                                ->join('games', 'games.GAME_ID', 'downloads.GAME_ID')
+                                ->whereIn('games.GAME_TYPE', $game)
+                                ->groupBy('downloads.GAME_ID')
+                                ->get();
+                // dd($CDownload);
+                $GameHit = array();
+                $GamesNew = array();
                 foreach($CDownload as $donwload){
                     if($donwload->downloads_count > 1){
-                        array_push($GameHit, ([
-                            'GAME_ID' => $donwload->GAME_ID,
-                            'downloads_count' =>$donwload->downloads_count
-                        ]));
+                        $GameHit[] = $donwload->GAME_ID;
                     }
                 }
-                // dd($GameHit, count($GameHit));
-                $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->first();
-                return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'guest_user'));
-            }elseif(Auth::user()->users_type == '2'){
-                $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
-                $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
-                $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
-                $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
-                                ->groupBy('GAME_ID')
-                                ->get();
-                $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->first();
-                // dd($developer);
-                return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'CDownload', 'developer'));
-            }elseif(Auth::user()->users_type == '3'){
-                $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
-                $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
-                $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
-                $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
-                                ->groupBy('GAME_ID')
-                                ->get();
-                $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->first();
-                return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'CDownload', 'sponsor'));
+                foreach($New as $gamesNew){
+                    $GamesNew[] = $gamesNew->GAME_ID;
+                }
             }else{
                 $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
                 $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
-                $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
+                $New = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
                 $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
                                 ->groupBy('GAME_ID')
                                 ->get();
-                return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'CDownload'));
+                $GameHit = array();
+                $GamesNew = array();
+                foreach($CDownload as $donwload){
+                    if($donwload->downloads_count > 1){
+                        $GameHit[] = $donwload->GAME_ID;
+                    }
+                }
+                foreach($New as $gamesNew){
+                    $GamesNew[] = $gamesNew->GAME_ID;
+                }
+            }
+            if(Auth::user()->users_type == '1'){
+                $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->first();
+                if(isset($request->gameType)){
+                    return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'guest_user'));
+                }
+                return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'guest_user'));
+            }elseif(Auth::user()->users_type == '2'){
+                $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->first();
+                if(isset($request->gameType)){
+                    return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'developer'));
+                }
+                return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'developer'));
+            }elseif(Auth::user()->users_type == '3'){
+                $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->first();
+                if(isset($request->gameType)){
+                    return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'sponsor'));
+                }
+                return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'sponsor'));
+            }else{
+                return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit'));
             }
         }else{
             $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
-            $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
+            $New = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
             $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
                             ->groupBy('GAME_ID')
                             ->get();
-            return view('game.game_category', compact('Games', 'GamesNew', 'CDownload'));
+
+            $GameHit = array();
+            $GamesNew = array();
+            foreach($CDownload as $donwload){
+                if($donwload->downloads_count > 1){
+                    $GameHit[] = $donwload->GAME_ID;
+                }
+            }
+            foreach($New as $gamesNew){
+                $GamesNew[] = $gamesNew->GAME_ID;
+            }
+            // dd($request);
+            if(isset($request->gameType)){
+                $game = explode(',', $request->gameType);
+                $Games = DB::table('games')
+                                ->where('GAME_STATUS', 'อนุมัติ')
+                                ->whereIn('GAME_TYPE', $game)->get();
+                $New = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')
+                                ->whereIn('GAME_TYPE', $game)
+                                ->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
+                $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, downloads.GAME_ID'))
+                                ->join('games', 'games.GAME_ID', 'downloads.GAME_ID')
+                                ->whereIn('games.GAME_TYPE', $game)
+                                ->groupBy('downloads.GAME_ID')
+                                ->get();
+                // dd($CDownload);
+                $GameHit = array();
+                $GamesNew = array();
+                foreach($CDownload as $donwload){
+                    if($donwload->downloads_count > 1){
+                        $GameHit[] = $donwload->GAME_ID;
+                    }
+                }
+                foreach($New as $gamesNew){
+                    $GamesNew[] = $gamesNew->GAME_ID;
+                }
+            }
+            return view('game.game_category', compact('Games', 'GamesNew', 'GameHit'));
 
         }
     }
