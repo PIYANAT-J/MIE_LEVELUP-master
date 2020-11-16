@@ -267,6 +267,7 @@ class UploadImageProfile extends Controller
             // ]);
     
             // Insert && Update
+            // dd($request);
             if($request->has('GUEST_USERS_IMG')){
                 $upload = $request->file('GUEST_USERS_IMG');
                 $img_name = 'USER_'.time().'.'.$upload->getClientOriginalExtension();
