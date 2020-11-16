@@ -36,16 +36,13 @@ class ResetPasswordController extends Controller
     protected $redirectTo = '/';
     
     public function userPass(){
-        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
-        if($gameShalf->count() == 0){
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('profile.password.userlvp_change_password', compact('guest_user', 'userKyc'));
-        }else{
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('profile.password.userlvp_change_password', compact('guest_user', 'userKyc'));
+        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
+        if($ranking != null){
+            return view('profile.password.userlvp_change_password', compact('guest_user', 'userKyc', 'ranking'));
         }
+        return view('profile.password.userlvp_change_password', compact('guest_user', 'userKyc'));
     }
 
     public function devPass(){

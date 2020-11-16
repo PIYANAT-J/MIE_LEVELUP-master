@@ -36,7 +36,10 @@ class qrPaymentController extends Controller
         foreach($credit as $sumcredit){
             $wallet = $wallet+$sumcredit->amount;
         }
-
+        $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
+        if($ranking != null){
+            return view('profile.topup.userlvp_topup', compact('guest_user', 'userKyc', 'payment', 'transfer', 'credit', 'wallet', 'ranking'));
+        }
         return view('profile.topup.userlvp_topup', compact('guest_user', 'userKyc', 'payment', 'transfer', 'credit', 'wallet'));
     }
 

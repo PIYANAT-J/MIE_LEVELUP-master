@@ -201,60 +201,10 @@
                                     </div>
                                 </div>
                             </div>
-                                <div id="Transfer">
-                                    <form action="{{ route('itemTransfer') }}" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="row fade-in mt-3">
-                                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
-                                                <label class="bgInput field-wrap my-1">
-                                                    <p class="fontHeadInput">วันที่โอน</p>
-                                                    <input type="date" name="date" class="input1 p ml-2" ></input>
-                                                </label>
-                                                <label class="bgInput field-wrap my-1">
-                                                    <p class="fontHeadInput">เวลาที่โอน</p>
-                                                    <input type="time" name="time" class="input1 p ml-2" ></input>
-                                                </label>
-                                                <label class="bgInput field-wrap my-1">
-                                                    <p class="fontHeadInput">ธนาคารทีโอน</p>
-                                                    <select class="MySelect p pl-2" type="text" name="text4">
-                                                        <option value="">ธนาคารกรุงเทพ</option>
-                                                        <option value="">ธนาคารกสิกรไทย</option>
-                                                        <option value="">ธนาคารกรุงไทย</option>
-                                                        <option value="">ธนาคารทหารไทย</option>
-                                                        <option value="">ธนาคารไทยพาณิชย์</option>
-                                                        <option value="">ธนาคารกรุงศรีอยุธยา</option>
-                                                        <option value="">ธนาคารเกียรตินาคิน</option>
-                                                        <option value="">ธนาคารเกียรตินาคิน</option>
-                                                        <option value="">ธนาคารทิสโก้</option>
-                                                        <option value="">ธนาคารธนชาต</option>
-                                                        <option value="">ธนาคารยูโอบี</option>
-                                                        <option value="">ธนาคารออมสิน</option>
-                                                        <option value="">ธนาคารอาคารสงเคราะห์</option>
-                                                        <option value="">ธนาคารอิสลามแห่งประเทศไทย</option>
-                                                    </select>
-                                                </label>
-                                            </div>
-                                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                                <div class="mb-2">
-                                                    <label id="upload" style="cursor:pointer;">
-                                                        <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
-                                                        <label><p style="font-weight:800;margin:0;color:#fff;">อัพโหลดรูปภาพ</p></label>
-                                                    </label>
-                                                    <div id="thumb" class="thumb-topup2"><img src="{{asset('home/topup/pic-topup.png') }}"/></div>    
-                                                    <input id="file_upload" style="display:none" name="transferImg" type="file" multiple="true" accept="image/* " require/>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
-                                                <!-- <a href="{{ route('SponsorPayment') }}"><label class="btn-submit-drak2">ยืนยัน</label></a>transferNote -->
-                                                <button class="btn-submit-red" name="submit" value="submit">
-                                                    <p style="margin:0;">ยืนยัน</p>
-                                                </button>
-                                                <input type="hidden" name="id" value="{{$transfer->id}}">
-                                                <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <!-- <div class="row fade-in mt-3">
+                            <div id="Transfer">
+                                <form action="{{ route('itemTransfer') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row fade-in mt-3">
                                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
                                             <label class="bgInput field-wrap my-1">
                                                 <p class="fontHeadInput">วันที่โอน</p>
@@ -266,7 +216,7 @@
                                             </label>
                                             <label class="bgInput field-wrap my-1">
                                                 <p class="fontHeadInput">ธนาคารทีโอน</p>
-                                                <select class="MySelect p pl-2" type="text" name="text4" style="width:97.2%">
+                                                <select class="MySelect p pl-2" type="text" name="text4">
                                                     <option value="">ธนาคารกรุงเทพ</option>
                                                     <option value="">ธนาคารกสิกรไทย</option>
                                                     <option value="">ธนาคารกรุงไทย</option>
@@ -285,7 +235,7 @@
                                             </label>
                                         </div>
                                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                            <div>
+                                            <div class="mb-2">
                                                 <label id="upload" style="cursor:pointer;">
                                                     <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
                                                     <label><p style="font-weight:800;margin:0;color:#fff;">อัพโหลดรูปภาพ</p></label>
@@ -295,13 +245,63 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
+                                            <!-- <a href="{{ route('SponsorPayment') }}"><label class="btn-submit-drak2">ยืนยัน</label></a>transferNote -->
                                             <button class="btn-submit-red" name="submit" value="submit">
                                                 <p style="margin:0;">ยืนยัน</p>
                                             </button>
+                                            <input type="hidden" name="id" value="{{$transfer->id}}">
+                                            <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
                                         </div>
-                                    </div> -->
-                                </div>
+                                    </div>
+                                </form>
+                                <!-- <div class="row fade-in mt-3">
+                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
+                                        <label class="bgInput field-wrap my-1">
+                                            <p class="fontHeadInput">วันที่โอน</p>
+                                            <input type="date" name="date" class="input1 p ml-2" ></input>
+                                        </label>
+                                        <label class="bgInput field-wrap my-1">
+                                            <p class="fontHeadInput">เวลาที่โอน</p>
+                                            <input type="time" name="time" class="input1 p ml-2" ></input>
+                                        </label>
+                                        <label class="bgInput field-wrap my-1">
+                                            <p class="fontHeadInput">ธนาคารทีโอน</p>
+                                            <select class="MySelect p pl-2" type="text" name="text4" style="width:97.2%">
+                                                <option value="">ธนาคารกรุงเทพ</option>
+                                                <option value="">ธนาคารกสิกรไทย</option>
+                                                <option value="">ธนาคารกรุงไทย</option>
+                                                <option value="">ธนาคารทหารไทย</option>
+                                                <option value="">ธนาคารไทยพาณิชย์</option>
+                                                <option value="">ธนาคารกรุงศรีอยุธยา</option>
+                                                <option value="">ธนาคารเกียรตินาคิน</option>
+                                                <option value="">ธนาคารเกียรตินาคิน</option>
+                                                <option value="">ธนาคารทิสโก้</option>
+                                                <option value="">ธนาคารธนชาต</option>
+                                                <option value="">ธนาคารยูโอบี</option>
+                                                <option value="">ธนาคารออมสิน</option>
+                                                <option value="">ธนาคารอาคารสงเคราะห์</option>
+                                                <option value="">ธนาคารอิสลามแห่งประเทศไทย</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                        <div>
+                                            <label id="upload" style="cursor:pointer;">
+                                                <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
+                                                <label><p style="font-weight:800;margin:0;color:#fff;">อัพโหลดรูปภาพ</p></label>
+                                            </label>
+                                            <div id="thumb" class="thumb-topup2"><img src="{{asset('home/topup/pic-topup.png') }}"/></div>    
+                                            <input id="file_upload" style="display:none" name="transferImg" type="file" multiple="true" accept="image/* " require/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
+                                        <button class="btn-submit-red" name="submit" value="submit">
+                                            <p style="margin:0;">ยืนยัน</p>
+                                        </button>
+                                    </div>
+                                </div> -->
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
