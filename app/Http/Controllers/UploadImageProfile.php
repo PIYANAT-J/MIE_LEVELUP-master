@@ -21,18 +21,9 @@ use DB;
 class UploadImageProfile extends Controller
 {
     public function Developer(){
-        // $game_img = DB::table('games')->where('USER_ID', Auth::user()->id)->get();
-        // if($game_img->count() == 0){
-        //     $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
-        //     $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-        //     dd($developer);
-        //     return view('profile.devlvp_profile', compact('developer', 'userKyc'));
-        // }else{
-            $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            // dd($developer);
-            return view('profile.devlvp_profile', compact('developer', 'userKyc'));
-        // }
+        $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        return view('profile.devlvp_profile', compact('developer', 'userKyc'));
     }
 
     public function developer_shelf(){
@@ -48,7 +39,6 @@ class UploadImageProfile extends Controller
             $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
                             ->groupBy('GAME_ID')
                             ->get();
-            // die('<pre>'. print_r($game, 1));
             return view('profile.game.devlvp_shelf', compact('developer', 'userKyc', 'game', 'CDownload'));
         }
     }
@@ -58,22 +48,14 @@ class UploadImageProfile extends Controller
         return view('profile.devlvp_upload', compact('developer', 'userKyc'));
     }
 
-    // public function edit_game(){
-    //     $developer = DB::select('select * from developers');
-    //     return view('game.edit_upload_game', ['developer'=> $developer]);
-    // }
-
     public function Guest_user(){
-        $gameShalf = DB::table('downloads')->where('USER_ID', Auth::user()->id)->get();
-        if($gameShalf->count() == 0){
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('profile.userlvp_profile', compact('guest_user', 'userKyc'));
-        }else{
-            $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
-            $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
-            return view('profile.userlvp_profile', compact('guest_user', 'userKyc'));
+        $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
+        $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
+        if($ranking != null){
+            return view('profile.userlvp_profile', compact('guest_user', 'userKyc', 'ranking'));
         }
+        return view('profile.userlvp_profile', compact('guest_user', 'userKyc'));
     }
 
     public function user_shelf(){
@@ -81,6 +63,10 @@ class UploadImageProfile extends Controller
         if($gameShalf->count() == 0){
             $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
             $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+            $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
+            if($ranking != null){
+                return view('profile.game.userlvp_shelf', compact('guest_user', 'userKyc', 'ranking'));
+            }
             return view('profile.game.userlvp_shelf', compact('guest_user', 'userKyc'));
         }else{
             $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
@@ -89,7 +75,10 @@ class UploadImageProfile extends Controller
                         ->join('games', 'games.GAME_ID', '=', 'downloads.GAME_ID')
                         ->select('downloads.*', 'games.GAME_IMG_PROFILE','GAME_NAME','GAME_DATE', 'RATED_B_L')
                         ->get();
-            // die('<pre>'. print_r($game, 1));
+            $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
+            if($ranking != null){
+                return view('profile.game.userlvp_shelf', compact('guest_user', 'userKyc', 'ranking', 'game'));
+            }
             return view('profile.game.userlvp_shelf', compact('guest_user', 'userKyc', 'game'));
         }
     }
