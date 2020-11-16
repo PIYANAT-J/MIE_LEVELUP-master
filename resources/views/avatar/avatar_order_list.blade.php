@@ -79,9 +79,10 @@
                                                                 <!-- </a> -->
                                                             @else
                                                                 <!-- ไปหน้าแจ้งชำระเงิน -->
-                                                                <a href="{{route('PaymentTransfer', ['invoice' => encrypt($transeectionList->transeection_invoice)])}}" style="color:#000;">
+                                                                {{-- <a href="{{route('PaymentTransfer', ['invoice' => encrypt($transeectionList->transeection_invoice)])}}" style="color:#000;">
                                                                     <p style="margin:0;" class="status-transfer">แจ้งชำระเงิน</p>
-                                                                </a>
+                                                                </a> --}}
+                                                                <p style="margin:0;" class="status-transfer" data-toggle="modal" data-target="#exampleModal">แจ้งชำระเงิน</p>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -100,8 +101,6 @@
     </div>
 </div>
 
-
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-4 col-xl-3 bg_avatar"></div>
@@ -115,139 +114,267 @@
 
 <!-- Modal ใบเสร็จการชำระเงิน-->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document" >
-    <div class="modal-content" style="background-color:#202433;">
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-12 text-center mt-3">
-                    <img style="width:40px;" src="{{asset('icon/select_green.svg')}}" alt=""> <br>
-                    <p class="mt-3" style="color:#fff;font-weight:800;margin:0;">ชำระเงินเรียบร้อยแล้ว</p>
-                    <p style="color:#a8a8a8;margin:0">หมายเลขคำสั่งซื้อ 01234567890000</p>
-                </div>
-            </div>
-            <div class="row mx-2 mt-5">
-                <div class="col-7" style="padding:0;">
-                    <label class="labelItemAvatar bgItem mr-2">
-                        <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" />
-                    </label> 
-                    <label class="font-sale4 bgItem2 mt-2">
-                        <p style="margin:0;"> <a style="font-weight: 700;">ชื่อไอเทม ระดับ 3</a></br>
-                        คำอธิบาย</br>
-                        เลือกลงทุนได้ 3 Signal</p>
-                    </label>
-                </div>
-
-                <div class="col-2 my-4 text-center" style="padding:0;">
-                    <p style="margin:0;color:#fff;">1 ชิ้น</p>
-                </div>
-
-                <div class="col-3 my-3">
-                    <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
-                        <h4 style="margin:0;font-weight:800;color:#ce0005;">฿3000</h4>
-                        <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-25)</p>
-                    </span>
-                </div>
-            </div>
-
-            <div class="row mx-2 mt-5">
-                <div class="col-7" style="padding:0;">
-                    <label class="labelItemAvatar bgItem mr-2">
-                        <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" />
-                    </label> 
-                    <label class="font-sale4 bgItem2 mt-2">
-                        <p style="margin:0;"> <a style="font-weight: 700;">ชื่อไอเทม ระดับ 3</a></br>
-                        คำอธิบาย</br>
-                        เลือกลงทุนได้ 3 Signal</p>
-                    </label>
-                </div>
-
-                <div class="col-2 my-4 text-center" style="padding:0;">
-                    <p style="margin:0;color:#fff;">1 ชิ้น</p>
-                </div>
-
-                <div class="col-3 my-3">
-                    <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
-                        <h4 style="margin:0;font-weight:800;color:#ce0005;">฿3000</h4>
-                        <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-25)</p>
-                    </span>
-                </div>
-            </div>
-
-            <div class="row mx-2 mt-5">
-                <div class="col-7" style="padding:0;">
-                    <label class="labelItemAvatar bgItem mr-2">
-                        <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" />
-                    </label> 
-                    <label class="font-sale4 bgItem2 mt-2">
-                        <p style="margin:0;"> <a style="font-weight: 700;">ชื่อไอเทม ระดับ 3</a></br>
-                        คำอธิบาย</br>
-                        เลือกลงทุนได้ 3 Signal</p>
-                    </label>
-                </div>
-
-                <div class="col-2 my-4 text-center" style="padding:0;">
-                    <p style="margin:0;color:#fff;">1 ชิ้น</p>
-                </div>
-
-                <div class="col-3 my-3">
-                    <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
-                        <h4 style="margin:0;font-weight:800;color:#ce0005;">฿3000</h4>
-                        <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-25)</p>
-                    </span>
-                </div>
-            </div>
-            <div class="row mt-3 py-2" style="background-color:#191b29;">
-                <div class="col-12">
-                    <div class="row ml-2">
-                        <p style="font-weight:800;margin:0;color:#fff;">ที่อยู่ในการออกใบเสร็จ</p>
-                    </div>
-                    <div class="row ml-2 mt-2">
-                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
-                            <label class="font-payment-avatar mr-2">
-                                <p style="margin:0;font-weight: 800;">ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</p>
-                            </label>
-                            <label class="font-payment-avatar2">
-                                <p style="margin:0;">วราพร ศรีจิ๋ว(5-1005-00148-76-6)
-                                        <br>(+66) 0823552062
-                                </p>
-                            </label>
-                        </div>
-                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
-                            <label class="font-payment-avatar mr-2">
-                                <p style="margin:0;font-weight: 800;">ที่อยู่</p>
-                            </label>
-                            <label class="font-payment-avatar4">
-                                <p style="margin:0;">
-                                    บ้านเลขที่ 1 หมู่ 1 ไทรน้อย ไทรน้อย นนทบุรี 11150
-                                </p>
-                            </label>
-                        </div>
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document" >
+        <div class="modal-content" style="background-color:#202433;">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 text-center mt-3">
+                        <img style="width:40px;" src="{{asset('icon/select_green.svg')}}" alt=""> <br>
+                        <p class="mt-3" style="color:#fff;font-weight:800;margin:0;">ชำระเงินเรียบร้อยแล้ว</p>
+                        <p style="color:#a8a8a8;margin:0">หมายเลขคำสั่งซื้อ 01234567890000</p>
                     </div>
                 </div>
-            </div>
-            <div class="row pl-2 pr-4" style="border-bottom:1px solid #455160">
-                <div class="col-6 font-payment2 py-3 "><p style="margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></div>
-                <div class="col-6 text-right font-price align-self-center"><h4 style="margin:0;font-weight:800;color:#ce0005;">฿3000</h4></div>
-            </div>
-            <div class="row py-3 pl-2 pr-4" style="border-bottom:1px solid #455160">
-                <div class="col-3 font-payment2"><p style="margin:0;font-weight:800;">ช่องทางการชำระเงิน</p></div>
-                <div class="col-9 text-right font-payment2" style="padding-left:0;">
-                    <p style="margin:0;">โมบายแบงค์กิ้ง บัญชี วราพร ศรีจิ๋ว</p>
-                    <!-- <p style="margin:0;">โอนเงินธนาคาร <br> บัญชี วราพร ศรีจิ๋ว</p>
-                    <p style="margin:0;">บัตรเครดิต/บัตรเดบิต <br> บัญชี วราพร ศรีจิ๋ว</p> -->
+                <div class="row mx-2 mt-5">
+                    <div class="col-7" style="padding:0;">
+                        <label class="labelItemAvatar bgItem mr-2">
+                            <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" />
+                        </label> 
+                        <label class="font-sale4 bgItem2 mt-2">
+                            <p style="margin:0;"> <a style="font-weight: 700;">ชื่อไอเทม ระดับ 3</a></br>
+                            คำอธิบาย</br>
+                            เลือกลงทุนได้ 3 Signal</p>
+                        </label>
+                    </div>
+
+                    <div class="col-2 my-4 text-center" style="padding:0;">
+                        <p style="margin:0;color:#fff;">1 ชิ้น</p>
+                    </div>
+
+                    <div class="col-3 my-3">
+                        <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
+                            <h4 style="margin:0;font-weight:800;color:#ce0005;">฿3000</h4>
+                            <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-25)</p>
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <div class="row mt-2" style="padding-right:12px">
-                <div class="col-8 col-sm-10 col-md-10 col-lg-10 col-xl-10"></div>
-                <div class="col-4 col-sm-2 col-md-2 col-lg-2 col-xl-2 text-right" style="padding:0;">
-                    <button type="button" class="btn-submit" data-dismiss="modal" style="background-color:#191b29;">
-                        <p style="margin:0;">ปิด</p>
-                    </button>
+
+                <div class="row mx-2 mt-5">
+                    <div class="col-7" style="padding:0;">
+                        <label class="labelItemAvatar bgItem mr-2">
+                            <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" />
+                        </label> 
+                        <label class="font-sale4 bgItem2 mt-2">
+                            <p style="margin:0;"> <a style="font-weight: 700;">ชื่อไอเทม ระดับ 3</a></br>
+                            คำอธิบาย</br>
+                            เลือกลงทุนได้ 3 Signal</p>
+                        </label>
+                    </div>
+
+                    <div class="col-2 my-4 text-center" style="padding:0;">
+                        <p style="margin:0;color:#fff;">1 ชิ้น</p>
+                    </div>
+
+                    <div class="col-3 my-3">
+                        <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
+                            <h4 style="margin:0;font-weight:800;color:#ce0005;">฿3000</h4>
+                            <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-25)</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row mx-2 mt-5">
+                    <div class="col-7" style="padding:0;">
+                        <label class="labelItemAvatar bgItem mr-2">
+                            <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" />
+                        </label> 
+                        <label class="font-sale4 bgItem2 mt-2">
+                            <p style="margin:0;"> <a style="font-weight: 700;">ชื่อไอเทม ระดับ 3</a></br>
+                            คำอธิบาย</br>
+                            เลือกลงทุนได้ 3 Signal</p>
+                        </label>
+                    </div>
+
+                    <div class="col-2 my-4 text-center" style="padding:0;">
+                        <p style="margin:0;color:#fff;">1 ชิ้น</p>
+                    </div>
+
+                    <div class="col-3 my-3">
+                        <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
+                            <h4 style="margin:0;font-weight:800;color:#ce0005;">฿3000</h4>
+                            <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-25)</p>
+                        </span>
+                    </div>
+                </div>
+                <div class="row mt-3 py-2" style="background-color:#191b29;">
+                    <div class="col-12">
+                        <div class="row ml-2">
+                            <p style="font-weight:800;margin:0;color:#fff;">ที่อยู่ในการออกใบเสร็จ</p>
+                        </div>
+                        <div class="row ml-2 mt-2">
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
+                                <label class="font-payment-avatar mr-2">
+                                    <p style="margin:0;font-weight: 800;">ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</p>
+                                </label>
+                                <label class="font-payment-avatar2">
+                                    <p style="margin:0;">วราพร ศรีจิ๋ว(5-1005-00148-76-6)
+                                            <br>(+66) 0823552062
+                                    </p>
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
+                                <label class="font-payment-avatar mr-2">
+                                    <p style="margin:0;font-weight: 800;">ที่อยู่</p>
+                                </label>
+                                <label class="font-payment-avatar4">
+                                    <p style="margin:0;">
+                                        บ้านเลขที่ 1 หมู่ 1 ไทรน้อย ไทรน้อย นนทบุรี 11150
+                                    </p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pl-2 pr-4" style="border-bottom:1px solid #455160">
+                    <div class="col-6 font-payment2 py-3 "><p style="margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></div>
+                    <div class="col-6 text-right font-price align-self-center"><h4 style="margin:0;font-weight:800;color:#ce0005;">฿3000</h4></div>
+                </div>
+                <div class="row py-3 pl-2 pr-4" style="border-bottom:1px solid #455160">
+                    <div class="col-3 font-payment2"><p style="margin:0;font-weight:800;">ช่องทางการชำระเงิน</p></div>
+                    <div class="col-9 text-right font-payment2" style="padding-left:0;">
+                        <p style="margin:0;">โมบายแบงค์กิ้ง บัญชี วราพร ศรีจิ๋ว</p>
+                        <!-- <p style="margin:0;">โอนเงินธนาคาร <br> บัญชี วราพร ศรีจิ๋ว</p>
+                        <p style="margin:0;">บัตรเครดิต/บัตรเดบิต <br> บัญชี วราพร ศรีจิ๋ว</p> -->
+                    </div>
+                </div>
+                <div class="row mt-2" style="padding-right:12px">
+                    <div class="col-8 col-sm-10 col-md-10 col-lg-10 col-xl-10"></div>
+                    <div class="col-4 col-sm-2 col-md-2 col-lg-2 col-xl-2 text-right" style="padding:0;">
+                        <button type="button" class="btn-submit" data-dismiss="modal" style="background-color:#191b29;">
+                            <p style="margin:0;">ปิด</p>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Modal แจ้งชำระเงิน-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content" style="background-color:#202433;">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 text-center mt-3">
+                        <p class="mt-3" style="color:#fff;font-weight:800;margin:0;">แจ้งชำระเงิน</p>
+                        <p style="color:#a8a8a8;margin:0">หมายเลขคำสั่งซื้อ 01234567890000</p>
+                    </div>
+                </div>
+                <div class="row mx-2 mt-5">
+                    <div class="col-7" style="padding:0;">
+                        <label class="labelItemAvatar bgItem mr-2">
+                            <img class="picture2" src="{{asset('home/avatar/other/crown_01.png') }}" />
+                        </label> 
+                        <label class="font-sale4 bgItem2 mt-2">
+                            <p style="margin:0;"> <a style="font-weight: 700;">ชื่อไอเทม ระดับ 3</a></br>
+                            คำอธิบาย</br>
+                            เลือกลงทุนได้ 3 Signal</p>
+                        </label>
+                    </div>
+
+                    <div class="col-2 my-4 text-center" style="padding:0;">
+                        <p style="margin:0;color:#fff;">1 ชิ้น</p>
+                    </div>
+
+                    <div class="col-3 my-3">
+                        <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
+                            <h4 style="margin:0;font-weight:800;color:#ce0005;">฿3000</h4>
+                            <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-25)</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row pl-2 pr-4" style="border-bottom:1px solid #455160">
+                    <div class="col-6 font-payment2 py-3 "><p style="margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></div>
+                    <div class="col-6 text-right font-price align-self-center"><h4 style="margin:0;font-weight:800;color:#ce0005;">฿3000</h4></div>
+                </div>
+                <div class="row pl-2 pr-4 pt-2" style="border-bottom:1px solid #455160">
+                    <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 mb-2">
+                        <label class="font-payment2"><p style="margin:0;font-weight:800;">ช่องทางการชำระเงิน</p></label> <br>
+                        <p style="color:#fff;margin:0;">
+                            ATM / โอนเข้าธนาคาร <br>
+                            กรุณาเก็บเอกสาร/หลักฐานการโอนเงินไว้ เพื่ออัพโหลดภายใน 24 ชม.
+                        </p>
+                    </div>
+                    <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-right">
+                        <label ><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
+                        <label class="font-payment2"><p style="color:#fff;margin:0;">ธนาคารกรุงเทพ</p></label> <br>
+                        <label class="ml-2"><p style="color:#fff;margin:0;">บริษัท ทีเท็น จำกัด</p></label><br>
+                        <label class="ml-2" id="copy"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
+                        <label class="ml-2" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label>
+                    </div>
+                </div>
+
+                <div class="row py-2 " style="border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
+                    <div class="col-12">
+                        <div class="row mt-2">
+                            <div class="col-lg-12 text-right">
+                                <label class="btn-submit-red3" onClick="myFunction()">
+                                    <p style="margin:0;">แจ้งการชำระเงิน</p>
+                                </label>
+                                <label class="btn-submit-wh" data-dismiss="modal">
+                                    <p style="margin:0;">อัพโหลดภายหลัง</p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="Transfer">
+                    <div class="row fade-in mt-3">
+                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">วันที่โอน</p>
+                                <input type="date" name="date" class="input1 p ml-2" ></input>
+                            </label>
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">เวลาที่โอน</p>
+                                <input type="time" name="time" class="input1 p ml-2" ></input>
+                            </label>
+                            <label class="bgInput field-wrap my-1">
+                                <p class="fontHeadInput">ธนาคารทีโอน</p>
+                                <select class="MySelect p pl-2" type="text" name="text4" style="width:97.2%">
+                                    <option value="">ธนาคารกรุงเทพ</option>
+                                    <option value="">ธนาคารกสิกรไทย</option>
+                                    <option value="">ธนาคารกรุงไทย</option>
+                                    <option value="">ธนาคารทหารไทย</option>
+                                    <option value="">ธนาคารไทยพาณิชย์</option>
+                                    <option value="">ธนาคารกรุงศรีอยุธยา</option>
+                                    <option value="">ธนาคารเกียรตินาคิน</option>
+                                    <option value="">ธนาคารเกียรตินาคิน</option>
+                                    <option value="">ธนาคารทิสโก้</option>
+                                    <option value="">ธนาคารธนชาต</option>
+                                    <option value="">ธนาคารยูโอบี</option>
+                                    <option value="">ธนาคารออมสิน</option>
+                                    <option value="">ธนาคารอาคารสงเคราะห์</option>
+                                    <option value="">ธนาคารอิสลามแห่งประเทศไทย</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <div>
+                                <label id="upload" style="cursor:pointer;">
+                                    <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
+                                    <label><p style="font-weight:800;margin:0;color:#fff;">อัพโหลดรูปภาพ</p></label>
+                                </label>
+                                <div id="thumb" class="thumb-topup2"><img src="{{asset('home/topup/pic-topup.png') }}"/></div>    
+                                <input id="file_upload" style="display:none" name="transferImg" type="file" multiple="true" accept="image/* " require/>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
+                            <button class="btn-submit-red" name="submit" value="submit">
+                                <p style="margin:0;">ยืนยัน</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 @endsection
 
@@ -382,5 +509,20 @@
         }
         $(day).val(val);
     }
+</script>
+
+<script>
+    function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+    }
+</script>
+
+<script>
+    const myFunction = () => {
+    document.getElementById("Transfer").style.display ='block';}
 </script>
 @endsection
