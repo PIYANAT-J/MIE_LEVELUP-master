@@ -289,7 +289,6 @@ class GameController extends Controller
                 }
             }
             return view('game.game_category', compact('Games', 'GamesNew', 'GameHit'));
-
         }
     }
 

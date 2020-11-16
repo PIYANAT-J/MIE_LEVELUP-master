@@ -13,32 +13,13 @@ use Session;
 
 class KycController extends Controller
 {
-    // public function indexGuest_user(){
-    //     $guest_user = DB::select('select * from guest_users');
-    //     return view('kyc', ['guest_user'=> $guest_user]);
-    // }
-    // public function index($type){
-    //     if($type == 2){
-    //         $developer = DB::select('select * from developers');
-    //         return view('kyc', ['developer'=> $developer]);
-    //     }elseif($type == 3){
-    //         $sponsor = DB::select('select * from sponsors');
-    //         return view('kyc', ['sponsor'=> $sponsor]);
-    //     }else{
-    //         $guest_user = DB::select('select * from guest_users');
-    //         return view('kyc', ['guest_user'=> $guest_user]);
-    //     }
-    //     // $developer = DB::select('select * from developers');
-    //     // return view('kyc', ['developer'=> $developer]);
-    // }
-
-    // public function indexSpon(){
-    //     $sponsor = DB::select('select * from sponsors');
-    //     return view('kyc', ['sponsor'=> $sponsor]);
-    // }
     public function indexUserKyc(){
         $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
+        $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
+        if($ranking != null){
+            return view('profile.game.userlvp_shelf', compact('guest_user', 'userKyc', 'ranking'));
+        }
         return view('kyc.userlvp_kyc', compact('guest_user', 'userKyc'));
     }
 
