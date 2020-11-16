@@ -121,11 +121,12 @@ class marketItemController extends Controller
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
         $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
         $transeection = DB::table('transeection_buy_items')->where('transeection_invoice', decrypt($invoice))->first();
+        $marketItem = Market_item::all();
         // dd($transeection);
         $qrpayment = QrPayment::Where('invoice', decrypt($invoice))->get()->first();
         $invoice =  DNS2D::getBarcodeHTML($qrpayment->rawQrCode, "QRCODE");
         $invoice = $qrpayment->rawQrCode;
-        return view('avatar.payment.payment_confirmation', compact('guest_user', 'userKyc', 'shopping', 'invoice', 'transeection', 'qrpayment'));
+        return view('avatar.payment.payment_confirmation', compact('guest_user', 'userKyc', 'shopping', 'invoice', 'transeection', 'qrpayment', 'marketItem'));
     }
 
     public function itemibanking(Request $request){
@@ -299,6 +300,7 @@ class marketItemController extends Controller
         $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
         $transfer = DB::table('transfer_payments')->where('transferInvoice', decrypt($invoice))->first();
         $transeection = DB::table('transeection_buy_items')->where('transeection_invoice', decrypt($invoice))->first();
-        return view('avatar.payment.payment_transfer', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'transfer'));
+        $marketItem = Market_item::all();
+        return view('avatar.payment.payment_transfer', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'transfer', 'marketItem'));
     }
 }
