@@ -57,15 +57,24 @@
                                                         <!-- <input id="GUEST_USERS_BIRTHDAY" name="GUEST_USERS_BIRTHDAY" type="text" class="form-control textbox1 " placeholder="YYYY-MM-DD" value="{{ old('GUEST_USERS_BIRTHDAY') }}" title=""> -->
                                                     <!-- <input type="number" name="RATING" id="rating-input" min="1" max="5"> -->
                                                         <?php
-                                                            $yyyy = substr($USER->GUEST_USERS_BIRTHDAY,0,4);
-                                                            $mm = substr($USER->GUEST_USERS_BIRTHDAY,5,2);
-                                                            $dd = substr($USER->GUEST_USERS_BIRTHDAY,8,2);
+                                                            // $yyyy = substr($USER->GUEST_USERS_BIRTHDAY,0,4);
+                                                            // $mm = substr($USER->GUEST_USERS_BIRTHDAY,5,2);
+                                                            // $dd = substr($USER->GUEST_USERS_BIRTHDAY,8,2);
+                                                            if($USER->GUEST_USERS_BIRTHDAY != null){
+                                                                $BIRTHDAY = explode('-', $USER->GUEST_USERS_BIRTHDAY);
+                                                                echo '
+                                                                    <input type="hidden" name="year" value="'.$BIRTHDAY[0].'">
+                                                                    <input type="hidden" name="month" value="'.$BIRTHDAY[1].'">
+                                                                    <input type="hidden" name="day" value="'.$BIRTHDAY[2].'">
+                                                                ';
+                                                            }
+                                                            
                                                         ?>
                                                             <label class="bgInput field- my-1">
                                                             <label><p class="fontHeadInput">วัน เดือน ปีเกิด</p></label><br>
-                                                            <label style="padding:0;"><SELECT class="MySelectProfile p pl-2"  size="1" id ="year" name = "yyyy" onchange="change_year(this)"></SELECT></label>
-                                                            <label style="padding:0;"><SELECT class="MySelectProfile p pl-2" size="1"  id ="month" name = "mm" onchange="change_month(this)"></SELECT></label>
-                                                            <label style="padding:0;"><SELECT class="MySelectProfile p pl-2" size="1" id ="day" name = "dd"></SELECT></label>
+                                                            <label style="padding:0;"><SELECT class="MySelectProfile p pl-2 year"  size="1" id ="year" name="yyyy" onchange="change_year(this)"></SELECT></label>
+                                                            <label style="padding:0;"><SELECT class="MySelectProfile p pl-2 month" size="1"  id ="month" name="mm" onchange="change_month(this)"></SELECT></label>
+                                                            <label style="padding:0;"><SELECT class="MySelectProfile p pl-2 day" size="1" id ="day" name="dd"></SELECT></label>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -140,20 +149,32 @@ $(document).ready(function(){
 
 <!-- วัน เดือน ปีเกิด -->
 <script>
-            // var year = $yyyy;
-            // var month = $mm;
-            // var day = $dd;
+    var yyyy = $('input[name="year"]').val()
+    var mm = $('input[name="month"]').val()
+    var dd = $('input[name="day"]').val()
+    console.log(year);
+    // var month = $mm;
+    // var day = $dd;
+    // console.log(year);
     var Days = [31,28,31,30,31,30,31,31,30,31,30,31];// index => month [0-11]
     $(document).ready(function(){
         
-        var option = '<option  class="font-select" value="day">วัน</option>';
+        if(dd != null){
+            var option = '<option  class="font-select" value="day">'+dd+'</option>';
+        }else{
+            var option = '<option  class="font-select" value="day">วัน</option>';
+        }
         var selectedDay="day";
         for (var i=1;i <= Days[0];i++){ //add option days
             option += '<option class="font-select" value="'+ i + '">' + i + '</option>';
         }
         $('#day').append(option);
         $('#day').val(selectedDay);
-        var option = '<option class="font-select" value="month">เดือน</option>';
+        if(mm != null){
+            var option = '<option  class="font-select" value="month">'+mm+'</option>';
+        }else{
+            var option = '<option  class="font-select" value="month">เดือน</option>';
+        }
         var selectedMon ="month";
         for (var i=1;i <= 12;i++){
             // option += '<option value="'+ i + '">' + i + '</option>';
@@ -185,7 +206,11 @@ $(document).ready(function(){
         }
         $('#month').append(option);
         $('#month').val(selectedMon);
-        var option = '<option  class="font-select" value="month">เดือน</option>';
+        if(mm != null){
+            var option = '<option  class="font-select" value="month">'+mm+'</option>';
+        }else{
+            var option = '<option  class="font-select" value="month">เดือน</option>';
+        }
         var selectedMon ="month";
         for (var i=1;i <= 12;i++){
             option += '<option  class="font-select" value="'+ i + '">' + i + '</option>';
@@ -194,7 +219,11 @@ $(document).ready(function(){
         $('#month2').val(selectedMon);
     
         var d = new Date();
-        var option = '<option  class="font-select" value="year">ปี</option>';
+        if(yyyy != null){
+            var option = '<option  class="font-select" value="year">'+yyyy+'</option>';
+        }else{
+            var option = '<option  class="font-select" value="year">ปี</option>';
+        }
         selectedYear ="year";
         for (var i=1930;i <= d.getFullYear();i++){// years start i
             option += '<option  class="font-select" value="'+ i + '">' + i + '</option>';
