@@ -137,7 +137,9 @@
                                                         <div class="col-3 my-3">
                                                             <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
                                                                 <h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{number_format($itemprice[$i], 2)}}</h4>
-                                                                <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-{{$shoppingList->item_discount}}%)</p>
+                                                                @if($shoppingList->item_discount != 0)
+                                                                    <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿{{number_format($itemprice[$i], 2)}} </a> (-{{$shoppingList->item_discount}}%)</p>
+                                                                @endif
                                                             </span>
                                                         </div>
                                                     </div>
