@@ -3,7 +3,7 @@
     <div class="row mt-2 px-2">
         @foreach($guest_user as $USER)
             <div class="col-12 pb-2">
-                <div class="row mb-3 pb-2 pt-4" style="background-color: #fff;border-radius: 6px;box-shadow: 0 5px 0 0 #c3c3c3;">
+                <div class="row pb-2 pt-4" style="background-color: #fff;border-radius: 6px;box-shadow: 0 5px 0 0 #c3c3c3;">
                     <div class="col-4 text-right pr-2">
                         <img class="sidebar-sim" src="{{asset('home/imgProfile/'.$USER->GUEST_USERS_IMG) }}" />
                     </div>
@@ -83,19 +83,27 @@
                             </label>
                         </a>
                     </div>
-                        
                 </div>
 
-                <div class="row py-2" style="background-color: #fff;border-radius: 6px;box-shadow: 0 5px 0 0 #c3c3c3;">
+                <div class="row py-2 mt-2" style="background-color: #fff;border-radius: 6px;box-shadow: 0 5px 0 0 #c3c3c3;">
                     <!-- <div class="col-12 pl-5 mb-3">
                         <h1 style="margin:0;font-weight:800;">$0.00<br>STARTING PRICE </h1>
                     </div> -->
                     <div class="col-12 pl-5">
-                        <h1 style="margin:0;font-weight:800;">$0.00<a style="color:#0ce63e;"> (+5%)</a><br>PERIOD CHANGE</h1>
+                        <!-- <h1 style="margin:0;font-weight:800;">$0.00<a style="color:#0ce63e;"> (+5%)</a><br>PERIOD CHANGE</h1> -->
+                        @if(isset($ranking))
+                            @foreach($ranking as $point)
+                                @if($point->user_id == Auth::user()->id)
+                                    <h1 style="margin:0;font-weight:800;">฿{{number_format($point->amount, 2)}}<br>STARTING PRICE </h1>
+                                @endif
+                            @endforeach
+                        @else
+                            <h1 style="margin:0;font-weight:800;">$0.00<br>STARTING PRICE </h1>
+                        @endif
                     </div>
                 </div>
 
-                <div class="row mt-3">
+                <div class="row mt-2">
                     <div class="col-12 col-lg-12 col-xl-12 d-none d-lg-block d-xl-block mb-2" style="padding:0px">
                         <a href="{{ route('SimulatorTrade') }}">
                             <button class="bg-simulator d-flex">

@@ -557,10 +557,11 @@
                     
                     // update chart every second
                     var count = 0;
-                    var random = Math.round(Math.random()*(730 - 365)) + 365;
+                    // var random = Math.round(Math.random()*(730 - 365)) + 365;
+                    var random = Math.round(Math.random()*(100 - 150)) + 150;
                     var myVar = setInterval(function(){
                         count++;
-                        if(count == 100){
+                        if(count == random){
                             clearInterval(myVar);
                             $('.next-simulator').removeClass('d-none').prop('disabled', false).html("NEXT");
                             var chart = new CanvasJS.Chart("chartContainer");
@@ -606,7 +607,7 @@
                         }else{
                             updateChart()
                         }
-                    }, 250);
+                    }, 750);
                 },
                 error: function() {}
             });
