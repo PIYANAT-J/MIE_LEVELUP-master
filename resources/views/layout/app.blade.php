@@ -54,23 +54,25 @@
                                     </li>
                                 </a>
                                 @guest
-                                <a href="{{ route('login-levelUp') }}" style="padding:0 0 5px 0;">
-                                    <li class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;">
-                                        <h1 class="fontNavbar">การติดตามของฉัน</h1>
-                                    </li>
-                                </a>
+                                    <a href="{{ route('login-levelUp') }}" style="padding:0 0 5px 0;">
+                                        <li class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;">
+                                            <h1 class="fontNavbar">การติดตามของฉัน</h1>
+                                        </li>
+                                    </a>
                                 @else
-                                <a href="{{ route('FollowMe') }}" style="padding:0 0 5px 0;">
-                                    <li class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;">
-                                        <h1 class="fontNavbar">การติดตามของฉัน</h1>
-                                    </li>
-                                </a>
+                                    <a href="{{ route('FollowMe') }}" style="padding:0 0 5px 0;">
+                                        <li class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;">
+                                            <h1 class="fontNavbar">การติดตามของฉัน</h1>
+                                        </li>
+                                    </a>
+                                    @if(Auth::user()->users_type == '1')
+                                        <a href="/simulator_trade" style="padding:0 0 5px 0;">
+                                            <li class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;">
+                                                <h1 class="fontNavbar">Simulator Trade</h1>
+                                            </li>
+                                        </a>
+                                    @endif
                                 @endguest
-                                <a href="/simulator_trade" style="padding:0 0 5px 0;">
-                                    <li class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;">
-                                        <h1 class="fontNavbar">Simulator Trade</h1>
-                                    </li>
-                                </a>
                                 <li class="inputWithIcon">
                                     <h1><input class="search_btn" type="text" placeholder="ค้นหา" aria-label="Search"></h1>
                                     <h1><i class="icon-search " aria-hidden="true"></i></h1>

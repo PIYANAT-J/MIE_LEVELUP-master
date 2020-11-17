@@ -26,6 +26,10 @@ class avatarController extends Controller
         foreach($guest_user as $defaultAvatar){
             $avatar = json_decode($defaultAvatar->AVATAR);
         }
+        $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
+        if($ranking != null){
+            return view('avatar.avatar', compact('guest_user', 'avatar', 'userKyc', 'shopping', 'default', 'item', 'avatar', 'ranking'));
+        }
         return view('avatar.avatar', compact('guest_user', 'avatar', 'userKyc', 'shopping', 'default', 'item', 'avatar'));
     }
 
@@ -41,12 +45,22 @@ class avatarController extends Controller
         foreach($transfer as $transferList){
             $transfer_invoice[] = $transferList->transferInvoice;
         }
+        $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
         $address = DB::table('addresses')->where('USER_EMAIL', Auth::user()->email)->get();
         $marketItem = Market_item::all();
         if(count($address) != 0){
-            return view('avatar.avatar_order_list', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address', 'transfer_invoice', 'transfer_on', 'marketItem'));
+            if($ranking != null){
+                return view('avatar.avatar_order_list', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address', 'transfer_invoice', 'transfer_on', 'marketItem', 'ranking'));
+            }else{
+                return view('avatar.avatar_order_list', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address', 'transfer_invoice', 'transfer_on', 'marketItem'));
+            }
+        }else{
+            if($ranking != null){
+                return view('avatar.avatar_order_list', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'transfer_invoice', 'transfer_on', 'marketItem', 'ranking'));
+            }else{
+                return view('avatar.avatar_order_list', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'transfer_invoice', 'transfer_on', 'marketItem'));
+            }
         }
-        return view('avatar.avatar_order_list', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'transfer_invoice', 'transfer_on', 'marketItem'));
     }
 
     public function addAvatar(Request $request){

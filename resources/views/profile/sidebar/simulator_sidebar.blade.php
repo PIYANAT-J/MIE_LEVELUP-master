@@ -90,7 +90,16 @@
                         <h1 style="margin:0;font-weight:800;">$0.00<br>STARTING PRICE </h1>
                     </div> -->
                     <div class="col-12 pl-5">
-                        <h1 style="margin:0;font-weight:800;">$0.00<a style="color:#0ce63e;"> (+5%)</a><br>PERIOD CHANGE</h1>
+                        <!-- <h1 style="margin:0;font-weight:800;">$0.00<a style="color:#0ce63e;"> (+5%)</a><br>PERIOD CHANGE</h1> -->
+                        @if(isset($ranking))
+                            @foreach($ranking as $point)
+                                @if($point->user_id == Auth::user()->id)
+                                    <h1 style="margin:0;font-weight:800;">฿{{number_format($point->amount, 2)}}<br>STARTING PRICE </h1>
+                                @endif
+                            @endforeach
+                        @else
+                            <h1 style="margin:0;font-weight:800;">$0.00<br>STARTING PRICE </h1>
+                        @endif
                     </div>
                 </div>
 
