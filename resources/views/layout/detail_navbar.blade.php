@@ -59,6 +59,11 @@
                                 @else
                                     <li><a href="{{ route('FollowMe') }}" class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;"><h1 class="fontNavbar">การติดตามของฉัน</h1></a></li>
                                 @endguest
+                                <a href="/simulator_trade" style="padding:0 0 5px 0;">
+                                    <li class="nav-link mr-4 my-2" style="padding:0px;margin:5px 0 5px 0;">
+                                        <h1 class="fontNavbar">Simulator Trade</h1>
+                                    </li>
+                                </a>
                                 <li class="inputWithIcon">
                                     <h1><input class="search_btn" type="text" placeholder="ค้นหา" aria-label="Search"></h1>
                                     <h1><i class="icon-search " aria-hidden="true"></i></h1>
