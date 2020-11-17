@@ -403,7 +403,7 @@
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-6 col-sm-8 col-md-8 col-lg-8 col-xl-9 text-right p">ยอดรวมสินค้า</div>
-                                        <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 text-right p">฿ {{number_format($allPackage->package_amount, 2)}}</div>
+                                        <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 text-right p">฿{{number_format($allPackage->package_amount, 2)}}</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-6 col-sm-8 col-md-8 col-lg-8 col-xl-9 text-right p">ส่วนลด</div>
@@ -503,7 +503,7 @@
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-6 col-sm-8 col-md-8 col-lg-8 col-xl-9 text-right p">ยอดรวมสินค้า</div>
-                                        <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 text-right p">฿ {{number_format($transeection->transeection_amount, 2)}}</div>
+                                        <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 text-right p">฿{{number_format($transeection->transeection_amount, 2)}}</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-6 col-sm-8 col-md-8 col-lg-8 col-xl-9 text-right p">ส่วนลด</div>

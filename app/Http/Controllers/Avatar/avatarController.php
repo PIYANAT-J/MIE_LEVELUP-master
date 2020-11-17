@@ -12,6 +12,7 @@ use App\Guest_user;
 use App\Default_item;
 use App\Transeection_buyItem;
 use App\TransferPayment;
+use App\Market_item;
 use App\My_item;
 
 class avatarController extends Controller
@@ -25,6 +26,10 @@ class avatarController extends Controller
         foreach($guest_user as $defaultAvatar){
             $avatar = json_decode($defaultAvatar->AVATAR);
         }
+        $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
+        if($ranking != null){
+            return view('avatar.avatar', compact('guest_user', 'avatar', 'userKyc', 'shopping', 'default', 'item', 'avatar', 'ranking'));
+        }
         return view('avatar.avatar', compact('guest_user', 'avatar', 'userKyc', 'shopping', 'default', 'item', 'avatar'));
     }
 
@@ -34,13 +39,28 @@ class avatarController extends Controller
         $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
         $transeection = Transeection_buyItem::where([['USER_EMAIL', Auth::user()->email]])->orderBy('transeection_id', 'desc')->get();
         $transfer = TransferPayment::where([['USER_EMAIL', Auth::user()->email], ['transferStatus', 'รอการอนุมัติ'], ['useTransferType', 'item']])->orderBy('id', 'desc')->get();
-
+        $transfer_on = TransferPayment::where([['USER_EMAIL', Auth::user()->email], ['transferStatus', 'ยืนยันการโอน'], ['useTransferType', 'item']])->orderBy('id', 'desc')->get();
+        // dd($transfer_on);
         $transfer_invoice = array();
         foreach($transfer as $transferList){
             $transfer_invoice[] = $transferList->transferInvoice;
         }
-        // dd($transeection);
-        return view('avatar.avatar_order_list', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'transfer_invoice'));
+        $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
+        $address = DB::table('addresses')->where('USER_EMAIL', Auth::user()->email)->get();
+        $marketItem = Market_item::all();
+        if(count($address) != 0){
+            if($ranking != null){
+                return view('avatar.avatar_order_list', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address', 'transfer_invoice', 'transfer_on', 'marketItem', 'ranking'));
+            }else{
+                return view('avatar.avatar_order_list', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address', 'transfer_invoice', 'transfer_on', 'marketItem'));
+            }
+        }else{
+            if($ranking != null){
+                return view('avatar.avatar_order_list', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'transfer_invoice', 'transfer_on', 'marketItem', 'ranking'));
+            }else{
+                return view('avatar.avatar_order_list', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'transfer_invoice', 'transfer_on', 'marketItem'));
+            }
+        }
     }
 
     public function addAvatar(Request $request){

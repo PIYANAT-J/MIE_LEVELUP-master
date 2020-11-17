@@ -21,7 +21,11 @@
                             <div class="col-6">
                                 <label class="btn-point-avatar pt-2">
                                     <h1 class="fontPoint">พอยท์</h1>
-                                    <h2 class="fontPoint">0 <i class="icon-Icon_Point"></i></h2>
+                                    @if(isset($ranking))
+                                        <h2 class="fontPoint">{{number_format($ranking->amount, 2)}} <i class="icon-Icon_Point"></i></h2>
+                                    @else
+                                        <h2 class="fontPoint">0 <i class="icon-Icon_Point"></i></h2>
+                                    @endif
                                 </label>
                             </div>
                             <div class="col-6">
