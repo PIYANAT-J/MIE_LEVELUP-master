@@ -114,9 +114,9 @@
                 <div class="row mt-3" style="padding: 0 0 0 7px;">
                     <div class="col-6"><p style="color:#000;margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></div>
                     @if(isset($package))
-                        <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{number_format($package->packageBuy_amount, 2)}}</h4></div>
+                        <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿{{number_format($package->packageBuy_amount, 2)}}</h4></div>
                     @else
-                        <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿ {{number_format($transeection->transeection_amount, 2)}}</h4></div>
+                        <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿{{number_format($transeection->transeection_amount, 2)}}</h4></div>
                     @endif
                 </div>
 
