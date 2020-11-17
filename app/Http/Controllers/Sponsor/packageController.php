@@ -93,20 +93,25 @@ class packageController extends Controller
 
     // PackagePaymentBySponsor
     public function sponsoribanking($invoice = null){
-        // dd($invoice);
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-        $package = DB::table('my_package_buy')->where('packageBuy_invoice', decrypt($invoice))->first();
+        $package = DB::table('my_package_buy')->where([['packageBuy_invoice', decrypt($invoice)], ['USER_EMAIL', Auth::user()->email]])->first();
         $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
                             ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
                             ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
                             ->get();
         $transeection = DB::table('transeection_sponshopping')->where('transeection_invoice', decrypt($invoice))->first();
-        // dd($transeection);
         $qrpayment = QrPayment::Where('invoice', decrypt($invoice))->get()->first();
         $invoice =  DNS2D::getBarcodeHTML($qrpayment->rawQrCode, "QRCODE");
         $invoice = $qrpayment->rawQrCode;
-        
-        return view('profile.sponsor.spon_payment_ibanking_confirm', compact('sponsor', 'invoice', 'qrpayment', 'package', 'countCart', 'transeection'));
+
+        if($package == null){
+            return view('profile.sponsor.spon_payment_ibanking_confirm', compact('sponsor', 'invoice', 'qrpayment', 'countCart', 'transeection'));
+        }else{
+            if($package != null){
+                $allPackage = DB::table('packages')->where('package_id', $package->package_id)->first();
+                return view('profile.sponsor.spon_payment_ibanking_confirm', compact('sponsor', 'invoice', 'qrpayment', 'package', 'allPackage', 'countCart', 'transeection'));
+            }
+        }
     }
 
     public function packageibanking(Request $request){
@@ -214,19 +219,35 @@ class packageController extends Controller
     public function sponsorTransfer($invoice = null){
         $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
         $transfer = DB::table('transfer_payments')->where('transferInvoice', decrypt($invoice))->first();
-        $package = DB::table('my_package_buy')->where('packageBuy_invoice', decrypt($invoice))->first();
+        $package = DB::table('my_package_buy')->where([['my_package_buy.packageBuy_invoice', decrypt($invoice)], ['my_package_buy.USER_EMAIL', Auth::user()->email]])
+                        ->join('packages','packages.package_id','my_package_buy.package_id')
+                        ->select('my_package_buy.*', 'packages.package_game', 'packages.package_length')
+                        ->first();
         $transeection = DB::table('transeection_sponshopping')->where('transeection_invoice', decrypt($invoice))->first();
         $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
                             ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
                             ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
                             ->get();
-        // dd($package);
         if($package == null){
-            // dd("yes");
             return view('profile.sponsor.spon_transfer', compact('sponsor', 'transfer', 'countCart', 'transeection'));
         }else{
-            // dd($transfer);
-            return view('profile.sponsor.spon_transfer', compact('sponsor', 'transfer', 'countCart', 'package'));
+            if($package != null){
+                $transfer = DB::table('transfer_payments')->where('transferInvoice', decrypt($invoice))->first();
+                $allPackage = DB::table('packages')->where('package_id', $package->package_id)->first();
+                return view('profile.sponsor.spon_transfer', compact('sponsor', 'allPackage', 'package', 'transfer', 'countCart', 'transeection'));
+            }
+            // }else{
+            //     // dd(decrypt($idT));
+            //     if(decrypt($idT) != "null"){
+            //         // $transeection = DB::table('transeection_sponshopping')->where([['transeection_id', decrypt($idT)]])->first();
+            //         $transfer = DB::table('transfer_payments')->where('transferInvoice', $transeection->transeection_invoice)->first();
+            //         return view('profile.sponsor.spon_transfer', compact('sponsor', 'allPackage', 'package', 'address', 'countCart', 'transeection', 'transfer'));
+            //     }
+                    
+            //     // dd($transeection);
+            //     return view('profile.sponsor.spon_transfer', compact('sponsor', 'allPackage', 'package', 'address', 'countCart'));
+            // }
+            // return view('profile.sponsor.spon_transfer', compact('sponsor', 'transfer', 'countCart', 'transeection', 'package'));
         }
     }
 

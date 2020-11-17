@@ -54,7 +54,7 @@
                                 <div class="col-3 text-right align-self-center" style="padding:0;">
                                         @if($gameList->GAME_DISCOUNT != null && $gameList->GAME_DISCOUNT != "0")
                                             <h4 style="margin:0;font-weight:800;">฿{{number_format($gameList->sponsor_cart_price, 2)}}</h4>
-                                            <p class="mr-2"><a style="color: #b2b2b2;text-decoration:line-through;">฿680 </a> (-{{$gameList->GAME_DISCOUNT}}%)</p>
+                                            <p class="mr-2"><a style="color: #b2b2b2;text-decoration:line-through;">฿{{number_format($gameList->sponsor_cart_price, 2)}} </a> (-{{$gameList->GAME_DISCOUNT}}%)</p>
                                         @else
                                             <h4 style="margin:0;font-weight:800;">฿{{number_format($gameList->sponsor_cart_price, 2)}}</h4>
                                         @endif
@@ -197,7 +197,7 @@
             $("input[name='accept_01']:checked").each(function() {
                 total += parseFloat($(this).attr('data-price')) || 0;
             });
-            $('#total').html("฿"+commaSeparateNumber(total));
+            $('#total').html("฿"+total.toFixed(2));
             document.querySelector('input#sumTotal').value = total;
             console.log(total);
             document.querySelector('input#data-checked').value = favorite.join(", ");
@@ -243,7 +243,7 @@
         while (/(\d+)(\d{3})/.test(val.toString())){
             val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
         }
-        return val.toFixed(2);
+        return val;
     }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>

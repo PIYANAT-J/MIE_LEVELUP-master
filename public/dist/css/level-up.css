@@ -13238,3 +13238,11 @@ input[type="file"] {
     position: relative;
     margin-bottom: 5px;
 }
+
+.font-payment-avatar5 {
+    color: #fff;
+    line-height: 1.5;
+    vertical-align: text-top;
+    cursor: pointer;
+    width: 70%;
+}
