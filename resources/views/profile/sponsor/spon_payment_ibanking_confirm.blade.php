@@ -23,6 +23,59 @@
                         <h1 style="margin:0;font-weight:800;">ยืนยันการชำระเงิน</h1>
                     </div>
                 </div>
+                <div class="row  mt-2" style="border-bottom: 1px solid #f2f2f2;">
+                    @if(isset($allPackage))
+                        <div class="col-8" style="padding:0;">
+                            <label class="plabelimg2 pt-1 pl-3">
+                                <img src="{{asset('icon/money2.svg') }}" />
+                            </label> 
+
+                            <label style="padding-left:80px;">
+                                <p style="font-weight: 700;margin:0;">{{$allPackage->package_name}}</p>
+                                <label class="p" style="color: #23c197;margin:0;">{{$allPackage->package_season}} เดือน</label>
+                                <label class="p" style="color: #23c197;margin:0;">จำนวน {{$allPackage->package_game}} เกม </label>
+                            </label>
+                        </div>
+                        <div class="col-4 text-right">
+                            <h4 style="font-weight:800;margin:0;">฿{{number_format($allPackage->package_amount, 2)}}</h4>
+                            <!-- <p style="margin:0;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-37%)</p> -->
+                        </div>
+                    @else
+                        <?php 
+                            $start = explode(', ', $transeection->transeection_gameSpon);
+                            $gameID = array();
+                            for($i=0;$i<count($start);$i++){
+                                $gameID[] = $start[$i];
+                            }
+                        ?>
+                        @foreach($countCart as $key=>$gameList)
+                            @if(in_array($gameList->sponsor_cart_game, $gameID))
+                                <div class="col-12 d-flex justify-content-start" style="padding:0;">
+                                    <label class="mr-2 pl-4">
+                                        <img class="labelimg2" src="{{ asset('section/File_game/Profile_game/'.$gameList->GAME_IMG_PROFILE) }}" />
+                                    </label>
+                                    <label class="pFont2 pl-2">
+                                        <p style="font-weight: 700;margin:0;">{{$gameList->GAME_NAME}}</p>
+                                        <p style="color: #a8a8a8;margin:0;">{{$gameList->RATED_B_L}} • Online</p>
+                                        <h5 style="color: #23c197;margin:0;">
+                                            ช่วงเวลา {{$gameList->sponsor_cart_start}} - {{$gameList->sponsor_cart_deadline}}<br>
+                                            จำนวนรอบโฆษณา {{$gameList->sponsor_cart_number}} รอบ
+                                        </h5>
+                                    </label>
+                                    <div class="col-8 d-flex align-items-center justify-content-end">
+                                        <span style="display:block;text-align:right;">
+                                            <h4 style="font-weight:800;margin:0;">฿{{number_format($gameList->sponsor_cart_price, 2)}}</h4>
+                                            @if($gameList->GAME_DISCOUNT != null && $gameList->GAME_DISCOUNT != "0")
+                                                <label style="margin:0;"><p style="color: #b2b2b2;text-decoration:line-through;font-weight:800;margin:0;">฿{{number_format($gameList->sponsor_cart_price, 2)}} </p></label>
+                                                <label><p style="margin:0;font-weight:800;"> (-{{$gameList->GAME_DISCOUNT}}%) </p></label>
+                                            @endif
+                                        </span>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    @endif
+                </div>
                 <div class="row">
                     <div class="col-12 mt-1">
                         <div class="row py-2" style="border-bottom:1px solid #edeef3">
@@ -31,11 +84,11 @@
                             </div>
                             @if(isset($package))
                                 <div class="col-6 text-right">
-                                    <h4 style="margin:0;font-weight:800;">฿ {{number_format($package->packageBuy_amount, 2)}}</h4>
+                                    <h4 style="margin:0;font-weight:800;">฿{{number_format($package->packageBuy_amount, 2)}}</h4>
                                 </div>
                             @else
                                 <div class="col-6 text-right">
-                                    <h4 style="margin:0;font-weight:800;">฿ {{number_format($transeection->transeection_amount, 2)}}</h4>
+                                    <h4 style="margin:0;font-weight:800;">฿{{number_format($transeection->transeection_amount, 2)}}</h4>
                                 </div>
                             @endif
                         </div>
@@ -45,7 +98,7 @@
                                 <p style="margin:0;font-weight:800;">ช่องทางการชำระเงิน</p>
                             </div>
                             <div class="col-6 text-right font-payment3">
-                                <p style="margin:0;font-weight:800;">ibanking</p>
+                                <p style="margin:0;font-weight:800;">ibanking {{Auth::user()->name}} {{Auth::user()->surname}}</p>
                             </div>
                             
                         </div>
@@ -57,15 +110,13 @@
                                     <div class="col-lg-2">
                                         <form action="{{route('cancalIbanking')}}" method="post">
                                             @csrf
-                                            <button class="btn-submit">
-                                                <p style="margin:0;">ยกเลิก</p>
-                                            </button>
-                                                <input type="hidden" name="invoice" value="{{$qrpayment->invoice}}">
-                                                @if(isset($package))
-                                                    <input type="hidden" name="package_id" value="{{$package->package_id}}">
-                                                @else
-                                                    <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
-                                                @endif
+                                            <button class="btn-submit"><p style="margin:0;">ยกเลิก</p></button>
+                                            <input type="hidden" name="invoice" value="{{$qrpayment->invoice}}">
+                                            @if(isset($package))
+                                                <input type="hidden" name="package_id" value="{{$package->package_id}}">
+                                            @else
+                                                <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
+                                            @endif
                                             <!-- <label class="btn-submit-payment">ยกเลิก</label> -->
                                         </form>
                                     </div>
