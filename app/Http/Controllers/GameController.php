@@ -16,188 +16,151 @@ use App\Game;
 class GameController extends Controller
 {
     public function indexGame(){
+        $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+        $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
+        $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
+                        ->groupBy('GAME_ID')
+                        ->get();
+        $Com_count = DB::table('comments')->select(DB::raw('count(*) as com_count, GAME_ID'))
+                        ->groupBy('GAME_ID')
+                        ->get();
+        $CommentAll = DB::table('comments')->get();
+        $GameList = DB::table('comments')->where('comments.RATING', '>=', '4')
+                        ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
+                        ->select('games.*', 'comments.RATING')
+                        ->get();
+        $game_id = array();
+        $game_RATING = array();
+        $Gamehot = [];
+        foreach($GameList as $game){
+            $game_id[] = $game->GAME_ID;
+            $game_list = array_unique($game_id);
+        }
+        for($i=0;$i < count($game_list); $i++){
+            $Gamehot[$i] = DB::table('comments')->where('comments.GAME_ID', $game_list[$i])
+                            ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
+                            ->select('games.*', 'comments.RATING')
+                            ->first();
+        }
         if(isset(Auth::user()->id)){
+            $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
             if(Auth::user()->users_type == '1'){
                 $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->first();
-                $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
-                $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
-                $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
-                $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
-                                ->groupBy('GAME_ID')
-                                ->get();
-                $Com_count = DB::table('comments')->select(DB::raw('count(*) as com_count, GAME_ID'))
-                                ->groupBy('GAME_ID')
-                                ->get();
-                $CommentAll = DB::table('comments')->get();
-                $GameList = DB::table('comments')->where('comments.RATING', '>=', '4')
-                                ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
-                                ->select('games.*', 'comments.RATING')
-                                ->get();
-
-                $game_id = array();
-                $game_RATING = array();
-                $Gamehot = [];
-                foreach($GameList as $game){
-                    $game_id[] = $game->GAME_ID;
-                    $game_list = array_unique($game_id);
-                }
-                for($i=0;$i < count($game_list); $i++){
-                    $Gamehot[$i] = DB::table('comments')->where('comments.GAME_ID', $game_list[$i])
-                                    ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
-                                    ->select('games.*', 'comments.RATING')
-                                    ->first();
-                }
                 return view('welcome', compact('Games', 'Follows', 'GamesNew', 'CDownload', 'Com_count', 'CommentAll', 'guest_user', 'Gamehot'));
             }elseif(Auth::user()->users_type == '2'){
                 $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->first();
-                $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
-                $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
-                $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
-                $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
-                                ->groupBy('GAME_ID')
-                                ->get();
-                $Com_count = DB::table('comments')->select(DB::raw('count(*) as com_count, GAME_ID'))
-                                ->groupBy('GAME_ID')
-                                ->get();
-                $CommentAll = DB::table('comments')->get();
-                $GameList = DB::table('comments')->where('comments.RATING', '>=', '4')
-                                ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
-                                ->select('games.*', 'comments.RATING')
-                                ->get();
-
-                $game_id = array();
-                $game_RATING = array();
-                $Gamehot = [];
-                foreach($GameList as $game){
-                    $game_id[] = $game->GAME_ID;
-                    $game_list = array_unique($game_id);
-                }
-                for($i=0;$i < count($game_list); $i++){
-                    $Gamehot[$i] = DB::table('comments')->where('comments.GAME_ID', $game_list[$i])
-                                    ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
-                                    ->select('games.*', 'comments.RATING')
-                                    ->first();
-                }
                 return view('welcome', compact('Games', 'Follows', 'GamesNew', 'CDownload', 'Com_count', 'CommentAll', 'developer', 'Gamehot'));
             }elseif(Auth::user()->users_type == '3'){
                 $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->first();
-                $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
-                $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
-                $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
-                $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
-                                ->groupBy('GAME_ID')
-                                ->get();
-                $Com_count = DB::table('comments')->select(DB::raw('count(*) as com_count, GAME_ID'))
-                                ->groupBy('GAME_ID')
-                                ->get();
-                $CommentAll = DB::table('comments')->get();
-                $GameList = DB::table('comments')->where('comments.RATING', '>=', '4')
-                                ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
-                                ->select('games.*', 'comments.RATING')
-                                ->get();
-
-                $game_id = array();
-                $game_RATING = array();
-                $Gamehot = [];
-                foreach($GameList as $game){
-                    $game_id[] = $game->GAME_ID;
-                    $game_list = array_unique($game_id);
-                }
-                for($i=0;$i < count($game_list); $i++){
-                    $Gamehot[$i] = DB::table('comments')->where('comments.GAME_ID', $game_list[$i])
-                                    ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
-                                    ->select('games.*', 'comments.RATING')
-                                    ->first();
-                }
                 return view('welcome', compact('Games', 'Follows', 'GamesNew', 'CDownload', 'Com_count', 'CommentAll', 'Gamehot', 'sponsor'));
             }else{
-                $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
-                $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
-                $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
-                $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
-                                ->groupBy('GAME_ID')
-                                ->get();
-                $Com_count = DB::table('comments')->select(DB::raw('count(*) as com_count, GAME_ID'))
-                                ->groupBy('GAME_ID')
-                                ->get();
-                $CommentAll = DB::table('comments')->get();
-                $GameList = DB::table('comments')->where('comments.RATING', '>=', '4')
-                                ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
-                                ->select('games.*', 'comments.RATING')
-                                ->get();
-
-                $game_id = array();
-                $game_RATING = array();
-                $Gamehot = [];
-                foreach($GameList as $game){
-                    $game_id[] = $game->GAME_ID;
-                    $game_list = array_unique($game_id);
-                }
-                for($i=0;$i < count($game_list); $i++){
-                    $Gamehot[$i] = DB::table('comments')->where('comments.GAME_ID', $game_list[$i])
-                                    ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
-                                    ->select('games.*', 'comments.RATING')
-                                    ->first();
-                }
                 return view('welcome', compact('Games', 'Follows', 'GamesNew', 'CDownload', 'Com_count', 'CommentAll', 'Gamehot'));
             }
-
         }else{
-            $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
-            $GamesNew = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
-            $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
-                            ->groupBy('GAME_ID')
-                            ->get();
-            $Com_count = DB::table('comments')->select(DB::raw('count(*) as com_count, GAME_ID'))
-                            ->groupBy('GAME_ID')
-                            ->get();
-            $CommentAll = DB::table('comments')->get();
-            $GameList = DB::table('comments')->where('comments.RATING', '>=', '4')
-                                ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
-                                ->select('games.*', 'comments.RATING')
-                                ->get();
-
-            $game_id = array();
-            $game_RATING = array();
-            $Gamehot = [];
-            foreach($GameList as $game){
-                $game_id[] = $game->GAME_ID;
-                $game_list = array_unique($game_id);
-            }
-            for($i=0;$i < count($game_list); $i++){
-                $Gamehot[$i] = DB::table('comments')->where('comments.GAME_ID', $game_list[$i])
-                                ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
-                                ->select('games.*', 'comments.RATING')
-                                ->first();
-            }
             return view('welcome', compact('Games', 'GamesNew', 'CDownload', 'Com_count', 'CommentAll', 'Gamehot'));
         }
-        
     }
 
     public function categoryGame(Request $request){
         if(isset(Auth::user()->id)){
-            // dd($request->gameType);
-            if(isset($request->gameType)){
+            if(isset($request->gameType) || isset($request->RATED_ESRB) || isset($request->RATED_B_L)){
+                $gameTypefilter = $request->gameType;
+                $gameEsrbfilter = $request->RATED_ESRB;
+                $gameBLfilter = $request->RATED_B_L;
                 $game = explode(',', $request->gameType);
-                $Games = DB::table('games')
+                $GamesAll = DB::table('games')
                                 ->where('GAME_STATUS', 'อนุมัติ')
-                                ->whereIn('GAME_TYPE', $game)->get();
+                                ->where(function($query) use ($game, $gameEsrbfilter, $gameBLfilter){
+                                    if($game[0] != ""){
+                                        $query->whereIn('GAME_TYPE', $game);
+                                        if($gameEsrbfilter != null){
+                                            $query->where('RATED_ESRB', $gameEsrbfilter);
+                                            if($gameBLfilter != null){
+                                                $query->where('RATED_B_L', $gameBLfilter);
+                                            }
+                                        }
+                                    }else{
+                                        if($gameEsrbfilter != null){
+                                            $query->where('RATED_ESRB', $gameEsrbfilter);
+                                            if($gameBLfilter != null){
+                                                $query->where('RATED_B_L', $gameBLfilter);
+                                            }
+                                        }else{
+                                            $query->where('RATED_B_L', $gameBLfilter);
+                                        }
+                                    }
+                                })->get();
                 $Follows = DB::table('follows')->where('follows.USER_ID', '=', Auth::user()->id)
                                 ->join('games', 'games.GAME_ID', 'follows.GAME_ID')
-                                ->whereIn('games.GAME_TYPE', $game)
-                                ->get();
+                                ->where(function($query) use ($game, $gameEsrbfilter, $gameBLfilter){
+                                    if($game[0] != ""){
+                                        $query->whereIn('GAME_TYPE', $game);
+                                        if($gameEsrbfilter != null){
+                                            $query->where('RATED_ESRB', $gameEsrbfilter);
+                                            if($gameBLfilter != null){
+                                                $query->where('RATED_B_L', $gameBLfilter);
+                                            }
+                                        }
+                                    }else{
+                                        if($gameEsrbfilter != null){
+                                            $query->where('RATED_ESRB', $gameEsrbfilter);
+                                            if($gameBLfilter != null){
+                                                $query->where('RATED_B_L', $gameBLfilter);
+                                            }
+                                        }else{
+                                            $query->where('RATED_B_L', $gameBLfilter);
+                                        }
+                                    }
+                                })->get();
                 $New = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')
-                                ->whereIn('GAME_TYPE', $game)
+                                ->where(function($query) use ($game, $gameEsrbfilter, $gameBLfilter){
+                                    if($game[0] != ""){
+                                        $query->whereIn('GAME_TYPE', $game);
+                                        if($gameEsrbfilter != null){
+                                            $query->where('RATED_ESRB', $gameEsrbfilter);
+                                            if($gameBLfilter != null){
+                                                $query->where('RATED_B_L', $gameBLfilter);
+                                            }
+                                        }
+                                    }else{
+                                        if($gameEsrbfilter != null){
+                                            $query->where('RATED_ESRB', $gameEsrbfilter);
+                                            if($gameBLfilter != null){
+                                                $query->where('RATED_B_L', $gameBLfilter);
+                                            }
+                                        }else{
+                                            $query->where('RATED_B_L', $gameBLfilter);
+                                        }
+                                    }
+                                })
                                 ->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
                 $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, downloads.GAME_ID'))
                                 ->join('games', 'games.GAME_ID', 'downloads.GAME_ID')
-                                ->whereIn('games.GAME_TYPE', $game)
-                                ->groupBy('downloads.GAME_ID')
-                                ->get();
+                                ->where(function($query) use ($game, $gameEsrbfilter, $gameBLfilter){
+                                    if($game[0] != ""){
+                                        $query->whereIn('GAME_TYPE', $game);
+                                        if($gameEsrbfilter != null){
+                                            $query->where('RATED_ESRB', $gameEsrbfilter);
+                                            if($gameBLfilter != null){
+                                                $query->where('RATED_B_L', $gameBLfilter);
+                                            }
+                                        }
+                                    }else{
+                                        if($gameEsrbfilter != null){
+                                            $query->where('RATED_ESRB', $gameEsrbfilter);
+                                            if($gameBLfilter != null){
+                                                $query->where('RATED_B_L', $gameBLfilter);
+                                            }
+                                        }else{
+                                            $query->where('RATED_B_L', $gameBLfilter);
+                                        }
+                                    }
+                                })
+                                ->groupBy('downloads.GAME_ID')->get();
                 // dd($CDownload);
                 $GameHit = array();
                 $GamesNew = array();
+                $Games = [];
                 foreach($CDownload as $donwload){
                     if($donwload->downloads_count > 1){
                         $GameHit[] = $donwload->GAME_ID;
@@ -206,8 +169,37 @@ class GameController extends Controller
                 foreach($New as $gamesNew){
                     $GamesNew[] = $gamesNew->GAME_ID;
                 }
+                foreach($GamesAll as $GamesRating){
+                    $i = 0;
+                    $CommentAll = DB::table('comments')->where('GAME_ID', $GamesRating->GAME_ID)->get();
+                    // dd($CommentAll);
+                    if($CommentAll->count() == 0){
+                        $count = 0;
+                        array_push($Games, ([
+                            'GAME_ID' => $GamesRating->GAME_ID,
+                            'GAME_NAME' => $GamesRating->GAME_NAME,
+                            'GAME_IMG_PROFILE' => $GamesRating->GAME_IMG_PROFILE,
+                            'RATED_B_L' => $GamesRating->RATED_B_L,
+                            'RATED_ESRB' => $GamesRating->RATED_ESRB,
+                            'RATING' => $count
+                        ]));
+                    }else{
+                        foreach($CommentAll as $rating){
+                            $i = $i+$rating->RATING;
+                        }
+                        $count = $i/$CommentAll->count();
+                        array_push($Games, ([
+                            'GAME_ID' => $GamesRating->GAME_ID,
+                            'GAME_NAME' => $GamesRating->GAME_NAME,
+                            'GAME_IMG_PROFILE' => $GamesRating->GAME_IMG_PROFILE,
+                            'RATED_B_L' => $GamesRating->RATED_B_L,
+                            'RATED_ESRB' => $GamesRating->RATED_ESRB,
+                            'RATING' => $count
+                        ]));
+                    }
+                }
             }else{
-                $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+                $GamesAll = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
                 $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
                 $New = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
                 $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
@@ -215,6 +207,7 @@ class GameController extends Controller
                                 ->get();
                 $GameHit = array();
                 $GamesNew = array();
+                $Games = [];
                 foreach($CDownload as $donwload){
                     if($donwload->downloads_count > 1){
                         $GameHit[] = $donwload->GAME_ID;
@@ -223,30 +216,62 @@ class GameController extends Controller
                 foreach($New as $gamesNew){
                     $GamesNew[] = $gamesNew->GAME_ID;
                 }
+                foreach($GamesAll as $GamesRating){
+                    $i = 0;
+                    $CommentAll = DB::table('comments')->where('GAME_ID', $GamesRating->GAME_ID)->get();
+                    // dd($CommentAll);
+                    if($CommentAll->count() == 0){
+                        $count = 0;
+                        array_push($Games, ([
+                            'GAME_ID' => $GamesRating->GAME_ID,
+                            'GAME_NAME' => $GamesRating->GAME_NAME,
+                            'GAME_IMG_PROFILE' => $GamesRating->GAME_IMG_PROFILE,
+                            'RATED_B_L' => $GamesRating->RATED_B_L,
+                            'RATED_ESRB' => $GamesRating->RATED_ESRB,
+                            'RATING' => $count
+                        ]));
+                    }else{
+                        foreach($CommentAll as $rating){
+                            $i = $i+$rating->RATING;
+                        }
+                        $count = $i/$CommentAll->count();
+                        array_push($Games, ([
+                            'GAME_ID' => $GamesRating->GAME_ID,
+                            'GAME_NAME' => $GamesRating->GAME_NAME,
+                            'GAME_IMG_PROFILE' => $GamesRating->GAME_IMG_PROFILE,
+                            'RATED_B_L' => $GamesRating->RATED_B_L,
+                            'RATED_ESRB' => $GamesRating->RATED_ESRB,
+                            'RATING' => $count
+                        ]));
+                    }
+                }
             }
             if(Auth::user()->users_type == '1'){
                 $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->first();
-                if(isset($request->gameType)){
-                    return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'guest_user'));
+                if(isset($request->gameType) || isset($request->RATED_ESRB) || isset($request->RATED_B_L)){
+                    return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'guest_user', 'gameTypefilter', 'gameEsrbfilter', 'gameBLfilter'));
                 }
                 return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'guest_user'));
             }elseif(Auth::user()->users_type == '2'){
                 $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->first();
-                if(isset($request->gameType)){
-                    return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'developer'));
+                if(isset($request->gameType) || isset($request->RATED_ESRB) || isset($request->RATED_B_L)){
+                    return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'developer', 'gameTypefilter', 'gameEsrbfilter', 'gameBLfilter'));
                 }
                 return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'developer'));
             }elseif(Auth::user()->users_type == '3'){
                 $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->first();
-                if(isset($request->gameType)){
-                    return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'sponsor'));
+                if(isset($request->gameType) || isset($request->RATED_ESRB) || isset($request->RATED_B_L)){
+                    return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'sponsor', 'gameTypefilter', 'gameEsrbfilter', 'gameBLfilter'));
                 }
                 return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'sponsor'));
             }else{
+                if(isset($request->gameType) || isset($request->RATED_ESRB) || isset($request->RATED_B_L)){
+                    return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit', 'gameTypefilter', 'gameEsrbfilter', 'gameBLfilter'));
+                }
                 return view('game.game_category', compact('Games', 'Follows', 'GamesNew', 'GameHit'));
             }
         }else{
-            $Games = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
+            $GamesAll = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->get();
             $New = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
             $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
                             ->groupBy('GAME_ID')
@@ -254,6 +279,7 @@ class GameController extends Controller
 
             $GameHit = array();
             $GamesNew = array();
+            $Games = [];
             foreach($CDownload as $donwload){
                 if($donwload->downloads_count > 1){
                     $GameHit[] = $donwload->GAME_ID;
@@ -262,23 +288,115 @@ class GameController extends Controller
             foreach($New as $gamesNew){
                 $GamesNew[] = $gamesNew->GAME_ID;
             }
-            // dd($request);
-            if(isset($request->gameType)){
+            // dd($Games);
+            foreach($GamesAll as $GamesRating){
+                $i = 0;
+                $CommentAll = DB::table('comments')->where('GAME_ID', $GamesRating->GAME_ID)->get();
+                // dd($CommentAll);
+                if($CommentAll->count() == 0){
+                    $count = 0;
+                    array_push($Games, ([
+                        'GAME_ID' => $GamesRating->GAME_ID,
+                        'GAME_NAME' => $GamesRating->GAME_NAME,
+                        'GAME_IMG_PROFILE' => $GamesRating->GAME_IMG_PROFILE,
+                        'RATED_B_L' => $GamesRating->RATED_B_L,
+                        'RATED_ESRB' => $GamesRating->RATED_ESRB,
+                        'RATING' => $count
+                    ]));
+                }else{
+                    foreach($CommentAll as $rating){
+                        $i = $i+$rating->RATING;
+                    }
+                    $count = $i/$CommentAll->count();
+                    array_push($Games, ([
+                        'GAME_ID' => $GamesRating->GAME_ID,
+                        'GAME_NAME' => $GamesRating->GAME_NAME,
+                        'GAME_IMG_PROFILE' => $GamesRating->GAME_IMG_PROFILE,
+                        'RATED_B_L' => $GamesRating->RATED_B_L,
+                        'RATED_ESRB' => $GamesRating->RATED_ESRB,
+                        'RATING' => $count
+                    ]));
+                }
+            }
+            if(isset($request->gameType) || isset($request->RATED_ESRB) || isset($request->RATED_B_L)){
+                // dd($request->RATED_ESRB);
+                $gameTypefilter = $request->gameType;
+                $gameEsrbfilter = $request->RATED_ESRB;
+                $gameBLfilter = $request->RATED_B_L;
+                // dd($gameBLfilter);
                 $game = explode(',', $request->gameType);
-                $Games = DB::table('games')
+                $GamesAll = DB::table('games')
                                 ->where('GAME_STATUS', 'อนุมัติ')
-                                ->whereIn('GAME_TYPE', $game)->get();
+                                ->where(function($query) use ($game, $gameEsrbfilter, $gameBLfilter){
+                                    if($game[0] != ""){
+                                        $query->whereIn('GAME_TYPE', $game);
+                                        if($gameEsrbfilter != null){
+                                            $query->where('RATED_ESRB', $gameEsrbfilter);
+                                            if($gameBLfilter != null){
+                                                $query->where('RATED_B_L', $gameBLfilter);
+                                            }
+                                        }
+                                    }else{
+                                        if($gameEsrbfilter != null){
+                                            $query->where('RATED_ESRB', $gameEsrbfilter);
+                                            if($gameBLfilter != null){
+                                                $query->where('RATED_B_L', $gameBLfilter);
+                                            }
+                                        }else{
+                                            $query->where('RATED_B_L', $gameBLfilter);
+                                        }
+                                    }
+                                })->get();
                 $New = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')
-                                ->whereIn('GAME_TYPE', $game)
+                                ->where(function($query) use ($game, $gameEsrbfilter, $gameBLfilter){
+                                    if($game[0] != ""){
+                                        $query->whereIn('GAME_TYPE', $game);
+                                        if($gameEsrbfilter != null){
+                                            $query->where('RATED_ESRB', $gameEsrbfilter);
+                                            if($gameBLfilter != null){
+                                                $query->where('RATED_B_L', $gameBLfilter);
+                                            }
+                                        }
+                                    }else{
+                                        if($gameEsrbfilter != null){
+                                            $query->where('RATED_ESRB', $gameEsrbfilter);
+                                            if($gameBLfilter != null){
+                                                $query->where('RATED_B_L', $gameBLfilter);
+                                            }
+                                        }else{
+                                            $query->where('RATED_B_L', $gameBLfilter);
+                                        }
+                                    }
+                                })
                                 ->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
                 $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, downloads.GAME_ID'))
                                 ->join('games', 'games.GAME_ID', 'downloads.GAME_ID')
-                                ->whereIn('games.GAME_TYPE', $game)
+                                ->where(function($query) use ($game, $gameEsrbfilter, $gameBLfilter){
+                                    if($game[0] != ""){
+                                        $query->whereIn('GAME_TYPE', $game);
+                                        if($gameEsrbfilter != null){
+                                            $query->where('RATED_ESRB', $gameEsrbfilter);
+                                            if($gameBLfilter != null){
+                                                $query->where('RATED_B_L', $gameBLfilter);
+                                            }
+                                        }
+                                    }else{
+                                        if($gameEsrbfilter != null){
+                                            $query->where('RATED_ESRB', $gameEsrbfilter);
+                                            if($gameBLfilter != null){
+                                                $query->where('RATED_B_L', $gameBLfilter);
+                                            }
+                                        }else{
+                                            $query->where('RATED_B_L', $gameBLfilter);
+                                        }
+                                    }
+                                })
                                 ->groupBy('downloads.GAME_ID')
                                 ->get();
                 // dd($CDownload);
                 $GameHit = array();
                 $GamesNew = array();
+                $Games = [];
                 foreach($CDownload as $donwload){
                     if($donwload->downloads_count > 1){
                         $GameHit[] = $donwload->GAME_ID;
@@ -287,6 +405,36 @@ class GameController extends Controller
                 foreach($New as $gamesNew){
                     $GamesNew[] = $gamesNew->GAME_ID;
                 }
+                foreach($GamesAll as $GamesRating){
+                    $i = 0;
+                    $CommentAll = DB::table('comments')->where('GAME_ID', $GamesRating->GAME_ID)->get();
+                    // dd($CommentAll);
+                    if($CommentAll->count() == 0){
+                        $count = 0;
+                        array_push($Games, ([
+                            'GAME_ID' => $GamesRating->GAME_ID,
+                            'GAME_NAME' => $GamesRating->GAME_NAME,
+                            'GAME_IMG_PROFILE' => $GamesRating->GAME_IMG_PROFILE,
+                            'RATED_B_L' => $GamesRating->RATED_B_L,
+                            'RATED_ESRB' => $GamesRating->RATED_ESRB,
+                            'RATING' => $count
+                        ]));
+                    }else{
+                        foreach($CommentAll as $rating){
+                            $i = $i+$rating->RATING;
+                        }
+                        $count = $i/$CommentAll->count();
+                        array_push($Games, ([
+                            'GAME_ID' => $GamesRating->GAME_ID,
+                            'GAME_NAME' => $GamesRating->GAME_NAME,
+                            'GAME_IMG_PROFILE' => $GamesRating->GAME_IMG_PROFILE,
+                            'RATED_B_L' => $GamesRating->RATED_B_L,
+                            'RATED_ESRB' => $GamesRating->RATED_ESRB,
+                            'RATING' => $count
+                        ]));
+                    }
+                }
+                return view('game.game_category', compact('Games', 'GamesNew', 'GameHit', 'gameTypefilter', 'gameEsrbfilter', 'gameBLfilter'));
             }
             return view('game.game_category', compact('Games', 'GamesNew', 'GameHit'));
         }
@@ -294,53 +442,29 @@ class GameController extends Controller
 
     public function gameDetail($gameId){
         if(isset(Auth::user()->id)){
+            $Detail = DB::table('games')->where('GAME_ID', '=', decrypt($gameId))
+                        ->join('users', 'users.id', '=', 'games.USER_ID')
+                        ->select('games.*', 'users.name','surname')
+                        ->get();
+            $FollowDetail = DB::table('follows')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
+            $Download = DB::table('downloads')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
+            $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', decrypt($gameId))->get();
+            $Comment = DB::table('comments')->where([['comments.GAME_ID', '=', decrypt($gameId)],['comments.USER_ID', '=', Auth::user()->id]])
+                        ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'comments.USER_EMAIL')
+                        ->select('comments.*', 'guest_users.GUEST_USERS_IMG')
+                        ->first();
+            $CommentAll = DB::table('comments')->where('comments.GAME_ID', '=', decrypt($gameId))
+                        ->join('users', 'users.id', '=', 'comments.USER_ID')
+                        ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'users.email')
+                        ->select('comments.*', 'guest_users.GUEST_USERS_IMG', 'users.name','surname')
+                        ->get();
             if(Auth::user()->users_type == 1){
-                $Detail = DB::table('games')->where('GAME_ID', '=', decrypt($gameId))
-                            ->join('users', 'users.id', '=', 'games.USER_ID')
-                            ->select('games.*', 'users.name','surname')
-                            ->get();
-                $FollowDetail = DB::table('follows')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
-                $Download = DB::table('downloads')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
-                $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', decrypt($gameId))->get();
-                $Comment = DB::table('comments')->where([['comments.GAME_ID', '=', decrypt($gameId)],['comments.USER_ID', '=', Auth::user()->id]])
-                            ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'comments.USER_EMAIL')
-                            ->select('comments.*', 'guest_users.GUEST_USERS_IMG')
-                            ->first();
-                $CommentAll = DB::table('comments')->where('comments.GAME_ID', '=', decrypt($gameId))
-                            ->join('users', 'users.id', '=', 'comments.USER_ID')
-                            ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'users.email')
-                            ->select('comments.*', 'guest_users.GUEST_USERS_IMG', 'users.name','surname')
-                            ->get();
                 $guest_user = DB::table('guest_users')->where('USER_EMAIL', Auth::user()->email)->get();
                 return view('game.game_detail', compact('Detail', 'FollowDetail', 'Download', 'DownloadAll', 'Comment', 'CommentAll', 'guest_user'));
             }elseif(Auth::user()->users_type == 2){
-                $Detail = DB::table('games')->where('GAME_ID', '=', decrypt($gameId))
-                            ->join('users', 'users.id', '=', 'games.USER_ID')
-                            ->select('games.*', 'users.name','surname')
-                            ->get();
-                $FollowDetail = DB::table('follows')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
-                $Download = DB::table('downloads')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
-                $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', decrypt($gameId))->get();
-                $CommentAll = DB::table('comments')->where('comments.GAME_ID', '=', decrypt($gameId))
-                            ->join('users', 'users.id', '=', 'comments.USER_ID')
-                            ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'users.email')
-                            ->select('comments.*', 'guest_users.GUEST_USERS_IMG', 'users.name','surname')
-                            ->get();
                 $developer = DB::table('developers')->where('USER_EMAIL', Auth::user()->email)->get();
                 return view('game.game_detail', compact('Detail', 'FollowDetail', 'Download', 'DownloadAll', 'CommentAll', 'developer'));
             }elseif(Auth::user()->users_type == 3){
-                $Detail = DB::table('games')->where('GAME_ID', '=', decrypt($gameId))
-                            ->join('users', 'users.id', '=', 'games.USER_ID')
-                            ->select('games.*', 'users.name','surname')
-                            ->get();
-                $FollowDetail = DB::table('follows')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
-                $Download = DB::table('downloads')->where([['GAME_ID', '=', decrypt($gameId)],['USER_ID', '=', Auth::user()->id]])->first();
-                $DownloadAll = DB::table('downloads')->where('GAME_ID', '=', decrypt($gameId))->get();
-                $CommentAll = DB::table('comments')->where('comments.GAME_ID', '=', decrypt($gameId))
-                            ->join('users', 'users.id', '=', 'comments.USER_ID')
-                            ->join('guest_users', 'guest_users.USER_EMAIL', '=', 'users.email')
-                            ->select('comments.*', 'guest_users.GUEST_USERS_IMG', 'users.name','surname')
-                            ->get();
                 $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->first();
                 return view('game.game_detail', compact('Detail', 'FollowDetail', 'Download', 'DownloadAll', 'CommentAll', 'sponsor'));
             }else{
