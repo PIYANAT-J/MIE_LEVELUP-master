@@ -25,6 +25,10 @@ class marketItemController extends Controller
                         ->join('market_items', 'market_items.item_id', 'shopping_cart.item_id')
                         ->get();
         // dd($shopping);
+        $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
+        if($ranking != null){
+            return view('avatar.shopItem.shopping_cart', compact('guest_user', 'userKyc', 'shopping', 'ranking'));
+        }
         return view('avatar.shopItem.shopping_cart', compact('guest_user', 'userKyc', 'shopping'));
     }
 
@@ -38,6 +42,10 @@ class marketItemController extends Controller
                         ->select('market_items.*', 'users.name', 'users.surname', 'guest_users.GUEST_USERS_IMG')
                         ->get();
         // dd($marketItem);
+        $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
+        if($ranking != null){
+            return view('avatar.shopItem.shop', compact('guest_user', 'userKyc', 'shopping', 'marketItem', 'ranking'));
+        }
         return view('avatar.shopItem.shop', compact('guest_user', 'userKyc', 'shopping', 'marketItem'));
     }
 
@@ -51,14 +59,27 @@ class marketItemController extends Controller
         $transeection = DB::table('transeection_buy_items')->where([['USER_EMAIL', Auth::user()->email], ['transeection_status', 'false']])->orderBy('transeection_id', 'desc')->first();
         // dd($transeection);
         // dd(json_decode($transeection->transeection_items));
+        $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
         if(count($address) != 0){
             if($transeection->transeection_invoice != null){
                 $transfer = DB::table('transfer_payments')->where('transferInvoice', $transeection->transeection_invoice)->first();
-                return view('avatar.payment.payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address', 'transfer'));
+                if($ranking != null){
+                    return view('avatar.payment.payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address', 'transfer', 'ranking'));
+                }else{
+                    return view('avatar.payment.payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address', 'transfer'));
+                }
+            }else{
+                if($ranking != null){
+                    return view('avatar.payment.payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address', 'ranking'));
+                }
+                return view('avatar.payment.payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address'));
             }
-            return view('avatar.payment.payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address'));
+        }else{
+            if($ranking != null){
+                return view('avatar.payment.payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'ranking'));
+            }
+            return view('avatar.payment.payment', compact('guest_user', 'userKyc', 'shopping', 'transeection'));
         }
-        return view('avatar.payment.payment', compact('guest_user', 'userKyc', 'shopping', 'transeection'));
     }
 
     public function add_ShoppingCart(Request $request){
@@ -126,6 +147,10 @@ class marketItemController extends Controller
         $qrpayment = QrPayment::Where('invoice', decrypt($invoice))->get()->first();
         $invoice =  DNS2D::getBarcodeHTML($qrpayment->rawQrCode, "QRCODE");
         $invoice = $qrpayment->rawQrCode;
+        $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
+        if($ranking != null){
+            return view('avatar.payment.payment_confirmation', compact('guest_user', 'userKyc', 'shopping', 'invoice', 'transeection', 'qrpayment', 'marketItem', 'ranking'));
+        }
         return view('avatar.payment.payment_confirmation', compact('guest_user', 'userKyc', 'shopping', 'invoice', 'transeection', 'qrpayment', 'marketItem'));
     }
 
@@ -214,11 +239,18 @@ class marketItemController extends Controller
         $transeection = DB::table('transeection_buy_items')->where([['transeection_invoice', decrypt($invoice)], ['transeection_status', 'true']])->first();
         // $transeection = DB::table('transeection_buy_items')->where([['USER_EMAIL', Auth::user()->email], ['transeection_status', 'true']])->orderBy('transeection_id', 'desc')->first();
         $marketItem = Market_item::all();
-        
+        $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
         if(count($address) != 0){
+            if($ranking != null){
+                return view('avatar.payment.successful_payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address', 'invoice', 'marketItem', 'ranking'));
+            }
             return view('avatar.payment.successful_payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'address', 'invoice', 'marketItem'));
+        }else{
+            if($ranking != null){
+                return view('avatar.payment.successful_payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'invoice', 'marketItem', 'ranking'));
+            }
+            return view('avatar.payment.successful_payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'invoice', 'marketItem'));
         }
-        return view('avatar.payment.successful_payment', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'invoice', 'marketItem'));
     }
 
     public function itemTransferPayment(Request $req){
@@ -304,6 +336,10 @@ class marketItemController extends Controller
         $transfer = DB::table('transfer_payments')->where('transferInvoice', decrypt($invoice))->first();
         $transeection = DB::table('transeection_buy_items')->where('transeection_invoice', decrypt($invoice))->first();
         $marketItem = Market_item::all();
+        $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
+        if($ranking != null){
+            return view('avatar.payment.payment_transfer', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'transfer', 'marketItem', 'ranking'));
+        }
         return view('avatar.payment.payment_transfer', compact('guest_user', 'userKyc', 'shopping', 'transeection', 'transfer', 'marketItem'));
     }
 }
