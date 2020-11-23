@@ -240,7 +240,7 @@ class marketItemController extends Controller
                 $update_at = $req->input('date').' '.$req->input('time');
                 // $update_at = date('Y-m-d H:i:s');
                 // dd($update_at);
-                $package_id = $req->input('package_id');
+                // $package_id = $req->input('package_id');
 
                 if($transferImg != "" && $transferStatus != "" && $id != ""){
                     $data = array("transferNote"=>$transferNote, "transferStatus"=>$transferStatus, "transferImg"=>$transferImg, "user_id"=>$user_id, 
@@ -248,8 +248,11 @@ class marketItemController extends Controller
                     
                     transferPayment::updateTransfer($data);
                 }
-                return redirect(route('Payment'));
-
+                if($req-input('modal') != null){
+                    return back()->with('susee', 'แจ้งโอนเรียบร้อย');
+                }else{
+                    return redirect(route('Payment'));
+                }
             }else{
                 $useTransferType = "item";
                 $transferAmount = $req->input('transferAmount');

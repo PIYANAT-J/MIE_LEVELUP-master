@@ -13,38 +13,105 @@ use App\Package;
 
 class game_sponController extends Controller
 {
-    public function AdvtAddGame($id, $idM){
-        // dd($idM,$id);
-        $idMD = decrypt($idM);
-        if($idMD == 0){
-            $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+    public function AdvtAddGame($id, $idM, Request $request){
+        // dd($request);
+        // $idMD = decrypt($idM);
+        $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+        $package = DB::table('my_package_buy')->where([['my_package_buy.package_id', decrypt($id)], ['my_package_buy.USER_EMAIL', Auth::user()->email]])
+                        ->join('packages','packages.package_id','my_package_buy.package_id')
+                        ->select('my_package_buy.*', 'packages.package_game', 'packages.package_length')
+                        ->first();
+        $packageGame = json_decode($package->packageBuy_gameSpon);
+        $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
+                        ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                        ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                        ->get();
+        if(isset($request->gameType)){
+            $gameTypefilter = $request->gameType;
+            $gameType = explode(',', $request->gameType);
+            $game = DB::table('games')
+                            ->where('GAME_STATUS', 'อนุมัติ')
+                            ->where(function($query) use ($gameType){
+                                if($gameType[0] != ""){
+                                    $query->whereIn('GAME_TYPE', $gameType);
+                                    
+                                }
+                            })->get();
+            $Follows = DB::table('follows')->where('follows.USER_ID', '=', Auth::user()->id)
+                            ->join('games', 'games.GAME_ID', 'follows.GAME_ID')
+                            ->where(function($query) use ($gameType){
+                                if($gameType[0] != ""){
+                                    $query->whereIn('GAME_TYPE', $gameType);
+                                    
+                                }
+                            })->get();
+            $New = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')
+                            ->where(function($query) use ($gameType){
+                                if($gameType[0] != ""){
+                                    $query->whereIn('GAME_TYPE', $gameType);
+                                    
+                                }
+                            })
+                            ->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
+            $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, downloads.GAME_ID'))
+                            ->join('games', 'games.GAME_ID', 'downloads.GAME_ID')
+                            ->where(function($query) use ($gameType){
+                                if($gameType[0] != ""){
+                                    $query->whereIn('GAME_TYPE', $gameType);
+                                    
+                                }
+                            })
+                            ->groupBy('downloads.GAME_ID')->get();
+            // dd($CDownload);
+            $GameHit = array();
+            $GamesNew = array();
+            foreach($CDownload as $donwload){
+                if($donwload->downloads_count > 1){
+                    $GameHit[] = $donwload->GAME_ID;
+                }
+            }
+            foreach($New as $gamesNew){
+                $GamesNew[] = $gamesNew->GAME_ID;
+            }
+        }else{
+            // $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
+            // $package = DB::table('my_package_buy')->where([['my_package_buy.package_id', decrypt($id)], ['my_package_buy.USER_EMAIL', Auth::user()->email]])
+            //                 ->join('packages','packages.package_id','my_package_buy.package_id')
+            //                 ->select('my_package_buy.*', 'packages.package_game', 'packages.package_length')
+            //                 ->first();
+            // $packageGame = json_decode($package->packageBuy_gameSpon);
+            // $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
+            //                 ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+            //                 ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+            //                 ->get();
             $game = DB::table('games')->where('GAME_STATUS','อนุมัติ')->get();
-            $package = DB::table('my_package_buy')->where([['my_package_buy.package_id', decrypt($id)], ['my_package_buy.USER_EMAIL', Auth::user()->email]])
-                            ->join('packages','packages.package_id','my_package_buy.package_id')
-                            ->select('my_package_buy.*', 'packages.package_game', 'packages.package_length')
-                            ->first();
-            $packageGame = json_decode($package->packageBuy_gameSpon);
-            $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
-                            ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
-                            ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+            $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
+            $New = DB::table('games')->where('GAME_STATUS', '=', 'อนุมัติ')->orderBy('GAME_APPROVE_DATE', 'desc')->limit('10')->get();
+            $CDownload = DB::table('downloads')->select(DB::raw('count(*) as downloads_count, GAME_ID'))
+                            ->groupBy('GAME_ID')
                             ->get();
-            // dd($packageGame);
-            return view('profile.sponsor.advt_add_game', compact('sponsor', 'game', 'package', 'packageGame', 'countCart'));
-        }elseif($idMD == 1){
-            $sponsor = DB::table('sponsors')->where('USER_EMAIL', Auth::user()->email)->get();
-            $game = DB::table('games')->where('GAME_STATUS','อนุมัติ')->get();
-            $package = DB::table('my_package_buy')->where([['my_package_buy.package_id', decrypt($id)], ['my_package_buy.USER_EMAIL', Auth::user()->email]])
-                            ->join('packages','packages.package_id','my_package_buy.package_id')
-                            ->select('my_package_buy.*', 'packages.package_game', 'packages.package_length')
-                            ->first();
-            $packageGame = json_decode($package->packageBuy_gameSpon);
+            $GameHit = array();
+            $GamesNew = array();
+            foreach($CDownload as $donwload){
+                if($donwload->downloads_count > 1){
+                    $GameHit[] = $donwload->GAME_ID;
+                }
+            }
+            foreach($New as $gamesNew){
+                $GamesNew[] = $gamesNew->GAME_ID;
+            }
+        }
+        if(decrypt($idM) == 0){
+            if(isset($request->gameType)){
+                return view('profile.sponsor.advt_add_game', compact('sponsor', 'game', 'package', 'packageGame', 'countCart', 'Follows', 'GameHit', 'GamesNew', 'gameTypefilter'));
+            }
+            return view('profile.sponsor.advt_add_game', compact('sponsor', 'game', 'package', 'packageGame', 'countCart', 'Follows', 'GameHit', 'GamesNew'));
+        }elseif(decrypt($idM) == 1){
             $modal = 1;
-            $countCart = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'false']])
-                            ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
-                            ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
-                            ->get();
-            // dd($package);
-            return view('profile.sponsor.advt_add_game', compact('sponsor', 'game', 'package', 'modal', 'packageGame', 'countCart'));
+            if(isset($request->gameType)){
+                return view('profile.sponsor.advt_add_game', compact('sponsor', 'game', 'package', 'modal', 'packageGame', 'countCart', 'Follows', 'GameHit', 'GamesNew', 'gameTypefilter'));
+            }
+            return view('profile.sponsor.advt_add_game', compact('sponsor', 'game', 'package', 'modal', 'packageGame', 'countCart', 'Follows', 'GameHit', 'GamesNew'));
         }
     }
 

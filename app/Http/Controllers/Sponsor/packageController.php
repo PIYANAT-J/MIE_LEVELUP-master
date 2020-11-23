@@ -276,12 +276,16 @@ class packageController extends Controller
                     
                     $value = transferPayment::updateTransfer($data);
                 }
-
-                if($req->input('package_id') != null){
-                    return redirect(route('packagePay', ['id' => encrypt($req->input('package_id')), 'idT'=>encrypt('null')]));
+                if($req-input('modal') != null){
+                    return back()->with('susee', 'แจ้งโอนเรียบร้อย');
                 }else{
-                    return redirect(route('packagePay', ['idT' => encrypt($req->input('transeection_id')), 'id'=>encrypt('null')]));
+                    if($req->input('package_id') != null){
+                        return redirect(route('packagePay', ['id' => encrypt($req->input('package_id')), 'idT'=>encrypt('null')]));
+                    }else{
+                        return redirect(route('packagePay', ['idT' => encrypt($req->input('transeection_id')), 'id'=>encrypt('null')]));
+                    }
                 }
+                
             }else{
                 $useTransferType = "package";
                 $transferAmount = $req->input('transferAmount');

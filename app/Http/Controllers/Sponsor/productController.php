@@ -72,15 +72,44 @@ class productController extends Controller
                             ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
                             ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
                             ->get();
-        $transeection = DB::table('transeection_sponshopping')->where([['USER_EMAIL', Auth::user()->email]])->orderBy('transeection_id', 'desc')->get();
+        $transeection = DB::table('transeection_sponshopping')->where([['USER_EMAIL', Auth::user()->email], ['transeection_invoice', '!=', null]])->orderBy('transeection_id', 'desc')->get();
         $transfer = DB::table('transfer_payments')->where([['USER_EMAIL', Auth::user()->email], ['useTransferType', 'package'], ['transferStatus', 'รอการอนุมัติ']])->orderBy('id', 'desc')->get();
-        
+        $transfer_on = TransferPayment::where([['USER_EMAIL', Auth::user()->email], ['transferStatus', 'ยืนยันการโอน'], ['useTransferType', 'package']])->orderBy('id', 'desc')->get();
+        $address = DB::table('addresses')->where('USER_EMAIL', Auth::user()->email)->get();
+
+        $package = DB::table('my_package_buy')->where([['my_package_buy.USER_EMAIL', Auth::user()->email]])
+                        ->join('packages','packages.package_id','my_package_buy.package_id')
+                        ->select('my_package_buy.*', 'packages.package_game', 'packages.package_length')
+                        ->get();
+        // dd($package);
+        $gameList = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.USER_ID', Auth::user()->id], ['sponsor_shopping_cart.sponsor_cart_status', 'true']])
+                            ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                            ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                            ->orderBy('sponsor_cart_id', 'desc')
+                            ->get();
+        $game_id = array();
+        $shopping_id = array();
+        $Gamehot = [];
+        foreach($gameList as $game){
+            $game_id[] = $game->sponsor_cart_game;
+            $game_list = array_unique($game_id);
+        }
+        for($i=0;$i <= count($game_list); $i++){
+            if(isset($game_list[$i])){
+                $gameTrue[$i] = DB::table('sponsor_shopping_cart')->where([['sponsor_shopping_cart.sponsor_cart_game', $game_list[$i]], ['sponsor_shopping_cart.USER_ID', Auth::user()->id]])
+                        ->join('games', 'games.GAME_ID', 'sponsor_shopping_cart.sponsor_cart_game')
+                        ->select('sponsor_shopping_cart.*', 'games.GAME_NAME', 'games.RATED_B_L', 'games.GAME_DISCOUNT', 'games.GAME_IMG_PROFILE')
+                        ->orderBy('sponsor_cart_id', 'desc')
+                        ->first();
+            }
+        }
+
         $transfer_invoice = array();
         foreach($transfer as $transferList){
             $transfer_invoice[] = $transferList->transferInvoice;
         }
         // dd($transeection);
-        return view('profile.sponsor.spon_order_list', compact('sponsor', 'countCart', 'transeection', 'transfer_invoice'));
+        return view('profile.sponsor.spon_order_list', compact('sponsor', 'countCart', 'transeection', 'transfer_invoice', 'transfer_on', 'address', 'gameTrue', 'package'));
     }
 
     public function addProduct(Request $request){
