@@ -21,6 +21,10 @@ class saleItemController extends Controller
         // $item = My_item::where([['USER_EMAIL', Auth::user()->email], ['my_item_status', 'false']])->get();
         $marketItem = Market_item::where([['USER_EMAIL', Auth::user()->email]])->get();
         // dd($marketItem);
+        $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
+        if($ranking != null){
+            return view('avatar.saleItem.sale_item', compact('guest_user', 'userKyc', 'shopping', 'marketItem', 'ranking'));
+        }
         return view('avatar.saleItem.sale_item', compact('guest_user', 'userKyc', 'shopping', 'marketItem'));
     }
 
@@ -29,6 +33,10 @@ class saleItemController extends Controller
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
         $shopping = DB::table('shopping_cart')->where([['USER_EMAIL', Auth::user()->email], ['shopping_cart_status', 'false']])->get();
         $item = My_item::where([['USER_EMAIL', Auth::user()->email], ['my_item_status', 'false']])->get();
+        $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
+        if($ranking != null){
+            return view('avatar.saleItem.add_sale_Item', compact('guest_user', 'userKyc', 'shopping', 'item', 'ranking'));
+        }
         return view('avatar.saleItem.add_sale_Item', compact('guest_user', 'userKyc', 'shopping', 'item'));
     }
 
