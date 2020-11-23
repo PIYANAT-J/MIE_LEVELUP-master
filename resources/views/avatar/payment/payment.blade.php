@@ -465,8 +465,15 @@
                                                 <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 text-right font-payment2"><p style="margin:0;">-</p></div>
                                             </div>
                                             <div class="row">
+                                                <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right font-payment2"><p style="margin:0;">ค่าธรรมเนียม</p></div>
+                                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 text-right font-payment2 dues"><p style="margin:0;">-</p></div>
+                                            </div>
+                                            <div class="row">
                                                 <div class="col-6 col-sm-8 col-md-9 col-lg-9 col-xl-9 text-right font-payment2 pt-2"><p style="margin:0;">รวมราคาทั้งสิ้น</p></div>
-                                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 text-right align-self-end"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿{{number_format($transeection->transeection_price, 2)}}</h4></div>
+                                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 text-right align-self-end">
+                                                    <h4 class="sumamount" style="margin:0;color:#ce0005;font-weight:800;">฿<span>{{number_format($transeection->transeection_price, 2)}}</span></h4>
+                                                </div>
+                                                <input type="hidden" name="sumamount" value="{{$transeection->transeection_price}}">
                                             </div>
                                         </div>
                                     </div>
@@ -478,12 +485,9 @@
                                             </a> --}}
                                         </div>
                                         <div class="col-lg-2 text-center" id="VisaCredit">
-                                            {{-- <a href="{{ route('PaymentConfirmation') }}">
-                                                <label class="btn-submit-red"><p style="margin:0;color:#fff;">ชำระเงิน</p></label>
-                                            </a> --}}
                                             @if($transeection->transeection_invoice == null)
                                                     <button class="btn-submit-red credit"><p style="margin:0;color:#fff;">ชำระเงิน</p></button>
-                                                    <input type="hidden" name="amount" value="{{$transeection->transeection_price}}" >
+                                                    <input type="hidden" name="creditamount" value="{{$transeection->transeection_price}}" >
                                                     <!-- <input type="hidden" name="bank_name" id="data-checked"> -->
                                                     <input type="hidden" name="paymentType" value="VisaCredit">
                                                     <input type="hidden" name="transeection_id" value="{{$transeection->transeection_id}}">
@@ -1504,68 +1508,81 @@
 
 <script>
     const myFunction = () => {
-    document.getElementById("first").style.display ='block';
-    document.getElementById("first1").style.display ='block';
-    document.getElementById("T10").style.display ='block';
-    document.getElementById("second").style.display ='none';
-    document.getElementById("second1").style.display ='none';
-    document.getElementById("VisaCredit").style.display ='none';
-    document.getElementById("third").style.display ='none';
-    document.getElementById("third1").style.display ='none';
-    document.getElementById("four").style.display ='none';
-    document.getElementById("four1").style.display ='none';
-    document.getElementById("Transfer").style.display ='none';
+        document.getElementById("first").style.display ='block';
+        document.getElementById("first1").style.display ='block';
+        document.getElementById("T10").style.display ='block';
+        document.getElementById("second").style.display ='none';
+        document.getElementById("second1").style.display ='none';
+        document.getElementById("VisaCredit").style.display ='none';
+        document.getElementById("third").style.display ='none';
+        document.getElementById("third1").style.display ='none';
+        document.getElementById("four").style.display ='none';
+        document.getElementById("four1").style.display ='none';
+        document.getElementById("Transfer").style.display ='none';
+        $('.dues p').text('-');
+        var $sumamount = +($('input[name="sumamount"]').val());
+        $('.sumamount span').text($sumamount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
     }
     const myFunction2 = () => {
-    document.getElementById("first").style.display ='none';
-    document.getElementById("first1").style.display ='none';
-    document.getElementById("T10").style.display ='none';
-    document.getElementById("second").style.display ='block';
-    document.getElementById("second1").style.display ='block';
-    document.getElementById("VisaCredit").style.display ='block';
-    document.getElementById("third").style.display ='none';
-    document.getElementById("third1").style.display ='none';
-    document.getElementById("iBanking").style.display ='none';
-    document.getElementById("four").style.display ='none';
-    document.getElementById("four1").style.display ='none';
-    document.getElementById("Transfer").style.display ='none';
-    $('.btn-submit-red.transfer').addClass('d-none');
-    var Transfer = document.getElementsByName("transfer");
-        for(var i=0;i<Transfer.length;i++)
-            Transfer[i].checked = false;
-    $('.btn-submit-red.ibank').addClass('d-none');
-    var Bank = document.getElementsByName("ibank");
-        for(var i=0;i<Bank.length;i++)
-            Bank[i].checked = false;
-    
+        document.getElementById("first").style.display ='none';
+        document.getElementById("first1").style.display ='none';
+        document.getElementById("T10").style.display ='none';
+        document.getElementById("second").style.display ='block';
+        document.getElementById("second1").style.display ='block';
+        document.getElementById("VisaCredit").style.display ='block';
+        document.getElementById("third").style.display ='none';
+        document.getElementById("third1").style.display ='none';
+        document.getElementById("iBanking").style.display ='none';
+        document.getElementById("four").style.display ='none';
+        document.getElementById("four1").style.display ='none';
+        document.getElementById("Transfer").style.display ='none';
+        $('.btn-submit-red.transfer').addClass('d-none');
+        var Transfer = document.getElementsByName("transfer");
+            for(var i=0;i<Transfer.length;i++)
+                Transfer[i].checked = false;
+        $('.btn-submit-red.ibank').addClass('d-none');
+        var Bank = document.getElementsByName("ibank");
+            for(var i=0;i<Bank.length;i++)
+                Bank[i].checked = false;
+        var $dues = +($('input[name="sumamount"]').val())*0.03;
+        var $sumamount = (+($('input[name="sumamount"]').val()) + $dues);
+        $('.dues p').text('3%');
+        $('.sumamount span').text($sumamount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+        $('input[name="creditamount"]').val($sumamount);
     }
     const myFunction3 = () => {
-    document.getElementById("first").style.display ='none';
-    document.getElementById("first1").style.display ='none';
-    document.getElementById("T10").style.display ='none';
-    document.getElementById("second").style.display ='none';
-    document.getElementById("second1").style.display ='none';
-    document.getElementById("VisaCredit").style.display ='none';
-    document.getElementById("third").style.display ='block';
-    document.getElementById("third1").style.display ='block';
-    document.getElementById("iBanking").style.display ='block';
-    document.getElementById("four").style.display ='none';
-    document.getElementById("four1").style.display ='none';
-    document.getElementById("Transfer").style.display ='none';
+        document.getElementById("first").style.display ='none';
+        document.getElementById("first1").style.display ='none';
+        document.getElementById("T10").style.display ='none';
+        document.getElementById("second").style.display ='none';
+        document.getElementById("second1").style.display ='none';
+        document.getElementById("VisaCredit").style.display ='none';
+        document.getElementById("third").style.display ='block';
+        document.getElementById("third1").style.display ='block';
+        document.getElementById("iBanking").style.display ='block';
+        document.getElementById("four").style.display ='none';
+        document.getElementById("four1").style.display ='none';
+        document.getElementById("Transfer").style.display ='none';
+        $('.dues p').text('-');
+        var $sumamount = +($('input[name="sumamount"]').val());
+        $('.sumamount span').text($sumamount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
     }
     const myFunction4 = () => {
-    document.getElementById("first").style.display ='none';
-    document.getElementById("first1").style.display ='none';
-    document.getElementById("T10").style.display ='none';
-    document.getElementById("second").style.display ='none';
-    document.getElementById("second1").style.display ='none';
-    document.getElementById("VisaCredit").style.display ='none';
-    document.getElementById("third").style.display ='none';
-    document.getElementById("third1").style.display ='none';
-    document.getElementById("iBanking").style.display ='none';
-    document.getElementById("four").style.display ='block';
-    document.getElementById("four1").style.display ='block';
-    document.getElementById("Transfer").style.display ='block';
+        document.getElementById("first").style.display ='none';
+        document.getElementById("first1").style.display ='none';
+        document.getElementById("T10").style.display ='none';
+        document.getElementById("second").style.display ='none';
+        document.getElementById("second1").style.display ='none';
+        document.getElementById("VisaCredit").style.display ='none';
+        document.getElementById("third").style.display ='none';
+        document.getElementById("third1").style.display ='none';
+        document.getElementById("iBanking").style.display ='none';
+        document.getElementById("four").style.display ='block';
+        document.getElementById("four1").style.display ='block';
+        document.getElementById("Transfer").style.display ='block';
+        $('.dues p').text('-');
+        var $sumamount = +($('input[name="sumamount"]').val());
+        $('.sumamount span').text($sumamount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
     }
 </script>
 
@@ -1715,7 +1732,7 @@
         $(".btn-submit-red.credit").click(function(e) {
             var btnThis = $(this);
             // alert("ยืนยันการลบรายการ");
-            var amount = $(this).parent().find('input[name="amount"]').val();
+            var amount = $(this).parent().find('input[name="creditamount"]').val();
             var paymentType = $(this).parent().find('input[name="paymentType"]').val();
             var transeection_id = $(this).parent().find('input[name="transeection_id"]').val();
             var submit = "submit";
