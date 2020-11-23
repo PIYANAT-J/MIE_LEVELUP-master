@@ -77,7 +77,7 @@
                                         <span style="display:block;text-align:right;">
                                             <h4 style="font-weight:800;margin:0;">฿{{number_format($gameList->sponsor_cart_price, 2)}}</h4>
                                             @if($gameList->GAME_DISCOUNT != null && $gameList->GAME_DISCOUNT != "0")
-                                                <label style="margin:0;"><p style="color: #b2b2b2;text-decoration:line-through;font-weight:800;margin:0;">฿680 </p></label>
+                                                <label style="margin:0;"><p style="color: #b2b2b2;text-decoration:line-through;font-weight:800;margin:0;">฿{{number_format($gameList->sponsor_cart_price, 2)}} </p></label>
                                                 <label><p style="margin:0;font-weight:800;"> (-{{$gameList->GAME_DISCOUNT}}%) </p></label>
                                             @endif
                                         </span>
@@ -190,7 +190,6 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                        <!-- <a href="{{ route('SponsorPayment') }}"><label class="btn-submit-drak2">ยืนยัน</label></a>transferNote -->
                                         <button class="btn-submit" name="submit" value="submit">
                                             <p style="margin:0;">ยืนยัน</p>
                                         </button>

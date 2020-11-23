@@ -269,7 +269,15 @@
                 <!-- <button class="btn-cancal-category mr-2" id="clear_checkbox" data-toggle="collapse" data-target="#demo"><p style="margin:0;">ยกเลิก</p></button> -->
                 <form method="get">
                     <button class="btn-search-category mr-2"><p style="margin:0;">ค้นหา</p></button>
-                    <input type="hidden" name="gameType">
+                    @if(isset($gameTypefilter) || isset($gameEsrbfilter))
+                        <input type="hidden" name="gameType" value="{{$gameTypefilter}}">
+                        <input type="hidden" name="RATED_ESRB" value="{{$gameEsrbfilter}}">
+                        <input type="hidden" name="RATED_B_L" value="{{$gameBLfilter}}">
+                    @else
+                        <input type="hidden" name="gameType">
+                        <input type="hidden" name="RATED_ESRB">
+                        <input type="hidden" name="RATED_B_L">
+                    @endif
                 </form>
             </div>
         </div>
@@ -300,7 +308,8 @@
         <div class="col-sm col-md col-lg-11 col-xl-11">
             <div class="row">
                 <div class="col-sm col-md col-lg-3 col-xl-3">
-                    <select class="selectCat p my-2" name="RATED_ESRB" value="{{ old('RATED_ESRB') }}">
+                    <!-- <button class="category rated_esrb d-none"></button> -->
+                    <select class="selectCat p my-2" name="RATED_ESRB">
                         <option value="">เรทเกม</option>
                         <option value="EarlyChildhood">EC : Early Childhood</option>
                         <option value="Everyone">E : Everyone</option>
@@ -312,26 +321,28 @@
                     </select>
                 </div>
                 <div class="col-sm col-md col-lg-3 col-xl-3">
-                    <select class="selectCat p my-2">
-                        <option>เรทเนื้อหาเกม</option>
-                        <option>Discrimination : มีการแบ่งแยก แบ่งแยกฝ่ายอย่างชัดเจน</option>
-                        <option>Drugs : มีการใช้สารเสพติดในเกม</option>
-                        <option>Fear : มีการใช้ความกลัวเข้ามาอยู่ในเกม</option>
-                        <option>Gambling : มีเรื่องของการพนันอยู่ในเกม</option>
-                        <option>Sex : มีเรื่องเพศเกี่ยวข้องอยู่ในเกม</option>
-                        <option>Violence : มีการใช้ความรุนแรงภายในเกม</option>
-                        <option>Online : เป็นเกมที่ต้องเล่นออนไลน์เท่านั้น เป็นเรทที่พิเศษแยกออกมา</option>
-                        <option>Other:อื่น</option>
+                    <!-- <button class="category rated_b_l d-none"></button> -->
+                    <select class="selectCat p my-2" name="RATED_B_L">
+                        <option value="">เลือกเนื้อหา</option>
+                        <option value="Discrimination">Discrimination : มีการแบ่งแยก แบ่งแยกฝ่ายอย่างชัดเจน</option>
+                        <option value="Drugs">Drugs : มีการใช้สารเสพติดในเกม</option>
+                        <option value="Fear">Fear : มีการใช้ความกลัวเข้ามาอยู่ในเกม</option>
+                        <option value="Gambling">Gambling : มีเรื่องของการพนันอยู่ในเกม</option>
+                        <option value="Sex">Sex : มีเรื่องเพศเกี่ยวข้องอยู่ในเกม</option>
+                        <option value="Violence">Violence : มีการใช้ความรุนแรงภายในเกม</option>
+                        <option value="Online">Online : เป็นเกมที่ต้องเล่นออนไลน์เท่านั้น เป็นเรทที่พิเศษแยกออกมา</option>
+                        <option value="Other">Other : อื่นๆ</option>
                     </select>
                 </div>
                 <div class="col-sm col-md col-lg-3 col-xl-3">
-                    <select class="selectCat p my-2">
-                        <option class="p">คะแนน</option>
-                        <option class="p">5 ดาว</option>
-                        <option class="p">4 ดาว</option>
-                        <option class="p">3 ดาว</option>
-                        <option class="p">2 ดาว</option>
-                        <option class="p">1 ดาว</option>
+                    <button class="category rating d-none"></button>
+                    <select class="selectCat p my-2" name="RATING">
+                        <option class="p" value="all">คะแนน</option>
+                        <option class="p" value="5">5 ดาว</option>
+                        <option class="p" value="4">4 ดาว</option>
+                        <option class="p" value="3">3 ดาว</option>
+                        <option class="p" value="2">2 ดาว</option>
+                        <option class="p" value="1">1 ดาว</option>
                     </select>
                 </div>
                 <div class="col-sm col-md col-lg-3 col-xl-3">
@@ -360,12 +371,12 @@
                         <?php $arrayFollowsGame[] = $follow->GAME_ID; ?>
                     @endforeach
                 @endif
-                @foreach($Games as $game)
+                @for($i = 0; $i < count($Games); $i++)
                     @guest
-                        @if(in_array($game->GAME_ID, $GameHit))
-                            @if(in_array($game->GAME_ID, $GamesNew))
-                                <div class="filterDiv hot news col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
-                                    <a href="{{ route('login-levelUp') }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
+                        @if(in_array($Games[$i]['GAME_ID'], $GameHit))
+                            @if(in_array($Games[$i]['GAME_ID'], $GamesNew))
+                                <div class="filterDiv hot news {{$Games[$i]['RATED_B_L']}} {{$Games[$i]['RATED_ESRB']}} {{$Games[$i]['RATING']}} col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
+                                    <a href="{{ route('login-levelUp') }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$Games[$i]['GAME_IMG_PROFILE']) }}" /></a>
                                     <span class="desc">
                                         <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:1em;">กำลังติดตาม</b></button > -->
                                         <a href="{{route('login-levelUp')}}">
@@ -377,8 +388,8 @@
                                     </span>
                                 </div>
                             @else
-                                <div class="filterDiv hot col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
-                                    <a href="{{ route('login-levelUp') }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
+                                <div class="filterDiv hot {{$Games[$i]['RATED_B_L']}} {{$Games[$i]['RATED_ESRB']}} {{$Games[$i]['RATING']}} col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
+                                    <a href="{{ route('login-levelUp') }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$Games[$i]['GAME_IMG_PROFILE']) }}" /></a>
                                     <span class="desc">
                                         <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:1em;">กำลังติดตาม</b></button > -->
                                         <a href="{{route('login-levelUp')}}">
@@ -391,9 +402,9 @@
                                 </div>
                             @endif
                         @else
-                            @if(in_array($game->GAME_ID, $GamesNew))
-                                <div class="filterDiv news col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
-                                    <a href="{{ route('login-levelUp') }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
+                            @if(in_array($Games[$i]['GAME_ID'], $GamesNew))
+                                <div class="filterDiv news {{$Games[$i]['RATED_B_L']}} {{$Games[$i]['RATED_ESRB']}} {{$Games[$i]['RATING']}} col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
+                                    <a href="{{ route('login-levelUp') }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$Games[$i]['GAME_IMG_PROFILE']) }}" /></a>
                                     <span class="desc">
                                         <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:1em;">กำลังติดตาม</b></button > -->
                                         <a href="{{route('login-levelUp')}}">
@@ -405,8 +416,8 @@
                                     </span>
                                 </div>
                             @else
-                                <div class="filterDiv all col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
-                                    <a href="{{ route('login-levelUp') }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
+                                <div class="filterDiv all {{$Games[$i]['RATED_B_L']}} {{$Games[$i]['RATED_ESRB']}} {{$Games[$i]['RATING']}} col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
+                                    <a href="{{ route('login-levelUp') }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$Games[$i]['GAME_IMG_PROFILE']) }}" /></a>
                                     <span class="desc">
                                         <!-- <button class="btn_follow9 text-left" data-toggle="tooltip" data-placement="bottom" title="ยกเลิกการติดตาม"><span class="icon-follow_wh " style="font-size:15px; padding-left:3px;"></span><b class="font_follow" style="padding-right:10px;font-size:1em;">กำลังติดตาม</b></button > -->
                                         <a href="{{route('login-levelUp')}}">
@@ -420,11 +431,11 @@
                             @endif
                         @endif
                     @else
-                        @if(in_array($game->GAME_ID, $arrayFollowsGame))
-                            @if(in_array($game->GAME_ID, $GameHit))
-                                @if(in_array($game->GAME_ID, $GamesNew))
-                                    <div class="filterDiv follow hot news col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
-                                        <a href="{{ route('GameDetail', ['id'=>encrypt($game->GAME_ID)]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
+                        @if(in_array($Games[$i]['GAME_ID'], $arrayFollowsGame))
+                            @if(in_array($Games[$i]['GAME_ID'], $GameHit))
+                                @if(in_array($Games[$i]['GAME_ID'], $GamesNew))
+                                    <div class="filterDiv follow hot news {{$Games[$i]['RATED_B_L']}} {{$Games[$i]['RATED_ESRB']}} {{$Games[$i]['RATING']}} col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
+                                        <a href="{{ route('GameDetail', ['id'=>encrypt($Games[$i]['GAME_ID'])]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$Games[$i]['GAME_IMG_PROFILE']) }}" /></a>
                                         <span class="desc">
                                             <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
@@ -438,8 +449,8 @@
                                         </span>
                                     </div>
                                 @else
-                                    <div class="filterDiv follow hot col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
-                                        <a href="{{ route('GameDetail', ['id'=>encrypt($game->GAME_ID)]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
+                                    <div class="filterDiv follow hot {{$Games[$i]['RATED_B_L']}} {{$Games[$i]['RATED_ESRB']}} {{$Games[$i]['RATING']}} col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
+                                        <a href="{{ route('GameDetail', ['id'=>encrypt($Games[$i]['GAME_ID'])]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$Games[$i]['GAME_IMG_PROFILE']) }}" /></a>
                                         <span class="desc">
                                             <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
@@ -454,9 +465,9 @@
                                     </div>
                                 @endif
                             @else
-                                @if(in_array($game->GAME_ID, $GamesNew))
-                                    <div class="filterDiv follow news col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
-                                        <a href="{{ route('GameDetail', ['id'=>encrypt($game->GAME_ID)]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
+                                @if(in_array($Games[$i]['GAME_ID'], $GamesNew))
+                                    <div class="filterDiv follow news {{$Games[$i]['RATED_B_L']}} {{$Games[$i]['RATED_ESRB']}} {{$Games[$i]['RATING']}} col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
+                                        <a href="{{ route('GameDetail', ['id'=>encrypt($Games[$i]['GAME_ID'])]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$Games[$i]['GAME_IMG_PROFILE']) }}" /></a>
                                         <span class="desc">
                                             <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
@@ -470,8 +481,8 @@
                                         </span>
                                     </div>
                                 @else
-                                    <div class="filterDiv follow col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
-                                        <a href="{{ route('GameDetail', ['id'=>encrypt($game->GAME_ID)]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" /></a>
+                                    <div class="filterDiv follow {{$Games[$i]['RATED_B_L']}} {{$Games[$i]['RATED_ESRB']}} {{$Games[$i]['RATING']}} col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
+                                        <a href="{{ route('GameDetail', ['id'=>encrypt($Games[$i]['GAME_ID'])]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$Games[$i]['GAME_IMG_PROFILE']) }}" /></a>
                                         <span class="desc">
                                             <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
@@ -487,11 +498,11 @@
                                 @endif
                             @endif
                         @else
-                            @if(in_array($game->GAME_ID, $GameHit))
-                                @if(in_array($game->GAME_ID, $GamesNew))
-                                    <div class="filterDiv hot news col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
-                                        <a href="{{ route('GameDetail', ['id'=>encrypt($game->GAME_ID)]) }}">
-                                            <img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" />
+                            @if(in_array($Games[$i]['GAME_ID'], $GameHit))
+                                @if(in_array($Games[$i]['GAME_ID'], $GamesNew))
+                                    <div class="filterDiv hot news {{$Games[$i]['RATED_B_L']}} {{$Games[$i]['RATED_ESRB']}} {{$Games[$i]['RATING']}} col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
+                                        <a href="{{ route('GameDetail', ['id'=>encrypt($Games[$i]['GAME_ID'])]) }}">
+                                            <img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$Games[$i]['GAME_IMG_PROFILE']) }}" />
                                         </a>
                                         <span class="desc">
                                             <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
@@ -501,17 +512,17 @@
                                                     <label style="margin:0;"><p class="fontBTNfollowCat" style="margin:0;">ติดตาม</p></label>
                                                     <input type="hidden" name="submit" value="submit">
                                                     <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
-                                                    <input type="hidden" name="GAME_ID" value="{{ $game->GAME_ID }}">
-                                                    <input type="hidden" name="GAME_NAME" value="{{ $game->GAME_NAME }}">
+                                                    <input type="hidden" name="GAME_ID" value="{{ $Games[$i]['GAME_ID'] }}">
+                                                    <input type="hidden" name="GAME_NAME" value="{{ $Games[$i]['GAME_NAME'] }}">
                                                     <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
                                                 </button>
                                             </form>
                                         </span>
                                     </div>
                                 @else
-                                    <div class="filterDiv hot col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
-                                        <a href="{{ route('GameDetail', ['id'=>encrypt($game->GAME_ID)]) }}">
-                                            <img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" />
+                                    <div class="filterDiv hot {{$Games[$i]['RATED_B_L']}} {{$Games[$i]['RATED_ESRB']}} {{$Games[$i]['RATING']}} col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
+                                        <a href="{{ route('GameDetail', ['id'=>encrypt($Games[$i]['GAME_ID'])]) }}">
+                                            <img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$Games[$i]['GAME_IMG_PROFILE']) }}" />
                                         </a>
                                         <span class="desc">
                                             <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
@@ -521,8 +532,8 @@
                                                     <label style="margin:0;"><p class="fontBTNfollowCat" style="margin:0;">ติดตาม</p></label>
                                                     <input type="hidden" name="submit" value="submit">
                                                     <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
-                                                    <input type="hidden" name="GAME_ID" value="{{ $game->GAME_ID }}">
-                                                    <input type="hidden" name="GAME_NAME" value="{{ $game->GAME_NAME }}">
+                                                    <input type="hidden" name="GAME_ID" value="{{ $Games[$i]['GAME_ID'] }}">
+                                                    <input type="hidden" name="GAME_NAME" value="{{ $Games[$i]['GAME_NAME'] }}">
                                                     <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
                                                 </button>
                                             </form>
@@ -530,10 +541,10 @@
                                     </div>
                                 @endif
                             @else
-                                @if(in_array($game->GAME_ID, $GamesNew))
-                                    <div class="filterDiv news col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
-                                        <a href="{{ route('GameDetail', ['id'=>encrypt($game->GAME_ID)]) }}">
-                                            <img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" />
+                                @if(in_array($Games[$i]['GAME_ID'], $GamesNew))
+                                    <div class="filterDiv news {{$Games[$i]['RATED_B_L']}} {{$Games[$i]['RATED_ESRB']}} {{$Games[$i]['RATING']}} col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
+                                        <a href="{{ route('GameDetail', ['id'=>encrypt($Games[$i]['GAME_ID'])]) }}">
+                                            <img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$Games[$i]['GAME_IMG_PROFILE']) }}" />
                                         </a>
                                         <span class="desc">
                                             <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
@@ -543,17 +554,17 @@
                                                     <label style="margin:0;"><p class="fontBTNfollowCat" style="margin:0;">ติดตาม</p></label>
                                                     <input type="hidden" name="submit" value="submit">
                                                     <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
-                                                    <input type="hidden" name="GAME_ID" value="{{ $game->GAME_ID }}">
-                                                    <input type="hidden" name="GAME_NAME" value="{{ $game->GAME_NAME }}">
+                                                    <input type="hidden" name="GAME_ID" value="{{ $Games[$i]['GAME_ID'] }}">
+                                                    <input type="hidden" name="GAME_NAME" value="{{ $Games[$i]['GAME_NAME'] }}">
                                                     <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
                                                 </button>
                                             </form>
                                         </span>
                                     </div>
                                 @else
-                                    <div class="filterDiv all col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
-                                        <a href="{{ route('GameDetail', ['id'=>encrypt($game->GAME_ID)]) }}">
-                                            <img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$game->GAME_IMG_PROFILE) }}" />
+                                    <div class="filterDiv all {{$Games[$i]['RATED_B_L']}} {{$Games[$i]['RATED_ESRB']}} {{$Games[$i]['RATING']}} col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
+                                        <a href="{{ route('GameDetail', ['id'=>encrypt($Games[$i]['GAME_ID'])]) }}">
+                                            <img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$Games[$i]['GAME_IMG_PROFILE']) }}" />
                                         </a>
                                         <span class="desc">
                                             <form action="{{route('Follow')}}" method="POST" enctype="multipart/form-data">
@@ -563,8 +574,8 @@
                                                     <label style="margin:0;"><p class="fontBTNfollowCat" style="margin:0;">ติดตาม</p></label>
                                                     <input type="hidden" name="submit" value="submit">
                                                     <input type="hidden" name="FOLLOW_DATE" value="{{ date('Y-m-d H:i:s') }}">
-                                                    <input type="hidden" name="GAME_ID" value="{{ $game->GAME_ID }}">
-                                                    <input type="hidden" name="GAME_NAME" value="{{ $game->GAME_NAME }}">
+                                                    <input type="hidden" name="GAME_ID" value="{{ $Games[$i]['GAME_ID'] }}">
+                                                    <input type="hidden" name="GAME_NAME" value="{{ $Games[$i]['GAME_NAME'] }}">
                                                     <input type="hidden" name="USER_ID" value="{{ Auth::user()->id }}">
                                                 </button>
                                             </form>
@@ -574,7 +585,7 @@
                             @endif
                         @endif
                     @endguest
-                @endforeach
+                @endfor
             </div>
         </div>
         <div class="col-lg-1 col-xl-1"></div>
@@ -585,7 +596,7 @@
 @section('script')
 <script>
     $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
+        $('[data-toggle="tooltip"]').tooltip();   
     });
 </script>
 
@@ -596,6 +607,12 @@
         } else {
             var $el = $('.' + this.id).fadeIn(450);
             $('#parent > div').not($el).hide();
+            // var $btns1 = $('.category.rated_b_l').click(function(){
+            //     var $el1 = $('.' + this.id).fadeIn(450);
+            //     $('#parent > div').not($el1).hide();
+            // });
+            // $btns1.removeClass('active');
+            // $(this).addClass('active');
         }
         $btns.removeClass('active');
         $(this).addClass('active');
@@ -613,12 +630,60 @@
             console.log(gameType);
             $('input[name="gameType"]').val(gameType);
         });
-        var rated_esrb = $('select[name="RATED_ESRB"] option').filter(':selected').val();
-        console.log(rated_esrb);
+        // var rated_esrb = $('select[name="RATED_ESRB"] option').filter(':selected').val();
+        // console.log(rated_esrb);
         // $("#clear_checkbox").click(function(){
         //     $("input[name='geography']").prop("checked", false);
         // });
         // console.log(gameType);
+    });
+</script>
+
+<script>
+    $("select[name='RATED_ESRB']").change(function() {
+        var esrb = $(this).val();
+        $('input[name="RATED_ESRB"]').val(esrb);
+        $('.btn-search-category').click();
+        // $('.category.rated_esrb').attr('id', esrb);
+        // $('.category.rated_esrb').click();
+            // var btnThis = $(this);
+            // alert(esrb);
+
+            // $.ajax({
+            //     type: 'get',
+            //     data: {
+            //         "_token": "{{ csrf_token() }}",
+            //         amount:amount,
+            //         paymentType:paymentType,
+            //         transeection_id:transeection_id,
+            //         package_id:package_id,
+            //         submit:submit,
+            //     },
+            //     success: function(response) {
+            //         console.log(response);
+            //     },
+            //     error: function(response) {}
+            // });
+    });
+    // .trigger( "change" );
+</script>
+
+<script>
+    $("select[name='RATED_B_L']").change(function() {
+        var b_l = $(this).val();
+        $('input[name="RATED_B_L"]').val(b_l);
+        $('.btn-search-category').click();
+        // $('.category.rated_b_l').attr('id', b_l);
+        // $('.category.rated_b_l').click();
+    });
+    // .trigger( "change" );rating
+</script>
+
+<script>
+    $("select[name='RATING']").change(function() {
+        var rating = $(this).val();
+        $('.category.rating').attr('id', rating);
+        $('.category.rating').click();
     });
 </script>
 

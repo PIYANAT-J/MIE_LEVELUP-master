@@ -90,8 +90,29 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popupmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="border-radius: 8px;">
+                <div class="row" >
+                    <div class="col-12" >
+                        <div class="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118.43873 118.43873">
+                                <style>.circle{ animation: stroke-fill 1s linear forwards; } .check { animation: stroke-fill 5s linear forwards; } @keyframes stroke-fill { 0% { stroke-dasharray: 0, 0; } 100% { stroke-dasharray: 500, 200000; } }</style>
+                                <path class="check" stroke-linejoin="round" d="M34.682 60.352l15.61 15.61 33.464-33.464" stroke="#08b237" stroke-linecap="round" stroke-width="4.3" fill="none"/>
+                                <circle class="circle" stroke-linejoin="round" cx="59.219" stroke-linecap="round" stroke="#08b237" cy="59.219" r="57.069" stroke-width="4.3" fill="none"/>
+                            </svg>
+                            <p class="success-status mt-2" style="text-align:center;margin:0;">{{ Session::get('susee') }}</p>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn-submit-modal-red d-none">ยืนยัน</button>
             </div>
         </div>
     </div>
@@ -450,18 +471,14 @@
                                 <div class="col-12">
                                     <div class="row mt-2">
                                         <div class="col-lg-12 text-right">
-                                            <label class="btn-submit-red3" onClick="myFunction()">
-                                                <p style="margin:0;">แจ้งการชำระเงิน</p>
-                                            </label>
-                                            <label class="btn-submit-wh" data-dismiss="modal">
-                                                <p style="margin:0;">อัพโหลดภายหลัง</p>
-                                            </label>
+                                            <label class="btn-submit-red3"><p style="margin:0;">แจ้งการชำระเงิน</p></label>
+                                            <label class="btn-submit-wh" data-dismiss="modal"><p style="margin:0;">อัพโหลดภายหลัง</p></label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div id="Transfer">
+                            <div class="Transfer d-none">
                                 <form action="{{ route('itemTransfer') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row fade-in mt-3">
@@ -505,10 +522,10 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
-                                            <!-- <a href="{{ route('SponsorPayment') }}"><label class="btn-submit-drak2">ยืนยัน</label></a>transferNote -->
                                             <button class="btn-submit-red" name="submit" value="submit"><p style="margin:0;">ยืนยัน</p></button>
                                             <input type="hidden" name="id">
                                             <input type="hidden" name="transeection_id">
+                                            <input type="hidden" name="modal" value="modal">
                                         </div>
                                     </div>
                                 </form>
@@ -667,9 +684,14 @@
     }
 </script>
 
-<script>
+<!-- <script>
     const myFunction = () => {
     document.getElementById("Transfer").style.display ='block';}
+</script> -->
+<script>
+    $(".btn-submit-red3").on("click",function(e){
+        $('.Transfer').removeClass('d-none');
+    });
 </script>
 
 <script> /* อัพโหลดรูปภาพ */
@@ -719,6 +741,18 @@
         var transee = $(this).data('transee');
         $('input[name="id"]').val(transfer);
         $('input[name="transeection_id"]').val(transee);
+        $('.Transfer').addClass('d-none');
     });
 </script>
+
+@if( Session::has('susee'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#popupmodal').modal();
+            setTimeout(function(){
+                $('#popupmodal').modal('hide')
+            }, 1500);
+        });
+    </script>
+@endif
 @endsection

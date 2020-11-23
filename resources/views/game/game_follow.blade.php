@@ -13,7 +13,7 @@
             <div class="row mx-5 mt-3" >
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_1">
+                        <input type="checkbox" name="geography" value="Action" id="checkbox_1">
                         <label for="checkbox_1">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Action</p>
                         </label>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_2">
+                        <input type="checkbox" name="geography" value="Adventure" id="checkbox_2">
                         <label for="checkbox_2">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Adventure</p>
                         </label>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_3">
+                        <input type="checkbox" name="geography" value="BBG" id="checkbox_3">
                         <label for="checkbox_3">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">BBG</p>
                         </label>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_4">
+                        <input type="checkbox" name="geography" value="Board Game" id="checkbox_4">
                         <label for="checkbox_4">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Board Game</p>
                         </label>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_5">
+                        <input type="checkbox" name="geography" value="Casual" id="checkbox_5">
                         <label for="checkbox_5">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Casual</p>
                         </label>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_6">
+                        <input type="checkbox" name="geography" value="Console" id="checkbox_6">
                         <label for="checkbox_6">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Console</p>
                         </label>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_7">
+                        <input type="checkbox" name="geography" value="Fantasy" id="checkbox_7">
                         <label for="checkbox_7">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Fantasy</p>
                         </label>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_8">
+                        <input type="checkbox" name="geography" value="Fighting" id="checkbox_8">
                         <label for="checkbox_8">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Fighting</p>
                         </label>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_9">
+                        <input type="checkbox" name="geography" value="Flight" id="checkbox_9">
                         <label for="checkbox_9">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Flight</p>
                         </label>
@@ -85,15 +85,15 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_10">
+                        <input type="checkbox" name="geography" value="FPS" id="checkbox_10">
                         <label for="checkbox_10">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">FPS</p>
                         </label>
                     </div>
                 </div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 -sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_11">
+                        <input type="checkbox" name="geography" value="Historical" id="checkbox_11">
                         <label for="checkbox_11">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Historical</p>
                         </label>
@@ -101,7 +101,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_12">
+                        <input type="checkbox" name="geography" value="Martail Arts" id="checkbox_12">
                         <label for="checkbox_12">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Martail Arts</p>
                         </label>
@@ -110,7 +110,7 @@
 
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_13">
+                        <input type="checkbox" name="geography" value="MMORPG" id="checkbox_13">
                         <label for="checkbox_13">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">MMORPG</p>
                         </label>
@@ -118,7 +118,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_14">
+                        <input type="checkbox" name="geography" value="MOBA" id="checkbox_14">
                         <label for="checkbox_14">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">MOBA</p>
                         </label>
@@ -126,7 +126,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_15">
+                        <input type="checkbox" name="geography" value="Music Game" id="checkbox_15">
                         <label for="checkbox_15">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Music Game</p>
                         </label>
@@ -135,7 +135,7 @@
 
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_16">
+                        <input type="checkbox" name="geography" value="Puzzle" id="checkbox_16">
                         <label for="checkbox_16">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Puzzle</p>
                         </label>
@@ -143,7 +143,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_17">
+                        <input type="checkbox" name="geography" value="Racing" id="checkbox_17">
                         <label for="checkbox_17">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Racing</p>
                         </label>
@@ -151,7 +151,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_18">
+                        <input type="checkbox" name="geography" value="RTS" id="checkbox_18">
                         <label for="checkbox_18">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">RTS</p>
                         </label>
@@ -159,7 +159,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_19">
+                        <input type="checkbox" name="geography" value="Side Scrolling Game" id="checkbox_19">
                         <label for="checkbox_19">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Side Scrolling Game </p>
                         </label>
@@ -167,7 +167,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_20">
+                        <input type="checkbox" name="geography" value="Simulation" id="checkbox_20">
                         <label for="checkbox_20">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Simulation</p>
                         </label>
@@ -175,7 +175,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_21">
+                        <input type="checkbox" name="geography" value="Social" id="checkbox_21">
                         <label for="checkbox_21">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Social</p>
                         </label>
@@ -183,15 +183,15 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_22">
+                        <input type="checkbox" name="geography" value="Sport" id="checkbox_22">
                         <label for="checkbox_22">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Sport</p>
                         </label>
                     </div>
                 </div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
+                <div class="col-6 -sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_23">
+                        <input type="checkbox" name="geography" value="Strategy" id="checkbox_23">
                         <label for="checkbox_23">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Strategy</p>
                         </label>
@@ -199,7 +199,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_24">
+                        <input type="checkbox" name="geography" value="Survival" id="checkbox_24">
                         <label for="checkbox_24">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Survival</p>
                         </label>
@@ -207,7 +207,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_25">
+                        <input type="checkbox" name="geography" value="Tactical Combat" id="checkbox_25">
                         <label for="checkbox_25">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Tactical Combat</p>
                         </label>
@@ -215,7 +215,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_26">
+                        <input type="checkbox" name="geography" value="TBS" id="checkbox_26">
                         <label for="checkbox_26">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">TBS</p>
                         </label>
@@ -223,7 +223,7 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_27">
+                        <input type="checkbox" name="geography" value="TPS" id="checkbox_27">
                         <label for="checkbox_27">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">TPS</p>
                         </label>
@@ -231,17 +231,28 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-lg-1" style="padding:0;">
                     <div class="checkbox-red">
-                        <input type="checkbox" id="checkbox_28">
+                        <input type="checkbox" name="geography" value="Trading Card" id="checkbox_28">
                         <label for="checkbox_28">
                             <p class="fontChekboxCat" style="margin:0 0 0 15px;">Trading Card</p>
                         </label>
                     </div>
                 </div>
             </div>
-            
+
             <div class="mx-5 text-right mb-3">
-                <button class="btn-cancal-category mr-2" data-toggle="collapse" data-target="#demo"><p style="margin:0;">ยกเลิก</p></button>
-                <button class="btn-search-category mr-2"><p style="margin:0;">ค้นหา</p></button>
+                <!-- <button class="btn-cancal-category mr-2" id="clear_checkbox" data-toggle="collapse" data-target="#demo"><p style="margin:0;">ยกเลิก</p></button> -->
+                <form method="get">
+                    <button class="btn-search-category mr-2"><p style="margin:0;">ค้นหา</p></button>
+                    @if(isset($gameTypefilter) || isset($gameEsrbfilter))
+                        <input type="hidden" name="gameType" value="{{$gameTypefilter}}">
+                        <input type="hidden" name="RATED_ESRB" value="{{$gameEsrbfilter}}">
+                        <input type="hidden" name="RATED_B_L" value="{{$gameBLfilter}}">
+                    @else
+                        <input type="hidden" name="gameType">
+                        <input type="hidden" name="RATED_ESRB">
+                        <input type="hidden" name="RATED_B_L">
+                    @endif
+                </form>
             </div>
         </div>
     </div>
@@ -251,46 +262,49 @@
             <div class="col-sm col-md col-lg-11 col-xl-11">
                 <div class="row">
                     <div class="col-sm col-md col-lg-3 col-xl-3">
-                        <select class="selectCat p my-2">
-                            <option>เรทเกม</option>
-                            <option>EC : Early Childhood</option>
-                            <option>E : Everyone</option>
-                            <option>E10+ : Everyone 10+</option>
-                            <option>T : Teen</option>
-                            <option>M : Mature</option>
-                            <option>AO : Adults Only</option>
-                            <option>RP : Rating Pending</option>
+                        <select class="selectCat p my-2" name="RATED_ESRB">
+                            <option value="">เรทเกม</option>
+                            <option value="EarlyChildhood">EC : Early Childhood</option>
+                            <option value="Everyone">E : Everyone</option>
+                            <option value="Everyone10">E10+ : Everyone 10+</option>
+                            <option value="Teen">T : Teen</option>
+                            <option value="Mature">M : Mature</option>
+                            <option value="AdultsOnly">AO : Adults Only</option>
+                            <option value="RatingPending">RP : Rating Pending</option>
                         </select>
                     </div>
 
                     <div class="col-sm col-md col-lg-3 col-xl-3">
-                        <select class="selectCat p my-2">
-                            <option>เรทเนื้อหาเกม</option>
-                            <option>Discrimination : มีการแบ่งแยก แบ่งแยกฝ่ายอย่างชัดเจน</option>
-                            <option>Drugs : มีการใช้สารเสพติดในเกม</option>
-                            <option>Fear : มีการใช้ความกลัวเข้ามาอยู่ในเกม</option>
-                            <option>Gambling : มีเรื่องของการพนันอยู่ในเกม</option>
-                            <option>Sex : มีเรื่องเพศเกี่ยวข้องอยู่ในเกม</option>
-                            <option>Violence : มีการใช้ความรุนแรงภายในเกม</option>
-                            <option>Online : เป็นเกมที่ต้องเล่นออนไลน์เท่านั้น เป็นเรทที่พิเศษแยกออกมา</option>
-                            <option>Other:อื่น</option>
+                        <select class="selectCat p my-2" name="RATED_B_L">
+                            <option value="">เลือกเนื้อหา</option>
+                            <option value="Discrimination">Discrimination : มีการแบ่งแยก แบ่งแยกฝ่ายอย่างชัดเจน</option>
+                            <option value="Drugs">Drugs : มีการใช้สารเสพติดในเกม</option>
+                            <option value="Fear">Fear : มีการใช้ความกลัวเข้ามาอยู่ในเกม</option>
+                            <option value="Gambling">Gambling : มีเรื่องของการพนันอยู่ในเกม</option>
+                            <option value="Sex">Sex : มีเรื่องเพศเกี่ยวข้องอยู่ในเกม</option>
+                            <option value="Violence">Violence : มีการใช้ความรุนแรงภายในเกม</option>
+                            <option value="Online">Online : เป็นเกมที่ต้องเล่นออนไลน์เท่านั้น เป็นเรทที่พิเศษแยกออกมา</option>
+                            <option value="Other">Other : อื่นๆ</option>
                         </select>
                     </div>
     
                     <div class="col-sm col-md col-lg-3 col-xl-3">
-                        <select class="selectCat p my-2">
-                            <option>คะแนน</option>
-                            <option>5 ดาว</option>
-                            <option>4 ดาว</option>
-                            <option>3 ดาว</option>
-                            <option>2 ดาว</option>
-                            <option>1 ดาว</option>
+                        <button class="category rating d-none"></button>
+                        <select class="selectCat p my-2" name="RATING">
+                            <option class="p" value="all">คะแนน</option>
+                            <option class="p" value="5">5 ดาว</option>
+                            <option class="p" value="4">4 ดาว</option>
+                            <option class="p" value="3">3 ดาว</option>
+                            <option class="p" value="2">2 ดาว</option>
+                            <option class="p" value="1">1 ดาว</option>
                         </select>
                     </div>
-                    <button class="btn-reset p ml-3">
-                        <i class="icon-update_version"></i>
-                        <span style="text-decoration: underline;">รีเซ็ท</span>
-                    </button>
+                    <form method="get">
+                        <button class="btn-reset p">
+                            <i class="icon-update_version"> </i>
+                            <span style="text-decoration: underline;">รีเซ็ท</span>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -300,14 +314,13 @@
     <div class="row" style="background-color: #141621;margin:0;">
         <div class="col-lg-1 col-xl-1"></div>
         <div class="col-sm col-md col-lg-10 col-xl-10 rowCat ">
-            <div class="row py-3">
-
-                @foreach($Games as $gameMe)
+            <div class="row py-3" id="parent">
+                @for($i = 0; $i < count($Games); $i++)
                     @if($Follows->count() > 0)
                         @foreach($Follows as $followMe)
-                            @if($gameMe->GAME_ID == $followMe->GAME_ID)
-                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
-                                    <a href="{{ route('GameDetail', ['id'=>encrypt($gameMe->GAME_ID)]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$gameMe->GAME_IMG_PROFILE) }}" /></a>
+                            @if($Games[$i]['GAME_ID'] == $followMe->GAME_ID)
+                                <div class="filterDiv {{$Games[$i]['RATING']}} col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2" style="padding:5px;">
+                                    <a href="{{ route('GameDetail', ['id'=>encrypt($Games[$i]['GAME_ID'])]) }}"><img class="game_3" src="{{ asset('section/File_game/Profile_game/'.$Games[$i]['GAME_IMG_PROFILE']) }}" /></a>
                                     <span class="desc">
                                         <form action="{{ route('Follow') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
@@ -335,7 +348,7 @@
                         </div>
                         @break
                     @endif
-                @endforeach
+                @endfor
             </div>
         </div>
         <div class="col-lg-1 col-xl-1"></div>
@@ -344,7 +357,7 @@
 @endsection
 
 @section('script')
-<script>
+<!-- <script>
 $('button').on('click', function(){
     $('button').removeClass('active');
     $(this).addClass('active');
@@ -353,11 +366,62 @@ $('button').on('click', function(){
 
 <script>
 $('.mySelect').selectpicker();
-</script>
+</script> -->
 
 <script>
     $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
+        $('[data-toggle="tooltip"]').tooltip();   
+    });
+</script>
+
+<script>
+    var $btns = $('.category').click(function() {
+        if (this.id == 'all') {
+            $('#parent > div').fadeIn(450);
+        } else {
+            var $el = $('.' + this.id).fadeIn(450);
+            $('#parent > div').not($el).hide();
+        }
+        $btns.removeClass('active');
+        $(this).addClass('active');
+    })
+</script>
+
+<script>
+    $(document).ready(function() {
+        $(":checkbox").change(function() {
+            var gameType = [];
+            var closest = $(this).closest("div.row");
+            $.each($("input[name='geography']:checked"), function(){            
+                gameType.push($(this).val());
+            });
+            console.log(gameType);
+            $('input[name="gameType"]').val(gameType);
+        });
+    });
+</script>
+
+<script>
+    $("select[name='RATED_ESRB']").change(function() {
+        var esrb = $(this).val();
+        $('input[name="RATED_ESRB"]').val(esrb);
+        $('.btn-search-category').click();
+    });
+</script>
+
+<script>
+    $("select[name='RATED_B_L']").change(function() {
+        var b_l = $(this).val();
+        $('input[name="RATED_B_L"]').val(b_l);
+        $('.btn-search-category').click();
+    });
+</script>
+
+<script>
+    $("select[name='RATING']").change(function() {
+        var rating = $(this).val();
+        $('.category.rating').attr('id', rating);
+        $('.category.rating').click();
     });
 </script>
 

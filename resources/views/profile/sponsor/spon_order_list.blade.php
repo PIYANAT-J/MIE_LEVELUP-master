@@ -49,10 +49,7 @@
                                                     </div>
                                                     <div class="col-5 col-sm-4 col-md-2 col-lg-3 col-xl-2 text-center align-self-center my-2">
                                                         <!-- ไปแสดงใบเสร็จการชำระเงิน -->
-                                                        {{--<a href="{{route('SponsorSuccessfulPayment', ['invoice' => encrypt($transeectionList->transeection_invoice)])}}" style="color:#fff;">
-                                                            <p style="margin:0;color:#000;" class="status-transfer3">ชำระเงินแล้ว</p>
-                                                        </a>--}}
-                                                        <p style="margin:0;color:#000;" class="status-transfer3" data-toggle="modal" data-target="#exampleModalCenter">ชำระเงินแล้ว</p>
+                                                        <p style="margin:0;color:#000;" class="status-transfer3" data-toggle="modal" data-target="#{{$transeectionList->transeection_invoice}}">ชำระเงินแล้ว</p>
                                                     </div>
                                                 </div>
                                             @else
@@ -74,15 +71,16 @@
                                                         <div class="col-5 col-sm-4 col-md-2 col-lg-3 col-xl-2 text-center align-self-center my-2">
                                                             @if(in_array($transeectionList->transeection_invoice, $transfer_invoice))
                                                                 <!-- รอการอนุมัติ -->
-                                                                {{-- <a href="{{route('SponsorTransfer', ['invoice' => encrypt($transeectionList->transeection_invoice)])}}" style="color:#000;"> --}}
                                                                 <p style="margin:0;" class="status-transfer2">รอการอนุมัติ</p>
-                                                                <!-- </a> -->
                                                             @else
                                                                 <!-- ไปหน้าแจ้งชำระเงิน -->
-                                                                {{-- <a href="{{route('SponsorTransfer', ['invoice' => encrypt($transeectionList->transeection_invoice)])}}" style="color:#000;">
-                                                                    <p style="margin:0;" class="status-transfer">แจ้งชำระเงิน</p>
-                                                                </a> --}}
-                                                                <p style="margin:0;" class="status-transfer" data-toggle="modal" data-target="#exampleModal">แจ้งชำระเงิน</p>
+                                                                @foreach($transfer_on as $transfer)
+                                                                    @if($transfer->transferInvoice == $transeectionList->transeection_invoice)
+                                                                        <!-- ไปหน้าแจ้งชำระเงิน -->
+                                                                        <p style="margin:0;" class="status-transfer" data-toggle="modal" data-transfer="{{$transfer->id}}" data-transee="{{$transeectionList->transeection_id}}" data-target="#{{$transeectionList->transeection_invoice}}">แจ้งชำระเงิน</p>
+                                                                        <!-- <p style="margin:0;" class="status-transfer" data-toggle="modal" data-target="#exampleModal">แจ้งชำระเงิน</p> -->
+                                                                    @endif
+                                                                @endforeach
                                                             @endif
                                                         </div>
                                                     </div>
@@ -101,6 +99,28 @@
     </div>
 </div>
 
+<div class="modal fade" id="popupmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="border-radius: 8px;">
+                <div class="row" >
+                    <div class="col-12" >
+                        <div class="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118.43873 118.43873">
+                                <style>.circle{ animation: stroke-fill 1s linear forwards; } .check { animation: stroke-fill 5s linear forwards; } @keyframes stroke-fill { 0% { stroke-dasharray: 0, 0; } 100% { stroke-dasharray: 500, 200000; } }</style>
+                                <path class="check" stroke-linejoin="round" d="M34.682 60.352l15.61 15.61 33.464-33.464" stroke="#08b237" stroke-linecap="round" stroke-width="4.3" fill="none"/>
+                                <circle class="circle" stroke-linejoin="round" cx="59.219" stroke-linecap="round" stroke="#08b237" cy="59.219" r="57.069" stroke-width="4.3" fill="none"/>
+                            </svg>
+                            <p class="success-status mt-2" style="text-align:center;margin:0;">{{ Session::get('susee') }}</p>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn-submit-modal-red d-none">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-4 col-xl-3 bgSidebar"></div>
@@ -112,248 +132,10 @@
     </div>
 </div>
 
-<!-- Modal ใบเสร็จการชำระเงิน-->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document" >
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-12 mt-1 text-center">
-                        <img style="width:34px;" src="{{asset('icon/select_green2.svg')}}" alt="">
-                        <h1 class="mt-3" style="color:#000;margin:0;font-weight:800;">ชำระเงินเรียบร้อยแล้ว</h1>
-                        <label class="" style="font-family:myfont1;font-size:1em;color:#a8a8a8;line-height:0;">หมายเลขคำสั่งซื้อ 2345678900000</label>
-                    </div>
-                </div>
-                <div class="row mx-2 mt-5"> 
-                    <div class="col-8" style="padding:0;">
-                        <label class="plabelimg2 pt-1">
-                            <img src="{{asset('icon/money2.svg') }}" />
-                        </label> 
-
-                        <label style="padding-left:60px;">
-                            <p style="font-weight: 700;margin:0;">Test 1</p>
-                            <label class="p" style="color: #23c197;margin:0;">2 เดือน</label>
-                            <label class="p" style="color: #23c197;margin:0;">จำนวน 10 เกม </label>
-                        </label>
-                    </div>
-                    <div class="col-4 text-right">
-                        <h4 style="font-weight:800;margin:0;">฿1000</h4>
-                        <p style="margin:0;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-37%)</p>
-                    </div>
-                    <!-- <div class="col-8 d-flex justify-content-start" style="padding:0;">
-                        <label class="mr-2">
-                            <img class="labelimg2" src="{{ asset('section/File_game/Profile_game/GAME_IMG_PROFILE_1595566491.png') }}" />
-                        </label>
-                        <label class="pFont2">
-                            <p style="font-weight: 700;margin:0;">ชื่อเกม</p>
-                            <p style="color: #a8a8a8;margin:0;">Online • Online</p>
-                            <h5 style="color: #23c197;margin:0;">
-                                ช่วงเวลา 13/11/63 15:00 - 14/01/64 15:00<br>
-                                จำนวนรอบโฆษณา 20 รอบ
-                            </h5>
-                        </label>
-                    </div>
-                    <div class="col-4 text-right">
-                        <h4 style="font-weight:800;margin:0;">฿1000</h4>
-                        <p style="margin:0;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-37%)</p>
-                    </div> -->
-                </div>
-                <div class="row mt-3 py-2" style="background-color:#fafaff;">
-                    <div class="col-12">
-                        <div class="row mx-2 mt-3">
-                            <p style="font-weight:800;margin:0;">ที่อยู่ในการออกใบเสร็จ</p>
-                        </div>
-                        <div class="row mx-3 mt-3">
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" >
-                                <label class="fontAdsPayment mr-2">
-                                    <p style="margin:0;font-weight: 800;">ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</p>
-                                </label>
-                                <label class="fontAdsPayment2">
-                                    <p style="margin:0;">วราพร ศรีจิ๋ว
-                                        <br>(+66) 0823552062
-                                    </p>
-                                </label>
-                            </div>
-                            
-                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 " >
-                                <label class="fontAdsPayment mr-2">
-                                    <p style="margin:0;font-weight: 800;">ที่อยู่</p>
-                                </label>
-                                <label class="fontAdsPaymentSpon" style="margin:0;">
-                                    <p style="margin:0;">บ้านเลขที่ 1 หมู่ 1 ไทรน้อย ไทรน้อย นนทบุรี นนทบุรีนนทบุรี 11150</p>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row mt-3 pr-3" style="padding: 0 0 0 7px;">
-                            <div class="col-6"><p style="color:#000;margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></div>
-                            <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿1000</h4></div>
-                        </div>
-                        <div class="row mt-3 pr-3" style="padding: 0 0 0 7px;">
-                            <div class="col-3"><p style="color:#000;margin:0;font-weight:800;">ช่องทางการชำระเงิน</p></div>
-                            <div class="col-9 text-right" style="padding-left:0;">
-                                <p style="color:#000;margin:0;font-weight:800;">โอนเงินผ่านธนาคาร บัญชี วราพร ศรีจิ๋ว</p>
-                            </div>
-                        </div>
-                        <div class="row mt-3 py-2" style="background-color:#fafaff ;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
-                            <div class="col-12">
-                                <div class="row mx-1 mt-3">
-                                    <div class="col-8 col-sm-10 col-md-10 col-lg-10 col-xl-10"></div>
-                                    <div class="col-4 col-sm-2 col-md-2 col-lg-2 col-xl-2 text-right" style="padding:0;">
-                                        <button type="button" class="btn-submit" data-dismiss="modal">
-                                            <p style="margin:0;">ปิด</p>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal แจ้งชำระเงิน-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document" >
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-12 mt-1 text-center">
-                        <h1 class="mt-3" style="color:#000;margin:0;font-weight:800;">แจ้งชำระเงิน</h1>
-                        <label class="" style="font-family:myfont1;font-size:1em;color:#a8a8a8;line-height:0;">หมายเลขคำสั่งซื้อ 2345678900000</label>
-                    </div>
-                </div>
-                <div class="row mx-2 mt-5"> 
-                    <!-- <div class="col-8" style="padding:0;">
-                        <label class="plabelimg2 pt-1">
-                            <img src="{{asset('icon/money2.svg') }}" />
-                        </label> 
-
-                        <label style="padding-left:60px;">
-                            <p style="font-weight: 700;margin:0;">Test 1</p>
-                            <label class="p" style="color: #23c197;margin:0;">2 เดือน</label>
-                            <label class="p" style="color: #23c197;margin:0;">จำนวน 10 เกม </label>
-                        </label>
-                    </div>
-                    <div class="col-4 text-right">
-                        <h4 style="font-weight:800;margin:0;">฿1000</h4>
-                        <p style="margin:0;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-37%)</p>
-                    </div> -->
-                    <div class="col-8 d-flex justify-content-start" style="padding:0;">
-                        <label class="mr-2">
-                            <img class="labelimg2" src="{{ asset('section/File_game/Profile_game/GAME_IMG_PROFILE_1595566491.png') }}" />
-                        </label>
-                        <label class="pFont2">
-                            <p style="font-weight: 700;margin:0;">ชื่อเกม</p>
-                            <p style="color: #a8a8a8;margin:0;">Online • Online</p>
-                            <h5 style="color: #23c197;margin:0;">
-                                ช่วงเวลา 13/11/63 15:00 - 14/01/64 15:00<br>
-                                จำนวนรอบโฆษณา 20 รอบ
-                            </h5>
-                        </label>
-                    </div>
-                    <div class="col-4 text-right">
-                        <h4 style="font-weight:800;margin:0;">฿1000</h4>
-                        <p style="margin:0;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-37%)</p>
-                    </div>
-                </div>
-                <div class="row mt-3 py-2" style="background-color:#fafaff;">
-                    <div class="col-12">
-                        <div class="row mt-3 pr-3" style="padding: 0 0 0 7px;">
-                            <div class="col-6"><p style="color:#000;margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></div>
-                            <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿1000</h4></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row py-2 pl-2 pr-4" style="border-bottom:1px solid #edeef3">
-                    <div class="col-6 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                        <p style="margin:0;font-weight:800;">ช่องทางการชำระเงิน</p>
-                        <p style="color:#000;">
-                            ATM / โอนเข้าธนาคาร <br>
-                            กรุณาเก็บเอกสาร/หลักฐานการโอนเงินไว้ เพื่ออัพโหลดภายใน 24 ชม.
-                        </p>
-                    </div>
-                    <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-right">
-                        <label ><img src="{{asset('home/logo/bangkok.svg')}}" ></label>
-                        <label class="p">ธนาคารกรุงเทพ</label> <br>
-                        <label class="ml-2 p">บริษัท ทีเท็น จำกัด</label><br>
-                        <label class="ml-2 p" id="copy">766-2-1-7016-4</label>
-                        <label class="ml-2 p" style="color:#0061fc;cursor:pointer;text-decoration:underline;" onclick="copyToClipboard('#copy')">คัดลอก</label>
-                    </div>
-                </div>
-                <div class="row py-2 " style="border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
-                    <div class="col-12">
-                        <div class="row mt-2">
-                            <div class="col-12 text-right">
-                                <label class="btn-submit-red3 p" onClick="myFunction()">แจ้งการชำระเงิน</label>
-                                <label class="btn-submit-wh" data-dismiss="modal">
-                                    <p style="margin:0;">อัพโหลดภายหลัง</p>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="Transfer">
-                    <form action="{{ route('sponTransferPayment') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="row fade-in mt-3">
-                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label class="bgInput field-wrap my-1">
-                                    <p class="fontHeadInput">วันที่โอน</p>
-                                    <input type="date" name="date" class="input1 p ml-2" ></input>
-                                </label>
-                                <label class="bgInput field-wrap my-1">
-                                    <p class="fontHeadInput">เวลาที่โอน</p>
-                                    <input type="time" name="time" class="input1 p ml-2" ></input>
-                                </label>
-                                <label class="bgInput field-wrap my-1">
-                                    <p class="fontHeadInput">ธนาคารทีโอน</p>
-                                    <select class="MySelect p pl-2" type="text" name="text4">
-                                        <option value="">ธนาคารกรุงเทพ</option>
-                                        <option value="">ธนาคารกสิกรไทย</option>
-                                        <option value="">ธนาคารกรุงไทย</option>
-                                        <option value="">ธนาคารทหารไทย</option>
-                                        <option value="">ธนาคารไทยพาณิชย์</option>
-                                        <option value="">ธนาคารกรุงศรีอยุธยา</option>
-                                        <option value="">ธนาคารเกียรตินาคิน</option>
-                                        <option value="">ธนาคารเกียรตินาคิน</option>
-                                        <option value="">ธนาคารทิสโก้</option>
-                                        <option value="">ธนาคารธนชาต</option>
-                                        <option value="">ธนาคารยูโอบี</option>
-                                        <option value="">ธนาคารออมสิน</option>
-                                        <option value="">ธนาคารอาคารสงเคราะห์</option>
-                                        <option value="">ธนาคารอิสลามแห่งประเทศไทย</option>
-                                    </select>
-                                </label>
-                            </div>
-                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <div class="mb-2">
-                                    <label id="upload" style="cursor:pointer;">
-                                        <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
-                                        <label><p style="font-weight:800;margin:0;">อัพโหลดรูปภาพ</p></label>
-                                    </label>
-                                    <div id="thumb" class="thumb-topup"><img src="{{asset('home/topup/pic-topup.png') }}"/></div>    
-                                    <input id="file_upload" style="display:none" name="transferImg" type="file" multiple="true" accept="image/* " require/>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <button class="btn-submit" name="submit" value="submit">
-                                    <p style="margin:0;">ยืนยัน</p>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-{{-- @foreach($transeection as $transeectionModal)
+@foreach($transeection as $transeectionModal)
     @if($transeectionModal->transeection_status == "true")
         <!-- Modal ใบเสร็จการชำระเงิน-->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="{{$transeectionModal->transeection_invoice}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document" >
                 <div class="modal-content">
                     <div class="modal-body">
@@ -361,33 +143,20 @@
                             <div class="col-12 mt-1 text-center">
                                 <img style="width:34px;" src="{{asset('icon/select_green2.svg')}}" alt="">
                                 <h1 class="mt-3" style="color:#000;margin:0;font-weight:800;">ชำระเงินเรียบร้อยแล้ว</h1>
-                                <label class="" style="font-family:myfont1;font-size:1em;color:#a8a8a8;line-height:0;">หมายเลขคำสั่งซื้อ 2345678900000</label>
+                                <label class="" style="font-family:myfont1;font-size:1em;color:#a8a8a8;line-height:0;">หมายเลขคำสั่งซื้อ {{$transeectionModal->transeection_invoice}}</label>
                             </div>
                         </div>
-                        <div class="row mx-2 mt-5"> 
-                            @if(isset($package))
-                                <div class="col-8" style="padding:0;">
-                                    <label class="plabelimg2 pt-1">
-                                        <img src="{{asset('icon/money2.svg') }}" />
-                                    </label> 
-
-                                    <label style="padding-left:60px;">
-                                        <p style="font-weight: 700;margin:0;">{{$package->packageBuy_name}}</p>
-                                        <label class="p" style="color: #23c197;margin:0;">{{$package->packageBuy_season}} เดือน</label>
-                                        <label class="p" style="color: #23c197;margin:0;">จำนวน {{$package->package_game}} เกม </label>
-                                    </label>
-                                </div>
-                                <div class="col-4 text-right">
-                                    <h4 style="font-weight:800;margin:0;">฿{{number_format($package->packageBuy_amount, 2)}}</h4>
-                                    <!-- <p style="margin:0;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-37%)</p> -->
-                                </div>
-                            @else
+                        <div class="row mx-2 mt-5">
+                            @if($transeectionModal->transeection_gameSpon != null)
                                 <?php 
-                                    $gameID = json_decode($transeection->transeection_gameSpon); 
+                                    $gameID = json_decode($transeectionModal->transeection_gameSpon); 
                                     $gamearray = array();
                                 ?>
-                                @foreach($gameID as $gameId)
-                                    <?php $gamearray[] = $gameId->gameid; ?>
+                                @foreach($gameID as $game)
+                                    <?php 
+                                        $gamearray[] = $game->gameid; 
+                                        // dd($gameTrue);
+                                    ?>
                                 @endforeach
                                 
                                 @foreach($gameTrue as $gameList)
@@ -407,68 +176,33 @@
                                         </div>
                                     @endif
                                 @endforeach
+                            @else
+                                @foreach($package as $packageModal)
+                                    @if($packageModal->packageBuy_invoice == $transeectionModal->transeection_invoice)
+                                        <div class="col-8" style="padding:0;">
+                                            <label class="plabelimg2 pt-1">
+                                                <img src="{{asset('icon/money2.svg') }}" />
+                                            </label> 
+
+                                            <label style="padding-left:60px;">
+                                                <p style="font-weight: 700;margin:0;">{{$packageModal->packageBuy_name}}</p>
+                                                <label class="p" style="color: #23c197;margin:0;">{{$packageModal->packageBuy_season}} เดือน</label>
+                                                <label class="p" style="color: #23c197;margin:0;">จำนวน {{$packageModal->package_game}} เกม </label>
+                                            </label>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <h4 style="font-weight:800;margin:0;">฿{{number_format($packageModal->packageBuy_amount, 2)}}</h4>
+                                            <!-- <p style="margin:0;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-37%)</p> -->
+                                        </div>
+                                    @endif
+                                @endforeach
                             @endif
                         </div>
-                        <!-- <div class="row mx-2 mt-5"> 
-                            <div class="col-8" style="padding:0;">
-                                <label class="plabelimg2 pt-1">
-                                    <img src="{{asset('icon/money2.svg') }}" />
-                                </label> 
-
-                                <label style="padding-left:60px;">
-                                    <p style="font-weight: 700;margin:0;">Test 1</p>
-                                    <label class="p" style="color: #23c197;margin:0;">2 เดือน</label>
-                                    <label class="p" style="color: #23c197;margin:0;">จำนวน 10 เกม </label>
-                                </label>
-                            </div>
-                            <div class="col-4 text-right">
-                                <h4 style="font-weight:800;margin:0;">฿1000</h4>
-                                <p style="margin:0;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-37%)</p>
-                            </div> -->
-                            <!-- <div class="col-8 d-flex justify-content-start" style="padding:0;">
-                                <label class="mr-2">
-                                    <img class="labelimg2" src="{{ asset('section/File_game/Profile_game/GAME_IMG_PROFILE_1595566491.png') }}" />
-                                </label>
-                                <label class="pFont2">
-                                    <p style="font-weight: 700;margin:0;">ชื่อเกม</p>
-                                    <p style="color: #a8a8a8;margin:0;">Online • Online</p>
-                                    <h5 style="color: #23c197;margin:0;">
-                                        ช่วงเวลา 13/11/63 15:00 - 14/01/64 15:00<br>
-                                        จำนวนรอบโฆษณา 20 รอบ
-                                    </h5>
-                                </label>
-                            </div>
-                            <div class="col-4 text-right">
-                                <h4 style="font-weight:800;margin:0;">฿1000</h4>
-                                <p style="margin:0;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-37%)</p>
-                            </div> -->
-                        <!-- </div> -->
                         <div class="row mt-3 py-2" style="background-color:#fafaff;">
                             <div class="col-12">
                                 <div class="row mx-2 mt-3">
                                     <p style="font-weight:800;margin:0;">ที่อยู่ในการออกใบเสร็จ</p>
                                 </div>
-                                <!-- <div class="row mx-3 mt-3">
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" >
-                                        <label class="fontAdsPayment mr-2">
-                                            <p style="margin:0;font-weight: 800;">ชื่อ - นามสกุล<br>เบอร์โทรศัพท์</p>
-                                        </label>
-                                        <label class="fontAdsPayment2">
-                                            <p style="margin:0;">วราพร ศรีจิ๋ว
-                                                <br>(+66) 0823552062
-                                            </p>
-                                        </label>
-                                    </div>
-                                    
-                                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 " >
-                                        <label class="fontAdsPayment mr-2">
-                                            <p style="margin:0;font-weight: 800;">ที่อยู่</p>
-                                        </label>
-                                        <label class="fontAdsPaymentSpon" style="margin:0;">
-                                            <p style="margin:0;">บ้านเลขที่ 1 หมู่ 1 ไทรน้อย ไทรน้อย นนทบุรี นนทบุรีนนทบุรี 11150</p>
-                                        </label>
-                                    </div>
-                                </div> -->
                                 @foreach($address as $addressOn)
                                     @if($addressOn->addresses_status == "true")
                                         <div class="row mx-3 mt-3">
@@ -498,10 +232,14 @@
                                 @endforeach
                                 <div class="row mt-3 pr-3" style="padding: 0 0 0 7px;">
                                     <div class="col-6"><p style="color:#000;margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></div>
-                                    @if(isset($package))
-                                        <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿{{number_format($package->packageBuy_amount, 2)}}</h4></div>
+                                    @if($transeectionModal->transeection_gameSpon != null)
+                                        <div class="col-6 text-right"><h4 style="margin:0;font-weight:800;">฿{{number_format($transeectionModal->transeection_amount, 2)}}</h4></div>
                                     @else
-                                        <div class="col-6 text-right"><h4 style="margin:0;color:#ce0005;font-weight:800;">฿{{number_format($transeection->transeection_amount, 2)}}</h4></div>
+                                        @foreach($package as $packageModal_amount)
+                                            @if($packageModal_amount->packageBuy_invoice == $transeectionModal->transeection_invoice)
+                                                <div class="col-6 text-right"><h4 style="margin:0;font-weight:800;">฿{{number_format($packageModal_amount->packageBuy_amount, 2)}}</h4></div>
+                                            @endif
+                                        @endforeach
                                     @endif
                                 </div>
                                 <div class="row mt-3 pr-3" style="padding: 0 0 0 7px;">
@@ -537,172 +275,139 @@
     @else
         @if($transeectionModal->transeection_invoice != null)
             <!-- Modal แจ้งชำระเงิน-->
-            <div class="modal fade" id="{{$transeectionModal->transeection_invoice}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content" style="background-color:#202433;">
+            <div class="modal fade" id="{{$transeectionModal->transeection_invoice}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document" >
+                    <div class="modal-content">
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-12 text-center mt-3 mb-3">
-                                    <p class="mt-3" style="color:#fff;font-weight:800;margin:0;">แจ้งชำระเงิน</p>
-                                    <p style="color:#a8a8a8;margin:0">หมายเลขคำสั่งซื้อ {{$transeectionModal->transeection_invoice}}</p>
+                                <div class="col-12 mt-1 text-center">
+                                    <h1 class="mt-3" style="color:#000;margin:0;font-weight:800;">แจ้งชำระเงิน</h1>
+                                    <label class="" style="font-family:myfont1;font-size:1em;color:#a8a8a8;line-height:0;">หมายเลขคำสั่งซื้อ {{$transeectionModal->transeection_invoice}}</label>
                                 </div>
                             </div>
-                            <?php 
-                                $transee_tranfer = json_decode($transeectionModal->transeection_items);
-                                $itemlist_tranfer = array();
-                                $itemamount_tranfer = array();
-                                $itemprice_tranfer = array();
-                                $i = 0;
-                                foreach($transee_tranfer as $transeeList_tranfer){
-                                    $itemlist_tranfer[] = $transeeList_tranfer->item_id;
-                                    $itemamount_tranfer[] = $transeeList_tranfer->item_amount;
-                                    $itemprice_tranfer[] = $transeeList_tranfer->item_price;
-                                }
-                            ?>
-                            @foreach($marketItem as $shoppingList_tranfer)
-                                @if(in_array($shoppingList_tranfer->item_id, $itemlist_tranfer))
-                                    @for($i=0;$i < count($itemlist_tranfer);$i++)
-                                        @if($shoppingList_tranfer->item_id == $itemlist_tranfer[$i])
-                                            <div class="row mx-2">
-                                                <div class="col-7" style="padding:0;">
-                                                    <label class="labelItemAvatar bgItem mr-2">
-                                                        @if($shoppingList_tranfer->item_type == "clothes")
-                                                            @if($shoppingList_tranfer->item_gender == "woman")
-                                                                @if($shoppingList_tranfer->item_other == "hero")
-                                                                    <img class="picture2" src="{{asset('home/avatar/clothes/woman/hero/'.$shoppingList_tranfer->item_img) }}">
-                                                                @else
-                                                                    <img class="picture2" src="{{asset('home/avatar/clothes/woman/'.$shoppingList_tranfer->item_img) }}">
-                                                                @endif
-                                                            @elseif($shoppingList_tranfer->item_gender == "man")
-                                                                @if($shoppingList_tranfer->item_other == "hero")
-                                                                    <img class="picture2" src="{{asset('home/avatar/clothes/man/hero/'.$shoppingList_tranfer->item_img) }}">
-                                                                @else
-                                                                    <img class="picture2" src="{{asset('home/avatar/clothes/man/'.$shoppingList_tranfer->item_img) }}">
-                                                                @endif
-                                                            @endif
-                                                        @elseif($shoppingList_tranfer->item_type == "eyes")
-                                                            @if($shoppingList_tranfer->item_gender == "woman")
-                                                                @if($shoppingList_tranfer->item_other == "hero")
-                                                                    <img class="picture2" src="{{asset('home/avatar/eyes/woman/hero/'.$shoppingList_tranfer->item_img) }}">
-                                                                @else
-                                                                    <img class="picture2" src="{{asset('home/avatar/eyes/woman/'.$shoppingList_tranfer->item_img) }}">
-                                                                @endif
-                                                            @elseif($shoppingList_tranfer->item_gender == "man")
-                                                                @if($shoppingList_tranfer->item_other == "hero")
-                                                                    <img class="picture2" src="{{asset('home/avatar/eyes/man/hero/'.$shoppingList_tranfer->item_img) }}">
-                                                                @else
-                                                                    <img class="picture2" src="{{asset('home/avatar/eyes/man/'.$shoppingList_tranfer->item_img) }}">
-                                                                @endif
-                                                            @endif
-                                                        @elseif($shoppingList_tranfer->item_type == "glasses")
-                                                            <img class="picture2" src="{{asset('home/avatar/glasses/'.$shoppingList_tranfer->item_img) }}">
-                                                        @elseif($shoppingList_tranfer->item_type == "hair")
-                                                            @if($shoppingList_tranfer->item_gender == "woman")
-                                                                @if($shoppingList_tranfer->item_other == "hero")
-                                                                    <img class="picture2" src="{{asset('home/avatar/hair/woman/hero/'.$shoppingList_tranfer->item_img) }}">
-                                                                @else
-                                                                    <img class="picture2" src="{{asset('home/avatar/hair/woman/'.$shoppingList_tranfer->item_img) }}">
-                                                                @endif
-                                                            @elseif($shoppingList_tranfer->item_gender == "man")
-                                                                @if($shoppingList_tranfer->item_other == "hero")
-                                                                    <img class="picture2" src="{{asset('home/avatar/hair/man/hero/'.$shoppingList_tranfer->item_img) }}">
-                                                                @else
-                                                                    <img class="picture2" src="{{asset('home/avatar/hair/man/'.$shoppingList_tranfer->item_img) }}">
-                                                                @endif
-                                                            @endif
-                                                        @elseif($shoppingList_tranfer->item_type == "other")
-                                                            <img class="picture2" src="{{asset('home/avatar/other/'.$shoppingList_tranfer->item_img) }}">
-                                                        @elseif($shoppingList_tranfer->item_type == "weapon")
-                                                            <img class="picture2" src="{{asset('home/avatar/weapon/'.$shoppingList_tranfer->item_img) }}">
-                                                        @endif
-                                                    </label> 
-                                                    <label class="font-sale4 bgItem2 mt-2">
-                                                        <p style="margin:0;"> <a style="font-weight: 700;">{{$shoppingList_tranfer->item_name}} ระดับ {{$shoppingList_tranfer->item_level}} </a></br>
-                                                        {{$shoppingList_tranfer->item_description}}</br>
-                                                        เลือกลงทุนได้ 3 Signal</p>
-                                                    </label>
-                                                </div>
-
-                                                <div class="col-2 my-4 text-center" style="padding:0;">
-                                                    <p style="margin:0;color:#fff;">{{$itemamount_tranfer[$i]}} ชิ้น</p>
-                                                </div>
-
-                                                <div class="col-3 my-3">
-                                                    <span class="font-price3" style="line-height: 1.2; display:block;text-align:right;">
-                                                        <h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{number_format($itemprice_tranfer[$i], 2)}}</h4>
-                                                        @if($shoppingList_tranfer->item_discount != 0)
-                                                            <p class="mr-2" style="margin:0;Color:#fff;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿{{number_format($itemprice_tranfer[$i], 2)}} </a> (-{{$shoppingList_tranfer->item_discount}}%)</p>
-                                                        @endif
-                                                    </span>
-                                                </div>
+                            <div class="row mx-2 mt-5">
+                                @if($transeectionModal->transeection_gameSpon != null)
+                                    <?php 
+                                        $start = explode(', ', $transeectionModal->transeection_gameSpon);
+                                        $gameID = array();
+                                        for($i=0;$i<count($start);$i++){
+                                            $gameID[] = $start[$i];
+                                        }
+                                    ?>
+                                    @foreach($countCart as $key=>$gameList)
+                                        @if(in_array($gameList->sponsor_cart_game, $gameID))
+                                            <div class="col-8 d-flex justify-content-start" style="padding:0;">
+                                                <label class="mr-2">
+                                                    <img class="labelimg2" src="{{ asset('section/File_game/Profile_game/'.$gameList->GAME_IMG_PROFILE) }}" />
+                                                </label>
+                                                <label class="pFont2">
+                                                    <p style="font-weight: 700;margin:0;">{{$gameList->GAME_NAME}}</p>
+                                                    <p style="color: #a8a8a8;margin:0;">{{$gameList->RATED_B_L}} • Online</p>
+                                                    <h5 style="color: #23c197;margin:0;">
+                                                        ช่วงเวลา {{$gameList->sponsor_cart_start}} - {{$gameList->sponsor_cart_deadline}}<br>
+                                                        จำนวนรอบโฆษณา {{$gameList->sponsor_cart_number}} รอบ
+                                                    </h5>
+                                                </label>
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <h4 style="font-weight:800;margin:0;">฿{{number_format($gameList->sponsor_cart_price, 2)}}</h4>
+                                                @if($gameList->GAME_DISCOUNT != null && $gameList->GAME_DISCOUNT != "0")
+                                                    <p style="margin:0;"><a style="color: #b2b2b2;text-decoration:line-through;">฿{{number_format($gameList->sponsor_cart_price, 2)}} </a>(-{{$gameList->GAME_DISCOUNT}}%)</p>
+                                                @endif
                                             </div>
                                         @endif
-                                    @endfor
-                                @endif
-                            @endforeach
+                                    @endforeach
+                                @else
+                                    @foreach($package as $packageModal)
+                                        @if($packageModal->packageBuy_invoice == $transeectionModal->transeection_invoice)
+                                            <div class="col-8" style="padding:0;">
+                                                <label class="plabelimg2 pt-1">
+                                                    <img src="{{asset('icon/money2.svg') }}" />
+                                                </label> 
 
-                            <div class="row pl-2 pr-4" style="border-bottom:1px solid #455160">
-                                <div class="col-6 font-payment2 py-3 "><p style="margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></div>
-                                <div class="col-6 text-right font-price align-self-center"><h4 style="margin:0;font-weight:800;color:#ce0005;">฿{{number_format($transeectionModal->transeection_price, 2)}}</h4></div>
+                                                <label style="padding-left:60px;">
+                                                    <p style="font-weight: 700;margin:0;">{{$packageModal->packageBuy_name}}</p>
+                                                    <label class="p" style="color: #23c197;margin:0;">{{$packageModal->packageBuy_season}} เดือน</label>
+                                                    <label class="p" style="color: #23c197;margin:0;">จำนวน {{$packageModal->package_game}} เกม </label>
+                                                </label>
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <h4 style="font-weight:800;margin:0;">฿{{number_format($packageModal->packageBuy_amount, 2)}}</h4>
+                                                <!-- <p style="margin:0;"> <a style="color: #b2b2b2;text-decoration:line-through;">฿11,400 </a> (-37%)</p> -->
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
                             </div>
-                            <div class="row pl-2 pr-4 pt-2" style="border-bottom:1px solid #455160">
-                                <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 mb-2">
-                                    <label class="font-payment2"><p style="margin:0;font-weight:800;">ช่องทางการชำระเงิน</p></label> <br>
-                                    <p style="color:#fff;margin:0;">
+                            <div class="row mt-3 py-2" style="background-color:#fafaff;">
+                                <div class="col-12">
+                                    <div class="row mt-3 pr-3" style="padding: 0 0 0 7px;">
+                                        <div class="col-6"><p style="color:#000;margin:0;font-weight:800;">จำนวนเงินที่ต้องชำระ</p></div>
+                                        @if($transeectionModal->transeection_gameSpon != null)
+                                            <div class="col-6 text-right"><h4 style="margin:0;font-weight:800;">฿{{number_format($transeectionModal->transeection_amount, 2)}}</h4></div>
+                                        @else
+                                            @foreach($package as $packageModal_amount)
+                                                @if($packageModal_amount->packageBuy_invoice == $transeectionModal->transeection_invoice)
+                                                    <div class="col-6 text-right"><h4 style="margin:0;font-weight:800;">฿{{number_format($packageModal_amount->packageBuy_amount, 2)}}</h4></div>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row py-2 pl-2 pr-4" style="border-bottom:1px solid #edeef3">
+                                <div class="col-6 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                                    <p style="margin:0;font-weight:800;">ช่องทางการชำระเงิน</p>
+                                    <p style="color:#000;">
                                         ATM / โอนเข้าธนาคาร <br>
                                         กรุณาเก็บเอกสาร/หลักฐานการโอนเงินไว้ เพื่ออัพโหลดภายใน 24 ชม.
                                     </p>
                                 </div>
-                                <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-right">
+                                <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-right">
                                     @foreach($transfer_on as $transfer)
                                         @if($transfer->transferInvoice == $transeectionModal->transeection_invoice)
                                             <label><img src="{{asset('home/logo/'.$transfer->transferฺBank_name.'.svg')}}" ></label>
                                             @if($transfer->transferฺBank_name == "bangkok")
-                                                <label class="font-payment2"><p style="color:#fff;margin:0;">ธนาคารกรุงเทพ</p></label> <br>
-                                                <label class="ml-2"><p style="color:#fff;margin:0;">บริษัท ทีเท็น จำกัด</p></label><br>
-                                                <label class="ml-2" id="copy"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
-                                                <label class="ml-2" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label>
+                                                <label class="p">ธนาคารกรุงเทพ</label> <br>
+                                                <label class="ml-2 p">บริษัท ทีเท็น จำกัด</label><br>
+                                                <label class="ml-2 p" id="copy">766-2-1-7016-4</label>
+                                                <label class="ml-2 p" style="color:#0061fc;cursor:pointer;text-decoration:underline;" onclick="copyToClipboard('#copy')">คัดลอก</label>
                                             @elseif($transfer->transferฺBank_name == "ktc")
-                                                <label class="font-payment2"><p style="color:#fff;margin:0;">ธนาคารกรุงไทย</p></label> <br>
-                                                <label class="ml-2"><p style="color:#fff;margin:0;">บริษัท ทีเท็น จำกัด</p></label><br>
-                                                <label class="ml-2" id="copy"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
-                                                <label class="ml-2" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label>
+                                                <label class="p">ธนาคารกรุงไทย</label> <br>
+                                                <label class="ml-2 p">บริษัท ทีเท็น จำกัด</label><br>
+                                                <label class="ml-2 p" id="copy">766-2-1-7016-4</label>
+                                                <label class="ml-2 p" style="color:#0061fc;cursor:pointer;text-decoration:underline;" onclick="copyToClipboard('#copy')">คัดลอก</label>
                                             @elseif($transfer->transferฺBank_name == "kbank")
-                                                <label class="font-payment2"><p style="color:#fff;margin:0;">ธนาคารกสิกรไทย</p></label> <br>
-                                                <label class="ml-2"><p style="color:#fff;margin:0;">บริษัท ทีเท็น จำกัด</p></label><br>
-                                                <label class="ml-2" id="copy"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
-                                                <label class="ml-2" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label>
+                                                <label class="p">ธนาคารกสิกรไทย</label> <br>
+                                                <label class="ml-2 p">บริษัท ทีเท็น จำกัด</label><br>
+                                                <label class="ml-2 p" id="copy">766-2-1-7016-4</label>
+                                                <label class="ml-2 p" style="color:#0061fc;cursor:pointer;text-decoration:underline;" onclick="copyToClipboard('#copy')">คัดลอก</label>
                                             @elseif($transfer->transferฺBank_name == "scb")
-                                                <label class="font-payment2" style="margin:0;"><p style="color:#fff;margin:0;">ธนาคารไทยพาณิชย์</p></label> <br>
-                                                <label class="ml-2" style="margin:0;"><p style="color:#fff;margin:0;">บริษัท ทีเท็น จำกัด</p></label><br>
-                                                <label class="ml-2" id="copy" style="margin:0;"><p style="color:#fff;margin:0;">766-2-1-7016-4</p></label>
-                                                <label class="ml-2" style="margin:0;" onclick="copyToClipboard('#copy')"><p style="margin:0;color:#ce0005;cursor:pointer;text-decoration:underline;">คัดลอก</p></label>
+                                                <label class="p">ธนาคารไทยพาณิชย์</label> <br>
+                                                <label class="ml-2 p">บริษัท ทีเท็น จำกัด</label><br>
+                                                <label class="ml-2 p" id="copy">766-2-1-7016-4</label>
+                                                <label class="ml-2 p" style="color:#0061fc;cursor:pointer;text-decoration:underline;" onclick="copyToClipboard('#copy')">คัดลอก</label>
                                             @endif
                                         @endif
                                     @endforeach
                                 </div>
                             </div>
-
                             <div class="row py-2 " style="border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;">
                                 <div class="col-12">
                                     <div class="row mt-2">
-                                        <div class="col-lg-12 text-right">
-                                            <label class="btn-submit-red3" onClick="myFunction()">
-                                                <p style="margin:0;">แจ้งการชำระเงิน</p>
-                                            </label>
-                                            <label class="btn-submit-wh" data-dismiss="modal">
-                                                <p style="margin:0;">อัพโหลดภายหลัง</p>
-                                            </label>
+                                        <div class="col-12 text-right">
+                                            <label class="btn-submit-red3 p"><p style="margin:0;">แจ้งการชำระเงิน</p></label>
+                                            <label class="btn-submit-wh" data-dismiss="modal"><p style="margin:0;">อัพโหลดภายหลัง</p></label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div id="Transfer">
-                                <form action="{{ route('itemTransfer') }}" method="POST" enctype="multipart/form-data">
+                            <div class="Transfer d-none">
+                                <form action="{{ route('sponTransferPayment') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row fade-in mt-3">
-                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                             <label class="bgInput field-wrap my-1">
                                                 <p class="fontHeadInput">วันที่โอน</p>
                                                 <input type="date" name="date" class="input1 p ml-2" ></input>
@@ -735,17 +440,17 @@
                                             <div class="mb-2">
                                                 <label id="upload" style="cursor:pointer;">
                                                     <img class="mr-2" style="width: 40px;height:40px;" src="{{asset('icon/upload-kyc.svg') }}" />
-                                                    <label><p style="font-weight:800;margin:0;color:#fff;">อัพโหลดรูปภาพ</p></label>
+                                                    <label><p style="font-weight:800;margin:0;">อัพโหลดรูปภาพ</p></label>
                                                 </label>
-                                                <div id="thumb" class="thumb-topup2"><img src="{{asset('home/topup/pic-topup.png') }}"/></div>    
+                                                <div id="thumb" class="thumb-topup"><img src="{{asset('home/topup/pic-topup.png') }}"/></div>    
                                                 <input id="file_upload" style="display:none" name="transferImg" type="file" multiple="true" accept="image/* " require/>
                                             </div>
                                         </div>
-                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
-                                            <!-- <a href="{{ route('SponsorPayment') }}"><label class="btn-submit-drak2">ยืนยัน</label></a>transferNote -->
-                                            <button class="btn-submit-red" name="submit" value="submit"><p style="margin:0;">ยืนยัน</p></button>
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                            <button class="btn-submit" name="submit" value="submit"><p style="margin:0;">ยืนยัน</p></button>
                                             <input type="hidden" name="id">
                                             <input type="hidden" name="transeection_id">
+                                            <input type="hidden" name="modal" value="modal">
                                         </div>
                                     </div>
                                 </form>
@@ -756,7 +461,7 @@
             </div>
         @endif
     @endif
-@endforeach --}}
+@endforeach
 
 @endsection
 
@@ -903,8 +608,77 @@
 }
 </script>
 
-<script>
+<!-- <script>
     const myFunction = () => {
-    document.getElementById("Transfer").style.display ='block';}
+        document.getElementById("Transfer").style.display ='block';
+    }
+</script> -->
+
+<script>
+    $(".btn-submit-red3").on("click",function(e){
+        $('.Transfer').removeClass('d-none');
+    });
 </script>
+
+<script> /* อัพโหลดรูปภาพ */
+    $(function () {
+        $("#upload").on("click",function(e){
+            $("#file_upload").show().click().hide();
+            e.preventDefault();
+        });
+        $("#file_upload").on("change",function(e){
+            var files = this.files
+            showThumbnail(files)        
+        });
+        function showThumbnail(files){
+            $("#thumb").html("");
+            for(var i=0;i<files.length;i++){
+                var file = files[i]
+                var imageType = /image.*/
+                if(!file.type.match(imageType)){
+                        //  console.log("Not an Image");
+                    continue;
+                }
+                var image = document.createElement("img");
+                var thumbnail = document.getElementById("thumb");
+                image.file = file;
+                thumbnail.appendChild(image)
+                var reader = new FileReader()
+                reader.onload = (function(aImg){
+                    return function(e){
+                        aImg.src = e.target.result;
+                    };
+                }(image))
+                var ret = reader.readAsDataURL(file);
+                var canvas = document.createElement("canvas");
+                ctx = canvas.getContext("2d");
+                image.onload= function(){
+                    ctx.drawImage(image,100,100)
+                }
+            } // end for loop
+            console.log(file);
+        } // end showThumbnail
+    });
+</script>
+
+<script>
+    $(".status-transfer").on("click",function(e){
+        var transfer = $(this).data('transfer');
+        var transee = $(this).data('transee');
+        $('input[name="id"]').val(transfer);
+        $('input[name="transeection_id"]').val(transee);
+        $('.Transfer').addClass('d-none');
+    });
+</script>
+
+@if( Session::has('susee'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#popupmodal').modal();
+            setTimeout(function(){
+                $('#popupmodal').modal('hide')
+            }, 1500);
+        });
+    </script>
+@endif
 @endsection

@@ -28,14 +28,14 @@ class creditPaymentController extends Controller
             $credit_payments = new CreditPayment();
             $credit_payments->paymentType = $transeection_type;
             $credit_payments->useType = "item";
-            $credit_payments->amount = $transeection->transeection_price;
+            $credit_payments->amount = $request->amount;
             $credit_payments->invoice = $transeection_invoice;
             $credit_payments->user_id = Auth::user()->id;
             $credit_payments->user_email = Auth::user()->email;
             $credit_payments->save();
 
-            $total = number_format($transeection->transeection_price, 2, '', '');
-            // dd("NO.1", $total, $transeection->transeection_price);
+            $total = number_format($request->amount, 2, '', '');
+            // dd("NO.1", $total, $request->amount);
             if($transeection != null){
                 Transeection_buyItem::where('transeection_id', $transeection_id)->update(array('transeection_type'=>$transeection_type, 'transeection_invoice'=>$transeection_invoice));
                 
@@ -46,7 +46,7 @@ class creditPaymentController extends Controller
                 $hash_string  = $pay_type . $transeection_invoice . $total . $site_cd . $secure_key . Auth::user()->id;
                 $hash_data = hash('sha256', $hash_string);
 
-                $data["transeection_price"] = $transeection->transeection_price;
+                $data["transeection_price"] = $request->amount;
                 $data["transeection_invoice"] = $transeection_invoice;
                 $data["order_no"] = $transeection_invoice;
                 $data["user_id"] = Auth::user()->id;
