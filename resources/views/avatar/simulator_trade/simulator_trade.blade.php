@@ -39,14 +39,14 @@
                             <!-- <div><img style="width:100%;" src="{{asset('home/simulator/Simulator_trade1.png') }}" /></div> -->
                             <div class="chart">
                                 <!-- <img class="bgchart pl-2" style="width:100%;"  src="{{asset('home/simulator/Simulator_trade2.png') }}" /> -->
-                                <div class="row my-1 px-2">
+                                <!-- <div class="row my-1 px-2">
                                     <div class="col-6"><p style="color:#fff;margin:0">{{date("j F Y")}}</p></div>
-                                    <div class="col-6 text-right">
+                                    <div class="col-6 text-right"> -->
                                     <!-- <p style="color:#fff;margin:0">SET :
                                         <a style="color:#ce0005;cursor:pointer">Closed</a>
                                         <a style="color:#0ce63e;cursor:pointer">Open</a>
                                     </p> -->
-                                    <p id="money-simulator" style="color:#fff;margin:0">MONEY :
+                                    <!-- <p id="money-simulator" style="color:#fff;margin:0">MONEY :
                                         @if(isset($amount_trade->amount))
                                             <span>{{number_format($amount_trade->amount, 2)}}฿</span>
                                             <input type="hidden" name="amount_simula" value="{{$amount_trade->amount}}">
@@ -55,14 +55,14 @@
                                             <span>0.00</span>
                                             <input type="hidden" name="amount_simula" value="0">
                                             <input type="hidden" name="status" value="false">
-                                        @endif
+                                        @endif -->
                                         
                                         <!-- <span style="color:#ce0005;cursor:pointer">....</span> -->
                                         <!-- <a style="color:#0ce63e;cursor:pointer">Open</a> -->
-                                    </p>
+                                    <!-- </p>
                                     </div>
-                                </div>
-                                <div class="row px-4">
+                                </div> -->
+                                <!-- <div class="row px-4">
                                     <div class="col-6 pb-2" style="border-bottom:1px solid #373a41;padding-left:0;">
                                         <h4 class="symbol" style="color:#fff;margin:0;font-weight:800;">SYMBOL : <span>....</span></h4>
                                     </div>
@@ -71,10 +71,10 @@
                                             <img style="width:15px;margin: 0 3px 3px 0;" src="{{asset('icon/up-green.svg')}}">
                                             <span>....</span>
                                         </h4>
-                                    </div>
+                                    </div> -->
                                     <!-- <div class="col-6 text-right" style="border-bottom:1px solid #373a41;padding-right:0;"><label style="font-family:myfont;font-size:1.5em;color:#ce0005;line-height:0;"><img style="width:10px;margin: 0 3px 3px 0;" src="{{asset('icon/down-red.svg')}}">1,444.63 (+5.97%)</label></div> -->
-                                </div>
-                                <div class="row mt-1 px-2">
+                                <!-- </div> -->
+                                <!-- <div class="row mt-1 px-2"> -->
                                     <!-- <div class="col-6">
                                         <label><h5 style="margin:0;color:#fff;">Hign :</h5></label>
                                         <label><h5 style="margin:0;color:#0ce63e;">1,448.13 (+9.47)</h5></label> <br>
@@ -88,29 +88,37 @@
                                         <label><h5 style="margin:0;color:#455160;">Vol(K) :</h5></label>
                                         <label><h5 style="margin:0;color:#fff;">26,699,932</h5></label>
                                     </div> -->
-                                </div>
+                                <!-- </div> -->
 
                                 <!-- <div id="myChart-div">
                                     <canvas class="pr-2" id="myChart" height="150"></canvas>
                                 </div> -->
-                                <div id="myChart-div">
+                                <!-- <div id="myChart-div">
                                     <div class="pr-2 heightChartSim" id="chartSimula">
                                         <div class="simulator-label text-center">
-                                            <h3>Simulator trade</h3>
+                                            <h3>Simulator trade</h3> -->
                                         <!-- <button type="button" class="btn-simulator next-simulator" > -->
-                                            <svg type="button" class="next-simulator pBTNPlay" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><g><g><circle cx="256" cy="256" fill="#d80027" r="240"/>
+                                            <!-- <svg type="button" class="next-simulator pBTNPlay" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><g><g><circle cx="256" cy="256" fill="#d80027" r="240"/>
                                             <path d="m208.538 344v-176l145.924 88z" fill="#e0e0e2"/></g><g><g>
                                             <path d="m431.36 80.64a248 248 0 1 0 -350.72 350.72 248 248 0 1 0 350.72-350.72zm-11.31 339.41a232 232 0 0 1 -328.1-328.1 232 232 0 0 1 328.1 328.1z"/>
                                             <path d="m176 464.7a7.982 7.982 0 0 1 -2.963-.571 224.077 224.077 0 0 1 -141.037-208.129 8 8 0 0 1 16 0 208.073 208.073 0 0 0 130.965 193.271 8 8 0 0 1 -2.965 15.429z"/>
                                             <path d="m216.009 476.305a8.072 8.072 0 0 1 -1.482-.138c-5.557-1.041-11.141-2.309-16.595-3.77a8 8 0 1 1 4.136-15.455c5.063 1.355 10.245 2.533 15.405 3.5a8 8 0 0 1 -1.464 15.865z"/></g>
-                                            <path d="m208.538 352a8 8 0 0 1 -8-8v-176a8 8 0 0 1 12.131-6.851l145.924 88a8 8 0 0 1 0 13.7l-145.924 88a8 8 0 0 1 -4.131 1.151zm8-169.833v147.666l122.433-73.833z"/></g></g></svg>
+                                            <path d="m208.538 352a8 8 0 0 1 -8-8v-176a8 8 0 0 1 12.131-6.851l145.924 88a8 8 0 0 1 0 13.7l-145.924 88a8 8 0 0 1 -4.131 1.151zm8-169.833v147.666l122.433-73.833z"/></g></g></svg> -->
                                         <!-- </button> -->
-                                            <p>Play Now</p>
+                                            <!-- <p>Play Now</p>
                                         </div>
                                         <div class="coverBlack px-2" style="color:#ffff;"></div>
                                         <div id="chartContainer" style="z-index:0; height:100%"></div>
                                     </div>
+                                </div> -->
+
+                                <div class="heightChartSim">
+                                    <iframe src="http://stockgame.level-ups.co/" frameborder="0" style="width:100%; height:100%"></iframe>
                                 </div>
+
+                                <!-- <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="http://stockgame.level-ups.co/" frameborder="0"></iframe>
+                                </div> -->
                                 
                             </div>
                         </div>
@@ -622,7 +630,7 @@
         return val.toFixed(2);
     }
 </script>
-<script>
+<!-- <script>
     window.onload = function() {
         var dps = []; // dataPoints
         var dps2 = []; // dataPoints
@@ -728,5 +736,5 @@
             updateChart(100)
         }, updateInterval);
     }
-</script>
+</script> -->
 @endsection

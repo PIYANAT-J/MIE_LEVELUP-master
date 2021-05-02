@@ -18,7 +18,7 @@ class KycController extends Controller
         $userKyc = DB::table('kycs')->where('USER_EMAIL', Auth::user()->email)->first();
         $ranking = DB::table('ranking_trades')->where('USER_EMAIL', Auth::user()->email)->first();
         if($ranking != null){
-            return view('profile.game.userlvp_shelf', compact('guest_user', 'userKyc', 'ranking'));
+            return view('kyc.userlvp_kyc', compact('guest_user', 'userKyc', 'ranking'));
         }
         return view('kyc.userlvp_kyc', compact('guest_user', 'userKyc'));
     }

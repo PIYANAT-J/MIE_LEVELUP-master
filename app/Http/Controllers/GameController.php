@@ -36,12 +36,15 @@ class GameController extends Controller
             $game_id[] = $game->GAME_ID;
             $game_list = array_unique($game_id);
         }
-        for($i=0;$i < count($game_list); $i++){
-            $Gamehot[$i] = DB::table('comments')->where('comments.GAME_ID', $game_list[$i])
-                            ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
-                            ->select('games.*', 'comments.RATING')
-                            ->first();
+        if($GameList != "[]"){
+            for($i=0;$i < count($game_list); $i++){
+                $Gamehot[$i] = DB::table('comments')->where('comments.GAME_ID', $game_list[$i])
+                                ->join('games', 'comments.GAME_ID', 'games.GAME_ID')
+                                ->select('games.*', 'comments.RATING')
+                                ->first();
+            }
         }
+        
         if(isset(Auth::user()->id)){
             $Follows = DB::table('follows')->where('USER_ID', '=', Auth::user()->id)->get();
             if(Auth::user()->users_type == '1'){

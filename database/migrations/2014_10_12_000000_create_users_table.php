@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('facebook_id')->nullable();
             $table->string('google_id')->nullable();
             $table->string('password')->collation('utf8_unicode_ci')->nullable();
+            $table->string('api_token')->collation('utf8_unicode_ci')->nullable();
             $table->integer('users_type');
             $table->enum('updateData', ['true', 'false'])->collation('utf8_unicode_ci')->default('false');
             $table->rememberToken();
